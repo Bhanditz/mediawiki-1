@@ -4,3 +4,39 @@
 [submodule "extensions/ParserFunctions"]
 	path = extensions/ParserFunctions
 	url = git://code.creativecommons.org/parserfunctions.git
+[submodule "extensions/SemanticForms"]
+	path = extensions/SemanticForms
+	url = git://code.creativecommons.org/semanticforms.git
+[submodule "extensions/CategoryTree"]
+	path = extensions/CategoryTree
+	url = git://code.creativecommons.org/categorytree.git
+[submodule "extensions/ImageMap"]
+	path = extensions/ImageMap
+	url = git://code.creativecommons.org/imagemap.git
+[submodule "extensions/OpenID"]
+	path = extensions/OpenID
+	url = git://code.creativecommons.org/openid.git
+[submodule "extensions/Preloader"]
+	path = extensions/Preloader
+	url = git://code.creativecommons.org/preloader.git
+[submodule "extensions/reCAPTCHA"]
+	path = extensions/reCAPTCHA
+	url = git://code.creativecommons.org/recaptcha.git
+[submodule "extensions/Renameuser"]
+	path = extensions/Renameuser
+	url = git://code.creativecommons.org/renameuser.git
+[submodule "extensions/SemanticDrilldown"]
+	path = extensions/SemanticDrilldown
+	url = git://code.creativecommons.org/semanticdrilldown.git
+[submodule "extensions/SpamBlacklist"]
+	path = extensions/SpamBlacklist
+	url = git://code.creativecommons.org/spamblacklist.git
+[submodule "extensions/SyntaxHighlight_GeSHi"]
+	path = extensions/SyntaxHighlight_GeSHi
+	url = git://code.creativecommons.org/syntaxhighlight_geshi.git
+[submodule "extensions/CC_SMW_Extensions"]
+	path = extensions/CC_SMW_Extensions
+	url = git://code.creativecommons.org/CC_SMW_Extensions.git
+[submodule "extensions/SMW_InlineQueryParserFunction"]
+	path = extensions/SMW_InlineQueryParserFunction
+	url = git://code.creativecommons.org/smw_inlinequeryparserfunction.git
