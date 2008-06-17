@@ -1,5 +1,9 @@
 <?php
-/* $Id: mctest.php 23531 2007-06-29 01:19:14Z simetrical $ */
+/**
+ * $Id$
+ * @file
+ * @ingroup Maintenance
+ */
 
 $optionsWithArgs = array( 'i' );
 

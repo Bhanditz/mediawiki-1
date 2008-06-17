@@ -1,5 +1,9 @@
 <?php
 /**
+ * @defgroup Ajax Ajax
+ *
+ * @file
+ * @ingroup Ajax
  * Handle ajax requests and send them to the proper handler.
  */
 
@@ -11,7 +15,7 @@ require_once( 'AjaxFunctions.php' );
 
 /**
  * Object-Oriented Ajax functions.
- * @addtogroup Ajax
+ * @ingroup Ajax
  */
 class AjaxDispatcher {
 	/** The way the request was made, either a 'get' or a 'post' */
@@ -58,6 +62,7 @@ class AjaxDispatcher {
 		break;
 
 		default:
+			wfProfileOut( __METHOD__ );
 			return;
 			# Or we could throw an exception:
 			#throw new MWException( __METHOD__ . ' called without any data (mode empty).' );
@@ -119,5 +124,3 @@ class AjaxDispatcher {
 		$wgOut = null;
 	}
 }
-
-

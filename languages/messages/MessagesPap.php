@@ -1,11 +1,13 @@
 <?php
 /** Papiamento (Papiamentu)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Kamizu
  * @author לערי ריינהארט
  * @author SPQRobin
+ * @author Siebrand
  */
 
 $messages = array(
@@ -46,10 +48,8 @@ $messages = array(
 'dec'       => 'des',
 
 # Categories related messages
-'categories'         => 'Kategorianan',
-'categoriespagetext' => 'Esaki ta e kategorianan ku ta eksistí den {{SITENAME}}.',
-'category_header'    => 'Artíkulonan den kategoria "$1"',
-'subcategories'      => 'Supkategorianan',
+'category_header' => 'Artíkulonan den kategoria "$1"',
+'subcategories'   => 'Supkategorianan',
 
 'about'         => 'Info',
 'article'       => 'Artíkulo',
@@ -122,7 +122,7 @@ $messages = array(
 'nosuchspecialpage' => 'E página spesial no ta eksistí',
 'nospecialpagetext' => "<big>'''Bo a pidi un página spesial inválido.'''</big>
 
-Bo por haña un lista di tur página spesial [[Special:Specialpages|aki]].",
+Bo por haña un lista di tur [[Special:Specialpages|{{int:specialpages}}]].",
 
 # General errors
 'error'         => 'Eror',
@@ -225,8 +225,6 @@ Bo kuenta ta trahá. No lubidá di kambia bo [[Special:Preferences|{{SITENAME}} 
 'unusedcategories'        => 'Kategorianan no uzá',
 'wantedcategories'        => 'Kategorianan deseá',
 'wantedpages'             => 'Páginanan deseá',
-'specialpages'            => 'Páginanan Spesial',
-'spheading'               => 'Páginanan spesial pa tur uzadó',
 'ancientpages'            => 'Páginanan mas bieu',
 'unusedcategoriestext'    => 'E siguiente kategorianan ta eksistí pero ningun artíkulo òf kategoria ta hasi uzo di nan.',
 
@@ -244,6 +242,10 @@ Bo por skohe un tipo di registro tambe, òf filtrá e bista ku un nòmber di uza
 'allpagesprev'      => 'Anterior',
 'allpagesnext'      => 'Siguiente',
 'allpagesprefix'    => 'Mustra páginanan kuminsando ku e prefiho:',
+
+# Special:Categories
+'categories'         => 'Kategorianan',
+'categoriespagetext' => 'Esaki ta e kategorianan ku ta eksistí den {{SITENAME}}.',
 
 # E-mail user
 'emailuser'       => 'Manda e-mail pa e uzadó aki',
@@ -360,8 +362,12 @@ funkshonnan di e-mail riba {{SITENAME}}, por fabor habri e link aki:
 
 $3
 
-Si esaki *no* ta abo, por fabor no habri e link. E kódigo di konfirmashon
-aki lo kaduká riba $4.',
+Si esaki *no* ta abo, por fabor no habri e link.
+Follow this link to cancel the e-mail address confirmation:
+
+$5
+
+E kódigo di konfirmashon aki lo kaduká riba $4.',
 
 # Delete conflict
 'confirmrecreate' => "[[User:$1|$1]] ([[User talk:$1|diskushon]]) a kita e artíkulo aki despues ku bo ta kuminsá editá. E rason ta:
@@ -371,5 +377,8 @@ Por fabor konfirmá ku bo ke traha e artíkulo aki di nobo.",
 # AJAX search
 'articletitles' => "Artíkulonan kuminsando ku ''$1''",
 'hideresults'   => 'Skonde resultado',
+
+# Special:SpecialPages
+'specialpages' => 'Páginanan Spesial',
 
 );

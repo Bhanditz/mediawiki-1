@@ -1,19 +1,18 @@
 <?php
-/**
-  * @addtogroup Language
-  */
 
-/*
-	There are two levels of conversion for Serbian: the script level
-	(Cyrillics <-> Latin), and the variant level (ekavian
-	<->iyekavian). The two are orthogonal. So we really only need two
-	dictionaries: one for Cyrillics and Latin, and one for ekavian and
-	iyekavian.
-*/
 require_once( dirname(__FILE__).'/../LanguageConverter.php' );
 require_once( dirname(__FILE__).'/LanguageSr_ec.php' );
 require_once( dirname(__FILE__).'/LanguageSr_el.php' );
 
+/**
+ * There are two levels of conversion for Serbian: the script level
+ * (Cyrillics <-> Latin), and the variant level (ekavian
+ * <->iyekavian). The two are orthogonal. So we really only need two
+ * dictionaries: one for Cyrillics and Latin, and one for ekavian and
+ * iyekavian.
+ *
+ * @ingroup Language
+ */
 class SrConverter extends LanguageConverter {
 	var $mToLatin = array(
 		'а' => 'a', 'б' => 'b',  'в' => 'v', 'г' => 'g',  'д' => 'd',
@@ -73,7 +72,7 @@ class SrConverter extends LanguageConverter {
 		foreach($this->mVariants as $v) {
 			$carray[$v] = $rule;
 		}
-		
+
 		return $carray;
 	}
 
@@ -81,7 +80,7 @@ class SrConverter extends LanguageConverter {
 	function parserConvert( $text, &$parser ){
 		if(is_object($parser->getTitle() ) && $parser->getTitle()->isTalkPage())
 			$this->mDoContentConvert=false;
-		else 
+		else
 			$this->mDoContentConvert=true;
 
 		return parent::parserConvert($text, $parser );
@@ -89,7 +88,7 @@ class SrConverter extends LanguageConverter {
 
 	/*
 	 * A function wrapper:
-	 *   - if there is no selected variant, leave the link 
+	 *   - if there is no selected variant, leave the link
 	 *     names as they were
 	 *   - do not try to find variants for usernames
 	 */
@@ -123,12 +122,12 @@ class SrConverter extends LanguageConverter {
 	 */
 	function autoConvert($text, $toVariant=false) {
 		global $wgTitle;
-		if(is_object($wgTitle) && $wgTitle->getNameSpace()==NS_IMAGE){ 
+		if(is_object($wgTitle) && $wgTitle->getNameSpace()==NS_IMAGE){
 			$imagename = $wgTitle->getNsText();
 			if(preg_match("/^$imagename:/",$text)) return $text;
 		}
 		return parent::autoConvert($text,$toVariant);
-	} 
+	}
 
 	/**
 	 *  It translates text into variant, specials:
@@ -143,7 +142,7 @@ class SrConverter extends LanguageConverter {
 		$reg = '/^'.$roman.'$|^'.$roman.$breaks.'|'.$breaks.$roman.'$|'.$breaks.$roman.$breaks.'/';
 
 		$matches = preg_split($reg, $text, -1, PREG_SPLIT_OFFSET_CAPTURE);
-		
+
 		$m = array_shift($matches);
 		if( !isset( $this->mTables[$toVariant] ) ) {
 			throw new MWException( "Broken variant table: " . implode( ',', array_keys( $this->mTables ) ) );
@@ -158,9 +157,11 @@ class SrConverter extends LanguageConverter {
 
 		return $ret;
 	}
-
 }
 
+/**
+ * @ingroup Language
+ */
 class LanguageSr extends LanguageSr_ec {
 	function __construct() {
 		global $wgHooks;
@@ -172,8 +173,7 @@ class LanguageSr extends LanguageSr_ec {
 			'sr'    => 'sr-ec',
 			'sr-ec' => 'sr',
 			'sr-el' => 'sr',
-			); 
-
+		);
 
 		$marker = array();//don't mess with these, leave them as they are
 		$flags = array(
@@ -184,4 +184,3 @@ class LanguageSr extends LanguageSr_ec {
 		$wgHooks['ArticleSaveComplete'][] = $this->mConverter;
 	}
 }
-

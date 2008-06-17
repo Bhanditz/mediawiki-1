@@ -30,8 +30,8 @@ if (!defined('MEDIAWIKI')) {
 
 /**
  * This query adds <images> subelement to all pages with the list of images embedded into those pages.
- * 
- * @addtogroup API
+ *
+ * @ingroup API
  */
 class ApiQueryImages extends ApiQueryGeneratorBase {
 
@@ -65,9 +65,9 @@ class ApiQueryImages extends ApiQueryGeneratorBase {
 		$res = $this->select(__METHOD__);
 
 		if (is_null($resultPageSet)) {
-			
+
 			$data = array();
-			$lastId = 0;	// database has no ID 0	
+			$lastId = 0;	// database has no ID 0
 			while ($row = $db->fetchObject($res)) {
 				if ($lastId != $row->il_from) {
 					if($lastId != 0) {
@@ -76,7 +76,7 @@ class ApiQueryImages extends ApiQueryGeneratorBase {
 					}
 					$lastId = $row->il_from;
 				}
-				
+
 				$vals = array();
 				ApiQueryBase :: addTitleInfo($vals, Title :: makeTitle(NS_IMAGE, $row->il_to));
 				$data[] = $vals;
@@ -112,7 +112,6 @@ class ApiQueryImages extends ApiQueryGeneratorBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiQueryImages.php 30222 2008-01-28 19:05:26Z catrope $';
+		return __CLASS__ . ': $Id$';
 	}
 }
-

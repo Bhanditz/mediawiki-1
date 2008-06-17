@@ -1,7 +1,8 @@
 <?php
 /** Tatar (Latin) (Tatarça/Татарча (Latin))
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author לערי ריינהארט
  * @author Siebrand
@@ -118,11 +119,9 @@ $messages = array(
 'dec'       => 'Dek',
 
 # Categories related messages
-'categories'         => 'Cíıntıqlar',
-'categoriespagetext' => "Bu wiki'dä kiläse cíıntıqlar bar.",
-'pagecategories'     => '{{PLURAL:$1|Cíıntıq|Cíıntıqlar}}',
-'category_header'    => '«$1» cíıntığınıñ mäqäläläre',
-'subcategories'      => 'Eçke cíıntıqlar',
+'pagecategories'  => '{{PLURAL:$1|Cíıntıq|Cíıntıqlar}}',
+'category_header' => '«$1» cíıntığınıñ mäqäläläre',
+'subcategories'   => 'Eçke cíıntıqlar',
 
 'linkprefix' => '/^(.*?)([a-zäçğıñöşüA-ZÄÇĞİÑÖŞÜ«„]+)$/sDu',
 
@@ -418,8 +417,7 @@ Zínhar, bu bitneñ wağraq kisäklärgä bülü turında uylap qara.",
 'reupload'          => 'Qabat yökläw',
 'reuploaddesc'      => 'Yökläw bitenä qaytu.',
 'uploadnologin'     => 'Kermädeñ',
-'uploadnologintext' => 'Birem yökläw öçen,
-säxifägä isem belän [[Special:Userlogin|keräse]].',
+'uploadnologintext' => 'Birem yökläw öçen, säxifägä isem belän [[Special:Userlogin|keräse]].',
 'uploaderror'       => 'Yökläw xatası',
 'uploadlog'         => 'yökläw könlege',
 'uploadlogpage'     => 'Yökläw_könlege',
@@ -440,7 +438,6 @@ säxifägä isem belän [[Special:Userlogin|keräse]].',
 'uploadcorrupt'     => 'Bu birem yä üze watıq, yä quşımtası yaraqsız. Birem tikşerüdän soñ qabat yöklä zínhar.',
 
 # Special:Imagelist
-'imgdesc'   => 'añlatma',
 'imgfile'   => 'fayl',
 'imagelist' => 'Räsem tezmäse',
 
@@ -494,8 +491,6 @@ säxifägä isem belän [[Special:Userlogin|keräse]].',
 'longpages'               => 'Ozın bitlär',
 'deadendpages'            => 'Başqa betke beyli bolmağanı',
 'listusers'               => 'Äğzä isemlege',
-'specialpages'            => 'Maxsus bitlär',
-'spheading'               => 'Bar keşelär öçen',
 'newpages'                => 'Yaña bitlär',
 'ancientpages'            => 'İñ iske bitlär',
 'move'                    => 'Küçerü',
@@ -514,6 +509,10 @@ säxifägä isem belän [[Special:Userlogin|keräse]].',
 'nextpage'     => 'Kiläse bit ($1)',
 'prevpage'     => 'Ötken bet ($1)',
 'allpagesfrom' => 'Bolay başlanğan betler:',
+
+# Special:Categories
+'categories'         => 'Cíıntıqlar',
+'categoriespagetext' => "Bu wiki'dä kiläse cíıntıqlar bar.",
 
 # Special:Listusers
 'listusers-submit' => 'Körset',
@@ -635,8 +634,6 @@ Soñğı beterülär $2 bitendä terkälenä.',
 yä isä saylanğan isem yaraqsız buldı. Başqa isem sayla zínhar.',
 'movedto'          => 'küçerelde:',
 'movetalk'         => 'Mömkin bulsa, «bäxäs» biten dä küçer.',
-'talkpagemoved'    => 'Aña bäyle bäxäs bite şulay uq küçerelde.',
-'talkpagenotmoved' => 'Aña bäyle bäxäs bite <strong>küçerelmäde</strong>.',
 '1movedto2'        => '$1 moña küçte: $2',
 '1movedto2_redir'  => '$1 moña küçte: $2 (yünältü aşa)',
 
@@ -731,5 +728,8 @@ yä isä saylanğan isem yaraqsız buldı. Başqa isem sayla zínhar.',
 
 # Special:Version
 'version' => 'Yurama', # Not used as normal message but as header for the special page itself
+
+# Special:SpecialPages
+'specialpages' => 'Maxsus bitlär',
 
 );

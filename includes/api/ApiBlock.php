@@ -31,7 +31,7 @@ if (!defined('MEDIAWIKI')) {
 * API module that facilitates the blocking of users. Requires API write mode
 * to be enabled.
 *
- * @addtogroup API
+ * @ingroup API
  */
 class ApiBlock extends ApiBase {
 
@@ -87,15 +87,15 @@ class ApiBlock extends ApiBase {
 		$form->BlockEmail = $params['noemail'];
 		$form->BlockHideName = $params['hidename'];
 
+		$userID = $expiry = null;
 		$retval = $form->doBlock($userID, $expiry);
 		if(!empty($retval))
 			// We don't care about multiple errors, just report one of them
 			$this->dieUsageMsg($retval);
-		$this->getMain()->scheduleCommit();
 
 		$res['user'] = $params['user'];
 		$res['userID'] = $userID;
-		$res['expiry'] = ($expiry == Block::infinity() ? 'infinite' : $expiry);
+		$res['expiry'] = ($expiry == Block::infinity() ? 'infinite' : wfTimestamp(TS_ISO_8601, $expiry));
 		$res['reason'] = $params['reason'];
 		if($params['anononly'])
 			$res['anononly'] = '';
@@ -157,6 +157,6 @@ class ApiBlock extends ApiBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiBlock.php 33133 2008-04-11 15:20:45Z catrope $';
+		return __CLASS__ . ': $Id$';
 	}
 }

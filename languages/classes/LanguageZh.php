@@ -1,10 +1,11 @@
 <?php
-/**
-  * @addtogroup Language
-  */
+
 require_once( dirname(__FILE__).'/../LanguageConverter.php' );
 require_once( dirname(__FILE__).'/LanguageZh_hans.php' );
 
+/**
+ * @ingroup Language
+ */
 class ZhConverter extends LanguageConverter {
 	function loadDefaultTables() {
 		require( dirname(__FILE__)."/../../includes/ZhConversion.php" );
@@ -39,10 +40,12 @@ class ZhConverter extends LanguageConverter {
 	}
 }
 
-
-/* class that handles both Traditional and Simplified Chinese
-   right now it only distinguish zh_hans, zh_hant, zh_cn, zh_tw, zh_sg and zh_hk.
-*/
+/**
+ * class that handles both Traditional and Simplified Chinese
+ * right now it only distinguish zh_hans, zh_hant, zh_cn, zh_tw, zh_sg and zh_hk.
+ *
+ * @ingroup Language
+ */
 class LanguageZh extends LanguageZh_hans {
 
 	function __construct() {
@@ -64,7 +67,6 @@ class LanguageZh extends LanguageZh_hans {
 
 		$wgHooks['ArticleSaveComplete'][] = $this->mConverter;
 	}
-
 
 	# this should give much better diff info
 	function segmentForDiff( $text ) {
@@ -108,5 +110,4 @@ class LanguageZh extends LanguageZh_hans {
 		$ret = array_unique( explode('|', $terms) );
 		return $ret;
 	}
-
 }

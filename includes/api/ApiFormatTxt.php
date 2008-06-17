@@ -29,7 +29,7 @@ if (!defined('MEDIAWIKI')) {
 }
 
 /**
- * @addtogroup API
+ * @ingroup API
  */
 class ApiFormatTxt extends ApiFormatBase {
 
@@ -53,7 +53,6 @@ class ApiFormatTxt extends ApiFormatBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiFormatTxt.php 31518 2008-03-03 19:34:11Z ialex $';
+		return __CLASS__ . ': $Id$';
 	}
 }
-

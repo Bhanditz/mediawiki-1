@@ -1,7 +1,8 @@
 <?php
 /** Burmese (Myanmasa)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Hakka
  */
@@ -142,7 +143,6 @@ $messages = array(
 'brokenredirects-delete' => '(ဖျက်​ပါ)',
 
 # Miscellaneous special pages
-'specialpages'      => 'အ​ထူး​စာ​မျက်​နှာ​',
 'newpages-username' => 'မှတ်​ပုံ​တင်​အ​မည်:',
 'move'              => 'ရွေ့​ပြောင်း​ပါ​',
 
@@ -205,5 +205,8 @@ $messages = array(
 
 # Table pager
 'table_pager_limit_submit' => 'သွား​ပါ​',
+
+# Special:SpecialPages
+'specialpages' => 'အ​ထူး​စာ​မျက်​နှာ​',
 
 );

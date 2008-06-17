@@ -1,13 +1,13 @@
 <?php
 /** Swiss German (Alemannisch)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author 80686
- * @author Helix84
  * @author Siebrand
  * @author לערי ריינהארט
- * @author SPQRobin
+ * @author Spacebirdy
  * @author Jon Harald Søby
  */
 
@@ -87,8 +87,6 @@ $messages = array(
 'may'       => 'Mei',
 
 # Categories related messages
-'categories'             => 'Kategorie',
-'categoriespagetext'     => 'Selli Kategorie gits in dem Wiki:',
 'pagecategories'         => '{{PLURAL:$1|Kategori|Kategorie}}',
 'category_header'        => 'Artikel in de Kategori "$1"',
 'subcategories'          => 'Unterkategorie',
@@ -223,7 +221,6 @@ MySQL het den Fähler gmeldet: "<tt>$3: $4</tt>".',
 'readonlytext'         => 'Diä {{SITENAME}}-Datebonk isch vorybergehend fier Neijyträg un Änderige gsperrt. Bitte vosuechs s später no mol.
 
 Grund vun de Sperrung: $1',
-'missingarticle'       => 'De Tekscht vum Artikel "$1" isch in de Datebonk nit gfunde. Des isch wahrschinlich ä Fähler in de Software. Sin so guet, un melde des m Adminischtrator, un gib de Artikelnome on.',
 'readonly_lag'         => 'Datebonk isch automatisch gschperrt worre, wil d Sklavedatebonkserver ihr Meischter yhole miesse',
 'internalerror'        => 'Interner Fähler',
 'filecopyerror'        => 'Datei "$1" het nit noch "$2" kopiert werre kinne.',
@@ -378,7 +375,7 @@ Für d Bestätigung muesch du em Link folge, wo dir isch gmailet worde. Du chasc
 'userjspreview'            => "== Vorschau Ihres Benutzer-Javascript. ==
 '''Beachten Sie:''' Nach dem Speichern müssen Sie ihrem Browser sagen, die neue Version zu laden: '''Mozilla:''' ''Strg-Shift-R'', '''IE:''' ''Strg-F5'', '''Safari:''' ''Cmd-Shift-R'', '''Konqueror:''' ''F5''.",
 'note'                     => '<strong>Achtung: </strong>',
-'previewnote'              => 'Das isch numen e Vorschau und nonig gspycheret!',
+'previewnote'              => '<strong>Das isch numen e Vorschau und nonig gspycheret!</strong>',
 'editing'                  => 'Bearbeite vo «$1»',
 'editingsection'           => 'Bearbeite vo «$1» (Absatz)',
 'editconflict'             => 'Bearbeitigs-Konflikt: «$1»',
@@ -430,10 +427,6 @@ Erklärig: (aktuell) = Underschid zu jetz,
 'nextn'                 => 'nächschti $1',
 'viewprevnext'          => '($1) ($2) aazeige; ($3) uf ds Mal',
 'powersearch'           => 'Suechi',
-'powersearchtext'       => '
-Suche in Namensräumen :<br />
-$1<br />
-$2 Zeige auch REDIRECTs   Suche nach $3 $9',
 'searchdisabled'        => '<p>Die Volltextsuche wurde wegen Überlastung temporär deaktiviert. Derweil können Sie entweder folgende Google- oder Yahoo-Suche verwenden, die allerdings nicht den aktuellen Stand widerspiegeln.</p>',
 
 # Preferences page
@@ -476,7 +469,7 @@ $2 Zeige auch REDIRECTs   Suche nach $3 $9',
 'userrights'               => 'Benutzerrechtsverwaltung', # Not used as normal message but as header for the special page itself
 'userrights-lookup-user'   => 'Verwalte Gruppenzugehörigkeit',
 'editusergroup'            => 'Ändere vo Benutzerrächt',
-'editinguser'              => 'Bearbeite vo «$1»',
+'editinguser'              => "Bearbeite vo '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup' => 'Bearbeite Gruppenzugehörigkeit des Benutzers',
 'saveusergroups'           => 'Speichere Gruppenzugehörigkeit',
 
@@ -577,8 +570,6 @@ Zuer Ziit stöhn '''$7''' Arbete zuem mache aa.",
 'longpages'               => 'Langi Artikel',
 'deadendpages'            => 'Artikel ohni Links («Sackgasse»)',
 'listusers'               => 'Lischte vo Benutzer',
-'specialpages'            => 'Spezialsytene',
-'spheading'               => 'Spezial-Sytene für alli Benützer',
 'newpages'                => 'Nöji Artikel',
 'ancientpages'            => 'alti Sytene',
 'move'                    => 'verschiebe',
@@ -604,6 +595,10 @@ Si chönnet d Aazeig iischränke wenn Si e Protokoll, e Benutzername odr e Syten
 'allpagesnext'      => 'nächschts',
 'allpagessubmit'    => 'gang',
 'allpagesprefix'    => 'Alli Sytene mit em Präfix:',
+
+# Special:Categories
+'categories'         => 'Kategorie',
+'categoriespagetext' => 'Selli Kategorie gits in dem Wiki:',
 
 # E-mail user
 'mailnologin'     => 'Du bisch nid aagmäldet oder hesch keis Mail aaggä',
@@ -711,7 +706,7 @@ Der aktuelle Text des gelöschten Artikels ist nur Administratoren zugänglich.'
 'blocklink'       => 'spärre',
 'contribslink'    => 'Byträg',
 'blocklogpage'    => 'Sperrigs-Protokoll',
-'blocklogentry'   => 'sperrt [[User:$1]] - ([[Special:Contributions/$1|Biiträg]]) für d Ziit vo: $2',
+'blocklogentry'   => 'sperrt [[$1]] für d Ziit vo: $2 $3',
 'blocklogtext'    => 'Des ischs Logbuech yber Sperrunge un Entsperrunge vun Bnutzer. Automatisch blockti IP-Adresse werre nit erfasst. Lueg au [[Special:Ipblocklist|IP-Block Lischt]] fyr ä Lischt vun gsperrti Bnutzer.',
 'unblocklogentry' => 'Blockade von [[User:$1]] aufgehoben',
 
@@ -733,7 +728,6 @@ I söttigne Fäll müessti d Diskussionssyten allefalls vo Hand kopiert wärde."
 'articleexists'    => 'A Syte mit sellem Name gits scho odr de Name isch ungültigt. Bitte nimm en andere.',
 'movedto'          => 'verschoben uf',
 'movetalk'         => 'Diskussionssyte nach Müglechkeit mitverschiebe',
-'talkpagemoved'    => 'D Diskussionssyten isch mitverschobe worde.',
 '1movedto2'        => '[[$1]] isch uf [[$2]] verschobe worde.',
 '1movedto2_redir'  => '[[$1]] isch uf [[$2]] verschobe worre un het drbii e Wiiterleitig übrschriebe.',
 'movereason'       => 'Grund',
@@ -846,13 +840,10 @@ sollte umgehend ein Administrator informiert werden!',
 'ilsubmit'      => 'Suech',
 
 # EXIF tags
-'exif-orientation'       => 'Orientierung',
-'exif-copyright'         => 'Copyright',
-'exif-pixelxdimension'   => 'Valind image height',
-'exif-fnumber'           => 'F-Wert',
-'exif-isospeedratings'   => 'Filmempfindlichkeit (ISO)',
-'exif-shutterspeedvalue' => 'Shutter Speed Value',
-'exif-brightnessvalue'   => 'Brightness Value',
+'exif-orientation'     => 'Orientierung',
+'exif-pixelxdimension' => 'Valind image height',
+'exif-fnumber'         => 'F-Wert',
+'exif-isospeedratings' => 'Filmempfindlichkeit (ISO)',
 
 # External editor support
 'edit-externally-help' => 'Siehe [http://meta.wikimedia.org/wiki/Hilfe:Externe_Editoren Installations-Anweisungen] für weitere Informationen',
@@ -861,15 +852,14 @@ sollte umgehend ein Administrator informiert werden!',
 'watchlistall2' => 'alli',
 
 # E-mail address confirmation
-'confirmemail'            => 'Bschtätigung vo Ihre E-Bost-Adräss',
-'confirmemail_text'       => 'Dermit du di erwyterete Mailfunktione chasch bruuche, muesch du die e-Mail-Adrässe, wo du hesch aaggä, la bestätige. Klick ufe Chnopf unte; das schickt dir es Mail. I däm Mail isch e Link; we du däm Link folgsch, de tuesch dadermit bestätige, das die e-Mail-Adrässe dyni isch.',
-'confirmemail_send'       => 'Bestätigungs-Mail verschicke',
-'confirmemail_sent'       => 'Es isch dir es Mail zur Adrässbestätigung gschickt worde.',
-'confirmemail_sendfailed' => 'Could not send confirmation mail due to misconfigured server or invalid characters in e-mail address.',
-'confirmemail_success'    => 'Dyni e-Mail-Adrässen isch bestätiget worde. Du chasch di jitz ylogge.',
-'confirmemail_loggedin'   => 'Dyni e-Mail-Adrässen isch jitz bestätiget.',
-'confirmemail_subject'    => '{{SITENAME}} e-Mail-Adrässbestätigung',
-'confirmemail_body'       => 'Hallo
+'confirmemail'          => 'Bschtätigung vo Ihre E-Bost-Adräss',
+'confirmemail_text'     => 'Dermit du di erwyterete Mailfunktione chasch bruuche, muesch du die e-Mail-Adrässe, wo du hesch aaggä, la bestätige. Klick ufe Chnopf unte; das schickt dir es Mail. I däm Mail isch e Link; we du däm Link folgsch, de tuesch dadermit bestätige, das die e-Mail-Adrässe dyni isch.',
+'confirmemail_send'     => 'Bestätigungs-Mail verschicke',
+'confirmemail_sent'     => 'Es isch dir es Mail zur Adrässbestätigung gschickt worde.',
+'confirmemail_success'  => 'Dyni e-Mail-Adrässen isch bestätiget worde. Du chasch di jitz ylogge.',
+'confirmemail_loggedin' => 'Dyni e-Mail-Adrässen isch jitz bestätiget.',
+'confirmemail_subject'  => '{{SITENAME}} e-Mail-Adrässbestätigung',
+'confirmemail_body'     => 'Hallo
 
 {{SITENAME}}-BenutzerIn «$2» — das bisch allwäg du — het sech vor IP-Adrässen $1 uus mit deren e-Mail-Adrässe bi {{SITENAME}} aagmäldet.
 
@@ -897,5 +887,8 @@ Fründtlechi Grüess',
 
 ''Ds Lösche vor Zwüschespycherig zwingt der Server, dir di aktuellschti Version vor Syte z gä!''
 </div>",
+
+# Special:SpecialPages
+'specialpages' => 'Spezialsytene',
 
 );

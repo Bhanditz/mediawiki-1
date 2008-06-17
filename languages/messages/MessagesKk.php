@@ -1,13 +1,14 @@
 <?php
 /**
-  * Kazakh (Қазақша)
-  *
-  * @addtogroup Language
-  */
+ * Kazakh (Қазақша)
+ *
+ * @ingroup Language
+ * @file
+ */
 
 # Stub message file for converter code "kk"
 
-$fallback = 'kk-kz';
+$fallback = 'kk-cyrl';
 
 $linkTrail = '/^([a-zäçéğıïñöşüýʺʹа-яёәғіқңөұүһٴابپتجحدرزسشعفقكلمنڭەوۇۋۆىيچھ“»]+)(.*)$/sDu';
 
@@ -18,12 +19,12 @@ $messages = array(
 'edittools' => '<!-- Мындағы мәтін өңдеу және қотару пішіндердің астында көрсетіледі. -->',
 
 # Stylesheets
-'common.css'   => '/* Мындағы CSS барлық безендіру мәнеріндерде қолданылады */',
-'monobook.css' => '/* Мындағы CSS «Дара кітап» (monobook) безендіру мәнерін пайдаланушыларға ықпал етеді */',
+'common.css'   => '/* Мында орналастырылған CSS барлық мәнерлерде қолданылады */',
+'monobook.css' => '/* Мында орналастырылған CSS тек «Дара кітап» (monobook) мәнерін пайдаланушыларына ықпал етеді */',
 
 # Scripts
-'common.js'   => '/* Мындағы JavaScript әрқайсы бет қаралғанда барлық пайдаланушыларға жүктеледі. */',
-'monobook.js' => ' /* Тыйылған; орнына [[{{ns:mediawiki}}:common.js]] қолданыңыз */',
+'common.js'   => '/* Мындағы әртүрлі JavaScript кез келген бет қотарылғанда барлық пайдаланушылар үшін жегіледі. */',
+'monobook.js' => '/* Мындағы JavaScript тек «Дара кітап» (monobook) мәнерін пайдаланушылар үшін жегіледі. */',
 
 # Variants for Kazakh language
 'variantname-kk-kz'   => 'disable',

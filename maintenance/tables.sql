@@ -53,8 +53,8 @@ CREATE TABLE /*$wgDBprefix*/user (
   
   -- Usernames must be unique, must not be in the form of
   -- an IP address. _Shouldn't_ allow slashes or case
-  -- conflicts. Spaces are allowed, and follow the same
-  -- normalization as titles. See the User::newFromName() for
+  -- conflicts. Spaces are allowed, and are _not_ converted
+  -- to underscores like titles. See the User::newFromName() for
   -- the specific tests that usernames have to pass.
   user_name varchar(255) binary NOT NULL default '',
   
@@ -166,6 +166,9 @@ CREATE TABLE /*$wgDBprefix*/user_newtalk (
   -- If the user is an anonymous user their IP address is stored here
   -- since the user_id of 0 is ambiguous
   user_ip varbinary(40) NOT NULL default '',
+  -- The highest timestamp of revisions of the talk page viewed
+  -- by this user
+  user_last_timestamp binary(14) NOT NULL default '',
   INDEX user_id (user_id),
   INDEX user_ip (user_ip)
 
@@ -187,12 +190,8 @@ CREATE TABLE /*$wgDBprefix*/page (
   page_namespace int NOT NULL,
   
   -- The rest of the title, as text.
-  -- Database key form
+  -- Spaces are transformed into underscores in title storage.
   page_title varchar(255) binary NOT NULL,
-  
-  -- The rest of the title, as text.
-  -- User inteface form
-  page_title_ui varchar(255) binary NOT NULL,
   
   -- Comma-separated set of permission keys indicating who
   -- can move or edit the page.
@@ -842,7 +841,7 @@ CREATE TABLE /*$wgDBprefix*/filearchive (
   INDEX (fa_name, fa_timestamp),             -- pick out by image name
   INDEX (fa_storage_group, fa_storage_key),  -- pick out dupe files
   INDEX (fa_deleted_timestamp),              -- sort by deletion time
-  INDEX (fa_deleted_user)                    -- sort by deleter
+  INDEX fa_user_timestamp (fa_user_text,fa_timestamp) -- sort by uploader
 
 ) /*$wgDBTableOptions*/;
 
@@ -1101,7 +1100,7 @@ CREATE TABLE /*$wgDBprefix*/logging (
 
 CREATE TABLE /*$wgDBprefix*/trackbacks (
   tb_id int auto_increment,
-  tb_page int REFERENCES page(page_id) ON DELETE CASCADE,
+  tb_page int REFERENCES /*$wgDBprefix*/page(page_id) ON DELETE CASCADE,
   tb_title varchar(255) NOT NULL,
   tb_url blob NOT NULL,
   tb_ex text,
@@ -1214,7 +1213,7 @@ CREATE TABLE /*$wgDBprefix*/page_restrictions (
 -- Protected titles - nonexistent pages that have been protected
 CREATE TABLE /*$wgDBprefix*/protected_titles (
   pt_namespace int NOT NULL,
-  pt_title varchar(255) NOT NULL,
+  pt_title varchar(255) binary NOT NULL,
   pt_user int unsigned NOT NULL,
   pt_reason tinyblob,
   pt_timestamp binary(14) NOT NULL,

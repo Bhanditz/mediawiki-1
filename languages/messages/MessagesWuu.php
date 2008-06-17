@@ -1,7 +1,8 @@
 <?php
 /** Wu (吴语)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author O
  */
@@ -92,7 +93,6 @@ $messages = array(
 'dec'           => '12月',
 
 # Categories related messages
-'categories'                    => '页面分类',
 'pagecategories'                => '$1个分类',
 'category_header'               => '“$1”分类中个页面',
 'subcategories'                 => '亚类',
@@ -470,7 +470,6 @@ $messages = array(
 
 # Special:Imagelist
 'imagelist_search_for'  => '寻图片名字:',
-'imgdesc'               => '描述页',
 'imgfile'               => '源文件',
 'imagelist'             => '文件列表',
 'imagelist_date'        => '日脚',
@@ -536,7 +535,6 @@ $messages = array(
 'protectedpages'       => '已保护页面',
 'protectedtitles'      => '已保护个标题',
 'listusers'            => '用户列表',
-'specialpages'         => '特殊页面',
 'newpages'             => '新页面',
 'newpages-username'    => '用户名:',
 'ancientpages'         => '顶顶老个页面',
@@ -564,6 +562,9 @@ $messages = array(
 'allpagesnext'      => '下底',
 'allpagesprefix'    => '显示个页面有下底个前缀:',
 'allpages-bad-ns'   => '{{SITENAME}}没有叫做"$1"个名字空间.',
+
+# Special:Categories
+'categories' => '页面分类',
 
 # Special:Listusers
 'listusers-submit' => '显示',
@@ -853,5 +854,8 @@ Variants for Chinese language
 'filepath'        => '文件路径',
 'filepath-page'   => '文件：',
 'filepath-submit' => '路径',
+
+# Special:SpecialPages
+'specialpages' => '特殊页面',
 
 );

@@ -1,14 +1,15 @@
 <?php
 /** Tuvinian (Тыва дыл)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Krice from Tyvanet.com
- * @author Sborsody
  * @author friends at tyvawiki.org
  * @author Nike
- * @author לערי ריינהארט
+ * @author Sborsody
  * @author Siebrand
+ * @author לערי ריינהארט
  */
 
 $namespaceNames = array(
@@ -113,7 +114,6 @@ $messages = array(
 'dec'           => '12.ай',
 
 # Categories related messages
-'categories'            => 'Бөлүктер',
 'pagecategories'        => '{{PLURAL:$1|Бөлүк|Бөлүктер}}',
 'category_header'       => '"$1" деп бөлүкте чүүлдер',
 'subcategories'         => 'Бичии бөлүктер',
@@ -378,7 +378,7 @@ $1',
 'files'              => 'файлдар',
 
 # User rights
-'editinguser' => '<b>$1</b> деп ажыглакчыны өскертип турар',
+'editinguser' => '<b>$1</b> деп ажыглакчыны өскертип турар ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])',
 
 # Groups
 'group'     => 'Бөлүк:',
@@ -496,8 +496,6 @@ $1',
 'longpages'               => 'Узун арыннар',
 'protectedpages'          => 'Камгалаган арыннар',
 'listusers'               => 'Ажыглакчы даңзызы',
-'specialpages'            => 'Тускай арыннар',
-'spheading'               => 'Шупту ажыглакчыларның тускай арыннары',
 'newpages'                => 'Чаа Арыннар',
 'newpages-username'       => 'Ажыглакчының ады:',
 'ancientpages'            => 'Эң эрги арыннар',
@@ -520,6 +518,9 @@ $1',
 'allpagesprev'   => 'Пертинде',
 'allpagesnext'   => 'Соонда',
 'allpagessubmit' => 'Чоруур',
+
+# Special:Categories
+'categories' => 'Бөлүктер',
 
 # Special:Listusers
 'listusers-submit' => 'Көргүзер',
@@ -698,7 +699,6 @@ $1',
 'imgmultipageprev' => '← бүрүнгү арын',
 'imgmultipagenext' => 'соонда арын →',
 'imgmultigo'       => 'Чоруур',
-'imgmultigotopre'  => 'Арынже чоруур',
 
 # Table pager
 'table_pager_next'         => 'Соонда арын',
@@ -724,5 +724,8 @@ $1',
 
 # Special:Version
 'version' => 'Үндүрери', # Not used as normal message but as header for the special page itself
+
+# Special:SpecialPages
+'specialpages' => 'Тускай арыннар',
 
 );

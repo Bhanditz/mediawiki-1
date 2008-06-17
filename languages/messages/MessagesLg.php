@@ -1,13 +1,12 @@
 <?php
 /** Ganda (Luganda)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Kizito
  * @author Siebrand
  */
-
-
 
 $messages = array(
 # User preference toggles
@@ -67,7 +66,6 @@ $messages = array(
 'dec'           => 'Gw12',
 
 # Categories related messages
-'categories'            => 'Amatuluba',
 'pagecategories'        => '{{PLURAL:$1|Tuluba|Matuluba}}',
 'category_header'       => 'Empapula eziri mu ttuluba lya "$1"',
 'subcategories'         => 'Amatabi',
@@ -187,6 +185,7 @@ kalambula-neti yo.",
 'yourpasswordagain'          => 'Ddamu ekigambo ekikuumi',
 'remembermypassword'         => 'Tereka ekigambo kyange ekikuumi ku kompyuta eno',
 'login'                      => 'Yingira',
+'nav-login-createaccount'    => 'Yingira / kolawo akawunti',
 'loginprompt'                => 'Okuyingira {{SITENAME}}, kalambula-neti yo erina okukkirizako kuki.',
 'userlogin'                  => 'Yingira / kolawo akawunti',
 'logout'                     => 'Vaamu',
@@ -314,7 +313,7 @@ oba ku gano agali ku lupapula luno.<br />
 'searchresultshead' => 'Noonya',
 
 # User rights
-'editinguser' => 'Kukyuusa ebya memba <b>$1</b>',
+'editinguser' => "Kukyuusa ebya memba '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 
 # Recent changes
 'recentchanges'     => 'Ebyakakyuusibwa',
@@ -335,7 +334,7 @@ oba ku gano agali ku lupapula luno.<br />
 
 # Recent changes linked
 'recentchangeslinked'          => 'Ebikyusiddwa ebyekuusa ku lupapula luno',
-'recentchangeslinked-title'    => 'Enkyukakyuka ezikwatagana ne $1',
+'recentchangeslinked-title'    => 'Enkyukakyuka ezikwatagana ne "$1"',
 'recentchangeslinked-noresult' => 'Empapula eziriko enyunzi tewali lukyuse mu kiseera kino.',
 'recentchangeslinked-summary'  => "Olulpapula olw'enjawulo luno luliko olukalala lw'ebikyuse ku mpapula eziriko enyunzi ezigguka ku lw'obadde otunuulira. Ebiwandikidwa mu '''nukuta enziggumivu''' biri ku mpapula z'ogoberera.",
 
@@ -364,7 +363,6 @@ oba ku gano agali ku lupapula luno.<br />
 # Miscellaneous special pages
 'nbytes'            => '{{PLURAL:$1|bayiti|bayiti}} $1',
 'nmembers'          => '{{PLURAL:$1|memba|bamemba}} $1',
-'specialpages'      => "Empapula ez'enjawulo",
 'newpages'          => 'Empapula empya',
 'newpages-username' => "Ery'obwa memba:",
 'move'              => 'Simbuliza',
@@ -384,6 +382,9 @@ oba ku gano agali ku lupapula luno.<br />
 'allinnamespace'    => 'Empapula zonna (mu kkunngaanizo erya $1)',
 'allnotinnamespace' => 'Empapula zonna (ezitali mu kkunngaanizo erya $1)',
 'allpagessubmit'    => 'Nona',
+
+# Special:Categories
+'categories' => 'Amatuluba',
 
 # E-mail user
 'emailuser' => 'Memba ono musindikire e-mail',
@@ -554,11 +555,13 @@ Bw\'oba oyagala okulekerawo okulugoberera, nyiga ku kigambo "Suula" awo ku bbali
 'confirm_purge_button' => 'Kale',
 
 # Multipage image navigation
-'imgmultigo'      => 'Nona!',
-'imgmultigotopre' => 'Genda ku lupapula',
+'imgmultigo' => 'Nona!',
 
 # Watchlist editing tools
 'watchlisttools-view' => 'Kebera ebikyuse',
 'watchlisttools-edit' => "Kola ku lukalala lwe'mpapula z'ogoberera",
+
+# Special:SpecialPages
+'specialpages' => "Empapula ez'enjawulo",
 
 );

@@ -1,9 +1,10 @@
 <?php
 /** Bislama
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  * @author Ushanka
-*/
+ */
 
 $messages = array(
 'underline-always' => 'Oltaem',
@@ -134,9 +135,6 @@ $messages = array(
 'watchlistall2'    => 'olgeta',
 'namespacesall'    => 'olgeta',
 'monthsall'        => 'olgeta',
-
-# Multipage image navigation
-'imgmultigotopre' => 'Go long pej',
 
 # Table pager
 'table_pager_first' => 'Nambawan pej',

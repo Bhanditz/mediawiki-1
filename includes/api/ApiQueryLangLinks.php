@@ -30,8 +30,8 @@ if (!defined('MEDIAWIKI')) {
 
 /**
  * A query module to list all langlinks (links to correspanding foreign language pages).
- * 
- * @addtogroup API
+ *
+ * @ingroup API
  */
 class ApiQueryLangLinks extends ApiQueryBase {
 
@@ -42,7 +42,7 @@ class ApiQueryLangLinks extends ApiQueryBase {
 	public function execute() {
 		if ( $this->getPageSet()->getGoodTitleCount() == 0 )
 			return;
-	
+
 		$this->addFields(array (
 			'll_from',
 			'll_lang',
@@ -55,7 +55,7 @@ class ApiQueryLangLinks extends ApiQueryBase {
 		$res = $this->select(__METHOD__);
 
 		$data = array();
-		$lastId = 0;	// database has no ID 0	
+		$lastId = 0;	// database has no ID 0
 		$db = $this->getDB();
 		while ($row = $db->fetchObject($res)) {
 
@@ -91,7 +91,6 @@ class ApiQueryLangLinks extends ApiQueryBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiQueryLangLinks.php 32236 2008-03-20 18:23:55Z btongminh $';
+		return __CLASS__ . ': $Id$';
 	}
 }
-

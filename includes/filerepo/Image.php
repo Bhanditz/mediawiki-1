@@ -3,6 +3,7 @@
 /**
  * Backwards compatibility class
  * @deprecated
+ * @ingroup FileRepo
  */
 class Image extends LocalFile {
 	function __construct( $title ) {
@@ -24,7 +25,7 @@ class Image extends LocalFile {
 		}
 		return $img;
 	}
-	
+
 	/**
 	 * Wrapper for wfFindFile(), for backwards-compatibility only.
 	 * Do not use in core code.
@@ -46,7 +47,7 @@ class Image extends LocalFile {
 			return NULL;
 		}
 	}
-	
+
 	/**
 	 * Return the URL of an image, provided its name.
 	 *

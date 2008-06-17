@@ -1,16 +1,17 @@
 <?php
 /** Brazilian Portuguese (Português do Brasil)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Yves Marques Junqueira
  * @author Rodrigo Calanca Nishino
- * @author Siebrand
- * @author לערי ריינהארט
  * @author 555
+ * @author Siebrand
  * @author Nike
- * @author SPQRobin
+ * @author לערי ריינהארט
  * @author Lijealso
+ * @author SPQRobin
  */
 
 $fallback = 'pt';
@@ -177,7 +178,7 @@ $messages = array(
 'tog-previewontop'            => 'Mostrar previsão antes da caixa de edição ao invés de ser após',
 'tog-previewonfirst'          => 'Mostrar previsão na primeira edição',
 'tog-nocache'                 => 'Desabilitar caching de página',
-'tog-enotifwatchlistpages'    => 'Enviar-me um e-mail quando houver mudanças nas páginas vigiadas por mim',
+'tog-enotifwatchlistpages'    => 'Enviar-me um email quando uma página da minha lista de vigiados for alterada',
 'tog-enotifusertalkpages'     => 'Enviar-me um email quando a minha página de discussão for editada',
 'tog-enotifminoredits'        => 'Enviar-me um email também quando forem edições menores',
 'tog-enotifrevealaddr'        => 'Revelar o meu endereço de email nas notificações',
@@ -253,7 +254,6 @@ $messages = array(
 'dec'           => 'Dez',
 
 # Categories related messages
-'categories'                  => 'Categorias',
 'pagecategories'              => '{{PLURAL:$1|Categoria|Categorias}}',
 'category_header'             => 'Páginas na categoria "$1"',
 'subcategories'               => 'Subcategorias',
@@ -340,7 +340,7 @@ $messages = array(
 'redirectedfrom'    => '(Redirecionado de $1)',
 'redirectpagesub'   => 'Página de redirecionamento',
 'lastmodifiedat'    => 'Está página foi modificada pela última vez às $2 de $1.', # $1 date, $2 time
-'viewcount'         => 'Esta página foi acessada {{plural:$1|uma vez|$1 vezes}}.',
+'viewcount'         => 'Esta página foi acessada {{PLURAL:$1|uma vez|$1 vezes}}.',
 'protectedpage'     => 'Página protegida',
 'jumpto'            => 'Ir para:',
 'jumptonavigation'  => 'navegação',
@@ -418,7 +418,7 @@ $messages = array(
 'nosuchspecialpage' => 'Esta página especial não existe',
 'nospecialpagetext' => "<big>'''Você requisitou uma página especial inválida.'''</big>
 
-Uma lista de páginas especiais válidas poderá ser encontrada em [[{{ns:special}}:Specialpages]].",
+Uma lista de páginas especiais válidas poderá ser encontrada em [[Special:Specialpages|{{int:specialpages}}]].",
 
 # General errors
 'error'                => 'Erro',
@@ -443,12 +443,6 @@ $1',
 'readonlytext'         => 'O banco-de-dados da {{SITENAME}} está atualmente bloqueado para novas entradas e outras modificações, provavelmente por uma manutenção rotineira; mais tarde voltará ao normal.
 
 Quem fez o bloqueio oferece a seguinte explicação: $1',
-'missingarticle'       => 'O Banco-de-Dados não encontrou o texto de uma página que deveria ter encontrado: "$1".
-
-Isto é geralmente causado por se ter acessado um diff antigo ou um link de histórico que leva a uma página que foi eliminada.
-
-Se este não for o caso, você pode ter encontrado um "bug" no software.
-Por favor, tome nota do URL e comunique o erro a um administrador do sistema.',
 'readonly_lag'         => 'O banco de dados foi automaticamente bloqueado enquanto os servidores secundários se sincronizam com o principal',
 'internalerror'        => 'Erro interno',
 'internalerror_info'   => 'Erro interno: $1',
@@ -482,79 +476,80 @@ Query: $2',
 $2',
 'namespaceprotected'   => "Você não possui permissão para editar páginas no espaço nominal '''$1'''.",
 'customcssjsprotected' => 'Você não possui permissão para editar esta página, já que ela contém configurações pessoais de outro usuário.',
-'ns-specialprotected'  => 'Não é possível editar páginas no espaço nominal {{ns:special}}.',
+'ns-specialprotected'  => 'Não é possível editar páginas especiais.',
 'titleprotected'       => "Este título foi protegido, para que não seja criado.
 Quem o protegeu foi [[User:$1|$1]], com a justificativa: ''$2''.",
 
 # Login and logout pages
-'logouttitle'           => 'Desautenticar do sistema',
-'logouttext'            => '<strong>Você agora está desautenticado.</strong><br />
+'logouttitle'             => 'Desautenticar do sistema',
+'logouttext'              => '<strong>Você agora está desautenticado.</strong><br />
 Você pode continuar a usar a {{SITENAME}} anonimamente, ou pode autenticar-se novamente com o mesmo nome de usuário ou com um nome de usuário diferente. Tenha em mente que algumas páginas poderão
 continuar a ser apresentadas como se você ainda estivesse autenticado até que a cache de seu navegador seja limpa.',
-'welcomecreation'       => '== Bem-vindo, $1! ==
+'welcomecreation'         => '== Bem-vindo, $1! ==
 
 A sua conta foi criada. Não se esqueça de personalizar as suas [[{{ns:special}}:Preferences|preferências]] na {{SITENAME}}.',
-'loginpagetitle'        => 'Autenticação de usuário',
-'yourname'              => 'Nome de usuário:',
-'yourpassword'          => 'Senha:',
-'yourpasswordagain'     => 'Redigite sua senha',
-'remembermypassword'    => 'Lembrar de minha senha em outras sessões.',
-'yourdomainname'        => 'Seu domínio:',
-'externaldberror'       => 'Ocorreu um erro externo ao banco de dados durante a autenticação ou não lhe é permitido atualizar a sua conta externa.',
-'loginproblem'          => '<b>Houve um problema com a sua autenticação.</b><br />Tente novamente!',
-'login'                 => 'Entrar',
-'loginprompt'           => 'É necessário estar com os <i>cookies</i> ativados para poder autenticar-se na {{SITENAME}}.',
-'userlogin'             => 'Criar uma conta ou entrar',
-'logout'                => 'Sair',
-'userlogout'            => 'Sair',
-'notloggedin'           => 'Não autenticado',
-'nologin'               => 'Não possui uma conta? $1.',
-'nologinlink'           => 'Criar uma conta',
-'createaccount'         => 'Criar nova conta',
-'gotaccount'            => 'Já possui uma conta? $1.',
-'gotaccountlink'        => 'Entrar',
-'createaccountmail'     => 'por e-mail',
-'badretype'             => 'As senhas que você digitou não são iguais.',
-'userexists'            => 'O nome de usuário que você digitou já existe. Por favor, escolha um nome diferente.',
-'youremail'             => 'Seu e-mail:',
-'username'              => 'Nome de usuário:',
-'uid'                   => 'Número de identificação:',
-'yourrealname'          => 'Nome real:',
-'yourlanguage'          => 'Idioma:',
-'yournick'              => 'Apelido:',
-'email'                 => 'E-mail',
-'prefs-help-realname'   => 'O fornecimento de seu Nome verdadeiro é opcional, mas, caso decida o revelar, este será utilizado para lhe dar crédito pelo seu trabalho.',
-'loginerror'            => 'Erro de autenticação',
-'noname'                => 'Você não colocou um nome de usuário válido.',
-'loginsuccesstitle'     => 'Login bem sucedido',
-'loginsuccess'          => "'''Agora você está logado na {{SITENAME}} como \"\$1\".'''",
-'nosuchuser'            => 'Não há nenhum usuário com o nome "$1".
+'loginpagetitle'          => 'Autenticação de usuário',
+'yourname'                => 'Nome de usuário:',
+'yourpassword'            => 'Senha:',
+'yourpasswordagain'       => 'Redigite sua senha',
+'remembermypassword'      => 'Lembrar de minha senha em outras sessões.',
+'yourdomainname'          => 'Seu domínio:',
+'externaldberror'         => 'Ocorreu um erro externo ao banco de dados durante a autenticação ou não lhe é permitido atualizar a sua conta externa.',
+'loginproblem'            => '<b>Houve um problema com a sua autenticação.</b><br />Tente novamente!',
+'login'                   => 'Entrar',
+'nav-login-createaccount' => 'Criar uma conta ou entrar',
+'loginprompt'             => 'É necessário estar com os <i>cookies</i> ativados para poder autenticar-se na {{SITENAME}}.',
+'userlogin'               => 'Criar uma conta ou entrar',
+'logout'                  => 'Sair',
+'userlogout'              => 'Sair',
+'notloggedin'             => 'Não autenticado',
+'nologin'                 => 'Não possui uma conta? $1.',
+'nologinlink'             => 'Criar uma conta',
+'createaccount'           => 'Criar nova conta',
+'gotaccount'              => 'Já possui uma conta? $1.',
+'gotaccountlink'          => 'Entrar',
+'createaccountmail'       => 'por e-mail',
+'badretype'               => 'As senhas que você digitou não são iguais.',
+'userexists'              => 'O nome de usuário que você digitou já existe. Por favor, escolha um nome diferente.',
+'youremail'               => 'Seu e-mail:',
+'username'                => 'Nome de usuário:',
+'uid'                     => 'Número de identificação:',
+'yourrealname'            => 'Nome real:',
+'yourlanguage'            => 'Idioma:',
+'yournick'                => 'Assinatura:',
+'email'                   => 'E-mail',
+'prefs-help-realname'     => 'O fornecimento de seu Nome verdadeiro é opcional, mas, caso decida o revelar, este será utilizado para lhe dar crédito pelo seu trabalho.',
+'loginerror'              => 'Erro de autenticação',
+'noname'                  => 'Você não colocou um nome de usuário válido.',
+'loginsuccesstitle'       => 'Login bem sucedido',
+'loginsuccess'            => "'''Agora você está logado na {{SITENAME}} como \"\$1\".'''",
+'nosuchuser'              => 'Não há nenhum usuário com o nome "$1".
 Verifique a grafia fornecida ou crie uma nova conta de usuário.',
-'nosuchusershort'       => 'Não há um usuário com o nome "<nowiki>$1</nowiki>". Verifique o nome fornecido.',
-'nouserspecified'       => 'É necessário especificar um nome de usuário.',
-'wrongpassword'         => 'A senha que você forneceu é inválida. Por favor, tente novamente.',
-'wrongpasswordempty'    => 'O campo de senha foi deixado em branco. Por favor, tente novamente.',
-'passwordtooshort'      => 'A sua senha é inválida ou curta demais. É necessário ter no mínimo $1 caracteres e de ser diferente de seu nome de usuário.',
-'mailmypassword'        => 'Envie uma nova senha por e-mail',
-'passwordremindertitle' => 'Lembrador de senhas da {{SITENAME}}',
-'passwordremindertext'  => 'Alguém (provavelmente você, a partir do endereço de IP $1) solicitou que fosse lhe enviada uma nova senha para {{SITENAME}} ($4).
+'nosuchusershort'         => 'Não há um usuário com o nome "<nowiki>$1</nowiki>". Verifique o nome fornecido.',
+'nouserspecified'         => 'É necessário especificar um nome de usuário.',
+'wrongpassword'           => 'A senha que você forneceu é inválida. Por favor, tente novamente.',
+'wrongpasswordempty'      => 'O campo de senha foi deixado em branco. Por favor, tente novamente.',
+'passwordtooshort'        => 'A sua senha é inválida ou curta demais. É necessário ter no mínimo $1 caracteres e de ser diferente de seu nome de usuário.',
+'mailmypassword'          => 'Envie uma nova senha por e-mail',
+'passwordremindertitle'   => 'Lembrador de senhas da {{SITENAME}}',
+'passwordremindertext'    => 'Alguém (provavelmente você, a partir do endereço de IP $1) solicitou que fosse lhe enviada uma nova senha para {{SITENAME}} ($4).
 A senha do usuário "$2" é, a partir de agora, "$3". Você pode entrar na sua conta e alterar a senha, caso prefira.
 
 Se foi outra pessoa quem fez este pedido, ou caso você já se tenha lembrado da sua senha e não deseja a alterar, pode ignorar esta mensagem e continuar a utilizar a senha antiga.',
-'noemail'               => 'Não há um endereço de e-mail associado ao usuário "$1".',
-'passwordsent'          => 'Uma nova senha está sendo enviada para o endereço de e-mail registrado para "$1".
+'noemail'                 => 'Não há um endereço de e-mail associado ao usuário "$1".',
+'passwordsent'            => 'Uma nova senha está sendo enviada para o endereço de e-mail registrado para "$1".
 Por favor, reconecte-se ao recebê-lo.',
-'eauthentsent'          => 'Uma mensagem de confirmação foi enviada para o endereço de e-mail fornecido.
+'eauthentsent'            => 'Uma mensagem de confirmação foi enviada para o endereço de e-mail fornecido.
 Antes de qualquer outro e-mail ser enviado para a sua conta, você precisará seguir as instruções da mensagem, de modo a confirmar que a conta é mesmo sua.',
-'mailerror'             => 'Erro ao enviar o e-mail: $1',
-'emailconfirmlink'      => 'Confirme o seu endereço de e-mail',
-'accountcreated'        => 'Conta criada',
-'accountcreatedtext'    => 'A conta de usuário para $1 foi criada.',
-'createaccount-title'   => 'Criação de conta em {{SITENAME}}',
-'createaccount-text'    => 'Alguém criou uma conta de nome $2 para o seu endereço de e-mail no wiki {{SITENAME}} ($4), tendo como senha #$3". Você deve se autenticar e alterar sua senha.
+'mailerror'               => 'Erro ao enviar o e-mail: $1',
+'emailconfirmlink'        => 'Confirme o seu endereço de e-mail',
+'accountcreated'          => 'Conta criada',
+'accountcreatedtext'      => 'A conta de usuário para $1 foi criada.',
+'createaccount-title'     => 'Criação de conta em {{SITENAME}}',
+'createaccount-text'      => 'Alguém criou uma conta de nome $2 para o seu endereço de e-mail no wiki {{SITENAME}} ($4), tendo como senha #$3". Você deve se autenticar e alterar sua senha.
 
 Você pode ignorar esta mensagem caso a conta tenha sido criada por engano.',
-'loginlanguagelabel'    => 'Idioma: $1',
+'loginlanguagelabel'      => 'Idioma: $1',
 
 # Password reset dialog
 'resetpass'               => 'Zerar a senha da conta',
@@ -746,7 +741,7 @@ Legenda: (atu) = diferenças da versão atual,
 'revdelete-nooldid-title' => 'Nenhuma edição foi selecionada',
 'revdelete-selected'      => "{{PLURAL:$2|Edição selecionada|Edições selecionadas}} de '''[[:$1]]''':",
 'logdelete-selected'      => "{{PLURAL:$2|Evento de registro selecionado|Eventos de registro selecionados}} para '''$1:'''",
-'revdelete-legend'        => 'Atribuir restrições de edições',
+'revdelete-legend'        => 'Definir restrições de visualização',
 'revdelete-hide-user'     => 'Ocultar nome de usuário/IP do editor',
 'revdelete-hide-image'    => 'Ocultar os conteúdos do arquivo',
 'revdelete-unsuppress'    => 'Remover restrições das edições restauradas',
@@ -786,10 +781,6 @@ Legenda: (atu) = diferenças da versão atual,
 'nonefound'             => '<strong>Nota</strong>: pesquisas mal sucedidas são geralmente causadas devido o uso de palavras muito comuns como "tem" e "de",
 que não são indexadas, ou pela especificação de mais de um termo (somente as páginas contendo todos os termos aparecerão nos resultados).',
 'powersearch'           => 'Pesquisa avançada',
-'powersearchtext'       => '
-Procurar nos namespaces :<br />
-$1<br />
-$2 Lista redireciona &nbsp; Procura por $3 $9',
 
 # Preferences page
 'preferences'           => 'Preferências',
@@ -809,7 +800,7 @@ para definir suas preferências.',
 'math_lexing_error'     => 'erro léxico',
 'math_syntax_error'     => 'erro de síntaxe',
 'saveprefs'             => 'Salvar preferências',
-'resetprefs'            => 'Redefinir preferências',
+'resetprefs'            => 'Eliminar as alterações não-salvas',
 'oldpassword'           => 'Senha antiga',
 'newpassword'           => 'Nova senha',
 'retypenew'             => 'Redigite a nova senha',
@@ -822,7 +813,7 @@ para definir suas preferências.',
 'contextchars'          => 'Letras de contexto por linha',
 'recentchangescount'    => 'Número de títulos em Mudanças Recentes',
 'savedprefs'            => 'Suas preferências foram salvas.',
-'timezonetext'          => 'Entre com o número de horas que o seu horário local difere do horário do servidor (UTC).',
+'timezonetext'          => '¹Número de horas que o seu horário local difere do horário do servidor (UTC).',
 'localtime'             => 'Display de hora local',
 'timezoneoffset'        => 'Offset',
 'servertime'            => 'Horário do servidor é',
@@ -841,8 +832,8 @@ para definir suas preferências.',
 'userrights-groupsavailable'       => 'Grupos disponíveis:',
 'userrights-reason'                => 'Motivo das alterações:',
 'userrights-available-none'        => 'Não é possível alterar o grupo de acesso.',
-'userrights-available-add'         => 'É possível adicionar usuários {{PLURAL:$2|neste grupo|nestes grupos}}: $1',
-'userrights-available-remove'      => 'É possível remover usuários {{PLURAL:$2|deste grupo|destes grupos}}: $1.',
+'userrights-available-add'         => 'É possível adicionar qualquer usuário a {{PLURAL:$2|este grupo|estes grupos}}: $1',
+'userrights-available-remove'      => 'É possível remover qualquer usuário {{PLURAL:$2|deste grupo|destes grupos}}: $1.',
 'userrights-available-add-self'    => 'Você pode se adicionar {{PLURAL:$2|neste grupo|nestes grupos}}: $1.',
 'userrights-available-remove-self' => 'Você pode se remover {{PLURAL:$2|deste grupo|destes grupos}}: $1.',
 'userrights-no-interwiki'          => 'Você não tem permissão de alterar privilégios de usuários em outras wikis.',
@@ -901,7 +892,7 @@ para definir suas preferências.',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Alterações relacionadas',
-'recentchangeslinked-title'    => 'Alterações relacionadas com $1',
+'recentchangeslinked-title'    => 'Alterações relacionadas com "$1"',
 'recentchangeslinked-noresult' => 'Não ocorreram alterações em páginas relacionadas no intervalo de tempo fornecido.',
 'recentchangeslinked-summary'  => "Esta página especial lista as alterações mais recentes de páginas que possuam um link a outra. Páginas que estejam em sua lista de páginas vigiadas são exibidas em '''negrito'''.",
 
@@ -909,7 +900,7 @@ para definir suas preferências.',
 'upload'                 => 'Carregar arquivo',
 'uploadbtn'              => 'Enviar arquivo',
 'reupload'               => 'Re-carregar',
-'reuploaddesc'           => 'Retornar ao formulário de Uploads.',
+'reuploaddesc'           => 'Cancelar o envio e retornar ao formulário de upload',
 'uploadnologin'          => 'Não autenticado',
 'uploadnologintext'      => 'Você deve estar [[Special:Userlogin|autenticado]]
 para carregar arquivos.',
@@ -958,7 +949,6 @@ Todas as datas mostradas são do servidor (UTC).',
 'upload_source_file' => ' (um arquivo de seu computador)',
 
 # Special:Imagelist
-'imgdesc'               => 'desc',
 'imgfile'               => 'arquivo',
 'imagelist'             => 'Lista de Imagens',
 'imagelist_date'        => 'Data',
@@ -971,7 +961,7 @@ Todas as datas mostradas são do servidor (UTC).',
 'filehist'                  => 'Histórico do arquivo',
 'filehist-help'             => 'Clique em uma data/horário para ver o arquivo tal como ele se encontrava em tal momento.',
 'filehist-deleteall'        => 'eliminar todas',
-'filehist-deleteone'        => 'eliminar esta',
+'filehist-deleteone'        => 'eliminar',
 'filehist-revert'           => 'reverter',
 'filehist-current'          => 'atual',
 'filehist-datetime'         => 'Data/Horário',
@@ -1031,7 +1021,7 @@ Excluindo estas, há {{PLURAL:\$2|'''\$2''' página que provavelmente é uma pá
 Há um total de '''\$3''' {{PLURAL:\$3|página vista|páginas vistas}} e '''\$4''' {{PLURAL:\$4|edição|edições}} em páginas desde que este wiki foi instalado.
 Isso nos leva a aproximadamente '''\$5''' edições por página e '''\$6''' acessos por edição.
 
-O tamanho da [http://meta.wikimedia.org/wiki/Help:Job_queue fila de tarefas] é atualmente de '''\$7'''.",
+O tamanho da [http://www.mediawiki.org/wiki/Manual:Job_queue fila de tarefas] é atualmente de '''\$7'''.",
 'userstatstext' => "Há atualmente {{PLURAL:$1|'''$1''' usuário registrado|'''$1''' usuários registrados}}, dentre os quais '''$2''' (ou '''$4%''') {{PLURAL:$2|é|são}} $5.",
 
 'disambiguations'     => 'Páginas de desambiguamento',
@@ -1075,8 +1065,6 @@ Cada linha contem links para o primeiro e segundo redirecionamento, bem como a p
 'deadendpages'            => 'Páginas sem saída',
 'protectedpages'          => 'Páginas protegidas',
 'listusers'               => 'Lista de usuários',
-'specialpages'            => 'Páginas especiais',
-'spheading'               => 'Páginas especiais para todos os usuários',
 'newpages'                => 'Páginas novas',
 'newpages-username'       => 'Nome de usuário:',
 'ancientpages'            => 'Páginas mais antigas',
@@ -1108,6 +1096,9 @@ Cada linha contem links para o primeiro e segundo redirecionamento, bem como a p
 'allpagesnext'   => 'Posterior',
 'allpagessubmit' => 'Ir',
 'allpagesprefix' => 'Exibir páginas com o prefixo:',
+
+# Special:Categories
+'categories' => 'Categorias',
 
 # Special:Listusers
 'listusersfrom'      => 'Mostrar usuários a partir de:',
@@ -1389,8 +1380,6 @@ Por favor, escolha outro título.',
 'talkexists'       => "'''A página em si foi movida com sucesso, porém, a página de discussão não pode ser movida já que já existe uma com este nome. Por favor, mescle-as manualmente.'''",
 'movedto'          => 'movido para',
 'movetalk'         => 'Mover também a página de discussão, se aplicável.',
-'talkpagemoved'    => 'A página de discussão correspondente foi movida com sucesso.',
-'talkpagenotmoved' => 'A página de discussão correspondente <strong>não</strong> foi movida.',
 '1movedto2'        => '[[$1]] foi movido para [[$2]]',
 '1movedto2_redir'  => '[[$1]] foi movido para [[$2]] sob redirecionamento',
 'movelogpage'      => 'Registro de movimentações',
@@ -1512,7 +1501,6 @@ Por favor, escolha outro título.',
 'imgmultipageprev' => '← página anterior',
 'imgmultipagenext' => 'próxima página →',
 'imgmultigo'       => 'Ir!',
-'imgmultigotopre'  => 'Mostrar página',
 
 # Auto-summaries
 'autosumm-blank'   => 'Foi removido o conteúdo completo desta página',
@@ -1574,5 +1562,8 @@ Entre com o nome do arquivo sem fornecer o prefixo "{{ns:image}}:".',
 'fileduplicatesearch-filename' => 'Nome do arquivo:',
 'fileduplicatesearch-result-1' => 'O arquivo "$1" não possui cópias idênticas.',
 'fileduplicatesearch-result-n' => 'O arquivo "$1" possui {{PLURAL:$2|uma cópia idêntica|$2 cópias idênticas}}.',
+
+# Special:SpecialPages
+'specialpages' => 'Páginas especiais',
 
 );

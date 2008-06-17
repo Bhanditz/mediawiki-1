@@ -28,7 +28,7 @@ if (!defined('MEDIAWIKI')) {
 }
 
 /**
- * @addtogroup API
+ * @ingroup API
  */
 class ApiRollback extends ApiBase {
 
@@ -40,7 +40,7 @@ class ApiRollback extends ApiBase {
 		global $wgUser;
 		$this->getMain()->requestWriteMode();
 		$params = $this->extractRequestParams();
-		
+
 		$titleObj = NULL;
 		if(!isset($params['title']))
 			$this->dieUsageMsg(array('missingparam', 'title'));
@@ -68,7 +68,6 @@ class ApiRollback extends ApiBase {
 			// We don't care about multiple errors, just report one of them
 			$this->dieUsageMsg(current($retval));
 
-		$this->getMain()->scheduleCommit();
 		$current = $target = $summary = NULL;
 		extract($details);
 
@@ -83,9 +82,9 @@ class ApiRollback extends ApiBase {
 
 		$this->getResult()->addValue(null, $this->getModuleName(), $info);
 	}
-	
+
 	public function mustBePosted() { return true; }
-	
+
 	public function getAllowedParams() {
 		return array (
 			'title' => null,
@@ -121,6 +120,6 @@ class ApiRollback extends ApiBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiRollback.php 33133 2008-04-11 15:20:45Z catrope $';
+		return __CLASS__ . ': $Id$';
 	}
 }

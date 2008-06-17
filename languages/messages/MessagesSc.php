@@ -1,9 +1,9 @@
 <?php
 /** Sardinian (Sardu)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
- * @author Nike
  * @author Siebrand
  * @author לערי ריינהארט
  */
@@ -149,9 +149,6 @@ MySQL ha restituito un errore "<tt>$3: $4</tt>".',
 'readonlytext'    => "Il database di {{SITENAME}} è al momento bloccato, e non consente nuove immissioni né modifiche, molto probabilmente per manutenzione server, nel qual caso il database sarà presto di nuovo completamente accessibile.
 L/'amministratore di sistema che ha imposto il blocco, ha lasciato questa nota:
 <p>$1",
-'missingarticle'  => 'Il database non ha trovato il testo di una pagina, che invece avrebbe dovuto trovare, intitolata "$1".
-Questo non è un errore del database, ma più probabilmente un problema del software.
-Per favore, segnalate l\'accaduto ad un administrator, segnalando la URL e l\'ora dell\'incidente.',
 'internalerror'   => 'Errore interno',
 'filecopyerror'   => 'Non è stato possibile copiare il file "$1" come "$2".',
 'filerenameerror' => 'Non è stato possibile rinominare il file "$1" in "$2".',
@@ -166,37 +163,38 @@ Per favore, segnalate l\'accaduto ad un administrator, segnalando la URL e l\'or
 'perfdisabled'    => 'Siamo davvero rammaricati, ma questa funzionalità è temporaneamente disabilitata durante le ore di maggiore accesso al database per ragioni di accessibilità al resto del sito! Torna fra le 02:00 e le 14:00 UTC e riprova. Grazie.',
 
 # Login and logout pages
-'logouttitle'           => 'Logout Utente',
-'logouttext'            => 'Logout effettuato.
+'logouttitle'             => 'Logout Utente',
+'logouttext'              => 'Logout effettuato.
 Ora puoi continuare ad usare {{SITENAME}} come utente anonimo (ma il tuo indirizzo IP resterà riconoscibile), oppure puoi nuovamente richiedere il login con il precedente username, oppure come uno diverso.',
-'welcomecreation'       => '<h2>Benvenuto, $1!</h2><p>Il tuo account è stato creato con successo.<br />Grazie per aver scelto di far crescere {{SITENAME}} con il tuo aiuto.<br />Per rendere {{SITENAME}} più tua, e per usarla più scorrevolmente, non dimenticare di personalizzare le tue preferenze.',
-'loginpagetitle'        => 'Login',
-'yourname'              => 'Il tuo  user name',
-'yourpassword'          => 'La tua  password',
-'yourpasswordagain'     => 'Ripeti la password',
-'remembermypassword'    => 'Ricorda la mia password per più sessioni (richiede uso dei cookies).',
-'loginproblem'          => '<b>Si è verificato un errore durante il tuo tentativo di login.</b><br />Riprova, sarai più fortunato!',
-'userlogin'             => 'Log in',
-'createaccount'         => 'Crea nuovo account',
-'badretype'             => 'Le password che hai immesso non coincidono, sono diverse fra loro.',
-'userexists'            => 'Siamo spiacenti. Lo user name che hai scelto è già usato da un altro Utente. Ti preghiamo perciò di voler scegliere uno user name diverso.',
-'youremail'             => 'La tua e-mail',
-'yournick'              => 'Il tuo diminutivo o soprannome (per le firme)',
-'loginerror'            => 'Errore di Login',
-'noname'                => 'Lo user name indicato non è valido, non è possibile creare un account a questo nome.',
-'loginsuccesstitle'     => 'Login effettuato con successo!',
-'loginsuccess'          => 'Sei stato ammesso alla connessione al server di {{SITENAME}} con il nome utente di "$1".',
-'nosuchuser'            => 'Attenzione<br /><br />a seguito di verifica, non ci risulta alcun Utente con il nome di  "$1".<br /><br />
+'welcomecreation'         => '<h2>Benvenuto, $1!</h2><p>Il tuo account è stato creato con successo.<br />Grazie per aver scelto di far crescere {{SITENAME}} con il tuo aiuto.<br />Per rendere {{SITENAME}} più tua, e per usarla più scorrevolmente, non dimenticare di personalizzare le tue preferenze.',
+'loginpagetitle'          => 'Login',
+'yourname'                => 'Il tuo  user name',
+'yourpassword'            => 'La tua  password',
+'yourpasswordagain'       => 'Ripeti la password',
+'remembermypassword'      => 'Ricorda la mia password per più sessioni (richiede uso dei cookies).',
+'loginproblem'            => '<b>Si è verificato un errore durante il tuo tentativo di login.</b><br />Riprova, sarai più fortunato!',
+'nav-login-createaccount' => 'Log in',
+'userlogin'               => 'Log in',
+'createaccount'           => 'Crea nuovo account',
+'badretype'               => 'Le password che hai immesso non coincidono, sono diverse fra loro.',
+'userexists'              => 'Siamo spiacenti. Lo user name che hai scelto è già usato da un altro Utente. Ti preghiamo perciò di voler scegliere uno user name diverso.',
+'youremail'               => 'La tua e-mail',
+'yournick'                => 'Il tuo diminutivo o soprannome (per le firme)',
+'loginerror'              => 'Errore di Login',
+'noname'                  => 'Lo user name indicato non è valido, non è possibile creare un account a questo nome.',
+'loginsuccesstitle'       => 'Login effettuato con successo!',
+'loginsuccess'            => 'Sei stato ammesso alla connessione al server di {{SITENAME}} con il nome utente di "$1".',
+'nosuchuser'              => 'Attenzione<br /><br />a seguito di verifica, non ci risulta alcun Utente con il nome di  "$1".<br /><br />
 Controlla per favore il nome digitato, oppure usa il modulo qui sotto per creare un nuovo user account.',
-'wrongpassword'         => 'La password immessa non è corretta.<br /><br />Riprova, per favore.',
-'mailmypassword'        => 'Spediscimi una nuova password in posta elettronica',
-'passwordremindertitle' => 'Servizio Password Reminder di {{SITENAME}}',
-'passwordremindertext'  => 'Qualcuno (probabilmente tu, con indirizzo IP $1)
+'wrongpassword'           => 'La password immessa non è corretta.<br /><br />Riprova, per favore.',
+'mailmypassword'          => 'Spediscimi una nuova password in posta elettronica',
+'passwordremindertitle'   => 'Servizio Password Reminder di {{SITENAME}}',
+'passwordremindertext'    => 'Qualcuno (probabilmente tu, con indirizzo IP $1)
 ha richiesto l\'invio di una nuova password per il login a {{SITENAME}}.
 La password per l\'Utente "$2" è ora "$3".
 Per evidenti ragioni di sicurezza, dovresti fare un log in il prima possibile, e cambiare la password immediatamente.',
-'noemail'               => 'Nessuna casella e-mail risulta registrata per l\'Utente "$1".',
-'passwordsent'          => 'Una nuova password è stata inviata alla casella e-mail registrata per l\'Utente "$1".
+'noemail'                 => 'Nessuna casella e-mail risulta registrata per l\'Utente "$1".',
+'passwordsent'            => 'Una nuova password è stata inviata alla casella e-mail registrata per l\'Utente "$1".
 Per favore, fai subito un log in non appena la ricevi.',
 
 # Edit pages
@@ -220,7 +218,7 @@ Se lo desideri, puoi contattare $1, o uno degli altri [[{{MediaWiki:Grouppage-sy
 'noarticletext'   => "(L'articolo è vuoto, potresti gentilmente iniziare l'articolo oppure richiedere la cancellazione di questa pagina)",
 'updated'         => '(Aggiornato)',
 'note'            => '<strong>Nota:</strong>',
-'previewnote'     => 'Tieni presente che questa è solo una ANTEPRIMA, e che la tua versione non è ancora stata salvata!',
+'previewnote'     => '<strong>Tieni presente che questa è solo una ANTEPRIMA, e che la tua versione non è ancora stata salvata!</strong>',
 'previewconflict' => "Questa anteprima rappresenta il testo nella casella di edizione di sopra, l'articolo apparirà n questa forma se sceglierai di salvare la pagina.",
 'editing'         => 'Modifica di $1',
 'editconflict'    => 'Conflitto di edizione: $1',
@@ -266,10 +264,6 @@ Controlla per favore la URL che hai usato per accedere a questa pagina.',
 'showingresults'        => 'Qui di seguito <b>$1</b> risultati, partendo dal numero #<b>$2</b>.',
 'nonefound'             => '<strong>Nota</strong>: la ricerca di parole troppo comuni, come "avere" o "essere", che non sono indicizzate, può causare un esito negativo, così come indicare più di un termine da ricercare (solo le pagine che contengano tutti i termini ricercati verrebbero infatti visualizzate fra i risultati).',
 'powersearch'           => 'Ricerca',
-'powersearchtext'       => '
-Cerca fra i campi :<br />
-$1<br />
-$2 Elenca i redirects &nbsp; cerca per $3 $9',
 
 # Preferences page
 'preferences'              => 'Preferenze',
@@ -304,14 +298,14 @@ per poter personalizzare le tue preferenze.',
 'timezoneoffset'           => 'Offset',
 
 # User rights
-'editinguser' => 'Modifica di $1',
+'editinguser' => "Modifica di '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 
 # Recent changes
 'recentchanges'   => 'Ultime Modifiche',
 'rcnote'          => 'Qui di seguito sono elencate le ultime <strong>$1</strong> pagine modificate negli ultimi <strong>$2</strong> giorni.',
 'rcnotefrom'      => ' Qui di seguito sono elencate le modifiche da <b>$2</b> (fino a <b>$1</b>).',
 'rclistfrom'      => 'Mostra modifiche a partire da $1',
-'rclinks'         => ' Mostra le ultime $1 modifiche negli ultimi $2 giorni.',
+'rclinks'         => 'Mostra le ultime $1 modifiche negli ultimi $2 giorni.',
 'hist'            => 'cron',
 'hide'            => 'nascondi',
 'show'            => 'mostra',
@@ -405,8 +399,6 @@ Ogni riga contiene i link al primo ed al secondo redirect, oltre alla prima riga
 'shortpages'       => 'Pagine corte',
 'longpages'        => 'Pagine lunghe',
 'listusers'        => 'Elenco degli Utenti',
-'specialpages'     => 'Pagine speciali',
-'spheading'        => 'Pagine speciali',
 'newpages'         => 'Pagine nuove',
 'movethispage'     => 'Sposta questa pagina',
 'unusedimagestext' => '<p>Nota che altri siti web, come la {{SITENAME}} internazionale, potrebbero aver messo un link ad una immagine per mezzo di una URL diretta, perciò le immagini potrebbero essere listate qui anche essendo magari in uso.',
@@ -555,12 +547,13 @@ Scegli, per cortesia, un titolo diverso per l'articolo.",
 'talkexists'       => "La pagina è stata spostata correttamente, ma la pagina di dicussione non poteva essere spostata perché ne esiste già un'altra con il nuovo titolo. Per favore, modifica manualmente i contenuti delle due pagine discussione, così da mantenerle entrambe per non perdere potenzialmente interessanti riflessioni.",
 'movedto'          => 'spostata a',
 'movetalk'         => 'Sposta anche la corrispondente pagina "discussione", se possibile.',
-'talkpagemoved'    => 'Anche la corrispondente pagina di discussione è stata spostata.',
-'talkpagenotmoved' => 'La corrispondente pagina di discussione <strong>non è stata spostata</strong>.',
 
 # Special:Newimages
 'imagelisttext' => 'Qui di seguito una lista di $1 immagini, ordinate per $2.',
 'ilsubmit'      => 'Cerca',
 'bydate'        => 'data',
+
+# Special:SpecialPages
+'specialpages' => 'Pagine speciali',
 
 );

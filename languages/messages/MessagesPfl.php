@@ -1,7 +1,8 @@
 <?php
 /** Pfälzisch (Pfälzisch)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author SPS
  */
@@ -110,8 +111,7 @@ $messages = array(
 'randompage' => 'Irnd en Adiggel',
 
 # Miscellaneous special pages
-'specialpages' => 'Schbezialseide',
-'move'         => 'Verschiewe',
+'move' => 'Verschiewe',
 
 # Special:Allpages
 'allpagessubmit' => 'Zeiche',
@@ -174,5 +174,8 @@ $messages = array(
 'imagelistall'     => 'alle',
 'watchlistall2'    => 'alle',
 'namespacesall'    => 'alle',
+
+# Special:SpecialPages
+'specialpages' => 'Schbezialseide',
 
 );

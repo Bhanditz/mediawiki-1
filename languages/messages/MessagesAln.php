@@ -1,12 +1,14 @@
 <?php
 /** Gheg Albanian (Gegë)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Cradel
  * @author Dardan
  * @author Nike
  * @author M.M.S.
+ * @author Siebrand
  */
 
 $fallback = 'sq';
@@ -112,7 +114,6 @@ $messages = array(
 'dec'           => 'Dhj',
 
 # Categories related messages
-'categories'               => 'Kategori',
 'pagecategories'           => '{{PLURAL:$1|Kategoria|Kategoritë}}',
 'category_header'          => 'Artikuj në kategorinë "$1"',
 'subcategories'            => 'Nën-kategori',
@@ -310,13 +311,6 @@ artikuj t'ri. Munet qi asht bllokuar për mirëmbajtje,
 dhe do të kthehet në gjèndje normale mas mirëmbajtjes.
 
 Mirëmbajtësi i cili e ka bllokue dha këtë arsye: $1",
-'missingarticle'       => 'Regjistri nuk e gjeti tekstin e faqes që duhet ta kishte gjetur, të quajtem "$1".
-
-Kjo ndodh zakonisht kur ndjek një ndryshim ose lidhje historie te një
-faqe që asht grisur.
-
-Nëse ky nuk asht rasti, atëherë munet qi e keni gjetur një gabim në softuerin.
-Tregojani këtë përmbledhje një administruesi, tuj shënue edhe URL-në.',
 'readonly_lag'         => "Regjistri asht bllokue automatikisht për m'i dhánë kohë shërbyesve skllevër me arrit kryesorin. Ju lutemi provojeni prap ma vonë.",
 'internalerror'        => 'Gabim i brendshëm',
 'internalerror_info'   => 'Gabimi i brenshëm: $1',
@@ -348,36 +342,37 @@ Pyetja: $2',
 'customcssjsprotected' => 'Nuk keni leje me ndryshu këtë faqe sepse përmban informata personale të një përdoruesi tjetër',
 
 # Login and logout pages
-'logouttitle'        => 'Përdoruesi ka dál',
-'logouttext'         => 'Keni dálë jashtë {{SITENAME}}-s. Muneni me vazhdu me përdor {{SITENAME}}-n anonimisht, ose muneni me hy brenda prap.',
-'welcomecreation'    => '== Mirësevini, $1! ==
+'logouttitle'             => 'Përdoruesi ka dál',
+'logouttext'              => 'Keni dálë jashtë {{SITENAME}}-s. Muneni me vazhdu me përdor {{SITENAME}}-n anonimisht, ose muneni me hy brenda prap.',
+'welcomecreation'         => '== Mirësevini, $1! ==
 
 Llogaria juej asht hap. Mos harroni me ndryshu parapëlqimet e {{SITENAME}}-s.',
-'yourpassword'       => 'Futni fjalëkalimin tuej',
-'yourpasswordagain'  => 'Futni fjalëkalimin prap',
-'remembermypassword' => 'Mbaj mend fjalëkalimin tim për krejt vizitat e ardhshme.',
-'yourdomainname'     => 'Faqja juej',
-'externaldberror'    => 'Ose kishte një gabim te regjistri i identifikimit të jashtëm, ose nuk ju lejohet të përtërini llogarinë tuej të jashtme.',
-'login'              => 'Hyni',
-'userlogin'          => 'Hyni ose çeleni një llogari',
-'logout'             => 'Dalje',
-'userlogout'         => 'Dalje',
-'notloggedin'        => 'Nuk keni hy brenda',
-'nologinlink'        => 'Çeleni',
-'gotaccount'         => 'A keni një llogari? $1.',
-'gotaccountlink'     => 'Hyni',
-'createaccountmail'  => 'me email',
-'userexists'         => 'Nofka që përdorët asht në përdorim. Zgjidhni një nofkë tjetër.',
-'youremail'          => 'Adresa e email-it*',
-'username'           => 'Nofka e përdoruesit:',
-'uid'                => 'Nr. i identifikimit:',
-'yourrealname'       => 'Emri juej i vërtetë*',
-'yourlanguage'       => 'Ndërfaqja gjuhësore',
-'yournick'           => 'Nofka :',
-'badsig'             => 'Sintaksa e nënshkrimit asht e pavlefshme, kontrolloni HTML-n.',
-'badsiglength'       => 'Emri i zgjedhun asht shumë i gjatë; duhet me pas ma pak se $1 shkronja',
-'email'              => 'Email',
-'nocookieslogin'     => '{{SITENAME}} përdor "biskota" për me futë brenda përdoruesit. Prandaj, duhet të pranoni "biskota" dhe të provoni prap.',
+'yourpassword'            => 'Futni fjalëkalimin tuej',
+'yourpasswordagain'       => 'Futni fjalëkalimin prap',
+'remembermypassword'      => 'Mbaj mend fjalëkalimin tim për krejt vizitat e ardhshme.',
+'yourdomainname'          => 'Faqja juej',
+'externaldberror'         => 'Ose kishte një gabim te regjistri i identifikimit të jashtëm, ose nuk ju lejohet të përtërini llogarinë tuej të jashtme.',
+'login'                   => 'Hyni',
+'nav-login-createaccount' => 'Hyni ose çeleni një llogari',
+'userlogin'               => 'Hyni ose çeleni një llogari',
+'logout'                  => 'Dalje',
+'userlogout'              => 'Dalje',
+'notloggedin'             => 'Nuk keni hy brenda',
+'nologinlink'             => 'Çeleni',
+'gotaccount'              => 'A keni një llogari? $1.',
+'gotaccountlink'          => 'Hyni',
+'createaccountmail'       => 'me email',
+'userexists'              => 'Nofka që përdorët asht në përdorim. Zgjidhni një nofkë tjetër.',
+'youremail'               => 'Adresa e email-it*',
+'username'                => 'Nofka e përdoruesit:',
+'uid'                     => 'Nr. i identifikimit:',
+'yourrealname'            => 'Emri juej i vërtetë*',
+'yourlanguage'            => 'Ndërfaqja gjuhësore',
+'yournick'                => 'Nofka :',
+'badsig'                  => 'Sintaksa e nënshkrimit asht e pavlefshme, kontrolloni HTML-n.',
+'badsiglength'            => 'Emri i zgjedhun asht shumë i gjatë; duhet me pas ma pak se $1 shkronja',
+'email'                   => 'Email',
+'nocookieslogin'          => '{{SITENAME}} përdor "biskota" për me futë brenda përdoruesit. Prandaj, duhet të pranoni "biskota" dhe të provoni prap.',
 
 # Edit page toolbar
 'bold_sample'     => 'Tekst i trashë',
@@ -456,7 +451,7 @@ Muneni me [[$1|fillu një artikull]] me kët titull.
 
 # Recent changes linked
 'recentchangeslinked'       => 'Ndryshimet fqinje',
-'recentchangeslinked-title' => 'Ndryshimet në lidhje me $1',
+'recentchangeslinked-title' => 'Ndryshimet në lidhje me "$1"',
 
 # Upload
 'upload' => 'Ngarkoni skeda',
@@ -487,15 +482,17 @@ Muneni me [[$1|fillu një artikull]] me kët titull.
 'withoutinterwiki' => 'Artikuj pa lidhje interwiki',
 
 # Miscellaneous special pages
-'nbytes'       => '$1 bytes',
-'nlinks'       => '$1 lidhje',
-'nmembers'     => '$1 anëtarë',
-'specialpages' => 'Faqet speciale',
-'move'         => 'Zhvendose',
+'nbytes'   => '$1 bytes',
+'nlinks'   => '$1 lidhje',
+'nmembers' => '$1 anëtarë',
+'move'     => 'Zhvendose',
 
 # Special:Allpages
 'alphaindexline' => '$1 deri në $2',
 'allpagessubmit' => 'Shko',
+
+# Special:Categories
+'categories' => 'Kategori',
 
 # Watchlist
 'mywatchlist'          => 'Lista mbikqyrëse',
@@ -542,7 +539,7 @@ Muneni me [[$1|fillu një artikull]] me kët titull.
 'whatlinkshere'       => "Lidhjet k'tu",
 'whatlinkshere-title' => 'Faqe qi lidhen me $1',
 'linklistsub'         => '(Listë e lidhjeve)',
-'linkshere'           => "Faqet e mëposhtme lidhen k'tu:",
+'linkshere'           => "Faqet e mëposhtme lidhen k'tu '''[[:$1]]''':",
 'isredirect'          => 'faqe përcjellëse',
 'istemplate'          => 'përfshirë',
 'whatlinkshere-links' => '← lidhje',
@@ -552,13 +549,12 @@ Muneni me [[$1|fillu një artikull]] me kët titull.
 'contribslink' => 'kontribute',
 
 # Move page
-'movearticle'      => 'Zhvendose faqen',
-'newtitle'         => 'Te titulli i ri',
-'move-watch'       => 'Mbikqyre kët faqe',
-'movepagebtn'      => 'Zhvendose faqen',
-'movedto'          => 'zhvendosur te',
-'talkpagenotmoved' => 'Faqja e diskutimeve korrespondente <strong>nuk</strong> u zhvendos.',
-'movereason'       => 'Arsyja',
+'movearticle' => 'Zhvendose faqen',
+'newtitle'    => 'Te titulli i ri',
+'move-watch'  => 'Mbikqyre kët faqe',
+'movepagebtn' => 'Zhvendose faqen',
+'movedto'     => 'zhvendosur te',
+'movereason'  => 'Arsyja',
 
 # Thumbnails
 'thumbnail-more'  => 'Zmadho',
@@ -596,6 +592,9 @@ Muneni me [[$1|fillu një artikull]] me kët titull.
 'tooltip-diff'                    => 'Trego ndryshimet që Ju i keni bá tekstit.',
 'tooltip-compareselectedversions' => 'Shikoni krahasimin midis dy versioneve të zgjedhme të kësaj faqe.',
 
+# Browsing diffs
+'previousdiff' => '← Nryshimi ma përpara',
+
 # Media information
 'file-nohires'   => '<small>Rezolucioni i plotë.</small>',
 'show-big-image' => 'Rezolucion i plotë',
@@ -612,5 +611,8 @@ Muneni me [[$1|fillu një artikull]] me kët titull.
 # 'all' in various places, this might be different for inflected languages
 'watchlistall2' => 'krejt',
 'namespacesall' => 'krejt',
+
+# Special:SpecialPages
+'specialpages' => 'Faqet speciale',
 
 );

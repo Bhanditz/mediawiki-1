@@ -1,11 +1,13 @@
 <?php
 /** Newari (नेपाल भाषा)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
+ * @author Eukesh
  * @author SPQRobin
  * @author Siebrand
- * @author Eukesh
+ * @author Jon Harald Søby
  */
 
 $namespaceNames = array(
@@ -55,7 +57,6 @@ $messages = array(
 'february' => 'फेब्रुवरी',
 
 # Categories related messages
-'categories'     => 'पुचःत',
 'category-empty' => "''थ्व पुचले आःईले पौ वा मिदिया मदु।''",
 
 'about'         => 'विषयक',
@@ -93,7 +94,7 @@ $messages = array(
 'mainpage-description' => 'मू पौ',
 'policy-url'           => 'Project:नीति',
 'portal'               => 'सामाजिक दबू',
-'portal-url'           => 'ज्याझ्वः:सामाजिक दबू',
+'portal-url'           => 'Project:सामाजिक दबू',
 'privacy'              => 'दुबिस्ता नियम',
 'sitesupport'          => 'दान',
 
@@ -181,13 +182,15 @@ $messages = array(
 'withoutinterwiki-submit' => 'क्यनादिसँ',
 
 # Miscellaneous special pages
-'specialpages'      => 'विषेश पौत:',
 'newpages-username' => 'छ्येलेमि नां:',
 
 # Special:Allpages
 'allpages'    => 'सकल पौत',
 'nextpage'    => 'मेगु पौ ($1)',
 'allarticles' => 'सकल च्वसुत',
+
+# Special:Categories
+'categories' => 'पुचःत',
 
 # Restrictions (nouns)
 'restriction-edit' => 'सम्पादन',
@@ -210,5 +213,8 @@ $messages = array(
 
 # Auto-summaries
 'autosumm-new' => 'न्हुगु पौ: $1',
+
+# Special:SpecialPages
+'specialpages' => 'विषेश पौत:',
 
 );

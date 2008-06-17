@@ -1,9 +1,11 @@
 <?php
 /** Tachelhit (Tašlḥiyt)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Zanatos
+ * @author Siebrand
  */
 
 $fallback = 'ar';
@@ -76,7 +78,6 @@ $messages = array(
 'dec'           => 'Dujanbir',
 
 # Categories related messages
-'categories'      => 'imggrad',
 'pagecategories'  => '{{PLURAL:$1|amggrd|imggrad}}',
 'category_header' => 'tiwriqin ɣ-omggrd "$1"',
 'subcategories'   => 'imggrad-mzin',
@@ -146,17 +147,18 @@ $messages = array(
 'nodb' => 'ornzdar annaf database $1',
 
 # Login and logout pages
-'welcomecreation'    => '== brrk darnɣ, $1! ==
+'welcomecreation'         => '== brrk darnɣ, $1! ==
 
 lcont nk ati styaqyad. ador tot atbadlt {{SITENAME}} lmЗlomat nk.',
-'loginpagetitle'     => 'ikchim o-msxdam',
-'yourname'           => 'smiyt o-msxdam:',
-'yourpassword'       => 'awal iḥdan:',
-'yourpasswordagain'  => 'Зawd ara awal iḥdan:',
-'userlogin'          => 'kchem / qiyd amskhdam amaynu',
-'userlogout'         => 'foɣ',
-'yourlanguage'       => 'tutlayt:',
-'loginlanguagelabel' => 'tutlayt: $1',
+'loginpagetitle'          => 'ikchim o-msxdam',
+'yourname'                => 'smiyt o-msxdam:',
+'yourpassword'            => 'awal iḥdan:',
+'yourpasswordagain'       => 'Зawd ara awal iḥdan:',
+'nav-login-createaccount' => 'kchem / qiyd amskhdam amaynu',
+'userlogin'               => 'kchem / qiyd amskhdam amaynu',
+'userlogout'              => 'foɣ',
+'yourlanguage'            => 'tutlayt:',
+'loginlanguagelabel'      => 'tutlayt: $1',
 
 # Edit pages
 'noarticletext'    => 'ɣila orilla walo l-ktba ɣ tawriqt ad, tzdart [[Special:Search/{{PAGENAME}}|atsiglt smiyt n tawriqt ad]] 
@@ -170,18 +172,18 @@ ikhssak ola kiyi ador tnqilt ɣtamani yadni.
 'powersearch' => 'amsigl itqdmn',
 
 # Preferences page
-'timezonetext' => 'lfrq nswayЗ gr loqt n ɣilli ɣ tllit d loqt n serveur (UTC).',
+'timezonetext' => '¹lfrq nswayЗ gr loqt n ɣilli ɣ tllit d loqt n serveur (UTC).',
 'localtime'    => 'loqt n ɣilli ɣtllit',
 'servertime'   => 'loqt n serveur',
 
 # Upload
 'upload' => 'sΥlid afaylu',
 
-# Miscellaneous special pages
-'specialpages' => 'tiwriqin tesbtarin',
-
 # Special:Allpages
 'alphaindexline' => '$1 ar $2',
+
+# Special:Categories
+'categories' => 'imggrad',
 
 # Watchlist
 'watch'   => 'zaydtin i tochwafin-niw',
@@ -217,5 +219,8 @@ ikhssak ola kiyi ador tnqilt ɣtamani yadni.
 'table_pager_first'        => 'tawriqt tamzwarut',
 'table_pager_last'         => 'tawriqt tamgrut',
 'table_pager_limit_submit' => 'ballak',
+
+# Special:SpecialPages
+'specialpages' => 'tiwriqin tesbtarin',
 
 );

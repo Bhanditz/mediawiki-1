@@ -1,14 +1,16 @@
 <?php
 /** Neapolitan (Nnapulitano)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Carmine Colacino
- * @author E. abu Filumena
  * @author SabineCretella
  * @author Cryptex
+ * @author E. abu Filumena
  * @author SPQRobin
- * @author G - ג
+ * @author Siebrand
+ * @author לערי ריינהארט
  * @author Nike
  */
 
@@ -68,10 +70,8 @@ $messages = array(
 'dec'       => 'dic',
 
 # Categories related messages
-'categories'         => '{{PLURAL:$1|Categurìa|Categurìe}}',
-'categoriespagetext' => "Lista cumpleta d\"e categurie presente ncopp' 'o sito.",
-'category_header'    => 'Paggene rìnt\'a categurìa "$1"',
-'subcategories'      => 'Categurìe secunnarie',
+'category_header' => 'Paggene rìnt\'a categurìa "$1"',
+'subcategories'   => 'Categurìe secunnarie',
 
 'about'          => 'Nfromma',
 'article'        => 'Articulo',
@@ -114,7 +114,7 @@ $messages = array(
 'otherlanguages'    => 'Ate léngue',
 'redirectedfrom'    => "(Redirect 'a $1)",
 'lastmodifiedat'    => "Urdema cagnamiénto pe' a paggena: $2, $1.", # $1 date, $2 time
-'viewcount'         => 'Chesta paggena è stata lètta {{plural:$1|una vòta|$1 vòte}}.',
+'viewcount'         => 'Chesta paggena è stata lètta {{PLURAL:$1|una vòta|$1 vòte}}.',
 'jumpto'            => 'Vaje a:',
 'jumptonavigation'  => 'navigazione',
 'jumptosearch'      => 'truova',
@@ -205,7 +205,7 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'loginreqpagetext'  => "Pe' veré ate ppaggene abbesognate $1.",
 'accmailtitle'      => "'O password è stato mannato.",
 'accmailtext'       => '\'A password pe ll\'utente "$1" fuje mannata ô nnerizzo $2.',
-'previewnote'       => "Chesta è sola n'anteprimma; 'e cagnamiénte â paggena NUN songo ancora sarvate!",
+'previewnote'       => "<strong>Chesta è sola n'anteprimma; 'e cagnamiénte â paggena NUN songo ancora sarvate!</strong>",
 'editing'           => "Cagnamiento 'e $1",
 'templatesused'     => "Template ausate 'a chesta paggena:",
 
@@ -284,7 +284,6 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'wantedpages'  => 'Paggene cchiù addemannate',
 'shortpages'   => 'Paggene curte',
 'longpages'    => 'Paggene cchiú longhe',
-'specialpages' => 'Paggene speciale',
 'newpages'     => 'Paggene cchiù frische',
 'move'         => 'Spusta',
 'movethispage' => 'Spusta chesta paggena',
@@ -293,6 +292,10 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'allpages'       => "Tutte 'e ppaggene",
 'allarticles'    => "Tutt' 'e vvoce",
 'allinnamespace' => "Tutt' 'e ppaggene d&#39;&#39;o namespace $1",
+
+# Special:Categories
+'categories'         => '{{PLURAL:$1|Categurìa|Categurìe}}',
+'categoriespagetext' => "Lista cumpleta d\"e categurie presente ncopp' 'o sito.",
 
 # Watchlist
 'addedwatch'   => 'Aggiunto ai Osservate Speciale tue',
@@ -373,6 +376,7 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'import-logentry-upload' => 'ha mpurtato [[$1]] trammeto upload',
 
 # Tooltip help for the actions
+'tooltip-pt-logout' => 'Jésce (logout)',
 'tooltip-minoredit' => 'Rénne chìsto cagnamiénto cchiù ppiccirìllo.',
 'tooltip-save'      => "Sàrva 'e cagnamiénte.",
 'tooltip-preview'   => "Primma 'e sarvà, vìre primma chille ca hê cagnàte!",
@@ -423,5 +427,8 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 # Auto-summaries
 'autoredircomment' => 'Redirect â paggena [[$1]]',
 'autosumm-new'     => 'Paggena nuova: $1',
+
+# Special:SpecialPages
+'specialpages' => 'Paggene speciale',
 
 );

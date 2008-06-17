@@ -1,12 +1,12 @@
 <?php
 /** Yakut (Саха тыла)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author HalanTul
  * @author Bert Jickty
  * @author Siebrand
- * @author Teak
  * @author SPQRobin
  * @author Jon Harald Søby
  */
@@ -35,7 +35,7 @@ $messages = array(
 'tog-previewontop'            => 'Хайдах буоларын уларытар түннүк үрдүнэн (иннигэр) көрдөр',
 'tog-previewonfirst'          => 'Хайдах буоларын тута көрдөр',
 'tog-nocache'                 => 'Сирэйи кэштыыры боп',
-'tog-enotifwatchlistpages'    => 'Кэтиир сирэйдэрим уларыйдахтарына эл. почтанан биллэр',
+'tog-enotifwatchlistpages'    => 'Кэтиир сирэйдэрим уларыйдахтарына e-mail көмөтүнэн биллэр',
 'tog-enotifusertalkpages'     => 'Ырытар сирэйим уларыйдаҕына эл. почтанан биллэр',
 'tog-enotifminoredits'        => 'Кыра да уларытыы киирдэҕинэ эл. почтанан биллэр',
 'tog-enotifrevealaddr'        => 'Мин почтам аадырыһын биллэриилэргэ көрдөр',
@@ -113,16 +113,20 @@ $messages = array(
 'dec'           => 'Ахс',
 
 # Categories related messages
-'categories'               => 'Категориялар',
-'categoriespagetext'       => 'Бу категориялар истэригэр сирэйдэр эбэтэр медия-билэлэр бааллар.',
-'pagecategories'           => '{{PLURAL:$1|Категория|Категориялар}}',
-'category_header'          => '"$1" категория ыстатыйалара',
-'subcategories'            => 'Субкатегориялар',
-'category-media-header'    => '"$1" категория билэлэрэ',
-'category-empty'           => "''Бу категорияҕа билигин туох да суох.''",
-'hidden-categories'        => '{{PLURAL:$1|Кистэммит категория|Кистэммит категориялар}}',
-'hidden-category-category' => 'Кистэммит категориялар', # Name of the category where hidden categories will be listed
-'listingcontinuesabbrev'   => '(салгыыта)',
+'pagecategories'                 => '{{PLURAL:$1|Категория|Категориялар}}',
+'category_header'                => '"$1" категория ыстатыйалара',
+'subcategories'                  => 'Субкатегориялар',
+'category-media-header'          => '"$1" категория билэлэрэ',
+'category-empty'                 => "''Бу категорияҕа билигин туох да суох.''",
+'hidden-categories'              => '{{PLURAL:$1|Кистэммит категория|Кистэммит категориялар}}',
+'hidden-category-category'       => 'Кистэммит категориялар', # Name of the category where hidden categories will be listed
+'category-subcat-count'          => '{{PLURAL:$2|Бу категория манна көстүбүт субкатегориялаах.|$2 категорияттан {{PLURAL:$1|субкатегорията|$1 субкатегориялара}} көрдөрүлүннүлэр.}}',
+'category-subcat-count-limited'  => 'Бу категория {{PLURAL:$1|субкатегориялаах|$1 субкатегориялардаах}}.',
+'category-article-count'         => '{{PLURAL:$2|Бу категория манна эрэ көстүбүт субкатегориялаах.|$2 категорияттан {{PLURAL:$1|субкатегорията|$1 субкатегориялара}} көрдөрүлүннүлэр.}}',
+'category-article-count-limited' => 'Бу категорияҕа $1 сирэй баар.',
+'category-file-count'            => '{{PLURAL:$2|Бу категория манна эрэ көстүбүт билэлээх.|$2 категорияттан {{PLURAL:$1|билэтэ|$1 билэлэрэ}} көрдөрүлүннүлэр.}}',
+'category-file-count-limited'    => 'Бу категорияҕа  {{PLURAL:$1|биир билэ|$1 билэ}} баар.',
+'listingcontinuesabbrev'         => '(салгыыта)',
 
 'mainpagetext'      => "<big>'''«MediaWiki» сөпкө туруорулунна.'''</big>",
 'mainpagedocfooter' => 'Биики программатын туһунан [http://meta.wikimedia.org/wiki/Help:Contents справочникка] көрүөххүн сөп.
@@ -170,7 +174,9 @@ $messages = array(
 'permalink'         => 'Куруук баар ыйынньык',
 'print'             => 'Бэчээттээ',
 'edit'              => 'Уларыт',
+'create'            => 'Саҥаны айыы',
 'editthispage'      => 'Бу сирэйи уларыт',
+'create-this-page'  => 'Бу сирэйи ай',
 'delete'            => 'Соттор',
 'deletethispage'    => 'Бу сирэйи соттор',
 'undelete_short'    => 'Төттөрү аҕал {{PLURAL:$1|биир уларытыыны|$1 уларытыылары}}',
@@ -259,10 +265,12 @@ $messages = array(
 'restorelink'             => '{{PLURAL:$1|биир сотторуллубут көннөрүү|$1 сотторуллубут көннөрүүлэр}}',
 'feedlinks'               => 'Маннык:',
 'feed-invalid'            => 'Суруттарыыга анаммыт ханаал сыыһа тииптээх.',
+'feed-unavailable'        => '{{SITENAME}} саайка синдикация лиэнтэлэрэ туттуллубаттар',
 'site-rss-feed'           => '$1 RSS биэрии',
 'site-atom-feed'          => '$1 Atom биэрии',
 'page-rss-feed'           => '"$1" RSS биэрии',
 'page-atom-feed'          => '"$1" Atom биэрии',
+'red-link-title'          => '$1 (өссө сурулла илик)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Ыстатыйа',
@@ -304,11 +312,6 @@ MySQL маннык сыыһаны төнүннэрдэ "$3: $4"',
 'enterlockreason'      => 'Уларытыыны бобуу төрүөтүн уонна төһө өр бобулларын ый.',
 'readonlytext'         => 'Билии олоҕор билигин саҥа киллэриилэр уонна атын уларытыылар бобуллубуттар, бука былааннаммыт көрүү-истии үлэлэр буолалларыттан.
 Ону боппут сүрүннээччи маннык сурук хаалларбыт: $1',
-'missingarticle'       => 'Билии олоҕор "$1" диэн ааттаах сирэй тиэкиһэ көстүбэтэ.
-
-Үксүн сотторуллубут сирэй уларытыы уонна тэҥнээһин сурунаалын кэмэ ааспыт ыйынньыгын туһаныыттан тахсааччы.
-
-Онтон атын буоллаҕына бырагыраамма сыыһатын булбутуҥ буолуо. URL-ын ыйан туран сүрүннээччигэ эт.',
 'readonly_lag'         => 'Билии олоҕун хос сиэрбэрдэрэ сүрүн сиэрбэри кытта мэнэйдэһэр кэмнэригэр билии олоҕо хатанна',
 'internalerror'        => 'Ис алҕас (внутренняя ошибка)',
 'internalerror_info'   => 'Ис алҕас: $1',
@@ -362,6 +365,7 @@ $2',
 'externaldberror'            => 'Тас киирии билиитин олоҕун сыыһата буолла, эбэтэр тас киирии билииҥ олоҕун саҥардар кыаҕыҥ суох.',
 'loginproblem'               => '<span style="color:red">Эн аатыҥ ылыныллыбата.</span> Өссө суруйан көр!',
 'login'                      => 'Киир',
+'nav-login-createaccount'    => 'Киир / бэлиэтэн',
 'loginprompt'                => '{{SITENAME}}-га киирэргэ «cookies» туттары көҥүллээ.',
 'userlogin'                  => 'Киир / бэлиэтэн',
 'logout'                     => 'Таҕыс',
@@ -381,9 +385,10 @@ $2',
 'yourrealname'               => 'Докумуонунан аатыҥ:',
 'yourlanguage'               => 'Омугуҥ тыла:',
 'yourvariant'                => 'Барыйаан:',
-'yournick'                   => 'Хос аатыҥ:',
+'yournick'                   => 'Илии баттааһын:',
 'badsig'                     => 'Сыыһа илии баттааһын; HTML тиэгтэрин көр.',
-'badsiglength'               => 'Наһаа уһун илии баттааһын, $1 бэлиэттэн (буукубаттан) ордук буолуо суохтаах.',
+'badsiglength'               => 'Наһаа уһун илии баттааһын.
+$1 бэлиэттэн (буукубаттан) ордук буолуо суохтаах.',
 'email'                      => 'Почта',
 'prefs-help-realname'        => 'Сурукка киирбит аатыҥ (булгуччута суох): ким бу сирэйи уларыппытын көрдөрөргө туттуллар',
 'loginerror'                 => 'Ааккын система билбэтэ',
@@ -531,7 +536,7 @@ $2',
 (сиһ. [[{{MediaWiki:Helppage}}|көмөнү]] көрүөххүн сөп).
 Өскө манна сыыһа киирбит буоллаххына интэриниэтиҥ бырагыраамматын "төнүн" диэххин сөп.',
 'anontalkpagetext'          => "----''Бу аатын эппэтэх кыттааччы ырытар сирэйэ. IP-аадырыһа эрэ көстөр. Биир IP-аадырыс хас да киһиэхэ бэриллиэн сөп. Өскө атын киһиэхэ суруллубут суругу алҕас туппут буоллаххына, бэйэҥ [[{{ns:special}}:Userlogin|ааккын билиһиннэр]], оччоҕо кэлин да булкуур тахсыа суоҕа.''",
-'noarticletext'             => 'Билигин бу сирэй кураанах. Бу аат атын ыстатыйалга туттулларын [[{{ns:special}}:Search/{{PAGENAME}}|булуоххутун сөп]] эбэтэр маннык ааттаах [{{fullurl:{{FULLPAGENAME}}|action=edit}} саҥа ыстатыйаны суруйуоххутун] сөп.',
+'noarticletext'             => 'Билигин бу сирэй кураанах. Бу аат атын ыстатыйалга туттулларын [[Special:Search/{{PAGENAME}}|булуоххутун сөп]] эбэтэр маннык ааттаах [{{fullurl:{{FULLPAGENAME}}|action=edit}} саҥа ыстатыйаны суруйуоххутун] сөп.',
 'userpage-userdoesnotexist' => '"$1" аат бэлиэтэммэтэх. Бу сирэйи оҥорор/уларытар баҕалааххын дуо?',
 'clearyourcache'            => "'''Болҕой:''' Уларыппыт сирэйгин сөпкө көрөргө интэриниэт бырагыраамматын кээһин ыраастаа: '''Mozilla / Firefox''': ''Ctrl+Shift+R'', '''IE:''' ''Ctrl+F5'', '''Safari''': ''Cmd+Shift+R'', '''Konqueror''': ''F5'', '''Opera''': ''Tools→Preferences'' меню нөҥүө.",
 'usercssjsyoucanpreview'    => '<strong>Көмө:</strong> Саҥа css- эбэтэр js-билэни тургутуоххун баҕардаххына эрдэ көрөр тимэҕи баттаа.',
@@ -556,10 +561,11 @@ $2',
 'editingsection'            => 'Уларытыы $1 (раздел)',
 'editingcomment'            => 'Уларытыы $1 (ырытыы)',
 'editconflict'              => 'Уларытыы мөккүөрэ: $1',
-'explainconflict'           => 'Ыстатыйаны көннөрө олордоххутуна ким эрэ эмиэ бу ыстатыйаны көннөрбүт.
-Үөһээҥи түннүккэ "Уларытыыны бигэргэт" тимэҕи баттаатахха киирэр барыл сурулунна.
-Алларааҥы түннүккэ эн барылыҥ баар.
-Бэйэҥ уларытыыгын киллэриэххин баҕарар буоллаххына аллараттан үөһээҥи түннүккэ уларытыыларгын көһөр.',
+'explainconflict'           => "Ыстатыйаны көннөрө олордоххутуна ким эрэ эмиэ бу ыстатыйаны көннөрбүт.
+Үөһээҥи түннүккэ \"Уларытыыны бигэргэт\" тимэҕи баттаатахха киириэхтээх барыл сурулунна.
+Алларааҥы түннүккэ эн барылыҥ көстөр.
+Бэйэҥ уларытыыгын киллэриэххин баҕарар буоллаххына аллараттан үөһээҥи түннүккэ уларытыыларгын көһөр.
+\"Уларытыыны бигэргэт\" баттаатаххына үөһээҥи '''эрэ''' тиэкис хаалыаҕа.",
 'yourtext'                  => 'Тиэкиһиҥ',
 'storedversion'             => 'Суруллубут барыл',
 'nonunicodebrowser'         => '<strong>СЭРЭТИИ: Интэриниэтиҥ бырагырааммата Юникод кодировканы билиммэт эбит. Ыстатыйаны уларытаргар ASCII-тан атын бэлиэлэр шестнадцатиричнай кодка уларытыллыахтара.</strong>',
@@ -601,6 +607,7 @@ long, which is longer than the maximum of $2 kilobytes. It cannot be saved.</str
 # "Undo" feature
 'undo-success' => 'Правка может быть отменена. Пожалуйста, просмотрите сравнение версий, чтобы убедиться, что это именно те изменения, которые вас интересуют, и нажмите «Записать страницу», чтобы изменения вступили в силу.',
 'undo-failure' => 'Уларытыы төннөр кыаҕа суох. Ыккардынааҕы көннөрүүлэр бэйэ бэйэлэригэр сөп түбэспэттэр.',
+'undo-norev'   => 'Бу көннөрүү сотуллар кыаҕа суох, тоҕо диэтэххэ ончу суох эбэтэр номнуо сотуллубут.',
 'undo-summary' => '[[Special:Contributions/$2|$2]] кыттааччы ([[User_talk:$2|ырытыы]]) $1 нүөмэрдээх уларытыытын сотон оннугар туһэрэргэ.',
 
 # Account creation failure
@@ -645,7 +652,7 @@ long, which is longer than the maximum of $2 kilobytes. It cannot be saved.</str
 # Revision deletion
 'rev-deleted-comment'         => '(ырытыы сотулунна)',
 'rev-deleted-user'            => '(кыттааччы аата сотулунна)',
-'rev-deleted-event'           => '(суруллубут сотулунна)',
+'rev-deleted-event'           => '(бэлиэтээһин дьайыыта сотулунна)',
 'rev-deleted-text-permission' => '<div class="mw-warning plainlinks"> Ыстатыйа бу торума архыыптан сотуллубут. Быһаарыыта  [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} манна] баар буолуон сөп. </div>',
 'rev-deleted-text-view'       => '<div class="mw-warning plainlinks">
 Ыстатыйа бу торума архыыптан сотуллубут.
@@ -653,10 +660,11 @@ long, which is longer than the maximum of $2 kilobytes. It cannot be saved.</str
 Сотуллубутун быһаарыыта [{{fullurl:{{ns:special}}:Log/delete|page={{PAGENAMEE}}}} манна] баар буолуон сөп.</div>',
 'rev-delundel'                => 'көрдөр/кистээ',
 'revisiondelete'              => 'Соторго/торуму төнүннэрэргэ',
-'revdelete-nooldid-title'     => 'Торум чуолаан ыйыллыбата',
-'revdelete-nooldid-text'      => 'Бу дьайыыны оҥорорго торуму чуолаан ыйбатаххын',
-'revdelete-selected'          => "'''$1''' сирэй {{PLURAL:$2|талыллыбыт торума|талыллыбыт торумнара}}:",
-'logdelete-selected'          => "'''$1''' сирэй талыллыбыт {{PLURAL:$2|историята|историялара}}:",
+'revdelete-nooldid-title'     => 'Торум чопчу ыйыллыбата',
+'revdelete-nooldid-text'      => 'Бу дьайыыны оҥорорго торуму (торумнары) чуолаан ыйбатаххын, 
+эбэтэр торум ончу суох, эбэтэр кистэммит торум.',
+'revdelete-selected'          => '[[:$1]] сирэй {{PLURAL:$2|талыллыбыт торума|талыллыбыт торумнара}}:',
+'logdelete-selected'          => '{{PLURAL:$1|Сирэй талыллыбыт историята|Сирэй талыллыбыт историялара}}:',
 'revdelete-text'              => 'Сотуллубут торумнар сирэй историятыгар киириэхтэрэ,
 ол гынан баран сорох торумнар көннөрү киһиэхэ көстүөхтэрэ суоҕа.
 
@@ -677,6 +685,10 @@ long, which is longer than the maximum of $2 kilobytes. It cannot be saved.</str
 'logdelete-logentry'          => '[[$1]] дьайыы көстүүтэ уларыйда',
 'revdelete-success'           => "'''Торум көстүүтэ сөпкө уларыйда.'''",
 'logdelete-success'           => "'''Дьайыы көстүүтэ сөпкө уларыйда.'''",
+'pagehist'                    => 'Историятын сирэйэ',
+'deletedhist'                 => 'Сотуллубут история',
+'revdelete-content'           => 'иһинээҕитэ',
+'revdelete-uname'             => 'аата',
 
 # History merging
 'mergehistory'                     => 'Силбэһии сирэйин хронологията',
@@ -712,27 +724,36 @@ long, which is longer than the maximum of $2 kilobytes. It cannot be saved.</str
 'diff-multi'              => '({{PLURAL:$1|$1 орто торум көрдөрүллүбэтэ|$1 орто торумнар көрдөрүллүбэтилэр|$1.}})',
 
 # Search results
-'searchresults'         => 'Булулунна',
-'searchresulttext'      => 'Көрдөөһүн туһунан сиһилии ааҕыаххын баҕардаххына [[{{MediaWiki:Helppage}}|маны]] көр.',
-'searchsubtitle'        => 'По запросу «[[:$1]]»',
-'searchsubtitleinvalid' => 'По запросу «$1»',
-'noexactmatch'          => "'''«\$1» ааттаах сирэй суох.''' <span style=\"display: block; margin: 1.5em 2em\"> [[:\$1|Саҥа сирэйи оҥорорго]]</span>",
-'noexactmatch-nocreate' => "'''Маннык ааттаах: \"\$1\" сирэй суох.'''",
-'toomanymatches'        => 'Наһаа элбэх ыйытыы төнүннэ, бука диэн атыннык көрдөө',
-'titlematches'          => 'Ыстатыйалар ааттара хоһулаһар',
-'notitlematches'        => 'Ыстатыйалар ааттара хоһуласпаттар',
-'textmatches'           => 'Ыстатыйалар истэрэ хатыланар',
-'notextmatches'         => 'Ыстатыйалар истэрэ хатыламмат',
-'prevn'                 => 'инники $1',
-'nextn'                 => 'аныгыскы $1',
-'viewprevnext'          => 'Көр ($1) ($2) ($3).',
-'searchall'             => 'бары',
-'showingresults'        => 'Манна {{plural:$1|түмүк|түмүктэр}} {{plural:$1|көрдөрүлүннэ|көрдөрүлүннүлэр}} <strong>$1</strong> , мантан саҕалаан №&nbsp;<strong>$2</strong>.',
-'showingresultsnum'     => 'Манна {{plural:$3|түмүк|түмүктэр}} {{plural:$3|көрдөрөлүннэ|көрдөрүлүннүлэр}} <strong>$3</strong>, мантан саҕалаан №&nbsp;<strong>$2</strong>.',
-'nonefound'             => 'Уопсай тыллары туһаннахха көрдүүр сирэйгитин булуо суоххутун сөп - холобур "эмиэ" иҥин диэн тыллар индексацияламматтар. Аны көрдөөбүт тылларгыт барыта эрэ баар буоллахтарына сирэй көстөр.',
-'powersearch'           => 'Бу бөлөхтөргө көрдөө',
-'powersearchtext'       => 'Маннык ааттар эйгэлэригэр көрдөө (Искать в пространствах имён):<br />$1<br />$2 Утаарыылар тиһиктэрэ<br /> Көрдөө $3 $9',
-'searchdisabled'        => '{{SITENAME}} көрдүүр тэрилэ араарыллыбыт. Атын көрдүүр системаларынан наадыйар сирэйдэргитин көрдөтүөххүтүн сөп. Ол гынан баран поисковик кээһигэр баар торум эргэрбит буолуон сөп.',
+'searchresults'             => 'Булулунна',
+'searchresulttext'          => 'Көрдөөһүн туһунан сиһилии ааҕыаххын баҕардаххына [[{{MediaWiki:Helppage}}|маны]] көр.',
+'searchsubtitle'            => 'По запросу «[[:$1]]»',
+'searchsubtitleinvalid'     => 'По запросу «$1»',
+'noexactmatch'              => "'''«\$1» ааттаах сирэй суох.''' <span style=\"display: block; margin: 1.5em 2em\"> [[:\$1|Саҥа сирэйи оҥорорго]]</span>",
+'noexactmatch-nocreate'     => "'''Маннык ааттаах: \"\$1\" сирэй суох.'''",
+'toomanymatches'            => 'Наһаа элбэх ыйытыы төнүннэ, бука диэн атыннык көрдөө',
+'titlematches'              => 'Ыстатыйалар ааттара хоһулаһар',
+'notitlematches'            => 'Ыстатыйалар ааттара хоһуласпаттар',
+'textmatches'               => 'Ыстатыйалар истэрэ хатыланар',
+'notextmatches'             => 'Ыстатыйалар истэрэ хатыламмат',
+'prevn'                     => 'инники $1',
+'nextn'                     => 'аныгыскы $1',
+'viewprevnext'              => 'Көр ($1) ($2) ($3).',
+'search-result-size'        => '$1 ({{PLURAL:$2|1 тыл|$2 тыл}})',
+'search-interwiki-caption'  => 'Уруулуу бырайыактар',
+'search-mwsuggest-enabled'  => 'этиилэрдээх',
+'search-mwsuggest-disabled' => 'этиилэрэ суох',
+'search-relatedarticle'     => 'Сигэнэр',
+'searchrelated'             => 'сибээстэммит',
+'searchall'                 => 'бары',
+'showingresults'            => 'Манна {{PLURAL:$1|түмүк|түмүктэр}} {{PLURAL:$1|көрдөрүлүннэ|көрдөрүлүннүлэр}} <strong>$1</strong> , мантан саҕалаан №&nbsp;<strong>$2</strong>.',
+'showingresultsnum'         => 'Манна {{PLURAL:$3|түмүк|түмүктэр}} {{PLURAL:$3|көрдөрөлүннэ|көрдөрүлүннүлэр}} <strong>$3</strong>, мантан саҕалаан №&nbsp;<strong>$2</strong>.',
+'nonefound'                 => 'Уопсай тыллары туһаннахха көрдүүр сирэйгитин булуо суоххутун сөп - холобур "эмиэ" иҥин диэн тыллар индексацияламматтар. Аны көрдөөбүт тылларгыт барыта эрэ баар буоллахтарына сирэй көстөр.',
+'powersearch'               => 'Бу бөлөхтөргө көрдөө',
+'powersearch-legend'        => 'Дириҥэтэн көрдөөһүн',
+'powersearch-ns'            => 'Аат далыгар көрдөө:',
+'powersearch-redir'         => 'Утаарыылар испииһэктэрэ',
+'search-external'           => 'Тастан көрдөөһүн',
+'searchdisabled'            => '{{SITENAME}} көрдүүр тэрилэ араарыллыбыт. Атын көрдүүр системаларынан наадыйар сирэйдэргитин көрдөтүөххүтүн сөп. Ол гынан баран поисковик кээһигэр баар торум эргэрбит буолуон сөп.',
 
 # Preferences page
 'preferences'              => 'Уларытыылар',
@@ -769,7 +790,7 @@ long, which is longer than the maximum of $2 kilobytes. It cannot be saved.</str
 'prefs-watchlist-edits'    => 'Хас уларытыыны тупсарыллыбыт кэтээһиҥҥэ көрдөрөрө:',
 'prefs-misc'               => 'Атын туруоруулар',
 'saveprefs'                => 'Бигэргэт',
-'resetprefs'               => 'Саҥаттан',
+'resetprefs'               => 'Бигэргэтиллибэтэх уларыйыылары сот',
 'oldpassword'              => 'Эргэ киирии тыл:',
 'newpassword'              => 'Саҥа киирии тыл:',
 'retypenew'                => 'Саҥа киирии тылы хатылаа:',
@@ -785,7 +806,7 @@ long, which is longer than the maximum of $2 kilobytes. It cannot be saved.</str
 'recentchangescount'       => 'Бүтэһиктэн саҕалаан хас уларытыыны көрдөрөргө:',
 'savedprefs'               => 'Эн туруорууларыҥ олохтоннулар.',
 'timezonelegend'           => 'Чаһыы пуойаһа',
-'timezonetext'             => 'Эн бириэмэҥ сиэрбэр (Гринвич, UTC) бириэмэтиттэн хас чаас уратылааҕын киллэр.',
+'timezonetext'             => '¹Эн бириэмэҥ сиэрбэр (Гринвич, UTC) бириэмэтиттэн хас чаас уратылааҕын киллэр.',
 'localtime'                => 'Олорор сириҥ бириэмэтэ',
 'timezoneoffset'           => 'Сыҕарыйыы',
 'servertime'               => 'Сиэрбэр бириэмэтэ',
@@ -808,32 +829,58 @@ long, which is longer than the maximum of $2 kilobytes. It cannot be saved.</str
 'userrights-groupsavailable'       => 'Бу бөлөхтөргө киириэххэ сөп:',
 'userrights-reason'                => 'Уларытыы төрүөтэ:',
 'userrights-available-none'        => 'Бөлөххө киириини уларытар кыаҕыҥ суох.',
-'userrights-available-add'         => 'Эн бу {{PLURAL:$2|бөлөххө|бөлөхтөргө}} кыттааччылары киллэрэр кыахтааххын: $1',
-'userrights-available-remove'      => 'Эн бу {{PLURAL:$2|бөлөхтөн|бөлөхтөртөн}} кыттааччылары таһаарар кыахтааххын: $1.',
+'userrights-available-add'         => 'Эн {{PLURAL:$2|бу бөлөххө|бу бөлөхтөргө}} атын кыттааччылары киллэрэр кыахтааххын: $1.',
+'userrights-available-remove'      => 'Эн {{PLURAL:$2|бу бөлөхтөн|бу бөлөхтөртөн}} атын кыттааччылары таһаарар кыахтааххын: $1.',
 'userrights-available-add-self'    => 'Бэйэҕин бу {{PLURAL:$2|бөлөххө|бөлөхтөргө}} киллэриэххин сөп: $1.',
 'userrights-available-remove-self' => 'Бэйэҕин бу {{PLURAL:$2|бөлөхтөн|бөлөхтөртөн}} сотуоххун сөп: $1.',
 'userrights-no-interwiki'          => 'Атын биикилэргэ кыттааччылар бырааптарын уларытар быраабыҥ суох.',
 'userrights-nodatabase'            => '$1 билэ тиһигэ (олоҕо, база данных) суох эбэтэр локальнай буолбатах.',
 'userrights-nologin'               => 'Эн дьон бырааптарын уларытаргар администратор быһыытынан [[Special:Userlogin|бэлиэтэниэхтээххин]].',
 'userrights-notallowed'            => 'Бэлиэтэммит ааккынан атын кыттааччы быраабын уларытар кыаҕыҥ суох.',
+'userrights-changeable-col'        => 'Эн уларытар кыахтаах бөлөхтөрүҥ',
+'userrights-unchangeable-col'      => 'Бу бөлөхтөрү уларытар кыаҕыҥ суох',
 
 # Groups
 'group'               => 'Бөлөх:',
+'group-user'          => 'Кыттааччылар',
 'group-autoconfirmed' => 'Аптамаатынан бигэргэтиллибит кыттааччылар',
 'group-bot'           => 'Роботтар',
 'group-sysop'         => 'Админнар',
 'group-bureaucrat'    => 'Бюрокрааттар',
+'group-suppress'      => 'Алҕастар',
 'group-all'           => '(бары)',
 
+'group-user-member'          => 'Кыттааччы',
 'group-autoconfirmed-member' => 'Аптамаатынан бигэргэтиллибит кыттааччы',
 'group-bot-member'           => 'Робот',
 'group-sysop-member'         => 'Админ',
 'group-bureaucrat-member'    => 'Бюрократ',
+'group-suppress-member'      => 'Алҕас',
 
+'grouppage-user'          => '{{ns:project}}:Кыттааччылар',
 'grouppage-autoconfirmed' => '{{ns:project}}:Аптамаатынан бигэргэммит кыттааччылар',
 'grouppage-bot'           => '{{ns:project}}:Роботтар',
 'grouppage-sysop'         => '{{ns:project}}:Админнар',
 'grouppage-bureaucrat'    => '{{ns:project}}:Бюрокрааттар',
+'grouppage-suppress'      => '{{ns:project}}:Алҕас',
+
+# Rights
+'right-read'           => 'Сирэйдэри көрүү',
+'right-edit'           => 'Сирэйдэри уларытыы',
+'right-createpage'     => 'Сирэйдэри оҥоруу (ырытыы сирэйдэрин кытта холбуу)',
+'right-createtalk'     => 'Ырытыы сирэйдэрин оҥоруу',
+'right-createaccount'  => 'Саҥа кыттааччыны бэлиэтээһин',
+'right-minoredit'      => 'Уларытыыны кыра суолталаах курдук бэлиэтээ',
+'right-upload'         => 'Билэлэри киллэр',
+'right-reupload'       => 'Баар билэни саҥаттан суруттар',
+'right-delete'         => 'Сирэйдэри сотуу',
+'right-bigdelete'      => 'Уһун историялаах сирэйдэри сотуу',
+'right-deleterevision' => 'Сирэй сорох торумнарын сотуу уонна хат киллэрии',
+'right-browsearchive'  => 'Сотуллубут сирэйдэри көрдөөһүн',
+'right-undelete'       => 'Сотуллубут сирэйи хат киллэрии',
+'right-editinterface'  => 'Кыттааччы интерфейсын уларытыы',
+'right-import'         => 'Атын биикиттэн сирэйдэри киллэрии',
+'right-userrights'     => 'Кытааччылар бырааптарын барытын уларытыы',
 
 # User rights log
 'rightslog'      => 'Кыттаачы бырааптарын сурунаала',
@@ -870,9 +917,10 @@ long, which is longer than the maximum of $2 kilobytes. It cannot be saved.</str
 
 # Recent changes linked
 'recentchangeslinked'          => 'Сигэнэр уларытыылар',
-'recentchangeslinked-title'    => '$1 кытта сибээстээх уларытыылар',
+'recentchangeslinked-title'    => '"$1" кытта сибээстээх уларытыылар',
 'recentchangeslinked-noresult' => 'Сигэммит сирэйдэргэ этиллибит кэмҥэ уларытыылар оҥоһуллубатылар.',
-'recentchangeslinked-summary'  => "Бу анал сирэйгэ сигэнэр сирэйдэр бүтэһик уларыйыылара көһүннүлэр. Кэтэнэр сирэйдэр '''модьу бичигинэн''' бэлиэтэннилэр.",
+'recentchangeslinked-summary'  => "Бу анал сирэйгэ сигэнэр сирэйдэр бүтэһик уларыйыылара көһүннүлэр. [[Special:Watchlist|Кэтэнэр сирэйдэр]] '''модьу бичигинэн''' бэлиэтэннилэр.",
+'recentchangeslinked-page'     => 'Сирэй аата:',
 
 # Upload
 'upload'                      => 'Билэни киллэр',
@@ -937,6 +985,7 @@ long, which is longer than the maximum of $2 kilobytes. It cannot be saved.</str
 'uploadvirus'                 => 'Бу билэ вирустаах! Көр: $1',
 'sourcefilename'              => 'Билэ сытар сирэ:',
 'destfilename'                => 'Билэ хайдах ааттаах буолуохтааҕа:',
+'upload-maxfilesize'          => 'Билэ муҥур улахана: $1',
 'watchthisupload'             => 'Билэни кэтииргэ',
 'filewasdeleted'              => 'Маннык ааттаах билэ урут баар эбит, ону соппуттар. $1 суруттарыах иннинэ өссө биирдэ толкуйдаа.',
 'upload-wasdeleted'           => "'''Сэрэтии: Эн суох оҥоһуллубут биэни саҥаттан суруйан эрэҕин.'''
@@ -979,7 +1028,6 @@ PICT # misc.
 
 # Special:Imagelist
 'imagelist_search_for'  => 'Миэдьийэни (ойууну) аатынан көрдөтүү:',
-'imgdesc'               => 'быһаарыы',
 'imgfile'               => 'билэ',
 'imagelist'             => 'Билэлэр',
 'imagelist_date'        => 'Күнэ-ыйа',
@@ -989,26 +1037,30 @@ PICT # misc.
 'imagelist_description' => 'Быһаарыыта',
 
 # Image description page
-'filehist'                  => 'Билэ устуоруйата',
-'filehist-help'             => 'Ыйын-күнүн/кэмин баттаа, оччотооҕуга баар буолбут.',
-'filehist-deleteall'        => 'барытын сот',
-'filehist-deleteone'        => 'маны сот',
-'filehist-revert'           => 'төттөрү',
-'filehist-current'          => 'билиҥҥи',
-'filehist-datetime'         => 'Күнэ-ыйа/Кэмэ',
-'filehist-user'             => 'Кыттааччы',
-'filehist-dimensions'       => 'Кээмэйдэрэ',
-'filehist-filesize'         => 'Билэ кээмэйэ',
-'filehist-comment'          => 'Хос быһаарыы',
-'imagelinks'                => 'Ыйынньыктар',
-'linkstoimage'              => 'Бу билэҕэ маннык атын сирэйдэр сигэнэллэр:',
-'nolinkstoimage'            => 'Атын сирэйдэр бу билэҕэ сигэммэттэр.',
-'sharedupload'              => 'Бу билэ хас да бырайыак туһанар ыскылаатыгар сытар.',
-'shareduploadwiki'          => 'Эбиитин мантан ааҕыаххын сөп $1.',
-'shareduploadwiki-linktext' => 'Билэни хос быһаарар сирэй',
-'noimage'                   => 'Маннык ааттаах билэ суох эбит, маны гыныаххын сөп $1.',
-'noimage-linktext'          => 'итини суруттар',
-'uploadnewversion-linktext' => 'Бу билэ саҥа барылын суруттар',
+'filehist'                       => 'Билэ устуоруйата',
+'filehist-help'                  => 'Ыйын-күнүн/кэмин баттаа, оччотооҕуга баар буолбут.',
+'filehist-deleteall'             => 'барытын сот',
+'filehist-deleteone'             => 'маны сот',
+'filehist-revert'                => 'төттөрү',
+'filehist-current'               => 'билиҥҥи',
+'filehist-datetime'              => 'Күнэ-ыйа/Кэмэ',
+'filehist-user'                  => 'Кыттааччы',
+'filehist-dimensions'            => 'Кээмэйдэрэ',
+'filehist-filesize'              => 'Билэ кээмэйэ',
+'filehist-comment'               => 'Хос быһаарыы',
+'imagelinks'                     => 'Ыйынньыктар',
+'linkstoimage'                   => 'Бу билэҕэ маннык атын сирэйдэр сигэнэллэр:',
+'nolinkstoimage'                 => 'Атын сирэйдэр бу билэҕэ сигэммэттэр.',
+'sharedupload'                   => 'Бу билэ хас да бырайыак туһанар ыскылаатыгар сытар.',
+'shareduploadwiki'               => 'Эбиитин мантан ааҕыаххын сөп $1.',
+'shareduploadwiki-desc'          => '$1 туһунан аллара көһүннэ.',
+'shareduploadwiki-linktext'      => 'Билэни хос быһаарар сирэй',
+'shareduploadduplicate-linktext' => 'атын билэ',
+'shareduploadconflict-linktext'  => 'атын билэ',
+'noimage'                        => 'Маннык ааттаах билэ суох эбит, маны гыныаххын сөп $1.',
+'noimage-linktext'               => 'итини суруттар',
+'uploadnewversion-linktext'      => 'Бу билэ саҥа барылын суруттар',
+'imagepage-searchdupe'           => 'Хатыланар билэлэри көрдөөһүн',
 
 # File reversion
 'filerevert'                => 'Төннөр $1',
@@ -1037,6 +1089,7 @@ PICT # misc.
 'filedelete-reason-dropdown'  => '*Common сотор төрүөттэрэ
 ** Бас билии быраабын кэһии
 ** Хос суруллубут билэ',
+'filedelete-edit-reasonlist'  => 'Сотуу төрүөтүн уларыт',
 
 # MIME search
 'mimesearch'         => 'MIME көрдөөһүн',
@@ -1073,7 +1126,7 @@ PICT # misc.
 
 {{SITENAME}} туруоҕуттан барыта '''$3''' сирэй көрөөһүнэ буолбут уонна '''$4''' сирэй уларытыыта. Онон ортотунан ыллахха биир сирэйгэ '''$5''' уларытыы уонна '''$6''' көрүү тиксэр.
 
-Величина [http://meta.wikimedia.org/wiki/Help:Job_queue очереди заданий] составляет '''$7'''.",
+Величина [http://www.mediawiki.org/wiki/Manual:Job_queue очереди заданий] составляет '''$7'''.",
 'userstatstext'          => "'''$1''' бэлиэтэммит [[Special:Listusers|кыттааччы]] баарыттан '''$2''' (эбэтэр '''$4%''') $2 $5 бырааптаах",
 'statistics-mostpopular' => 'Саамай элбэхтик көрүллэр ыстатыйалар',
 
@@ -1089,9 +1142,10 @@ PICT # misc.
 'brokenredirects-edit'   => '(уларытыы)',
 'brokenredirects-delete' => '(сотуу)',
 
-'withoutinterwiki'        => 'Атын тылынан суруллубут ыстатыйаларга сигэммэт ыстатыйалар',
-'withoutinterwiki-header' => 'Бу сирэйдэр атын тылынан суруллубут ыстатыйаларга сигэммэттэр:',
-'withoutinterwiki-submit' => 'Көрдөрүү',
+'withoutinterwiki'         => 'Атын тылынан суруллубут ыстатыйаларга сигэммэт ыстатыйалар',
+'withoutinterwiki-summary' => 'Бу сирэйдэр атын тылынан суруллубут ыстатыйаларга сигэммэттэр:',
+'withoutinterwiki-legend'  => 'Префикс',
+'withoutinterwiki-submit'  => 'Көрдөрүү',
 
 'fewestrevisions' => 'Саамай аҕыйах көннөрүүлээх ыстатыйалар',
 
@@ -1132,9 +1186,6 @@ PICT # misc.
 'protectedtitlestext'     => 'Бу ааттары оҥорор/айар бобуллар',
 'protectedtitlesempty'    => 'Биир да аат бу параметрдарынан көмүскэммэт',
 'listusers'               => 'Кыттааччылар испииһэктэрэ',
-'specialpages'            => 'Анал сирэйдэр',
-'spheading'               => 'Служебнай сирэйдэр',
-'restrictedpheading'      => 'Хааччахтаммыт служебнай сирэйдэр',
 'newpages'                => 'Саҥа ыстатыйалар',
 'newpages-username'       => 'Кыттааччы:',
 'ancientpages'            => 'Бүтэһик уларытыы киирбитинэн наардаммыт ыстатыйалар',
@@ -1180,14 +1231,24 @@ PICT # misc.
 'allpagesbadtitle'  => 'Сирэй маннык ааттанара сатаммат: аакка туттуллуо суохтаах бэлиэлэрдээх эбэтэр тыллар ыккардыларыгар туһаныллар ыйынньыктаах.',
 'allpages-bad-ns'   => '{{SITENAME}} не содержит пространства имён «$1».',
 
+# Special:Categories
+'categories'                    => 'Категориялар',
+'categoriespagetext'            => 'Бу категориялар истэригэр сирэйдэр эбэтэр медия-билэлэр бааллар.',
+'special-categories-sort-count' => 'ахсаанынан бэрээдэктээһин',
+'special-categories-sort-abc'   => 'алпабыытынан бэрээдэктээһин',
+
 # Special:Listusers
 'listusersfrom'      => 'Мантан саҕалаан кыттааччылары көрдөр:',
 'listusers-submit'   => 'Көрдөр',
 'listusers-noresult' => 'Кыттааччылар булуллубатылар.',
 
+# Special:Listgrouprights
+'listgrouprights-group'   => 'Бөлөх',
+'listgrouprights-members' => '(кыттар дьон испииһэгэ)',
+
 # E-mail user
 'mailnologin'     => 'Аадырыһа суох',
-'mailnologintext' => 'Атын кыттааччылары кытта e-mail көмөтүнэн суруйсуоххун баҕарар буоллаххына бэйэҕин [[{{ns:special}}:Userlogin|билиһиннэриэхтээххин]]  уонна e-mail аадырыскын [[{{ns:special}}:Preferences|туруорууларгар]] суруйуохтааххын.',
+'mailnologintext' => 'Атын кыттааччылары кытта e-mail көмөтүнэн суруйсуоххун баҕарар буоллаххына бэйэҕин [[Special:Userlogin|билиһиннэриэхтээххин]]  уонна e-mail аадырыскын [[Special:Preferences|туруорууларгар]] суруйуохтааххын.',
 'emailuser'       => 'Кыттааччыга сурук',
 'emailpage'       => 'Кыттааччыга E-mail ыыт',
 'emailpagetext'   => 'Бу кыттааччы бэйэтин туруорууларыгар эл. аадырыһын суруйбут буоллаҕына
@@ -1310,6 +1371,7 @@ $NEWPAGE
 ** ааптар ирдээһинэ
 ** ааптар быраабын күөмчүлээһин
 ** Алдьатыы (Вандализм)',
+'delete-edit-reasonlist'      => 'Сотуу төрүөтүн уларытыы',
 'delete-toobig'               => 'Бу сирэй уларытыыларын историята уһун, хас да ($1) хат көрүүлэрдээх. Маннык сирэйдэри сотор хааччахтанар, тоҕо диэххэ алҕас {{SITENAME}} алдьаныан сөп.',
 'delete-warning-toobig'       => 'Бу сирэй уларыылара уһун историялаах, хас да ($1) хат көрүүлэрдээх. Маны соттоххуна, {{SITENAME}} билэтин тиһигин алдьатыан сөп; салгыыр буоллаххына сэрэнэн үлэлээ.',
 'rollback'                    => 'Уруккутугар төннөр',
@@ -1356,7 +1418,7 @@ $NEWPAGE
 'restriction-type'            => 'Маны оҥорор кыахтааххын:',
 'restriction-level'           => 'Киирии таһыма:',
 'minimum-size'                => 'Оччугуй',
-'maximum-size'                => 'Бөдөҥ',
+'maximum-size'                => 'Бөдөҥ:',
 'pagesize'                    => '(байт)',
 
 # Restrictions (nouns)
@@ -1440,21 +1502,25 @@ $1',
 'sp-contributions-submit'      => 'Көрдөө',
 
 # What links here
-'whatlinkshere'       => 'Манна сигэнэллэр',
-'whatlinkshere-title' => 'Сирэй манна сигэнэр $1',
-'whatlinkshere-page'  => 'Сирэй:',
-'linklistsub'         => '(Ыйынньыктар испииһэктэрэ)',
-'linkshere'           => "'''[[:$1]]''' билэҕэ манна көрдөрүллүбүт сирэйдэр сигэнэллэр:",
-'nolinkshere'         => "'''[[:$1]]''' сирэйгэ сигэнэр сирэйдэр суохтар.",
-'nolinkshere-ns'      => "Талыллыбыт бөлөххө (namespace) бу '''[[:$1]]''' сирэйгэ сигэнэр сирэйдэр суохтар.",
-'isredirect'          => 'көлбөрүтэр сирэй',
-'istemplate'          => 'иһинээҕи',
-'whatlinkshere-prev'  => '{{бу иннинээҕи $1}}',
-'whatlinkshere-next'  => '{{аныгыскы $1}}',
-'whatlinkshere-links' => '← ыйынньыктар',
+'whatlinkshere'            => 'Манна сигэнэллэр',
+'whatlinkshere-title'      => 'Сирэй манна сигэнэр $1',
+'whatlinkshere-page'       => 'Сирэй:',
+'linklistsub'              => '(Ыйынньыктар испииһэктэрэ)',
+'linkshere'                => "'''[[:$1]]''' билэҕэ манна көрдөрүллүбүт сирэйдэр сигэнэллэр:",
+'nolinkshere'              => "'''[[:$1]]''' сирэйгэ сигэнэр сирэйдэр суохтар.",
+'nolinkshere-ns'           => "Талыллыбыт бөлөххө (namespace) бу '''[[:$1]]''' сирэйгэ сигэнэр сирэйдэр суохтар.",
+'isredirect'               => 'көлбөрүтэр сирэй',
+'istemplate'               => 'иһинээҕи',
+'isimage'                  => 'ойуу сигэтэ',
+'whatlinkshere-prev'       => '{{бу иннинээҕи $1}}',
+'whatlinkshere-next'       => '{{аныгыскы $1}}',
+'whatlinkshere-links'      => '← ыйынньыктар',
+'whatlinkshere-hideredirs' => '$1 утаарыы',
+'whatlinkshere-hidelinks'  => '$1 сигэ (ыйынньык)',
 
 # Block/unblock
 'blockip'                     => 'IP аадырыстан киириини бобуу',
+'blockip-legend'              => 'Кыттааччыны хааччахтааһын',
 'blockiptext'                 => 'Ханнык эмит IP-ттан суруйары манна баар форманы туһанан боп.
 Вандализмы утаран уонна [[{{MediaWiki:Policy-url}}]]
 быраабылалрын тутуһан эрэ бобуохтааххын.
@@ -1560,14 +1626,15 @@ $1',
 
 # Move page
 'move-page-legend'        => 'Аатын уларытыы',
-'movepagetext'            => "Манна баар форманы туһанан сирэй аатын улартыаххын сөп.
+'movepagetext'            => "Манна баар форманы туһанан сирэй аатын уларытыаххын сөп.
 Бу түбэлтэҕэ уларытыы сурунаала саҥа сиргэ көһөр.
 Урукку аат саҥа сирэйгэ утаарар сирэйгэ кубулуйар.
-Урукку аакка ыйынньыктар уларыйбаттар (бука диэн [[Special:DoubleRedirects|хос]] ыйынньыктар уонна [[Special:BrokenRedirects|быстыбыт]] сигэниилэр баалларын-суохтарын көр).
-Эн сиэр быһыытынан ыйынньыктар сөпкө сигэнэллэрин ситиһиэхтээххин.
+Урукку аакка ыйынньыктар уларыйбаттар; 
+бука диэн хос ыйынньыктар уонна быстыбыт сигэниилэр баалларын-суохтарын көр.
+Сиэр быһыытынан эн  ыйынньыктар сөпкө сигэнэллэрин ситиһиэхтээххин.
 
 Өскө маннык ааттаах сирэй номнуо баар эбит буоллаҕына сирэй аата '''уларыйыа суоҕа''' (кураанах эбэтэр утаарар сирэй буолбатах буоллаҕына).
-Ол аата эн сирэй аатын сыыһа уларыппыт буооллаххына төттөрү урукку аатыгар төннөрүөххүн сөп, ол гынан баран баар сирэйи алҕас сотор кыаҕыҥ суох.
+Ол аата эн сирэй аатын сыыһа уларыппыт буоллаххына төттөрү урукку аатыгар төннөрүөххүн сөп, ол гынан баран баар сирэйи алҕас сотор кыаҕыҥ суох.
 
 '''СЭРЭТИИ!'''
 Сирэй аатын уларытыы улахан уонна эрдэттэн өйдөммөтөх содуллаах буолуон сөп.
@@ -1593,8 +1660,6 @@ $1',
 'talkexists'              => "'''Сирэй аата уларыйда, ол гынан баран ырытыы аата сатаан уларыйбата, тоҕо диэтэххэ маннык ааттаах ырытыы сирэйэ баар эбит. Онон бэйэҥ ол икки ырытыы сирэйдэрин холбууруҥ буоллар.'''",
 'movedto'                 => 'аатын манныкка уларытыллыбыт:',
 'movetalk'                => 'Сөп түбэһэр ырытыы сирэйин аатын эмиэ уларыт',
-'talkpagemoved'           => 'Сөп түбэһэр ырытыы аата эмиэ уларыйда.',
-'talkpagenotmoved'        => 'Сөп түбэһэр ырытыы аата <strong>уларытыллыбата</strong>.',
 '1movedto2'               => '[[$1]] аата манныкка уларытылынна: [[$2]]',
 '1movedto2_redir'         => 'Утаарыы үрдүнэн [[$1]] сирэй аата манныкка уларытылынна: [[$2]]',
 'movelogpage'             => 'Аат уларыйыытын испииһэгэ',
@@ -1609,6 +1674,7 @@ $1',
 'delete_and_move_reason'  => 'Аатын уларытаары сотулунна',
 'selfmove'                => 'Аатын уларытар сатаммат. Эргэ уонна саҥа аата биирдэр.',
 'immobile_namespace'      => 'Аатын уларытар сатаммат. Саҥа дуу эргэ дуу аата аналлаах (служебнай) тыллаах эбит.',
+'imagetypemismatch'       => 'Билэ саҥа расширенията тиибигэр сөп түбэспэт',
 
 # Export
 'export'            => 'Сирэйдэри таска таһаарааһын (export)',
@@ -1635,8 +1701,8 @@ $1',
 'allmessagesname'           => 'Биллэрии',
 'allmessagesdefault'        => 'Туспа этиллибэтэҕинэ суруллар тиэкис',
 'allmessagescurrent'        => 'Билиҥҥи тиэкис',
-'allmessagestext'           => 'Манна систиэмэ биллэриилэрин испииһэгэ көстөр.
-Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation] and [http://translatewiki.net Betawiki] if you wish to contribute to the generic MediaWiki localisation.',
+'allmessagestext'           => 'Манна MediaWiki биллэриилэрин испииһэгэ көстөр.
+Эн MediaWiki движогун тылбаастыырга көмөлөһүөххүн баҕарар буоллаххына манна [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation] уонна манна [http://translatewiki.net Betawiki] киир.',
 'allmessagesnotsupportedDB' => "'''{{ns:special}}:Allmessages''' туттуллар кыаҕа суох, тоҕо диэтэххэ '''\$wgUseDatabaseMessages''' араарыллыбыт.",
 'allmessagesfilter'         => 'Сурук аатын фильтра:',
 'allmessagesmodified'       => 'Уларыйбыттары эрэ көрдөр',
@@ -1842,7 +1908,8 @@ $1',
 
 # Special:Newimages
 'newimages'             => 'Саҥа билэлэр галереялара',
-'imagelisttext'         => "Манна {{plural:$1|билэ|билэлэр}} испииһэктэрэ ('''$1''') көстөр, суортаммыт: $2.",
+'imagelisttext'         => "Манна {{PLURAL:$1|билэ|билэлэр}} испииһэктэрэ ('''$1''') көстөр, суортаммыт: $2.",
+'newimages-summary'     => 'Бу анал сирэй киллэриллибит билэлэр испииһэктэрин көрдөрөр',
 'showhidebots'          => '($1 робот)',
 'noimages'              => 'Ойуу суох.',
 'ilsubmit'              => 'Көрдөт',
@@ -2136,28 +2203,28 @@ $1',
 'monthsall'        => 'бары',
 
 # E-mail address confirmation
-'confirmemail'            => 'Электроннай аадырыһы бигэргэтии',
-'confirmemail_noemail'    => '[[Special:Preferences|Бэйэҥ туруорууларгар]] электроннай аадырыскын суруйбатаххын эбэтэр сыыһа суруйбуккун.',
-'confirmemail_text'       => '{{SITENAME}} движога үлэлиэҥ иннинэ электроннай аадырыскын бигэргэтэри эрэйэр.
+'confirmemail'             => 'Электроннай аадырыһы бигэргэтии',
+'confirmemail_noemail'     => '[[Special:Preferences|Бэйэҥ туруорууларгар]] электроннай аадырыскын суруйбатаххын эбэтэр сыыһа суруйбуккун.',
+'confirmemail_text'        => '{{SITENAME}} движога үлэлиэҥ иннинэ электроннай аадырыскын бигэргэтэри эрэйэр.
 Аналлаах тимэҕи баттаан эппит аадырыскар сурукта ыыттар.
 Ол суругу арыйдаххына, аадырыһыҥ бигэргэтиллиэ.',
-'confirmemail_pending'    => '<div class="error">Бигэргэтии куода номнуо ыытыллыбыт.
+'confirmemail_pending'     => '<div class="error">Бигэргэтии куода номнуо ыытыллыбыт.
 Бэйэҕин соторутааҕыта билиһиннэрбит буоллаххына ол сурук кэлэрин кыратык кэтэһэ түс.
 Ол кэннэ, кэлбэтэҕинэ, куоду өссө көрдөөр.</div>',
-'confirmemail_send'       => 'Бигэргэтии куодун почтанан ыыт',
-'confirmemail_sent'       => 'Бигэргэтэр сурук ыытылынна.',
-'confirmemail_oncreate'   => 'Бигэргэтэр сурук эппит почтаҕар ыытылынна.
+'confirmemail_send'        => 'Бигэргэтии куодун почтанан ыыт',
+'confirmemail_sent'        => 'Бигэргэтэр сурук ыытылынна.',
+'confirmemail_oncreate'    => 'Бигэргэтэр сурук эппит почтаҕар ыытылынна.
 Бу бигэргэтии систиэмэҕэ киирэри хааччахтаабат эрээри, электроннай почтаны манна туһанаргар бигэргэтэриҥ наада.',
-'confirmemail_sendfailed' => 'Бигэргэтэр сурук кыайан ыытыллыбата. Электроннай аадырыскын сөпкө суруйбуккун бэрэбиэркэлээ.
+'confirmemail_sendfailed'  => 'Бигэргэтэр сурук кыайан ыытыллыбата. Электроннай аадырыскын сөпкө суруйбуккун бэрэбиэркэлээ.
 
 Сурук барбатах төрүөтэ: $1',
-'confirmemail_invalid'    => 'Бигэргэтии куода сыыһа эбэтэр болдьоҕо ааспыт.',
-'confirmemail_needlogin'  => '$1 - маны оҥордоххуна аадырыскын бигэргэтиэҥ.',
-'confirmemail_success'    => 'Электроннай аадырыһыҥ бигэргэтилиннэ.',
-'confirmemail_loggedin'   => 'Электроннай почтаҥ аадырыһа бигэргэтилиннэ.',
-'confirmemail_error'      => 'Бигэргэтии кэмигэр моһол таҕыста.',
-'confirmemail_subject'    => '{{SITENAME}}: эл. почта аадырыһын бигэргэтии',
-'confirmemail_body'       => 'Ким эрэ, баҕар эн буолуо бу IP-ттан: $1, {{SITENAME}} сиэрбэригэр
+'confirmemail_invalid'     => 'Бигэргэтии куода сыыһа эбэтэр болдьоҕо ааспыт.',
+'confirmemail_needlogin'   => '$1 - маны оҥордоххуна аадырыскын бигэргэтиэҥ.',
+'confirmemail_success'     => 'Электроннай аадырыһыҥ бигэргэтилиннэ.',
+'confirmemail_loggedin'    => 'Электроннай почтаҥ аадырыһа бигэргэтилиннэ.',
+'confirmemail_error'       => 'Бигэргэтии кэмигэр моһол таҕыста.',
+'confirmemail_subject'     => '{{SITENAME}}: эл. почта аадырыһын бигэргэтии',
+'confirmemail_body'        => 'Ким эрэ, баҕар эн буолуо бу IP-ттан: $1, {{SITENAME}} сиэрбэригэр
 «$2» диэн ааты бэлиэтээтэ уонна бу электроннай аадырыһы ыйда.
 
 Маны сөбүлэһэр буоллаххына бу ыйынньыгы: $3 баттаан
@@ -2166,6 +2233,8 @@ $1',
 Оттон бу туһунан тугу да билбэт буоллаххына бу ыйынньыгынан баран эл. почтаҕын сотон кэбис:
 
 $5',
+'confirmemail_invalidated' => 'Электроннай почта аадырыһын бигэргэтиини суох оҥоһулунна',
+'invalidateemail'          => 'Эл. почта бигэргэтээһинин араарга',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[Interwiki transcluding араҕыста]',
@@ -2208,7 +2277,7 @@ $1',
 'imgmultipageprev' => '← инники сирэй',
 'imgmultipagenext' => 'аныгыскы сирэй →',
 'imgmultigo'       => 'Көс!',
-'imgmultigotopre'  => 'Бу сирэйгэ көс',
+'imgmultigoto'     => 'Бу сирэйгэ көс $1',
 
 # Table pager
 'ascending_abbrev'         => 'улаатыннар',
@@ -2295,5 +2364,27 @@ $1',
 'filepath-summary' => 'Бу аналлаах сирэй билэ толору суолун (дисскэҕэ ханна сытарын) көрдөрөр.
 
 Билэ аатын префикса суох киллэр <code>{{ns:image}}:</code>.',
+
+# Special:FileDuplicateSearch
+'fileduplicatesearch'          => 'Хос билэлэри көрдөөһүн',
+'fileduplicatesearch-summary'  => 'Тэҥ билэлэри хэш-куодтарынан көрдөөһүн.
+
+Билэ аатын "{{ns:image}}:" префикса суох киллэр.',
+'fileduplicatesearch-legend'   => 'Хатылааһыннары көрдөөһүн',
+'fileduplicatesearch-filename' => 'Билэ аата:',
+'fileduplicatesearch-submit'   => 'Бул',
+'fileduplicatesearch-info'     => '$1 × $2 пииксэл<br />Билэ кээмэйэ: $3<br />MIME-тиип: $4',
+'fileduplicatesearch-result-1' => '"$1" билэ хатылааһыннара суох эбит.',
+'fileduplicatesearch-result-n' => '"$1" билэ {{PLURAL:$2|1 хатылааһыннаах эбит|$2 хатылааһыннардаах эбит}}.',
+
+# Special:SpecialPages
+'specialpages'                   => 'Анал сирэйдэр',
+'specialpages-group-maintenance' => 'Техническэй отчуоттар',
+'specialpages-group-other'       => 'Атын аналлаах сирэйдэр',
+'specialpages-group-login'       => 'Киирии / бэлиэтэнии',
+'specialpages-group-changes'     => 'Саҥа уларытыылар уонна сурунааллар',
+'specialpages-group-media'       => 'Медиа отчуоттар уонна киллэриилэр',
+'specialpages-group-users'       => 'Кыттааччылар уонна бырааптара',
+'specialpages-group-highuse'     => 'Элбэхтик туттуллар сирэйдэр',
 
 );

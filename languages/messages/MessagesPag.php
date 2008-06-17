@@ -1,7 +1,8 @@
 <?php
 /** Pangasinan (Pangasinan)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Arikasikis
  * @author SPQRobin
@@ -199,14 +200,13 @@ $messages = array(
 'randompage'         => 'Random ya bolong',
 'randompage-nopages' => 'Anggapoy bolong ya wadya ed ayan namespace.',
 
-'withoutinterwiki'        => 'Saray bolobolong ya anggapoy gawing ya language',
-'withoutinterwiki-header' => 'Anggapoy gawin paulad version na arum ran salita so ontombok ran bolobolong:',
+'withoutinterwiki'         => 'Saray bolobolong ya anggapoy gawing ya language',
+'withoutinterwiki-summary' => 'Anggapoy gawin paulad version na arum ran salita so ontombok ran bolobolong:',
 
 # Miscellaneous special pages
 'shortpages'     => 'Antikey ran bolong',
 'longpages'      => 'Andokoy ran bolong',
 'protectedpages' => 'Iyayagel ran bolobolong',
-'specialpages'   => 'Niduma ran bolobolong',
 'newpages'       => 'Balo ran bolong',
 'ancientpages'   => 'Sankadaanan ran bolobolong',
 'move'           => 'Iyales',
@@ -381,7 +381,6 @@ $1',
 # Multipage image navigation
 'imgmultipagenext' => 'ontombok ya bolong →',
 'imgmultigo'       => 'Ula!',
-'imgmultigotopre'  => 'Ula ed bolong',
 
 # Table pager
 'table_pager_next'         => 'Ontombok ya bolong',
@@ -399,5 +398,8 @@ $1',
 # Live preview
 'livepreview-loading' => 'Ilulugan…',
 'livepreview-ready'   => 'Ilulugan… Akaparaan!',
+
+# Special:SpecialPages
+'specialpages' => 'Niduma ran bolobolong',
 
 );

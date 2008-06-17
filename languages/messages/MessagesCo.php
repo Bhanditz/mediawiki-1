@@ -1,9 +1,11 @@
 <?php
 /** Corsican (Corsu)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author SPQRobin
+ * @author Siebrand
  */
 
 $messages = array(
@@ -63,7 +65,6 @@ $messages = array(
 'dec'           => 'dic',
 
 # Categories related messages
-'categories'      => 'Categurie',
 'pagecategories'  => '{{PLURAL:$1|Categuria|Categurie}}',
 'category_header' => 'Articuli in a categuria "$1"',
 'subcategories'   => 'Sottucategurie',
@@ -223,7 +224,7 @@ $messages = array(
 'files'             => 'Schedarii',
 
 # User rights
-'editinguser'             => 'Mudifica di $1',
+'editinguser'             => "Mudifica di '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-groupsmember' => 'Membru di:',
 
 # Groups
@@ -296,8 +297,6 @@ $messages = array(
 'longpages'         => 'Pagine longhe',
 'protectedpages'    => 'Pagine prutette',
 'listusers'         => 'Listinu di i cuntributori',
-'specialpages'      => 'Pagine spiciale',
-'spheading'         => 'Pagine spiciale per tutti i cuntributori',
 'newpages'          => 'Pagine nove',
 'ancientpages'      => 'Pagine vechje',
 
@@ -317,6 +316,9 @@ $messages = array(
 'allpagessubmit'    => 'Và',
 'allpagesprefix'    => 'Mustrà e pagine chì cumincianu cù:',
 'allpages-bad-ns'   => 'U spaziu "$1" ùn esiste micca nant\'à {{SITENAME}}',
+
+# Special:Categories
+'categories' => 'Categurie',
 
 # Special:Listusers
 'listusers-submit' => 'Mustrà',
@@ -495,5 +497,8 @@ $messages = array(
 
 # Special:Filepath
 'filepath-page' => 'Schedariu:',
+
+# Special:SpecialPages
+'specialpages' => 'Pagine spiciale',
 
 );

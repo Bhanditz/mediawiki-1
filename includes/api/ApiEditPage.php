@@ -31,7 +31,7 @@ if (!defined('MEDIAWIKI')) {
 /**
  * A query module to list all external URLs found on a given set of pages.
  *
- * @addtogroup API
+ * @ingroup API
  */
 class ApiEditPage extends ApiBase {
 
@@ -46,20 +46,22 @@ class ApiEditPage extends ApiBase {
 		$params = $this->extractRequestParams();
 		if(is_null($params['title']))
 			$this->dieUsageMsg(array('missingparam', 'title'));
-		if(is_null($params['text']))
-			$this->dieUsageMsg(array('missingparam', 'text'));
+		if(is_null($params['text']) && is_null($params['appendtext']) && is_null($params['prependtext']))
+			$this->dieUsageMsg(array('missingtext'));
 		if(is_null($params['token']))
 			$this->dieUsageMsg(array('missingparam', 'token'));
 		if(!$wgUser->matchEditToken($params['token']))
 			$this->dieUsageMsg(array('sessionfailure'));
-		
+
 		$titleObj = Title::newFromText($params['title']);
 		if(!$titleObj)
 			$this->dieUsageMsg(array('invalidtitle', $params['title']));
 
 		if($params['createonly'] && $titleObj->exists())
 			$this->dieUsageMsg(array('createonly-exists'));
-		
+		if($params['nocreate'] && !$titleObj->exists())
+			$this->dieUsageMsg(array('nocreate-missing'));
+
 		// Now let's check whether we're even allowed to do this
 		$errors = $titleObj->getUserPermissionsErrors('edit', $wgUser);
 		if(!$titleObj->exists())
@@ -68,8 +70,20 @@ class ApiEditPage extends ApiBase {
 			$this->dieUsageMsg($errors[0]);
 
 		$articleObj = new Article($titleObj);
-		$ep = new EditPage($articleObj);
+		$toMD5 = $params['text'];
+		if(!is_null($params['appendtext']) || !is_null($params['prependtext']))
+		{
+			$content = $articleObj->getContent();
+			$params['text'] = $params['prependtext'] . $content . $params['appendtext'];
+			$toMD5 = $params['prependtext'] . $params['appendtext'];
+		}
 
+		# See if the MD5 hash checks out
+		if(isset($params['md5']))
+			if(md5($toMD5) !== $params['md5'])
+				$this->dieUsageMsg(array('hashcheckfailed'));
+		
+		$ep = new EditPage($articleObj);
 		// EditPage wants to parse its stuff from a WebRequest
 		// That interface kind of sucks, but it's workable
 		$reqArr = array('wpTextbox1' => $params['text'],
@@ -90,10 +104,6 @@ class ApiEditPage extends ApiBase {
 			$reqArr['wpMinoredit'] = '';
 		if($params['recreate'])
 			$reqArr['wpRecreate'] = '';
-		if(!is_null($params['captchaid']))
-			$reqArr['wpCaptchaId'] = $params['captchaid'];
-		if(!is_null($params['captchaword']))
-			$reqArr['wpCaptchaWord'] = $params['captchaword'];
 		if(!is_null($params['section']))
 		{
 			$section = intval($params['section']);
@@ -101,7 +111,7 @@ class ApiEditPage extends ApiBase {
 				$this->dieUsage("The section parameter must be set to an integer or 'new'", "invalidsection");
 			$reqArr['wpSection'] = $params['section'];
 		}
-		
+
 		if($params['watch'])
 			$watch = true;
 		else if($params['unwatch'])
@@ -121,10 +131,12 @@ class ApiEditPage extends ApiBase {
 		$ep->importFormData($req);
 
 		# Run hooks
-		# We need to fake $wgRequest for some of them
+		# Handle CAPTCHA parameters
 		global $wgRequest;
-		$oldRequest = $wgRequest;
-		$wgRequest = $req;
+		if(isset($params['captchaid']))
+			$wgRequest->data['wpCaptchaId'] = $params['captchaid'];
+		if(isset($params['captchaword']))
+			$wgRequest->data['wpCaptchaWord'] = $params['captchaword'];
 		$r = array();
 		if(!wfRunHooks('APIEditBeforeSave', array(&$ep, $ep->textbox1, &$r)))
 		{
@@ -132,13 +144,12 @@ class ApiEditPage extends ApiBase {
 			{
 				$r['result'] = "Failure";
 				$this->getResult()->addValue(null, $this->getModuleName(), $r);
-				return; 
-			}	
+				return;
+			}
 			else
 				$this->dieUsageMsg(array('hookaborted'));
 		}
-		$wgRequest = $oldRequest;
-		
+
 		# Do the actual save
 		$oldRevId = $articleObj->getRevIdFetched();
 		$result = null;
@@ -146,8 +157,13 @@ class ApiEditPage extends ApiBase {
 		# but that breaks API mode detection through is_null($wgTitle)
 		global $wgTitle;
 		$wgTitle = null;
+		# Fake $wgRequest for some hooks inside EditPage
+		# FIXME: This interface SUCKS
+		$oldRequest = $wgRequest;
+		$wgRequest = $req;
+
 		$retval = $ep->internalAttemptSave($result, $wgUser->isAllowed('bot') && $params['bot']);
-		$this->getMain()->scheduleCommit();
+		$wgRequest = $oldRequest;
 		switch($retval)
 		{
 			case EditPage::AS_HOOK_ERROR:
@@ -210,6 +226,10 @@ class ApiEditPage extends ApiBase {
 		$this->getResult()->addValue(null, $this->getModuleName(), $r);
 	}
 
+	public function mustBePosted() {
+		return true;
+	}
+
 	protected function getDescription() {
 		return 'Create and edit pages.';
 	}
@@ -227,10 +247,14 @@ class ApiEditPage extends ApiBase {
 			'basetimestamp' => null,
 			'recreate' => false,
 			'createonly' => false,
+			'nocreate' => false,
 			'captchaword' => null,
 			'captchaid' => null,
 			'watch' => false,
 			'unwatch' => false,
+			'md5' => null,
+			'prependtext' => null,
+			'appendtext' => null,
 		);
 	}
 
@@ -240,7 +264,7 @@ class ApiEditPage extends ApiBase {
 			'section' => 'Section number. 0 for the top section, \'new\' for a new section',
 			'text' => 'Page content',
 			'token' => 'Edit token. You can get one of these through prop=info',
-			'summary' => 'Edit summary',
+			'summary' => 'Edit summary. Also section title when section=new',
 			'minor' => 'Minor edit',
 			'notminor' => 'Non-minor edit',
 			'bot' => 'Mark this edit as bot',
@@ -248,11 +272,17 @@ class ApiEditPage extends ApiBase {
 						'Used to detect edit conflicts; leave unset to ignore conflicts.'
 			),
 			'recreate' => 'Override any errors about the article having been deleted in the meantime',
-			'createonly' => 'Don\'t create the page if it exists already',
+			'createonly' => 'Don\'t edit the page if it exists already',
+			'nocreate' => 'Throw an error if the page doesn\'t exist',
 			'watch' => 'Add the page to your watchlist',
 			'unwatch' => 'Remove the page from your watchlist',
 			'captchaid' => 'CAPTCHA ID from previous request',
 			'captchaword' => 'Answer to the CAPTCHA',
+			'md5' => array(	'The MD5 hash of the text parameter, or the prependtext and appendtext parameters concatenated.',
+				 	'If set, the edit won\'t be done unless the hash is correct'),
+			'prependtext' => array( 'Add this text to the beginning of the page. Overrides text.',
+						'Don\'t use together with section: that won\'t do what you expect.'),
+			'appendtext' => 'Add this text to the end of the page. Overrides text',
 		);
 	}
 
@@ -264,6 +294,6 @@ class ApiEditPage extends ApiBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiEditPage.php 33133 2008-04-11 15:20:45Z catrope $';
+		return __CLASS__ . ': $Id$';
 	}
 }

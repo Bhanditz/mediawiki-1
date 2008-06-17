@@ -1,6 +1,6 @@
 <?php
 /**
-  * @addtogroup Language
+  * @ingroup Language
   *
   * @author Zhengzhu Feng <zhengzhu@gmail.com>
   * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
@@ -168,7 +168,7 @@ class LanguageConverter {
 		   3. place holders created by the parser
 		*/
 		global $wgParser;
-		if (isset($wgParser))
+		if (isset($wgParser) && $wgParser->UniqPrefix()!='')
 			$marker = '|' . $wgParser->UniqPrefix() . '[\-a-zA-Z0-9]+';
 		else
 			$marker = "";

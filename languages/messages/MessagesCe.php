@@ -1,12 +1,14 @@
 <?php
 /** Chechen (Нохчийн)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Girdi
  * @author Mega programmer
  * @author Chechenka
  * @author SPQRobin
+ * @author Siebrand
  */
 
 $fallback = 'ru';
@@ -55,7 +57,6 @@ $messages = array(
 'sat'       => 'Шот',
 
 # Categories related messages
-'categories'            => 'Тобаш',
 'pagecategories'        => '{{PLURAL:$1|Тоба|Тобаш}}',
 'category-media-header' => 'Файлош тобашахь «$1»',
 
@@ -186,7 +187,7 @@ $messages = array(
 'textboxsize'     => 'Xийца',
 
 # User rights
-'editinguser' => 'Хийца юзер <b>$1</b>',
+'editinguser' => "Хийца юзер '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 
 # Recent changes
 'recentchanges' => 'Керла хийцамаш',
@@ -212,7 +213,6 @@ $messages = array(
 # Miscellaneous special pages
 'nbytes'            => '$1 {{PLURAL:$1|байт|байтош|байтош}}',
 'ncategories'       => '$1 {{PLURAL:$1|тоба|тобаш|тоба}}',
-'specialpages'      => 'Спецтаптарш',
 'newpages'          => 'Керла таптараш',
 'newpages-username' => 'Юзер:',
 'move'              => 'цIe хийца',
@@ -224,6 +224,9 @@ $messages = array(
 'allpages'       => 'Массо таптараш',
 'allarticles'    => 'Массо таптараш',
 'allpagessubmit' => 'кхочушде',
+
+# Special:Categories
+'categories' => 'Тобаш',
 
 # E-mail user
 'emailuser'       => 'Кехат Язде Юзеран',
@@ -288,5 +291,8 @@ $messages = array(
 
 # Auto-summaries
 'autosumm-new' => 'Керла: $1',
+
+# Special:SpecialPages
+'specialpages' => 'Спецтаптарш',
 
 );

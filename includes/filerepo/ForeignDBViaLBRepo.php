@@ -2,10 +2,12 @@
 
 /**
  * A foreign repository with a MediaWiki database accessible via the configured LBFactory
+ * @ingroup FileRepo
  */
 class ForeignDBViaLBRepo extends LocalRepo {
 	var $wiki, $dbName, $tablePrefix;
 	var $fileFactory = array( 'ForeignDBFile', 'newFromTitle' );
+	var $fileFromRowFactory = array( 'ForeignDBFile', 'newFromRow' );
 
 	function __construct( $info ) {
 		parent::__construct( $info );

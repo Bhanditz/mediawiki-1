@@ -1,10 +1,12 @@
 <?php
 /** Guarani (Avañe'ẽ)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Hugo.arg
  * @author Nike
+ * @author Siebrand
  */
 
 $fallback = 'es';
@@ -62,7 +64,6 @@ $messages = array(
 'dec'          => 'jasypakõi',
 
 # Categories related messages
-'categories'     => 'Ñemohendakuéra',
 'pagecategories' => '{{PLURAL:$1|Ñemohenda|Ñemohendakuéra}}',
 
 'about'          => 'Rehegua',
@@ -138,24 +139,25 @@ $messages = array(
 'ns-specialprotected' => 'Las páginas en el espacio de nombres Especial no se pueden editar.',
 
 # Login and logout pages
-'loginpagetitle'     => 'Terañemboguapy/Ke',
-'yourname'           => 'Hero',
-'yourpassword'       => 'Ne remiñemi',
-'yourpasswordagain'  => 'Repita ne remiñemi',
-'remembermypassword' => "Aipota chemomandu'ajepi amba'apo jave.",
-'login'              => 'Terañemboguapy/Ke',
-'userlogin'          => 'Terañemboguapy/Ke',
-'logout'             => 'Sẽ',
-'userlogout'         => 'Sẽ',
-'nologin'            => "¿Ne'ĩrãpa remohenda nde réra? $1.",
-'nologinlink'        => 'Téra ñemohenda',
-'youremail'          => "Ñe'ẽveve",
-'yourlanguage'       => "Ñe'ẽ:",
-'email'              => 'Pareha eleytróniko',
-'loginsuccesstitle'  => 'Remoñepyrũ hekopete ne rembiapo',
-'nosuchusershort'    => 'No hay un usuario con el nombre "$1". Compruebe que lo ha escrito correctamente.',
-'mailmypassword'     => "Embou chéve ñe'ẽveve rupive peteĩ temiñemĩ pyahu",
-'loginlanguagelabel' => "Ñe'ẽ: $1",
+'loginpagetitle'          => 'Terañemboguapy/Ke',
+'yourname'                => 'Hero',
+'yourpassword'            => 'Ne remiñemi',
+'yourpasswordagain'       => 'Repita ne remiñemi',
+'remembermypassword'      => "Aipota chemomandu'ajepi amba'apo jave.",
+'login'                   => 'Terañemboguapy/Ke',
+'nav-login-createaccount' => 'Terañemboguapy/Ke',
+'userlogin'               => 'Terañemboguapy/Ke',
+'logout'                  => 'Sẽ',
+'userlogout'              => 'Sẽ',
+'nologin'                 => "¿Ne'ĩrãpa remohenda nde réra? $1.",
+'nologinlink'             => 'Téra ñemohenda',
+'youremail'               => "Ñe'ẽveve",
+'yourlanguage'            => "Ñe'ẽ:",
+'email'                   => 'Pareha eleytróniko',
+'loginsuccesstitle'       => 'Remoñepyrũ hekopete ne rembiapo',
+'nosuchusershort'         => 'No hay un usuario con el nombre "$1". Compruebe que lo ha escrito correctamente.',
+'mailmypassword'          => "Embou chéve ñe'ẽveve rupive peteĩ temiñemĩ pyahu",
+'loginlanguagelabel'      => "Ñe'ẽ: $1",
 
 # Edit page toolbar
 'bold_sample'   => 'Haipyre oñemohũvéva',
@@ -226,7 +228,7 @@ Aipórõ, eñeha'ãna emboja'o ne rembiapo, vore michĩvévape.</strong>",
 'userrights-lookup-user'     => 'Configurar grupos de usuarios',
 'userrights-user-editname'   => 'Ehaimi peteĩ téra puruháragua:',
 'editusergroup'              => 'Modificar grupos de usuarios',
-'editinguser'                => 'Ojehaihína $1',
+'editinguser'                => "Ojehaihína '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'   => 'Modificar grupos de usuarios',
 'saveusergroups'             => 'Guardar grupos de usuarios',
 'userrights-groupsmember'    => 'Pehengue:',
@@ -336,8 +338,6 @@ Reomĩsérõ ta'ãnga peteĩ kuatiaroguépe, eipuru peteĩ joaju:
 'deadendpages'            => "Kuatiarogue ñesẽ'ỹva",
 'protectedpages'          => 'Kuatiarogue oñeñangarekóva',
 'listusers'               => 'Puruhára rysýi',
-'specialpages'            => 'Kuatiarogue hekochĩchĩva',
-'spheading'               => 'Kuatiarogue hekochĩchĩva',
 'newpages'                => 'Kuatiarogue ipyahúva',
 'newpages-username'       => 'Hero',
 'ancientpages'            => "Kuatiahai hi'arevéva",
@@ -355,6 +355,9 @@ Reomĩsérõ ta'ãnga peteĩ kuatiaroguépe, eipuru peteĩ joaju:
 'allnotinnamespace' => 'Opaite kuatiarogue (fuera del espacio $1)',
 'allpagesnext'      => 'Upeigua',
 'allpagessubmit'    => 'Hechauka',
+
+# Special:Categories
+'categories' => 'Ñemohendakuéra',
 
 # Special:Listusers
 'listusers-submit' => 'Hechauka',
@@ -476,5 +479,8 @@ Reomĩsérõ ta'ãnga peteĩ kuatiaroguépe, eipuru peteĩ joaju:
 'filepath'        => 'Ruta de archivo',
 'filepath-page'   => 'Archivo:',
 'filepath-submit' => 'Ruta',
+
+# Special:SpecialPages
+'specialpages' => 'Kuatiarogue hekochĩchĩva',
 
 );

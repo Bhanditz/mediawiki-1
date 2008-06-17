@@ -2,8 +2,8 @@
 
 /**
  * A repository for files accessible via InstantCommons.
+ * @ingroup FileRepo
  */
-
 class ICRepo extends LocalRepo {
 	var $directory, $url, $hashLevels, $cache;
 	var $fileFactory = array( 'ICFile', 'newFromTitle' );
@@ -239,7 +239,7 @@ class ICFile extends LocalFile{
 				'img_minor_mime' => $minor,
 				'img_timestamp' => $timestamp,
 				'img_description' => $comment,
-				'img_user' => $wgUser->getID(),
+				'img_user' => $wgUser->getId(),
 				'img_user_text' => $wgUser->getName(),
 				'img_metadata' => $this->metadata,
 			),
@@ -261,7 +261,7 @@ class ICFile extends LocalFile{
 					'img_minor_mime' => $this->minor_mime,
 					'img_timestamp' => $timestamp,
 					'img_description' => $comment,
-					'img_user' => $wgUser->getID(),
+					'img_user' => $wgUser->getId(),
 					'img_user_text' => $wgUser->getName(),
 					'img_metadata' => $this->metadata,
 				), array( /* WHERE */
@@ -286,6 +286,9 @@ class ICFile extends LocalFile{
 			# Create a null revision
 			$nullRevision = Revision::newNullRevision( $dbw, $descTitle->getArticleId(), $log->getRcComment(), false );
 			$nullRevision->insertOn( $dbw );
+			
+			wfRunHooks( 'NewRevisionFromEditComplete', array($article, $nullRevision, false) );
+			
 			$article->updateRevisionOn( $dbw, $nullRevision );
 
 			# Invalidate the cache for the description page
@@ -304,6 +307,4 @@ class ICFile extends LocalFile{
 
 		return true;
 	}
-
 }
-

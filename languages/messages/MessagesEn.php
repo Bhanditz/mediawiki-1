@@ -339,6 +339,7 @@ $magicWords = array(
 	'tag'                    => array( 0,    'tag'                    ),
 	'hiddencat'              => array( 1,    '__HIDDENCAT__'          ),
 	'pagesincategory'        => array( 1,    'PAGESINCATEGORY', 'PAGESINCAT' ),
+	'pagesize'               => array( 1,    'PAGESIZE'               ),
 );
 
 /**
@@ -375,6 +376,7 @@ $specialPageAliases = array(
 	'Unusedimages'              => array( 'UnusedImages' ),
 	'Wantedpages'               => array( 'WantedPages', 'BrokenLinks' ),
 	'Wantedcategories'          => array( 'WantedCategories' ),
+	'Missingfiles'              => array( 'MissingFiles', 'MissingImages' ),
 	'Mostlinked'                => array( 'MostLinked' ),
 	'Mostlinkedcategories'      => array( 'MostLinkedCategories', 'MostUsedCategories' ),
 	'Mostlinkedtemplates'       => array( 'MostLinkedTemplates', 'MostUsedTemplates' ),
@@ -437,7 +439,7 @@ $specialPageAliases = array(
  * Regular expression matching the "link trail", e.g. "ed" in [[Toast]]ed, as
  * the first group, and the remainder of the string as the second group.
  */
-$linkTrail = '/^([a-z]+)(.*)$/sD';
+$linkTrail = '/^(\'?\p{L&}+)(.*)$/usD';
 
 #-------------------------------------------------------------------
 # Default messages
@@ -494,8 +496,8 @@ XHTML id names.
 'tog-enotifrevealaddr'        => 'Reveal my e-mail address in notification e-mails',
 'tog-shownumberswatching'     => 'Show the number of watching users',
 'tog-fancysig'                => 'Raw signatures (without automatic link)',
-'tog-externaleditor'          => 'Use external editor by default',
-'tog-externaldiff'            => 'Use external diff by default',
+'tog-externaleditor'          => 'Use external editor by default (for experts only, needs special settings on your computer)',
+'tog-externaldiff'            => 'Use external diff by default (for experts only, needs special settings on your computer)',
 'tog-showjumplinks'           => 'Enable "jump to" accessibility links',
 'tog-uselivepreview'          => 'Use live preview (JavaScript) (Experimental)',
 'tog-forceeditsummary'        => 'Prompt me when entering a blank edit summary',
@@ -566,10 +568,6 @@ XHTML id names.
 'dec'           => 'Dec',
 
 # Categories related messages
-'categories'                     => 'Categories',
-'categoriespagetext'             => 'The following categories contain pages or media.',
-'special-categories-sort-count'  => 'sort by count',
-'special-categories-sort-abc'    => 'sort alphabetically',
 'pagecategories'                 => '{{PLURAL:$1|Category|Categories}}',
 'pagecategorieslink'             => 'Special:Categories', # do not translate or duplicate this message to other languages
 'category_header'                => 'Pages in category "$1"',
@@ -665,7 +663,7 @@ XHTML id names.
 'otherlanguages'    => 'In other languages',
 'redirectedfrom'    => '(Redirected from $1)',
 'redirectpagesub'   => 'Redirect page',
-'lastmodifiedat'    => 'This page was last modified $2, $1.', # $1 date, $2 time
+'lastmodifiedat'    => 'This page was last modified on $1, at $2.', # $1 date, $2 time
 'viewcount'         => 'This page has been accessed {{PLURAL:$1|once|$1 times}}.',
 'protectedpage'     => 'Protected page',
 'jumpto'            => 'Jump to:',
@@ -761,7 +759,7 @@ XHTML id names.
 'nosuchspecialpage' => 'No such special page',
 'nospecialpagetext' => "<big>'''You have requested an invalid special page.'''</big>
 
-A list of valid special pages can be found at [[Special:Specialpages]].",
+A list of valid special pages can be found at [[Special:Specialpages|{{int:specialpages}}]].",
 
 # General errors
 'error'                => 'Error',
@@ -787,12 +785,14 @@ $1',
 'readonlytext'         => 'The database is currently locked to new entries and other modifications, probably for routine database maintenance, after which it will be back to normal.
 
 The administrator who locked it offered this explanation: $1',
-'missingarticle'       => 'The database did not find the text of a page that it should have found, named "$1".
+'missing-article'      => 'The database did not find the text of a page that it should have found, named "$1" $2.
 
 This is usually caused by following an outdated diff or history link to a page that has been deleted.
 
 If this is not the case, you may have found a bug in the software.
 Please report this to an administrator, making note of the URL.',
+'missingarticle-rev'   => '(revision#: $1)',
+'missingarticle-diff'  => '(Diff: $1, $2)',
 'readonly_lag'         => 'The database has been automatically locked while the slave database servers catch up to the master',
 'internalerror'        => 'Internal error',
 'internalerror_info'   => 'Internal error: $1',
@@ -855,6 +855,7 @@ Do not forget to change your {{SITENAME}} preferences.',
 'externaldberror'            => 'There was either an external authentication database error or you are not allowed to update your external account.',
 'loginproblem'               => '<b>There has been a problem with your login.</b><br />Try again!',
 'login'                      => 'Log in',
+'nav-login-createaccount'    => 'Log in / create account',
 'loginprompt'                => 'You must have cookies enabled to log in to {{SITENAME}}.',
 'userlogin'                  => 'Log in / create account',
 'logout'                     => 'Log out',
@@ -872,12 +873,14 @@ Please choose a different name.',
 'youremail'                  => 'E-mail:',
 'username'                   => 'Username:',
 'uid'                        => 'User ID:',
+'prefs-memberingroups'       => 'Member of {{PLURAL:$1|group|groups}}:',
 'yourrealname'               => 'Real name:',
 'yourlanguage'               => 'Language:',
 'yourvariant'                => 'Variant:', # only translate this message to other languages if you have to change it
-'yournick'                   => 'Nickname:',
+'yournick'                   => 'Signature:',
 'badsig'                     => 'Invalid raw signature; check HTML tags.',
-'badsiglength'               => 'Nickname too long; must be under $1 characters.',
+'badsiglength'               => 'The signature is too long.
+It must be under $1 {{PLURAL:$1|character|characters}}.',
 'email'                      => 'E-mail',
 'prefs-help-realname'        => 'Real name is optional.
 If you choose to provide it, this will be used for giving you attribution for your work.',
@@ -902,7 +905,7 @@ Check your spelling.',
 'wrongpassword'              => 'Incorrect password entered. Please try again.',
 'wrongpasswordempty'         => 'Password entered was blank. Please try again.',
 'passwordtooshort'           => 'Your password is invalid or too short.
-It must have at least $1 characters and be different from your username.',
+It must have at least {{PLURAL:$1|1 character|$1 characters}} and be different from your username.',
 'mailmypassword'             => 'E-mail password',
 'passwordremindertitle'      => 'New temporary password for {{SITENAME}}',
 'passwordremindertext'       => 'Someone (probably you, from IP address $1)
@@ -917,8 +920,8 @@ Please log in again after you receive it.',
 'blocked-mailpassword'       => 'Your IP address is blocked from editing, and so is not allowed to use the password recovery function to prevent abuse.',
 'eauthentsent'               => 'A confirmation e-mail has been sent to the nominated e-mail address.
 Before any other e-mail is sent to the account, you will have to follow the instructions in the e-mail, to confirm that the account is actually yours.',
-'throttled-mailpassword'     => 'A password reminder has already been sent, within the last $1 hours.
-To prevent abuse, only one password reminder will be sent per $1 hours.',
+'throttled-mailpassword'     => 'A password reminder has already been sent, within the last {{PLURAL:$1|hour|$1 hours}}.
+To prevent abuse, only one password reminder will be sent per {{PLURAL:$1|hour|$1 hours}}.',
 'loginstart'                 => '', # do not translate or duplicate this message to other languages
 'loginend'                   => '', # do not translate or duplicate this message to other languages
 'signupend'                  => '{{int:loginend}}', # do not translate or duplicate this message to other languages
@@ -984,26 +987,26 @@ You may have already successfully changed your password or requested a new tempo
 'hr_tip'          => 'Horizontal line (use sparingly)',
 
 # Edit pages
-'summary'                           => 'Summary',
-'subject'                           => 'Subject/headline',
-'minoredit'                         => 'This is a minor edit',
-'watchthis'                         => 'Watch this page',
-'savearticle'                       => 'Save page',
-'preview'                           => 'Preview',
-'showpreview'                       => 'Show preview',
-'showlivepreview'                   => 'Live preview',
-'showdiff'                          => 'Show changes',
-'anoneditwarning'                   => "'''Warning:''' You are not logged in.
+'summary'                          => 'Summary',
+'subject'                          => 'Subject/headline',
+'minoredit'                        => 'This is a minor edit',
+'watchthis'                        => 'Watch this page',
+'savearticle'                      => 'Save page',
+'preview'                          => 'Preview',
+'showpreview'                      => 'Show preview',
+'showlivepreview'                  => 'Live preview',
+'showdiff'                         => 'Show changes',
+'anoneditwarning'                  => "'''Warning:''' You are not logged in.
 Your IP address will be recorded in this page's edit history.",
-'missingsummary'                    => "'''Reminder:''' You have not provided an edit summary.
+'missingsummary'                   => "'''Reminder:''' You have not provided an edit summary.
 If you click Save again, your edit will be saved without one.",
-'missingcommenttext'                => 'Please enter a comment below.',
-'missingcommentheader'              => "'''Reminder:''' You have not provided a subject/headline for this comment.
+'missingcommenttext'               => 'Please enter a comment below.',
+'missingcommentheader'             => "'''Reminder:''' You have not provided a subject/headline for this comment.
 If you click Save again, your edit will be saved without one.",
-'summary-preview'                   => 'Summary preview',
-'subject-preview'                   => 'Subject/headline preview',
-'blockedtitle'                      => 'User is blocked',
-'blockedtext'                       => "<big>'''Your user name or IP address has been blocked.'''</big>
+'summary-preview'                  => 'Summary preview',
+'subject-preview'                  => 'Subject/headline preview',
+'blockedtitle'                     => 'User is blocked',
+'blockedtext'                      => "<big>'''Your user name or IP address has been blocked.'''</big>
 
 The block was made by $1. The reason given is ''$2''.
 
@@ -1014,7 +1017,7 @@ The block was made by $1. The reason given is ''$2''.
 You can contact $1 or another [[{{MediaWiki:Grouppage-sysop}}|administrator]] to discuss the block.
 You cannot use the 'e-mail this user' feature unless a valid e-mail address is specified in your [[Special:Preferences|account preferences]] and you have not been blocked from using it.
 Your current IP address is $3, and the block ID is #$5. Please include either or both of these in any queries.",
-'autoblockedtext'                   => 'Your IP address has been automatically blocked because it was used by another user, who was blocked by $1.
+'autoblockedtext'                  => 'Your IP address has been automatically blocked because it was used by another user, who was blocked by $1.
 The reason given is this:
 
 :\'\'$2\'\'
@@ -1028,126 +1031,137 @@ Note that you may not use the "e-mail this user" feature unless you have a valid
 
 Your block ID is $5.
 Please include this ID in any queries you make.',
-'blockednoreason'                   => 'no reason given',
-'blockedoriginalsource'             => "The source of '''$1''' is shown below:",
-'blockededitsource'                 => "The text of '''your edits''' to '''$1''' is shown below:",
-'whitelistedittitle'                => 'Login required to edit',
-'whitelistedittext'                 => 'You have to $1 to edit pages.',
-'whitelistreadtitle'                => 'Login required to read',
-'whitelistreadtext'                 => 'You have to [[Special:Userlogin|login]] to read pages.',
-'whitelistacctitle'                 => 'You are not allowed to create an account',
-'whitelistacctext'                  => 'To be allowed to create accounts in {{SITENAME}} you have to [[Special:Userlogin|log]] in and have the appropriate permissions.',
-'confirmedittitle'                  => 'E-mail confirmation required to edit',
-'confirmedittext'                   => 'You must confirm your e-mail address before editing pages.
+'blockednoreason'                  => 'no reason given',
+'blockedoriginalsource'            => "The source of '''$1''' is shown below:",
+'blockededitsource'                => "The text of '''your edits''' to '''$1''' is shown below:",
+'whitelistedittitle'               => 'Login required to edit',
+'whitelistedittext'                => 'You have to $1 to edit pages.',
+'whitelistreadtitle'               => 'Login required to read',
+'whitelistreadtext'                => 'You have to [[Special:Userlogin|login]] to read pages.',
+'whitelistacctitle'                => 'You are not allowed to create an account',
+'whitelistacctext'                 => 'To be allowed to create accounts in {{SITENAME}} you have to [[Special:Userlogin|log]] in and have the appropriate permissions.',
+'confirmedittitle'                 => 'E-mail confirmation required to edit',
+'confirmedittext'                  => 'You must confirm your e-mail address before editing pages.
 Please set and validate your e-mail address through your [[Special:Preferences|user preferences]].',
-'nosuchsectiontitle'                => 'No such section',
-'nosuchsectiontext'                 => 'You tried to edit a section that does not exist.
+'nosuchsectiontitle'               => 'No such section',
+'nosuchsectiontext'                => 'You tried to edit a section that does not exist.
 Since there is no section $1, there is no place to save your edit.',
-'loginreqtitle'                     => 'Login Required',
-'loginreqlink'                      => 'log in',
-'loginreqpagetext'                  => 'You must $1 to view other pages.',
-'accmailtitle'                      => 'Password sent.',
-'accmailtext'                       => 'The password for "$1" has been sent to $2.',
-'newarticle'                        => '(New)',
-'newarticletext'                    => "You have followed a link to a page that does not exist yet.
+'loginreqtitle'                    => 'Login Required',
+'loginreqlink'                     => 'log in',
+'loginreqpagetext'                 => 'You must $1 to view other pages.',
+'accmailtitle'                     => 'Password sent.',
+'accmailtext'                      => 'The password for "$1" has been sent to $2.',
+'newarticle'                       => '(New)',
+'newarticletext'                   => "You have followed a link to a page that does not exist yet.
 To create the page, start typing in the box below (see the [[{{MediaWiki:Helppage}}|help page]] for more info).
 If you are here by mistake, just click your browser's '''back''' button.",
-'newarticletextanon'                => '{{int:newarticletext}}', # do not translate or duplicate this message to other languages
-'talkpagetext'                      => '<!-- MediaWiki:talkpagetext -->', # do not translate or duplicate this message to other languages
-'anontalkpagetext'                  => "----''This is the discussion page for an anonymous user who has not created an account yet or who does not use it. We therefore have to use the numerical IP address to identify him/her.
+'newarticletextanon'               => '{{int:newarticletext}}', # do not translate or duplicate this message to other languages
+'talkpagetext'                     => '<!-- MediaWiki:talkpagetext -->', # do not translate or duplicate this message to other languages
+'anontalkpagetext'                 => "----''This is the discussion page for an anonymous user who has not created an account yet or who does not use it. We therefore have to use the numerical IP address to identify him/her.
 Such an IP address can be shared by several users.
 If you are an anonymous user and feel that irrelevant comments have been directed at you, please [[Special:Userlogin|create an account or log in]] to avoid future confusion with other anonymous users.''",
-'noarticletext'                     => 'There is currently no text in this page, you can [[Special:Search/{{PAGENAME}}|search for this page title]] in other pages or [{{fullurl:{{FULLPAGENAME}}|action=edit}} edit this page].',
-'noarticletextanon'                 => '{{int:noarticletext}}', # do not translate or duplicate this message to other languages
-'userpage-userdoesnotexist'         => 'User account "$1" is not registered. Please check if you want to create/edit this page.',
-'clearyourcache'                    => "'''Note:''' After saving, you may have to bypass your browser's cache to see the changes. '''Mozilla / Firefox / Safari:''' hold down ''Shift'' while clicking ''Reload'', or press ''Ctrl-Shift-R'' (''Cmd-Shift-R'' on Apple Mac); '''IE:''' hold ''Ctrl'' while clicking ''Refresh'', or press ''Ctrl-F5''; '''Konqueror:''': simply click the ''Reload'' button, or press ''F5''; '''Opera''' users may need to completely clear their cache in ''Tools→Preferences''.",
-'usercssjsyoucanpreview'            => "<strong>Tip:</strong> Use the 'Show preview' button to test your new CSS/JS before saving.",
-'usercsspreview'                    => "'''Remember that you are only previewing your user CSS, it has not yet been saved!'''",
-'userjspreview'                     => "'''Remember that you are only testing/previewing your user JavaScript, it has not yet been saved!'''",
-'userinvalidcssjstitle'             => "'''Warning:''' There is no skin \"\$1\".
+'noarticletext'                    => 'There is currently no text in this page, you can [[Special:Search/{{PAGENAME}}|search for this page title]] in other pages or [{{fullurl:{{FULLPAGENAME}}|action=edit}} edit this page].',
+'noarticletextanon'                => '{{int:noarticletext}}', # do not translate or duplicate this message to other languages
+'userpage-userdoesnotexist'        => 'User account "$1" is not registered. Please check if you want to create/edit this page.',
+'clearyourcache'                   => "'''Note:''' After saving, you may have to bypass your browser's cache to see the changes. '''Mozilla / Firefox / Safari:''' hold down ''Shift'' while clicking ''Reload'', or press ''Ctrl-Shift-R'' (''Cmd-Shift-R'' on Apple Mac); '''IE:''' hold ''Ctrl'' while clicking ''Refresh'', or press ''Ctrl-F5''; '''Konqueror:''': simply click the ''Reload'' button, or press ''F5''; '''Opera''' users may need to completely clear their cache in ''Tools→Preferences''.",
+'usercssjsyoucanpreview'           => "<strong>Tip:</strong> Use the 'Show preview' button to test your new CSS/JS before saving.",
+'usercsspreview'                   => "'''Remember that you are only previewing your user CSS, it has not yet been saved!'''",
+'userjspreview'                    => "'''Remember that you are only testing/previewing your user JavaScript, it has not yet been saved!'''",
+'userinvalidcssjstitle'            => "'''Warning:''' There is no skin \"\$1\".
 Remember that custom .css and .js pages use a lowercase title, e.g. {{ns:user}}:Foo/monobook.css as opposed to {{ns:user}}:Foo/Monobook.css.",
-'updated'                           => '(Updated)',
-'note'                              => '<strong>Note:</strong>',
-'previewnote'                       => '<strong>This is only a preview;
+'updated'                          => '(Updated)',
+'note'                             => '<strong>Note:</strong>',
+'previewnote'                      => '<strong>This is only a preview;
 changes have not yet been saved!</strong>',
-'previewconflict'                   => 'This preview reflects the text in the upper text editing area as it will appear if you choose to save.',
-'session_fail_preview'              => '<strong>Sorry! We could not process your edit due to a loss of session data.
+'previewconflict'                  => 'This preview reflects the text in the upper text editing area as it will appear if you choose to save.',
+'session_fail_preview'             => '<strong>Sorry! We could not process your edit due to a loss of session data.
 Please try again. If it still does not work, try logging out and logging back in.</strong>',
-'session_fail_preview_html'         => "<strong>Sorry! We could not process your edit due to a loss of session data.</strong>
+'session_fail_preview_html'        => "<strong>Sorry! We could not process your edit due to a loss of session data.</strong>
 
 ''Because {{SITENAME}} has raw HTML enabled, the preview is hidden as a precaution against JavaScript attacks.''
 
 <strong>If this is a legitimate edit attempt, please try again. If it still does not work, try logging out and logging back in.</strong>",
-'token_suffix_mismatch'             => '<strong>Your edit has been rejected because your client mangled the punctuation characters in the edit token.
+'token_suffix_mismatch'            => '<strong>Your edit has been rejected because your client mangled the punctuation characters in the edit token.
 The edit has been rejected to prevent corruption of the page text.
 This sometimes happens when you are using a buggy web-based anonymous proxy service.</strong>',
-'editing'                           => 'Editing $1',
-'editingsection'                    => 'Editing $1 (section)',
-'editingcomment'                    => 'Editing $1 (comment)',
-'editconflict'                      => 'Edit conflict: $1',
-'explainconflict'                   => "Someone else has changed this page since you started editing it.
+'editing'                          => 'Editing $1',
+'editingsection'                   => 'Editing $1 (section)',
+'editingcomment'                   => 'Editing $1 (comment)',
+'editconflict'                     => 'Edit conflict: $1',
+'explainconflict'                  => "Someone else has changed this page since you started editing it.
 The upper text area contains the page text as it currently exists.
 Your changes are shown in the lower text area.
 You will have to merge your changes into the existing text.
 '''Only''' the text in the upper text area will be saved when you press \"Save page\".",
-'yourtext'                          => 'Your text',
-'storedversion'                     => 'Stored version',
-'nonunicodebrowser'                 => '<strong>WARNING: Your browser is not unicode compliant.
+'yourtext'                         => 'Your text',
+'storedversion'                    => 'Stored version',
+'nonunicodebrowser'                => '<strong>WARNING: Your browser is not unicode compliant.
 A workaround is in place to allow you to safely edit pages: non-ASCII characters will appear in the edit box as hexadecimal codes.</strong>',
-'editingold'                        => '<strong>WARNING: You are editing an out-of-date revision of this page.
+'editingold'                       => '<strong>WARNING: You are editing an out-of-date revision of this page.
 If you save it, any changes made since this revision will be lost.</strong>',
-'yourdiff'                          => 'Differences',
-'copyrightwarning'                  => 'Please note that all contributions to {{SITENAME}} are considered to be released under the $2 (see $1 for details).
+'yourdiff'                         => 'Differences',
+'copyrightwarning'                 => 'Please note that all contributions to {{SITENAME}} are considered to be released under the $2 (see $1 for details).
 If you do not want your writing to be edited mercilessly and redistributed at will, then do not submit it here.<br />
 You are also promising us that you wrote this yourself, or copied it from a public domain or similar free resource.
 <strong>DO NOT SUBMIT COPYRIGHTED WORK WITHOUT PERMISSION!</strong>',
-'copyrightwarning2'                 => 'Please note that all contributions to {{SITENAME}} may be edited, altered, or removed by other contributors.
+'copyrightwarning2'                => 'Please note that all contributions to {{SITENAME}} may be edited, altered, or removed by other contributors.
 If you do not want your writing to be edited mercilessly, then do not submit it here.<br />
 You are also promising us that you wrote this yourself, or copied it from a public domain or similar free resource (see $1 for details).
 <strong>DO NOT SUBMIT COPYRIGHTED WORK WITHOUT PERMISSION!</strong>',
-'longpagewarning'                   => '<strong>WARNING: This page is $1 kilobytes long;
+'longpagewarning'                  => '<strong>WARNING: This page is $1 kilobytes long;
 some browsers may have problems editing pages approaching or longer than 32kb.
 Please consider breaking the page into smaller sections.</strong>',
-'longpageerror'                     => '<strong>ERROR: The text you have submitted is $1 kilobytes long, which is longer than the maximum of $2 kilobytes.
+'longpageerror'                    => '<strong>ERROR: The text you have submitted is $1 kilobytes long, which is longer than the maximum of $2 kilobytes.
 It cannot be saved.</strong>',
-'readonlywarning'                   => '<strong>WARNING: The database has been locked for maintenance, so you will not be able to save your edits right now.
+'readonlywarning'                  => '<strong>WARNING: The database has been locked for maintenance, so you will not be able to save your edits right now.
 You may wish to cut-n-paste the text into a text file and save it for later.</strong>',
-'protectedpagewarning'              => '<strong>WARNING:  This page has been locked so that only users with sysop privileges can edit it.</strong>',
-'semiprotectedpagewarning'          => "'''Note:''' This page has been locked so that only registered users can edit it.",
-'cascadeprotectedwarning'           => "'''Warning:''' This page has been locked so that only users with sysop privileges can edit it, because it is included in the following cascade-protected {{PLURAL:$1|page|pages}}:",
-'titleprotectedwarning'             => '<strong>WARNING:  This page has been locked so that only some users can create it.</strong>',
-'templatesused'                     => 'Templates used on this page:',
-'templatesusedpreview'              => 'Templates used in this preview:',
-'templatesusedsection'              => 'Templates used in this section:',
-'template-protected'                => '(protected)',
-'template-semiprotected'            => '(semi-protected)',
-'hiddencategories'                  => 'This page is a member of {{PLURAL:$1|1 hidden category|$1 hidden categories}}:',
-'edittools'                         => '<!-- Text here will be shown below edit and upload forms. -->', # only translate this message to other languages if you have to change it
-'nocreatetitle'                     => 'Page creation limited',
-'nocreatetext'                      => '{{SITENAME}} has restricted the ability to create new pages.
+'protectedpagewarning'             => '<strong>WARNING:  This page has been locked so that only users with sysop privileges can edit it.</strong>',
+'semiprotectedpagewarning'         => "'''Note:''' This page has been locked so that only registered users can edit it.",
+'cascadeprotectedwarning'          => "'''Warning:''' This page has been locked so that only users with sysop privileges can edit it, because it is included in the following cascade-protected {{PLURAL:$1|page|pages}}:",
+'titleprotectedwarning'            => '<strong>WARNING:  This page has been locked so that only some users can create it.</strong>',
+'templatesused'                    => 'Templates used on this page:',
+'templatesusedpreview'             => 'Templates used in this preview:',
+'templatesusedsection'             => 'Templates used in this section:',
+'template-protected'               => '(protected)',
+'template-semiprotected'           => '(semi-protected)',
+'hiddencategories'                 => 'This page is a member of {{PLURAL:$1|1 hidden category|$1 hidden categories}}:',
+'edittools'                        => '<!-- Text here will be shown below edit and upload forms. -->', # only translate this message to other languages if you have to change it
+'nocreatetitle'                    => 'Page creation limited',
+'nocreatetext'                     => '{{SITENAME}} has restricted the ability to create new pages.
 You can go back and edit an existing page, or [[Special:Userlogin|log in or create an account]].',
-'nocreate-loggedin'                 => 'You do not have permission to create new pages on {{SITENAME}}.',
-'permissionserrors'                 => 'Permissions Errors',
-'permissionserrorstext'             => 'You do not have permission to do that, for the following {{PLURAL:$1|reason|reasons}}:',
-'recreate-deleted-warn'             => "'''Warning: You are recreating a page that was previously deleted.'''
+'nocreate-loggedin'                => 'You do not have permission to create new pages on {{SITENAME}}.',
+'permissionserrors'                => 'Permissions Errors',
+'permissionserrorstext'            => 'You do not have permission to do that, for the following {{PLURAL:$1|reason|reasons}}:',
+'permissionserrorstext-withaction' => 'You do not have permission to $2, for the following {{PLURAL:$1|reason|reasons}}:',
+'recreate-deleted-warn'            => "'''Warning: You are recreating a page that was previously deleted.'''
 
 You should consider whether it is appropriate to continue editing this page.
 The deletion log for this page is provided here for convenience:",
-'expensive-parserfunction-warning'  => 'Warning: This page contains too many expensive parser function calls.
+
+# Parser/template warnings
+'expensive-parserfunction-warning'        => 'Warning: This page contains too many expensive parser function calls.
 
 It should have less than $2, there are now $1.',
-'expensive-parserfunction-category' => 'Pages with too many expensive parser function calls',
+'expensive-parserfunction-category'       => 'Pages with too many expensive parser function calls',
+'post-expand-template-inclusion-warning'  => 'Warning: Template include size is too large.
+Some templates will not be included.',
+'post-expand-template-inclusion-category' => 'Pages where template include size is exceeded',
+'post-expand-template-argument-warning'   => 'Warning: This page contains at least one template argument which has a too large expansion size.
+These arguments have been omitted.',
+'post-expand-template-argument-category'  => 'Pages containing omitted template arguments',
 
 # "Undo" feature
 'undo-success' => 'The edit can be undone. Please check the comparison below to verify that this is what you want to do, and then save the changes below to finish undoing the edit.',
 'undo-failure' => 'The edit could not be undone due to conflicting intermediate edits.',
+'undo-norev'   => 'The edit could not be undone because it does not exist or was deleted.',
 'undo-summary' => 'Undo revision $1 by [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]])',
 
 # Account creation failure
-'cantcreateaccounttitle' => 'Cannot create account',
-'cantcreateaccount-text' => "Account creation from this IP address ('''$1''') has been blocked by [[User:$3|$3]].
+'cantcreateaccounttitle'          => 'Cannot create account',
+'cantcreateaccount-text'          => "Account creation from this IP address ('''$1''') has been blocked by [[User:$3|$3]].
 
 The reason given by $3 is ''$2''",
+'cantcreateaccount-nonblock-text' => '', # do not translate or duplicate this message to other languages
 
 # History pages
 'viewpagelogs'          => 'View logs for this page',
@@ -1236,7 +1250,8 @@ Other admins on {{SITENAME}} will still be able to access the hidden content and
 
 # Suppression log
 'suppressionlog'     => 'Suppression log',
-'suppressionlogtext' => 'Below is a list of the most recent deletions and blocks involving content hidden from sysops. See the [[Special:Ipblocklist|IP block list]] for the list of currently operational bans and blocks.',
+'suppressionlogtext' => 'Below is a list of deletions and blocks involving content hidden from sysops.
+See the [[Special:Ipblocklist|IP block list]] for the list of currently operational bans and blocks.',
 
 # History merging
 'mergehistory'                     => 'Merge page histories',
@@ -1276,39 +1291,50 @@ Note that using the navigation links will reset this column.',
 'diff-multi'              => '({{PLURAL:$1|One intermediate revision|$1 intermediate revisions}} not shown.)',
 
 # Search results
-'searchresults'         => 'Search results',
-'searchresulttext'      => 'For more information about searching {{SITENAME}}, see [[{{MediaWiki:Helppage}}|{{int:help}}]].',
-'searchsubtitle'        => "You searched for '''[[:$1]]'''",
-'searchsubtitleinvalid' => "You searched for '''$1'''",
-'noexactmatch'          => "'''There is no page titled \"\$1\".'''
+'searchresults'             => 'Search results',
+'searchresulttext'          => 'For more information about searching {{SITENAME}}, see [[{{MediaWiki:Helppage}}|{{int:help}}]].',
+'searchsubtitle'            => "You searched for '''[[:$1]]'''",
+'searchsubtitleinvalid'     => "You searched for '''$1'''",
+'noexactmatch'              => "'''There is no page titled \"\$1\".'''
 You can [[:\$1|create this page]].",
-'noexactmatch-nocreate' => "'''There is no page titled \"\$1\".'''",
-'toomanymatches'        => 'Too many matches were returned, please try a different query',
-'titlematches'          => 'Page title matches',
-'notitlematches'        => 'No page title matches',
-'textmatches'           => 'Page text matches',
-'notextmatches'         => 'No page text matches',
-'prevn'                 => 'previous $1',
-'nextn'                 => 'next $1',
-'viewprevnext'          => 'View ($1) ($2) ($3)',
-'search-result-size'    => '$1 ({{PLURAL:$2|1 word|$2 words}})',
-'search-result-score'   => 'Relevance: $1%',
-'search-redirect'       => '(redirect $1)',
-'search-section'        => '(section $1)',
-'search-suggest'        => 'Did you mean: $1',
-'searchall'             => 'all',
-'showingresults'        => "Showing below up to {{PLURAL:$1|'''1''' result|'''$1''' results}} starting with #'''$2'''.",
-'showingresultsnum'     => "Showing below {{PLURAL:$3|'''1''' result|'''$3''' results}} starting with #'''$2'''.",
-'showingresultstotal'   => "Showing below results '''$1 - $2''' of '''$3'''",
-'nonefound'             => "'''Note''': Unsuccessful searches are often caused by searching for common words like \"have\" and \"from\", which are not indexed, or by specifying more than one search term. Only pages containing all of the search terms will appear in the result.",
-'powersearch'           => 'Advanced search',
-'powersearch-legend'    => 'Advanced search',
-'powersearchtext'       => 'Search in namespaces:<br />$1<br />$2 List redirects<br />Search for $3 $9',
-'search-external'       => 'External search',
-'searchdisabled'        => '{{SITENAME}} search is disabled.
+'noexactmatch-nocreate'     => "'''There is no page titled \"\$1\".'''",
+'toomanymatches'            => 'Too many matches were returned, please try a different query',
+'titlematches'              => 'Page title matches',
+'notitlematches'            => 'No page title matches',
+'textmatches'               => 'Page text matches',
+'notextmatches'             => 'No page text matches',
+'prevn'                     => 'previous $1',
+'nextn'                     => 'next $1',
+'viewprevnext'              => 'View ($1) ($2) ($3)',
+'search-result-size'        => '$1 ({{PLURAL:$2|1 word|$2 words}})',
+'search-result-score'       => 'Relevance: $1%',
+'search-redirect'           => '(redirect $1)',
+'search-section'            => '(section $1)',
+'search-suggest'            => 'Did you mean: $1',
+'search-interwiki-caption'  => 'Sister projects',
+'search-interwiki-default'  => '$1 results:',
+'search-interwiki-custom'   => '', # do not translate or duplicate this message to other languages
+'search-interwiki-more'     => '(more)',
+'search-mwsuggest-enabled'  => 'with suggestions',
+'search-mwsuggest-disabled' => 'no suggestions',
+'search-relatedarticle'     => 'Related',
+'mwsuggest-disable'         => 'Disable AJAX suggestions',
+'searchrelated'             => 'related',
+'searchall'                 => 'all',
+'showingresults'            => "Showing below up to {{PLURAL:$1|'''1''' result|'''$1''' results}} starting with #'''$2'''.",
+'showingresultsnum'         => "Showing below {{PLURAL:$3|'''1''' result|'''$3''' results}} starting with #'''$2'''.",
+'showingresultstotal'       => "Showing below {{PLURAL:$3|result '''$1''' of '''$3'''|results '''$1 - $2''' of '''$3'''}}",
+'nonefound'                 => "'''Note''': Only some namespaces are searched by default. Try prefixing your query with ''all:'' to search all content (including talk pages, templates, etc), or use the desired namespace as prefix.",
+'powersearch'               => 'Advanced search',
+'powersearch-legend'        => 'Advanced search',
+'powersearch-ns'            => 'Search in namespaces:',
+'powersearch-redir'         => 'List redirects',
+'powersearch-field'         => 'Search for',
+'search-external'           => 'External search',
+'searchdisabled'            => '{{SITENAME}} search is disabled.
 You can search via Google in the meantime.
 Note that their indexes of {{SITENAME}} content may be out of date.',
-'googlesearch'          => '<form method="get" action="http://www.google.com/search" id="googlesearch">
+'googlesearch'              => '<form method="get" action="http://www.google.com/search" id="googlesearch">
     <input type="hidden" name="domains" value="{{SERVER}}" />
     <input type="hidden" name="num" value="50" />
     <input type="hidden" name="ie" value="$2" />
@@ -1376,15 +1402,17 @@ please see math/README to configure.',
 'contextchars'             => 'Context per line:',
 'stub-threshold'           => 'Threshold for <a href="#" class="stub">stub link</a> formatting (bytes):',
 'recentchangesdays'        => 'Days to show in recent changes:',
-'recentchangescount'       => 'Number of edits to show in recent changes:',
+'recentchangescount'       => 'Number of edits to show in recent change, history and log pages:',
 'savedprefs'               => 'Your preferences have been saved.',
 'timezonelegend'           => 'Time zone',
-'timezonetext'             => 'The number of hours your local time differs from server time (UTC).',
+'timezonetext'             => '¹The number of hours your local time differs from server time (UTC).',
 'localtime'                => 'Local time',
 'timezoneoffset'           => 'Offset¹',
 'servertime'               => 'Server time',
 'guesstimezone'            => 'Fill in from browser',
 'allowemail'               => 'Enable e-mail from other users',
+'prefs-searchoptions'      => 'Search options',
+'prefs-namespaces'         => 'Namespaces',
 'defaultns'                => 'Search in these namespaces by default:',
 'default'                  => 'default',
 'files'                    => 'Files',
@@ -1401,9 +1429,10 @@ please see math/README to configure.',
 'userrights-groupsmember'          => 'Member of:',
 'userrights-groupsremovable'       => 'Removable groups:',
 'userrights-groupsavailable'       => 'Available groups:',
-'userrights-groups-help'           => 'You may alter the groups this user is in.
-A checked box means the user is in that group.
-An unchecked box means the user is not in that group.',
+'userrights-groups-help'           => 'You may alter the groups this user is in:
+* A checked box means the user is in that group.
+* An unchecked box means the user is not in that group.
+* A * indicates that you cannot remove the group once you have added it, or vice versa.',
 'userrights-reason'                => 'Reason for change:',
 'userrights-available-none'        => 'You may not alter group membership.',
 'userrights-available-add'         => 'You can add any user to {{PLURAL:$2|this group|these groups}}: $1.',
@@ -1416,9 +1445,11 @@ An unchecked box means the user is not in that group.',
 'userrights-notallowed'            => 'Your account does not have permission to assign user rights.',
 'userrights-changeable-col'        => 'Groups you can change',
 'userrights-unchangeable-col'      => 'Groups you cannot change',
+'userrights-irreversible-marker'   => '$1*', # only translate this message to other languages if you have to change it
 
 # Groups
 'group'               => 'Group:',
+'group-user'          => 'Users',
 'group-autoconfirmed' => 'Autoconfirmed users',
 'group-bot'           => 'Bots',
 'group-sysop'         => 'Sysops',
@@ -1426,17 +1457,72 @@ An unchecked box means the user is not in that group.',
 'group-suppress'      => 'Oversights',
 'group-all'           => '(all)',
 
+'group-user-member'          => 'User',
 'group-autoconfirmed-member' => 'Autoconfirmed user',
 'group-bot-member'           => 'Bot',
 'group-sysop-member'         => 'Sysop',
 'group-bureaucrat-member'    => 'Bureaucrat',
 'group-suppress-member'      => 'Oversight',
 
+'grouppage-user'          => '{{ns:project}}:Users',
 'grouppage-autoconfirmed' => '{{ns:project}}:Autoconfirmed users',
 'grouppage-bot'           => '{{ns:project}}:Bots',
 'grouppage-sysop'         => '{{ns:project}}:Administrators',
 'grouppage-bureaucrat'    => '{{ns:project}}:Bureaucrats',
 'grouppage-suppress'      => '{{ns:project}}:Oversight',
+
+# Rights
+'right-read'                 => 'Read pages',
+'right-edit'                 => 'Edit pages',
+'right-createpage'           => 'Create pages (which are not discussion pages)',
+'right-createtalk'           => 'Create discussion pages',
+'right-createaccount'        => 'Create new user accounts',
+'right-minoredit'            => 'Mark edits as minor',
+'right-move'                 => 'Move pages',
+'right-move-subpages'        => 'Move pages with their subpages',
+'right-suppressredirect'     => 'Not create a redirect from the old name when moving a page',
+'right-upload'               => 'Upload files',
+'right-reupload'             => 'Overwrite an existing file',
+'right-reupload-own'         => 'Overwrite an existing file uploaded by oneself',
+'right-reupload-shared'      => 'Override files on the shared media repository locally',
+'right-upload_by_url'        => 'Upload a file from a URL address',
+'right-purge'                => 'Purge the site cache for a page without confirmation',
+'right-autoconfirmed'        => 'Edit semi-protected pages',
+'right-bot'                  => 'Be treated as an automated process',
+'right-nominornewtalk'       => 'Not have minor edits to discussion pages trigger the new messages prompt',
+'right-apihighlimits'        => 'Use higher limits in API queries',
+'right-writeapi'             => 'Use of the write API',
+'right-delete'               => 'Delete pages',
+'right-bigdelete'            => 'Delete pages with large histories',
+'right-deleterevision'       => 'Delete and undelete specific revisions of pages',
+'right-deletedhistory'       => 'View deleted history entries, without their associated text',
+'right-browsearchive'        => 'Search deleted pages',
+'right-undelete'             => 'Undelete a page',
+'right-suppressrevision'     => 'Review and restore revisions hidden from Sysops',
+'right-suppressionlog'       => 'View private logs',
+'right-block'                => 'Block other users from editing',
+'right-blockemail'           => 'Block a user from sending email',
+'right-hideuser'             => 'Block a username, hiding it from the public',
+'right-ipblock-exempt'       => 'Bypass IP blocks, auto-blocks and range blocks',
+'right-proxyunbannable'      => 'Bypass automatic blocks of proxies',
+'right-protect'              => 'Change protection levels and edit protected pages',
+'right-editprotected'        => 'Edit protected pages (without cascading protection)',
+'right-editinterface'        => 'Edit the user interface',
+'right-editusercssjs'        => "Edit other users' CSS and JS files",
+'right-rollback'             => 'Quickly rollback the edits of the last user who edited a particular page',
+'right-markbotedits'         => 'Mark rolled-back edits as bot edits',
+'right-noratelimit'          => 'Not affected by rate limits',
+'right-import'               => 'Import pages from other wikis',
+'right-importupload'         => 'Import pages from a file upload',
+'right-patrol'               => "Mark others' edits as patrolled",
+'right-autopatrol'           => "Have one's own edits automatically marked as patrolled",
+'right-patrolmarks'          => 'View recent changes patrol marks',
+'right-unwatchedpages'       => 'View a list of unwatched pages',
+'right-trackback'            => 'Submit a trackback',
+'right-mergehistory'         => 'Merge the history of pages',
+'right-userrights'           => 'Edit all user rights',
+'right-userrights-interwiki' => 'Edit user rights of users on other wikis',
+'right-siteadmin'            => 'Lock and unlock the database',
 
 # User rights log
 'rightslog'      => 'User rights log',
@@ -1477,10 +1563,12 @@ An unchecked box means the user is not in that group.',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Related changes',
-'recentchangeslinked-title'    => 'Changes related to $1',
+'recentchangeslinked-title'    => 'Changes related to "$1"',
 'recentchangeslinked-noresult' => 'No changes on linked pages during the given period.',
-'recentchangeslinked-summary'  => "This special page lists the last changes on pages who are linked.
-Pages on your watchlist are '''bold'''.",
+'recentchangeslinked-summary'  => "This is a list of changes made recently to pages linked from a specified page (or to members of a specified category).
+Pages on [[Special:Watchlist|your watchlist]] are '''bold'''.",
+'recentchangeslinked-page'     => 'Page name:',
+'recentchangeslinked-to'       => 'Show changes to pages linked to the given page instead',
 
 # Upload
 'upload'                      => 'Upload file',
@@ -1489,6 +1577,7 @@ Pages on your watchlist are '''bold'''.",
 'reuploaddesc'                => 'Cancel upload and return to the upload form',
 'uploadnologin'               => 'Not logged in',
 'uploadnologintext'           => 'You must be [[Special:Userlogin|logged in]] to upload files.',
+'upload_directory_missing'    => 'The upload directory ($1) is missing and could not be created by the webserver.',
 'upload_directory_read_only'  => 'The upload directory ($1) is not writable by the webserver.',
 'uploaderror'                 => 'Upload error',
 'upload-summary'              => '', # only translate this message to other languages if you have to change it
@@ -1546,6 +1635,7 @@ If you have this image in full resolution upload this one, otherwise change the 
 please go back and upload this file under a new name. [[Image:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'A file with this name exists already in the shared file repository;
 please go back and upload this file under a new name. [[Image:$1|thumb|center|$1]]',
+'file-exists-duplicate'       => 'This file is a duplicate of the following {{PLURAL:$1|file|files}}:',
 'successfulupload'            => 'Successful upload',
 'uploadwarning'               => 'Upload warning',
 'savefile'                    => 'Save file',
@@ -1615,7 +1705,6 @@ You may want to try at a less busy time.',
 By default the last uploaded files are shown at top of the list.
 A click on a column header changes the sorting.',
 'imagelist_search_for'  => 'Search for media name:',
-'imgdesc'               => 'desc',
 'imgfile'               => 'file',
 'imagelist'             => 'File list',
 'imagelist_date'        => 'Date',
@@ -1625,29 +1714,36 @@ A click on a column header changes the sorting.',
 'imagelist_description' => 'Description',
 
 # Image description page
-'filehist'                  => 'File history',
-'filehist-help'             => 'Click on a date/time to view the file as it appeared at that time.',
-'filehist-deleteall'        => 'delete all',
-'filehist-deleteone'        => 'delete this',
-'filehist-revert'           => 'revert',
-'filehist-current'          => 'current',
-'filehist-datetime'         => 'Date/Time',
-'filehist-user'             => 'User',
-'filehist-dimensions'       => 'Dimensions',
-'filehist-filesize'         => 'File size',
-'filehist-comment'          => 'Comment',
-'imagelinks'                => 'Links',
-'linkstoimage'              => 'The following pages link to this file:',
-'nolinkstoimage'            => 'There are no pages that link to this file.',
-'sharedupload'              => 'This file is a shared upload and may be used by other projects.',
-'shareduploadwiki'          => 'Please see the $1 for further information.',
-'shareduploadwiki-desc'     => 'The description on its $1 there is shown below.',
-'shareduploadwiki-linktext' => 'file description page',
-'shareddescriptionfollows'  => '-', # do not translate or duplicate this message to other languages
-'noimage'                   => 'No file by this name exists, you can $1.',
-'noimage-linktext'          => 'upload it',
-'uploadnewversion-linktext' => 'Upload a new version of this file',
-'imagepage-searchdupe'      => 'Search for duplicate files',
+'filehist'                       => 'File history',
+'filehist-help'                  => 'Click on a date/time to view the file as it appeared at that time.',
+'filehist-deleteall'             => 'delete all',
+'filehist-deleteone'             => 'delete',
+'filehist-revert'                => 'revert',
+'filehist-current'               => 'current',
+'filehist-datetime'              => 'Date/Time',
+'filehist-user'                  => 'User',
+'filehist-dimensions'            => 'Dimensions',
+'filehist-filesize'              => 'File size',
+'filehist-comment'               => 'Comment',
+'imagelinks'                     => 'Links',
+'linkstoimage'                   => 'The following {{PLURAL:$1|page links|$1 pages link}} to this file:',
+'nolinkstoimage'                 => 'There are no pages that link to this file.',
+'morelinkstoimage'               => 'View [[Special:Whatlinkshere/$1|more links]] to this file.',
+'redirectstofile'                => 'The following {{PLURAL:$1|file redirects|$1 files redirect}} to this file:',
+'duplicatesoffile'               => 'The following {{PLURAL:$1|file is a duplicate|$1 files are duplicates}} of this file:',
+'sharedupload'                   => 'This file is a shared upload and may be used by other projects.',
+'shareduploadwiki'               => 'Please see the $1 for further information.',
+'shareduploadwiki-desc'          => 'The description on its $1 on the shared repository is shown below.',
+'shareduploadwiki-linktext'      => 'file description page',
+'shareddescriptionfollows'       => '-', # do not translate or duplicate this message to other languages
+'shareduploadduplicate'          => 'This file is a duplicate of $1 from shared repository.',
+'shareduploadduplicate-linktext' => 'another file',
+'shareduploadconflict'           => 'This file has the same name as $1 from the shared repository.',
+'shareduploadconflict-linktext'  => 'another file',
+'noimage'                        => 'No file by this name exists, you can $1.',
+'noimage-linktext'               => 'upload it',
+'uploadnewversion-linktext'      => 'Upload a new version of this file',
+'imagepage-searchdupe'           => 'Search for duplicate files',
 
 # File reversion
 'filerevert'                => 'Revert $1',
@@ -1725,7 +1821,7 @@ Excluding those, there {{PLURAL:\$2|is '''1''' page that is a|are '''\$2''' page
 There have been a total of '''\$3''' {{PLURAL:\$3|page view|page views}}, and '''\$4''' {{PLURAL:\$4|page edit|page edits}} since {{SITENAME}} was setup.
 That comes to '''\$5''' average edits per page, and '''\$6''' views per edit.
 
-The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7'''.",
+The [http://www.mediawiki.org/wiki/Manual:Job_queue job queue] length is '''\$7'''.",
 'userstatstext'          => "There {{PLURAL:$1|is '''1''' registered [[Special:Listusers|user]]|are '''$1''' registered [[Special:Listusers|users]]}}, of which '''$2''' (or '''$4%''') {{PLURAL:$2|has|have}} $5 rights.",
 'statistics-mostpopular' => 'Most viewed pages',
 'statistics-footer'      => '', # do not translate or duplicate this message to other languages
@@ -1748,8 +1844,8 @@ A page is treated as disambiguation page if it uses a template which is linked f
 'brokenredirects-delete'  => '(delete)',
 
 'withoutinterwiki'         => 'Pages without language links',
-'withoutinterwiki-header'  => 'The following pages do not link to other language versions:',
-'withoutinterwiki-summary' => '', # only translate this message to other languages if you have to change it
+'withoutinterwiki-summary' => 'The following pages do not link to other language versions:',
+'withoutinterwiki-legend'  => 'Prefix',
 'withoutinterwiki-submit'  => 'Show',
 
 'fewestrevisions'         => 'Pages with the fewest revisions',
@@ -1782,15 +1878,17 @@ A page is treated as disambiguation page if it uses a template which is linked f
 'wantedcategories-summary'        => '', # only translate this message to other languages if you have to change it
 'wantedpages'                     => 'Wanted pages',
 'wantedpages-summary'             => '', # only translate this message to other languages if you have to change it
-'mostlinked'                      => 'Most linked to pages',
+'missingfiles'                    => 'Missing files',
+'missingfiles-summary'            => '', # only translate this message to other languages if you have to change it
+'mostlinked'                      => 'Most linked-to pages',
 'mostlinked-summary'              => '', # only translate this message to other languages if you have to change it
-'mostlinkedcategories'            => 'Most linked to categories',
+'mostlinkedcategories'            => 'Most linked-to categories',
 'mostlinkedcategories-summary'    => '', # only translate this message to other languages if you have to change it
 'mostlinkedtemplates'             => 'Most linked-to templates',
 'mostlinkedtemplates-summary'     => '', # only translate this message to other languages if you have to change it
 'mostcategories'                  => 'Pages with the most categories',
 'mostcategories-summary'          => '', # only translate this message to other languages if you have to change it
-'mostimages'                      => 'Most linked to files',
+'mostimages'                      => 'Most linked-to files',
 'mostimages-summary'              => '', # only translate this message to other languages if you have to change it
 'mostrevisions'                   => 'Pages with the most revisions',
 'mostrevisions-summary'           => '', # only translate this message to other languages if you have to change it
@@ -1804,6 +1902,7 @@ A page is treated as disambiguation page if it uses a template which is linked f
 'deadendpages-summary'            => '', # only translate this message to other languages if you have to change it
 'deadendpagestext'                => 'The following pages do not link to other pages in {{SITENAME}}.',
 'protectedpages'                  => 'Protected pages',
+'protectedpages-indef'            => 'Indefinite protections only',
 'protectedpages-summary'          => '', # only translate this message to other languages if you have to change it
 'protectedpagestext'              => 'The following pages are protected from moving or editing',
 'protectedpagesempty'             => 'No pages are currently protected with these parameters.',
@@ -1813,10 +1912,6 @@ A page is treated as disambiguation page if it uses a template which is linked f
 'protectedtitlesempty'            => 'No titles are currently protected with these parameters.',
 'listusers'                       => 'User list',
 'listusers-summary'               => '', # only translate this message to other languages if you have to change it
-'specialpages'                    => 'Special pages',
-'specialpages-summary'            => '', # only translate this message to other languages if you have to change it
-'spheading'                       => 'Special pages for all users',
-'restrictedpheading'              => 'Restricted special pages',
 'newpages'                        => 'New pages',
 'newpages-summary'                => '', # only translate this message to other languages if you have to change it
 'newpages-username'               => 'Username:',
@@ -1828,6 +1923,8 @@ A page is treated as disambiguation page if it uses a template which is linked f
 'unusedcategoriestext'            => 'The following category pages exist although no other page or category make use of them.',
 'notargettitle'                   => 'No target',
 'notargettext'                    => 'You have not specified a target page or user to perform this function on.',
+'nopagetitle'                     => 'No such target page',
+'nopagetext'                      => 'The target page you have specified does not exist.',
 'pager-newer-n'                   => '{{PLURAL:$1|newer 1|newer $1}}',
 'pager-older-n'                   => '{{PLURAL:$1|older 1|older $1}}',
 'suppress'                        => 'Oversight',
@@ -1874,18 +1971,28 @@ You can narrow down the view by selecting a log type, the user name, or the affe
 It may contain one or more characters which cannot be used in titles.',
 'allpages-bad-ns'   => '{{SITENAME}} does not have namespace "$1".',
 
+# Special:Categories
+'categories'                    => 'Categories',
+'categories-summary'            => '', # only translate this message to other languages if you have to change it
+'categoriespagetext'            => 'The following categories contain pages or media.',
+'categoriesfrom'                => 'Display categories starting at:',
+'special-categories-sort-count' => 'sort by count',
+'special-categories-sort-abc'   => 'sort alphabetically',
+
 # Special:Listusers
 'listusersfrom'      => 'Display users starting at:',
 'listusers-submit'   => 'Show',
 'listusers-noresult' => 'No user found.',
 
 # Special:Listgrouprights
-'listgrouprights'          => 'User group rights',
-'listgrouprights-summary'  => 'The following is a list of user groups defined on this wiki, with their associated access rights.',
-'listgrouprights-group'    => 'Group',
-'listgrouprights-rights'   => 'Rights',
-'listgrouprights-link'     => '[[{{MediaWiki:Listgrouprights-helppage}}#$1|$1]]', # do not translate or duplicate this message to other languages
-'listgrouprights-helppage' => 'Help:Group rights',
+'listgrouprights'               => 'User group rights',
+'listgrouprights-summary'       => 'The following is a list of user groups defined on this wiki, with their associated access rights.
+Additional information about individual rights can be found at [[{{MediaWiki:Listgrouprights-helppage}}]].',
+'listgrouprights-group'         => 'Group',
+'listgrouprights-rights'        => 'Rights',
+'listgrouprights-helppage'      => 'Help:Group rights',
+'listgrouprights-members'       => '(list of members)',
+'listgrouprights-right-display' => '$1 ($2)', # only translate this message to other languages if you have to change it
 
 # E-mail user
 'mailnologin'     => 'No send address',
@@ -1907,8 +2014,10 @@ The e-mail address you entered in your user preferences will appear as the "From
 'emailccsubject'  => 'Copy of your message to $1: $2',
 'emailsent'       => 'E-mail sent',
 'emailsenttext'   => 'Your e-mail message has been sent.',
-'emailuserfooter' => "--
-This email was sent using the 'email user' feature of {{SITENAME}}",
+'emailuserfooter' => 'Sent automatically by {{SITENAME}} to $1 for $2.
+Please note, {{SITENAME}} cannot be held responsible for the content of this email.
+The option to remove yourself from these mailings is in your preferences.
+Check your preferences at $3 and uncheck "Enable e-mail from other users."',
 
 # Watchlist
 'watchlist'            => 'My watchlist',
@@ -2031,8 +2140,7 @@ someone else has edited or rolled back the page already.
 
 Last edit was by [[User:$3|$3]] ([[User talk:$3|Talk]]).',
 'editcomment'                 => 'The edit comment was: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'                  => 'Reverted edits by [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]);
-changed back to last version by [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'                  => 'Reverted edits by [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]) to last version by [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success'            => 'Reverted edits by $1;
 changed back to last version by $2.',
 'sessionfailure'              => 'There seems to be a problem with your login session;
@@ -2072,13 +2180,14 @@ You can change this page's protection level, but it will not affect the cascadin
 'restriction-type'            => 'Permission:',
 'restriction-level'           => 'Restriction level:',
 'minimum-size'                => 'Min size',
-'maximum-size'                => 'Max size',
+'maximum-size'                => 'Max size:',
 'pagesize'                    => '(bytes)',
 
 # Restrictions (nouns)
 'restriction-edit'   => 'Edit',
 'restriction-move'   => 'Move',
 'restriction-create' => 'Create',
+'restriction-upload' => 'Upload',
 
 # Restriction levels
 'restriction-level-sysop'         => 'full protected',
@@ -2171,12 +2280,15 @@ $1',
 'nolinkshere-ns'           => "No pages link to '''[[:$1]]''' in the chosen namespace.",
 'isredirect'               => 'redirect page',
 'istemplate'               => 'inclusion',
+'isimage'                  => 'image link',
 'whatlinkshere-prev'       => '{{PLURAL:$1|previous|previous $1}}',
 'whatlinkshere-next'       => '{{PLURAL:$1|next|next $1}}',
 'whatlinkshere-links'      => '← links',
 'whatlinkshere-hideredirs' => '$1 redirects',
 'whatlinkshere-hidetrans'  => '$1 transclusions',
 'whatlinkshere-hidelinks'  => '$1 links',
+'whatlinkshere-hideimages' => '$1 image links',
+'whatlinkshere-filters'    => 'Filters',
 
 # Block/unblock
 'blockip'                     => 'Block user',
@@ -2207,6 +2319,7 @@ Fill in a specific reason below (for example, citing particular pages that were 
 'ipbotheroption'              => 'other',
 'ipbotherreason'              => 'Other/additional reason:',
 'ipbhidename'                 => 'Hide username from the block log, active block list and user list',
+'ipbwatchuser'                => "Watch this user's user and talk pages",
 'badipaddress'                => 'Invalid IP address',
 'blockipsuccesssub'           => 'Block succeeded',
 'blockipsuccesstext'          => '[[Special:Contributions/$1|$1]] has been blocked.<br />
@@ -2252,6 +2365,7 @@ See the [[Special:Ipblocklist|IP block list]] for the list of currently operatio
 'block-log-flags-noemail'     => 'e-mail blocked',
 'range_block_disabled'        => 'The sysop ability to create range blocks is disabled.',
 'ipb_expiry_invalid'          => 'Expiry time invalid.',
+'ipb_expiry_temp'             => 'Hidden username blocks should be permanent.',
 'ipb_already_blocked'         => '"$1" is already blocked',
 'ipb_cant_unblock'            => 'Error: Block ID $1 not found. It may have been unblocked already.',
 'ipb_blocked_as_range'        => 'Error: The IP $1 is not blocked directly and cannot be unblocked.
@@ -2325,8 +2439,12 @@ Please choose another name.',
 Please merge them manually.'''",
 'movedto'                 => 'moved to',
 'movetalk'                => 'Move associated talk page',
-'talkpagemoved'           => 'The corresponding talk page was also moved.',
-'talkpagenotmoved'        => 'The corresponding talk page was <strong>not</strong> moved.',
+'move-subpages'           => 'Move all subpages, if applicable',
+'move-talk-subpages'      => 'Move all subpages of talk page, if applicable',
+'movepage-page-exists'    => 'The page $1 already exists and cannot be automatically overwritten.',
+'movepage-page-moved'     => 'The page $1 has been moved to $2.',
+'movepage-page-unmoved'   => 'The page $1 could not be moved to $2.',
+'movepage-max-pages'      => 'The maximum of $1 {{PLURAL:$1|page|pages}} has been moved and no more will be moved automatically.',
 '1movedto2'               => '[[$1]] moved to [[$2]]',
 '1movedto2_redir'         => '[[$1]] moved to [[$2]] over redirect',
 'movelogpage'             => 'Move log',
@@ -2343,6 +2461,8 @@ Do you want to delete it to make way for the move?',
 cannot move a page over itself.',
 'immobile_namespace'      => 'Source or destination title is of a special type;
 cannot move pages from and into that namespace.',
+'imagenocrossnamespace'   => 'Cannot move file to non-file namespace',
+'imagetypemismatch'       => 'The new file extension does not match its type',
 
 # Export
 'export'            => 'Export pages',
@@ -2410,6 +2530,7 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'import-noarticle'           => 'No page to import!',
 'import-nonewrevisions'      => 'All revisions were previously imported.',
 'xml-error-string'           => '$1 at line $2, col $3 (byte $4): $5',
+'import-upload'              => 'Upload XML data',
 
 # Import log
 'importlogpage'                    => 'Import log',
@@ -2539,16 +2660,31 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'tooltip-diff'                    => 'Show which changes you made to the text.',
 'tooltip-compareselectedversions' => 'See the differences between the two selected versions of this page.',
 'tooltip-watch'                   => 'Add this page to your watchlist',
-'tooltip-recreate'                => 'Recreate the page despite it has been deleted',
+'tooltip-recreate'                => 'Recreate the page despite it having been deleted',
 'tooltip-upload'                  => 'Start upload',
 
 # Stylesheets
-'common.css'   => '/* CSS placed here will be applied to all skins */', # only translate this message to other languages if you have to change it
-'monobook.css' => '/* CSS placed here will affect users of the Monobook skin */', # only translate this message to other languages if you have to change it
+'common.css'      => '/* CSS placed here will be applied to all skins */', # only translate this message to other languages if you have to change it
+'standard.css'    => '/* CSS placed here will affect users of the Standard skin */', # only translate this message to other languages if you have to change it
+'nostalgia.css'   => '/* CSS placed here will affect users of the Nostalgia skin */', # only translate this message to other languages if you have to change it
+'cologneblue.css' => '/* CSS placed here will affect users of the Bologne Blue skin */', # only translate this message to other languages if you have to change it
+'monobook.css'    => '/* CSS placed here will affect users of the Monobook skin */', # only translate this message to other languages if you have to change it
+'myskin.css'      => '/* CSS placed here will affect users of the Myskin skin */', # only translate this message to other languages if you have to change it
+'chick.css'       => '/* CSS placed here will affect users of the Chick skin */', # only translate this message to other languages if you have to change it
+'simple.css'      => '/* CSS placed here will affect users of the Simple skin */', # only translate this message to other languages if you have to change it
+'modern.css'      => '/* CSS placed here will affect users of the Modern skin */', # only translate this message to other languages if you have to change it
+'print.css'       => '/* CSS placed here will be applied to the printable version */', # only translate this message to other languages if you have to change it
 
 # Scripts
-'common.js'   => '/* Any JavaScript here will be loaded for all users on every page load. */', # only translate this message to other languages if you have to change it
-'monobook.js' => '/* Deprecated; use [[MediaWiki:common.js]] */', # only translate this message to other languages if you have to change it
+'common.js'      => '/* Any JavaScript here will be loaded for all users on every page load. */', # only translate this message to other languages if you have to change it
+'standard.js'    => '/* Any JavaScript here will be loaded for users using the Standard skin */', # only translate this message to other languages if you have to change it
+'nostalgia.js'   => '/* Any JavaScript here will be loaded for users using the Nostalgia skin */', # only translate this message to other languages if you have to change it
+'cologneblue.js' => '/* Any JavaScript here will be loaded for users using the Bologne Blue skin */', # only translate this message to other languages if you have to change it
+'monobook.js'    => '/* Any JavaScript here will be loaded for users using the MonoBook skin */', # only translate this message to other languages if you have to change it
+'myskin.js'      => '/* Any JavaScript here will be loaded for users using the Myskin skin */', # only translate this message to other languages if you have to change it
+'chick.js'       => '/* Any JavaScript here will be loaded for users using the Chick skin */', # only translate this message to other languages if you have to change it
+'simple.js'      => '/* Any JavaScript here will be loaded for users using the Simple skin */', # only translate this message to other languages if you have to change it
+'modern.js'      => '/* Any JavaScript here will be loaded for users using the Modern skin */', # only translate this message to other languages if you have to change it
 
 # Metadata
 'nodublincore'      => 'Dublin Core RDF metadata disabled for this server.',
@@ -2629,7 +2765,7 @@ $1',
 'imagemaxsize'         => 'Limit images on file description pages to:',
 'thumbsize'            => 'Thumbnail size:',
 'widthheight'          => '$1×$2', # only translate this message to other languages if you have to change it
-'widthheightpage'      => '$1×$2, $3 pages',
+'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|page|pages}}',
 'file-info'            => '(file size: $1, MIME type: $2)',
 'file-info-size'       => '($1 × $2 pixel, file size: $3, MIME type: $4)',
 'file-nohires'         => '<small>No higher resolution available.</small>',
@@ -3052,7 +3188,9 @@ This confirmation code will expire at $4.',
 'scarytranscludetoolong'  => '[URL is too long; sorry]',
 
 # Trackbacks
-'trackbackbox'      => '<div id="mw_trackbacks">Trackbacks for this page:<br />$1</div>',
+'trackbackbox'      => '<div id="mw_trackbacks">Trackbacks for this page:<br />
+$1
+</div>',
 'trackback'         => '; $4$5 : [$2 $1]', # do not translate or duplicate this message to other languages
 'trackbackexcerpt'  => '; $4$5 : [$2 $1]: <nowiki>$3</nowiki>', # do not translate or duplicate this message to other languages
 'trackbackremove'   => ' ([$1 Delete])',
@@ -3095,8 +3233,7 @@ $1',
 'imgmultipageprev' => '← previous page',
 'imgmultipagenext' => 'next page →',
 'imgmultigo'       => 'Go!',
-'imgmultigotopre'  => 'Go to page',
-'imgmultigotopost' => '', # only translate this message to other languages if you have to change it
+'imgmultigoto'     => 'Go to page $1',
 
 # Table pager
 'ascending_abbrev'         => 'asc',
@@ -3276,14 +3413,22 @@ Enter the filename without the "{{ns:image}}:" prefix.',
 'fileduplicatesearch-result-n' => 'The file "$1" has {{PLURAL:$2|1 identical duplication|$2 identical duplications}}.',
 
 # Special:SpecialPages
+'specialpages'                   => 'Special pages',
+'specialpages-summary'           => '', # only translate this message to other languages if you have to change it
+'specialpages-note'              => '----
+* Normal special pages.
+* <span class="mw-specialpagerestricted">Restricted special pages.</span>',
 'specialpages-group-maintenance' => 'Maintenance reports',
 'specialpages-group-other'       => 'Other special pages',
 'specialpages-group-login'       => 'Login / sign up',
 'specialpages-group-changes'     => 'Recent changes and logs',
-'specialpages-group-media'       => 'Media reports',
+'specialpages-group-media'       => 'Media reports and uploads',
 'specialpages-group-users'       => 'Users and rights',
-'specialpages-group-needy'       => 'Pages in need of work',
 'specialpages-group-highuse'     => 'High use pages',
-'specialpages-group-permissions' => 'Set user permissions',
+'specialpages-group-pages'       => 'List of pages',
+'specialpages-group-pagetools'   => 'Page tools',
+'specialpages-group-wiki'        => 'Wiki data and tools',
+'specialpages-group-redirects'   => 'Redirecting special pages',
+'specialpages-group-spam'        => 'Spam tools',
 
 );

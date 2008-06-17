@@ -31,8 +31,8 @@ if (!defined('MEDIAWIKI')) {
 /**
  * Query module to enumerate all categories, even the ones that don't have
  * category pages.
- * 
- * @addtogroup API
+ *
+ * @ingroup API
  */
 class ApiQueryAllCategories extends ApiQueryGeneratorBase {
 
@@ -55,7 +55,7 @@ class ApiQueryAllCategories extends ApiQueryGeneratorBase {
 
 		$this->addTables('category');
 		$this->addFields('cat_title');
-		
+
 		if (!is_null($params['from']))
 			$this->addWhere('cat_title>=' . $db->addQuotes(ApiQueryBase :: titleToKey($params['from'])));
 		if (isset ($params['prefix']))
@@ -63,11 +63,10 @@ class ApiQueryAllCategories extends ApiQueryGeneratorBase {
 
 		$this->addOption('LIMIT', $params['limit']+1);
 		$this->addOption('ORDER BY', 'cat_title' . ($params['dir'] == 'descending' ? ' DESC' : ''));
-		$this->addOption('DISTINCT');
-		
+
 		$prop = array_flip($params['prop']);
 		$this->addFieldsIf( array( 'cat_pages', 'cat_subcats', 'cat_files' ), isset($prop['size']) );
-		//$this->addFieldsIf( 'cat_hidden', isset($prop['hidden']) );
+		$this->addFieldsIf( 'cat_hidden', isset($prop['hidden']) );
 
 		$res = $this->select(__METHOD__);
 
@@ -79,10 +78,10 @@ class ApiQueryAllCategories extends ApiQueryGeneratorBase {
 			if (++ $count > $params['limit']) {
 				// We've reached the one extra which shows that there are additional cats to be had. Stop here...
 				// TODO: Security issue - if the user has no right to view next title, it will still be shown
-				$this->setContinueEnumParameter('from', ApiQueryBase :: keyToTitle($row->cl_to));
+				$this->setContinueEnumParameter('from', ApiQueryBase :: keyToTitle($row->cat_title));
 				break;
 			}
-			
+
 			// Normalize titles
 			$titleObj = Title::makeTitle(NS_CATEGORY, $row->cat_title);
 			if(!is_null($resultPageSet))
@@ -96,9 +95,8 @@ class ApiQueryAllCategories extends ApiQueryGeneratorBase {
 					$item['files'] = $row->cat_files;
 					$item['subcats'] = $row->cat_subcats;
 				}
-				//Isn't populated, so doesn't work
-				//if( isset( $prop['hidden'] ) && $row->cat_hidden )
-				//	$item['hidden'] = '';
+				if( isset( $prop['hidden'] ) && $row->cat_hidden )
+					$item['hidden'] = '';
 				$categories[] = $item;
 			}
 		}
@@ -131,7 +129,7 @@ class ApiQueryAllCategories extends ApiQueryGeneratorBase {
 				ApiBase :: PARAM_MAX2 => ApiBase :: LIMIT_BIG2
 			),
 			'prop' => array (
-				ApiBase :: PARAM_TYPE => array( 'size', /*'hidden'*/ ),
+				ApiBase :: PARAM_TYPE => array( 'size', 'hidden' ),
 				ApiBase :: PARAM_DFLT => '',
 				ApiBase :: PARAM_ISMULTI => true
 			),
@@ -160,6 +158,6 @@ class ApiQueryAllCategories extends ApiQueryGeneratorBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiQueryAllCategories.php 32384 2008-03-24 21:08:57Z catrope $';
+		return __CLASS__ . ': $Id$';
 	}
 }

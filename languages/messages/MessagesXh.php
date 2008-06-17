@@ -1,7 +1,8 @@
 <?php
 /** Xhosa (isiXhosa)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Jose77
  */
@@ -113,7 +114,6 @@ I Account yakhgo ivuliwe, ungalibali ukutshitsha izinto ozithandayo ngo {{SITENA
 'watchthisupload' => 'Bukela le Page',
 
 # Miscellaneous special pages
-'specialpages' => 'Amaphepha Abalulekileyo',
 'move'         => 'Dlulisa',
 'movethispage' => 'Dlulisa eliphepha',
 
@@ -144,5 +144,8 @@ I Account yakhgo ivuliwe, ungalibali ukutshitsha izinto ozithandayo ngo {{SITENA
 
 # Special:Newimages
 'ilsubmit' => 'Khangela',
+
+# Special:SpecialPages
+'specialpages' => 'Amaphepha Abalulekileyo',
 
 );

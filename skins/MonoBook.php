@@ -6,7 +6,8 @@
  * dependency on PHPTAL.
  *
  * @todo document
- * @addtogroup Skins
+ * @file
+ * @ingroup Skins
  */
 
 if( !defined( 'MEDIAWIKI' ) )
@@ -15,7 +16,7 @@ if( !defined( 'MEDIAWIKI' ) )
 /**
  * Inherit main code from SkinTemplate, set the CSS and template filter.
  * @todo document
- * @addtogroup Skins
+ * @ingroup Skins
  */
 class SkinMonoBook extends SkinTemplate {
 	/** Using monobook. */
@@ -24,12 +25,15 @@ class SkinMonoBook extends SkinTemplate {
 		$this->skinname  = 'monobook';
 		$this->stylename = 'monobook';
 		$this->template  = 'MonoBookTemplate';
+		# Bug 14520: skins that just include this file shouldn't load nonexis-
+		# tent CSS fix files.
+		$this->cssfiles = array( 'IE', 'IE50', 'IE55', 'IE60', 'IE70', 'rtl' );
 	}
 }
 
 /**
  * @todo document
- * @addtogroup Skins
+ * @ingroup Skins
  */
 class MonoBookTemplate extends QuickTemplate {
 	/**
@@ -61,12 +65,12 @@ class MonoBookTemplate extends QuickTemplate {
 			@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/main.css?<?php echo $GLOBALS['wgStyleVersion'] ?>";
 		/*]]>*/</style>
 		<link rel="stylesheet" type="text/css" <?php if(empty($this->data['printable']) ) { ?>media="print"<?php } ?> href="<?php $this->text('printcss') ?>?<?php echo $GLOBALS['wgStyleVersion'] ?>" />
-		<!--[if lt IE 5.5000]><style type="text/css">@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/IE50Fixes.css?<?php echo $GLOBALS['wgStyleVersion'] ?>";</style><![endif]-->
-		<!--[if IE 5.5000]><style type="text/css">@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/IE55Fixes.css?<?php echo $GLOBALS['wgStyleVersion'] ?>";</style><![endif]-->
-		<!--[if IE 6]><style type="text/css">@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/IE60Fixes.css?<?php echo $GLOBALS['wgStyleVersion'] ?>";</style><![endif]-->
-		<!--[if IE 7]><style type="text/css">@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/IE70Fixes.css?<?php echo $GLOBALS['wgStyleVersion'] ?>";</style><![endif]-->
-		<!--[if lt IE 7]><script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath') ?>/common/IEFixes.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"></script>
-		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+		<?php if( in_array( 'IE50', $skin->cssfiles ) ) { ?><!--[if lt IE 5.5000]><style type="text/css">@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/IE50Fixes.css?<?php echo $GLOBALS['wgStyleVersion'] ?>";</style><![endif]-->
+		<?php } if( in_array( 'IE55', $skin->cssfiles ) ) { ?><!--[if IE 5.5000]><style type="text/css">@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/IE55Fixes.css?<?php echo $GLOBALS['wgStyleVersion'] ?>";</style><![endif]-->
+		<?php } if( in_array( 'IE60', $skin->cssfiles ) ) { ?><!--[if IE 6]><style type="text/css">@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/IE60Fixes.css?<?php echo $GLOBALS['wgStyleVersion'] ?>";</style><![endif]-->
+		<?php } if( in_array( 'IE70', $skin->cssfiles ) ) { ?><!--[if IE 7]><style type="text/css">@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/IE70Fixes.css?<?php echo $GLOBALS['wgStyleVersion'] ?>";</style><![endif]-->
+		<?php } ?><!--[if lt IE 7]><?php if( in_array( 'IE', $skin->cssfiles ) ) { ?><script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath') ?>/common/IEFixes.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"></script>
+		<?php } ?><meta http-equiv="imagetoolbar" content="no" /><![endif]-->
 		
 		<?php print Skin::makeGlobalVariablesScript( $this->data ); ?>
                 
@@ -269,9 +273,8 @@ class MonoBookTemplate extends QuickTemplate {
 ?>
 			</ul>
 		</div>
-		
-	<?php $this->html('bottomscripts'); /* JS call to runBodyOnloadHook */ ?>
 </div>
+<?php $this->html('bottomscripts'); /* JS call to runBodyOnloadHook */ ?>
 <?php $this->html('reporttime') ?>
 <?php if ( $this->data['debug'] ): ?>
 <!-- Debug output:
@@ -284,4 +287,3 @@ class MonoBookTemplate extends QuickTemplate {
 	wfRestoreWarnings();
 	} // end of execute() method
 } // end of class
-?>

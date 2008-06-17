@@ -1,7 +1,8 @@
 <?php
 /** Lumbaart (Lumbaart)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Kemmótar
  * @author Flavio05
@@ -66,7 +67,6 @@ süi titul dai sezziún (JavaScript)',
 'nov'       => 'nuv',
 
 # Categories related messages
-'categories'      => 'Categurii',
 'category_header' => 'Vus in de la categuria "$1"',
 'subcategories'   => 'Sót-categurii',
 
@@ -345,9 +345,6 @@ Spiegazziún di símbui: (cur) = difərenza cun la versiún curénta, (ültima) 
 'longpages'               => 'Pagin püssè luunch',
 'deadendpages'            => 'Pagin senza surtida',
 'listusers'               => 'Listá i üteent registraa',
-'specialpages'            => 'Pagin special',
-'spheading'               => 'Pagin specjai par tücc i üteent',
-'restrictedpheading'      => 'Pagin specjai riservaa',
 'newpages'                => 'Pagin nööf',
 'ancientpages'            => 'Pagin püssee vecc',
 
@@ -367,6 +364,9 @@ Spiegazziún di símbui: (cur) = difərenza cun la versiún curénta, (ültima) 
 'allpagesnext'   => 'Pròssim',
 'allpagessubmit' => 'Innanz',
 'allpagesprefix' => "Varda i pagin ch'i scumenza per:",
+
+# Special:Categories
+'categories' => 'Categurii',
 
 # E-mail user
 'emailuser' => 'Manda un email al duvrátt',
@@ -523,5 +523,8 @@ Te riçevaree un mesacc cun deent un ligamm specjal; ti duvaree clicaa sül liga
 
 # Special:Filepath
 'filepath' => 'Percuurz daj archivi',
+
+# Special:SpecialPages
+'specialpages' => 'Pagin special',
 
 );

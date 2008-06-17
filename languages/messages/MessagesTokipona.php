@@ -1,7 +1,8 @@
 <?php
 /** Toki Pona (Toki Pona)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author http://tokipona.wikia.com sysops
  * @author Siebrand
@@ -23,7 +24,6 @@ $messages = array(
 'december'  => 'tenpo mun pi nanpa luka luka tu',
 
 # Categories related messages
-'categories'             => 'kulupu lipu',
 'category_header'        => 'lipu lon kulupu lipu "$1"',
 'subcategories'          => 'kulupu lipu lili',
 'listingcontinuesabbrev' => ' li awen',
@@ -134,12 +134,14 @@ kin la sina toki e ni: toki sina ni li tan sina taso anu lipu pi ken ali.
 
 # Miscellaneous special pages
 'lonelypages'  => 'lipu ni li jo ala e lipu sama',
-'specialpages' => 'lipu suli',
 'move'         => 'o tawa',
 'movethispage' => 'o pana e nimi sin',
 
 # Special:Allpages
 'allpages' => 'lipu ale',
+
+# Special:Categories
+'categories' => 'kulupu lipu',
 
 # Watchlist
 'watchlist'       => 'mi sona e ante pi lipu seme',
@@ -153,5 +155,8 @@ kin la sina toki e ni: toki sina ni li tan sina taso anu lipu pi ken ali.
 
 # What links here
 'whatlinkshere' => 'lipu seme li tawa ni?',
+
+# Special:SpecialPages
+'specialpages' => 'lipu suli',
 
 );

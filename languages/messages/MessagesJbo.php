@@ -1,10 +1,13 @@
 <?php
 /** Lojban (Lojban)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Malafaya
  * @author OldakQuill
+ * @author OldakQuill
+ * @author Malafaya
  */
 
 $messages = array(
@@ -45,7 +48,6 @@ $messages = array(
 'may'           => 'la mumast.',
 
 # Categories related messages
-'categories'     => 'klesi',
 'pagecategories' => '{{PLURAL:$1|klesi|klesi}}',
 
 'qbedit'        => 'stika',
@@ -85,6 +87,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-mediawiki' => 'notci',
+'nstab-category'  => 'klesi',
 
 # Login and logout pages
 'login'          => "co'a se jaspu",
@@ -127,11 +130,13 @@ $messages = array(
 'randompage' => 'cunso ckupau',
 
 # Miscellaneous special pages
-'specialpages' => 'steci ckupau',
-'move'         => 'stika lo cmene',
+'move' => 'stika lo cmene',
 
 # Special:Allpages
 'allarticles' => 'ro notci',
+
+# Special:Categories
+'categories' => 'klesi',
 
 # Watchlist
 'watch'         => 'zgana',
@@ -166,5 +171,8 @@ $messages = array(
 
 # Special:Filepath
 'filepath-page' => 'se datnyvei zoi',
+
+# Special:SpecialPages
+'specialpages' => 'steci ckupau',
 
 );

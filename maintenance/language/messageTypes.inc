@@ -2,7 +2,8 @@
 /**
  * Several types of messages.
  *
- * @addtogroup Maintenance
+ * @file
+ * @ingroup MaintenanceLanguage
  */
 
 /** Ignored messages, which should be exist only in the English messages file. */
@@ -91,6 +92,7 @@ $wgIgnoredMessages = array(
 	'pubmedurl',
 	'randompage-url',
 	'recentchanges-url',
+	'cantcreateaccount-nonblock-text',
 	'revision-info-current',
 	'revision-nav',
 	'rfcurl',
@@ -114,7 +116,6 @@ $wgIgnoredMessages = array(
 
 /** Optional messages, which may be translated only if changed in the other language. */
 $wgOptionalMessages = array(
-	'imgmultigotopost',
 	'linkprefix',
 	'editsection-brackets',
 	'feed-atom',
@@ -123,6 +124,7 @@ $wgOptionalMessages = array(
 	'unit-pixel',
 	'allpages-summary',
 	'booksources-summary',
+	'categories-summary',
 	'ipblocklist-summary',
 	'protectedtitles-summary',
 	'listusers-summary',
@@ -160,6 +162,7 @@ $wgOptionalMessages = array(
 	'lonelypages-summary',
 	'unusedtemplates-summary',
 	'fewestrevisions-summary',
+	'missingfiles-summary',
 	'upload-summary',
 	'tog-nolangconversion',
 	'yourvariant',
@@ -191,9 +194,24 @@ $wgOptionalMessages = array(
 	'image_sample',
 	'media_sample',
 	'common.css',
+	'standard.css',
+	'nostalgia.css',
+	'cologneblue.css',
 	'monobook.css',
+	'myskin.css',
+	'chick.css',
+	'simple.css',
+	'modern.css',
+	'print.css',
 	'common.js',
+	'standard.js',
+	'nostalgia.js',
+	'cologneblue.js',
 	'monobook.js',
+	'myskin.js',
+	'chick.js',
+	'simple.js',
+	'modern.js',
 	'widthheight',
 	'exif-fnumber-format',
 	'exif-focallength-format',
@@ -280,6 +298,7 @@ $wgOptionalMessages = array(
 	'comma-separator',
 	'colon-separator',
 	'autocomment-prefix',
+	'listgrouprights-right-display',
 );
 
 /** EXIF messages, which may be set as optional in several checks, but are generally mandatory */

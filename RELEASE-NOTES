@@ -37,14 +37,38 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   you to use a shared database with a different prefix. Or you can now use a local
   database and use prefixes to separate wiki and the shared tables. And the new
   $wgSharedTables variable allows you to specify a list of tables to share.
-  
+* Automatic edit summaries can be disabled with $wgUseAutomaticEditSummaries  
+* Duplicates of images are now shown on the image page
+* $wgRCFilterByAge allows for the list of dates in recent changes special pages to
+  be filtered to only those within the range of $wgRCMaxAge
+* $wgRCLinkLimits and $wgRCLinkDays allow for customization of the list and limits
+  displayed on the recent changes special pages
+* The "createpage" permission is no longer required when uploading if the target
+  image page already exists
+* $wgMaximumMovedPages restricts the number of pages that can be moved at once
+  (default 100) with the new subpage-move functionality of Special:Movepage
+* Hooks display in Special:Version is now disabled by default, use 
+  $wgSpecialVersionShowHooks = true; to enable it.
+* $wgActiveUserEditCount sets the number of edits that must be performed over
+  a certain number of days to be considered active
+* $wgActiveUserDays is that number of days
+* $wgRateLimitsExcludedGroups has been deprecated in favor of 
+  $wgGroupPermissions[]['noratelimit']. The former still works, however.
+* New $wgGroupPermissions option 'move-subpages' added to control bulk-moving
+  subpages along with pages.  Assigned to 'user' and 'sysop' by default.
+* New $wgRC2UDPOmitBots allows user to omit bot edits from UDP output. 
+  Default: false
+* Removed $wgEnableCascadingProtection option. Disabling cascading protection
+  is no longer possible. 
+* $wgMessageCacheType defines now the type of cache used by the MessageCache class,
+  previously it was choosen based on $wgParserCacheType
 
 === New features in 1.13 ===
 
 * __HIDDENCAT__ on a category page causes the category to be hidden on the
   article page
-* Don't show edit permissions errors on a red link click, just redirect to the
-  article. This is so that readers who don't know what a red link is aren't
+* Do not show edit permissions errors on a red link click, just redirect to the
+  article. This is so that readers who don't know what a red link is are not
   confused when they are told they are range-blocked.
 * Add a new hook ImageBeforeProduceHTML to allow extensions to modify wikitext
   image syntax output
@@ -110,7 +134,33 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 13970) Allow MonoBook-based skins to specify their own print stylesheet
 * Show image links on Special:Whatlinkshere
 * Use rel="start", "prev", "next" appropriately on Pager-based pages
-
+* Add support for SQLite
+* AutoAuthenticate hook renamed to UserLoadFromSession
+* (bug 13232) importScript(), importStylesheet() funcs available to custom JS
+* (bug 13095) Search by first letters or digits in [[Special:Categories]]
+* Users moving a page can now move all subpages automatically as well
+* (bug 14259) Localisation message for upload button on Special:Import is now
+  'import-upload' instead of 'upload'
+* Add information about user group membership to Special:Preferences
+* (bug 14146) Wrap usage section on imagepages into <div>s.
+* New layout for Special:Specialpages. Restricted pages are marked but not separated
+  from other pages in their group.
+* (bug 14263) Show a diff of the revert on rollback notification page.
+* (bug 13434) Show a warning when hash identical files exist
+* Sidebar is now cached for all languages
+* The User class now contains a public function called isActiveEditor. Figures
+  out if a user is active based on at least $wgActiveUserEditCount number of
+  edits in the last $wgActiveUserDays days.
+* SpecialSearchResults hook now passes results by reference, so they can be
+  changed by extensions.
+* Add a new hook LinkerMakeExternalLink to allow extensions to modify the output of
+  external links.
+* (bug 14132) Allow user to disable bot edits from being output to UDP. 
+* (bug 14328) jsMsg() within Wikibits now accepts a DOM object, not just a string  
+* (bug 2889) MediaWiki:Print.css applies to the printable version
+* (bug 14558) New system message (emailuserfooter) is now added to the footer of 
+  e-mails sent with Special:Emailuser
+  
 === Bug fixes in 1.13 ===
 
 * (bug 10677) Add link to the file description page on the shared repository
@@ -257,7 +307,78 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 13949) Special:PrefixIndex/AllPages paging links contain invalid XML
 * (bug 13770) Use Preprocessor_Hash by default to avoid missing DOM module errors
 * (bug 13982) Disable ccmeonemails preference when user-to-user mails disabled
-
+* (bug 13615) Update case mappings and normalization to Unicode 5.1.0
+  Note that case mappings will only be used if mbstring extension is not present.
+* (bug 14044) Don't increment page view counters on views from bot users
+* (bug 14042) Calling Database::limitResult() misplaced the comment in the log file
+* (bug 14047) Fix regression in installer which hid DB-specific options
+  Also makes SQLite path configurable in the installer.
+* (bug 13546) Follow image redirects on image page
+* (bug 12644) Template list on edit page now sorted on preview
+* (bug 14058) Support pipe trick for namespaces and interwikis with "-"
+* Message name filter on Special:Allmessages now case-insensitive
+* (bug 13943) Fix image redirect behaviour on image pages
+* (bug 14093) Do 'sysop' => 'protect' magic in Title::isValidMoveOperation
+* (bug 14063) Power search form missing <label> for redirects check
+* (bug 14111) Similar filename warning links now lead to correct page
+* (bug 14082) Fix for complex text input vs AJAX suggestions on some browsers
+* (bug 13693) Categories sometimes claim to have a negative number of members
+* (bug 1701) Korean Hangul syllables now broken down properly in Category lists
+  even if the wiki's overall content language is not Korean
+* (bug 12773) addOnloadHook() now calls functions immediately when scripts are
+  loaded after the primary page completion, instead of dropping them
+* (bug 14199) Fix deletion form for image redirect pages
+* (bug 14220) Disabling $wgCheckFileExtensions now works without also
+  disabling $wgStrictFileExtensions
+* (bug 14241) Pages can no longer be protected to levels you are not in
+* (bug 14296) Fix local name of ang: (Anglo-Saxon)
+* (bug 4871) Hardcoded superscript in time zone preferences moved to message
+* (bug 6957) E-mail confirmation links now using English special page name
+  for better compatibility and keeping the links shorter. Avoids problem
+  with corrupt links in Gmail on IE 6.
+* (bug 14273) Fix for HTTP Accept header parsing with spaces as from Konqueror
+* (bug 14312) Update LanguageKaa.php for handling transform issues with i to İ
+  and I to ı
+* (bug 13826) MediaWiki:Defaultns accepts Wikicode
+* (bug 14324) Creating an account is again possible with $wgEmailConfirmToEdit
+  set to true
+* (bug 13034) Interwiki pages can now be reached using Go search button
+* (bug 14362) Change interwiki names of Erzya and Moksha Wikipedias
+* (bug 14370) When a grouppage-x message does not exist the entry on the
+  ListGroupRights special page now links to the project namespace page for it,
+  not the main namespace page.
+* (bug 11659) Urldecode image names in galleries
+* (bug 14258, 14368) Fix for subpage renames in replication environments
+* (bug 14367) Failed block no longer adds phantom watchlist entry
+* (bug 14385) "Move subpages" option no longer tries to move to invalid titles
+* (bug 14386) Fix subpage namespace oddity when moving a talk page
+* (bug 11771) Signup form now not shown if in read-only mode.
+* (bug 12859) $wgRateLimitsExcludedGroups has been deprecated in favor of
+  $wgGroupPermissions[]['noratelimit']. 
+* (Bug 13828) Split parameter $1 of MediaWiki:Missingarticle into $1 (=title)
+  and $2 (=revision numbers)
+* (bug 14401) Fix Safari access key tooltips for Windows and >3.1 Mac versions
+* (bug 14432) Fix notice regression in Special:Newpages feed mode
+* (bug 11951) EditPage::getEditToolbar() is now static.
+* (bug 14392) Fix regression breaking table prefix in installer
+* (bug 11084) $wgDBprefix replacement for updater SQL will now work for
+  extension tables using uppercase letters or digits in their names.
+* (bug 12311) Fix regression with lists at start of undeletion preview
+* (bug 14496) Fix regression with parseinline on Special:Upload.
+* We no longer just give up on a missing upload base directory; it's now
+  created automatically if we have sufficient permissions!
+* (bug 14479) MediaWiki:upload-maxfilesize should have a div id wrapper
+* (bug 14497) Throw visible errors in installer scripts when SQL files
+  fail due to database permission or other error
+* (bug 14500) Site feed (Recentchanges) no longer shows up on the actual
+  recent changes page.
+* (bug 14511) MediaWiki:Delete-legend is no longer double escaped
+* Generate correct section anchors for numeric headers
+* (bug 14520) Don't load nonexistent CSS files for Chick/Myskin/Simple skins
+* (bug 14551) Cancel upload no longer automatically suppresses warnings
+* (bug 13878) Deprecate Article::getDB() in favor of direct wfGetDB() calls
+* (bug 4977) Fix for possible squid purging errors when using HTTP purges
+  and multiple servers
 
 === API changes in 1.13 ===
 
@@ -313,202 +434,47 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 13735) Added prop=categoryinfo module
 * (bug 13945) Retrieve cascading protection sources via inprop=protection
 * (bug 13965) Hardcoded 51 limit on titles is too limiting
+* (bug 13993) apfrom doesn't work with apdir=descending
+* (bug 14018) Introduced alcontinue to list=alllinks to improve paging
+* (bug 14013) Added rcshow=patrolled to list=recentchanges
+* (bug 14028) Added language attribute to interwiki map in meta=siteinfo
+* (bug 14022) Added usprop=registration and auprop=blockinfo
+* (bug 14021) Removed titles= support from list=backlinks (has been obsolete for ages)
+* (bug 13829) Expose parse tree via action=expandtemplates
+* (bug 13606) Allow deletion of images
+* Added iiprop=mime and aiprop=metadata
+* Handled unrecognized values for parameters more gracefully
+* Handled requesting disallowed tokens more gracefully
+* (bug 14140) URL-encoded page titles are now decoded in edit summaries
+* (bug 14243) Only accept post requests in action=edit; patch by HardDisk
+* action=block now returns an ISO8601 timestamp, like all other modules do
+* Added md5 parameter to action=edit
+* (bug 14335) Logging in to unified account using API not possible
+* Added action=emailuser to send an email to a user
+* (bug 14471) Use HTMLTidy and generate limit report in action=parse
+* (bug 14459) Added prependtext and appendtext parameters to action=edit
+* (bug 14526) Unescaped SQL in list=backlinks
+* Added 'hidden' flag to list=allcategories and prop=categoryinfo output
+* Added nocreate parameter to action=edit
+* (bug 14402) Added maxage and smaxage parameters to api.php
 
 === Languages updated in 1.13 ===
 
-* Afrikaans (af)
-* Gheg Albanian (aln)
-* Amharic (am)
-* Aragonese (an)
-* Old English (ang)
-* Arabic (ar)
-* Aramaic (arc)
-* Araucanian (arn)
+MediaWiki supports over 300 languages. Many localisations are updated
+regularly. Below only new and removed languages are listed.
+
 * Egyptian Spoken Arabic (arz) (new)
-* Asturian (ast)
-* Kotava (avk)
-* Samogitian (bat-smg)
-* Bikol Central (bcl)
-* Belarusian (be)
-* Bulgarian (bg)
-* Bihari (bh)
-* Bengali (bn)
-* Breton (br)
-* Bosnian (bs)
-* Buginese (bug)
-* Catalan (ca)
-* Min Dong Chinese (cdo)
-* Corsican (co)
-* Crimean Turkish (Cyrillic) (crh-cyrl)
-* Crimean Turkish (Latin) (crh-latn)
-* Czech (cs)
-* Kashubian (csb)
-* Church Slavic (cu)
-* Welsh (cy)
-* Danish (da)
-* Zazaki (diq)
-* Dalecarlian (dlc)
-* Lower Sorbian (dsb)
+* Southern Balochi (bcc) (new)
 * Middle Dutch (dum) (removed)
-* Divehi (dv)
-* Dzongkha (dz)
-* Greek (el)
-* English (en)
 * British English (en-gb) (new)
-* Esperanto (eo)
-* Spanish (es)
-* Estonian (et)
-* Basque (eu)
-* Extremaduran (ext)
-* Finnish (fi)
-* Võro (fiu-vro)
-* Faroese (fo)
-* French (fr)
-* Cajun French (frc)
-* Franco-Provençal (frp)
-* Friulian (fur)
-* Western Frisian (fy)
-* Irish (ga)
-* Gagauz (gag)
-* Gan (gan)
-* Galician (gl)
-* Swiss German (gsw)
-* Gujarati (gu)
-* Hakka (hak)
-* Hawaiian (haw)
-* Hindi (hi)
 * Fiji Hindi (Latin) (hif-latn) (new)
-* Croatian (hr)
-* Upper Sorbian (hsb)
-* Haitian (ht)
-* Hungarian (hu)
-* Armenian (hy)
-* Interlingua (ia)
-* Indonesian (id)
-* Eastern Canadian (Unified Canadian Aboriginal Syllabics) (ike-cans)
-* Eastern Canadian (Latin) (ike-latn)
-* Iloko (ilo)
-* Ido (io)
-* Icelandic (is)
-* Italian (it)
-* Japanese (ja)
-* Jutish (jut)
-* Javanese (jv)
-* Georgian (ka)
-* Kara-Kalpak (kaa)
-* Kabyle (kab)
-* Kazakh (Arabic script) (kk-arab)
-* Kazakh (Cyrillic script) (kk-cyrl)
-* Kazakh (Latin script) (kk-latn)
-* Kalaallisut (kl)
-* Khmer (km)
-* Kannada (kn)
-* Korean (ko)
-* Kinaray-a (krj)
-* Karelian (krl)
-* Kurdish (Latin)‬ (ku-latn)
-* Latin (la)
-* Luxembourgish (lb)
-* Lezghian (lez)
-* Lingua Franca Nova (lfn)
-* Ganda (lg)
-* Limburgish (li)
-* Líguru (lij)
-* Lumbaart (lmo)
-* Lao (lo)
-* Lozi (loz)
-* Lithuanian (lt)
-* Latvian (lv)
-* Maithili (mai)
-* Moksha (mdf)
-* Malagasy (mg)
-* Macedonian (mk)
-* Malayalam (ml)
-* Mongolian (mn)
-* Moldavian (mo)
-* Marathi (mr)
-* Malay (ms)
-* Mirandese (mwl)
-* Burmese (my)
-* Erzya (myv)
-* Nahuatl (nah)
-* Low German (nds)
-* Nedersaksisch (nds-nl)
-* Nepali (ne)
-* Newari (new)
-* Dutch (nl)
-* Norwegian Nynorsk (nn)
-* Norwegian (bokmål)‬ (no)
 * Old Norse (non) (removed)
-* Northern Sotho (nso)
-* Classical Newari (nwc)
-* Occitan (oc)
-* Oriya (or)
-* Pampanga (pam)
-* Pali (pi)
-* Polish (pl)
-* Piemontèis (pms)
-* Pontic (pnt)
-* Pashto (ps)
-* Portuguese (pt)
-* Brazilian Portuguese (pt-br)
-* Quechua (qu)
-* Romani (rmy)
-* Romanian (ro)
-* Russian (ru)
-* Yakut (sah)
-* Sicilian (scn)
-* Scots (sco)
-* Sassaresu (sdc)
-* Northern Sami (se)
-* Cmique Itom (sei)
-* Sinhalese (si)
-* Slovak (sk)
-* Slovenian (sl)
-* Southern Sami (sma)
-* Somali (so)
-* Albanian (sq)
-* Serbian Cyrillic ekavian (sr-ec)
-* latinica (sr-el)
-* Sranan Tongo (srn)
-* Swati (ss)
-* Southern Sotho (st)
-* Seeltersk (stq)
-* Sundanese (su)
-* Swedish (sv)
-* Swahili (sw)
+* Serbian cyrillic iyekvian (sr-jc) (removed)
+* Serbian latin iyekavian (sr-jl) (removed)
 * Silesian (szl) (new)
-* Tamil (ta)
-* Telugu (te)
-* Tetum (tet)
-* Tajik (tg-cyrl)
-* Thai (th)
-* Tigrinya (ti)
-* Tagalog (tl)
-* Tonga (to)
-* Toki Pona (tokipona)
-* Tok Pisin (tpi)
-* Turkish (tr)
-* Tatar (Cyrillic) (tt-cyrl)
-* Tatar (Latin) (tt-latn)
-* Tuvinian (tyv)
-* Ukrainian (uk)
-* Venda (ve)
-* Venetian (vec)
-* Vietnamese (vi)
-* Volapük (vo)
-* Walloon (wa)
-* Waray (war)
-* Wolof (wo)
-* Mingrelian (xmf)
-* Yiddish (yi)
-* Yoruba (yo)
-* Cantonese (yue)
-* Zeeuws (zea)
-* Old Chinese / Late Time Chinese (zh-classical)
-* Simplified Chinese (zh-hans)
-* Traditional Chinese (zh-hant)
-* ‪Chinese (Taiwan) (zh-tw)
+* Tajiki (Cyrllic script) (tg-cyrl) (new)
+* Tajiki (Latin script) (tg-latn) (new)
+
 
 == Compatibility ==
 

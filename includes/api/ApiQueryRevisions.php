@@ -30,10 +30,10 @@ if (!defined('MEDIAWIKI')) {
 
 /**
  * A query action to enumerate revisions of a given page, or show top revisions of multiple pages.
- * Various pieces of information may be shown - flags, comments, and the actual wiki markup of the rev. 
- * In the enumeration mode, ranges of revisions may be requested and filtered. 
- * 
- * @addtogroup API
+ * Various pieces of information may be shown - flags, comments, and the actual wiki markup of the rev.
+ * In the enumeration mode, ranges of revisions may be requested and filtered.
+ *
+ * @ingroup API
  */
 class ApiQueryRevisions extends ApiQueryBase {
 
@@ -50,10 +50,10 @@ class ApiQueryRevisions extends ApiQueryBase {
 
 		// If any of those parameters are used, work in 'enumeration' mode.
 		// Enum mode can only be used when exactly one page is provided.
-		// Enumerating revisions on multiple pages make it extremely 
-		// difficult to manage continuations and require additional SQL indexes  
+		// Enumerating revisions on multiple pages make it extremely
+		// difficult to manage continuations and require additional SQL indexes
 		$enumRevMode = (!is_null($user) || !is_null($excludeuser) || !is_null($limit) || !is_null($startid) || !is_null($endid) || $dir === 'newer' || !is_null($start) || !is_null($end));
-		
+
 
 		$pageSet = $this->getPageSet();
 		$pageCount = $pageSet->getGoodTitleCount();
@@ -70,35 +70,28 @@ class ApiQueryRevisions extends ApiQueryBase {
 			$this->dieUsage('titles, pageids or a generator was used to supply multiple pages, but the limit, startid, endid, dirNewer, user, excludeuser, start and end parameters may only be used on a single page.', 'multpages');
 
 		$this->addTables('revision');
-		$this->addWhere('rev_deleted=0');
+		$this->addFields( Revision::selectFields() );
 
 		$prop = array_flip($prop);
-
-		// These field are needed regardless of the client requesting them
-		$this->addFields('rev_id');
-		$this->addFields('rev_page');
 
 		// Optional fields
 		$this->fld_ids = isset ($prop['ids']);
 		// $this->addFieldsIf('rev_text_id', $this->fld_ids); // should this be exposed?
-		$this->fld_flags = $this->addFieldsIf('rev_minor_edit', isset ($prop['flags']));
-		$this->fld_timestamp = $this->addFieldsIf('rev_timestamp', isset ($prop['timestamp']));
-		$this->fld_comment = $this->addFieldsIf('rev_comment', isset ($prop['comment']));
-		$this->fld_size = $this->addFieldsIf('rev_len', isset ($prop['size']));
+		$this->fld_flags = isset ($prop['flags']);
+		$this->fld_timestamp = isset ($prop['timestamp']);
+		$this->fld_comment = isset ($prop['comment']);
+		$this->fld_size = isset ($prop['size']);
 		$this->tok_rollback = false; // Prevent PHP undefined property notice
 		if(!is_null($token))
-		{
 			$this->tok_rollback = $this->getTokenFlag($token, 'rollback');
+		$this->fld_user = isset ($prop['user']);
+
+		if ( $this->tok_rollback || ( $this->fld_content && $this->expandTemplates ) || $pageCount > 0) {
+			$this->addTables( 'page' );
+			$this->addWhere('page_id=rev_page');
+			$this->addFields( Revision::selectPageFields() );
 		}
 
-		if (isset ($prop['user'])) {
-			$this->addFields('rev_user');
-			$this->addFields('rev_user_text');
-			$this->fld_user = true;
-		}
-		else if($this->tok_rollback)
-			$this->addFields('rev_user_text');
-		
 		if (isset ($prop['content'])) {
 
 			// For each page we will request, the user must have read rights for that page
@@ -112,11 +105,10 @@ class ApiQueryRevisions extends ApiQueryBase {
 			$this->addTables('text');
 			$this->addWhere('rev_text_id=old_id');
 			$this->addFields('old_id');
-			$this->addFields('old_text');
-			$this->addFields('old_flags');
+			$this->addFields( Revision::selectTextFields() );
 
 			$this->fld_content = true;
-			
+
 			$this->expandTemplates = $expandtemplates;
 			if(isset($section))
 				$this->section = $section;
@@ -141,13 +133,13 @@ class ApiQueryRevisions extends ApiQueryBase {
 				$this->dieUsage('end and endid cannot be used together', 'badparams');
 
 			if(!is_null($user) && !is_null( $excludeuser))
-				$this->dieUsage('user and excludeuser cannot be used together', 'badparams');			
-			
+				$this->dieUsage('user and excludeuser cannot be used together', 'badparams');
+
 			// This code makes an assumption that sorting by rev_id and rev_timestamp produces
 			// the same result. This way users may request revisions starting at a given time,
 			// but to page through results use the rev_id returned after each page.
-			// Switching to rev_id removes the potential problem of having more than 
-			// one row with the same timestamp for the same page. 
+			// Switching to rev_id removes the potential problem of having more than
+			// one row with the same timestamp for the same page.
 			// The order needs to be the same as start parameter to avoid SQL filesort.
 
 			if (is_null($startid) && is_null($endid))
@@ -162,7 +154,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 
 			// There is only one ID, use it
 			$this->addWhereFld('rev_page', current(array_keys($pageSet->getGoodTitles())));
-			
+
 			if(!is_null($user)) {
 				$this->addWhereFld('rev_user_text', $user);
 			} elseif (!is_null( $excludeuser)) {
@@ -181,7 +173,6 @@ class ApiQueryRevisions extends ApiQueryBase {
 		elseif ($pageCount > 0) {
 			// When working in multi-page non-enumeration mode,
 			// limit to the latest revision only
-			$this->addTables('page');
 			$this->addWhere('page_id=rev_page');
 			$this->addWhere('page_latest=rev_id');
 			$this->validateLimit('page_count', $pageCount, 1, $userMax, $botMax);
@@ -211,17 +202,18 @@ class ApiQueryRevisions extends ApiQueryBase {
 				break;
 			}
 
+			$revision = new Revision( $row );
 			$this->getResult()->addValue(
 				array (
 					'query',
 					'pages',
-					intval($row->rev_page),
+					$revision->getPage(),
 					'revisions'),
 				null,
-				$this->extractRowInfo($row));
+				$this->extractRowInfo( $revision ));
 		}
 		$db->freeResult($res);
-		
+
 		// Ensure that all revisions are shown as '<rev>' elements
 		$result = $this->getResult();
 		if ($result->getIsRawMode()) {
@@ -234,61 +226,66 @@ class ApiQueryRevisions extends ApiQueryBase {
 		}
 	}
 
-	private function extractRowInfo($row) {
+	private function extractRowInfo( $revision ) {
 
 		$vals = array ();
 
 		if ($this->fld_ids) {
-			$vals['revid'] = intval($row->rev_id);
+			$vals['revid'] = $revision->getId();
 			// $vals['oldid'] = intval($row->rev_text_id);	// todo: should this be exposed?
 		}
-		
-		if ($this->fld_flags && $row->rev_minor_edit)
+
+		if ($this->fld_flags && $revision->isMinor())
 			$vals['minor'] = '';
 
 		if ($this->fld_user) {
-			$vals['user'] = $row->rev_user_text;
-			if (!$row->rev_user)
+			$vals['user'] = $revision->getUserText();
+			if (!$revision->getUser())
 				$vals['anon'] = '';
 		}
 
 		if ($this->fld_timestamp) {
-			$vals['timestamp'] = wfTimestamp(TS_ISO_8601, $row->rev_timestamp);
-		}
-		
-		if ($this->fld_size && !is_null($row->rev_len)) {
-			$vals['size'] = intval($row->rev_len);
+			$vals['timestamp'] = wfTimestamp(TS_ISO_8601, $revision->getTimestamp());
 		}
 
-		if ($this->fld_comment && !empty ($row->rev_comment)) {
-			$vals['comment'] = $row->rev_comment;
+		if ($this->fld_size && !is_null($revision->getSize())) {
+			$vals['size'] = $revision->getSize();
 		}
-		
+
+		if ($this->fld_comment) {
+			$comment = $revision->getComment();
+			if (!empty($comment))		
+				$vals['comment'] = $comment;
+		}
+
 		if($this->tok_rollback || ($this->fld_content && $this->expandTemplates))
-			$title = Title::newFromID($row->rev_page);
-		
+			$title = $revision->getTitle();
+
 		if($this->tok_rollback) {
 			global $wgUser;
-			$vals['rollbacktoken'] = $wgUser->editToken(array($title->getPrefixedText(), $row->rev_user_text));
+			$vals['rollbacktoken'] = $wgUser->editToken( array(
+					$title->getPrefixedText(), 
+					$revision->getUserText(),
+			) );
 		}
-		
-		
+
+
 		if ($this->fld_content) {
 			global $wgParser;
-			$text = Revision :: getRevisionText($row);
+			$text = $revision->getText();
 			# Expand templates after getting section content because
 			# template-added sections don't count and Parser::preprocess()
 			# will have less input
 			if ($this->section !== false) {
 				$text = $wgParser->getSection( $text, $this->section, false);
 				if($text === false)
-					$this->dieUsage("There is no section {$this->section} in r{$row->rev_id}", 'nosuchsection');
+					$this->dieUsage("There is no section {$this->section} in r".$revision->getId(), 'nosuchsection');
 			}
 			if ($this->expandTemplates) {
 				$text = $wgParser->preprocess( $text, $title, new ParserOptions() );
 			}
 			ApiResult :: setContent($vals, $text);
-		}		
+		}
 		return $vals;
 	}
 
@@ -338,7 +335,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 			'excludeuser' => array(
 				ApiBase :: PARAM_TYPE => 'user'
 			),
-			
+
 			'expandtemplates' => false,
 			'section' => array(
 				ApiBase :: PARAM_TYPE => 'integer'
@@ -398,7 +395,6 @@ class ApiQueryRevisions extends ApiQueryBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiQueryRevisions.php 31969 2008-03-14 13:07:38Z catrope $';
+		return __CLASS__ . ': $Id$';
 	}
 }
-

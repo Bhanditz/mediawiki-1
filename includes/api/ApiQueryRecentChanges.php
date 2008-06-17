@@ -31,8 +31,8 @@ if (!defined('MEDIAWIKI')) {
 /**
  * A query action to enumerate the recent changes that were done to the wiki.
  * Various filters are supported.
- * 
- * @addtogroup API
+ *
+ * @ingroup API
  */
 class ApiQueryRecentChanges extends ApiQueryBase {
 
@@ -43,24 +43,25 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 	private $fld_comment = false, $fld_user = false, $fld_flags = false,
 			$fld_timestamp = false, $fld_title = false, $fld_ids = false,
 			$fld_sizes = false;
-	 
+
 	/**
 	 * Generates and outputs the result of this query based upon the provided parameters.
 	 */
 	public function execute() {
 		/* Initialize vars */
 		$limit = $prop = $namespace = $titles = $show = $type = $dir = $start = $end = null;
-		
+
 		/* Get the parameters of the request. */
 		extract($this->extractRequestParams());
 
 		/* Build our basic query. Namely, something along the lines of:
-		 * SELECT * from recentchanges WHERE rc_timestamp > $start 
-		 * 		AND rc_timestamp < $end AND rc_namespace = $namespace 
+		 * SELECT * FROM recentchanges WHERE rc_timestamp > $start
+		 * 		AND rc_timestamp < $end AND rc_namespace = $namespace
 		 * 		AND rc_deleted = '0'
 		 */
 		$db = $this->getDB();
-		$rc = $db->tableName('recentchanges');
+		$this->addTables('recentchanges');
+		$this->addOption('USE INDEX', array('recentchanges' => 'rc_timestamp'));
 		$this->addWhereRange('rc_timestamp', $dir, $start, $end);
 		$this->addWhereFld('rc_namespace', $namespace);
 		$this->addWhereFld('rc_deleted', 0);
@@ -83,7 +84,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			if($where != '')
 				$this->addWhere($where);
 		}
-				
+
 		if(!is_null($type))
 				$this->addWhereFld('rc_type', $this->parseRCType($type));
 
@@ -91,13 +92,19 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			$show = array_flip($show);
 
 			/* Check for conflicting parameters. */
-			if ((isset ($show['minor']) && isset ($show['!minor'])) 
-					|| (isset ($show['bot']) && isset ($show['!bot'])) 
+			if ((isset ($show['minor']) && isset ($show['!minor']))
+					|| (isset ($show['bot']) && isset ($show['!bot']))
 					|| (isset ($show['anon']) && isset ($show['!anon']))
-					|| (isset ($show['redirect']) && isset ($show['!redirect']))) {
-						
+					|| (isset ($show['redirect']) && isset ($show['!redirect']))
+					|| (isset ($show['patrolled']) && isset ($show['!patrolled']))) {
+
 				$this->dieUsage("Incorrect parameter - mutually exclusive values may not be supplied", 'show');
 			}
+			
+			// Check permissions
+			global $wgUser;
+			if((isset($show['patrolled']) || isset($show['!patrolled'])) && !$wgUser->isAllowed('patrol'))
+				$this->dieUsage("You need the patrol right to request the patrolled flag", 'permissiondenied');
 
 			/* Add additional conditions to query depending upon parameters. */
 			$this->addWhereIf('rc_minor = 0', isset ($show['!minor']));
@@ -106,6 +113,8 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			$this->addWhereIf('rc_bot != 0', isset ($show['bot']));
 			$this->addWhereIf('rc_user = 0', isset ($show['anon']));
 			$this->addWhereIf('rc_user != 0', isset ($show['!anon']));
+			$this->addWhereIf('rc_patrolled = 0', isset($show['!patrolled']));
+			$this->addWhereIf('rc_patrolled != 0', isset($show['patrolled']));
 			$this->addWhereIf('page_is_redirect = 1', isset ($show['redirect']));
 			// Don't throw log entries out the window here
 			$this->addWhereIf('page_is_redirect = 0 OR page_is_redirect IS NULL', isset ($show['!redirect']));
@@ -135,17 +144,17 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			$this->fld_sizes = isset ($prop['sizes']);
 			$this->fld_redirect = isset($prop['redirect']);
 			$this->fld_patrolled = isset($prop['patrolled']);
-			
+
 			global $wgUser;
 			if($this->fld_patrolled && !$wgUser->isAllowed('patrol'))
 				$this->dieUsage("You need the patrol right to request the patrolled flag", 'permissiondenied');
 
 			/* Add fields to our query if they are specified as a needed parameter. */
-			$this->addFieldsIf('rc_id', $this->fld_ids);			
-			$this->addFieldsIf('rc_cur_id', $this->fld_ids);			
-			$this->addFieldsIf('rc_this_oldid', $this->fld_ids);			
-			$this->addFieldsIf('rc_last_oldid', $this->fld_ids);			
-			$this->addFieldsIf('rc_comment', $this->fld_comment);			
+			$this->addFieldsIf('rc_id', $this->fld_ids);
+			$this->addFieldsIf('rc_cur_id', $this->fld_ids);
+			$this->addFieldsIf('rc_this_oldid', $this->fld_ids);
+			$this->addFieldsIf('rc_last_oldid', $this->fld_ids);
+			$this->addFieldsIf('rc_comment', $this->fld_comment);
 			$this->addFieldsIf('rc_user', $this->fld_user);
 			$this->addFieldsIf('rc_user_text', $this->fld_user);
 			$this->addFieldsIf('rc_minor', $this->fld_flags);
@@ -156,15 +165,12 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			$this->addFieldsIf('rc_patrolled', $this->fld_patrolled);
 			if($this->fld_redirect || isset($show['redirect']) || isset($show['!redirect']))
 			{
-				$page = $db->tableName('page');
-				$tables = "$page RIGHT JOIN $rc FORCE INDEX(rc_timestamp) ON page_namespace=rc_namespace AND page_title=rc_title";
+				$this->addTables('page');
+				$this->addJoinConds(array('page' => array('LEFT JOIN', array('rc_namespace=page_namespace', 'rc_title=page_title'))));
 				$this->addFields('page_is_redirect');
 			}
 		}
-		if(!isset($tables))
-			$tables = "$rc FORCE INDEX(rc_timestamp)";
-		$this->addTables($tables);
-		/* Specify the limit for our query. It's $limit+1 because we (possibly) need to 
+		/* Specify the limit for our query. It's $limit+1 because we (possibly) need to
 		 * generate a "continue" parameter, to allow paging. */
 		$this->addOption('LIMIT', $limit +1);
 
@@ -185,7 +191,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 
 			/* Extract the data from a single row. */
 			$vals = $this->extractRowInfo($row);
-			
+
 			/* Add that row's data to our final output. */
 			if($vals)
 				$data[] = $vals;
@@ -276,7 +282,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 		if ($this->fld_comment && !empty ($row->rc_comment)) {
 			$vals['comment'] = $row->rc_comment;
 		}
-		
+
 		if ($this->fld_redirect)
 			if($row->page_is_redirect)
 				$vals['redirect'] = '';
@@ -287,7 +293,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 
 		return $vals;
 	}
-	
+
 	private function parseRCType($type)
 	{
 			if(is_array($type))
@@ -303,7 +309,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 					case 'new': return RC_NEW;
 					case 'log': return RC_LOG;
 			}
-	}			
+	}
 
 	public function getAllowedParams() {
 		return array (
@@ -352,7 +358,9 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 					'anon',
 					'!anon',
 					'redirect',
-					'!redirect'
+					'!redirect',
+					'patrolled',
+					'!patrolled'
 				)
 			),
 			'limit' => array (
@@ -366,7 +374,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 				ApiBase :: PARAM_ISMULTI => true,
 				ApiBase :: PARAM_TYPE => array (
 					'edit',
-					'new', 
+					'new',
 					'log'
 				)
 			)
@@ -401,7 +409,6 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiQueryRecentChanges.php 32919 2008-04-07 13:27:33Z catrope $';
+		return __CLASS__ . ': $Id$';
 	}
 }
-

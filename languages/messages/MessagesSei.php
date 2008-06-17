@@ -1,16 +1,16 @@
 <?php
 /** Cmique Itom (Cmique Itom)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author SeriCtam
  * @author Ccaxjoj Iteja Z Iti Poop
- * @author Teak
  * @author Siebrand
  * @author SPQRobin
+ * @author Jon Harald Søby
+ * @author Teak
  */
-
-
 
 $messages = array(
 # User preference toggles
@@ -113,7 +113,6 @@ $messages = array(
 'dec'           => 'T12',
 
 # Categories related messages
-'categories'             => 'Cayliibám',
 'pagecategories'         => '{{PLURAL:$1|Cajliib|Cajliibám}}',
 'category_header'        => 'Páhinám cayliibám zo iti "$1"',
 'subcategories'          => 'Subcayliibám',
@@ -299,12 +298,6 @@ $1',
 'readonlytext'         => "Database zo coccebj locköx cmaade hunticpatlöx, posde maintenancede database, normal returnöx 'depre.
 
 Sysop zo locköx zo xuniim jan rae': $1",
-'missingarticle'       => 'Database zo neyahöx textua zo jöx páhina zo Necesde yahöx, "$1".
-
-Jan coccebj rae\'de nenupdatenom diff jöx linkámde históriade páhina delatom pac.
-
-Jan necoccebj zo poop, me pos-coccebj yahöx bug zode software zo iti.
-Reportom jande sysop ö xuniim URL zo.',
 'readonly_lag'         => "Database coccebj locköx auto jan 'slave database serverám' zo ifanomde 'master' zo",
 'internalerror'        => 'Römj internal',
 'internalerror_info'   => 'Römj internal: $1',
@@ -356,6 +349,7 @@ Mecaitom coccebj creatöx. Quiix hequáatlaácde {{SITENAME}} pos-poop.",
 'externaldberror'            => 'Pos-römjde authenticacionde database extername jöx me necoccebj permiccionde updatan mecaitom externom.',
 'loginproblem'               => '<b>Problemam mecaápo miimisoj.</b><br />Vancaápo!',
 'login'                      => 'Caápo',
+'nav-login-createaccount'    => 'Caápo / xuatl',
 'loginprompt'                => 'Henáabliicookám caápo {{SITENAME}}.',
 'userlogin'                  => 'Caápo / xuatl',
 'logout'                     => 'Cuípo',
@@ -638,7 +632,6 @@ Informacion: (curt) = quiíxde vercion currentua,
 'nextn'                 => 'hun $1',
 'viewprevnext'          => 'Cohuatlöx ($1) ($2) ($3)',
 'powersearch'           => 'Yahöx',
-'powersearchtext'       => 'Yahöx ipartuatl iti:<br />$1<br />$2 List redirects<br />Search for $3 $9',
 
 # Preferences page
 'preferences'           => 'Quáatlaác',
@@ -673,7 +666,7 @@ Informacion: (curt) = quiíxde vercion currentua,
 'searchresultshead'     => 'Yahöx',
 'savedprefs'            => 'Hequáatlaác coccebj xuniimöx.',
 'timezonelegend'        => 'Zonede xepe',
-'timezonetext'          => 'Xepede zaah quij iitax mexepe locale quiixomde xepede servere (UTC).',
+'timezonetext'          => '¹Xepede zaah quij iitax mexepe locale quiixomde xepede servere (UTC).',
 'localtime'             => 'Xepe locale',
 'timezoneoffset'        => "Minus'set¹",
 'servertime'            => 'Xepede server',
@@ -687,7 +680,7 @@ Informacion: (curt) = quiíxde vercion currentua,
 'userrights-lookup-user'     => "Yoc' polámde caitom",
 'userrights-user-editname'   => 'Caitom ID ra:',
 'editusergroup'              => 'Ticpatlöx Polám Caitóm',
-'editinguser'                => 'Ticpatlöx caitom <b>$1</b>',
+'editinguser'                => "Ticpatlöx caitom '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'   => 'Ticpatlöx polám caitóm',
 'saveusergroups'             => 'Xuniim Polámde Caitom',
 'userrights-groupsmember'    => 'Ctamde:',
@@ -744,7 +737,7 @@ Informacion: (curt) = quiíxde vercion currentua,
 
 # Recent changes linked
 'recentchangeslinked'       => 'Quiix hámíigonix',
-'recentchangeslinked-title' => 'Quiix hámíigonixde $1',
+'recentchangeslinked-title' => 'Quiix hámíigonixde "$1"',
 
 # Upload
 'upload'            => 'Ciúchan uploadan',
@@ -868,9 +861,6 @@ Informacion: (curt) = quiíxde vercion currentua,
 'protectedpagestext'  => 'Jan páhinám coccebj protectöxde yacom jöx ticpatlöx',
 'protectedpagesempty' => '0 páhinám currentua coccebj protectöx jan parameterám mii.',
 'listusers'           => 'Listade caitóm',
-'specialpages'        => 'Páhinám extravám',
-'spheading'           => 'Páhinám extravám jömde caitom',
-'restrictedpheading'  => 'Páhinám extravám restrictám',
 'newpages'            => 'Jan páhinám',
 'newpages-username'   => 'Caitom ID:',
 'ancientpages'        => 'Xeperesistant páhinám',
@@ -901,6 +891,9 @@ Informacion: (curt) = quiíxde vercion currentua,
 'allpagessubmit'    => 'Caátemöx',
 'allpagesprefix'    => 'Xuniim páhinám jan prefix mii:',
 'allpages-bad-ns'   => '{{SITENAME}} necoccebj ipartuatl "$1".',
+
+# Special:Categories
+'categories' => 'Cayliibám',
 
 # Special:Listusers
 'listusersfrom'      => 'Xuniim caitóm startomde:',
@@ -1031,8 +1024,6 @@ iitom e-iitomde diijömde caitóm.',
 'movepagebtn'      => 'Yacom páhina',
 'movedto'          => 'yacomöxde',
 'movetalk'         => 'Yacom czaxö páhina yodina ipríi',
-'talkpagemoved'    => 'Czaxö páhina yodina ipríi yacomöx.',
-'talkpagenotmoved' => 'Czaxö páhina yodina ipríi <strong>neyacomöx</strong>.',
 '1movedto2'        => '[[$1]] yacomöxde [[$2]]',
 'movereason'       => 'Ra:',
 'delete_and_move'  => 'Delatom ö yacom',
@@ -1118,8 +1109,7 @@ iitom e-iitomde diijömde caitóm.',
 'confirm_purge_button' => 'ton',
 
 # Multipage image navigation
-'imgmultigo'      => 'Caátemöx!',
-'imgmultigotopre' => 'Caátemöx páhina',
+'imgmultigo' => 'Caátemöx!',
 
 # Table pager
 'table_pager_limit_submit' => 'Caátemöx',
@@ -1129,5 +1119,8 @@ iitom e-iitomde diijömde caitóm.',
 
 # Special:Version
 'version' => 'Vercion', # Not used as normal message but as header for the special page itself
+
+# Special:SpecialPages
+'specialpages' => 'Páhinám extravám',
 
 );

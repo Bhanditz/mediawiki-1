@@ -1,19 +1,34 @@
 <?php
 /** Maithili (मैथिली)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Ggajendra
- * @author SPQRobin
- * @author GerardM
  * @author Siebrand
+ * @author SPQRobin
  */
 
 $fallback = 'hi';
 
 $messages = array(
 # User preference toggles
-'tog-underline' => 'लिंककेँ रेखांकित करू:',
+'tog-underline'           => 'लिंककेँ रेखांकित करू:',
+'tog-highlightbroken'     => 'टूटल श्रृंखला <a href="" class="new">एना देखाऊ</a> (आकि फेर: एना देखाऊ<a href="" class="internal">?</a>).',
+'tog-hideminor'           => 'सन्निकट परिवर्त्तनमे छोट परिवर्त्तन नुकाऊ',
+'tog-usenewrc'            => 'बढ़ल सन्निकट परिवर्त्तन (जावास्क्रीप्ट)',
+'tog-showtoolbar'         => 'संपादन ओजारपेटी देखाऊ (जावास्क्रीप्ट)',
+'tog-editsection'         => '[संपादित करू] श्रृंखक़्ला द्वारा विभाग संपादनक आज्ञा दिअ',
+'tog-showtoc'             => 'अनुक्रम देखाऊ (जाहि पृष्ठ पर तीनसँ बेशी विभाग होए)',
+'tog-editwidth'           => 'सँपादन पेटी पूर्ण चौरस देखाऊ',
+'tog-watchdefault'        => 'हमर संपादित पृष्ठ हमर साकांक्ष सूचीमे देखाऊ',
+'tog-watchdeletion'       => 'हमरा द्वारा हटाओल पृष्ठ हमर साकांक्ष सूचीमे राखू',
+'tog-previewontop'        => 'संपादन पेटीक ऊपर दृश्य देखाऊ',
+'tog-nocache'             => 'पन्ना प्रतीक्षा गह्वरमे नहि राखू',
+'tog-enotifusertalkpages' => 'हमर सदस्य वार्ता पृष्ठ पर भेल परिवर्त्तनक हेतु हमरा ई-मेल करथि',
+'tog-enotifminoredits'    => 'छोट परिवर्त्तनक हेतु सेहो हमरा ई-मेल पठाऊ',
+'tog-fancysig'            => 'अपरिपक्व हस्ताक्षर (स्वचालित श्रृंखलाक बिना)',
+'tog-externaldiff'        => 'पुरान संस्करणमे अंतर देखेबाक हेतु बाहरक प्रणालीक प्रयोग करू',
 
 # Dates
 'sun'           => 'रवि',
@@ -93,7 +108,7 @@ $messages = array(
 'disclaimers'          => 'अनाधिकार घोषणा',
 'disclaimerpage'       => 'Project:अनाधिकार घोषणा',
 'edithelp'             => 'संपादन सहयोग',
-'edithelppage'         => 'सहायता:संपादन',
+'edithelppage'         => 'Help:संपादन',
 'mainpage'             => 'सम्मुख पन्ना',
 'mainpage-description' => 'सम्मुख पन्ना',
 'privacy'              => 'गोपनीयताक नियम',
@@ -189,9 +204,8 @@ $messages = array(
 'randompage' => 'अव्यवस्थित पृष्ठ',
 
 # Miscellaneous special pages
-'nbytes'       => '$1 {{PLURAL:$1|बाइट|बाइट्स}}',
-'prefixindex'  => 'लगाऊ सूची',
-'specialpages' => 'विशेष पन्ना',
+'nbytes'      => '$1 {{PLURAL:$1|बाइट|बाइट्स}}',
+'prefixindex' => 'लगाऊ सूची',
 
 # Special:Log
 'all-logs-page' => 'सभटा लॉग',
@@ -266,5 +280,8 @@ $messages = array(
 मात्र सूचीबद्ध सामग्री (* सँ प्रारम्भ होय बला पंक्त्ति) विचारनीय अछि। पंक्त्तिक प्रथम लिंक आवश्यक रूपसँ खराब चित्रक लिंक होयबाक चाही। 
 
 ओही पंक्त्तिक कोनो आर लिंक अपवाद स्वरूप अछि, उदाहरणस्वरूप पन्ना जतय चित्र पंक्त्तिअहि पर होय।',
+
+# Special:SpecialPages
+'specialpages' => 'विशेष पन्ना',
 
 );

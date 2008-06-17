@@ -1,14 +1,14 @@
 <?php
 /** Kashubian (Kaszëbsczi)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Warszk
  * @author Siebrand
- * @author SPQRobin
  * @author לערי ריינהארט
- * @author Nike
  * @author Jon Harald Søby
+ * @author SPQRobin
  */
 
 $namespaceNames = array(
@@ -133,7 +133,6 @@ $messages = array(
 'dec'           => 'gòd',
 
 # Categories related messages
-'categories'            => 'Kategòrëje',
 'pagecategories'        => '{{PLURAL:$1|Kategòrëjô|Kategòrëje}}',
 'category_header'       => 'Artikle w kategòrëji "$1"',
 'subcategories'         => 'Pòdkategòrëje',
@@ -196,7 +195,7 @@ $messages = array(
 'otherlanguages'   => 'W jinëch jãzëkach',
 'redirectedfrom'   => '(Przeczerowóné z $1)',
 'lastmodifiedat'   => 'Na starna bëła slédno editowónô ò $2, $1;', # $1 date, $2 time
-'viewcount'        => 'Na starna je òbzéranô ju {{plural:$1|jeden rôz|$1 razy}}',
+'viewcount'        => 'Na starna je òbzéranô ju {{PLURAL:$1|jeden rôz|$1 razy}}',
 'protectedpage'    => 'Starna je zazychrowónô',
 'jumpto'           => 'Skòczë do:',
 'jumptonavigation' => 'nawigacëji',
@@ -250,7 +249,6 @@ $messages = array(
 'error'            => 'Fela',
 'databaseerror'    => 'Fela w pòdôwkòwi baze',
 'readonly'         => 'Baza pòdôwków je zablokòwónô',
-'missingarticle'   => 'Programa ni mô nalôzłé tekstu starnë, chtërnô bë mùsza bëc w baze, to je starnë "$1".<p>Colemało mô to plac, czej òstónie wëbróné sparłãczenié\\ndo rëmóny starnë, np. stôrszi wersëji jińszi starnë.</p><p>Jińszé leżnosce mògą znaczëc, że w soft-wôrze je fela. W taczim przëtrôfkù prosymë zameldowac nen fakt administratorowi pòdającë hewòtną adresã.',
 'internalerror'    => 'Bënowô fela',
 'filecopyerror'    => 'Ni mòże skòpérowac lopka "$1" do "$2".',
 'filerenameerror'  => 'Ni mòże zmienic miona lopka "$1" na "$2".',
@@ -273,6 +271,7 @@ $messages = array(
 'yourpasswordagain'          => 'Pòwtórzë parolã',
 'yourdomainname'             => 'Twòjô domena',
 'login'                      => 'Wlogùjë mie',
+'nav-login-createaccount'    => 'Logòwanié',
 'loginprompt'                => "Brëkùjesz miec ''cookies'' (kùszczi) włączoné bë sã wlogòwac do {{SITENAME}}.",
 'userlogin'                  => 'Logòwanié',
 'logout'                     => 'Wëlogùjë mie',
@@ -342,7 +341,7 @@ dlô wicy wëdowiédzë).
 Jeżlë jes të tuwò bez zmiłkã, le klëkni w swòjim przezérnikù knąpã '''nazôd'''.",
 'anontalkpagetext'      => "----''To je starna dyskùsëji anonimòwiégò brëkòwnika, chtëren nie zrobił jesz kònta dlô se, abò gò nie brëkùje. Takô adresa IP, mòże bëc brëkòwónô òb wiele lëdzy. Eżlë klëczi na ti starnie nie są sczérowóne do ce, tedë [[{{ns:special}}:Userlogin|zrobi sobie nowé kònto]] abò zalogùje sã, bë niechac zmiłczi z jinëma anonimòwima brëkòwnikama.''",
 'clearyourcache'        => "'''Bôczë:''' Pò zapisanim, mòże bãdzesz mùszôł òminąc pamiãc przezérnika bë òbaczëc zmianë. '''Mozilla / Firefox / Safari:''' przëtrzëmôj ''Shift'' òbczas klëkaniô na ''Reload'', abò wcësni ''Ctrl-Shift-R'' (''Cmd-Shift-R'' na kòmpùtrach Mac); '''IE:''' przëtrzëmôj ''Ctrl'' òbczas klëkaniô na ''Refresh'', abò wcësni ''Ctrl-F5''; '''Konqueror''': prosto klëkni na knąpã ''Reload'', abò wcësni ''F5''; brëkòwnicë '''Operë''' bãdą mést mùszële wëczëszczëc pamiãc w ''Tools→Preferences''.",
-'previewnote'           => 'To je blós pòdzérk - artikel jesz nie je zapisóny!',
+'previewnote'           => '<strong>To je blós pòdzérk - artikel jesz nie je zapisóny!</strong>',
 'editing'               => 'Edicëjô $1',
 'explainconflict'       => 'Chtos sfórtowôł wprowadzëc swòją wersëjã artikla òbczôs Twòji edicëji. Górné pòle edicëji zamëkô w se tekst starnë aktualno zapisóny w pòdôwkòwi baze. Twòje zmianë są w dólnym pòlu edicëji. Bë wprowadzëc swòje zmianë mùszisz zmòdifikòwac tekst z górnégò pòla. <b>Blós</b> tekst z górnégò pòla mdze zapisóny w baze czej wcësniesz "Zapiszë".',
 'yourtext'              => 'Twój tekst',
@@ -405,7 +404,7 @@ Jeżlë jes të tuwò bez zmiłkã, le klëkni w swòjim przezérnikù knąpã '
 'recentchangescount'    => 'Wielëna pòzycëji na lësce slédnëch edicëji',
 'savedprefs'            => 'Twòjé nastôwë òstałë zapisóné.',
 'timezonelegend'        => 'Czasowô cona',
-'timezonetext'          => 'Lëczba gòdzënów różnicë midze twòjim môlowim czasã a czasã na serwerze (UTC).',
+'timezonetext'          => '¹Lëczba gòdzënów różnicë midze twòjim môlowim czasã a czasã na serwerze (UTC).',
 'localtime'             => 'Twòja czasowô cona',
 'timezoneoffset'        => 'Różnica¹',
 'servertime'            => 'Aktualny czas serwera',
@@ -415,7 +414,7 @@ Jeżlë jes të tuwò bez zmiłkã, le klëkni w swòjim przezérnikù knąpã '
 'files'                 => 'Lopczi',
 
 # User rights
-'editinguser' => 'Edicëjô brëkòwnika <b>$1</b>',
+'editinguser' => "Edicëjô brëkòwnika '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 
 'grouppage-sysop' => '{{ns:project}}:Administratorzë',
 
@@ -460,7 +459,6 @@ Jeżlë jes të tuwò bez zmiłkã, le klëkni w swòjim przezérnikù knąpã '
 'uploaddisabled'    => 'Przeprôszómë! Mòżlëwòta wladënkù lopków na nen serwer òsta wëłączonô.',
 
 # Special:Imagelist
-'imgdesc'        => 'òpisënk',
 'imagelist'      => 'Lësta òbrôzków',
 'imagelist_user' => 'Brëkòwnik',
 
@@ -484,7 +482,7 @@ Bez nëch to prôwdëjuwerno da '''$2''' starn artiklów.
 
 Bëło w sëmie '''$3''' òdwiôdënów ë '''$4''' edicëji òd sztótu, czej miôł plac upgrade soft-wôrë. Dôwó to strzédno $5 edicëji na jedną starnã ë $6 òdwiôdënów na jedną edicëjã.
 
-Długòta [http://meta.wikimedia.org/wiki/Help:Job_queue rédżi robòtë] je '''$7'''.",
+Długòta [http://www.mediawiki.org/wiki/Manual:Job_queue rédżi robòtë] je '''$7'''.",
 
 'disambiguationspage' => 'Template:Starnë_ùjednoznacznieniô',
 
@@ -501,8 +499,6 @@ Długòta [http://meta.wikimedia.org/wiki/Help:Job_queue rédżi robòtë] je ''
 'shortpages'        => 'Nôkrótszé starnë',
 'longpages'         => 'Nôdłëgszé starnë',
 'listusers'         => 'Lësta brëkòwników',
-'specialpages'      => 'Specjalné starnë',
-'spheading'         => 'Specjalné nôpisma',
 'newpages'          => 'Nowé starnë',
 'newpages-username' => 'Miono brëkòwnika:',
 'ancientpages'      => 'Nôstarszé starnë',
@@ -529,6 +525,9 @@ Długòta [http://meta.wikimedia.org/wiki/Help:Job_queue rédżi robòtë] je ''
 'allpagesnext'      => 'Pòsobnô',
 'allpagessubmit'    => 'Pòkôżë',
 'allpagesprefix'    => 'Pòkôżë naczënającë sã òd:',
+
+# Special:Categories
+'categories' => 'Kategòrëje',
 
 # E-mail user
 'emailuser'       => 'Wëslë e-maila do negò brëkòwnika',
@@ -731,5 +730,8 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 
 # Special:Version
 'version' => 'Wersëjô', # Not used as normal message but as header for the special page itself
+
+# Special:SpecialPages
+'specialpages' => 'Specjalné starnë',
 
 );

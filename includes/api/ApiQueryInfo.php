@@ -30,8 +30,8 @@ if (!defined('MEDIAWIKI')) {
 
 /**
  * A query module to show basic page information.
- * 
- * @addtogroup API
+ *
+ * @ingroup API
  */
 class ApiQueryInfo extends ApiQueryBase {
 
@@ -71,7 +71,7 @@ class ApiQueryInfo extends ApiQueryBase {
 		else
 			// Fix E_NOTICEs about unset variables
 			$token = $tok_edit = $tok_delete = $tok_protect = $tok_move = null;
-		
+
 		$pageSet = $this->getPageSet();
 		$titles = $pageSet->getGoodTitles();
 		$missing = $pageSet->getMissingTitles();
@@ -103,7 +103,64 @@ class ApiQueryInfo extends ApiQueryBase {
 				$protections[$row->pr_page][] = $a;
 			}
 			$db->freeResult($res);
+			
+			$imageIds = array();
+			foreach ($titles as $id => $title)
+				if ($title->getNamespace() == NS_IMAGE)
+					$imageIds[] = $id;
+			// To avoid code duplication
+			$cascadeTypes = array(
+				array(
+					'prefix' => 'tl',
+					'table' => 'templatelinks',
+					'ns' => 'tl_namespace',
+					'title' => 'tl_title',
+					'ids' => array_diff(array_keys($titles), $imageIds)
+				),
+				array(
+				 	'prefix' => 'il',
+				 	'table' => 'imagelinks',
+				 	'ns' => NS_IMAGE,
+				 	'title' => 'il_to',
+				 	'ids' => $imageIds
+				)
+			);
+			
+			foreach ($cascadeTypes as $type)
+			{
+				if (count($type['ids']) != 0) {
+					$this->resetQueryParams();
+					$this->addTables(array('page_restrictions', $type['table']));
+					$this->addTables('page', 'page_source');
+					$this->addTables('page', 'page_target');
+					$this->addFields(array('pr_type', 'pr_level', 'pr_expiry', 
+							'page_target.page_id AS page_target_id',
+							'page_source.page_namespace AS page_source_namespace',
+							'page_source.page_title AS page_source_title'));
+					$this->addWhere(array("{$type['prefix']}_from = pr_page", 
+							'page_target.page_namespace = '.$type['ns'], 
+							'page_target.page_title = '.$type['title'],
+							'page_source.page_id = pr_page'
+					));
+					$this->addWhereFld('pr_cascade', 1);
+					$this->addWhereFld('page_target.page_id', $type['ids']);
+				
+					$res = $this->select(__METHOD__);
+					while($row = $db->fetchObject($res)) {
+						$source = Title::makeTitle($row->page_source_namespace, $row->page_source_title);
+						$a = array(
+							'type' => $row->pr_type,
+							'level' => $row->pr_level,
+							'expiry' => Block::decodeExpiry( $row->pr_expiry, TS_ISO_8601 ),
+							'source' => $source->getPrefixedText()
+						);
+						$protections[$row->page_target_id][] = $a;
+					}
+					$db->freeResult($res);
+				}
+			}
 		}
+
 		// We don't need to check for pt stuff if there are no nonexistent titles
 		if($fld_protection && !empty($missing))
 		{
@@ -116,19 +173,77 @@ class ApiQueryInfo extends ApiQueryBase {
 			$res = $this->select(__METHOD__);
 			$prottitles = array();
 			while($row = $db->fetchObject($res)) {
-				$prottitles[$row->pt_namespace][$row->pt_title] = array(
+				$prottitles[$row->pt_namespace][$row->pt_title][] = array(
 					'type' => 'create',
 					'level' => $row->pt_create_perm,
 					'expiry' => Block::decodeExpiry($row->pt_expiry, TS_ISO_8601)
 				);
 			}
 			$db->freeResult($res);
+			
+			$images = array();
+			$others = array();
+			foreach ($missing as $title)
+				if ($title->getNamespace() == NS_IMAGE)
+					$images[] = $title->getDbKey();
+				else
+					$others[] = $title;					
+			
+			if (count($others) != 0) {
+				$lb = new LinkBatch($others);
+				$this->resetQueryParams();
+				$this->addTables(array('page_restrictions', 'page', 'templatelinks'));
+				$this->addFields(array('pr_type', 'pr_level', 'pr_expiry', 
+						'page_title', 'page_namespace',
+						'tl_title', 'tl_namespace'));
+				$this->addWhere($lb->constructSet('tl', $db));
+				$this->addWhere('pr_page = page_id');
+				$this->addWhere('pr_page = tl_from');
+				$this->addWhereFld('pr_cascade', 1);
+				
+				$res = $this->select(__METHOD__);
+				while($row = $db->fetchObject($res)) {
+					$source = Title::makeTitle($row->page_namespace, $row->page_title);
+					$a = array(
+						'type' => $row->pr_type,
+						'level' => $row->pr_level,
+						'expiry' => Block::decodeExpiry( $row->pr_expiry, TS_ISO_8601 ),
+						'source' => $source->getPrefixedText()
+					);
+					$prottitles[$row->tl_namespace][$row->tl_title][] = $a;
+				}
+				$db->freeResult($res);
+			}
+			
+			if (count($images) != 0) {
+				$this->resetQueryParams();
+				$this->addTables(array('page_restrictions', 'page', 'imagelinks'));
+				$this->addFields(array('pr_type', 'pr_level', 'pr_expiry', 
+						'page_title', 'page_namespace', 'il_to'));
+				$this->addWhere('pr_page = page_id');
+				$this->addWhere('pr_page = il_from');
+				$this->addWhereFld('pr_cascade', 1);
+				$this->addWhereFld('il_to', $images);
+				
+				$res = $this->select(__METHOD__);
+				while($row = $db->fetchObject($res)) {
+					$source = Title::makeTitle($row->page_namespace, $row->page_title);
+					$a = array(
+						'type' => $row->pr_type,
+						'level' => $row->pr_level,
+						'expiry' => Block::decodeExpiry( $row->pr_expiry, TS_ISO_8601 ),
+						'source' => $source->getPrefixedText()
+					);
+					$prottitles[NS_IMAGE][$row->il_to][] = $a;
+				}
+				$db->freeResult($res);
+			}
 		}
-		
+
 		// Run the talkid/subjectid query
 		if($fld_talkid || $fld_subjectid)
 		{
-			$talktitles = $subjecttitles = 
+			$talktitles = $subjecttitles =
 				$talkids = $subjectids = array();
 			$everything = array_merge($titles, $missing);
 			foreach($everything as $t)
@@ -186,7 +301,7 @@ class ApiQueryInfo extends ApiQueryBase {
 				if ($tok_move)
 					$pageInfo['movetoken'] = $wgUser->editToken();
 			}
-			
+
 			if($fld_protection) {
 				if (isset($protections[$pageid])) {
 					$pageInfo['protection'] = $protections[$pageid];
@@ -250,7 +365,7 @@ class ApiQueryInfo extends ApiQueryBase {
 					// Apparently the XML formatting code doesn't like array(null)
 					// This is painful to fix, so we'll just work around it
 					if(isset($prottitles[$title->getNamespace()][$title->getDBkey()]))
-						$res['query']['pages'][$pageid]['protection'][] = $prottitles[$title->getNamespace()][$title->getDBkey()];
+						$res['query']['pages'][$pageid]['protection'] = $prottitles[$title->getNamespace()][$title->getDBkey()];
 					else
 						$res['query']['pages'][$pageid]['protection'] = array();
 					$result->setIndexedTagName($res['query']['pages'][$pageid]['protection'], 'pr');
@@ -310,7 +425,6 @@ class ApiQueryInfo extends ApiQueryBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiQueryInfo.php 32499 2008-03-27 13:55:16Z catrope $';
+		return __CLASS__ . ': $Id$';
 	}
 }
-

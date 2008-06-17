@@ -2,6 +2,8 @@
 
 /**
  * Background job to update links for a given title.
+ *
+ * @ingroup JobQueue
  */
 class RefreshLinksJob extends Job {
 
@@ -45,4 +47,3 @@ class RefreshLinksJob extends Job {
 		return true;
 	}
 }
-

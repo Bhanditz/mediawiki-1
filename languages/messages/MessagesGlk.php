@@ -1,7 +1,8 @@
 <?php
 /** Gilaki (گیلکی)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author AminSanaei
  */
@@ -9,9 +10,6 @@
 $fallback = 'fa';
 
 $messages = array(
-# Categories related messages
-'categories' => 'رجؤن',
-
 'qbedit' => 'دچین واچین',
 
 'search'           => 'واموج',
@@ -33,5 +31,8 @@ $messages = array(
 'portal'               => 'امه جیگا',
 'privacy'              => 'رازبداری',
 'sitesupport'          => 'بال زئن',
+
+# Special:Categories
+'categories' => 'رجؤن',
 
 );

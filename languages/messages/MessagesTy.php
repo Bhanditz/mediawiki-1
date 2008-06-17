@@ -1,7 +1,8 @@
 <?php
 /** Tahitian (Reo Mā`ohi)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author SPQRobin
  * @author Sab
@@ -61,9 +62,6 @@ $messages = array(
 'oct'           => 'nō ’ātopa',
 'nov'           => 'nō novema',
 'dec'           => 'nō tītema',
-
-# Categories related messages
-'categories' => 'Te mau huru o te ’api',
 
 'about'          => 'Nō',
 'article'        => 'Parau pāpa’i',
@@ -136,15 +134,14 @@ $messages = array(
 # Random page
 'randompage' => '’Api mā’iti-haere-noa',
 
-# Miscellaneous special pages
-'specialpages' => 'Te mau ’api ta’a ’ē',
-'spheading'    => 'Te mau ’api ta’a ’ē',
-
 # Special:Log
 'specialloguserlabel' => 'Ta’ata fa’a’ohipa :',
 
 # Special:Allpages
 'allpagessubmit' => 'Haere',
+
+# Special:Categories
+'categories' => 'Te mau huru o te ’api',
 
 # Watchlist
 'watch' => 'Ha’apa’o',
@@ -164,5 +161,8 @@ $messages = array(
 
 # Special:Filepath
 'filepath-page' => 'Putu’ite:',
+
+# Special:SpecialPages
+'specialpages' => 'Te mau ’api ta’a ’ē',
 
 );

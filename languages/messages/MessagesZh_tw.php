@@ -1,10 +1,13 @@
 <?php
 /** ‪Chinese (Taiwan) (‪中文(台灣)‬)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author BobChao
  * @author Siebrand
+ * @author לערי ריינהארט
+ * @author Roc michael
  */
 
 $fallback = 'zh-hant';
@@ -84,6 +87,7 @@ $messages = array(
 'tog-nolangconversion'        => '不進行用字轉換',
 'tog-ccmeonemails'            => '當我寄電子郵件給其他使用者時，也寄一份複本到我的信箱。',
 'tog-diffonly'                => '在比較兩個修訂版本差異時不顯示頁面內容',
+'tog-showhiddencats'          => '顯示隱藏分類',
 
 'underline-always'  => '總是使用',
 'underline-never'   => '從不使用',
@@ -144,14 +148,17 @@ $messages = array(
 'dec'           => '12月',
 
 # Categories related messages
-'categories'             => '頁面分類',
-'categoriespagetext'     => '以下列出所有的頁面分類。',
-'pagecategories'         => '$1個分類',
-'category_header'        => '類別「$1」中的頁面',
-'subcategories'          => '子分類',
-'category-media-header'  => '"$1"分類中的媒體',
-'category-empty'         => "''這個分類中尚未包含任何頁面或媒體。''",
-'listingcontinuesabbrev' => '續',
+'pagecategories'                => '$1個分類',
+'category_header'               => '類別「$1」中的頁面',
+'subcategories'                 => '子分類',
+'category-media-header'         => '"$1"分類中的媒體',
+'category-empty'                => "''這個分類中尚未包含任何頁面或媒體。''",
+'hidden-categories'             => '$1個隱藏分類',
+'hidden-category-category'      => '隱藏分類', # Name of the category where hidden categories will be listed
+'category-subcat-count'         => '{{PLURAL:$2|這個分類中只有以下的附分類。|這個分類中有以下的$1個附分類，共有$2個附分類。}}',
+'category-subcat-count-limited' => '這個分類下有$1個子分類。',
+'category-article-count'        => '{{PLURAL:$2|這個分類中只有以下的頁面。|這個分類中有以下的$1個頁面，共有$2個頁面。}}',
+'listingcontinuesabbrev'        => '續',
 
 'mainpagetext'      => "<big>'''已成功安裝 MediaWiki!'''</big>",
 'mainpagedocfooter' => '請參閱 [http://meta.wikimedia.org/wiki/Help:Contents 使用者手冊] 以獲得使用此 wiki 軟體的訊息！
@@ -337,12 +344,6 @@ MySQL返回錯誤「$3: $4」。',
 這很可能是由於資料庫正在維修，之後即可復原。
 管理員有如下解釋:
 <p>$1</p>',
-'missingarticle'       => '資料庫找不到文字"$1"。
-
-<p>通常這是由於修訂沿革頁上過時的連結到已經被刪除的頁面所導致的。</p>
-
-<p>如果情況不是這樣，您可能找到了軟體內的一個臭蟲。
-請記錄下URL地址，並向管理員報告。</p>',
 'readonly_lag'         => '附屬資料庫伺服器正在將快取更新到主伺服器，資料庫已被自動鎖定',
 'internalerror'        => '內部錯誤',
 'internalerror_info'   => '內部錯誤: $1',
@@ -392,6 +393,7 @@ $2',
 'externaldberror'            => '這可能是由於外部驗證資料庫錯誤或您被禁止更新您的外部帳號。',
 'loginproblem'               => '<b>登入有問題。</b><br />再試一次！',
 'login'                      => '登入',
+'nav-login-createaccount'    => '登入／建立新帳號',
 'loginprompt'                => '您必須允許瀏覽器紀錄Cookie才能成功登入 {{SITENAME}} 並順利進行操作',
 'userlogin'                  => '登入／建立新帳號',
 'logout'                     => '登出',
@@ -559,7 +561,7 @@ $2',
 'userinvalidcssjstitle'     => "'''警告:''' 不存在面板\"\$1\"。注意自訂的 .css 和 .js 頁要使用小寫標題，例如，{{ns:user}}:Foo/monobook.css 不同於 {{ns:user}}:Foo/Monobook.css。",
 'updated'                   => '(已更新)',
 'note'                      => '<strong>注意:</strong>',
-'previewnote'               => '請記住這只是預覽，內容還未保存！',
+'previewnote'               => '<strong>請記住這只是預覽，內容還未保存！</strong>',
 'previewconflict'           => '這個預覽顯示了上面文字編輯區中的內容。它將在你選擇保存後出現。',
 'session_fail_preview'      => '<strong>很抱歉！由於部份資料遺失，我們無法處理您的編輯。請再試一次，如果仍然失敗，請登出後重新登入。</strong>',
 'session_fail_preview_html' => '<strong>很抱歉！部份資料已遺失，我們無法處理您的編輯。</strong><strong>如果這個編輯過程沒有問題，請再試一次。如果仍然有問題，請登出後再重新登入一次。</strong>',
@@ -686,8 +688,6 @@ $2',
 'revdelete-submit'            => '應用於選取的修訂',
 'revdelete-logentry'          => '[[$1]]的修訂可見性已更改',
 'logdelete-logentry'          => '[[$1]]的事件可見性已更改',
-'revdelete-logaction'         => '$1次修訂己經設定至模式$2',
-'logdelete-logaction'         => '對於[[$3]]的$1個事件己經設定至模式$2',
 'revdelete-success'           => '修訂的可見性已經成功設定。',
 'logdelete-success'           => '事件的可見性已經成功設定。',
 
@@ -739,8 +739,6 @@ $2',
 'showingresultsnum'     => '下面顯示從第<b>$2</b>條開始的<b>$3</b>條結果:',
 'nonefound'             => '<strong>注意：</strong>失敗的搜尋往往是由於試圖搜尋諸如「的」或「和」之類的常見字所引起。',
 'powersearch'           => '搜尋',
-'powersearchtext'       => '
-搜尋名字空間：<br />$1<br />$2列出重定向頁面；搜尋$3 $9',
 'searchdisabled'        => '{{SITENAME}}由於性能方面的原因，全文搜尋已被暫時停用。您可以暫時透過Google搜尋。請留意他們的索引可能會過時。',
 
 # Preferences page
@@ -809,7 +807,7 @@ $2',
 'userrights-lookup-user'      => '管理使用者群組',
 'userrights-user-editname'    => '輸入使用者帳號:',
 'editusergroup'               => '編輯使用者群組',
-'editinguser'                 => '正在編輯使用者<b>$1</b>',
+'editinguser'                 => "正在編輯使用者'''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'    => '編輯使用者群組',
 'saveusergroups'              => '保存使用者群組',
 'userrights-groupsmember'     => '屬於:',
@@ -914,7 +912,7 @@ $2',
 'large-file'                  => '建議檔案大小不能超過 $1；本檔案大小為 $2。',
 'largefileserver'             => '這個檔案的大小比伺服器配置允許的大小還要大。',
 'emptyfile'                   => '您所上傳的檔案不存在。這可能是由於檔案名鍵入錯誤。請檢查您是否真的要上傳此檔案。',
-'fileexists'                  => '已存在相同名稱的檔案，如果您無法確定您是否要改變它，請檢查$1。',
+'fileexists'                  => '已存在相同名稱的檔案，如果您無法確定您是否要改變它，請檢查<strong><tt>$1</tt></strong>。',
 'fileexists-extension'        => '一個相似檔名的檔案已經存在:<br />
 上載檔案的檔名: <strong><tt>$1</tt></strong><br />
 現有檔案的檔名: <strong><tt>$2</tt></strong><br />
@@ -967,7 +965,6 @@ $2',
 
 # Special:Imagelist
 'imagelist_search_for'  => '按圖片名稱搜尋:',
-'imgdesc'               => '描述',
 'imgfile'               => '檔案',
 'imagelist'             => '檔案列表',
 'imagelist_date'        => '日期',
@@ -1059,7 +1056,7 @@ $2',
 從{{SITENAME}}設定以來，全網站共有頁面瀏覽'''\$3'''次，頁面編輯'''\$4'''次。
 即每頁平均編輯'''\$5'''次，各次編輯後頁面的每個版本平均瀏覽'''\$6'''次。
 
-[http://meta.wikimedia.org/wiki/Help:Job_queue 工作隊列]的長度是'''\$7'''。",
+[http://www.mediawiki.org/wiki/Manual:Job_queue 工作隊列]的長度是'''\$7'''。",
 'userstatstext'          => "網站有'''$1'''位註冊[[Special:Listusers|使用者]]，其中
 '''$2''' (或 '''$4%''') 有$5許可權。",
 'statistics-mostpopular' => '被查閱次數最多的頁面',
@@ -1082,8 +1079,8 @@ Template:消除歧義',
 'brokenredirects-edit'   => '(編輯)',
 'brokenredirects-delete' => '(刪除)',
 
-'withoutinterwiki'        => '未有語言鏈接的頁面',
-'withoutinterwiki-header' => '以下的頁面是未有語言鏈接到其它語言版本:',
+'withoutinterwiki'         => '未有語言鏈接的頁面',
+'withoutinterwiki-summary' => '以下的頁面是未有語言鏈接到其它語言版本:',
 
 'fewestrevisions' => '最少修訂的頁面',
 
@@ -1121,9 +1118,6 @@ Template:消除歧義',
 'protectedpagestext'      => '以下頁面已經被保護以防止移動或編輯',
 'protectedpagesempty'     => '在這些參數下沒有頁面正在保護。',
 'listusers'               => '使用者列表',
-'specialpages'            => '特殊頁面',
-'spheading'               => '所有使用者的特殊頁面',
-'restrictedpheading'      => '受限的特殊頁面',
 'newpages'                => '最新頁面',
 'newpages-username'       => '使用者帳號:',
 'ancientpages'            => '最舊頁面',
@@ -1166,6 +1160,12 @@ Template:消除歧義',
 'allpagesprefix'    => '顯示具有此前綴(名字空間)的頁面:',
 'allpagesbadtitle'  => '給定的頁面標題是非法的，或者具有一個內部語言或內部 wiki 的前綴。它可能包含一個或更多的不能用於標題的字元。',
 'allpages-bad-ns'   => '在{{SITENAME}}中沒有一個叫做"$1"的名字空間。',
+
+# Special:Categories
+'categories'                    => '頁面分類',
+'categoriespagetext'            => '以下列出所有的頁面分類。',
+'special-categories-sort-count' => '按數量排列',
+'special-categories-sort-abc'   => '按字母排列',
 
 # Special:Listusers
 'listusersfrom'      => '給定顯示使用者條件:',
@@ -1567,8 +1567,6 @@ $1',
 但是由於新標題下已經有對話頁存在，所以對話頁無法移動。請手工合併兩個頁面。',
 'movedto'                 => '移動到',
 'movetalk'                => '如果可能的話，請同時移動對話頁。',
-'talkpagemoved'           => '相應的對話頁也已經移動。',
-'talkpagenotmoved'        => '相應的對話頁<strong>沒有</strong>被移動。',
 '1movedto2'               => '[[$1]]移動到[[$2]]',
 '1movedto2_redir'         => '[[$1]]透過重定向移動到[[$2]]',
 'movelogpage'             => '移動日誌',
@@ -2175,8 +2173,6 @@ $1
 'imgmultipageprev' => '← 上一頁',
 'imgmultipagenext' => '下一頁 →',
 'imgmultigo'       => '確定！',
-'imgmultigotopre'  => '到第',
-'imgmultigotopost' => '頁',
 
 # Table pager
 'ascending_abbrev'         => '遞增',
@@ -2232,5 +2228,8 @@ $1
 
 # Special:Version
 'version' => '版本', # Not used as normal message but as header for the special page itself
+
+# Special:SpecialPages
+'specialpages' => '特殊頁面',
 
 );

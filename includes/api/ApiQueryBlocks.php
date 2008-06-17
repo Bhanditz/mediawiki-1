@@ -30,10 +30,12 @@ if (!defined('MEDIAWIKI')) {
 
 /**
  * Query module to enumerate all available pages.
- * 
- * @addtogroup API
+ *
+ * @ingroup API
  */
 class ApiQueryBlocks extends ApiQueryBase {
+	
+	var $users;
 
 	public function __construct($query, $moduleName) {
 		parent :: __construct($query, $moduleName, 'bk');
@@ -89,7 +91,11 @@ class ApiQueryBlocks extends ApiQueryBase {
 		if(isset($params['ids']))
 			$this->addWhere(array('ipb_id' => $params['ids']));
 		if(isset($params['users']))
-			$this->addWhere(array('ipb_address' => $params['users']));
+		{
+			foreach((array)$params['users'] as $u)
+				$this->prepareUsername($u);
+			$this->addWhere(array('ipb_address' => $this->usernames));
+		}
 		if(!$wgUser->isAllowed('suppress'))
 			$this->addWhere(array('ipb_deleted' => 0));
 
@@ -151,6 +157,21 @@ class ApiQueryBlocks extends ApiQueryBase {
 		}
 		$result->setIndexedTagName($data, 'block');
 		$result->addValue('query', $this->getModuleName(), $data);
+	}
+	
+	protected function prepareUsername($user) {
+		if( $user ) {
+			$name = User::isIP( $user )
+				? $user
+				: User::getCanonicalName( $user, 'valid' );
+			if( $name === false ) {
+				$this->dieUsage( "User name {$user} is not valid", 'param_user' );
+			} else {
+				$this->usernames[] = $name;
+			}
+		} else {
+			$this->dieUsage( 'User parameter may not be empty', 'param_user' );
+		}
 	}
 
 	protected function convertHexIP($ip)
@@ -235,6 +256,6 @@ class ApiQueryBlocks extends ApiQueryBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiQueryBlocks.php 32675 2008-04-01 22:50:53Z aaron $';
+		return __CLASS__ . ': $Id$';
 	}
 }

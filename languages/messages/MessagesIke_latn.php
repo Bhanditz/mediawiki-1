@@ -1,7 +1,8 @@
 <?php
 /** Eastern Canadian (Latin) (inuktitut)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author SPQRobin
  * @author M.M.S.
@@ -45,9 +46,6 @@ $messages = array(
 'may'          => 'mai',
 'aug'          => 'augu',
 'nov'          => 'nuvi',
-
-# Categories related messages
-'categories' => 'nuapput',
 
 'about'          => 'miksaani',
 'article'        => 'ilulik mappitaq',
@@ -193,7 +191,7 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 'searchresultshead'     => 'ivaaqpuq',
 
 # User rights
-'editinguser' => 'suqusiqpaa qatannguti <b>$1</b>',
+'editinguser' => "suqusiqpaa qatannguti '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 
 # Recent changes
 'recentchanges' => 'pigivuq asianngutuq',
@@ -230,7 +228,6 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 
 # Miscellaneous special pages
 'listusers'         => 'qatannguti nipi',
-'specialpages'      => 'piji mappitaq',
 'newpages-username' => 'uikipitia atiq:',
 'ancientpages'      => 'utuqaq ittusaq mappitaq',
 'move'              => 'uajuq',
@@ -247,6 +244,9 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 'allpagesprev'   => 'tunullipaaq',
 'allpagesnext'   => 'tagga',
 'allpagessubmit' => 'aivuk',
+
+# Special:Categories
+'categories' => 'nuapput',
 
 # E-mail user
 'emailfrom'    => 'nakit',
@@ -360,7 +360,6 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 'imgmultipageprev' => '← tunullipaaq mappitaq',
 'imgmultipagenext' => 'tagga mappitaq →',
 'imgmultigo'       => 'aivuq!',
-'imgmultigotopre'  => 'aivuk ikiaq mappitaq',
 
 # Table pager
 'table_pager_limit_submit' => 'aivuk',
@@ -368,5 +367,8 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 # Auto-summaries
 'autoredircomment' => 'qaningani kamagijaq aasit nakit [[$1]]',
 'autosumm-new'     => 'pigivuq mappitaq: $1',
+
+# Special:SpecialPages
+'specialpages' => 'piji mappitaq',
 
 );

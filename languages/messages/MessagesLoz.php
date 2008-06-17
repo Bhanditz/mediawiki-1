@@ -1,7 +1,8 @@
 <?php
 /** Lozi (Silozi)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author SF-Language
  * @author Litingatinga Silozi
@@ -9,8 +10,6 @@
  * @author Siebrand
  * @author Jon Harald Søby
  */
-
-
 
 $messages = array(
 # User preference toggles
@@ -105,7 +104,6 @@ $messages = array(
 'dec'           => 'Ngu',
 
 # Categories related messages
-'categories'             => 'Kattegori',
 'pagecategories'         => '{{PLURAL:$1|Kattegori|Kattegorina}}',
 'category_header'        => 'Kattegori petulo di "$1"',
 'subcategories'          => 'Subkattegori',
@@ -295,6 +293,7 @@ Query: $2",
 'remembermypassword'        => 'Askevusize zwa menuhile kwa bye kompyuta.',
 'yourdomainname'            => 'Zwa domeni:',
 'login'                     => 'Menuhile',
+'nav-login-createaccount'   => 'Menuhile / ipupezi sebelu',
 'loginprompt'               => 'A sa nyembulisize di kukina di menuhile kwa {{SITENAME}}.',
 'userlogin'                 => 'Menuhile / ipupezi sebelu',
 'logout'                    => 'Ile',
@@ -559,7 +558,7 @@ Informasi: (bye) = petuho a nca selt,
 
 # Recent changes linked
 'recentchangeslinked'          => 'Petuho adusi',
-'recentchangeslinked-title'    => 'Petuho dadusi di $1',
+'recentchangeslinked-title'    => 'Petuho dadusi di "$1"',
 'recentchangeslinked-noresult' => "Ni petuhoni kwa ling'ki petulo kwa bye datum.",
 'recentchangeslinked-summary'  => "Bye petulo zwenti kamukile lapu-kona petuho di petulo sa ling'ki. Petulo di zwa mukoloko di kentezi sa '''ombelu'''.",
 
@@ -685,9 +684,6 @@ di uplodezi media.',
 'deadendpagestext'        => "Bye petulo ni sa ling'ki medi petulo di {{SITENAME}}.",
 'protectedpages'          => 'Petulo sa bukelelize',
 'listusers'               => 'Mukoloko di sebelu',
-'specialpages'            => 'Petulo zwenti',
-'spheading'               => 'Petulo di xeti sebelu',
-'restrictedpheading'      => 'Petulo lesitkon',
 'newpages'                => 'Nca petulo',
 'newpages-username'       => 'Sebelu:',
 'ancientpages'            => 'Petulo bye sa kona afina',
@@ -716,6 +712,9 @@ di uplodezi media.',
 'allpagesnext'   => 'Lila',
 'allpagessubmit' => 'Afi',
 'allpagesprefix' => 'Kamukile petulo di pifeto di:',
+
+# Special:Categories
+'categories' => 'Kattegori',
 
 # Special:Listusers
 'listusersfrom'      => 'Kamukile sebelu di:',
@@ -910,8 +909,6 @@ Teri yaki, a nyanganyisize.",
 'talkexists'       => "'''No bufosi di nyanganyisize petulo, bufosi di nyanganyisize bulelezi, tubi hani.'''",
 'movedto'          => 'nyanganyisize di',
 'movetalk'         => 'Nyanganyisize petulo di bulelezi',
-'talkpagemoved'    => 'Petulo di bulelezi sa nyanganyisize.',
-'talkpagenotmoved' => 'Petulo di bulelezi <strong>nisa</strong> nyanganyisize.',
 '1movedto2'        => '[[$1]] nyanganyisize di [[$2]]',
 '1movedto2_redir'  => '[[$1]] nyanganyisize di [[$2]] alo petulo abezi',
 'movelogpage'      => 'Desu di nyanganyisize',
@@ -1084,7 +1081,6 @@ Xete ling'ki kwa lina sa konsidisize desepo. Petulo dimedi inlinenikusize.",
 'imgmultipageprev' => '← kona petulo',
 'imgmultipagenext' => 'lila petulo →',
 'imgmultigo'       => 'Afi!',
-'imgmultigotopre'  => 'Yezi petulo',
 
 # Table pager
 'ascending_abbrev'         => 'asendin',
@@ -1122,5 +1118,8 @@ Xete ling'ki kwa lina sa konsidisize desepo. Petulo dimedi inlinenikusize.",
 
 # Special:Version
 'version' => 'Pane', # Not used as normal message but as header for the special page itself
+
+# Special:SpecialPages
+'specialpages' => 'Petulo zwenti',
 
 );

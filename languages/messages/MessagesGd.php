@@ -1,13 +1,14 @@
 <?php
 /** Scottish Gaelic (Gàidhlig)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author SPQRobin
  * @author לערי ריינהארט
- * @author Helix84
- * @author Nike
+ * @author Siebrand
  * @author Sionnach
+ * @author Nike
  * @author Raymond
  */
 
@@ -18,10 +19,8 @@ $messages = array(
 'august'   => 'An Lùnastal',
 
 # Categories related messages
-'categories'         => 'Gnethan',
-'categoriespagetext' => "Tha na gnethan a leanas anns a'wiki.",
-'category_header'    => 'Altan sa ghnè "$1"',
-'subcategories'      => 'Fo-ghnethan',
+'category_header' => 'Altan sa ghnè "$1"',
+'subcategories'   => 'Fo-ghnethan',
 
 'about'          => 'Mu',
 'newwindow'      => "(a'fosgladh ann an uinneag ùr)",
@@ -149,7 +148,7 @@ $1",
 'newarticle'        => '(Ùr)',
 'noarticletext'     => '(Chan eil teacsa anns an duilleig seo a-nis)',
 'updated'           => '(Nua-dheasaichte)',
-'previewnote'       => 'Cuimhnichibh nach e ach roi-shealladh a tha seo, agus chan eil e air a shàbhaladh fhathast!',
+'previewnote'       => '<strong>Cuimhnichibh nach e ach roi-shealladh a tha seo, agus chan eil e air a shàbhaladh fhathast!</strong>',
 'editing'           => "A'deasaicheadh $1",
 'editconflict'      => 'Mì-chòrdadh deasachaidh: $1',
 'explainconflict'   => "Tha cuideigin eile air an duilleig seo a mhùthadh o'n thòisich sibh fhèin a dheasaicheadh. Tha am bocsa teacsa shuas a'nochdadh na duilleig mar a tha e an dràsda. Tha na mùthaidhean agaibhse anns a'bhocsa shios. Feumaidh sibh na mùthaidhean agaibh a choimeasgachadh leis an teacsa làithreach. Cha tèid <b>ach an teacsa shuas</b> a shàbhaladh an uair a bhriogas sibh \"Sàbhail duilleag\".<p>",
@@ -238,7 +237,7 @@ $1",
 
 Tha na duilleagan air an sealladh '''\$3''' uairean, agus air an deasaicheadh '''\$4''' uairean o'n deach an wiki a shuidheachadh. Thig sin ri '''\$5''' deasaicheidhean anns a'mheadhan gach duilleag, agus '''\$6''' seallaidhean gach duilleag.
 
-The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7'''.",
+The [http://www.mediawiki.org/wiki/Manual:Job_queue job queue] length is '''\$7'''.",
 
 'doubleredirects' => 'Ath-stiùreidhean dùbailte',
 
@@ -252,8 +251,6 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'shortpages'              => 'Duilleagan goirid',
 'longpages'               => 'Duilleagan fhada',
 'listusers'               => 'Liosta nan cleachdair',
-'specialpages'            => 'Duilleagan àraidh',
-'spheading'               => 'Duilleagan àraidh aig a h-uile cleachdair',
 'newpages'                => 'Duilleagan ùra',
 'ancientpages'            => 'Duilleagan as sìne',
 'move'                    => 'Gluais',
@@ -262,6 +259,10 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 # Special:Allpages
 'allpages' => 'Duilleagan uile',
 'nextpage' => 'An ath dhuilleag ($1)',
+
+# Special:Categories
+'categories'         => 'Gnethan',
+'categoriespagetext' => "Tha na gnethan a leanas anns a'wiki.",
 
 # E-mail user
 'emailfrom'    => 'Bho',
@@ -378,5 +379,8 @@ Ma bu toil leibh a dhubh a'dhuilleag as ur faire agaibh nas fadalache, cnap air 
 
 # Special:Version
 'version' => 'Lethbhreac', # Not used as normal message but as header for the special page itself
+
+# Special:SpecialPages
+'specialpages' => 'Duilleagan àraidh',
 
 );

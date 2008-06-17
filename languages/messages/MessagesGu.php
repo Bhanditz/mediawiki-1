@@ -1,7 +1,8 @@
 <?php
 /** Gujarati (ગુજરાતી)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author לערי ריינהארט
  * @author Aksi great
@@ -106,8 +107,6 @@ $messages = array(
 'dec'           => 'ડિસે',
 
 # Categories related messages
-'categories'                  => 'શ્રેણીઓ',
-'categoriespagetext'          => 'નીચેની શ્રેણીઓમાં પાના કે અન્ય સભ્યો છે.',
 'pagecategories'              => '{{PLURAL:$1|શ્રેણી|શ્રેણીઓ}}',
 'category_header'             => 'શ્રેણી "$1"માં પાના',
 'subcategories'               => 'ઉપશ્રેણીઓ',
@@ -172,7 +171,7 @@ $messages = array(
 'disclaimerpage'       => 'Project:સામાન્ય જાહેર ઇનકાર',
 'edithelp'             => 'ફેરફારો માટે મદદ',
 'edithelppage'         => 'Help:ફેરફાર',
-'helppage'             => 'મદદઃસૂચિ',
+'helppage'             => 'Help:સૂચિ',
 'mainpage'             => 'મુખપૃષ્ઠ',
 'mainpage-description' => 'મુખપૃષ્ઠ',
 'portal'               => 'સમાજ મુખપૃષ્ઠ',
@@ -210,18 +209,19 @@ $messages = array(
 'viewsourcefor' => '$1ને માટે',
 
 # Login and logout pages
-'login'           => 'પ્રવેશ કરો (લૉગ ઇન કરીને)',
-'userlogin'       => 'પ્રવેશ કરો / નવું ખાતું ખોલો',
-'userlogout'      => 'બહાર નીકળો/લૉગ આઉટ',
-'nologin'         => 'શું તમારૂં ખાતું નથી? $1.',
-'nologinlink'     => 'ખાતું ખોલો',
-'createaccount'   => 'નવું ખાતું ખોલો',
-'gotaccountlink'  => 'પ્રવેશો (લૉગ ઇન કરો)',
-'yourrealname'    => 'સાચું નામ:',
-'yourlanguage'    => 'ભાષા',
-'loginsuccess'    => "'''તમે હવે {{SITENAME}}માં \"\$1\" તરીકે પ્રવેશી ચુક્યા છો.'''",
-'nosuchusershort' => '"<nowiki>$1</nowiki>" નામનો કોઇ સભ્ય નથી, તમારી જોડણી તપાસો.',
-'accountcreated'  => 'ખાતું ખોલવામાં આવ્યું છે',
+'login'                   => 'પ્રવેશ કરો (લૉગ ઇન કરીને)',
+'nav-login-createaccount' => 'પ્રવેશ કરો / નવું ખાતું ખોલો',
+'userlogin'               => 'પ્રવેશ કરો / નવું ખાતું ખોલો',
+'userlogout'              => 'બહાર નીકળો/લૉગ આઉટ',
+'nologin'                 => 'શું તમારૂં ખાતું નથી? $1.',
+'nologinlink'             => 'ખાતું ખોલો',
+'createaccount'           => 'નવું ખાતું ખોલો',
+'gotaccountlink'          => 'પ્રવેશો (લૉગ ઇન કરો)',
+'yourrealname'            => 'સાચું નામ:',
+'yourlanguage'            => 'ભાષા',
+'loginsuccess'            => "'''તમે હવે {{SITENAME}}માં \"\$1\" તરીકે પ્રવેશી ચુક્યા છો.'''",
+'nosuchusershort'         => '"<nowiki>$1</nowiki>" નામનો કોઇ સભ્ય નથી, તમારી જોડણી તપાસો.',
+'accountcreated'          => 'ખાતું ખોલવામાં આવ્યું છે',
 
 # Edit page toolbar
 'bold_sample'     => 'ઘાટા અક્ષર',
@@ -335,7 +335,7 @@ $messages = array(
 
 # Recent changes linked
 'recentchangeslinked'          => 'આની સાથે જોડાયેલા ફેરફાર',
-'recentchangeslinked-title'    => '$1 ને લગતા ફેરફારો',
+'recentchangeslinked-title'    => '"$1" ને લગતા ફેરફારો',
 'recentchangeslinked-noresult' => 'સંકળાયેલાં પાનાંમાં સુચવેલા સમય દરમ્યાન કોઇ ફેરફાર થયાં નથી.',
 'recentchangeslinked-summary'  => "આ ખાસ પાનામાં એવા પાનાઓની યાદી છે જે અન્યત્ર જોડાયેલાં છે અને તેમાં ફેરફાર થાયા છે.
 <br>તમારી ધ્યાનસૂચિમાં હોય તેવા પાનાં '''ઘાટા અક્ષર'''માં વર્ણવ્યાં છે",
@@ -383,7 +383,6 @@ $messages = array(
 'shortpages'              => 'નાનાં પાનાં',
 'longpages'               => 'લાંબા પાનાઓ',
 'protectedpages'          => 'સંરક્ષિત પાનાઓ',
-'specialpages'            => 'ખાસ પાનાં',
 'newpages'                => 'નવા પાના',
 'ancientpages'            => 'સૌથી જૂનાં પાના',
 'move'                    => 'નામ બદલો',
@@ -404,6 +403,10 @@ $messages = array(
 'allpagesprev'   => 'પહેલાનું',
 'allpagesnext'   => 'પછીનું',
 'allpagessubmit' => 'જાઓ',
+
+# Special:Categories
+'categories'         => 'શ્રેણીઓ',
+'categoriespagetext' => 'નીચેની શ્રેણીઓમાં પાના કે અન્ય સભ્યો છે.',
 
 # Special:Listusers
 'listusers-submit' => 'બતાવો',
@@ -608,5 +611,8 @@ $messages = array(
 
 # Watchlist editing tools
 'watchlisttools-edit' => 'ધ્યાનસૂચી જુઓ અને બદલો',
+
+# Special:SpecialPages
+'specialpages' => 'ખાસ પાનાં',
 
 );

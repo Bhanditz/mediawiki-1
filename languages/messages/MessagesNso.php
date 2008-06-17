@@ -1,13 +1,13 @@
 <?php
 /** Northern Sotho (Sesotho sa Leboa)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Mohau
  * @author Siebrand
+ * @author Jon Harald Søby
  */
-
-
 
 $messages = array(
 # User preference toggles
@@ -98,7 +98,6 @@ $messages = array(
 'dec'           => 'Manthole',
 
 # Categories related messages
-'categories'             => 'Dihlopha',
 'pagecategories'         => '{{PLURAL:$1|Sehlopha|Dihlopha}}',
 'category_header'        => 'Matlakala go sehlopha "$1"',
 'subcategories'          => 'Dihlophana',
@@ -484,7 +483,7 @@ Leka [[Special:Search|go fetleka wikii]] go humana matlakala a mapsha.',
 'prevn'                 => 'gofeta $1',
 'nextn'                 => 'latela $1',
 'viewprevnext'          => 'Lebelela ($1) ($2) ($3)',
-'powersearch'           => 'Fetleka',
+'powersearch'           => 'Fetleka ka tlhoko',
 
 # Preferences page
 'preferences'        => 'Dikgatlhegelo',
@@ -509,7 +508,7 @@ Leka [[Special:Search|go fetleka wikii]] go humana matlakala a mapsha.',
 
 # User rights
 'editusergroup'                    => 'Fetola sehlopha sa bašomiši',
-'editinguser'                      => 'Fetola mošomiši <b>$1</b>',
+'editinguser'                      => "Fetola mošomiši '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'         => 'Fetola sehlopha sa bašomiši',
 'saveusergroups'                   => 'Boloko Dihlopha tša bašomiši',
 'userrights-groupsmember'          => 'Leloko la:',
@@ -554,7 +553,7 @@ Leka [[Special:Search|go fetleka wikii]] go humana matlakala a mapsha.',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Diphetogo tša go tswalana',
-'recentchangeslinked-title'    => 'Diphetogo tša go tswalana le $1',
+'recentchangeslinked-title'    => 'Diphetogo tša go tswalana le "$1"',
 'recentchangeslinked-noresult' => 'Gago na diphetogo go matlakala a hlomaganya ka sebaka/sekga seo o se kgethilego.',
 'recentchangeslinked-summary'  => "Letlakala le le laetša diphetogo tša bjale matlakaleng a go hlomaganya. Matlakala ago ba lenanong la gago la matlakala ditlhapetšo a '''ngwadilwe ka bogolo'''.",
 
@@ -675,7 +674,6 @@ Leka [[Special:Search|go fetleka wikii]] go humana matlakala a mapsha.',
 'deadendpages'            => "Matlakala a seye felo(''Dead-end'')",
 'protectedpages'          => 'Matlakala a go lotiwa',
 'listusers'               => 'Lanano la mošomiši',
-'specialpages'            => 'Matlakala a itšeng',
 'newpages'                => 'Matlakala a mampsha',
 'ancientpages'            => 'Matlakala a kgalekgale',
 'move'                    => 'Huduša',
@@ -701,6 +699,9 @@ Leka [[Special:Search|go fetleka wikii]] go humana matlakala a mapsha.',
 'allarticles'    => 'Matlakala ka moka',
 'allpagessubmit' => 'Eya',
 'allpagesprefix' => "Laetša matlakala agoba le hlogo (''prefix''):",
+
+# Special:Categories
+'categories' => 'Dihlopha',
 
 # Special:Listusers
 'listusers-submit' => 'Botšha',
@@ -766,7 +767,7 @@ Ka kgopela sitlediša gore ke se o nyakago  go sedira, le gore o kwešiša ditla
 Lebelela $2 go hweetša sedi ka diphulo tša bjale.',
 'deletedarticle'              => 'E phumutšwe "[[$1]]"',
 'dellogpage'                  => "''Log'' yago phumula",
-'deletecomment'               => 'Lebaka la go phumula',
+'deletecomment'               => 'Lebaka la go phumula:',
 'deleteotherreason'           => 'Mabaka a mangwe:',
 'deletereasonotherlist'       => 'Mabaka a mangwe',
 'rollbacklink'                => 'bošetša morago',
@@ -890,8 +891,6 @@ Ka kgopelo, kgetha leina le lengwe.',
 'talkexists'              => "'''Letlakala le hudugile ka katlego, efele letlakala la dipolešano ga la huduga kage gobe go ina letlakala leineng le lemphsa. Ka kgopelo, a gahlanye ka bowena.'''",
 'movedto'                 => 'hudugetše go',
 'movetalk'                => 'Huduša letlakala la dipoledišano la go hlobana le letlakala le',
-'talkpagemoved'           => 'Letlakala la dipoledišano la go hlobana le hudugile.',
-'talkpagenotmoved'        => 'Letlaka la dipoledišano la go hlobana  <strong>ga la</strong> huduga.',
 '1movedto2'               => '[[$1]] e hudugile goya go [[$2]]',
 'movelogpage'             => "''log'' yago huduša",
 'movereason'              => 'Lebaka:',
@@ -945,11 +944,11 @@ Ka kgopelo, kgetha leina le lengwe.',
 'tooltip-t-whatlinkshere'         => "Lenano la matlakala ao a hlomaganyago (''link'') mo",
 'tooltip-t-contributions'         => 'Lebelela lenano la diabe tša mošomiši yo',
 'tooltip-t-emailuser'             => 'Romela molaetša go mošomiši yo',
-'tooltip-t-upload'                => 'Lokela senepe goba difaele tša gago',
+'tooltip-t-upload'                => 'Lokela senepe goba difaele',
 'tooltip-t-specialpages'          => 'Lenano la matlakala kamoka a itšeng',
 'tooltip-ca-nstab-user'           => 'Lebelela letlakala la mošomiši',
 'tooltip-ca-nstab-project'        => 'Lebelela letlakala la tirotherwa',
-'tooltip-ca-nstab-image'          => 'Pono ya letlakala la seswantšho',
+'tooltip-ca-nstab-image'          => 'Botšha  letlakala',
 'tooltip-ca-nstab-template'       => "Lebelela ''template''",
 'tooltip-ca-nstab-help'           => 'Lebelea matlakala a thušo',
 'tooltip-ca-nstab-category'       => 'Lebelela letlakala la sehlopha',
@@ -1042,7 +1041,6 @@ letlakala la seswantšho ge tafola ya metadata e bulwa. Tše dingwe tša di ''fi
 # Multipage image navigation
 'imgmultipageprev' => '← letlakala la go feta',
 'imgmultipagenext' => 'letlakala lago latela →',
-'imgmultigotopre'  => 'Eya letlakaleng',
 
 # Table pager
 'table_pager_next'  => 'Letlakala la go latela',
@@ -1068,5 +1066,8 @@ letlakala la seswantšho ge tafola ya metadata e bulwa. Tše dingwe tša di ''fi
 
 # Special:Version
 'version' => "''Version''", # Not used as normal message but as header for the special page itself
+
+# Special:SpecialPages
+'specialpages' => 'Matlakala a itšeng',
 
 );

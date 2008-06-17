@@ -1,7 +1,8 @@
 <?php
 /** Tetum (Tetun)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author MF-Warburg
  * @author Siebrand
@@ -58,7 +59,7 @@ $specialPageAliases = array(
 	'Allpages'                  => array( 'Pájina_hotu' ),
 	'Ipblocklist'               => array( 'Lista_ema_sira-ne\'ebé_blokeiu_tiha' ),
 	'Specialpages'              => array( 'Pájina_espesiál_sira' ),
-	'Contributions'             => array( 'kontribuisaun' ),
+	'Contributions'             => array( 'Kontribuisaun' ),
 	'Emailuser'                 => array( 'Haruka_korreiu_eletróniku' ),
 	'Whatlinkshere'             => array( 'Pájina_sira_ne\'ebé_bá_iha_ne\'e' ),
 	'Movepage'                  => array( 'Book' ),
@@ -137,10 +138,9 @@ $messages = array(
 'dec'           => 'Dez',
 
 # Categories related messages
-'categories'             => 'Kategoría',
 'pagecategories'         => '{{PLURAL:$1|Kategoría|Kategoría}}',
 'category_header'        => 'Artigu iha kategoría "$1"',
-'category-empty'         => "''Iha kategoría ne'e agora pájina lá'os.''",
+'category-empty'         => "''Kategoria ne'e agora la iha pájina sira.''",
 'listingcontinuesabbrev' => 'kont.',
 
 'about'          => 'Kona-ba',
@@ -251,7 +251,7 @@ $messages = array(
 'nstab-category'  => 'Kategoria',
 
 # Main script and global functions
-'nosuchspecialpage' => "Pájina espesiál ne'e lá'os",
+'nosuchspecialpage' => "Pájina espesiál ne'e la iha",
 
 # General errors
 'error'         => 'Sala',
@@ -259,6 +259,7 @@ $messages = array(
 
 # Login and logout pages
 'yourname'                  => "Naran uza-n'in:",
+'nav-login-createaccount'   => 'Log in / kriar konta ida',
 'userlogin'                 => 'Log in / kriar konta ida',
 'nologinlink'               => 'Registrar',
 'createaccount'             => "Registrar uza-na'in",
@@ -322,7 +323,7 @@ $messages = array(
 'lineno' => 'Liña $1:',
 
 # Search results
-'noexactmatch' => "'''Pájina ''$1'' lá'os.''' Ó bele [[:$1|kria pájina ne'e]].",
+'noexactmatch' => "'''Pájina ''$1'' la iha.''' Ó bele [[:$1|kria pájina ne'e]].",
 'prevn'        => 'molok $1',
 'nextn'        => 'oinmai $1',
 'viewprevnext' => 'Haree ($1) ($2) ($3)',
@@ -397,7 +398,7 @@ $messages = array(
 
 # Image description page
 'filehist-deleteall' => 'halakon hotu',
-'filehist-deleteone' => "halakon ne'e",
+'filehist-deleteone' => 'halakon',
 'filehist-current'   => 'atuál',
 'filehist-datetime'  => 'Loron/Tempu',
 'filehist-user'      => "Uza-na'in",
@@ -430,7 +431,6 @@ $messages = array(
 'shortpages'        => 'Pájina badak',
 'longpages'         => 'Pájina naruk',
 'listusers'         => "Lista uza-na'in",
-'specialpages'      => 'Pájina espesiál sira',
 'newpages'          => 'Pájina foun',
 'newpages-username' => "Naran uza-na'in:",
 'ancientpages'      => 'Pájina tuan liu hotu sira',
@@ -451,6 +451,9 @@ $messages = array(
 'allarticles'    => 'Pájina hotu',
 'allpagesnext'   => 'Oinmai',
 'allpagessubmit' => 'Bá',
+
+# Special:Categories
+'categories' => 'Kategoría',
 
 # Special:Listusers
 'listusers-submit' => 'Hatudu',
@@ -534,14 +537,15 @@ $messages = array(
 'sp-contributions-submit'   => 'Buka',
 
 # What links here
-'whatlinkshere'       => "Artigu sira ne'ebé bá iha ne'e",
-'whatlinkshere-title' => "Pájina sira ne'ebé bá $1",
-'whatlinkshere-page'  => 'Pájina:',
-'linklistsub'         => '(Lista ligasaun nian)',
-'linkshere'           => "Pájina sira ne'e link ba '''[[:$1]]''':",
-'whatlinkshere-prev'  => '{{PLURAL:$1|oinmai|oinmai $1}}',
-'whatlinkshere-next'  => '{{PLURAL:$1|molok|molok $1}}',
-'whatlinkshere-links' => '← ligasaun',
+'whatlinkshere'           => "Artigu sira ne'ebé bá iha ne'e",
+'whatlinkshere-title'     => "Pájina sira ne'ebé bá $1",
+'whatlinkshere-page'      => 'Pájina:',
+'linklistsub'             => '(Lista ligasaun nian)',
+'linkshere'               => "Pájina sira ne'e link ba '''[[:$1]]''':",
+'whatlinkshere-prev'      => '{{PLURAL:$1|oinmai|oinmai $1}}',
+'whatlinkshere-next'      => '{{PLURAL:$1|molok|molok $1}}',
+'whatlinkshere-links'     => '← ligasaun',
+'whatlinkshere-hidelinks' => '$1 ligasaun',
 
 # Block/unblock
 'blockip'                 => "Blokeiu uza-na'in",
@@ -568,8 +572,6 @@ $messages = array(
 'movepage-moved'          => '<big>\'\'\'Ó book "$1" ba "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'movedto'                 => 'book tiha ba',
 'movetalk'                => 'Book pájina diskusaun mós',
-'talkpagemoved'           => 'Pájina diskusaun mós nabook tiha',
-'talkpagenotmoved'        => 'Pájina diskusaun mós <strong>la</strong> nabook tiha',
 '1movedto2'               => 'book tiha [[$1]] ba [[$2]]',
 'movelogpage'             => 'Lista book',
 'delete_and_move'         => 'Halakon ho book',
@@ -663,5 +665,8 @@ $messages = array(
 
 # Special:FileDuplicateSearch
 'fileduplicatesearch-submit' => 'Buka',
+
+# Special:SpecialPages
+'specialpages' => 'Pájina espesiál sira',
 
 );

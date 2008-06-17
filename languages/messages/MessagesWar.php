@@ -1,11 +1,13 @@
 <?php
 /** Waray (Winaray)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Harvzsf
  * @author לערי ריינהארט
  * @author Siebrand
+ * @author Jon Harald Søby
  */
 
 $messages = array(
@@ -77,7 +79,6 @@ $messages = array(
 'dec'           => 'Dis',
 
 # Categories related messages
-'categories'               => '{{PLURAL:$1|Kategorya|Mga Kategorya}}',
 'pagecategories'           => '{{PLURAL:$1|Kategorya|Mga Kategorya}}',
 'category_header'          => 'Mga pakli ha kategorya "$1"',
 'subcategories'            => 'Mga ilarom nga kategorya',
@@ -137,7 +138,7 @@ $messages = array(
 'mainpage-description' => 'Syahan nga Pakli',
 'policy-url'           => 'Project:Polisiya',
 'portal'               => 'Ganghaan han Komunidad',
-'portal-url'           => 'Proyekto:Ganghaan han Komunidad',
+'portal-url'           => 'Project:Ganghaan han Komunidad',
 'sitesupport'          => 'Mga Donasyon',
 'sitesupport-url'      => 'Project:Mga Donasyon',
 
@@ -225,9 +226,8 @@ $messages = array(
 'sitestats'  => '{{SITENAME}} nga mga estadistika',
 
 # Miscellaneous special pages
-'longpages'    => 'Haglaba nga mga pakli',
-'specialpages' => 'Mga Ispisyal nga Pakli',
-'move'         => 'Balhina',
+'longpages' => 'Haglaba nga mga pakli',
+'move'      => 'Balhina',
 
 # Book sources
 'booksources-go' => 'Kadto-a',
@@ -241,6 +241,9 @@ $messages = array(
 'allpagesprev'   => 'Naha-una',
 'allpagesnext'   => 'Sunod',
 'allpagessubmit' => 'Kadto-a',
+
+# Special:Categories
+'categories' => '{{PLURAL:$1|Kategorya|Mga Kategorya}}',
 
 # Watchlist
 'watchlist'     => 'Akon barantayan',
@@ -281,5 +284,8 @@ Kitaa an $2 para hin talaan han mga gibag-ohi nga mga ginpamara.',
 'size-kilobytes' => '$1 nga KB',
 'size-megabytes' => '$1 nga MB',
 'size-gigabytes' => '$1 nga GB',
+
+# Special:SpecialPages
+'specialpages' => 'Mga Ispisyal nga Pakli',
 
 );

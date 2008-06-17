@@ -1,13 +1,15 @@
 <?php
 /** Northern Sami (Sámegiella)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Skuolfi
- * @author Siebrand
- * @author Teak
  * @author לערי ריינהארט
+ * @author Siebrand
  * @author SPQRobin
+ * @author Jon Harald Søby
+ * @author Teak
  */
 
 $messages = array(
@@ -104,8 +106,6 @@ $messages = array(
 'dec'           => 'juovlamánnu',
 
 # Categories related messages
-'categories'             => 'Luohkát',
-'categoriespagetext'     => '{{GRAMMAR:inessive|{{SITENAME}}}} lea čuovvovaš luohkát:',
 'pagecategories'         => '{{PLURAL:$1|Luohkká|Luohkát}}',
 'category_header'        => 'Siiddut, mat gullet luohkkái $1',
 'subcategories'          => 'Vuolleluohkát',
@@ -281,6 +281,7 @@ Du geavaheaddjidovddaldat lea dál anus. Ále vajáldahte rievdadit [[Special:Pr
 'yourdomainname'             => 'Fierbmenamma',
 'loginproblem'               => '<b>Sisačállin ii lihkosmuvvan.</b><br />Iska ođđasit!',
 'login'                      => 'Čálligoađe sisa',
+'nav-login-createaccount'    => 'Daga ođđa geavaheaddjidovddaldaga dahje čálligoađe sisa',
 'loginprompt'                => 'Sisačállimii darbbašuvvo geavssat (cookies).',
 'userlogin'                  => 'Daga ođđa geavaheaddjidovddaldaga dahje čálligoađe sisa',
 'logout'                     => 'Čálligoađe olggos',
@@ -402,7 +403,7 @@ Du geavaheaddjidovddaldat lea dál anus. Ále vajáldahte rievdadit [[Special:Pr
 'newarticle'               => '(ođđa)',
 'newarticletext'           => 'Leat boahtán muhtin liŋkka mielde siidui, mii ii vel dihtto. Sáhtat álggahit siiddu vuollái. Jus it hálit álggahit siiddu, geavat neahttabláđejeaddji máhccandoaimma.',
 'updated'                  => '(Beaividuvvon)',
-'note'                     => 'Cuigehus:',
+'note'                     => '<strong>Cuigehus:</strong>',
 'previewnote'              => '<strong>Dát lea siiddu ovdalgihtiigeahččan. Siidu ii leat vel vurkejuvvon!</strong>',
 'editing'                  => 'Rievdadit siiddu $1',
 'editingsection'           => 'Rievdadit oasi siiddus $1',
@@ -536,7 +537,7 @@ $1 | $2',
 'recentchangescount'       => 'Siiddui mearri varas rievdadusain',
 'savedprefs'               => 'Du ásahusid vurken lihkosmuvai.',
 'timezonelegend'           => 'Áigeavádat',
-'timezonetext'             => 'Báikálaš áiggi ja servera áiggi (UTC) erohus diimmuin.',
+'timezonetext'             => '¹Báikálaš áiggi ja servera áiggi (UTC) erohus diimmuin.',
 'localtime'                => 'Báikálaš áigi',
 'timezoneoffset'           => 'Áigeearru',
 'servertime'               => 'Servera áigi',
@@ -549,7 +550,7 @@ $1 | $2',
 'userrights-lookup-user'      => 'Geavaheaddjirivttiid stivren',
 'userrights-user-editname'    => 'Geavaheaddjidovddaldat',
 'editusergroup'               => 'Rievdat geavaheaddjijoavkkuid',
-'editinguser'                 => 'Rievdadit siiddu $1',
+'editinguser'                 => "Rievdadit siiddu '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'    => 'Geavaheaddji joavkkut',
 'saveusergroups'              => 'Vurke',
 'userrights-groupsmember'     => 'Lahttun čuovvovaš joavkkuin:',
@@ -606,7 +607,7 @@ $1 | $2',
 
 # Recent changes linked
 'recentchangeslinked'       => 'Dán siiddu varas rievdadusat',
-'recentchangeslinked-title' => '$1 laktaseaddji rievdadusat',
+'recentchangeslinked-title' => '"$1" laktaseaddji rievdadusat',
 
 # Upload
 'upload'             => 'Lasit fiilla',
@@ -659,7 +660,6 @@ $1 | $2',
 
 # Special:Imagelist
 'imagelist_search_for'  => 'Nammaohcan',
-'imgdesc'               => 'govvádus',
 'imgfile'               => 'fiila',
 'imagelist'             => 'Fiilalogahallan',
 'imagelist_date'        => 'Beaivemearri',
@@ -750,8 +750,8 @@ $1 | $2',
 'brokenredirects-edit'   => '(rievdat)',
 'brokenredirects-delete' => '(sihko)',
 
-'withoutinterwiki'        => 'Siiddut, main eai leat giellaliŋkkat',
-'withoutinterwiki-header' => 'Čuovvovaš siiddut eai čujut eará gielat veršuvnnaidda:',
+'withoutinterwiki'         => 'Siiddut, main eai leat giellaliŋkkat',
+'withoutinterwiki-summary' => 'Čuovvovaš siiddut eai čujut eará gielat veršuvnnaidda:',
 
 'fewestrevisions' => 'Siiddut, mat leat rievdáduvvon hárvet',
 
@@ -787,9 +787,6 @@ $1 | $2',
 'protectedpages'          => 'Suodjáluvvon siiddut',
 'protectedpagestext'      => 'Čuovvovaš siiddut leat suodjáluvvon sirdimiin ja rievdadusain',
 'listusers'               => 'Geavaheaddjilistu',
-'specialpages'            => 'Erenomáš siiddut',
-'spheading'               => 'Doaibmasiiddut buot geavaheddjiide',
-'restrictedpheading'      => 'Doaibmasiiddut, maid geavaheapmi lea ráddjejuvvon',
 'newpages'                => 'Ođđa siiddut',
 'newpages-username'       => 'Geavaheaddjidovddaldat:',
 'ancientpages'            => 'Siiddut, mat eai leat rievdaduvvon guhkes áigái',
@@ -829,6 +826,10 @@ $1 | $2',
 'allpagessubmit'    => 'Oza',
 'allpagesbadtitle'  => 'Čállojuvvon bájilčála lei dohkemeahtun dahje das lei wikiid gaskasaš álgooassi.',
 'allpages-bad-ns'   => '{{GRAMMAR:inessive|{{SITENAME}}}} ii leat nammagomuvuohta ”$1”.',
+
+# Special:Categories
+'categories'         => 'Luohkát',
+'categoriespagetext' => '{{GRAMMAR:inessive|{{SITENAME}}}} lea čuovvovaš luohkát:',
 
 # Special:Listusers
 'listusers-submit'   => 'Oza',
@@ -948,7 +949,7 @@ $1 | $2',
 'restriction-type'            => 'Rádjehus',
 'restriction-level'           => 'Suodjálus',
 'minimum-size'                => 'Min. sturrodat',
-'maximum-size'                => 'Maks. sturrodat',
+'maximum-size'                => 'Maks. sturrodat:',
 'pagesize'                    => 'stávvala',
 
 # Restrictions (nouns)
@@ -1065,8 +1066,6 @@ $1 | $2',
 'movepage-moved'          => "Siidu '''$1''' sirdojuvvui '''$2'''.", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'movedto'                 => 'Sirdojuvvun ođđa bájilčállagin',
 'movetalk'                => 'Sirdde maid ságastallansiiddu.',
-'talkpagemoved'           => 'Maid siiddu ságastallansiidu sirdojuvvui.',
-'talkpagenotmoved'        => "Siiddu ságastallansiidu '''ii''' sirdojuvvon.",
 '1movedto2'               => 'sirddii siiddu ”$1” ođđa namain ”$2”',
 'movelogpage'             => 'Sirdinlogga',
 'movelogpagetext'         => 'Dát lea logga sirdojuvvon siidduin.',
@@ -1282,7 +1281,6 @@ $1 | $2',
 'imgmultipageprev' => '← ovddit siidu',
 'imgmultipagenext' => 'čuovvovaš siidu →',
 'imgmultigo'       => 'Mana!',
-'imgmultigotopre'  => 'Mana siidui',
 
 # Table pager
 'ascending_abbrev'         => 'loktaneaddji',
@@ -1318,5 +1316,8 @@ $1 | $2',
 
 # Special:Version
 'version' => 'Veršuvdna', # Not used as normal message but as header for the special page itself
+
+# Special:SpecialPages
+'specialpages' => 'Erenomáš siiddut',
 
 );

@@ -29,7 +29,7 @@ if (!defined('MEDIAWIKI')) {
 }
 
 /**
- * @addtogroup API
+ * @ingroup API
  */
 class ApiFormatJson extends ApiFormatBase {
 
@@ -86,7 +86,6 @@ class ApiFormatJson extends ApiFormatBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiFormatJson.php 32822 2008-04-05 18:52:33Z btongminh $';
+		return __CLASS__ . ': $Id$';
 	}
 }
-

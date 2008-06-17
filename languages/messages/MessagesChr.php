@@ -1,7 +1,8 @@
 <?php
 /** Cherokee (ᏣᎳᎩ)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author SPQRobin
  */
@@ -55,9 +56,6 @@ $messages = array(
 # Random page
 'randompage' => 'ᎤᏍᏆᏂᎪᏗ ᎤᏆᏓᏛ',
 
-# Miscellaneous special pages
-'specialpages' => 'ᎤᏤᎵᏛ ᏚᏆᏓᏛ',
-
 # Delete/protect/revert
 'actioncomplete' => 'ᎠᏍᏆᏙᏅᎯ',
 
@@ -69,5 +67,8 @@ $messages = array(
 
 # Special:Newimages
 'ilsubmit' => 'ᎠᏯᏍᏗ',
+
+# Special:SpecialPages
+'specialpages' => 'ᎤᏤᎵᏛ ᏚᏆᏓᏛ',
 
 );

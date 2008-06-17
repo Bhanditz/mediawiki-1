@@ -1,10 +1,11 @@
 <?php
 /** Zhuang (壮语)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  */
 
-$fallback = 'zh-cn';
+$fallback = 'zh-hans';
 
 $messages = array(
 # Dates
@@ -97,7 +98,6 @@ $messages = array(
 'randompage' => 'Mae zaihzex',
 
 # Miscellaneous special pages
-'specialpages'      => 'Doenghmae daegxsei',
 'newpages-username' => 'Ciu bouxdeiz:',
 'move'              => 'Caen',
 'movethispage'      => 'Caen mae nej',
@@ -149,5 +149,8 @@ $messages = array(
 
 # Table pager
 'table_pager_limit_submit' => 'Bei',
+
+# Special:SpecialPages
+'specialpages' => 'Doenghmae daegxsei',
 
 );

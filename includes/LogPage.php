@@ -20,7 +20,7 @@
 
 /**
  * Contain log classes
- *
+ * @file
  */
 
 /**
@@ -51,18 +51,17 @@ class LogPage {
 		$this->updateRecentChanges = $rc;
 	}
 
-	function saveContent() {
-		if( wfReadOnly() ) return false;
-
+	protected function saveContent() {
 		global $wgUser, $wgLogRestrictions;
 		$fname = 'LogPage::saveContent';
 
 		$dbw = wfGetDB( DB_MASTER );
-		$uid = $wgUser->getID();
+		$uid = $wgUser->getId();
 		$log_id = $dbw->nextSequenceValue( 'log_log_id_seq' );
 
 		$this->timestamp = $now = wfTimestampNow();
 		$data = array(
+			'log_id' => $log_id,
 			'log_type' => $this->type,
 			'log_action' => $this->action,
 			'log_timestamp' => $dbw->timestamp( $now ),
@@ -73,8 +72,11 @@ class LogPage {
 			'log_params' => $this->params
 		);
 		$dbw->insert( 'logging', $data, $fname );
-		$newId = $dbw->insertId();
+		$newId = !is_null($log_id) ? $log_id : $dbw->insertId();
 
+		if( !($dbw->affectedRows() > 0) ) {
+			wfDebugLog( "logging", "LogPage::saveContent failed to insert row - Error {$dbw->lastErrno()}: {$dbw->lastError()}" );
+		}
 		# And update recentchanges
 		if( $this->updateRecentChanges ) {
 			# Don't add private logs to RC!
@@ -146,10 +148,10 @@ class LogPage {
 		global $wgLang, $wgContLang, $wgLogActions;
 
 		$key = "$type/$action";
-		
+
 		if( $key == 'patrol/patrol' )
 			return PatrolLog::makeActionText( $title, $params, $skin );
-		
+
 		if( isset( $wgLogActions[$key] ) ) {
 			if( is_null( $title ) ) {
 				$rv=wfMsg( $wgLogActions[$key] );
@@ -158,7 +160,7 @@ class LogPage {
 
 					switch( $type ) {
 						case 'move':
-							$titleLink = $skin->makeLinkObj( $title, $title->getPrefixedText(), 'redirect=no' );
+							$titleLink = $skin->makeLinkObj( $title, htmlspecialchars( $title->getPrefixedText() ), 'redirect=no' );
 							$params[0] = $skin->makeLinkObj( Title::newFromText( $params[0] ), htmlspecialchars( $params[0] ) );
 							break;
 						case 'block':
@@ -221,8 +223,14 @@ class LogPage {
 				}
 			}
 		} else {
-			wfDebug( "LogPage::actionText - unknown action $key\n" );
-			$rv = "$action";
+			global $wgLogActionsHandlers;
+			if( isset( $wgLogActionsHandlers[$key] ) ) {
+				$args = func_get_args();
+				$rv = call_user_func_array( $wgLogActionsHandlers[$key], $args );
+			} else {
+				wfDebug( "LogPage::actionText - unknown action $key\n" );
+				$rv = "$action";
+			}
 		}
 		if( $filterWikilinks ) {
 			$rv = str_replace( "[[", "", $rv );
@@ -272,7 +280,7 @@ class LogPage {
 			return explode( "\n", $blob );
 		}
 	}
-	
+
 	/**
 	 * Convert a comma-delimited list of block log flags
 	 * into a more readable (and translated) form
@@ -292,7 +300,7 @@ class LogPage {
 			return '';
 		}
 	}
-	
+
 	/**
 	 * Translate a block log flag if possible
 	 *

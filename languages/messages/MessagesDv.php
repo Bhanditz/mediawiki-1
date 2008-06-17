@@ -1,7 +1,8 @@
 <?php
 /** Divehi (ދިވެހިބަސް)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author MF-Warburg
  * @author לערי ריינהארט
@@ -46,11 +47,9 @@ $messages = array(
 'dec'       => 'ޑިސެމްބަރ',
 
 # Categories related messages
-'categories'         => 'ގިސްމުތައް',
-'categoriespagetext' => 'ތިރީގައި މިވާ ގިސްމުތައް ވިކީ ގައި މައުޖޫދުވެގެން ވެއެވެ.',
-'category_header'    => 'ގިސްމު "$1" ގައިވާ މަޒުމޫނުތައް',
-'subcategories'      => 'ކުދިގިސްމުތައް',
-'category-empty'     => "''މި ގިސްމުގައި އެއްވެއސް ސަފްހާ އެއް އަދި އެއްވެސް ފައިލެއް ނުހިމެނެއެވެ.''",
+'category_header' => 'ގިސްމު "$1" ގައިވާ މަޒުމޫނުތައް',
+'subcategories'   => 'ކުދިގިސްމުތައް',
+'category-empty'  => "''މި ގިސްމުގައި އެއްވެއސް ސަފްހާ އެއް އަދި އެއްވެސް ފައިލެއް ނުހިމެނެއެވެ.''",
 
 'about'         => 'ތާރަފު',
 'article'       => 'ފިހުރިސްތު ޞަފްޙާ',
@@ -271,8 +270,6 @@ $messages = array(
 'wantedcategories' => 'ބޭނުންފުޅުވާ ގިސްމުތައް',
 'wantedpages'      => 'ބޭނުންފުޅުވާ ޞަފްޙާތައް',
 'shortpages'       => 'ކުރު ޞަފްޙާތައް',
-'specialpages'     => 'ހާއްސަ ޞަފްޙާތައް',
-'spheading'        => 'ހުރިހާ މެންބަރުންނަށް ހާއްސަ ޞަފްޙާތައް',
 'ancientpages'     => 'ބޯދާ ޞަފްޙާތައް',
 'move'             => 'ނަން/ތަން ބަދަލުކުރައްވާ',
 'movethispage'     => 'މި ޞަފްހާގެ ނަންބަދަލުކުރައްވާ',
@@ -287,6 +284,10 @@ $messages = array(
 'allpagesprev'   => 'ކުރީގެ',
 'allpagesnext'   => 'ކުރިޔަށް އޮތް',
 'allpagessubmit' => 'ދުރުވޭ',
+
+# Special:Categories
+'categories'         => 'ގިސްމުތައް',
+'categoriespagetext' => 'ތިރީގައި މިވާ ގިސްމުތައް ވިކީ ގައި މައުޖޫދުވެގެން ވެއެވެ.',
 
 # E-mail user
 'emailuser' => 'މި މެންބަރަށް އީމޭލު ފޮނުއްވާ',
@@ -393,5 +394,8 @@ $messages = array(
 
 # Special:Version
 'version' => 'ނުސްހާ ނަމްބަރު', # Not used as normal message but as header for the special page itself
+
+# Special:SpecialPages
+'specialpages' => 'ހާއްސަ ޞަފްޙާތައް',
 
 );

@@ -1,14 +1,13 @@
 <?php
 /** Kinaray-a (Kinaray-a)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
- * @author RonaldPanaligan, Harvzsf (September 2007)
  * @author RonaldPanaligan
+ * @author Jose77
  * @author Harvzsf
  */
-
-
 
 $messages = array(
 # User preference toggles
@@ -93,7 +92,6 @@ $messages = array(
 'dec'           => 'Dis',
 
 # Categories related messages
-'categories'            => 'Manga Kategorya',
 'category_header'       => 'Manga artikolo sa "$1"',
 'subcategories'         => "Manga ''subcategory''",
 'category-media-header' => 'Manga midya sa "$1"',
@@ -199,7 +197,95 @@ $messages = array(
 'viewsource'           => 'Turukun ang ginhalinan',
 
 # Login and logout pages
-'nologinlink'   => "Himo ka sangka ''account''",
-'createaccount' => "Himo ka ''account''",
+'remembermypassword' => "Tandaan ang akun nga ''log-in'' sa dya nga ''computer''",
+'nologinlink'        => "Himo ka sangka ''account''",
+'createaccount'      => "Himo ka ''account''",
+'youremail'          => 'E-mail:',
+'email'              => 'E-mail',
+
+# Edit pages
+'preview' => 'Bilid',
+
+# Preferences page
+'searchresultshead' => 'Sagap',
+
+# Recent changes
+'hide' => 'Itago',
+'show' => 'Ipakita',
+
+'upload-file-error' => 'Sayup internal',
+
+# Special:Imagelist
+'imgfile' => 'inayap',
+
+# File deletion
+'filedelete-submit' => 'Para',
+
+'brokenredirects-edit'   => '(Iislan)',
+'brokenredirects-delete' => '(para)',
+
+'withoutinterwiki-submit' => 'Ipakita',
+
+# Book sources
+'booksources-go' => 'Agto',
+
+# Special:Log
+'log-search-submit' => 'Agto',
+
+# Special:Categories
+'categories' => 'Manga Kategorya',
+
+# Special:Listusers
+'listusers-submit' => 'Ipakita',
+
+# E-mail user
+'emailmessage' => 'Mensahe',
+
+# Delete/protect/revert
+'delete-legend' => 'Para',
+
+# Restrictions (nouns)
+'restriction-edit' => 'Iislan',
+
+# Undelete
+'undelete-search-submit' => 'Sagap',
+
+'sp-contributions-submit' => 'Sagap',
+
+# What links here
+'whatlinkshere-page' => 'Pahina:',
+'isredirect'         => 'idaho ang pahina',
+
+# Block/unblock
+'ipblocklist-submit' => 'Sagap',
+
+# Tooltip help for the actions
+'tooltip-ca-protect' => 'Amligan ang dya nga pahina',
+'tooltip-ca-delete'  => 'Paraun ang dya nga Pahina',
+'tooltip-p-logo'     => 'Pono nga Pahina',
+
+# Special:Newimages
+'ilsubmit' => 'Sagap',
+
+# action=purge
+'confirm_purge_button' => 'OK dun',
+
+# Multipage image navigation
+'imgmultigo' => 'Agto!',
+
+# Table pager
+'table_pager_limit_submit' => 'Agto',
+
+# Special:Version
+'version-specialpages' => 'Manga espesyal nga pahina',
+
+# Special:Filepath
+'filepath-page' => 'Inayap:',
+
+# Special:FileDuplicateSearch
+'fileduplicatesearch-submit' => 'Sagap',
+
+# Special:SpecialPages
+'specialpages' => 'Manga espesyal nga pahina',
 
 );

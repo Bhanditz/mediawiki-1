@@ -28,7 +28,7 @@ if (!defined('MEDIAWIKI')) {
 }
 
 /**
- * @addtogroup API
+ * @ingroup API
  */
 class ApiProtect extends ApiBase {
 
@@ -40,7 +40,7 @@ class ApiProtect extends ApiBase {
 		global $wgUser;
 		$this->getMain()->requestWriteMode();
 		$params = $this->extractRequestParams();
-		
+
 		$titleObj = NULL;
 		if(!isset($params['title']))
 			$this->dieUsageMsg(array('missingparam', 'title'));
@@ -55,12 +55,12 @@ class ApiProtect extends ApiBase {
 		$titleObj = Title::newFromText($params['title']);
 		if(!$titleObj)
 			$this->dieUsageMsg(array('invalidtitle', $params['title']));
-			
+
 		$errors = $titleObj->getUserPermissionsErrors('protect', $wgUser);
 		if(!empty($errors))
 			// We don't care about multiple errors, just report one of them
 			$this->dieUsageMsg(current($errors));
-		
+
 		if(in_array($params['expiry'], array('infinite', 'indefinite', 'never')))
 			$expiry = Block::infinity();
 		else
@@ -68,7 +68,7 @@ class ApiProtect extends ApiBase {
 			$expiry = strtotime($params['expiry']);
 			if($expiry < 0 || $expiry == false)
 				$this->dieUsageMsg(array('invalidexpiry'));
-			
+
 			$expiry = wfTimestamp(TS_MW, $expiry);
 			if($expiry < wfTimestampNow())
 				$this->dieUsageMsg(array('pastexpiry'));
@@ -94,7 +94,6 @@ class ApiProtect extends ApiBase {
 			// This is very weird. Maybe the article was deleted or the user was blocked/desysopped in the meantime?
 			// Just throw an unknown error in this case, as it's very likely to be a race condition
 			$this->dieUsageMsg(array());
-		$this->getMain()->scheduleCommit();
 		$res = array('title' => $titleObj->getPrefixedText(), 'reason' => $params['reason']);
 		if($expiry == Block::infinity())
 			$res['expiry'] = 'infinity';
@@ -147,6 +146,6 @@ class ApiProtect extends ApiBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiProtect.php 33133 2008-04-11 15:20:45Z catrope $';
+		return __CLASS__ . ': $Id$';
 	}
 }

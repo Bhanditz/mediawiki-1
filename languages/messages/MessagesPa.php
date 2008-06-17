@@ -1,10 +1,13 @@
 <?php
-/** Punjabi (Gurmukhi)
- * @addtogroup Language
+/** Punjabi (ਪੰਜਾਬੀ)
+ *
+ * @ingroup Language
+ * @file
  *
  * @author Sukh
  * @author Ævar Arnfjörð Bjarmason
  * @author AS Alam
+ *
  * @license http://www.gnu.org/copyleft/fdl.html GNU Free Documentation License
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
  * @see http://bugzilla.wikimedia.org/show_bug.cgi?id=1478
@@ -53,7 +56,6 @@ $digitTransformTable = array(
 	'9' => '੯', # &#x0a6f;
 );
 $linkTrail = '/^([ਁਂਃਅਆਇਈਉਊਏਐਓਔਕਖਗਘਙਚਛਜਝਞਟਠਡਢਣਤਥਦਧਨਪਫਬਭਮਯਰਲਲ਼ਵਸ਼ਸਹ਼ਾਿੀੁੂੇੈੋੌ੍ਖ਼ਗ਼ਜ਼ੜਫ਼ੰੱੲੳa-z]+)(.*)$/sDu';
-
 
 $messages = array(
 # User preference toggles
@@ -125,7 +127,6 @@ $messages = array(
 'dec'           => 'ਦਸੰਬਰ',
 
 # Categories related messages
-'categories'            => 'ਕੈਟਾਗਰੀਆਂ',
 'pagecategories'        => '{{PLURAL:$1|ਕੈਟਾਗਰੀ|ਕੈਟਾਗਰੀਆਂ}}',
 'category_header'       => 'ਕੈਟਾਗਰੀ "$1" ਵਿੱਚ ਲੇਖ',
 'subcategories'         => 'ਸਬ-ਕੈਟਾਗਰੀਆਂ',
@@ -167,7 +168,7 @@ $messages = array(
 'printableversion'  => 'ਪਰਿੰਟਯੋਗ ਵਰਜਨ',
 'permalink'         => 'ਪੱਕਾ ਲਿੰਕ',
 'print'             => 'ਪਰਿੰਟ ਕਰੋ',
-'edit'              => 'ਸੋਧ',
+'edit'              => 'ਬਦਲੋ',
 'editthispage'      => 'ਇਹ ਪੇਜ਼ ਸੋਧੋ',
 'delete'            => 'ਹਟਾਓ',
 'deletethispage'    => 'ਇਹ ਪੇਜ਼ ਹਟਾਓ',
@@ -299,6 +300,7 @@ Your account has been created. Don't forget to change your {{SITENAME}} preferen
 'yourdomainname'             => 'ਤੁਹਾਡੀ ਡੋਮੇਨ:',
 'loginproblem'               => '<b>ਤੁਹਾਡੇ ਲਾਗਇਨ ਨਾਲ ਇੱਕ ਸਮੱਸਿਆ ਹੈ।</b><br />ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ!',
 'login'                      => 'ਲਾਗ ਇਨ',
+'nav-login-createaccount'    => 'ਲਾਗ ਇਨ / ਅਕਾਊਂਟ ਬਣਾਓ',
 'loginprompt'                => 'ਤੁਹਾਨੂੰ {{SITENAME}} ਉੱਤੇ ਲਾਗਇਨ ਕਰਨ ਲਈ ਕੂਕੀਜ਼ ਯੋਗ ਕਰਨੇ ਜ਼ਰੂਰੀ ਹਨ।',
 'userlogin'                  => 'ਲਾਗ ਇਨ / ਅਕਾਊਂਟ ਬਣਾਓ',
 'logout'                     => 'ਲਾਗ ਆਉਟ',
@@ -535,7 +537,7 @@ $1 ਘੰਟੇ ਵਿੱਚ। ਨੁਕਸਾਨ ਤੋਂ ਬਚਣ ਲਈ, $
 'userrights-lookup-user'      => 'ਯੂਜ਼ਰ ਗਰੁੱਪ ਦੇਖਭਾਲ',
 'userrights-user-editname'    => 'ਇੱਕ ਯੂਜ਼ਰ ਨਾਂ ਦਿਓ:',
 'editusergroup'               => 'ਯੂਜ਼ਰ ਗਰੁੱਪ ਸੋਧ',
-'editinguser'                 => '<b>$1</b> ਯੂਜ਼ਰ ਸੋਧਿਆ ਜਾ ਰਿਹਾ ਹੈ',
+'editinguser'                 => '<b>$1</b> ਯੂਜ਼ਰ ਸੋਧਿਆ ਜਾ ਰਿਹਾ ਹੈ ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])',
 'userrights-editusergroup'    => 'ਯੂਜ਼ਰ ਗਰੁੱਪ ਸੋਧ',
 'saveusergroups'              => 'ਯੂਜ਼ਰ ਗਰੁੱਪ ਸੰਭਾਲੋ',
 'userrights-groupsmember'     => 'ਇਸ ਦਾ ਮੈਂਬਰ:',
@@ -608,7 +610,6 @@ to upload files.',
 'upload_source_file' => ' (ਤੁਹਾਡੇ ਕੰਪਿਊਟਰ ਉੱਤੇ ਇੱਕ ਫਾਇਲ)',
 
 # Special:Imagelist
-'imgdesc'               => 'ਵੇਰਵਾ',
 'imgfile'               => 'ਫਾਇਲ',
 'imagelist'             => 'ਫਾਇਲ ਲਿਸਟ',
 'imagelist_date'        => 'ਮਿਤੀ',
@@ -664,7 +665,6 @@ to upload files.',
 'unusedimages'      => 'ਅਣਵਰਤੀਆਂ ਫਾਇਲਾਂ',
 'popularpages'      => 'ਪਾਪੂਲਰ ਪੇਜ਼',
 'listusers'         => 'ਯੂਜ਼ਰ ਲਿਸਟ',
-'specialpages'      => 'ਖਾਸ ਪੇਜ਼',
 'newpages'          => 'ਨਵੇਂ ਪੇਜ਼',
 'newpages-username' => 'ਯੂਜ਼ਰ ਨਾਂ:',
 'ancientpages'      => 'ਸਭ ਤੋਂ ਪੁਰਾਣੇ ਪੇਜ਼',
@@ -693,6 +693,9 @@ to upload files.',
 'allpagesprev'      => 'ਪਿੱਛੇ',
 'allpagesnext'      => 'ਅੱਗੇ',
 'allpagessubmit'    => 'ਜਾਓ',
+
+# Special:Categories
+'categories' => 'ਕੈਟਾਗਰੀਆਂ',
 
 # Special:Listusers
 'listusers-submit'   => 'ਵੇਖੋ',
@@ -954,12 +957,10 @@ to upload files.',
 'exif-subjectdistancerange-0' => 'ਅਣਜਾਣ',
 'exif-subjectdistancerange-1' => 'ਮਾਈਕਰੋ',
 'exif-subjectdistancerange-2' => 'ਝਲਕ ਬੰਦ ਕਰੋ',
-'exif-subjectdistancerange-3' => 'Distant view',
 
 # Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
 'exif-gpsspeed-k' => 'ਕਿਲੋਮੀਟਰ ਪ੍ਰਤੀ ਘੰਟਾ',
 'exif-gpsspeed-m' => 'ਮੀਲ ਪ੍ਰਤੀ ਘੰਟਾ',
-'exif-gpsspeed-n' => 'Knots',
 
 # E-mail address confirmation
 'confirmemail'          => 'ਈਮੇਲ ਐਡਰੈੱਸ ਪੁਸ਼ਟੀ',
@@ -992,7 +993,6 @@ to upload files.',
 'imgmultipageprev' => '← ਪੇਜ਼ ਪਿੱਛੇ',
 'imgmultipagenext' => 'ਪੇਜ਼ ਅੱਗੇ →',
 'imgmultigo'       => 'ਜਾਓ!',
-'imgmultigotopre'  => 'ਪੇਜ਼ ਉੱਤੇ ਜਾਓ',
 
 # Table pager
 'table_pager_next'         => 'ਪੇਜ਼ ਅੱਗੇ',
@@ -1018,5 +1018,8 @@ to upload files.',
 
 # Special:Version
 'version' => 'ਵਰਜਨ', # Not used as normal message but as header for the special page itself
+
+# Special:SpecialPages
+'specialpages' => 'ਖਾਸ ਪੇਜ਼',
 
 );

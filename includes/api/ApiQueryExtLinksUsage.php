@@ -29,7 +29,7 @@ if (!defined('MEDIAWIKI')) {
 }
 
 /**
- * @addtogroup API
+ * @ingroup API
  */
 class ApiQueryExtLinksUsage extends ApiQueryGeneratorBase {
 
@@ -51,7 +51,7 @@ class ApiQueryExtLinksUsage extends ApiQueryGeneratorBase {
 
 		$protocol = $params['protocol'];
 		$query = $params['query'];
-		
+
 		// Find the right prefix
 		global $wgUrlProtocols;
 		if(!is_null($protocol) && $protocol != '' && !in_array($protocol, $wgUrlProtocols))
@@ -63,9 +63,9 @@ class ApiQueryExtLinksUsage extends ApiQueryGeneratorBase {
 				}
 			}
 		}
-		
+
 		$db = $this->getDb();
-		$this->addTables(array('page','externallinks'));	// must be in this order for 'USE INDEX' 
+		$this->addTables(array('page','externallinks'));	// must be in this order for 'USE INDEX'
 		$this->addOption('USE INDEX', 'el_index');
 		$this->addWhere('page_id=el_from');
 		$this->addWhereFld('page_namespace', $params['namespace']);
@@ -83,14 +83,14 @@ class ApiQueryExtLinksUsage extends ApiQueryGeneratorBase {
 		$fld_ids = isset($prop['ids']);
 		$fld_title = isset($prop['title']);
 		$fld_url = isset($prop['url']);
-		
+
 		if (is_null($resultPageSet)) {
 			$this->addFields(array (
 				'page_id',
 				'page_namespace',
 				'page_title'
 			));
-			$this->addFieldsIf('el_to', $fld_url);			
+			$this->addFieldsIf('el_to', $fld_url);
 		} else {
 			$this->addFields($resultPageSet->getPageTableFields());
 		}
@@ -108,7 +108,7 @@ class ApiQueryExtLinksUsage extends ApiQueryGeneratorBase {
 		while ($row = $db->fetchObject($res)) {
 			if (++ $count > $limit) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
-				$this->setContinueEnumParameter('offset', $offset+$limit+1);
+				$this->setContinueEnumParameter('offset', $offset+$limit);
 				break;
 			}
 
@@ -143,7 +143,7 @@ class ApiQueryExtLinksUsage extends ApiQueryGeneratorBase {
 		foreach ($wgUrlProtocols as $p) {
 			$protocols[] = substr($p, 0, strpos($p,':'));
 		}
-		
+
 		return array (
 			'prop' => array (
 				ApiBase :: PARAM_ISMULTI => true,
@@ -198,6 +198,6 @@ class ApiQueryExtLinksUsage extends ApiQueryGeneratorBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiQueryExtLinksUsage.php 32774 2008-04-04 11:51:55Z btongminh $';
+		return __CLASS__ . ': $Id$';
 	}
 }

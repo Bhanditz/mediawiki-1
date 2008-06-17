@@ -1,14 +1,21 @@
 <?php
 /** Tok Pisin (Tok Pisin)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Wantok
  * @author Niklas Laxström
  * @author לערי ריינהארט
  * @author Siebrand
  * @author Wytukaze
+ * @author Wantok
+ * @author לערי ריינהארט
+ * @author Siebrand
+ * @author Wytukaze
  */
+
+
 
 $messages = array(
 # User preference toggles
@@ -59,8 +66,6 @@ $messages = array(
 'sat'       => 'Sar',
 
 # Categories related messages
-'categories'            => 'Ol grup',
-'categoriespagetext'    => 'Ol dispela grup istap.',
 'pagecategories'        => '{{PLURAL:$1|Grup|Ol grup}}',
 'category_header'       => 'Ol pes insait long grup "$1"',
 'subcategories'         => 'Ol grup insait long grup',
@@ -169,13 +174,16 @@ Na tu yu tok tru nau olsem yu raitim dispela yu yet, o yu kisim long wanpela hap
 'mostlinkedcategories'    => 'Ol grup igat planti link i kam long ol',
 'mostlinkedtemplates'     => 'Ol templet igat planti link i kam long ol',
 'mostcategories'          => 'Ol pes bilong buk istap insait long planti grup',
-'specialpages'            => 'Ol sipesol pes',
 'move'                    => 'Surikim',
 'movethispage'            => 'Surikim dispela pes',
 'unusedcategoriestext'    => 'Ol dispela grup istap yet, tasol i no gat wanpela pes o grup i stap insait long ol.',
 
 # Special:Allpages
 'allpages' => 'Olgeta pes',
+
+# Special:Categories
+'categories'         => 'Ol grup',
+'categoriespagetext' => 'Ol dispela grup istap.',
 
 # Watchlist
 'watchlist'            => 'Lukautbuk bilong mi',
@@ -210,19 +218,17 @@ Sapos yu laik rausim dispela pes long lukautbuk bilong yu bihain, paitim \"Pinis
 'whatlinkshere' => 'Ol link ikam long hia',
 
 # Move page
-'movepagebtn'      => 'Surikim',
-'pagemovedsub'     => 'Pes i surik pinis',
-'movepage-moved'   => '<big>\'\'\'"$1" i surik i go long "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
-'articleexists'    => 'Wanpela pes wantaim dispela nem i stap pinis, o dispela nem i no stret.
+'movepagebtn'     => 'Surikim',
+'pagemovedsub'    => 'Pes i surik pinis',
+'movepage-moved'  => '<big>\'\'\'"$1" i surik i go long "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'articleexists'   => 'Wanpela pes wantaim dispela nem i stap pinis, o dispela nem i no stret.
 Yu mas painim narapela nem.',
-'talkexists'       => "'''Pes bilong buk i surik pinis, tasol pes bilong toktok i no inap surik, bilong wanem wanpela pes bilong toktok istap pinis wantaim dispela nam.  Yu mas pasim wantaim tupela pes bilong toktok yu yet.'''",
-'movedto'          => 'i surik i go long',
-'movetalk'         => 'Surikim pes bilong toktok wantaim',
-'talkpagemoved'    => 'Pes bilong toktok i surik pinis wantaim.',
-'talkpagenotmoved' => 'Pes bilong toktok <strong>i no surik wantaim</strong>.',
-'1movedto2'        => '[[$1]] i surik i go long [[$2]] pinis',
-'movelogpage'      => 'Buk bilong ol surik',
-'movelogpagetext'  => 'Hia yumi lukim ol pes i surik pinis.',
+'talkexists'      => "'''Pes bilong buk i surik pinis, tasol pes bilong toktok i no inap surik, bilong wanem wanpela pes bilong toktok istap pinis wantaim dispela nam.  Yu mas pasim wantaim tupela pes bilong toktok yu yet.'''",
+'movedto'         => 'i surik i go long',
+'movetalk'        => 'Surikim pes bilong toktok wantaim',
+'1movedto2'       => '[[$1]] i surik i go long [[$2]] pinis',
+'movelogpage'     => 'Buk bilong ol surik',
+'movelogpagetext' => 'Hia yumi lukim ol pes i surik pinis.',
 
 # Namespace 8 related
 'allmessages' => 'Ol toksave bilong sistem',
@@ -254,5 +260,8 @@ Yu mas painim narapela nem.',
 'watchlisttools-view' => 'Lukim ol senis',
 'watchlisttools-edit' => 'Lukim na senisim lukautbuk',
 'watchlisttools-raw'  => 'Senisim lukautbuk insait long wanpela bokis',
+
+# Special:SpecialPages
+'specialpages' => 'Ol sipesol pes',
 
 );

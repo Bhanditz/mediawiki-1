@@ -1,10 +1,19 @@
 <?php
 /** Maltese (Malti)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
+ *
+ * @author Giangian15
  */
 
 $messages = array(
+# User preference toggles
+'tog-underline'        => 'Links Sottolinjati:',
+'tog-rememberpassword' => 'Ftakar il-login tiegħi fuq dan il-komputer',
+
+'underline-always' => 'Dejjem',
+
 'mytalk'     => 'Diskussjonijiet tiegħi',
 'navigation' => 'Navigazzjoni',
 
@@ -68,8 +77,7 @@ $messages = array(
 'randompage' => 'Paġna kwalunkwe',
 
 # Miscellaneous special pages
-'specialpages' => 'Paġni speċjali',
-'move'         => 'Mexxi',
+'move' => 'Mexxi',
 
 # Special:Allpages
 'allpages' => 'Il-paġni kollha',
@@ -101,5 +109,8 @@ $messages = array(
 
 # Special:Version
 'version' => 'Verżjoni', # Not used as normal message but as header for the special page itself
+
+# Special:SpecialPages
+'specialpages' => 'Paġni speċjali',
 
 );

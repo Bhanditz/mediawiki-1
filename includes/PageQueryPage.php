@@ -3,15 +3,15 @@
 /**
  * Variant of QueryPage which formats the result as a simple link to the page
  *
- * @addtogroup SpecialPage
+ * @ingroup SpecialPage
  */
 class PageQueryPage extends QueryPage {
 
 	/**
 	 * Format the result as a simple link to the page
 	 *
-	 * @param Skin $skin
-	 * @param object $row Result row
+	 * @param $skin Skin
+	 * @param $row Object: result row
 	 * @return string
 	 */
 	public function formatResult( $skin, $row ) {
@@ -21,5 +21,3 @@ class PageQueryPage extends QueryPage {
 			htmlspecialchars( $wgContLang->convert( $title->getPrefixedText() ) ) );
 	}
 }
-
-

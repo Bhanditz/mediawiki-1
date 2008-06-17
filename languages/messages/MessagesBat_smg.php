@@ -1,12 +1,13 @@
 <?php
 /** Samogitian (Žemaitėška)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Hugo.arg
  * @author Zordsdavini
- * @author לערי ריינהארט
  * @author Siebrand
+ * @author לערי ריינהארט
  * @author Nike
  */
 
@@ -156,8 +157,6 @@ $messages = array(
 'dec'           => 'grd',
 
 # Categories related messages
-'categories'               => 'Kateguorėjės',
-'categoriespagetext'       => 'Pruojekte īr šėtuos kateguorėjės.',
 'pagecategories'           => '{{PLURAL:$1|Kateguorėjė|Kateguorėjės|Kateguorėju}}',
 'category_header'          => 'Kateguorėjės „$1“ straipsnē',
 'subcategories'            => 'Subkateguorėjės',
@@ -248,7 +247,7 @@ $messages = array(
 'bugreportspage'       => 'Project:Klaidū pranešėmā',
 'copyright'            => 'Turinīs pateikts so $1 licencėjė.',
 'copyrightpagename'    => '{{SITENAME}} autorėnės teisės',
-'copyrightpage'        => 'Project:Autuoriu teisės',
+'copyrightpage'        => '{{ns:project}}:Autuoriu teisės',
 'currentevents'        => '** Vielībė̅jė ivīkē **',
 'currentevents-url'    => 'Project:Vielībė̅jė ivīkē',
 'disclaimers'          => 'Atsakuomībės aprėbuojims',
@@ -319,10 +318,6 @@ $messages = array(
 mažo doumenū bazės techninē pruofilaktėkā,
 puo tuo vėsks griš i sava viežes.
 Ožrakėnusiuojo admėnėstratuoriaus pateikts rakėnima paaiškėnims: $1',
-'missingarticle'       => 'Doumenū bazē nepavīkst sorastė poslapė „$1“ teksta.
-Paprastā tas sokel pasenosė skėrtomu a istuorėjės nūruoda i poslapi, katros bova ėštrints.
-Jēgo tas ne tuoks atvejis, mažo Tamsta aptikuot klaida pruogramėnė ironguo.
-Prašuom praneštė aple šėta admėnėstratuorio, teipuogi nuruodont ė URL.',
 'readonly_lag'         => 'Doumenū bazė bova autuomatėškā ožrakėnta, kuol pagelbinės doumenū bazės pasvīs pagrėndine',
 'unexpected'           => 'Natėkieta raikšmie: „$1“=„$2“.',
 'cannotdelete'         => 'Nepavīka ėštrintė nuruodīta poslapė a faila. (Mažo kažkas padarė pėrmesnis šėta)',
@@ -353,6 +348,7 @@ Ožklausėms: $2',
 'yourdomainname'             => 'Tamstas domens:',
 'loginproblem'               => '<b>Biedas so Tamstas prisėjongėmo.</b><br />Pabandīkėt ėš naujė!',
 'login'                      => 'Prisėjongtė',
+'nav-login-createaccount'    => 'Prėsėjongtė / sokortė paskīra',
 'loginprompt'                => 'Ijonkėt pakavukus, jēgo nuorėt prisėjongtė pri {{SITENAME}}.',
 'userlogin'                  => 'Prėsėjongtė / sokortė paskīra',
 'logout'                     => 'Atsėjongtė',
@@ -535,7 +531,7 @@ Tomsta torėt nosprēst, a pritėnk tuoliau redagoutė šėta poslapi.
 # "Undo" feature
 'undo-success' => 'Keitėms gal būtė atšaukts. Prašuom patėkrėntė palīgėnėma, asonti žemiau, kū patvėrtėntomiet, kū Tamsta šėta ė nuorėt padarītė, ė tumet ėšsauguokit pakeitėmos, asontios žemiau, kū ožbėngtomiet keitėma atšaukėma.',
 'undo-failure' => 'Keitėms nagal būt atšaukts diel konflėktounantiu tarpėniu pakeitėmu.',
-'undo-summary' => 'Atšauktė [[Special:Contributions/$2|$2]] ([[Nauduotuojė_aptarėms:$2|Aptarėms]]) versėje $1',
+'undo-summary' => 'Atšauktė [[Special:Contributions/$2|$2]] ([[User_talk:$2|Aptarėms]]) versėje $1',
 
 # History pages
 'viewpagelogs'        => 'Ruodītė šėtuo poslapė specēliōsios vaiksmos',
@@ -598,7 +594,6 @@ Kėtė admėnėstratuorē šėtom pruojekte vėsdar galės pasėiktė pasliepta 
 'showingresults'        => "Žemiau ruodoma lėgė '''$1''' rezoltatu pradedant #'''$2'''.",
 'showingresultsnum'     => "Žemiau ruodoma '''$3''' {{PLURAL:$3|rezoltata|rezoltatu|rezoltatu}} pradedant #'''$2'''.",
 'powersearch'           => 'Ėiškuotė',
-'powersearchtext'       => 'Ėiškoutė tuosė vardū srėtīsė:<br />$1<br /><label>$2 Ruodītė paradresavėmos</label><br />Ėiškoutė $3 $9',
 
 # Preferences page
 'preferences'           => 'Nustatīmā',
@@ -636,7 +631,7 @@ Kėtė admėnėstratuorē šėtom pruojekte vėsdar galės pasėiktė pasliepta 
 'recentchangescount'    => 'Kėik pakeitėmū ruodoma vielībūju kėitėmu poslapī',
 'savedprefs'            => 'Nostatīmā siekmėngā ėšsauguotė.',
 'timezonelegend'        => 'Čiesa zuona',
-'timezonetext'          => 'Iveskitė kėik adīnu Tamstas vėitins čiesos skėrės nu serverė čiesa (UTC).',
+'timezonetext'          => '¹Iveskitė kėik adīnu Tamstas vėitins čiesos skėrės nu serverė čiesa (UTC).',
 'localtime'             => 'Vėitinis čiesos',
 'timezoneoffset'        => 'Skėrtoms¹',
 'servertime'            => 'Serverė čiesos',
@@ -651,7 +646,7 @@ Kėtė admėnėstratuorē šėtom pruojekte vėsdar galės pasėiktė pasliepta 
 'userrights-lookup-user'     => 'Tvarkītė nauduotuojė gropės',
 'userrights-user-editname'   => 'Iveskėt nauduotuojė varda:',
 'editusergroup'              => 'Redagoutė nauduotuojė gropes',
-'editinguser'                => 'Taisuoms nauduotuos <b>$1</b>',
+'editinguser'                => "Taisuoms nauduotuos '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'   => 'Keistė nauduotuoju gropes',
 'userrights-groupsmember'    => 'Narīs:',
 'userrights-groupsavailable' => 'Galėmas gropės:',
@@ -841,8 +836,8 @@ Kėtė admėnėstratuorē šėtom pruojekte vėsdar galės pasėiktė pasliepta 
 'brokenredirects-edit'   => '(redagoutė)',
 'brokenredirects-delete' => '(trintė)',
 
-'withoutinterwiki'        => 'Poslapē ba kalbū nūruodu',
-'withoutinterwiki-header' => 'Šėtė poslapē neruod i kėtū kalbū versėjės:',
+'withoutinterwiki'         => 'Poslapē ba kalbū nūruodu',
+'withoutinterwiki-summary' => 'Šėtė poslapē neruod i kėtū kalbū versėjės:',
 
 'fewestrevisions' => 'Straipsnē so mažiausė pakeitėmu',
 
@@ -879,9 +874,6 @@ Kėtė admėnėstratuorē šėtom pruojekte vėsdar galės pasėiktė pasliepta 
 'protectedpagestext'      => 'Šėtē poslapē īr apsauguotė nū parkielėma a redagavėma',
 'protectedpagesempty'     => 'Šėtu čiesu nier apsauguots anėjuoks fails so šėtās parametrās.',
 'listusers'               => 'Sārašos nauduotuoju',
-'specialpages'            => 'Specēlė̅jė poslapē',
-'spheading'               => 'Specēlė̅jė poslapē vėsėm nauduotuojam',
-'restrictedpheading'      => 'Apribuotė̅jė specēlė̅jė poslapē',
 'newpages'                => 'Naujausė straipsnē',
 'newpages-username'       => 'Nauduotuojė vards:',
 'ancientpages'            => 'Seniausė poslapē',
@@ -926,6 +918,10 @@ katram ivīkdītė šėta funkcėjė.',
 'allpagessubmit'    => 'Tink',
 'allpagesprefix'    => 'Ruodītė poslapios so prīdelēs:',
 'allpagesbadtitle'  => 'Douts poslapė pavadėnėms īr neteisings a tor terpkalbėnė a terppruojektėnė prīdielė. Anamė īr vėns a kelė žėnklā, katrū negal nauduotė pavadėnėmūs.',
+
+# Special:Categories
+'categories'         => 'Kateguorėjės',
+'categoriespagetext' => 'Pruojekte īr šėtuos kateguorėjės.',
 
 # Special:Listusers
 'listusersfrom'      => 'Ruodītė nauduotuojus pradedont nū:',
@@ -1240,8 +1236,6 @@ pavadėnėma straipsnis jau tor aptarėmu poslapi.
 Prašuom sojongtė šėtuos poslapios.'''",
 'movedto'                 => 'parvadints i',
 'movetalk'                => 'Parkeltė sosėta aptarėma poslapi.',
-'talkpagemoved'           => 'Sosėits aptarėma poslapis bova parkelts teipuogi.',
-'talkpagenotmoved'        => 'Sosėits aptarėma poslapis <strong>nabova</strong> parkelts.',
 '1movedto2'               => 'Straipsnis [[$1]] parvadints i [[$2]]',
 '1movedto2_redir'         => "'$1' parvadints i '$2' (onkstiau bova nukrēpamāsis)",
 'movelogpage'             => 'Parvardinėmu istuorėjė',
@@ -1531,5 +1525,8 @@ Vėsas kėtas nūoruodas tuo patiuo eilotie īr laikomas ėšėmtim, tas rēšk 
 
 # Special:Filepath
 'filepath' => 'Faila maršrots',
+
+# Special:SpecialPages
+'specialpages' => 'Specēlė̅jė poslapē',
 
 );

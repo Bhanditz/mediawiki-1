@@ -1,14 +1,14 @@
 <?php
 /** Romani (Romani)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Niklas Laxström
- * @author G - ג
+ * @author לערי ריינהארט
  * @author Desiphral
  * @author Siebrand
- * @author Nike
- * @author לערי ריינהארט
+ * @author Jon Harald Søby
  */
 
 $fallback = 'ro';
@@ -116,7 +116,7 @@ $messages = array(
 'viewtalkpage'     => 'Dikh i diskucia',
 'otherlanguages'   => 'Avre ćhibande',
 'lastmodifiedat'   => 'O palutno paruvipen $2, $1.', # $1 date, $2 time
-'viewcount'        => 'Kadaya patrin dikhlilyas {{plural:$1|one time|$1var}}.',
+'viewcount'        => 'Kadaya patrin dikhlilyas {{PLURAL:$1|one time|$1var}}.',
 'jumpto'           => 'Ja kai:',
 'jumptonavigation' => 'phiripen',
 'jumptosearch'     => 'rodipen',
@@ -304,7 +304,7 @@ Kana avilyan kathe doshatar, ja palpale.',
 'files'                 => 'Failurya',
 
 # User rights
-'editinguser' => 'Editisaripen $1',
+'editinguser' => "Editisaripen '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 
 # Groups
 'group'            => 'Grupo:',
@@ -377,8 +377,6 @@ Mashkar lende <b>$2</b> si administratorurya (dikh $3).',
 'shortpages'   => 'Xarne patrya',
 'deadendpages' => 'Biphandimatenge patrya',
 'listusers'    => 'Jenengo patrinipen',
-'specialpages' => 'Uzalutne patrya',
-'spheading'    => 'Uzalutne patrya',
 'newpages'     => 'Neve patrya',
 'ancientpages' => 'E puraneder lekha',
 'move'         => 'Ingerdipen',
@@ -457,14 +455,12 @@ Dikh ando $2 ek patrinipen le palutne butyange khosle.',
 'unlockbtn' => 'Na mai brakh i database',
 
 # Move page
-'movearticle'      => 'Inger i patrin',
-'movepagebtn'      => 'Inger i patrin',
-'pagemovedsub'     => 'I patrin sas bićhaldi.',
-'movedto'          => 'ingerdi kai',
-'talkpagemoved'    => 'Ingerdi vi i phandli vakyarimatengi patrin.',
-'talkpagenotmoved' => 'I phandli vakyarimatengi patrin <strong>nai</strong> ingerdi.',
-'1movedto2'        => '[[$1]] bichhaldo kai [[$2]]',
-'delete_and_move'  => 'Khos thai inger',
+'movearticle'     => 'Inger i patrin',
+'movepagebtn'     => 'Inger i patrin',
+'pagemovedsub'    => 'I patrin sas bićhaldi.',
+'movedto'         => 'ingerdi kai',
+'1movedto2'       => '[[$1]] bichhaldo kai [[$2]]',
+'delete_and_move' => 'Khos thai inger',
 
 # Export
 'export-submit' => 'Bichhal avri',
@@ -561,5 +557,8 @@ Dikh ando $2 ek patrinipen le palutne butyange khosle.',
 
 # Special:Version
 'version' => 'Versiya', # Not used as normal message but as header for the special page itself
+
+# Special:SpecialPages
+'specialpages' => 'Uzalutne patrya',
 
 );

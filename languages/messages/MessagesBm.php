@@ -1,7 +1,8 @@
 <?php
 /** Bamanankan (Bamanankan)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Guaka
  * @author Siebrand
@@ -25,7 +26,6 @@ $messages = array(
 'aug'       => 'uti',
 
 # Categories related messages
-'categories'      => 'Nyɛ ka cogoyaw',
 'category_header' => 'Nyɛw cogoya kɔnɔ: "$1"',
 
 'article'        => 'Nyɛ',
@@ -93,8 +93,6 @@ $messages = array(
 
 # Miscellaneous special pages
 'popularpages' => 'Nyɛw les plus consultées',
-'specialpages' => 'Nyɛw kɛrɛnkɛrɛnnen',
-'spheading'    => 'Nyɛw kɛrɛnkɛrɛnnen',
 'newpages'     => 'Nyɛw kura',
 'ancientpages' => 'Nyɛw les plus anciens',
 'move'         => 'telun',
@@ -102,6 +100,9 @@ $messages = array(
 
 # Special:Allpages
 'allpages' => 'Nyɛw bɛɛ',
+
+# Special:Categories
+'categories' => 'Nyɛ ka cogoyaw',
 
 # Watchlist
 'watch'         => 'Tulomajɔ',
@@ -123,5 +124,8 @@ $messages = array(
 
 # Special:Newimages
 'ilsubmit' => 'Nyini',
+
+# Special:SpecialPages
+'specialpages' => 'Nyɛw kɛrɛnkɛrɛnnen',
 
 );

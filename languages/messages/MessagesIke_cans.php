@@ -1,7 +1,8 @@
 <?php
 /** Eastern Canadian (Unified Canadian Aboriginal Syllabics) (ᐃᓄᒃᑎᑐᑦ)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author SPQRobin
  * @author Siebrand
@@ -61,9 +62,6 @@ $messages = array(
 'oct'           => 'ᐅᒃᑐ',
 'nov'           => 'ᓄᕕ',
 'dec'           => 'ᑎᓯᒻ',
-
-# Categories related messages
-'categories' => 'ᓄᐊᑉᐳᑦ',
 
 'about'          => 'ᒥᒃᓵᓂ',
 'article'        => 'ᐃᓗᓕᒃ ᒪᑉᐱᑕᖅ',
@@ -218,7 +216,7 @@ $messages = array(
 'searchresultshead'     => 'ᐃᕚᖅᐳᖅ',
 
 # User rights
-'editinguser' => 'ᓱᖁᓯᖅᐹ ᖃᑕᙳᑎ <b>$1</b>',
+'editinguser' => "ᓱᖁᓯᖅᐹ ᖃᑕᙳᑎ '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 
 # Recent changes
 'recentchanges'   => 'ᐱᒋᕗᖅ ᐊᓯᐊᙳᑐᖅ',
@@ -260,7 +258,6 @@ $messages = array(
 
 # Miscellaneous special pages
 'listusers'         => 'ᖃᑕᙳᑎ ᓂᐱ',
-'specialpages'      => 'ᐱᔨ ᒪᑉᐱᑕᖅ',
 'newpages-username' => 'ᐅᐃᑭᐱᑎᐊ ᐊᑎᖅ:',
 'ancientpages'      => 'ᒪᑉᐱᑕᖅ ᐃᑦᑐᓴᖅ ᐅᑐᖃᖅ',
 'move'              => 'ᐅᐊᔪᖅ',
@@ -277,6 +274,9 @@ $messages = array(
 'allpagesprev'   => 'ᑐᓄᓪᓕᐹᖅ',
 'allpagesnext'   => 'ᑕᒡᒐ',
 'allpagessubmit' => 'ᐊᐃᕗᖅ',
+
+# Special:Categories
+'categories' => 'ᓄᐊᑉᐳᑦ',
 
 # E-mail user
 'emailuser'    => 'ᑭᒍᑎᐅᑉ ᓯᑎᓂᖅᐹᖓ ᐃᓄᒃ',
@@ -395,7 +395,6 @@ $messages = array(
 'imgmultipageprev' => '← ᑐᓄᓪᓕᐹᖅ  ᒪᑉᐱᑕᖅ',
 'imgmultipagenext' => 'ᑕᒡᒐ ᒪᑉᐱᑕᖅ →',
 'imgmultigo'       => 'ᐊᐃᕗᖅ!',
-'imgmultigotopre'  => 'ᐊᐃᕗᖅ ᐃᑭᐊᖅ ᒪᑉᐱᑕᖅ',
 
 # Table pager
 'table_pager_limit_submit' => 'ᐊᐃᕗᖅ',
@@ -403,5 +402,8 @@ $messages = array(
 # Auto-summaries
 'autoredircomment' => 'ᖃᓂᖓᓂ ᑲᒪᒋᔭᖅ ᐋᓯᑦ ᓇᑭᑦ [[$1]]',
 'autosumm-new'     => 'ᐱᒋᕗᖅ ᒪᑉᐱᑕᖅ: $1',
+
+# Special:SpecialPages
+'specialpages' => 'ᐱᔨ ᒪᑉᐱᑕᖅ',
 
 );

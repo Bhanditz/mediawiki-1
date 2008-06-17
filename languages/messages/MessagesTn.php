@@ -1,7 +1,8 @@
 <?php
 /** Tswana (Setswana)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Hakka
  * @author Cbrown1023
@@ -134,7 +135,6 @@ O ipuletse akhaonte. O seka wa lebala go fetola tse o di dikgatlhegelo tsa gago 
 'randompage' => 'Tsebe e e sa tlhomamang',
 
 # Miscellaneous special pages
-'specialpages' => 'Diphetogo tse di faphegileng',
 'move'         => 'Suta',
 'movethispage' => 'Sutisa tsebe e',
 
@@ -164,5 +164,8 @@ O ipuletse akhaonte. O seka wa lebala go fetola tse o di dikgatlhegelo tsa gago 
 
 # Namespace 8 related
 'allmessages' => 'Melaetsa ya maranyane',
+
+# Special:SpecialPages
+'specialpages' => 'Diphetogo tse di faphegileng',
 
 );

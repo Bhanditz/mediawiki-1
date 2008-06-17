@@ -1,8 +1,11 @@
 <?php
 /** Azerbaijani (Azərbaycan)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
+ * @author Siebrand
+ * @author לערי ריינהארט
  */
 
 $namespaceNames = array(
@@ -72,8 +75,6 @@ $messages = array(
 'dec'       => 'Dekabr',
 
 # Categories related messages
-'categories'             => 'Kateqoriyalar',
-'categoriespagetext'     => 'Wikide aşağıdaki kateqoriyalar var.',
 'pagecategories'         => 'Kateqoriyalar',
 'category_header'        => '"$1" kategoriyasındaki məqalələr',
 'subcategories'          => 'Alt kategoriyalar',
@@ -307,7 +308,7 @@ Açıqlama: (hh) = hal-hazırkı versiya ilə olan fərqlər,
 # User rights
 'userrights-lookup-user'   => 'İstifadəçi qruplarını idarə et',
 'userrights-user-editname' => 'İstifadəçi adınızı yazın:',
-'editinguser'              => 'Redaktə $1',
+'editinguser'              => "Redaktə '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 
 # Recent changes
 'recentchanges'     => 'Son dəyişikliklər',
@@ -366,7 +367,7 @@ There have been a total of '''$3''' page views, and '''$4''' page edits
 since the wiki was setup.
 That comes to '''$5''' average edits per page, and '''$6''' views per edit.
 
-Hal-hazırda [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] sayı: '''$7'''.",
+Hal-hazırda [http://www.mediawiki.org/wiki/Manual:Job_queue job queue] sayı: '''$7'''.",
 'userstatstext' => "Hal-hazırda '''$1''' istifadəçi, '''2''' (və ya '''4%''') tanesi idarəçi. (baxınız $3).",
 
 'doubleredirects' => 'İkiqat istiqamətləndirmələr',
@@ -388,9 +389,6 @@ Hal-hazırda [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] sayı: ''
 'shortpages'              => 'Qısa səhifələr',
 'longpages'               => 'Uzun səhifələr',
 'listusers'               => 'İstifadəçi siyahı',
-'specialpages'            => 'Xüsusi səhifələr',
-'spheading'               => 'İstifadəçilər üçün xüsusi səhifələr',
-'restrictedpheading'      => 'İdarəçilər üçün xüsusi səhifələr',
 'newpages'                => 'Yeni səhifələr',
 'ancientpages'            => 'Ən köhnə səhifələr',
 'move'                    => 'Adını dəyişdir',
@@ -412,6 +410,10 @@ Hal-hazırda [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] sayı: ''
 'allpagesprev'   => 'Əvvəlki',
 'allpagesnext'   => 'Sonrakı',
 'allpagessubmit' => 'Gətir',
+
+# Special:Categories
+'categories'         => 'Kateqoriyalar',
+'categoriespagetext' => 'Wikide aşağıdaki kateqoriyalar var.',
 
 # E-mail user
 'emailuser'       => 'İstifadəçiyə e-məktub yolla',
@@ -575,5 +577,8 @@ Səhifəni izləmə sıyahınızdan çıxarmaq üçün yan lovhədəki "izləmə
 
 # Special:Version
 'version' => 'Versiya', # Not used as normal message but as header for the special page itself
+
+# Special:SpecialPages
+'specialpages' => 'Xüsusi səhifələr',
 
 );

@@ -1,7 +1,8 @@
 <?php
 /** Walloon (Walon)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Srtxg
  * @author Siebrand
@@ -167,8 +168,6 @@ $messages = array(
 'dec'           => 'dec',
 
 # Categories related messages
-'categories'            => 'Categoreyes',
-'categoriespagetext'    => 'I gn a les categoreyes shuvantes sol wiki.',
 'pagecategories'        => '{{PLURAL:$1|Categoreye|Categoreyes}}',
 'category_header'       => 'Årtikes el categoreye «$1»',
 'subcategories'         => 'Dizo-categoreyes',
@@ -633,7 +632,6 @@ Les ôtes manaedjeus so ç' wiki ci pôront todi vey li contnou catchî eyet l' 
 'showingresultsnum'     => 'Chal pa dzo <b>$3</b> rizultats a pårti do limero <b>$2</b>.',
 'nonefound'             => "'''Note''': des cweraedjes ki n' dinèt nou rzultat c' est sovint li cweraedje di ptits mots trop corants (come «les», «des») ki n' sont nén indecsés, oudonbén des cweraedjes di pus d' on mot (seulmint les pådjes avou tos les mots dmandés sront håynêyes dins l' rizultat do cweraedje).",
 'powersearch'           => 'Cweri',
-'powersearchtext'       => 'Cweraedje ezès espåces di nos:<br />$1<br />$2 Håyner les redjiblaedjes &nbsp; Cweri après $3 $9',
 'searchdisabled'        => "Mande escuzes! Li cweraedje å dvins des årtikes a stî dismetou pol moumint, cåze ki l' sierveu est fortcherdjî. Tot ratindant, vos ploz eployî Google po fé les rcweraedjes so {{SITENAME}}, mins çoula pout esse ene miete vî.",
 
 # Preferences page
@@ -786,7 +784,7 @@ ou co po les sons
 'badfilename'                 => "Li no d' l' imådje a stî candjî a «$1».",
 'largefileserver'             => "Ci fitchî ci est pus pezant ki çou k' li sierveu est apontyî po-z accepter.",
 'emptyfile'                   => "I shonnreut kel fitchî k' vos eberwetez soeye vude. Çoula pout esse cåze d' ene aroke di tapaedje dins l' no do fitchî. Acertinez si vos vloz evoyî po do bon ç' fitchî ci, s' i vs plait.",
-'fileexists'                  => "On fitchî avou ç' no la egzistêye dedja, loukîz s' i vs plait a $1 po vs acertiner ki vos vloz bén replaecî l' fitchî avou l' ci ki vos eberwetez asteure, oubén si vos l' voloz eberweter dizo èn ôte no.",
+'fileexists'                  => "On fitchî avou ç' no la egzistêye dedja, loukîz s' i vs plait a <strong><tt>$1</tt></strong> po vs acertiner ki vos vloz bén replaecî l' fitchî avou l' ci ki vos eberwetez asteure, oubén si vos l' voloz eberweter dizo èn ôte no.",
 'fileexists-forbidden'        => "I gn a ddja on fitchî avou ç' no la; rivnoz s' i vs plait en erî et s' reberwetez l' fitchî dizo èn ôte no. [[Image:$1|thumb|center|$1]]",
 'fileexists-shared-forbidden' => "I gn a ddja on fitchî avou ç' no la e ridant des fitchîs pårtaedjîs; rivnoz s' i vs plait en erî et s' reberwetez l' fitchî dizo èn ôte no. [[Image:$1|thumb|center|$1]]",
 'successfulupload'            => "L' eberwetaedje a stî comifåt",
@@ -810,7 +808,6 @@ ou co po les sons
 
 # Special:Imagelist
 'imagelist_search_for'  => "Cweri l' no d' imådje:",
-'imgdesc'               => 'disc.',
 'imgfile'               => 'fitchî',
 'imagelist'             => 'Djivêye des imådjes',
 'imagelist_name'        => 'No',
@@ -880,7 +877,7 @@ probåblumint des vraiys årtikes.
 I gn a-st avou å totå '''$3''' riwaitaedjes di pådjes, eyet '''$4''' candjmints do contnou des pådjes dispoy ki ci wiki chal est en alaedje.
 Dj' ô bén k' i gn a ene moyene di '''$5''' candjmints par pådje, eyet '''$6''' riwaitaedjes po on candjmint.
 
-Li longueur del [http://meta.wikimedia.org/wiki/Help:Job_queue cawêye des bouyes] est di '''$7'''.",
+Li longueur del [http://www.mediawiki.org/wiki/Manual:Job_queue cawêye des bouyes] est di '''$7'''.",
 'userstatstext'          => "I gn a '''$1''' uzeus d' eredjîstrés.
 '''$2''' (ou '''$4%''') di zels sont eto des manaedjeus (riloukîz a $3).",
 'statistics-mostpopular' => 'Pådjes les pus veyowes',
@@ -925,9 +922,6 @@ Li longueur del [http://meta.wikimedia.org/wiki/Help:Job_queue cawêye des bouye
 'deadendpages'            => 'Pådjes sins nou loyén wiki',
 'protectedpages'          => 'Pådjes protedjeyes',
 'listusers'               => 'Djivêye des uzeus',
-'specialpages'            => 'Pådjes sipeciåles',
-'spheading'               => 'Pådjes sipeciåles po tos ls uzeus',
-'restrictedpheading'      => 'Pådjes sipeciåles po les manaedjeus',
 'newpages'                => 'Novelès pådjes',
 'ancientpages'            => 'Viyès pådjes',
 'move'                    => 'Displaecî',
@@ -959,6 +953,10 @@ Vos ploz limiter l' håynaedje tot tchoezixhant ene sôre di djournå, on no d' 
 'allpagessubmit'    => 'I va',
 'allpagesprefix'    => "Håyner les pådjes avou l' betchete:",
 'allpagesbadtitle'  => "Li tite di pådje diné n' est nén valide oudonbén il a-st ene betchete di loyén eterlingaedje ou eterwiki. Ça s' pout k' il åye onk ou d' pus d' caracteres ki n' si polèt nén eployî dins les tites.",
+
+# Special:Categories
+'categories'         => 'Categoreyes',
+'categoriespagetext' => 'I gn a les categoreyes shuvantes sol wiki.',
 
 # E-mail user
 'mailnologin'     => "Nole adresse d' evoyeu",
@@ -1226,8 +1224,6 @@ Tchoezixhoz è èn ôte s' i vs plait.",
 'talkexists'              => "'''Li pådje leye minme a stî displaeceye comifåt, mins nén li pådje di copene, ca i gn aveut ddja ene pådje di copene k' egzistéve al novele plaece. I vs fårè copyî l' tecse del pådje di copene al mwin.'''",
 'movedto'                 => 'displaecî viè',
 'movetalk'                => 'Displaecî li pådje di copene avou, si ça astchait.',
-'talkpagemoved'           => 'Li pådje di copene corespondante a stî displaeceye avou.',
-'talkpagenotmoved'        => "Li pådje di copene corespondante n' a <strong>nén</strong> stî displaeceye.",
 '1movedto2'               => '[[$1]] displaecî viè [[$2]]',
 '1movedto2_redir'         => '[[$1]] displaecî viè [[$2]] pa dsu on redjiblaedje',
 'movelogpage'             => 'Djournå des displaçaedjes',
@@ -1615,5 +1611,8 @@ $1",
 
 # Special:Version
 'version' => 'Modêye des programes', # Not used as normal message but as header for the special page itself
+
+# Special:SpecialPages
+'specialpages' => 'Pådjes sipeciåles',
 
 );

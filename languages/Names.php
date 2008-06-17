@@ -3,7 +3,7 @@
   * These determine things like interwikis, language selectors, and so on.
   * Safe to change without running scripts on the respective sites.
   *
-  * @addtogroup Language
+  * @ingroup Language
   */
 /* private */ $wgLanguageNames = array(
 	'aa' => 'Afar',			# Afar
@@ -14,7 +14,7 @@
 	'als' => 'Alemannisch',	# Alemannic -- not a valid code, for compatibility. See gsw.
 	'am' => 'አማርኛ',	# Amharic
 	'an' => 'Aragonés',	# Aragonese
-	'ang' => 'Anglo Saxon',	# Old English
+	'ang' => 'Anglo-Saxon',	# Old English
 	'ar' => 'العربية',	# Arabic
 	'arc' => 'ܐܪܡܝܐ',	# Aramaic
 	'arn' => 'Mapudungun',	# Mapuche, Mapudungu, Araucanian (Araucano)
@@ -28,6 +28,7 @@
 	'ba' => 'Башҡорт',	# Bashkir
 	'bar' => 'Boarisch',	# Bavarian (Austro-Bavarian and South Tyrolean)
 	'bat-smg' => 'Žemaitėška', # Samogitian
+	'bcc' => 'بلوچی مکرانی', # Southern Balochi
 	'bcl' => 'Bikol Central', # Bikol: Central Bicolano language
 	'be' => 'Беларуская',	#  Belarusian normative
 	'be-tarask' => 'Беларуская (тарашкевіца)',	# Belarusian in Taraskievica orthography
@@ -109,9 +110,9 @@
 	'haw' => 'Hawai`i',		# Hawaiian
 	'he' => 'עברית',	# Hebrew
 	'hi' => 'हिन्दी',	# Hindi
-	'hif' => 'Fiji Hindi/फ़ीजी हिन्दी',	# Fijian Hindi (falls back to hif-latn)
-	'hif-deva' => 'फ़ीजी हिन्दी',	# Hindi
-	'hif-latn' => 'Fiji Hindi',	# Hindi
+	'hif' => 'Fiji Hindi',	# Fijian Hindi (falls back to hif-latn)
+	'hif-deva' => 'फ़ीजी हिन्दी',	# Fiji Hindi (devangari)
+	'hif-latn' => 'Fiji Hindi',	# Fiji Hindi (latin)
 	'hil' => 'Ilonggo',	# Hiligaynon
 	'ho' => 'Hiri Motu',	# Hiri Motu
 	'hr' => 'Hrvatski',		# Croatian
@@ -185,7 +186,7 @@
 	'lzz' => 'Lazuri Nena',	#Laz
 	'mai' => 'मैथिली', # Maithili
 	'map-bms' => 'Basa Banyumasan', # Banyumasan 
-	'mdf' => 'мокшень кяль',		# Moksha
+	'mdf' => 'Мокшень',		# Moksha
 	'mg' => 'Malagasy',		# Malagasy
 	'mh' => 'Ebon',			# Marshallese
 	'mi' => 'Māori',	# Maori
@@ -199,7 +200,7 @@
 	'mus' => 'Mvskoke',	# Muskogee/Creek
 	'mwl' => 'Mirandés',	# Mirandese
 	'my' => 'Myanmasa',		# Burmese
-	'myv' => 'эрзянь кель',         # Erzya
+	'myv' => 'Эрзянь',         # Erzya
 	'mzn' => 'مَزِروني',		# Mazanderani
 	'na' => 'Ekakairũ Naoero',		# Nauruan
 	'nah' => 'Nahuatl',		# Nahuatl, en:Wikipedia writes Nahuatlahtolli, while another form is Náhuatl

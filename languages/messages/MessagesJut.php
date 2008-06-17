@@ -1,12 +1,14 @@
 <?php
 /** Jutish (Jysk)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Ælsån
  * @author Huslåke
  * @author Siebrand
  * @author Nike
+ * @author M.M.S.
  */
 
 $fallback = 'da';
@@ -112,7 +114,6 @@ $messages = array(
 'dec'           => 'des',
 
 # Categories related messages
-'categories'               => 'Klynger',
 'pagecategories'           => '{{PLURAL:$1|Klynge|Klynger}}',
 'category_header'          => 'Ertikler i\'n klynge "$1"',
 'subcategories'            => 'Underklynger',
@@ -245,6 +246,7 @@ $messages = array(
 'youhavenewmessagesmulti' => 'Der er nye meddelelser til dig: $1',
 'editsection'             => 'redigær',
 'editold'                 => 'redigær',
+'viewsourceold'           => 'ves æ kelde',
 'editsectionhint'         => 'Redigær åfsnet: $1',
 'toc'                     => 'Endholtsførtegnelse',
 'showtoc'                 => 'ves',
@@ -297,11 +299,6 @@ MySQL æ returnerede fejl "$3: $4".',
 'readonlytext'         => 'Æ database er midlertedegt skrevebeskyttet. Førsøĝ venlegst senere.
 
 Årsag til æ spærrenge: $1',
-'missingarticle'       => 'Æ tekst til "$1" blev ekke fundet i\'n database.
-
-Æ side er måske slettet æller flyttet.
-
-Hves det ekke er tilfældet, harst du måske fundet en fejl i programmet. Meld det til en [[{{MediaWiki:Grouppage-sysop}}|administråtår]] ve angævelse åf æ adresse.',
 'readonly_lag'         => "Æ database er åtåmatisk blevet låst mens slæfdatabaseserverne synkroniserer ve'n master database",
 'internalerror'        => 'Intern fejl',
 'internalerror_info'   => 'Intern fejl: $1',
@@ -323,43 +320,45 @@ Førespørgsel: $2',
 'viewsourcetext'       => "Du ken dog se og åfskreve'n keldekode til æ side:",
 
 # Login and logout pages
-'yourname'              => 'Dit brugernav',
-'yourpassword'          => 'Din adgangskode',
-'remembermypassword'    => 'Husk min adgangskode til næste gang.',
-'login'                 => 'Loĝ på',
-'loginprompt'           => 'Du skal have cookies slået til før at kunne loĝge på {{SITENAME}}.',
-'userlogin'             => 'Åpret æ konto æller loĝ på',
-'logout'                => 'Loĝ åf',
-'userlogout'            => 'Loĝ åf',
-'nologin'               => 'Du har engen brugerkonto? $1.',
-'nologinlink'           => 'Åpret ny brugerkonto',
-'createaccount'         => 'Åpret en ny konto',
-'gotaccount'            => 'Du har ålerede en brugerkonto? $1.',
-'gotaccountlink'        => 'Loĝ på',
-'yourrealname'          => 'Dit rigtege navn*',
-'prefs-help-realname'   => '* <strong>Dit rigtege navn</strong> (valgfrit): Hves du vælger at åplyse dit navn hvil dette bleve brugt til at tilskreve dig dit arbejde.',
-'loginsuccesstitle'     => 'Du er nu loĝget på',
-'loginsuccess'          => 'Du er nu loĝget på {{SITENAME}} søm "$1".',
-'nosuchuser'            => 'Der er ig\'n bruger ve navnet "$1". Kontrollér æ stavemåde ig\'n, æller brug æ formulår herunder til at åprette en ny brugerkonto.',
-'nosuchusershort'       => 'Der er ig\'n bruger ve navn "<nowiki>$1</nowiki>". Tjek din stavnenge.',
-'nouserspecified'       => 'Angæv venlegst et brugernavn.',
-'wrongpassword'         => "Den endtastede adgangskode var førkert. Prøv ig'n.",
-'wrongpasswordempty'    => "Du glemte at endtaste password. Prøv ig'n.",
-'passwordtooshort'      => 'Dit kodeort er før kårt. Det skal være mendst $1 tegn langt.',
-'mailmypassword'        => 'Send et nyt adgangskode til min e-mail-adresse',
-'passwordremindertitle' => 'Nyt password til {{SITENAME}}',
-'passwordremindertext'  => 'Nogen (sandsynlegves dig, frå\'n IP-addresse $1)
+'yourname'                => 'Dit brugernav',
+'yourpassword'            => 'Din adgangskode',
+'remembermypassword'      => 'Husk min adgangskode til næste gang.',
+'login'                   => 'Loĝ på',
+'nav-login-createaccount' => 'Åpret æ konto æller loĝ på',
+'loginprompt'             => 'Du skal have cookies slået til før at kunne loĝge på {{SITENAME}}.',
+'userlogin'               => 'Åpret æ konto æller loĝ på',
+'logout'                  => 'Loĝ åf',
+'userlogout'              => 'Loĝ åf',
+'nologin'                 => 'Du har engen brugerkonto? $1.',
+'nologinlink'             => 'Åpret ny brugerkonto',
+'createaccount'           => 'Åpret en ny konto',
+'gotaccount'              => 'Du har ålerede en brugerkonto? $1.',
+'gotaccountlink'          => 'Loĝ på',
+'youremail'               => 'E-mail:',
+'yourrealname'            => 'Dit rigtege navn*',
+'prefs-help-realname'     => '* <strong>Dit rigtege navn</strong> (valgfrit): Hves du vælger at åplyse dit navn hvil dette bleve brugt til at tilskreve dig dit arbejde.',
+'loginsuccesstitle'       => 'Du er nu loĝget på',
+'loginsuccess'            => 'Du er nu loĝget på {{SITENAME}} søm "$1".',
+'nosuchuser'              => 'Der er ig\'n bruger ve navnet "$1". Kontrollér æ stavemåde ig\'n, æller brug æ formulår herunder til at åprette en ny brugerkonto.',
+'nosuchusershort'         => 'Der er ig\'n bruger ve navn "<nowiki>$1</nowiki>". Tjek din stavnenge.',
+'nouserspecified'         => 'Angæv venlegst et brugernavn.',
+'wrongpassword'           => "Den endtastede adgangskode var førkert. Prøv ig'n.",
+'wrongpasswordempty'      => "Du glemte at endtaste password. Prøv ig'n.",
+'passwordtooshort'        => 'Dit kodeort er før kårt. Det skal være mendst $1 tegn langt.',
+'mailmypassword'          => 'Send et nyt adgangskode til min e-mail-adresse',
+'passwordremindertitle'   => 'Nyt password til {{SITENAME}}',
+'passwordremindertext'    => 'Nogen (sandsynlegves dig, frå\'n IP-addresse $1)
 har bedt at vi sender dig en ny adgangskode til at loĝge på {{SITENAME}} ($4)\'m.
 Æ adgangskode før bruger "$2" er nu "$3".
 Du bør loĝge på nu og ændre din adgangskode.,
 
 Hves en anden har bestilt den nye adgangskode æller hves du er kåmet i tanke dit gamle password og ekke mære vil ændre det\'m, 
 kenst du bare ignorere denne mail og førtsætte ve at bruge dit gamle password.',
-'noemail'               => 'Der er ekke åplyst en e-mail-adresse før bruger "$1".',
-'passwordsent'          => 'En ny adgangskode er sendt til æ e-mail-adresse,
+'noemail'                 => 'Der er ekke åplyst en e-mail-adresse før bruger "$1".',
+'passwordsent'            => 'En ny adgangskode er sendt til æ e-mail-adresse,
 søm er registræret før "$1".
 Du bør loĝge på og ændre din adgangskode straks æfter du harst modtaget æ e-mail.',
-'eauthentsent'          => 'En bekrftelsesmail er sendt til den angævne e-mail-adresse.
+'eauthentsent'            => 'En bekrftelsesmail er sendt til den angævne e-mail-adresse.
 
 Før en e-mail ken modtages åf andre brugere åf æ {{SITENAME}}-mailfunksje, skel æ adresse og dens tilhørsførholt til denne bruger bekræftes. Følg venlegst anvesnengerne i denne mail.',
 
@@ -412,7 +411,7 @@ Du ken ekke bruge æ funksje 'e-mail til denne bruger' vemendre der er ångevet 
 * Æller [[Special:Search/{{PAGENAME}}|søĝe æfter {{PAGENAME}}]] i andre ertikler 
 ---- 
 * Ves du har åprettet denne ertikel endenfør de sedste få minutter, så ken de skyldes at der er ledt førsenkelse i'n åpdaterenge åf {{SITENAME}}s cache. Vent venligst og tjek igen senere'n ertikel'm dukker åp, enden du førsøĝer at åprette'n ertikel igen.",
-'previewnote'            => 'Husk at dette er kun en førhåndsvesnenge, æ side er ekke gemt endnu!',
+'previewnote'            => '<strong>Husk at dette er kun en førhåndsvesnenge, æ side er ekke gemt endnu!</strong>',
 'editing'                => 'Redigærer $1',
 'editingsection'         => 'Redigærer $1 (åfsnet)',
 'copyrightwarning'       => "<strong>Husk: <big>åpskrev engen websider</big>, søm ekke tilhører dig selv, brug <big>engen åphavsretsligt beskyttede værker</big> uden tilladelse frå'n ejer!</strong><br />
@@ -456,7 +455,7 @@ hersenenge, (førge) = førskel til den førge hersenenge, l = lile til mendre �
 'lineno'                  => 'Lenje $1:',
 'compareselectedversions' => 'Sammenlign valgte hersenenger',
 'editundo'                => 'baĝgøt',
-'diff-multi'              => "<span style='font-size: smaller'>(Æ hersenengssammenlegnenge vetåger {{plural:$1|en mellemleggende hersenenge|$1 mellemleggende hersenenger}}.)</span>",
+'diff-multi'              => '(Æ hersenengssammenlegnenge vetåger {{PLURAL:$1|en mellemleggende hersenenge|$1 mellemleggende hersenenger}}.)',
 
 # Search results
 'noexactmatch' => "'''{{SITENAME}} har engen ertikel ve dette nav.''' Du ken [[:$1|åprette en ertikel ve dette nav]].",
@@ -500,7 +499,7 @@ hersenenge, (førge) = førskel til den førge hersenenge, l = lile til mendre �
 
 # Recent changes linked
 'recentchangeslinked'          => 'Relaterede ændrenger',
-'recentchangeslinked-title'    => 'Ændrenger der vegånde til $1',
+'recentchangeslinked-title'    => 'Ændrenger der vegånde til "$1"',
 'recentchangeslinked-noresult' => 'I det udvalgte tidsrum blev der ekke føretaget ændrenger på siderne der henveses til.',
 'recentchangeslinked-summary'  => "Denne sonstside beser de seneste ændrenger på de sider der henveses til. Sider på din åvervågnengsliste er vest ve '''fed''' skreft.",
 
@@ -583,7 +582,6 @@ hersenenge, (førge) = førskel til den førge hersenenge, l = lile til mendre �
 'deadendpages'            => 'Blendgydesider',
 'protectedpages'          => 'Skrevebeskyttede sider',
 'listusers'               => 'Brugerliste',
-'specialpages'            => 'Sonst sider',
 'newpages'                => 'Nyeste ertikler',
 'ancientpages'            => 'Ældste ertikler',
 'move'                    => 'Flyt',
@@ -607,6 +605,9 @@ hersenenge, (førge) = førskel til den førge hersenenge, l = lile til mendre �
 'allarticles'    => 'Åle ertikler',
 'allpagessubmit' => 'Ves',
 'allpagesprefix' => 'Ves sider ve førgøret:',
+
+# Special:Categories
+'categories' => 'Klynger',
 
 # E-mail user
 'emailuser' => 'E-mail til denne bruger',
@@ -736,8 +737,6 @@ navn du harst valgt er ekke gyldegt. Vælg et andet navn.',
 'talkexists'       => 'Æ side blev flyttet korrekt, men den tilhørende diskusjeside ken ekke flyttes, førdi der ålrede eksisterer en ve den nye titel. Du erst nødt til at flette dem sammen manuelt.',
 'movedto'          => 'flyttet til',
 'movetalk'         => 'Flyt også\'n "diskusjeside", hves den eksisterer.',
-'talkpagemoved'    => 'Den tilhørende diskusjeside blev også flyttet.',
-'talkpagenotmoved' => 'Den tilhørende diskusjeside blev <strong>ekke</strong> flyttet.',
 '1movedto2'        => '[[$1]] flyttet til [[$2]]',
 'movelogpage'      => 'Flyttelog',
 'movereason'       => 'Begrundelse:',
@@ -847,5 +846,8 @@ Kun endholtet åf æ liste (lenjer startende ve *) bliver brugt. Den første hen
 
 # Special:Version
 'version' => "Informasje MediaWiki'm", # Not used as normal message but as header for the special page itself
+
+# Special:SpecialPages
+'specialpages' => 'Sonst sider',
 
 );

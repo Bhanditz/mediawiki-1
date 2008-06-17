@@ -16,8 +16,8 @@ class MediaWiki {
 	 * Stores key/value pairs to circumvent global variables
 	 * Note that keys are case-insensitive!
 	 *
-	 * @param String $key key to store
-	 * @param mixed $value value to put for the key
+	 * @param $key String: key to store
+	 * @param $value Mixed: value to put for the key
 	 */
 	function setVal( $key, &$value ) {
 		$key = strtolower( $key );
@@ -28,8 +28,8 @@ class MediaWiki {
 	 * Retrieves key/value pairs to circumvent global variables
 	 * Note that keys are case-insensitive!
 	 *
-	 * @param String $key key to get
-	 * @param mixed $default default value if if the key doesn't exist
+	 * @param $key String: key to get
+	 * @param $default Mixed: default value if if the key doesn't exist
 	 */
 	function getVal( $key, $default = '' ) {
 		$key = strtolower( $key );
@@ -43,11 +43,11 @@ class MediaWiki {
 	 * Initialization of ... everything
 	 * Performs the request too
 	 *
-	 * @param Title $title
-	 * @param Article $article
-	 * @param OutputPage $output
-	 * @param User $user
-	 * @param WebRequest $request
+	 * @param $title Title
+	 * @param $article Article
+	 * @param $output OutputPage
+	 * @param $user User
+	 * @param $request WebRequest
 	 */
 	function initialize( &$title, &$article, &$output, &$user, $request ) {
 		wfProfileIn( __METHOD__ );
@@ -70,8 +70,8 @@ class MediaWiki {
 	 * Check if the maximum lag of database slaves is higher that $maxLag, and
 	 * if it's the case, output an error message
 	 *
-	 * @param int $maxLag maximum lag allowed for the request, as supplied by
-	 *                    the client
+	 * @param $maxLag int: maximum lag allowed for the request, as supplied by
+	 *                the client
 	 * @return bool true if the request can continue
 	 */
 	function checkMaxLag( $maxLag ) {
@@ -89,8 +89,8 @@ class MediaWiki {
 	 * Checks some initial queries
 	 * Note that $title here is *not* a Title object, but a string!
 	 *
-	 * @param String $title
-	 * @param String $action
+	 * @param $title String
+	 * @param $action String
 	 * @return Title object to be $wgTitle
 	 */
 	function checkInitialQueries( $title, $action ) {
@@ -128,9 +128,9 @@ class MediaWiki {
 	/**
 	 * Checks for search query and anon-cannot-read case
 	 *
-	 * @param Title $title
-	 * @param OutputPage $output
-	 * @param WebRequest $request
+	 * @param $title Title
+	 * @param $output OutputPage
+	 * @param $request WebRequest
 	 */
 	function preliminaryChecks( &$title, &$output, $request ) {
 
@@ -138,7 +138,7 @@ class MediaWiki {
 			// Compatibility with old search URLs which didn't use Special:Search
 			// Just check for presence here, so blank requests still
 			// show the search page when using ugly URLs (bug 8054).
-			
+
 			// Do this above the read whitelist check for security...
 			$title = SpecialPage::getTitleFor( 'Search' );
 		}
@@ -161,9 +161,9 @@ class MediaWiki {
 	 * - redirect loop
 	 * - special pages
 	 *
-	 * @param Title $title
-	 * @param OutputPage $output
-	 * @param WebRequest $request
+	 * @param $title Title
+	 * @param $output OutputPage
+	 * @param $request WebRequest
 	 * @return bool true if the request is already executed
 	 */
 	function initializeSpecialCases( &$title, &$output, $request ) {
@@ -187,7 +187,7 @@ class MediaWiki {
 				$title = SpecialPage::getTitleFor( 'Badtitle' );
 				throw new ErrorPageError( 'badtitle', 'badtitletext' );
 			}
-		} else if ( ( $action == 'view' ) && !$request->wasPosted() && 
+		} else if ( ( $action == 'view' ) && !$request->wasPosted() &&
 			(!isset( $this->GET['title'] ) || $title->getPrefixedDBKey() != $this->GET['title'] ) &&
 			!count( array_diff( array_keys( $this->GET ), array( 'action', 'title' ) ) ) )
 		{
@@ -235,27 +235,23 @@ class MediaWiki {
 	/**
 	 * Create an Article object of the appropriate class for the given page.
 	 *
-	 * @param Title $title
+	 * @param $title Title
 	 * @return Article object
 	 */
-	static function articleFromTitle( $title ) {
-		$article = null;
-		wfRunHooks( 'ArticleFromTitle', array( &$title, &$article ) );
-		if ( $article ) {
-			return $article;
-		}
-
+	static function articleFromTitle( &$title ) {
 		if( NS_MEDIA == $title->getNamespace() ) {
 			// FIXME: where should this go?
 			$title = Title::makeTitle( NS_IMAGE, $title->getDBkey() );
 		}
 
+		$article = null;
+		wfRunHooks( 'ArticleFromTitle', array( &$title, &$article ) );
+		if( $article ) {
+			return $article;
+		}
+
 		switch( $title->getNamespace() ) {
 		case NS_IMAGE:
-			$file = wfFindFile( $title );
-			if( $file && $file->getRedirected() ) {
-				return new Article( $title );
-			}
 			return new ImagePage( $title );
 		case NS_CATEGORY:
 			return new CategoryPage( $title );
@@ -268,9 +264,8 @@ class MediaWiki {
 	 * Initialize the object to be known as $wgArticle for "standard" actions
 	 * Create an Article object for the page, following redirects if needed.
 	 *
-	 * @param Title $title
-	 * @param Request $request
-	 * @param string $action
+	 * @param $title Title
+	 * @param $request WebRequest
 	 * @return mixed an Article, or a string to redirect to another URL
 	 */
 	function initializeArticle( &$title, $request ) {
@@ -278,17 +273,24 @@ class MediaWiki {
 
 		$action = $this->getVal( 'action' );
 		$article = self::articleFromTitle( $title );
-
+		
+		wfDebug("Article: ".$title->getPrefixedText()."\n");
+		
 		// Namespace might change when using redirects
-		if( ( $action == 'view' || $action == 'render' ) && !$request->getVal( 'oldid' ) &&
-						$request->getVal( 'redirect' ) != 'no' &&
-						!( $title->getNamespace() == NS_IMAGE && wfFindFile( $title->getText() ) ) ) {
+		// Check for redirects ...
+		$file = $title->getNamespace() == NS_IMAGE ? $article->getFile() : null;
+		if( ( $action == 'view' || $action == 'render' ) 	// ... for actions that show content
+					&& !$request->getVal( 'oldid' ) && 			// ... and are not old revisions
+					$request->getVal( 'redirect' ) != 'no' &&	// ... unless explicitly told not to
+					// ... and the article is not an image page with associated file
+					!( is_object( $file ) && $file->exists() &&
+							!$file->getRedirected() ) ) { // ... unless it is really an image redirect
 
 			$dbr = wfGetDB( DB_SLAVE );
 			$article->loadPageData( $article->pageDataFromTitle( $dbr, $title ) );
 
 			// Follow redirects only for... redirects
-			if( $article->mIsRedirect ) {
+			if( $article->isRedirect() ) {
 				$target = $article->followRedirect();
 				if( is_string( $target ) ) {
 					if( !$this->getVal( 'DisableHardRedirects' ) ) {
@@ -296,18 +298,21 @@ class MediaWiki {
 						return $target;
 					}
 				}
+				
 				if( is_object( $target ) ) {
 					// Rewrite environment to redirected article
 					$rarticle = self::articleFromTitle( $target );
 					$rarticle->loadPageData( $rarticle->pageDataFromTitle( $dbr, $target ) );
-					if ( $rarticle->mTitle->exists() ) {
+					if ( $rarticle->getTitle()->exists() || 
+								( is_object( $file ) && 
+								!$file->isLocal() ) ) {
 						$rarticle->setRedirectedFrom( $title );
 						$article = $rarticle;
 						$title = $target;
 					}
 				}
 			} else {
-				$title = $article->mTitle;
+				$title = $article->getTitle();
 			}
 		}
 		wfProfileOut( __METHOD__ );
@@ -317,8 +322,8 @@ class MediaWiki {
 	/**
 	 * Cleaning up by doing deferred updates, calling LBFactory and doing the output
 	 *
-	 * @param Array $deferredUpdates array of updates to do 
-	 * @param OutputPage $output
+	 * @param $deferredUpdates array of updates to do
+	 * @param $output OutputPage
 	 */
 	function finalCleanup ( &$deferredUpdates, &$output ) {
 		wfProfileIn( __METHOD__ );
@@ -337,7 +342,7 @@ class MediaWiki {
 	 * Note that for page saves, the client will wait until the script exits
 	 * anyway before following the redirect.
 	 *
-	 * @param Array $updates array of objects that hold an update to do
+	 * @param $updates array of objects that hold an update to do
 	 */
 	function doUpdates( &$updates ) {
 		wfProfileIn( __METHOD__ );
@@ -346,7 +351,7 @@ class MediaWiki {
 			wfProfileOut( __METHOD__ );
 			return;
 		}
-		
+
 		$dbw = wfGetDB( DB_MASTER );
 		foreach( $updates as $up ) {
 			$up->doUpdate();
@@ -404,11 +409,11 @@ class MediaWiki {
 	/**
 	 * Perform one of the "standard" actions
 	 *
-	 * @param OutputPage $output
-	 * @param Article $article
-	 * @param Title $title
-	 * @param User $user
-	 * @param WebRequest $request
+	 * @param $output OutputPage
+	 * @param $article Article
+	 * @param $title Title
+	 * @param $user User
+	 * @param $request WebRequest
 	 */
 	function performAction( &$output, &$article, &$title, &$user, &$request ) {
 		wfProfileIn( __METHOD__ );
@@ -511,4 +516,3 @@ class MediaWiki {
 	}
 
 }; /* End of class MediaWiki */
-

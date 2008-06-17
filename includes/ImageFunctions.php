@@ -73,8 +73,8 @@ function wfGetSVGsize( $filename ) {
  *    * Any subsequent links on the same line are considered to be exceptions,
  *      i.e. articles where the image may occur inline.
  *
- * @param string $name the image name to check
- * @param Title $contextTitle The page on which the image occurs, if known
+ * @param $name string the image name to check
+ * @param $contextTitle Title: the page on which the image occurs, if known
  * @return bool
  */
 function wfIsBadImage( $name, $contextTitle = false ) {
@@ -122,7 +122,7 @@ function wfIsBadImage( $name, $contextTitle = false ) {
 			}
 		}
 	}
-	
+
 	$contextKey = $contextTitle ? $contextTitle->getPrefixedDBkey() : false;
 	$bad = isset( $badImages[$name] ) && !isset( $badImages[$name][$contextKey] );
 	wfProfileOut( __METHOD__ );
@@ -145,6 +145,3 @@ function wfFitBoxWidth( $boxWidth, $boxHeight, $maxHeight ) {
 	else
 		return $roundedUp;
 }
-
-
-

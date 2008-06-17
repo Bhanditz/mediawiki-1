@@ -1,10 +1,10 @@
 <?php
-/**
- * Kurdish (Arab)
+/**  Kurdish (Arab)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
+ *
  * @author Aras Noori
- *
  */
 
 $fallback = 'ku-latn';
@@ -128,7 +128,6 @@ $messages = array(
 'dec'           => 'كا١',
 
 # Categories related messages
-'categories'            => '{{PLURAL:$1|هاوپۆل|هاوپۆله‌كان}}',
 'pagecategories'        => '$1 هاوپۆله‌كان',
 'category_header'       => 'په‌ڕه‌ی هاوپۆلی "$1" de',
 'subcategories'         => 'به‌شه‌هاوپۆله‌كان',
@@ -331,6 +330,9 @@ $messages = array(
 'showpreview'     => 'په‌ڕه‌ی پێشبینین',
 'showlivepreview' => 'پێشبینینی ڕاسته‌وخۆ',
 'showdiff'        => 'گۆڕانكارییه‌كان نیشانبده‌',
+
+# Special:Categories
+'categories' => '{{PLURAL:$1|هاوپۆل|هاوپۆله‌كان}}',
 
 # Tooltip help for the actions
 'tooltip-pt-userpage' => 'په‌ڕه‌ی تایبه‌تی خۆم',

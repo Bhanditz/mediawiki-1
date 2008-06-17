@@ -1,11 +1,13 @@
 <?php
 /** latinica (latinica)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Siebrand
  * @author לערי ריינהארט
  * @author Red Baron
+ * @author Jon Harald Søby
  */
 
 $namespaceNames = array(
@@ -301,8 +303,6 @@ $messages = array(
 'dec'           => 'dec',
 
 # Categories related messages
-'categories'             => 'Kategorije stranica',
-'categoriespagetext'     => 'Sledeće kategorije već postoje na vikiju',
 'pagecategories'         => '{{PLURAL:$1|Kategorija|Kategorije|Kategorije}} stranica',
 'category_header'        => 'Članaka u kategoriji "$1"',
 'subcategories'          => 'Potkategorije',
@@ -485,14 +485,6 @@ vremena otključavanja',
 unose i ostale izmene, verovatno zbog rutinskog održavanja,
 posle čega će biti vraćena u uobičajeno stanje.
 Administrator koji ju je zaključao dao je ovo objašnjenje: $1',
-'missingarticle'       => 'Baza nije našla tekst stranice
-koji je trebalo, nazvan "$1".
-
-Ovo je obično izazvano praćenjem zastarele "razl" veze ili veze ka istoriji
-stranice koja je obrisana.
-
-Ako ovo nije slučaj, možda ste pronašli grešku u softveru.
-Molimo vas prijavite ovo jednom od administratora, zajedno sa URL-om.',
 'readonly_lag'         => 'Baza podataka je automatski zaključana dok slejv serveri ne sustignu master',
 'internalerror'        => 'Interna greška',
 'filecopyerror'        => 'Ne mogu da iskopiram fajl "$1" na "$2".',
@@ -800,7 +792,6 @@ Ostali administratori na ovoj Vikipediji će i dalje imati mogućnost da vide sk
 koje nisu indeksirane, ili navođenjem više od jednog izraza za traženje (samo stranice
 koje sadrže sve izraze koji se traže će se pojaviti u rezultatu).",
 'powersearch'           => 'Traži',
-'powersearchtext'       => 'Pretraga u imenskim prostorima:<br />$1<br />$2 Izlistaj preusmerenja<br />Traži $3 $9',
 'searchdisabled'        => 'Pretraga za sajt {{SITENAME}} je onemogućena. U međuvremenu, možete koristiti Gugl pretragu. Imajte na umu da indeksi Gugla za sajt {{SITENAME}} mogu biti zastareli.',
 
 # Preferences page
@@ -866,7 +857,7 @@ koje sadrže sve izraze koji se traže će se pojaviti u rezultatu).",
 'userrights-lookup-user'     => 'Upravljaj korisničkim grupama',
 'userrights-user-editname'   => 'Unesite korisničko ime:',
 'editusergroup'              => 'Menjaj grupe korisnika',
-'editinguser'                => 'Uređujete $1',
+'editinguser'                => "Uređujete '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'   => 'Promeni korisničke grupe',
 'saveusergroups'             => 'Sačuvaj korisničke grupe',
 'userrights-groupsmember'    => 'Član:',
@@ -947,7 +938,7 @@ Da biste ubacili sliku na stranu, koristite vezu u obliku
 'badfilename'                 => 'Ime slike je promenjeno u "$1".',
 'largefileserver'             => 'Ovaj fajl je veći nego što je podešeno da server dozvoli.',
 'emptyfile'                   => 'Fajl koji ste poslali deluje da je prazan. Ovo je moguće zbog greške u imenu fajla. Molimo proverite da li stvarno želite da pošaljete ovaj fajl.',
-'fileexists'                  => 'Fajl sa ovim imenom već postoji. Molimo proverite $1 ako niste sigurni da li želite da ga promenite.',
+'fileexists'                  => 'Fajl sa ovim imenom već postoji. Molimo proverite <strong><tt>$1</tt></strong> ako niste sigurni da li želite da ga promenite.',
 'fileexists-forbidden'        => 'Fajl sa ovim imenom već postoji; molimo vratite se i pošaljite ovaj fajl pod novim imenom. [[{{ns:image}}:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Fajl sa ovim imenom već postoji u zajedničkoj ostavi; molimo vratite se i pošaljite ovaj fajl pod novim imenom. [[{{ns:image}}:$1|thumb|center|$1]]',
 'successfulupload'            => 'Uspešno slanje',
@@ -984,7 +975,6 @@ Da biste ubacili sliku na stranu, koristite vezu u obliku
 
 # Special:Imagelist
 'imagelist_search_for'  => 'Traži ime slike:',
-'imgdesc'               => 'opis',
 'imgfile'               => 'fajl',
 'imagelist'             => 'Spisak slika',
 'imagelist_date'        => 'Datum',
@@ -1077,9 +1067,6 @@ Dužina reda za poslove iznosi '''$7'''",
 'deadendpages'            => 'Stranice bez internih veza',
 'deadendpagestext'        => 'Sledeće stranice ne vežu na druge stranice na ovom vikiju.',
 'listusers'               => 'Spisak korisnika',
-'specialpages'            => 'Posebne stranice',
-'spheading'               => 'Posebne stranice za sve korisnike',
-'restrictedpheading'      => 'Zaštićene posebne stranice',
 'newpages'                => 'Nove stranice',
 'newpages-username'       => 'Korisničko ime:',
 'ancientpages'            => 'Najstariji članci',
@@ -1118,13 +1105,16 @@ Možete suziti pregled odabirom tipa istorije, korisničkog imena ili tražene s
 'allpagesprefix'    => 'Prikaži strane sa prefiksom:',
 'allpagesbadtitle'  => 'Dati naziv stranice nije dobar ili sadrži međujezički ili interviki prefiks. Moguće je da sadrži karaktere koji ne mogu da se koriste u nazivima.',
 
+# Special:Categories
+'categories'         => 'Kategorije stranica',
+'categoriespagetext' => 'Sledeće kategorije već postoje na vikiju',
+
 # Special:Listusers
 'listusersfrom' => 'Prikaži korisnike počevši od:',
 
 # E-mail user
 'mailnologin'     => 'Nema adrese za slanje',
-'mailnologintext' => 'Morate biti [[{{ns:special}}:Userlogin|prijavljeni]]
-i imati ispravnu adresu e-pošte u vašim [[Special:Preferences|podešavanjima]]
+'mailnologintext' => 'Morate biti [[Special:Userlogin|prijavljeni]] i imati ispravnu adresu e-pošte u vašim [[Special:Preferences|podešavanjima]]
 da biste slali e-poštu drugim korisnicima.',
 'emailuser'       => 'Pošalji e-poštu ovom korisniku',
 'emailpage'       => 'Pošalji e-pismo korisniku',
@@ -1154,7 +1144,7 @@ ili je izabrao da ne prima e-poštu od drugih korisnika.',
 'nowatchlist'          => 'Nemate ništa na svom spisku nadgledanja.',
 'watchlistanontext'    => 'Molimo $1 da biste gledali ili menjali stavke na vašem spisku nadgledanja.',
 'watchnologin'         => 'Niste prijavljeni',
-'watchnologintext'     => 'Morate biti [[{{ns:special}}:Userlogin|prijavljeni]] da biste menjali spisak nadgledanja.',
+'watchnologintext'     => 'Morate biti [[Special:Userlogin|prijavljeni]] da biste menjali spisak nadgledanja.',
 'addedwatch'           => 'Dodato spisku nadgledanja',
 'addedwatchtext'       => "Stranica \"[[:\$1]]\" je dodata vašem [[{{ns:special}}:Watchlist|spisku nadgledanja]] .
 Buduće promene na ovoj stranici i njoj pridruženoj stranici za razgovor biće navedene ovde, i stranica će biti '''podebljana''' u [[{{ns:special}}:Recentchanges|spisku skorašnjih izmena]] da bi se lakše uočila.
@@ -1282,8 +1272,8 @@ neće biti automatski zamenjena.',
 'undeletecomment'          => 'Komentar:',
 'undeletedarticle'         => 'vratio "[[$1]]"',
 'undeletedrevisions'       => '$1 revizija vraćeno',
-'undeletedrevisions-files' => '$1 {{plural:$1|revizija|revizije|revizija}} i $2 {{plural:$2|fajl|fajla|fajlova}} vraćeno',
-'undeletedfiles'           => '$1 {{plural:$1|fajl vraćen|fajla vraćena|fajlova vraćeno}}',
+'undeletedrevisions-files' => '$1 {{PLURAL:$1|revizija|revizije|revizija}} i $2 {{PLURAL:$2|fajl|fajla|fajlova}} vraćeno',
+'undeletedfiles'           => '$1 {{PLURAL:$1|fajl vraćen|fajla vraćena|fajlova vraćeno}}',
 'cannotundelete'           => 'Vraćanje obrisane verzije nije uspelo; neko drugi je vratio stranicu pre vas.',
 'undeletedpage'            => "<big>'''Strana $1 je vraćena'''</big>
 
@@ -1429,8 +1419,6 @@ Molimo izaberite drugo ime.',
 stranica za razgovor nije mogla biti premeštena jer takva već postoji na novom naslovu. Molimo vas da ih spojite ručno.'''",
 'movedto'                 => 'premeštena na',
 'movetalk'                => 'Premesti "stranicu za razgovor" takođe, ako je moguće.',
-'talkpagemoved'           => 'Odgovarajuća stranica za razgovor je takođe premeštena.',
-'talkpagenotmoved'        => 'Odgovarajuća stranica za razgovor <strong>nije</strong> premeštena.',
 '1movedto2'               => 'je promenio ime članku [[$1]] u [[$2]]',
 '1movedto2_redir'         => 'je promenio ime članku [[$1]] u [[$2]] putem preusmerenja',
 'movelogpage'             => 'istorija premeštanja',
@@ -1486,7 +1474,7 @@ Svi transviki uvozi su zabeleženi u [[Posebno:Log/import|istoriji uvoza]].',
 'import-interwiki-namespace' => 'Prebaci stranice u imenski prostor:',
 'importtext'                 => 'Molimo izvezite fajl iz izvornog vikija koristeći {{ns:special}}:Export, sačuvajte ga kod sebe i pošaljite ovde.',
 'importstart'                => 'Uvoženje strana u toku...',
-'import-revision-count'      => '$1 {{plural:$1|revizija|revizije|revizija}}',
+'import-revision-count'      => '$1 {{PLURAL:$1|revizija|revizije|revizija}}',
 'importnopages'              => 'Nema strana za uvoz.',
 'importfailed'               => 'Uvoz nije uspeo: $1',
 'importunknownsource'        => 'Nepoznati tip izvora unosa',
@@ -1629,7 +1617,7 @@ Svi transviki uvozi su zabeleženi u [[Posebno:Log/import|istoriji uvoza]].',
 
 # Special:Newimages
 'newimages'             => 'Galerija novih slika',
-'imagelisttext'         => "Ispod je spisak od '''$1''' {{plural:$1|fajla|fajla|fajlova}} poređanih $2.",
+'imagelisttext'         => "Ispod je spisak od '''$1''' {{PLURAL:$1|fajla|fajla|fajlova}} poređanih $2.",
 'showhidebots'          => '($1 botove)',
 'noimages'              => 'Nema ništa da se vidi',
 'ilsubmit'              => 'Traži',
@@ -1976,7 +1964,6 @@ $1',
 'imgmultipageprev' => '&larr; prethodna stranica',
 'imgmultipagenext' => 'sledeća stranica &rarr;',
 'imgmultigo'       => 'Idi!',
-'imgmultigotopre'  => 'Idi na stranicu',
 
 # Table pager
 'ascending_abbrev'         => 'rast',
@@ -1999,5 +1986,8 @@ $1',
 'filepath'        => 'Putanja fajla',
 'filepath-page'   => 'Fajl:',
 'filepath-submit' => 'Putanja',
+
+# Special:SpecialPages
+'specialpages' => 'Posebne stranice',
 
 );

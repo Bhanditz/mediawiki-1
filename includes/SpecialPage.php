@@ -2,28 +2,30 @@
 /**
  * SpecialPage: handling special pages and lists thereof.
  *
- * To add a special page in an extension, add to $wgSpecialPages either 
- * an object instance or an array containing the name and constructor 
- * parameters. The latter is preferred for performance reasons. 
+ * To add a special page in an extension, add to $wgSpecialPages either
+ * an object instance or an array containing the name and constructor
+ * parameters. The latter is preferred for performance reasons.
  *
- * The object instantiated must be either an instance of SpecialPage or a 
- * sub-class thereof. It must have an execute() method, which sends the HTML 
- * for the special page to $wgOut. The parent class has an execute() method 
- * which distributes the call to the historical global functions. Additionally, 
- * execute() also checks if the user has the necessary access privileges 
+ * The object instantiated must be either an instance of SpecialPage or a
+ * sub-class thereof. It must have an execute() method, which sends the HTML
+ * for the special page to $wgOut. The parent class has an execute() method
+ * which distributes the call to the historical global functions. Additionally,
+ * execute() also checks if the user has the necessary access privileges
  * and bails out if not.
  *
- * To add a core special page, use the similar static list in 
+ * To add a core special page, use the similar static list in
  * SpecialPage::$mList. To remove a core static special page at runtime, use
  * a SpecialPage_initList hook.
  *
- * @addtogroup SpecialPage
+ * @file
+ * @ingroup SpecialPage
+ * @defgroup SpecialPage SpecialPage
  */
 
 /**
  * Parent special page class, also static functions for handling the special
  * page list.
- * @addtogroup SpecialPage
+ * @ingroup SpecialPage
  */
 class SpecialPage
 {
@@ -88,7 +90,7 @@ class SpecialPage
 		'Preferences'               => array( 'SpecialPage', 'Preferences' ),
 		'Watchlist'                 => array( 'SpecialPage', 'Watchlist' ),
 
-		'Recentchanges'             => array( 'IncludableSpecialPage', 'Recentchanges' ),
+		'Recentchanges'             => 'SpecialRecentchanges',
 		'Upload'                    => array( 'SpecialPage', 'Upload' ),
 		'Imagelist'                 => array( 'SpecialPage', 'Imagelist' ),
 		'Newimages'                 => array( 'IncludableSpecialPage', 'Newimages' ),
@@ -125,8 +127,8 @@ class SpecialPage
 		'Specialpages'              => array( 'UnlistedSpecialPage', 'Specialpages' ),
 		'Contributions'             => array( 'SpecialPage', 'Contributions' ),
 		'Emailuser'                 => array( 'UnlistedSpecialPage', 'Emailuser' ),
-		'Whatlinkshere'             => array( 'UnlistedSpecialPage', 'Whatlinkshere' ),
-		'Recentchangeslinked'       => array( 'UnlistedSpecialPage', 'Recentchangeslinked' ),
+		'Whatlinkshere'             => array( 'SpecialPage', 'Whatlinkshere' ),
+		'Recentchangeslinked'       => array( 'SpecialPage', 'Recentchangeslinked' ),
 		'Movepage'                  => array( 'UnlistedSpecialPage', 'Movepage' ),
 		'Blockme'                   => array( 'UnlistedSpecialPage', 'Blockme' ),
 		'Resetpass'                 => array( 'UnlistedSpecialPage', 'Resetpass' ),
@@ -158,101 +160,10 @@ class SpecialPage
 		'Listadmins'                => array( 'SpecialRedirectToSpecial', 'Listadmins', 'Listusers', 'sysop' ),
 		'MergeHistory'              => array( 'SpecialPage', 'MergeHistory', 'mergehistory' ),
 		'Listbots'                  => array( 'SpecialRedirectToSpecial', 'Listbots', 'Listusers', 'bot' ),
-		);
+	);
 
 	static public $mAliases;
 	static public $mListInitialised = false;
-	/**
-	 * List of special pages, followed by what subtitle they should go under
-	 * at Special:SpecialPages
-	 */
-	static public $mGroupsList = array(
-		'DoubleRedirects'           => 'maintenance',
-		'BrokenRedirects'           => 'maintenance',
-		'Lonelypages'               => 'maintenance',
-		'Uncategorizedpages'        => 'maintenance',
-		'Uncategorizedcategories'   => 'maintenance',
-		'Uncategorizedimages'       => 'maintenance',
-		'Uncategorizedtemplates'    => 'maintenance',
-		'Unusedcategories'          => 'maintenance',
-		'Unusedimages'              => 'maintenance',
-		'Protectedpages'            => 'maintenance',
-		'Protectedtitles'           => 'maintenance',
-		'Unusedtemplates'           => 'maintenance',
-		'Withoutinterwiki'          => 'maintenance',
-		'Longpages'                 => 'maintenance',
-
-		'Userlogin'                 => 'login',
-		'Userlogout'                => 'login',
-		'CreateAccount'             => 'login',
-
-		'Recentchanges'             => 'changes',
-		'Recentchangeslinked'       => 'changes',
-		'Watchlist'                 => 'changes',
-		'Newimages'                 => 'changes',
-		'Newpages'                  => 'changes',
-		'Log'                       => 'changes',
-		
-		'Upload'                    => 'media',
-		'Imagelist'                 => 'media',
-		'MIMEsearch'                => 'media',
-		'FileDuplicateSearch'       => 'media',
-		'Filepath'                  => 'media',
-		
-		'Listusers'                 => 'users',
-		'Listgrouprights'           => 'users',
-		'Ipblocklist'               => 'users',
-		'Contributions'             => 'users',
-		'Emailuser'                 => 'users',
-		'Listadmins'                => 'users',
-		'Listbots'                  => 'users',
-		
-		'Wantedpages'               => 'needy',
-		'Wantedcategories'          => 'needy',
-		'Shortpages'                => 'needy',
-		'Ancientpages'              => 'needy',
-		'Deadendpages'              => 'needy',
-		
-		'Mostlinked'                => 'highuse',
-		'Mostlinkedcategories'      => 'highuse',
-		'Mostlinkedtemplates'       => 'highuse',
-		'Mostcategories'            => 'highuse',
-		'Mostimages'                => 'highuse',
-		'Mostrevisions'             => 'highuse',
-		
-		'Userrights'                => 'permissions',
-		'Blockip'                   => 'permissions',
-		
-		'Statistics'                => 'other',
-		'Fewestrevisions'           => 'other',
-		'Randompage'                => 'other',
-		'Disambiguations'           => 'other',
-		'Specialpages'              => 'other',
-		'Blockme'                   => 'other',
-		'Movepage'                  => 'other',
-		'MergeHistory'              => 'other',
-		'Lockdb'                    => 'other',
-		'Unlockdb'                  => 'other',
-		'Version'                   => 'other',
-		'Whatlinkshere'             => 'other',
-		'Booksources'               => 'other',
-		'Revisiondelete'            => 'other',
-		'Export'                    => 'other',
-		'Categories'                => 'other',
-		'Undelete'                  => 'other',
-		'Import'                    => 'other',
-		'Unwatchedpages'            => 'other',
-		'Randomredirect'            => 'other',
-		'Allpages'                  => 'other',
-		'Allmessages'               => 'other',
-		'Prefixindex'               => 'other',
-		'Listredirects'             => 'other',
-		'Preferences'               => 'other',
-		'Resetpass'                 => 'other',
-		'Mypage'                    => 'other',
-		'Mytalk'                    => 'other',
-		'Mycontributions'           => 'other',
-		);
 
 	/**#@-*/
 
@@ -268,7 +179,7 @@ class SpecialPage
 			return;
 		}
 		wfProfileIn( __METHOD__ );
-		
+
 		# Better to set this now, to avoid infinite recursion in carelessly written hooks
 		self::$mListInitialised = true;
 
@@ -332,7 +243,7 @@ class SpecialPage
 	}
 
 	/**
-	 * Given a special page name with a possible subpage, return an array 
+	 * Given a special page name with a possible subpage, return an array
 	 * where the first element is the special page name and the second is the
 	 * subpage.
 	 */
@@ -348,14 +259,11 @@ class SpecialPage
 	}
 
 	/**
-	 * Add a page to the list of valid special pages. This used to be the preferred 
-	 * method for adding special pages in extensions. It's now suggested that you add 
+	 * Add a page to the list of valid special pages. This used to be the preferred
+	 * method for adding special pages in extensions. It's now suggested that you add
 	 * an associative record to $wgSpecialPages. This avoids autoloading SpecialPage.
 	 *
-	 * @param mixed $page Must either be an array specifying a class name and 
-	 *                    constructor parameters, or an object. The object,
-	 *                    when constructed, must have an execute() method which
-	 *                    sends HTML to $wgOut.
+	 * @param SpecialPage $page
 	 * @static
 	 */
 	static function addPage( &$page ) {
@@ -364,43 +272,49 @@ class SpecialPage
 		}
 		self::$mList[$page->mName] = $page;
 	}
-	
+
 	/**
 	 * Add a page to a certain display group for Special:SpecialPages
 	 *
-	 * @param mixed $page Must either be an array specifying a class name and 
-	 *                    constructor parameters, or an object.
+	 * @param mixed $page (SpecialPage or string)
 	 * @param string $group
 	 * @static
 	 */
-	static function setGroup( &$page, $group ) {
-		if ( !self::$mListInitialised ) {
-			self::initList();
-		}
-		self::$mGroupsList[$page->mName] = $group;
+	static function setGroup( $page, $group ) {
+		global $wgSpecialPageGroups;
+		$name = is_object($page) ? $page->mName : $page;
+		$wgSpecialPageGroups[$name] = $group;
 	}
-	
+
 	/**
 	 * Add a page to a certain display group for Special:SpecialPages
 	 *
-	 * @param mixed $page Must either be an array specifying a class name and 
-	 *                    constructor parameters, or an object.
+	 * @param SpecialPage $page
 	 * @static
 	 */
 	static function getGroup( &$page ) {
-		if ( !self::$mListInitialised ) {
-			self::initList();
+		global $wgSpecialPageGroups;
+		static $specialPageGroupsCache = array();
+		if( isset($specialPageGroupsCache[$page->mName]) ) {
+			return $specialPageGroupsCache[$page->mName];
 		}
-		$group = isset(self::$mGroupsList[$page->mName]) ? 
-			self::$mGroupsList[$page->mName] : 'other';
+		$group = wfMsg('specialpages-specialpagegroup-'.strtolower($page->mName));
+		if( $group == ''
+		 || wfEmptyMsg('specialpages-specialpagegroup-'.strtolower($page->mName), $group ) ) {
+			$group = isset($wgSpecialPageGroups[$page->mName])
+				? $wgSpecialPageGroups[$page->mName]
+				: '-';
+		}
+		if( $group == '-' ) $group = 'other';
+		$specialPageGroupsCache[$page->mName] = $group;
 		return $group;
 	}
 
 	/**
 	 * Remove a special page from the list
-	 * Formerly used to disable expensive or dangerous special pages. The 
+	 * Formerly used to disable expensive or dangerous special pages. The
 	 * preferred method is now to add a SpecialPage_initList hook.
-	 * 
+	 *
 	 * @static
 	 */
 	static function removePage( $name ) {
@@ -472,6 +386,32 @@ class SpecialPage
 	}
 
 	/**
+	 * Return categorised listable special pages which are available
+	 * for the current user, and everyone.
+	 * @static
+	 */
+	static function getUsablePages() {
+		global $wgUser;
+		if ( !self::$mListInitialised ) {
+			self::initList();
+		}
+		$pages = array();
+
+		foreach ( self::$mList as $name => $rec ) {
+			$page = self::getPage( $name );
+			if ( $page->isListed()
+				&& (
+					!$page->isRestricted()
+					|| $page->userCanExecute( $wgUser )
+				)
+			) {
+				$pages[$name] = $page;
+			}
+		}
+		return $pages;
+	}
+
+	/**
 	 * Return categorised listable special pages for all users
 	 * @static
 	 */
@@ -497,17 +437,17 @@ class SpecialPage
 	 */
 	static function getRestrictedPages() {
 		global $wgUser;
-		if ( !self::$mListInitialised ) {
+		if( !self::$mListInitialised ) {
 			self::initList();
 		}
 		$pages = array();
 
-		foreach ( self::$mList as $name => $rec ) {
+		foreach( self::$mList as $name => $rec ) {
 			$page = self::getPage( $name );
-			if (
+			if(
 				$page->isListed()
-				and $page->isRestricted()
-				and $page->userCanExecute( $wgUser )
+				&& $page->isRestricted()
+				&& $page->userCanExecute( $wgUser )
 			) {
 				$pages[$name] = $page;
 			}
@@ -564,9 +504,9 @@ class SpecialPage
 		}
 
 		# Redirect to canonical alias for GET commands
-		# Not for POST, we'd lose the post data, so it's best to just distribute 
-		# the request. Such POST requests are possible for old extensions that 
-		# generate self-links without being aware that their default name has 
+		# Not for POST, we'd lose the post data, so it's best to just distribute
+		# the request. Such POST requests are possible for old extensions that
+		# generate self-links without being aware that their default name has
 		# changed.
 		if ( !$including && $name != $page->getLocalName() && !$wgRequest->wasPosted() ) {
 			$query = $_GET;
@@ -702,7 +642,7 @@ class SpecialPage
 			$this->mFunction = $function;
 		}
 		if ( $file === 'default' ) {
-			$this->mFile = dirname(__FILE__) . "/Special{$name}.php";
+			$this->mFile = dirname(__FILE__) . "/specials/$name.php";
 		} else {
 			$this->mFile = $file;
 		}
@@ -786,7 +726,7 @@ class SpecialPage
 	 * Default execute method
 	 * Checks user permissions, calls the function given in mFunction
 	 *
-	 * This may be overridden by subclasses. 
+	 * This may be overridden by subclasses.
 	 */
 	function execute( $par ) {
 		global $wgUser;
@@ -799,7 +739,7 @@ class SpecialPage
 			if(!is_callable($func) and $this->mFile) {
 				require_once( $this->mFile );
 			}
-			# FIXME: these hooks are broken for extensions and anything else that subclasses SpecialPage. 
+			# FIXME: these hooks are broken for extensions and anything else that subclasses SpecialPage.
 			if ( wfRunHooks( 'SpecialPageExecuteBeforeHeader', array( &$this, &$par, &$func ) ) )
 				$this->outputHeader();
 			if ( ! wfRunHooks( 'SpecialPageExecuteBeforePage', array( &$this, &$par, &$func ) ) )
@@ -818,7 +758,7 @@ class SpecialPage
 		$msg = $wgContLang->lc( $this->name() ) . '-summary';
 		$out = wfMsgNoTrans( $msg );
 		if ( ! wfEmptyMsg( $msg, $out ) and  $out !== '' and ! $this->including() ) {
-			$wgOut->addWikiText( $out );
+			$wgOut->addWikiMsg( $msg );
 		}
 
 	}
@@ -847,7 +787,7 @@ class SpecialPage
 	}
 
 	/**
-	 * If the special page is a redirect, then get the Title object it redirects to. 
+	 * If the special page is a redirect, then get the Title object it redirects to.
 	 * False otherwise.
 	 */
 	function getRedirect( $subpage ) {
@@ -867,14 +807,14 @@ class SpecialPage
 			if( $val = $wgRequest->getVal( $arg, false ) )
 				$params[] = $arg . '=' . $val;
 		}
-		
+
 		return count( $params ) ? implode( '&', $params ) : false;
 	}
 }
 
 /**
  * Shortcut to construct a special page which is unlisted by default
- * @addtogroup SpecialPage
+ * @ingroup SpecialPage
  */
 class UnlistedSpecialPage extends SpecialPage
 {
@@ -885,7 +825,7 @@ class UnlistedSpecialPage extends SpecialPage
 
 /**
  * Shortcut to construct an includable special  page
- * @addtogroup SpecialPage
+ * @ingroup SpecialPage
  */
 class IncludableSpecialPage extends SpecialPage
 {
@@ -896,7 +836,7 @@ class IncludableSpecialPage extends SpecialPage
 
 /**
  * Shortcut to construct a special page alias.
- * @addtogroup SpecialPage
+ * @ingroup SpecialPage
  */
 class SpecialRedirectToSpecial extends UnlistedSpecialPage {
 	var $redirName, $redirSubpage;
@@ -926,7 +866,7 @@ class SpecialRedirectToSpecial extends UnlistedSpecialPage {
 
 /**
  * Shortcut to construct a special page pointing to current user user's page.
- * @addtogroup SpecialPage
+ * @ingroup SpecialPage
  */
 class SpecialMypage extends UnlistedSpecialPage {
 	function __construct() {
@@ -946,7 +886,7 @@ class SpecialMypage extends UnlistedSpecialPage {
 
 /**
  * Shortcut to construct a special page pointing to current user talk page.
- * @addtogroup SpecialPage
+ * @ingroup SpecialPage
  */
 class SpecialMytalk extends UnlistedSpecialPage {
 	function __construct() {
@@ -966,7 +906,7 @@ class SpecialMytalk extends UnlistedSpecialPage {
 
 /**
  * Shortcut to construct a special page pointing to current user contributions.
- * @addtogroup SpecialPage
+ * @ingroup SpecialPage
  */
 class SpecialMycontributions extends UnlistedSpecialPage {
 	function __construct() {

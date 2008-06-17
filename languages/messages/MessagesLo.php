@@ -1,7 +1,8 @@
 <?php
 /** Lao (ລາວ)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Passawuth
  * @author Tuinui
@@ -126,8 +127,6 @@ $messages = array(
 'dec'           => 'ທັນວາ',
 
 # Categories related messages
-'categories'             => 'ໝວດ',
-'categoriespagetext'     => 'ມີ ບັນດາ ໝວດ ຕໍ່ໄປນີ້ ຢູ່ ວິກີ.',
 'pagecategories'         => '{{PLURAL:$1|ໝວດ|ໝວດ}}',
 'category_header'        => 'ບົດຄວາມໃນໝວດ "$1"',
 'subcategories'          => 'ໝວດຍ່ອຍ',
@@ -188,7 +187,7 @@ $messages = array(
 'redirectedfrom'   => '(ໂອນມາຈາກ $1)',
 'redirectpagesub'  => 'ໜ້າໂອນ',
 'lastmodifiedat'   => 'ໜ້ານີ້ຖຶກດັດແກ້ຫຼ້າສຸດ $2, $1.', # $1 date, $2 time
-'viewcount'        => 'ໜ້ານີ້ຖືກເຂົ້າເບິ່ງ {{plural:$1|ເທື່ອໜຶ່ງ|$1 ເທື່ອ}}.',
+'viewcount'        => 'ໜ້ານີ້ຖືກເຂົ້າເບິ່ງ {{PLURAL:$1|ເທື່ອໜຶ່ງ|$1 ເທື່ອ}}.',
 'protectedpage'    => 'ໜ້າຖືກປົກປ້ອງ',
 'jumpto'           => 'ໄປຫາ:',
 'jumptonavigation' => 'ນຳທິດ',
@@ -279,6 +278,7 @@ $messages = array(
 'remembermypassword'         => 'ຈົດຈໍາການເຊັນເຂົ້າຂອງຂ້ອຍ ຢູ່ ຄອມພິວເຕີໜ່ວຍນີ້',
 'yourdomainname'             => 'ໂດເມນ ຂອງ ທ່ານ',
 'login'                      => 'ເຊັນເຂົ້າ',
+'nav-login-createaccount'    => 'ເຊັນເຂົ້າ / ສ້າງບັນຊີ',
 'loginprompt'                => 'ທ່ານຕ້ອງຮັບຄຸກກີ້ ເພື່ອ ເຊັນເຂົ້າ {{SITENAME}}.',
 'userlogin'                  => 'ເຊັນເຂົ້າ / ສ້າງບັນຊີ',
 'logout'                     => 'ເຊັນອອກ',
@@ -376,7 +376,7 @@ $messages = array(
 
 # Account creation failure
 'cantcreateaccounttitle' => 'ບໍ່ສາມາດສ້າງ ບັນຊີ ໄດ້',
-'cantcreateaccount-text' => "ການສ້າງບັນຊີ ຈາກ IP ນີ້ (<b>$1</b>) ໄດ້ຖືກຫ້າມ ໂດຍ [[ຜູ້ໃຊ້:$3|$3]].
+'cantcreateaccount-text' => "ການສ້າງບັນຊີ ຈາກ IP ນີ້ (<b>$1</b>) ໄດ້ຖືກຫ້າມ ໂດຍ [[User:$3|$3]].
 
 ເຫດຜົນ ໃຫ້ໄວ້ ໂດຍ $3 ແມ່ນ ''$2''",
 
@@ -460,7 +460,7 @@ $messages = array(
 'files'                 => 'ໄຟລ໌',
 
 # User rights
-'editinguser' => 'ຜູ້ໃຊ້ <b>$1</b> ພວມດັດແກ້',
+'editinguser' => 'ຜູ້ໃຊ້ <b>$1</b> ພວມດັດແກ້ ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])',
 
 # Recent changes
 'nchanges'                       => '$1 {{PLURAL:$1|ການປ່ຽນແປງ|ການປ່ຽນແປງ}}',
@@ -479,12 +479,12 @@ $messages = array(
 'hist'                           => 'ປະຫວັດ',
 'hide'                           => 'ເຊື່ອງ',
 'show'                           => 'ສະແດງ',
-'minoreditletter'                => 'ໃໝ່',
-'newpageletter'                  => 'ໃໝ່',
+'minoreditletter'                => 'ລ',
+'newpageletter'                  => 'ມ',
 
 # Recent changes linked
 'recentchangeslinked'          => 'ການດັດແກ້ທີ່ກ່ຽວຂ້ອງ',
-'recentchangeslinked-title'    => 'ການປ່ຽນແປງກ່ຽວຂ້ອງກັບ $1',
+'recentchangeslinked-title'    => 'ການປ່ຽນແປງກ່ຽວຂ້ອງກັບ "$1"',
 'recentchangeslinked-noresult' => 'ບໍ່ມີການປ່ຽນແປງຢູ່ໜ້າລິ້ງຄ໌ໃນໄລຍະດັ່ງກ່າວ.',
 
 # Upload
@@ -542,8 +542,8 @@ $messages = array(
 'brokenredirects-edit'   => '(ດັດແກ້)',
 'brokenredirects-delete' => '(ລຶບ)',
 
-'withoutinterwiki'        => 'ບັນດາໜ້າ ທີ່ບໍ່ມີລິ້ງຄ໌ ຫາ ສະບັບພາສາອື່ນ',
-'withoutinterwiki-header' => 'ໜ້າ ຕໍ່ໄປນີ້ ບໍ່ມີ ລິ້ງຄ໌ ຫາ ບົດຄວາມສະບັບພາສາອື່ນໆ:',
+'withoutinterwiki'         => 'ບັນດາໜ້າ ທີ່ບໍ່ມີລິ້ງຄ໌ ຫາ ສະບັບພາສາອື່ນ',
+'withoutinterwiki-summary' => 'ໜ້າ ຕໍ່ໄປນີ້ ບໍ່ມີ ລິ້ງຄ໌ ຫາ ບົດຄວາມສະບັບພາສາອື່ນໆ:',
 
 # Miscellaneous special pages
 'nbytes'                  => '$1 {{PLURAL:$1|ໄບຕ໌|ໄບຕ໌}}',
@@ -569,9 +569,6 @@ $messages = array(
 'deadendpages'            => 'ໜ້າບໍ່ການເຊື່ອມຕໍ່ຫາໜ້າອື່ນ',
 'protectedpages'          => 'ບັນດາໜ້າຖືກປົກປ້ອງ',
 'listusers'               => 'ລາຍຊື່ຜູ້ໃຊ້',
-'specialpages'            => 'ໜ້າພິເສດ',
-'spheading'               => 'ໜ້າພິເສດ ສຳຫຼັບ ຜູ້ໃຊ້ທຸກໆທ່ານ',
-'restrictedpheading'      => 'ບັນດາໜ້າຈຳກັດພິເສດ',
 'newpages'                => 'ໜ້າສ້າງໃໝ່',
 'newpages-username'       => 'ຊື່ຜູ້ໃຊ້:',
 'ancientpages'            => 'ບັນດາໜ້າເກົ່າທີ່ສຸດ',
@@ -600,6 +597,10 @@ $messages = array(
 'allpagesnext'   => 'ຕໍ່ໄປ',
 'allpagessubmit' => 'ໄປ',
 'allpagesprefix' => 'ສະແດງ ໜ້າ ຂຶ້ນຕົ້ນດ້ວຍ:',
+
+# Special:Categories
+'categories'         => 'ໝວດ',
+'categoriespagetext' => 'ມີ ບັນດາ ໝວດ ຕໍ່ໄປນີ້ ຢູ່ ວິກີ.',
 
 # Special:Listusers
 'listusers-submit' => 'ສະແດງ',
@@ -746,7 +747,6 @@ $messages = array(
 ກະລຸນາເລືອກຊື່ອື່ນ.',
 'movedto'                 => 'ໄດ້ຖືກຍ້າຍໄປ',
 'movetalk'                => 'ຍ້າຍທັງ ໜ້າສົນທະນາ ທີ່ ກ່ຽວພັນ.',
-'talkpagemoved'           => 'ໜ້າສົນທະນາ ໄດ້ຖືກຍ້າຍແລ້ວ ເຊັ່ນດຽວກັນ.',
 '1movedto2'               => '[[$1]] ຍ້າຍໄປ [[$2]]',
 '1movedto2_redir'         => '[[$1]] ຍ້າຍໄປ [[$2]] ທັບ ການໂອນໜ້າ',
 'movelogpage'             => 'ບັນທຶກການຍ້າຍ',
@@ -890,8 +890,7 @@ $messages = array(
 'articletitles'    => "ບົດຄວາມ ເລີ່ມດ້ວຍ ''$1''",
 
 # Multipage image navigation
-'imgmultigo'      => 'ໄປ!',
-'imgmultigotopre' => 'ໄປ ຫາ ໜ້າ',
+'imgmultigo' => 'ໄປ!',
 
 # Auto-summaries
 'autosumm-blank'   => 'ພວມລຶບ ທຸກໆເນື້ອໃນ ຈາກ ໜ້ານີ້',
@@ -911,5 +910,8 @@ $messages = array(
 
 # Special:Filepath
 'filepath' => 'ທາງໄປຫາໄຟລ໌',
+
+# Special:SpecialPages
+'specialpages' => 'ໜ້າພິເສດ',
 
 );

@@ -1,7 +1,8 @@
 <?php
 /** Cajun French (Français cadien)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author RoyAlcatraz
  * @author JeanVoisin
@@ -9,8 +10,6 @@
  * @author Nike
  * @author SPQRobin
  */
-
-
 
 $messages = array(
 # User preference toggles
@@ -113,7 +112,6 @@ $messages = array(
 'dec'           => 'déc',
 
 # Categories related messages
-'categories'            => 'Classes',
 'pagecategories'        => '{{PLURAL:$1|Classe|Classes}}',
 'category_header'       => 'Articles dans classe "$1"',
 'subcategories'         => 'Sous-classes',
@@ -193,7 +191,7 @@ $messages = array(
 'redirectedfrom'    => '(Envoyé ici de la page $1)',
 'redirectpagesub'   => 'Page de redirection',
 'lastmodifiedat'    => 'Cette page a été changée le $1 à $2.', # $1 date, $2 time
-'viewcount'         => 'Cette page a été visitée $1 fois.',
+'viewcount'         => 'Cette page a été visitée {{PLURAL:$1|$1 fois|$1 fois}}.',
 'protectedpage'     => 'Page protégée',
 'jumpto'            => 'Aller à:',
 'jumptosearch'      => 'charcher',
@@ -294,12 +292,6 @@ d'équand le barrage va être ôté.",
 'readonlytext'         => "À présent, la base d'information est barrée aux nouveaux changements, peut-être pour le soutien habituel de la base d'information, et ça va retourner à normal t'à l'heure.  
 
 L'administrateur qui l'a barrée a donné cette explication: $1",
-'missingarticle'       => "La base d'information a pas trouvé la page vous êtes après charcher, nommée \"\$1\".
-
-Normalement ça arrive quand vous suivez un vieux lien pour une page qu'a été ôtée.
-
-Si c'est pas le cas, vous avez peut-être trouvé une erreur dans le software.  
-Envoyez donc une note à un administrateur avec l'adresse de la page ayoù vous avez trouvé l'erreur.",
 'readonly_lag'         => "La base d'information s'a barré pendant que les serveurs de la base d'information rapprochont le maître.",
 'internalerror'        => 'Erreur internelle',
 'internalerror_info'   => 'Erreur intérieur: $1',
@@ -349,6 +341,7 @@ Votre compte a été créé.  Oubliez pas de changer votre réglage sus {{SITENA
 'externaldberror'            => "Soit y avait une erreur avec la base d'information de certification extérieur, soit vous avez pas la permission de renouveler votre compte extérieur.",
 'loginproblem'               => "<b>Problème d'identification.</b><br />Assayez encore!",
 'login'                      => 'Connecter',
+'nav-login-createaccount'    => 'Connecter / créer un compte',
 'loginprompt'                => 'Il faut partir les cookies pour connecter à {{SITENAME}}.',
 'userlogin'                  => 'Connecter / créer un compte',
 'logout'                     => 'Déconnecter',
@@ -638,11 +631,14 @@ Des autres administrateurs sus ce wiki ont la permission de voir et de rétablir
 'mypreferences' => 'Mon réglage',
 
 # User rights
-'editinguser' => 'Changement de <b>$1</b>',
+'editinguser' => "Changement de '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 
 # Miscellaneous special pages
 'move'         => 'Renommer',
 'movethispage' => 'Renommer cette page',
+
+# Special:Categories
+'categories' => 'Classes',
 
 # Watchlist
 'watchlist'   => 'Mes pages guettées',

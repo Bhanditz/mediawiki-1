@@ -1,18 +1,18 @@
 <?php
 /** Scots (Scots)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author sco.wikipedia.org editors
- * @author SPQRobin
- * @author Nike
  * @author OchAyeTheNoo
- * @author לערי ריינהארט
+ * @author SPQRobin
  * @author Siebrand
+ * @author לערי ריינהארט
+ * @author Nike
  * @author Malafaya
+ * @author Ushanka
  */
-
-
 
 $messages = array(
 # User preference toggles
@@ -54,6 +54,7 @@ $messages = array(
 'tog-watchlisthideminor'      => 'Dinna shaw sma edits on ma watchleet',
 'tog-ccmeonemails'            => 'Gie me copies o emails A write tae ither uisers',
 'tog-diffonly'                => 'Dinna shaw page contents ablo diffs',
+'tog-showhiddencats'          => 'Shaw hidden categories',
 
 'underline-always'  => 'Aye',
 'underline-never'   => 'Niver',
@@ -114,13 +115,12 @@ $messages = array(
 'dec'           => 'Diz',
 
 # Categories related messages
-'categories'            => 'Categories',
-'categoriespagetext'    => 'The follaein categories exist in the wiki.',
 'pagecategories'        => '{{PLURAL:$1|Category|Categories}}',
 'category_header'       => 'Pages in category "$1"',
 'subcategories'         => 'Subcategories',
 'category-media-header' => 'Eetems in category "$1"',
 'category-empty'        => "''This category haes no pages or eetems at the meenit.''",
+'hidden-categories'     => '{{PLURAL:$1|Hidden categorie|Hidden categories}}',
 
 'mainpagetext'      => "<big>'''MediaWiki haes been installit wi speed.'''</big>",
 'mainpagedocfooter' => "Aks the [http://meta.wikimedia.org/wiki/Help:Contents Uiser's Manual] for speirins aboot using the wiki saftware.
@@ -206,31 +206,30 @@ $messages = array(
 'jumptosearch'      => 'rake',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutsite'            => 'Aboot {{SITENAME}}',
-'aboutpage'            => 'Project:Aboot',
-'bugreports'           => 'Mishanter reports',
-'bugreportspage'       => 'Project:Bug reports',
-'copyright'            => 'Aa text is available unner $1',
-'copyrightpagename'    => '{{SITENAME}} copyricht',
-'copyrightpage'        => '{{ns:project}}:Copyrichts',
-'currentevents'        => 'Gaun on the nou',
-'currentevents-url'    => 'Project:Gaun on the nou',
-'disclaimers'          => 'Disclamation',
-'disclaimerpage'       => 'Project:General_disclamation',
-'edithelp'             => 'Editin help',
-'edithelppage'         => 'Help:Editin',
-'faq'                  => 'ASQ',
-'faqpage'              => 'Project:ASQ',
-'helppage'             => 'Help:Contents',
-'mainpage'             => 'Main Page',
-'mainpage-description' => 'Main Page',
-'policy-url'           => 'Project:Policy',
-'portal'               => 'Commonty yett',
-'portal-url'           => 'Project:Commonty Yett',
-'privacy'              => 'Privacy policy',
-'privacypage'          => 'Project:Privacy policy',
-'sitesupport'          => 'Propines',
-'sitesupport-url'      => 'Project:Site support',
+'aboutsite'         => 'Aboot {{SITENAME}}',
+'aboutpage'         => 'Project:Aboot',
+'bugreports'        => 'Mishanter reports',
+'bugreportspage'    => 'Project:Bug reports',
+'copyright'         => 'Aa text is available unner $1',
+'copyrightpagename' => '{{SITENAME}} copyricht',
+'copyrightpage'     => '{{ns:project}}:Copyrichts',
+'currentevents'     => 'Gaun on the nou',
+'currentevents-url' => 'Project:Gaun on the nou',
+'disclaimers'       => 'Disclamation',
+'disclaimerpage'    => 'Project:General_disclamation',
+'edithelp'          => 'Editin help',
+'edithelppage'      => 'Help:Editin',
+'faq'               => 'ASQ',
+'faqpage'           => 'Project:ASQ',
+'helppage'          => 'Help:Contents',
+'mainpage'          => 'Main Page',
+'policy-url'        => 'Project:Policy',
+'portal'            => 'Commonty yett',
+'portal-url'        => 'Project:Commonty Yett',
+'privacy'           => 'Privacy policy',
+'privacypage'       => 'Project:Privacy policy',
+'sitesupport'       => 'Propines',
+'sitesupport-url'   => 'Project:Site support',
 
 'badaccess'        => 'Permeission mishanter',
 'badaccess-group0' => 'WARNIN: Ye arnae alloued tae dae whit you hae requestit!',
@@ -249,6 +248,7 @@ $messages = array(
 'youhavenewmessagesmulti' => 'Ye hae neow messages on $1',
 'editsection'             => 'edit',
 'editold'                 => 'edit',
+'viewsourceold'           => 'ken soorce',
 'editsectionhint'         => 'Edit section: $1',
 'toc'                     => 'Table o contents',
 'showtoc'                 => 'shaw',
@@ -281,7 +281,7 @@ $messages = array(
 'nosuchspecialpage' => 'Nae sic byordinar page',
 'nospecialpagetext' => "<big>'''Ye hae requestit an invalid byordinar page.'''</big>
 
-A leet o valid byordinar pages can be funnd at [[Special:Specialpages]].",
+A leet o valid byordinar pages can be funnd at [[Special:Specialpages|{{int:specialpages}}]].",
 
 # General errors
 'error'                => 'Error',
@@ -298,7 +298,6 @@ A leet o valid byordinar pages can be funnd at [[Special:Specialpages]].",
 likely for routine database maintenance; efter that it'll be back tae normal.
 The adminstration that lockit it gied this explanation:
 $1",
-'missingarticle'       => 'The database didna fin the text o a page that it shuid hae funnd, named "$1". <p>This is for ordinar caused bi follaein an ootdatit diff or history airtin tae a page that haes been delete. <p>Gin this isna the case, ye micht hae funnd a bug in the saftware. Please report this til an administrator, makkin a note o the URL.',
 'readonly_lag'         => 'The database haes been autaematically lockit while the sclave database servers catch up tae the maister',
 'internalerror'        => 'Internal mishanter',
 'internalerror_info'   => 'Internal error: $1',
@@ -535,7 +534,7 @@ Yer block ID is $5. Please include this ID in ony argies ye mak.',
 'userinvalidcssjstitle'     => "'''Warnin:''' There isnae a skin \"\$1\". Mynd that yer ain .css an .js pages uise a lowercase teetle, e.g. {{ns:user}}:Foo/monobook.css instead o {{ns:user}}:Foo/Monobook.css.",
 'updated'                   => '(Updatit)',
 'note'                      => '<strong>Mynd:</strong>',
-'previewnote'               => 'Mynd that this is juist a scance-ower, an haesna been hained yet!',
+'previewnote'               => '<strong>Mynd that this is juist a scance-ower, an haesna been hained yet!</strong>',
 'previewconflict'           => 'This scance reflects the text in the upper text editin area like it will kythe gin ye chuise tae save.',
 'session_fail_preview'      => '<strong>Sairy! We culdnae process yer edit acause o a loss o term data.
 Please try again. Gin it disnae wairk still, try loggin oot an loggin in again.</strong>',
@@ -665,7 +664,6 @@ there micht be parteeculars in the [{{fullurl:Special:Log/delete|page={{FULLPAGE
 'showingresultsnum'     => "Shawin ablo {{PLURAL:$3|'''1''' result|'''$3''' results}} stertin wi #'''$2'''.",
 'nonefound'             => "'''Mynd''': unsuccessfu rakes is afttimes caused bi rakin for common words like \"hae\" an \"frae\", that isna indexed, or bi specifeein mair nor ae rake term (juist pages haudin aa the rake terms will kythe in the result).",
 'powersearch'           => 'Rake',
-'powersearchtext'       => 'Rake in namespaces :<br /> $1<br /> $2 Leet reguidals &nbsp; Rake for $3 $9',
 'searchdisabled'        => 'Rakin throu {{SITENAME}} is disabled for performance raesons. Ye can rake via Google juist nou. Mynd that thair indexes o {{SITENAME}} content micht be oot o date.',
 
 # Preferences page
@@ -698,7 +696,7 @@ there micht be parteeculars in the [{{fullurl:Special:Log/delete|page={{FULLPAGE
 'default'            => 'defaut',
 
 # User rights
-'editinguser'             => 'Editin uiser <b>$1</b>',
+'editinguser'             => "Editin uiser '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-groupsmember' => 'Member o:',
 
 # User rights log
@@ -740,7 +738,7 @@ there micht be parteeculars in the [{{fullurl:Special:Log/delete|page={{FULLPAGE
 'illegalfilename'             => 'The filename "$1" haes characters that isna alloud in page teitles. Please rename the file an gie uplaidin it anither shot.',
 'badfilename'                 => 'Eimage name haes been chynged tae "$1".',
 'largefileserver'             => 'This file is bigger nor the server is confeigurt tae allou.',
-'fileexists'                  => "A file wi this name exists aareadies, please check $1 gin ye'r no siccar that ye want tae chynge it.",
+'fileexists'                  => "A file wi this name exists aareadies, please check <strong><tt>$1</tt></strong> gin ye'r no siccar that ye want tae chynge it.",
 'fileexists-forbidden'        => 'A file wi this name aareadies exists; please gang back an uplaid this file unner a new name. [[Image:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'A file wi this name aareadies exists in the shared file depose; please gang back an uplaid this file unner a new name. [[Image:$1|thumb|center|$1]]',
 'uploadwarning'               => 'Uplaid warnin',
@@ -788,7 +786,7 @@ Thare haes been a total o '''\$3''' {{PLURAL:\$3|page view|page views}}, an '''\
 syne {{SITENAME}} wis set up.
 That comes tae '''\$5''' average edits per page, and '''\$6''' views per edit.
 
-The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7'''.",
+The [http://www.mediawiki.org/wiki/Manual:Job_queue job queue] length is '''\$7'''.",
 'userstatstext' => "{{PLURAL:$1|There is '''1''' registert [[Special:Listusers|uiser]]|The'r '''$1''' registert [[Special:Listusers|uisers]]}}.
 '''$2''' (or '''$4%''') o thaim {{PLURAL:$2|has|have}} $5 rights.",
 
@@ -816,9 +814,6 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'longpages'               => 'Lang pages',
 'deadendpages'            => 'Deid-end pages',
 'listusers'               => 'Uiser leet',
-'specialpages'            => 'Byordinar pages',
-'spheading'               => 'Byordinar pages for aa uisers',
-'restrictedpheading'      => 'Restrictit byordinar pages',
 'ancientpages'            => 'Auldest pages',
 'move'                    => 'Flit',
 'movethispage'            => 'Flit this page',
@@ -851,6 +846,12 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'allpagesprefix'    => 'Shaw pages wi prefix:',
 'allpagesbadtitle'  => 'The page teitle gien wis wrang or haed a cross-lied or cross-wiki prefix. It micht hae ane or twa characters that canna be uised in teitles',
 'allpages-bad-ns'   => '{{SITENAME}} disna hae a namespace "$1".',
+
+# Special:Categories
+'categories'                    => 'Categories',
+'categoriespagetext'            => 'The follaein categories exist in the wiki.',
+'special-categories-sort-count' => 'sairt bi coont',
+'special-categories-sort-abc'   => 'sairt by the alphabet',
 
 # E-mail user
 'mailnologin'     => 'Nae send address',
@@ -1001,8 +1002,6 @@ tae an afore-blockit IP address or uisername.',
 'talkexists'              => 'The page itsel wis flittit fine, but the collogue page cuidna be flittit sith ane aareadies exists at the new teitle. Please merge thaim manually.',
 'movedto'                 => 'flittit ti',
 'movetalk'                => 'Flit "collogue" page an aa, gin it\'s applicable.',
-'talkpagemoved'           => "The airticle's collogue page wis flittit forbye.",
-'talkpagenotmoved'        => "The airticle's collogue page <strong>wisna</strong> flittit.",
 '1movedto2'               => '[[$1]] flittit til [[$2]]',
 '1movedto2_redir'         => '[[$1]] flittit til [[$2]] ower reguidal',
 'movelogpage'             => 'Flit log',
@@ -1162,8 +1161,11 @@ on {{SITENAME}}, open this airtin in yer brouser:
 
 $3
 
-If this *isna* you, dinna follae the airtin. This confirmation code
-will end at $4.',
+If this *isna* you, dinna follae the airtin.
+
+$5
+
+This confirmation code will end at $4.',
 
 # Delete conflict
 'deletedwhileediting' => 'Warnin: This page haes been delete syne ye stertit editin!',
@@ -1186,8 +1188,7 @@ $1',
 'articletitles'    => "Airticles stairting wi ''$1''",
 
 # Multipage image navigation
-'imgmultigo'      => 'Gang!',
-'imgmultigotopre' => 'Gang till page',
+'imgmultigo' => 'Gang!',
 
 # Table pager
 'table_pager_next'         => 'Page aifter',
@@ -1199,5 +1200,8 @@ $1',
 'autosumm-blank'   => 'Dichtin aa content frae page',
 'autosumm-replace' => "Replacin page wi '$1'",
 'autoredircomment' => 'Reguidin tae [[$1]]',
+
+# Special:SpecialPages
+'specialpages' => 'Byordinar pages',
 
 );

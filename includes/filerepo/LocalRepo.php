@@ -2,10 +2,13 @@
 /**
  * A repository that stores files in the local filesystem and registers them
  * in the wiki's own database. This is the most commonly used repository class.
+ * @ingroup FileRepo
  */
 class LocalRepo extends FSRepo {
 	var $fileFactory = array( 'LocalFile', 'newFromTitle' );
 	var $oldFileFactory = array( 'OldLocalFile', 'newFromTitle' );
+	var $fileFromRowFactory = array( 'LocalFile', 'newFromRow' );
+	var $oldFileFromRowFactory = array( 'OldLocalFile', 'newFromRow' );
 
 	function getSlaveDB() {
 		return wfGetDB( DB_SLAVE );
@@ -15,24 +18,28 @@ class LocalRepo extends FSRepo {
 		return wfGetDB( DB_MASTER );
 	}
 
+	function getMemcKey( $key ) {
+		return wfWikiID( $this->getSlaveDB() ) . ":{$key}";
+	}
+
 	function newFileFromRow( $row ) {
 		if ( isset( $row->img_name ) ) {
-			return LocalFile::newFromRow( $row, $this );
+			return call_user_func( $this->fileFromRowFactory, $row, $this );
 		} elseif ( isset( $row->oi_name ) ) {
-			return OldLocalFile::newFromRow( $row, $this );
+			return call_user_func( $this->oldFileFromRowFactory, $row, $this );
 		} else {
 			throw new MWException( __METHOD__.': invalid row' );
 		}
 	}
-	
+
 	function newFromArchiveName( $title, $archiveName ) {
 		return OldLocalFile::newFromArchiveName( $title, $this, $archiveName );
 	}
 
 	/**
-	 * Delete files in the deleted directory if they are not referenced in the 
-	 * filearchive table. This needs to be done in the repo because it needs to 
-	 * interleave database locks with file operations, which is potentially a 
+	 * Delete files in the deleted directory if they are not referenced in the
+	 * filearchive table. This needs to be done in the repo because it needs to
+	 * interleave database locks with file operations, which is potentially a
 	 * remote operation.
 	 * @return FileRepoStatus
 	 */
@@ -45,7 +52,7 @@ class LocalRepo extends FSRepo {
 			$hashPath = $this->getDeletedHashPath( $key );
 			$path = "$root/$hashPath$key";
 			$dbw->begin();
-			$inuse = $dbw->selectField( 'filearchive', '1', 
+			$inuse = $dbw->selectField( 'filearchive', '1',
 				array( 'fa_storage_group' => 'deleted', 'fa_storage_key' => $key ),
 				__METHOD__, array( 'FOR UPDATE' ) );
 			if( !$inuse ) {
@@ -53,7 +60,7 @@ class LocalRepo extends FSRepo {
 				$ext = substr( $key, strcspn($key,'.') + 1 );
 				$ext = File::normalizeExtension($ext);
 				$inuse = $dbw->selectField( 'oldimage', '1',
-					array( 'oi_sha1' => $sha1, 
+					array( 'oi_sha1' => $sha1,
 						"oi_archive_name LIKE '%.{$ext}'",
 						'oi_deleted & '.File::DELETED_FILE => File::DELETED_FILE ),
 					__METHOD__, array( 'FOR UPDATE' ) );
@@ -104,7 +111,7 @@ class LocalRepo extends FSRepo {
 			$title = Title::makeTitle( NS_IMAGE, $title->getText() );
 		}
 
-		$memcKey = wfMemcKey( "image_redirect:" . md5( $title->getPrefixedDBkey() ) );
+		$memcKey = $this->getMemcKey( "image_redirect:" . md5( $title->getPrefixedDBkey() ) );
 		$cachedValue = $wgMemc->get( $memcKey );
 		if( $cachedValue ) {
 			return Title::newFromDbKey( $cachedValue );
@@ -135,7 +142,47 @@ class LocalRepo extends FSRepo {
 
 	function invalidateImageRedirect( $title ) {
 		global $wgMemc;
-		$memcKey = wfMemcKey( "image_redirect:" . md5( $title->getPrefixedDBkey() ) );
+		$memcKey = $this->getMemcKey( "image_redirect:" . md5( $title->getPrefixedDBkey() ) );
 		$wgMemc->delete( $memcKey );
+	}
+	
+	function findBySha1( $hash ) {
+		$dbr = $this->getSlaveDB();
+		$res = $dbr->select(
+			'image',
+			LocalFile::selectFields(),
+			array( 'img_sha1' => $hash )
+		);
+		
+		$result = array();
+		while ( $row = $res->fetchObject() )
+			$result[] = $this->newFileFromRow( $row );
+		$res->free();
+		return $result;
+	}
+	
+	/*
+	 * Find many files using one query
+	 */
+	function findFiles( $titles, $flags ) {
+		// FIXME: Comply with $flags
+	 	// FIXME: Only accepts a $titles array where the keys are the sanitized
+	 	// file names.
+	 	 
+		if ( count( $titles ) == 0 ) return array();		
+	
+		$dbr = $this->getSlaveDB();
+		$res = $dbr->select(
+			'image',
+			LocalFile::selectFields(),
+			array( 'img_name' => array_keys( $titles ) )		
+		);
+		
+		$result = array();
+		while ( $row = $res->fetchObject() ) {
+			$result[$row->img_name] = $this->newFileFromRow( $row );
+		}
+		$res->free();
+		return $result;
 	}
 }

@@ -238,6 +238,10 @@ protocol came about after MediaWiki 1.4rc1.
 This is a list of known events and parameters; please add to it if
 you're going to add events to the MediaWiki code.
 
+'AbortAutoblock': Return false to cancel an autoblock.
+$autoblockip: The IP going to be autoblocked.
+$block: The block from which the autoblock is coming.
+
 'AbortLogin': Return false to cancel account login.
 $user: the User object being authenticated against
 $password: the password being submitted, not yet checked for validity
@@ -301,7 +305,7 @@ $article: article (object) being modified
 $title: title (object) used to create the article object
 $article: article (object) that will be returned
 
-'ArticleInsertComplete': After an article is created
+'ArticleInsertComplete': After a new article is created
 $article: Article created
 $user: User creating the article
 $text: New content
@@ -404,12 +408,13 @@ $create: Whether or not the restoration caused the page to be created
 'ArticleViewRedirect': before setting "Redirected from ..." subtitle when follwed an redirect
 $article: target article (object)
 
+'AuthPluginAutoCreate': Called when creating a local account for an user logged
+in from an external authentication method
+$user: User object created locally
+
 'AuthPluginSetup': update or replace authentication plugin object ($wgAuth)
 Gives a chance for an extension to set it programattically to a variable class.
 &$auth: the $wgAuth object, probably a stub
-
-'AutoAuthenticate': called to authenticate users on external/environmental means
-$user: writes user object to this parameter
 
 'AutopromoteCondition': check autopromote condition for user.
 $type: condition type
@@ -469,7 +474,7 @@ $isbn: ISBN to show information for
 $output: OutputPage object in use
 
 'BrokenLink': Before the HTML is created for a broken (i.e. red) link
-&$this: Linker instance
+&$linker: Linker instance
 $nt: the page title
 $query: the URL query string passed in
 &$u: the URL of this link
@@ -613,8 +618,9 @@ $fileVersions: array of undeleted versions. Empty if all versions were restored
 $user: user who performed the undeletion
 $reason: reason
 
-'GetAvailableRights': after calculating a list of all available rights
-&$rights: Array of rights, which may be added to.
+'GetAutoPromoteGroups': When determining which autopromote groups a user is entitled to be in.
+&$user: user to promote.
+&$promote: groups that will be added.
 
 'GetBlockedStatus': after loading blocking status of an user from the database
 $user: user (object) being checked
@@ -658,11 +664,6 @@ $result: User permissions error to add. If none, return true.
 'getUserPermissionsErrorsExpensive': Absolutely the same, but is called only
 	if expensive checks are enabled.
 
-'ImageOpenShowImageInlineBefore': Call potential extension just before showing
-	the image on an image page
-$imagePage: ImagePage object ($this)
-$output: $wgOut
-
 'ImageBeforeProduceHTML': Called before producing the HTML created by a wiki
 	image insertion.  You can skip the default logic entirely by returning
 	false, or just modify a	few things using call-by-reference.
@@ -675,6 +676,22 @@ $output: $wgOut
 	includes/Linker.php for Linker::makeImageLink2
 &$time: Timestamp of file in 'YYYYMMDDHHIISS' string form, or false for current
 &$res: Final HTML output, used if you return false
+
+
+'ImageOpenShowImageInlineBefore': Call potential extension just before showing
+	the image on an image page
+$imagePage: ImagePage object ($this)
+$output: $wgOut
+
+'ImagePageFileHistoryLine': called when a file history line is contructed
+$file: the file
+$line: the HTML of the history line
+$css: the line CSS class
+
+'ImagePageFindFile': called when fetching the file associated with an image page
+$page: ImagePage object
+&$file: File object
+&$displayFile: displayed File object
 
 'InitPreferencesForm': called at the end of PreferencesForm's constructor
 $form: the PreferencesForm
@@ -711,6 +728,11 @@ $lang: laguage code (string)
 $specialPageAliases: associative array of magic words synonyms
 $lang: laguage code (string)
 
+'LinkerMakeExternalLink': At the end of Linker::makeExternalLink() just before the return
+&$url: the link url
+&$text: the link text
+&$link: the new link HTML (if returning false)
+
 'LinksUpdate': At the beginning of LinksUpdate::doUpdate() just before the actual update
 &$linksUpdate: the LinkUpdate object
 
@@ -723,6 +745,14 @@ $lang: laguage code (string)
 'LoadAllMessages': called by MessageCache::loadAllMessages() to load extensions messages
 
 'LoadExtensionSchemaUpdates': called by maintenance/updaters.inc when upgrading database schema
+
+'LocalFile::getHistory': called before file history query performed
+$file: the file
+$tables: tables
+$fields: select fields
+$conds: conditions
+$opts: query options
+$join_conds: JOIN conditions
 
 'LoginAuthenticateAudit': a login attempt for a valid user account either succeeded or failed.
                           No return data is accepted; this hook is for auditing only.
@@ -796,6 +826,11 @@ for all 'SkinTemplate'-type skins, use the SkinTemplateToolboxEnd hook
 instead.
 $tools: array of tools
 
+'NewRevisionFromEditComplete': called when a revision was inserted due to an edit
+$article: the article edited
+$rev: the new revision
+$baseID: the revision ID this was based off, if any
+
 'OutputPageBeforeHTML': a page has been processed by the parser and
 the resulting HTML is about to be displayed.  
 $parserOutput: the parserOutput (object) that corresponds to the page 
@@ -811,6 +846,10 @@ $article: the article that the history is loading for
 'PageHistoryLineEnding' : right before the end <li> is added to a history line
 $row: the revision row for this line
 $s: the string representing this parsed line
+
+'PageHistoryPager::getQueryInfo': when a history pager query parameter set is constructed
+$pager: the pager
+$queryInfo: the query parameters
 
 'PageRenderingHash': alter the parser cache option hash key
   A parser extension which depends on user options should install
@@ -1060,13 +1099,23 @@ $funct: function called to execute the special page
 'SpecialPage_initList': called when setting up SpecialPage::$mList, use this hook to remove a core special page
 $list: list (array) of core special pages
 
+'SpecialRecentChangesPanel' called when building form options in SpecialRecentChanges
+&$extraOpts: array of added items, to which can be added
+$opts: FormOptions for this request
+
+'SpecialRecentChangesQuery': called when building sql query for SpecialRecentChanges
+&$conds: array of where conditionals for query
+&$tables: array of tables to be queried
+&$join_conds: join conditions for the tables
+$opts: FormOptions for this request
+
 'SpecialSearchNogomatch': called when user clicked the "Go" button but the target doesn't exist
 $title: title object generated from the text entred by the user
 
 'SpecialSearchResults': called before search result display when there are matches
 $term: string of search term
-$titleMatches: empty or SearchResultSet object
-$textMatches: empty or SearchResultSet object
+&$titleMatches: empty or SearchResultSet object
+&$textMatches: empty or SearchResultSet object
 
 'SpecialSearchNoResults': called before search result display when there are no matches
 $term: string of search term
@@ -1148,6 +1197,9 @@ $template: SimpleTemplate instance for the form
 $user: User to get groups for
 &$groups: Current effective groups
 
+'UserGetAllRights': after calculating a list of all available rights
+&$rights: Array of rights, which may be added to.
+
 'UserGetEmail': called when getting an user email address
 $user: User object
 &$email: email, change this to override local email
@@ -1163,6 +1215,14 @@ $user: User object
 $user: User to get rights for
 &$rights: Current rights
 
+'UserLoadDefaults': called when loading a default user
+$user: user object
+$name: user name
+
+'UserLoadFromSession': called to authenticate users on external/environmental means
+$user: user object being loaded
+&$result: set this to a boolean value to abort the normal authentification process
+
 'UserLoginComplete': after a user has logged in
 $user: the user object that was created on login
 $inject_html: Any HTML to inject after the "logged in" message.
@@ -1176,6 +1236,7 @@ $user: the user object that is about to be logged out
 'UserLogoutComplete': after a user has logged out
 $user: the user object _after_ logout (won't have name, ID, etc.)
 $inject_html: Any HTML to inject after the "logged out" message.
+$oldName: name of the user before logout (string)
 
 'UserRights': After a user's group memberships are changed
 $user  : User object that was changed
@@ -1188,6 +1249,11 @@ $talks: array of new talks page(s)
 
 'UserSaveSettings': called when saving user settings
 $user: User object
+
+'UserSetCookies': called when setting user cookies
+$user: User object
+&$session: session array, will be added to $_SESSION
+&$cookies: cookies array mapping cookie name to its value
 
 'UserSetEmail': called when changing user email address
 $user: User object

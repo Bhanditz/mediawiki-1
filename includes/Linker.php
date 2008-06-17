@@ -9,7 +9,7 @@
  * so that ever other bit of the wiki doesn't have to
  * go loading up Skin to get at it.
  *
- * @addtogroup Skins
+ * @ingroup Skins
  */
 class Linker {
 
@@ -123,7 +123,7 @@ class Linker {
 	/**
 	 * This function is a shortcut to makeKnownLinkObj(Title::newFromText($title),...). Do not call
 	 * it if you already have a title object handy. See makeKnownLinkObj for further documentation.
-	 * 
+	 *
 	 * @param $title String: the text of the title
 	 * @param $text  String: link text
 	 * @param $query String: optional query part
@@ -144,7 +144,7 @@ class Linker {
 	/**
 	 * This function is a shortcut to makeBrokenLinkObj(Title::newFromText($title),...). Do not call
 	 * it if you already have a title object handy. See makeBrokenLinkObj for further documentation.
-	 * 
+	 *
 	 * @param string $title The text of the title
 	 * @param string $text Link text
 	 * @param string $query Optional query part
@@ -164,10 +164,10 @@ class Linker {
 
 	/**
 	 * @deprecated use makeColouredLinkObj
-	 * 
+	 *
 	 * This function is a shortcut to makeStubLinkObj(Title::newFromText($title),...). Do not call
 	 * it if you already have a title object handy. See makeStubLinkObj for further documentation.
-	 * 
+	 *
 	 * @param $title String: the text of the title
 	 * @param $text  String: link text
 	 * @param $query String: optional query part
@@ -189,7 +189,7 @@ class Linker {
 	 * Make a link for a title which may or may not be in the database. If you need to
 	 * call this lots of times, pre-fill the link cache with a LinkBatch, otherwise each
 	 * call to this will result in a DB query.
-	 * 
+	 *
 	 * @param $nt     Title: the title object to make the link from, e.g. from
 	 *                      Title::newFromText.
 	 * @param $text  String: link text
@@ -277,14 +277,16 @@ class Linker {
 	 * @param $style  String: style to apply - if empty, use getInternalLinkAttributesObj instead
 	 * @return the a-element
 	 */
-	function makeKnownLinkObj( $nt, $text = '', $query = '', $trail = '', $prefix = '' , $aprops = '', $style = '' ) {
+	function makeKnownLinkObj( $title, $text = '', $query = '', $trail = '', $prefix = '' , $aprops = '', $style = '' ) {
 		wfProfileIn( __METHOD__ );
 
-		if ( !$nt instanceof Title ) {
+		if ( !$title instanceof Title ) {
 			# Fail gracefully
 			wfProfileOut( __METHOD__ );
 			return "<!-- ERROR -->{$prefix}{$text}{$trail}";
 		}
+
+		$nt = $this->normaliseSpecialPage( $title );
 
 		$u = $nt->escapeLocalURL( $query );
 		if ( $nt->getFragment() != '' ) {
@@ -313,7 +315,7 @@ class Linker {
 
 	/**
 	 * Make a red link to the edit page of a given title.
-	 * 
+	 *
 	 * @param $nt Title object of the target page
 	 * @param $text  String: Link text
 	 * @param $query String: Optional query part
@@ -321,14 +323,16 @@ class Linker {
 	 *                      be included in the link text. Other characters will be appended after
 	 *                      the end of the link.
 	 */
-	function makeBrokenLinkObj( $nt, $text = '', $query = '', $trail = '', $prefix = '' ) {
+	function makeBrokenLinkObj( $title, $text = '', $query = '', $trail = '', $prefix = '' ) {
 		wfProfileIn( __METHOD__ );
 
-		if ( !$nt instanceof Title ) {
+		if ( !$title instanceof Title ) {
 			# Fail gracefully
 			wfProfileOut( __METHOD__ );
 			return "<!-- ERROR -->{$prefix}{$text}{$trail}";
 		}
+
+		$nt = $this->normaliseSpecialPage( $title );
 
 		if( $nt->getNamespace() == NS_SPECIAL ) {
 			$q = $query;
@@ -356,9 +360,9 @@ class Linker {
 
 	/**
 	 * @deprecated use makeColouredLinkObj
-	 * 
+	 *
 	 * Make a brown link to a short article.
-	 * 
+	 *
 	 * @param $nt Title object of the target page
 	 * @param $text  String: link text
 	 * @param $query String: optional query part
@@ -372,7 +376,7 @@ class Linker {
 
 	/**
 	 * Make a coloured link.
-	 * 
+	 *
 	 * @param $nt Title object of the target page
 	 * @param $colour Integer: colour of the link
 	 * @param $text   String:  link text
@@ -408,7 +412,7 @@ class Linker {
 		return $this->makeColouredLinkObj( $nt, $colour, $text, $query, $trail, $prefix );
 	}
 
-	/** 
+	/**
 	 * Make appropriate markup for a link to the current article. This is currently rendered
 	 * as the bold link text. The calling sequence is the same as the other make*LinkObj functions,
 	 * despite $query not being used.
@@ -419,6 +423,16 @@ class Linker {
 		}
 		list( $inside, $trail ) = Linker::splitTrail( $trail );
 		return "<strong class=\"selflink\">{$prefix}{$text}{$inside}</strong>{$trail}";
+	}
+
+	function normaliseSpecialPage( Title $title ) {
+		if ( $title->getNamespace() == NS_SPECIAL ) {
+			list( $name, $subpage ) = SpecialPage::resolveAliasWithSubpage( $title->getDBkey() );
+			if ( !$name ) return $title;
+			return SpecialPage::getTitleFor( $name, $subpage );
+		} else {
+			return $title;
+		}
 	}
 
 	/** @todo document */
@@ -446,7 +460,7 @@ class Linker {
 		return $s;
 	}
 
-	/** 
+	/**
 	 * Creates the HTML source for images
 	 * @deprecated use makeImageLink2
 	 *
@@ -493,7 +507,7 @@ class Linker {
 	 * @param File $file File object, or false if it doesn't exist
 	 *
 	 * @param array $frameParams Associative array of parameters external to the media handler.
-	 *     Boolean parameters are indicated by presence or absence, the value is arbitrary and 
+	 *     Boolean parameters are indicated by presence or absence, the value is arbitrary and
 	 *     will often be false.
 	 *          thumbnail       If present, downscale and frame
 	 *          manualthumb     Image name to use as a thumbnail, instead of automatic scaling
@@ -503,17 +517,18 @@ class Linker {
 	 *          upright_factor  Fudge factor for "upright" tweak (default 0.75)
 	 *          border          If present, show a border around the image
 	 *          align           Horizontal alignment (left, right, center, none)
-	 *          valign          Vertical alignment (baseline, sub, super, top, text-top, middle, 
+	 *          valign          Vertical alignment (baseline, sub, super, top, text-top, middle,
 	 *                          bottom, text-bottom)
 	 *          alt             Alternate text for image (i.e. alt attribute). Plain text.
 	 *          caption         HTML for image caption.
 	 *
-	 * @param array $handlerParams Associative array of media handler parameters, to be passed 
-	 *       to transform(). Typical keys are "width" and "page". 
+	 * @param array $handlerParams Associative array of media handler parameters, to be passed
+	 *       to transform(). Typical keys are "width" and "page".
 	 * @param string $time, timestamp of the file, set as false for current
+	 * @param string $query, query params for desc url
 	 * @return string HTML for an image, with links, wrappers, etc.
 	 */
-	function makeImageLink2( Title $title, $file, $frameParams = array(), $handlerParams = array(), $time = false ) {
+	function makeImageLink2( Title $title, $file, $frameParams = array(), $handlerParams = array(), $time = false, $query = "" ) {
 		$res = null;
 		if( !wfRunHooks( 'ImageBeforeProduceHTML', array( &$this, &$title,
 		&$file, &$frameParams, &$handlerParams, &$time, &$res ) ) ) {
@@ -559,8 +574,8 @@ class Linker {
 				}
 				// Use width which is smaller: real image width or user preference width
 				// For caching health: If width scaled down due to upright parameter, round to full __0 pixel to avoid the creation of a lot of odd thumbs
-				$prefWidth = isset( $fp['upright'] ) ? 
-					round( $wgThumbLimits[$wopt] * $fp['upright'], -1 ) : 
+				$prefWidth = isset( $fp['upright'] ) ?
+					round( $wgThumbLimits[$wopt] * $fp['upright'], -1 ) :
 					$wgThumbLimits[$wopt];
 				if ( $hp['width'] <= 0 || $prefWidth < $hp['width'] ) {
 					$hp['width'] = $prefWidth;
@@ -580,7 +595,7 @@ class Linker {
 			if ( $fp['align'] == '' ) {
 				$fp['align'] = $wgContLang->isRTL() ? 'left' : 'right';
 			}
-			return $prefix.$this->makeThumbLink2( $title, $file, $fp, $hp, $time ).$postfix;
+			return $prefix.$this->makeThumbLink2( $title, $file, $fp, $hp, $time, $query ).$postfix;
 		}
 
 		if ( $file && isset( $fp['frameless'] ) ) {
@@ -604,6 +619,7 @@ class Linker {
 		} else {
 			$s = $thumb->toHtml( array(
 				'desc-link' => true,
+				'desc-query' => $query,
 				'alt' => $fp['alt'],
 				'valign' => isset( $fp['valign'] ) ? $fp['valign'] : false ,
 				'img-class' => isset( $fp['border'] ) ? 'thumbborder' : false ) );
@@ -616,11 +632,11 @@ class Linker {
 
 	/**
 	 * Make HTML for a thumbnail including image, border and caption
-	 * @param Title $title 
+	 * @param Title $title
 	 * @param File $file File object or false if it doesn't exist
 	 */
 	function makeThumbLinkObj( Title $title, $file, $label = '', $alt, $align = 'right', $params = array(), $framed=false , $manualthumb = "" ) {
-		$frameParams = array( 
+		$frameParams = array(
 			'alt' => $alt,
 			'caption' => $label,
 			'align' => $align
@@ -630,7 +646,7 @@ class Linker {
 		return $this->makeThumbLink2( $title, $file, $frameParams, $params );
 	}
 
-	function makeThumbLink2( Title $title, $file, $frameParams = array(), $handlerParams = array(), $time = false ) {
+	function makeThumbLink2( Title $title, $file, $frameParams = array(), $handlerParams = array(), $time = false, $query = "" ) {
 		global $wgStylePath, $wgContLang;
 		$exists = $file && $file->exists();
 
@@ -644,7 +660,7 @@ class Linker {
 		if ( !isset( $fp['caption'] ) ) $fp['caption'] = '';
 
 		if ( empty( $hp['width'] ) ) {
-			// Reduce width for upright images when parameter 'upright' is used 
+			// Reduce width for upright images when parameter 'upright' is used
 			$hp['width'] = isset( $fp['upright'] ) ? 130 : 180;
 		}
 		$thumb = false;
@@ -683,7 +699,9 @@ class Linker {
 			}
 		}
 
-		$query = $page ? 'page=' . urlencode( $page ) : '';
+		if( $page ) {
+			$query = $query ? '&page=' . urlencode( $page ) : 'page=' . urlencode( $page );
+		}
 		$url = $title->getLocalURL( $query );
 
 		$more = htmlspecialchars( wfMsg( 'thumbnail-more' ) );
@@ -699,7 +717,8 @@ class Linker {
 			$s .= $thumb->toHtml( array(
 				'alt' => $fp['alt'],
 				'img-class' => 'thumbimage',
-				'desc-link' => true ) );
+				'desc-link' => true,
+				'desc-query' => $query ) );
 			if ( isset( $fp['framed'] ) ) {
 				$zoomicon="";
 			} else {
@@ -734,9 +753,9 @@ class Linker {
 				if( $text == '' )
 					$text = htmlspecialchars( $title->getPrefixedText() );
 				$redir = RepoGroup::singleton()->getLocalRepo()->checkRedirect( $title );
-				if( $redir ) {	
+				if( $redir ) {
 					return $this->makeKnownLinkObj( $title, $text, $query, $trail, $prefix );
-				} 
+				}
 				$q = 'wpDestFile=' . $title->getPartialUrl();
 				if( $query != '' )
 					$q .= '&' . $query;
@@ -755,27 +774,28 @@ class Linker {
 	}
 
 	/** @deprecated use Linker::makeMediaLinkObj() */
-	function makeMediaLink( $name, $unused = '', $text = '' ) {
+	function makeMediaLink( $name, $unused = '', $text = '', $time = false ) {
 		$nt = Title::makeTitleSafe( NS_IMAGE, $name );
-		return $this->makeMediaLinkObj( $nt, $text );
+		return $this->makeMediaLinkObj( $nt, $text, $time );
 	}
 
 	/**
 	 * Create a direct link to a given uploaded file.
 	 *
 	 * @param $title Title object.
-	 * @param $text  String: pre-sanitized HTML
+	 * @param $text String: pre-sanitized HTML
+	 * @param $time string: time image was created
 	 * @return string HTML
 	 *
 	 * @public
 	 * @todo Handle invalid or missing images better.
 	 */
-	function makeMediaLinkObj( $title, $text = '' ) {
+	function makeMediaLinkObj( $title, $text = '', $time = false ) {
 		if( is_null( $title ) ) {
 			### HOTFIX. Instead of breaking, return empty string.
 			return $text;
 		} else {
-			$img  = wfFindFile( $title );
+			$img  = wfFindFile( $title, $time );
 			if( $img ) {
 				$url  = $img->getURL();
 				$class = 'internal';
@@ -813,6 +833,12 @@ class Linker {
 		$url = htmlspecialchars( $url );
 		if( $escape ) {
 			$text = htmlspecialchars( $text );
+		}
+		$link = '';
+		$success = wfRunHooks('LinkerMakeExternalLink', array( &$url, &$text, &$link ) );
+		if(!$success) {
+			wfDebug("Hook LinkerMakeExternalLink changed the output of link with url {$url} and text {$text} to {$link}", true);
+			return $link;
 		}
 		return '<a href="'.$url.'"'.$style.'>'.$text.'</a>';
 	}
@@ -913,7 +939,7 @@ class Linker {
 			wfMsgHtml( 'blocklink' ) );
 		return $blockLink;
 	}
-	
+
 	/**
 	 * Generate a user link if the current user is allowed to view it
 	 * @param $rev Revision object.
@@ -954,7 +980,7 @@ class Linker {
 		}
 		return $link;
 	}
-	
+
 	/**
 	 * This function is called by all recent changes variants, by the page history,
 	 * and by the user contributions list. It is responsible for formatting edit
@@ -1055,14 +1081,19 @@ class Linker {
 			array( $this, 'formatLinksInCommentCallback' ),
 			$comment );
 	}
-	
+
 	protected function formatLinksInCommentCallback( $match ) {
 		global $wgContLang;
 
 		$medians = '(?:' . preg_quote( MWNamespace::getCanonicalName( NS_MEDIA ), '/' ) . '|';
 		$medians .= preg_quote( $wgContLang->getNsText( NS_MEDIA ), '/' ) . '):';
-		
+
 		$comment = $match[0];
+
+		# fix up urlencoded title texts (copied from Parser::replaceInternalLinks)
+		if( strpos( $match[1], '%' ) !== false ) {
+			$match[1] = str_replace( array('<', '>'), array('&lt;', '&gt;'), urldecode($match[1]) );
+		}
 
 		# Handle link renaming [[foo|text]] will show link as "text"
 		if( "" != $match[3] ) {
@@ -1233,7 +1264,7 @@ class Linker {
 		} elseif( $hook == 'EditSectionLinkForOther' ) {
 			wfRunHooks( 'EditSectionLinkForOther', array( &$this, $nt, $section, $url, &$result ) );
 		}
-		
+
 		// For reverse compatibility, add the brackets *after* the hook is run,
 		// and even add them to hook-provided text.
 		if( is_null( $result ) ) {
@@ -1301,7 +1332,7 @@ class Linker {
 			. $this->buildRollbackLink( $rev )
 			. ']</span>';
 	}
-	
+
 	/**
 	 * Build a raw rollback link, useful for collections of "tool" links
 	 *
@@ -1318,7 +1349,7 @@ class Linker {
 			$title,
 			wfMsgHtml( 'rollbacklink' ),
 			'action=rollback&from=' . urlencode( $rev->getUserText() ) . $extra
-		);		
+		);
 	}
 
 	/**
@@ -1356,9 +1387,10 @@ class Linker {
 			}
 			$outText .= '</div><ul>';
 
+			usort( $templates, array( 'Title', 'compare' ) );
 			foreach ( $templates as $titleObj ) {
 				$r = $titleObj->getRestrictions( 'edit' );
-				if ( in_array( 'sysop', $r ) ) { 
+				if ( in_array( 'sysop', $r ) ) {
 					$protected = wfMsgExt( 'template-protected', array( 'parseinline' ) );
 				} elseif ( in_array( 'autoconfirmed', $r ) ) {
 					$protected = wfMsgExt( 'template-semiprotected', array( 'parseinline' ) );

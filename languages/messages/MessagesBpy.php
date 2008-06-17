@@ -1,7 +1,8 @@
 <?php
 /** Bishnupriya (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Uttam Singha, Dec 2006
  * @author Usingha
@@ -143,8 +144,6 @@ $messages = array(
 'dec'           => 'ডিসে',
 
 # Categories related messages
-'categories'            => 'বিষয়রথাকহানি',
-'categoriespagetext'    => 'ইমারঠারর উইকিপিডিয়াত এবাকার বিষয়রথাক:',
 'pagecategories'        => '{{PLURAL:$1|থাক|থাকহানি}}',
 'category_header'       => '"$1" বিষয়রথাকে আসে নিবন্ধহানি',
 'subcategories'         => 'উপথাক',
@@ -390,7 +389,6 @@ $messages = array(
 # Miscellaneous special pages
 'nbytes'       => '$1 বাইট',
 'ncategories'  => '$1 {{PLURAL:$1|থাক|থাকহানি}}',
-'specialpages' => 'বিশেষ পাতাহানি',
 'ancientpages' => 'পুরানা পাতাহানি',
 'move'         => 'থেইকরানি',
 
@@ -410,6 +408,10 @@ $messages = array(
 'allpagesnext'   => 'থাঙনাত',
 'allpagessubmit' => 'হাত',
 'allpagesprefix' => 'মেয়েক এগন অকরিসি ৱাহির পাতাহানি দেহাদেঃ',
+
+# Special:Categories
+'categories'         => 'বিষয়রথাকহানি',
+'categoriespagetext' => 'ইমারঠারর উইকিপিডিয়াত এবাকার বিষয়রথাক:',
 
 # Watchlist
 'watchlist'       => 'মর তালাবি',
@@ -497,5 +499,8 @@ $1',
 
 # Auto-summaries
 'autoredircomment' => '[[$1]]-ত যানার বারো-র্নিদেশ করানি ইল',
+
+# Special:SpecialPages
+'specialpages' => 'বিশেষ পাতাহানি',
 
 );

@@ -1,15 +1,14 @@
 <?php
 /** Old English (Anglo Saxon)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author SPQRobin
- * @author Siebrand
  * @author JJohnson
  * @author Wōdenhelm
+ * @author Siebrand
  */
-
-
 
 $messages = array(
 # User preference toggles
@@ -83,8 +82,6 @@ $messages = array(
 'dec'           => 'Ġēo',
 
 # Categories related messages
-'categories'               => 'Floccas',
-'categoriespagetext'       => 'Þā folgendan floccas standaþ in þǣm wici.',
 'pagecategories'           => '{{PLURAL:$1|Flocc|Floccas}}',
 'category_header'          => 'Ġewritu in flocce "$1"',
 'subcategories'            => 'Underfloccas',
@@ -96,7 +93,6 @@ $messages = array(
 'mainpagedocfooter' => 'Þeahtian [http://meta.wikimedia.org/wiki/Help:Contents Brūcendlǣdend] for helpe on bryce þǣre wiki software.
 
 == Onginnende ==
-
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
 * [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]',
@@ -165,6 +161,7 @@ $messages = array(
 
 'youhavenewmessages'      => 'Þu hæfst $1 ($2).',
 'newmessageslink'         => 'nīwu ǣrendgewritu',
+'newmessagesdifflink'     => 'nīwoste wendung',
 'youhavenewmessagesmulti' => 'Þu hæfst nīwu ǣrendu on $1',
 'editsection'             => 'ādihtan',
 'editold'                 => 'ādihtan',
@@ -206,6 +203,7 @@ $messages = array(
 'yourdomainname'             => 'Þīn geweald',
 'loginproblem'               => '<b>Þīn inmeldung wearþ gescremed.</b><br />Eftrōmie!',
 'login'                      => 'Inmeldian',
+'nav-login-createaccount'    => 'Settan nīwne hordcleofan oþþe inmeldian',
 'userlogin'                  => 'Settan nīwne hordcleofan oþþe inmeldian',
 'logout'                     => 'Ūtmeldian',
 'userlogout'                 => 'Ūtmeldian',
@@ -406,23 +404,27 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 'brokenredirects-edit'   => '(ādihtan)',
 'brokenredirects-delete' => '(āfeorsian)',
 
+'withoutinterwiki'         => 'Trametas būtan sprǣcbendum',
+'withoutinterwiki-summary' => 'Þā folgendan trametas ne bindaþ tō ōðrum sprǣcfadungum:',
+
 # Miscellaneous special pages
-'ncategories'       => '$1 {{PLURAL:$1|flocca|floccas}}',
-'nlinks'            => '$1 bendas',
-'specialpage-empty' => 'Þis tramet is ǣmtig.',
-'lonelypages'       => 'Ealdorlēase trametas',
-'unusedimages'      => 'Ungebrȳcodu biliðu',
-'popularpages'      => 'Dēore trametas',
-'wantedcategories'  => 'Gewilnode floccas',
-'wantedpages'       => 'Gewilnode trametas',
-'shortpages'        => 'Scorte trametas',
-'longpages'         => 'Lange trametas',
-'specialpages'      => 'Syndrige trametas',
-'spheading'         => 'Syndrige trametas eallum brýcerum',
-'newpages'          => 'Nīwe trametas',
-'newpages-username' => 'Brūcendnama:',
-'ancientpages'      => 'Ieldestan Trametas',
-'move'              => 'Gān',
+'ncategories'          => '$1 {{PLURAL:$1|flocca|floccas}}',
+'nlinks'               => '$1 bendas',
+'specialpage-empty'    => 'Þis tramet is ǣmtig.',
+'lonelypages'          => 'Ealdorlēase trametas',
+'unusedimages'         => 'Ungebrȳcodu biliðu',
+'popularpages'         => 'Dēore trametas',
+'wantedcategories'     => 'Gewilnode floccas',
+'wantedpages'          => 'Gewilnode trametas',
+'mostlinked'           => 'Gebundenostan trametas',
+'mostlinkedcategories' => 'Gebundenostan floccas',
+'mostlinkedtemplates'  => 'Gebundenostan bysena',
+'shortpages'           => 'Scorte trametas',
+'longpages'            => 'Lange trametas',
+'newpages'             => 'Nīwe trametas',
+'newpages-username'    => 'Brūcendnama:',
+'ancientpages'         => 'Ieldestan Trametas',
+'move'                 => 'Gān',
 
 # Book sources
 'booksources'               => 'Bōcfruman',
@@ -446,6 +448,10 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 'allpagesprev'   => 'Beforan',
 'allpagesnext'   => 'Nīehst',
 'allpagessubmit' => 'Gān',
+
+# Special:Categories
+'categories'         => 'Floccas',
+'categoriespagetext' => 'Þā folgendan floccas standaþ in þǣm wici.',
 
 # Special:Listusers
 'listusers-noresult' => 'Nǣnne brūcend gefundenne.',
@@ -471,6 +477,7 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 'watchlist-hide-minor' => 'Hȳdan smala ādihtunga',
 
 'enotif_newpagetext' => 'Þēs is nīwe tramet.',
+'created'            => 'gescapen',
 
 # Delete/protect/revert
 'deletepage'         => 'Āfeorsian tramet',
@@ -493,8 +500,9 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 'restriction-type'   => 'Gelēafnes:',
 
 # Restrictions (nouns)
-'restriction-edit' => 'Ādihtan',
-'restriction-move' => 'Gān',
+'restriction-edit'   => 'Ādihtan',
+'restriction-move'   => 'Gān',
+'restriction-create' => 'Scieppan',
 
 # Undelete
 'undeletebtn'            => 'Edstaðola!',
@@ -511,12 +519,14 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 'sp-contributions-submit' => 'Sēcan',
 
 # What links here
-'whatlinkshere'      => 'Hwæt bindaþ hider',
-'whatlinkshere-page' => 'Tramet:',
-'linklistsub'        => '(Getalu benda)',
-'linkshere'          => 'Þā folgendan trametas bindaþ hider:',
-'nolinkshere'        => 'Nāne trametas bindaþ hider.',
-'isredirect'         => 'edlǣdungtramet',
+'whatlinkshere'       => 'Hwæt bindaþ hider',
+'whatlinkshere-page'  => 'Tramet:',
+'linklistsub'         => '(Getalu benda)',
+'linkshere'           => 'Þā folgendan trametas bindaþ hider:',
+'nolinkshere'         => 'Nāne trametas bindaþ hider.',
+'isredirect'          => 'edlǣdungtramet',
+'isimage'             => 'biliþbend',
+'whatlinkshere-links' => '← bendas',
 
 # Block/unblock
 'ipbreason'          => 'Racu',
@@ -687,6 +697,10 @@ Gif þis is *nā* þū, ne folga þisne bend. Þēos āsēðungrūn forealdaþ �
 'autosumm-new' => 'Nīwe tramet: $1',
 
 # Special:Version
-'version' => 'Fadung', # Not used as normal message but as header for the special page itself
+'version'       => 'Fadung', # Not used as normal message but as header for the special page itself
+'version-other' => 'Ōðer',
+
+# Special:SpecialPages
+'specialpages' => 'Syndrige trametas',
 
 );

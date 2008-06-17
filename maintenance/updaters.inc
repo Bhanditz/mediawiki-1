@@ -1,9 +1,8 @@
 <?php
 /**
- * @addtogroup Maintenance
+ * @file
+ * @ingroup Maintenance
  */
-
- /** */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
 	echo "This file is not a valid entry point\n";
@@ -142,9 +141,8 @@ $wgMysqlUpdates = array(
 	array( 'do_populate_parent_id' ),
 	array( 'check_bin', 'protected_titles', 'pt_title',      'patch-pt_title-encoding.sql', ),
 	array( 'maybe_do_profiling_memory_update' ),
-	array( 'add_field', 'page',          'page_title_ui',    'patch-page_title_ui.sql'),
-	array( 'do_populate_page_title_ui' ),
-	array( 'do_username_schema_change' ),
+	array( 'do_filearchive_indices_update' ),
+	array( 'update_password_format' ),
 );
 
 
@@ -973,6 +971,7 @@ function do_backlinking_indices_update() {
 		!index_has_field('imagelinks', 'il_to', 'il_from'))
 	{	
 		dbsource( archive( 'patch-backlinkindexes.sql' ) );
+		echo( "...backlinking indices updated\n" );
 	}
 }
 
@@ -981,6 +980,18 @@ function do_categorylinks_indices_update() {
 	if (!index_has_field('categorylinks', 'cl_sortkey', 'cl_from'))
 	{	
 		dbsource( archive( 'patch-categorylinksindex.sql' ) );
+		echo( "...categorylinks indices updated\n" );
+	}
+}
+
+function do_filearchive_indices_update() {
+	global $wgDatabase;
+	echo( "Checking filearchive indices...\n" );
+	$info = $wgDatabase->indexInfo( 'filearchive', 'fa_user_timestamp', __METHOD__ );
+	if ( !$info )
+	{	
+		dbsource( archive( 'patch-filearhive-user-index.sql' ) );
+		echo( "...filearchive indices updated\n" );
 	}
 }
 
@@ -1185,45 +1196,27 @@ function do_populate_parent_id() {
 	populate_rev_parent_id( $wgDatabase );
 }
 
-function do_populate_page_title_ui() {
-	global $wgDatabase;
-	if( update_row_exists( 'populate page_title_ui' ) ) {
-		echo "...page_title_ui column already populated.\n";
+function update_password_format() {
+	if ( update_row_exists( 'password format' ) ) {
+		echo "...password hash format already changed\n";
 		return;
 	}
-	$dontAutoRun = true;
-	require_once( 'populatePageTitleUi.php' );
-	populate_page_title_ui( $wgDatabase, array(
-		'override' => 0
-	) );
-}
 
-function do_username_schema_change() {
-	global $wgDatabase;
-	$update = array();
-	$fields = array(
-		array( 'archive', 'ar_user_text' ),
-		array( 'filearchive', 'fa_user_text' ),
-		array( 'image', 'img_user_text' ),
-		array( 'ipblocks', 'ipb_by_text' ),
-		array( 'oldimage', 'oi_user_text' ),
-		array( 'recentchanges', 'rc_user_text' ),
-		array( 'revision', 'rev_user_text' ),
-		array( 'user', 'user_name' ),
-	);
-	
-	foreach( $fields as $field ) {
-		if( update_row_exists( "schema_change {$field[0]}.{$field[1]}" ) ) {
-			echo "...{$field[0]}.{$field[1]} column already converted.\n";
-		} else {
-			$update[] = $field;
-		}
+	echo "Updating password hash format...";
+
+	global $wgDatabase, $wgPasswordSalt;
+	$user = $wgDatabase->tableName( 'user' );
+	if ( $wgPasswordSalt ) {
+		$sql = "UPDATE $user SET user_password=CONCAT(':B:', user_id, ':', user_password) " .
+			"WHERE user_password NOT LIKE ':%'";
+	} else {
+		$sql = "UPDATE $user SET user_password=CONCAT(':A:', user_password) " .
+			"WHERE user_password NOT LIKE ':%'";
 	}
-	if( count($update) > 1 ) {
-		$dontAutoRun = true;
-		require_once( 'convertUsernames.php' );
-		convert_usernames( $wgDatabase, $update );
-	}
+	$wgDatabase->query( $sql, __METHOD__ );
+	$wgDatabase->insert( 'updatelog', array( 'ul_key' => 'password format' ), __METHOD__ );
+
+	echo "done\n";
 }
 
 function
@@ -1491,10 +1484,10 @@ function do_postgres_updates() {
 		array("interwiki",    "iw_local",        "smallint", "iw_local::smallint DEFAULT 0"),
 		array("interwiki",    "iw_trans",        "smallint", "iw_trans::smallint DEFAULT 0"),
 		array("ipblocks",     "ipb_auto",        "smallint", "ipb_auto::smallint DEFAULT 0"),
-		array("ipblocks",     "ipb_anon_only",   "smallint", "ipb_anon_only::smallint DEFAULT 0"),
-		array("ipblocks",     "ipb_create_account", "smallint", "ipb_create_account::smallint DEFAULT 1"),
-		array("ipblocks",     "ipb_enable_autoblock", "smallint", "ipb_enable_autoblock::smallint DEFAULT 1"),
-		array("ipblocks",     "ipb_block_email", "smallint", "ipb_block_email::smallint DEFAULT 0"),
+		array("ipblocks",     "ipb_anon_only",   "smallint", "CASE WHEN ipb_anon_only=' ' THEN 0 ELSE ipb_anon_only::smallint END DEFAULT 0"),
+		array("ipblocks",     "ipb_create_account", "smallint", "CASE WHEN ipb_create_account=' ' THEN 0 ELSE ipb_create_account::smallint END DEFAULT 1"),
+		array("ipblocks",     "ipb_enable_autoblock", "smallint", "CASE WHEN ipb_enable_autoblock=' ' THEN 0 ELSE ipb_enable_autoblock::smallint END DEFAULT 1"),
+		array("ipblocks",     "ipb_block_email", "smallint", "CASE WHEN ipb_block_email=' ' THEN 0 ELSE ipb_block_email::smallint END DEFAULT 0"),
 		array("ipblocks",     "ipb_address",     "text",     "ipb_address::text"),
 		array("ipblocks",     "ipb_deleted",     "smallint", "ipb_deleted::smallint"),
 		array("math",         "math_inputhash",  "bytea",    "decode(math_inputhash,'escape')"),
@@ -1515,6 +1508,7 @@ function do_postgres_updates() {
 		array("recentchanges","rc_new",          "smallint", "rc_new::smallint DEFAULT 0"),
 		array("recentchanges","rc_type",         "smallint", "rc_type::smallint DEFAULT 0"),
 		array("recentchanges","rc_patrolled",    "smallint", "rc_patrolled::smallint DEFAULT 0"),
+		array("revision",     "rev_deleted",     "smallint", "rev_deleted::smallint DEFAULT 0"),
 		array("revision",     "rev_minor_edit",  "smallint", "rev_minor_edit::smallint DEFAULT 0"),
 		array("templatelinks","tl_namespace",    "smallint", "tl_namespace::smallint"),
 		array("user_newtalk", "user_ip",         "text",     "host(user_ip)"),
@@ -1720,3 +1714,4 @@ function do_postgres_updates() {
 
 	return;
 }
+

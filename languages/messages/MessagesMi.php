@@ -1,7 +1,8 @@
 <?php
 /** Maori (Māori)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  */
 
 $messages = array(
@@ -88,8 +89,7 @@ $messages = array(
 'randompage' => 'Tipihaere',
 
 # Miscellaneous special pages
-'specialpages' => 'Whārangi motuhake',
-'move'         => 'Nekehia',
+'move' => 'Nekehia',
 
 # Special:Allpages
 'allpages'       => 'Ngā whārangi katoa',
@@ -110,5 +110,8 @@ $messages = array(
 
 # Namespace 8 related
 'allmessages' => 'Pānui pūnaha',
+
+# Special:SpecialPages
+'specialpages' => 'Whārangi motuhake',
 
 );

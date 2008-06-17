@@ -29,7 +29,7 @@ if (!defined('MEDIAWIKI')) {
 }
 
 /**
- * @addtogroup API
+ * @ingroup API
  */
 class ApiParse extends ApiBase {
 
@@ -48,8 +48,11 @@ class ApiParse extends ApiBase {
 			$this->dieUsage("The page parameter cannot be used together with the text and title parameters", 'params');
 		$prop = array_flip($params['prop']);
 		$revid = false;
-		
+
 		global $wgParser, $wgUser;
+		$popts = new ParserOptions();
+		$popts->setTidy(true);
+		$popts->enableLimitReport();
 		if(!is_null($oldid) || !is_null($page))
 		{
 			if(!is_null($oldid))
@@ -62,7 +65,7 @@ class ApiParse extends ApiBase {
 					$this->dieUsage("You don't have permission to view deleted revisions", 'permissiondenied');
 				$text = $rev->getRawText();
 				$titleObj = $rev->getTitle();
-				$p_result = $wgParser->parse($text, $titleObj, new ParserOptions());
+				$p_result = $wgParser->parse($text, $titleObj, $popts);
 			}
 			else
 			{
@@ -77,7 +80,7 @@ class ApiParse extends ApiBase {
 				$pcache = ParserCache::singleton();
 				$p_result = $pcache->get($articleObj, $wgUser);
 				if(!$p_result) {
-					$p_result = $wgParser->parse($articleObj->getContent(), $titleObj, new ParserOptions());
+					$p_result = $wgParser->parse($articleObj->getContent(), $titleObj, $popts);
 					global $wgUseParserCache;
 					if($wgUseParserCache)
 						$pcache->save($p_result, $articleObj, $wgUser);
@@ -89,7 +92,7 @@ class ApiParse extends ApiBase {
 			$titleObj = Title::newFromText($title);
 			if(!$titleObj)
 				$titleObj = Title::newFromText("API");
-			$p_result = $wgParser->parse($text, $titleObj, new ParserOptions());
+			$p_result = $wgParser->parse($text, $titleObj, $popts);
 		}
 
 		// Return result
@@ -128,7 +131,7 @@ class ApiParse extends ApiBase {
 		$this->setIndexedTagNames( $result_array, $result_mapping );
 		$result->addValue( null, $this->getModuleName(), $result_array );
 	}
-	
+
 	private function formatLangLinks( $links ) {
 		$result = array();
 		foreach( $links as $link ) {
@@ -140,7 +143,7 @@ class ApiParse extends ApiBase {
 		}
 		return $result;
 	}
-	
+
 	private function formatCategoryLinks( $links ) {
 		$result = array();
 		foreach( $links as $link => $sortkey ) {
@@ -151,7 +154,7 @@ class ApiParse extends ApiBase {
 		}
 		return $result;
 	}
-	
+
 	private function formatLinks( $links ) {
 		$result = array();
 		foreach( $links as $ns => $nslinks ) {
@@ -166,7 +169,7 @@ class ApiParse extends ApiBase {
 		}
 		return $result;
 	}
-	
+
 	private function setIndexedTagNames( &$array, $mapping ) {
 		foreach( $mapping as $key => $name ) {
 			if( isset( $array[$key] ) )
@@ -176,7 +179,7 @@ class ApiParse extends ApiBase {
 
 	public function getAllowedParams() {
 		return array (
-			'title' => array( 
+			'title' => array(
 				ApiBase :: PARAM_DFLT => 'API',
 			),
 			'text' => null,
@@ -223,7 +226,6 @@ class ApiParse extends ApiBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiParse.php 33069 2008-04-10 10:51:40Z catrope $';
+		return __CLASS__ . ': $Id$';
 	}
 }
-

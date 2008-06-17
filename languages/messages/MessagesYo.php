@@ -1,7 +1,8 @@
 <?php
 /** Yoruba (Yorùbá)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Demmy
  * @author SPQRobin
@@ -156,8 +157,6 @@ A ti fi orúkọ yín s'ílẹ̀. Ẹ mọ́ gbàgbé l'áti s'àtúnṣe àwọ
 'filedelete-submit' => 'Paarẹ́',
 
 # Miscellaneous special pages
-'specialpages'      => 'Àwọn ojúewé pàtàkì',
-'spheading'         => 'Àwọn ojúewé Pàtàkì fún gbogbo àwọn ẹnitínṣe',
 'newpages'          => 'Àwọn ojúewé tuntun',
 'newpages-username' => 'Orúkọ Ẹnitínṣe:',
 
@@ -196,5 +195,8 @@ A ti fi orúkọ yín s'ílẹ̀. Ẹ mọ́ gbàgbé l'áti s'àtúnṣe àwọ
 
 # Attribution
 'lastmodifiedatby' => 'Igba ti a se atunse si ojuewe yi gbeyin ni $2, $1 by $3.', # $1 date, $2 time, $3 user
+
+# Special:SpecialPages
+'specialpages' => 'Àwọn ojúewé pàtàkì',
 
 );

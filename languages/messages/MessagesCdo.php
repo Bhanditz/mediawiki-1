@@ -1,8 +1,10 @@
 <?php
 /** Min Dong Chinese (Mìng-dĕ̤ng-ngṳ̄)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
+ * @author Siebrand
  */
 
 $datePreferences = array(
@@ -82,7 +84,6 @@ $messages = array(
 'dec'           => '12ng',
 
 # Categories related messages
-'categories'             => 'Lôi-biék',
 'pagecategories'         => '{{PLURAL:$1|Lôi-biék|Lôi-biék}}',
 'category_header'        => '"$1" lôi-biék â-dā̤ gì ùng-ciŏng',
 'subcategories'          => 'Cṳ̄-lôi-biék',
@@ -454,7 +455,7 @@ Siók-mìng: (dāng) = gâe̤ng dék sĭng bēng-buōng bī-piâng, (sèng) = g�
 'uploadedfiles'     => 'Siông-duòng ùng-giông',
 'ignorewarning'     => 'Mò̤ sê̤ṳ gīng-gó̤ bō̤-còng ùng-giông.',
 'ignorewarnings'    => 'Mò̤ sê̤ṳ gīng-gó̤',
-'fileexists'        => 'Ī-gĭng ô siŏh bĭk dè̤ng miàng ùng-giông, nṳ̄ nâ mâ̤ káuk-dêng nṳ̄ sê-ng-sê dŏng-cĭng páh-sáung gāi-biéng ĭ, chiāng giēng-chă $1.',
+'fileexists'        => 'Ī-gĭng ô siŏh bĭk dè̤ng miàng ùng-giông, nṳ̄ nâ mâ̤ káuk-dêng nṳ̄ sê-ng-sê dŏng-cĭng páh-sáung gāi-biéng ĭ, chiāng giēng-chă <strong><tt>$1</tt></strong>.',
 'successfulupload'  => 'Siông-diòng sìng-gŭng',
 'uploadwarning'     => 'Siông-duòng gīng-gó̤',
 'savefile'          => 'Bō̤-còng ùng-giông',
@@ -511,8 +512,8 @@ Téng buōng câng kiū siék gáu gĭng-dáng, ĭ ī-gĭng ké̤ṳk nè̤ng si
 'brokenredirects-edit'   => '(gāi)',
 'brokenredirects-delete' => '(chēng)',
 
-'withoutinterwiki'        => 'Mò̤ kuá wiki gì hiĕk',
-'withoutinterwiki-header' => 'Â-dā̤ hiĕk-miêng mò̤ lièng gáu gì-tă ngṳ̄-ngiòng bēng-buōng gì kuá wiki lièng-giék:',
+'withoutinterwiki'         => 'Mò̤ kuá wiki gì hiĕk',
+'withoutinterwiki-summary' => 'Â-dā̤ hiĕk-miêng mò̤ lièng gáu gì-tă ngṳ̄-ngiòng bēng-buōng gì kuá wiki lièng-giék:',
 
 'fewestrevisions' => 'Ké̤ṳk siŭ-gāi guó dék ciēu làu gì ùng-ciŏng',
 
@@ -531,8 +532,6 @@ Téng buōng câng kiū siék gáu gĭng-dáng, ĭ ī-gĭng ké̤ṳk nè̤ng si
 'longpages'            => 'Dòng hiĕk',
 'protectedpages'       => 'Bō̤-hô hiĕk',
 'listusers'            => 'Ê̤ṳng-hô-dăng',
-'specialpages'         => 'Dĕk-sṳ̀ hiĕk',
-'restrictedpheading'   => 'Ô âing-cié gì dĕk-sṳ̀ hiĕk',
 'newpages'             => 'Sĭng hiĕk',
 'newpages-username'    => 'Ê̤ṳng-hô-miàng:',
 'ancientpages'         => 'Dék gô gì hiĕk-miêng',
@@ -566,6 +565,9 @@ Téng buōng câng kiū siék gáu gĭng-dáng, ĭ ī-gĭng ké̤ṳk nè̤ng si
 'allpagessubmit'    => 'Kó̤',
 'allpagesprefix'    => 'Áng cê-tàu hiēng-sê:',
 'allpagesbadtitle'  => 'Nṳ̄ sṳ̆-ĭk gì biĕu-dà̤ buōng câng mò̤ ciĕ-tì.',
+
+# Special:Categories
+'categories' => 'Lôi-biék',
 
 # E-mail user
 'emailuser'       => 'Gié diêng-piĕ ké̤ṳk ĭ',
@@ -779,7 +781,6 @@ Nâ cūng-kuāng, nṳ̄ â̤-sāi cê-gă iè-dông hĕ̤k-ciā sê hăk-biáng
 'talkexists'              => "'''Hiĕk-miêng buōng-sĭng ī-gĭng ké̤ṳk iè-dông go̤ lāu, dáng-sê tō̤-lâung-hiĕk mò̤ nièng-ngài iè-dông ĭng-ôi sĭng biĕu-dà̤ â-dā̤ ī-gĭng ô siŏh tiŏng tō̤-lâung-hiĕk lāu. Chiāng nṳ̄ cê-gă gâe̤ng cī lâng hiĕk biáng lâ.'''",
 'movedto'                 => 'iè gáu',
 'movetalk'                => 'Iè-dông siŏng-guăng tō̤-lâung hiĕk',
-'talkpagemoved'           => 'Siŏng-guăng gì tō̤-lâung-hiĕk iâ ké̤ṳk iè-dông go̤ lāu.',
 '1movedto2'               => '[[$1]] iè gáu [[$2]]',
 '1movedto2_redir'         => '[[$1]] dṳ̀ng-sĭng dêng-hióng gáu [[$2]]',
 'movelogpage'             => 'Iè-dông nĭk-cé',
@@ -910,5 +911,8 @@ Nâ-sāi ĭ *ng-sê* nṳ̄, chiāng mŏ̤h chák ĭ. Gáu $4, káuk-nêng-mā �
 
 # Special:Filepath
 'filepath-page' => 'Ùng-giông:',
+
+# Special:SpecialPages
+'specialpages' => 'Dĕk-sṳ̀ hiĕk',
 
 );

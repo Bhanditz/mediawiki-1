@@ -30,8 +30,8 @@ if (!defined('MEDIAWIKI')) {
 
 /**
  * A query action to return messages from site message cache
- * 
- * @addtogroup API
+ *
+ * @ingroup API
  */
 class ApiQueryAllmessages extends ApiQueryBase {
 
@@ -42,13 +42,13 @@ class ApiQueryAllmessages extends ApiQueryBase {
 	public function execute() {
 		global $wgMessageCache;
 		$params = $this->extractRequestParams();
-		
+
 		if(!is_null($params['lang']))
 		{
 			global $wgLang;
 			$wgLang = Language::factory($params['lang']);
 		}
-			
+
 
 		//Determine which messages should we print
 		$messages_target = array();
@@ -60,7 +60,7 @@ class ApiQueryAllmessages extends ApiQueryBase {
 		} else {
 			$messages_target = explode( '|', $params['messages'] );
 		}
-		
+
 		//Filter messages
 		if( isset( $params['filter'] ) ) {
 			$messages_filtered = array();
@@ -71,8 +71,6 @@ class ApiQueryAllmessages extends ApiQueryBase {
 			}
 			$messages_target = $messages_filtered;
 		}
-
-		$wgMessageCache->disableTransform();
 
 		//Get all requested messages
 		$messages = array();
@@ -128,6 +126,6 @@ class ApiQueryAllmessages extends ApiQueryBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiQueryAllmessages.php 32052 2008-03-17 08:25:22Z vasilievvv $';
+		return __CLASS__ . ': $Id$';
 	}
 }

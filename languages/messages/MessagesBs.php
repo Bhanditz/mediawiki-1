@@ -1,14 +1,15 @@
 <?php
 /** Bosnian (Bosanski)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
- * @author לערי ריינהארט
- * @author Kal-El
- * @author Helix84
  * @author Demicx
- * @author Gangleri
+ * @author Kal-El
+ * @author לערי ריינהארט
  * @author Siebrand
+ * @author CERminator
+ * @author Gangleri
  */
 
 $namespaceNames = array(
@@ -103,8 +104,9 @@ $messages = array(
 'tog-numberheadings'       => 'Automatski numeriši podnaslove',
 'tog-showtoolbar'          => 'Prikaži dugmiće za izmjene (JavaScript)',
 'tog-editondblclick'       => 'Izmijeni stranice dvostrukim klikom (JavaScript)',
+'tog-editsection'          => 'Omogući da mijenjam pojedinačne odjeljke putem [uredi] linka',
 'tog-showtoc'              => 'Prikaži sadržaj<br />(u svim stranicama sa više od tri podnaslova)',
-'tog-rememberpassword'     => 'Zapamti lozinku kroz više seansi',
+'tog-rememberpassword'     => 'Zapamti šifru za iduće posjete',
 'tog-watchcreations'       => 'Dodaj stranice koje ja napravim u moj spisak praćenih članaka',
 'tog-watchdefault'         => 'Dodaj stranice koje uređujem u moj spisak praćenih članaka',
 'tog-minordefault'         => 'Označi sve izmjene malim isprva',
@@ -117,6 +119,7 @@ $messages = array(
 'tog-enotifrevealaddr'     => 'Otkrij adresu moje e-pošte u porukama obaviještenja',
 'tog-shownumberswatching'  => 'Prikaži broj korisnika koji prate',
 'tog-showjumplinks'        => 'Omogući "skoči na" poveznice',
+'tog-watchlisthideminor'   => 'Sakrij zanemarljive izmjene sa spiska mojih praćenja',
 'tog-ccmeonemails'         => 'Pošalji mi kopije emailova koje pošaljem drugim korisnicima',
 'tog-showhiddencats'       => 'Prikaži skrivene kategorije',
 
@@ -179,9 +182,6 @@ $messages = array(
 'dec'           => 'dec',
 
 # Categories related messages
-'categories'                    => 'Kategorije',
-'categoriespagetext'            => 'Sledeće kategorije već postoje u {{SITENAME}}',
-'special-categories-sort-abc'   => 'sortiraj po abecedi',
 'pagecategories'                => 'Kategorije',
 'category_header'               => 'Članaka u kategoriji "$1"',
 'subcategories'                 => 'Potkategorije',
@@ -223,7 +223,7 @@ $messages = array(
 'history_short'     => 'Historija',
 'info_short'        => 'Informacija',
 'printableversion'  => 'Prilagođeno štampanju',
-'permalink'         => 'Trajna veza',
+'permalink'         => 'Trajni link',
 'print'             => 'Štampa',
 'edit'              => 'Uredi',
 'create'            => 'Napravi',
@@ -246,7 +246,7 @@ $messages = array(
 'articlepage'       => 'Pogledaj članak',
 'talk'              => 'Razgovor',
 'views'             => 'Pregledi',
-'toolbox'           => 'Posebne funkcije',
+'toolbox'           => 'Traka sa alatima',
 'userpage'          => 'Pogledaj korisničku stranicu',
 'projectpage'       => 'Pogledaj stranu o ovoj strani',
 'imagepage'         => 'Pogjedajte stranicu slike',
@@ -352,13 +352,6 @@ vremena otključavanja',
 'readonlytext'         => 'Baza je trenutno zaključana za nove unose i ostale izmjene, vjerovatno zbog rutinskog održavanja, posle čega će biti vraćena u uobičajeno stanje.
 
 Administrator koji ju je zaključao je ponudio ovo objašnjenje: $1',
-'missingarticle'       => 'Baza nije mogla naći tekst stranice koji je trebala da nađe, nazvan "$1".
-
-Ovo je obično izazvano praćenjem zastarijelog "razl" ili veze ka istoriji
-stranice koja je obrisana.
-
-Ako ovo nije slučaj, možda ste pronašli grešku u softveru.
-Molimo Vas da prijaviti ovo jednom od [[{{MediaWiki:Grouppage-sysop}}|administratora]], zajedno sa URL-om.',
 'internalerror'        => 'Interna greška',
 'filecopyerror'        => 'Ne može se kopirati "$1" na "$2".',
 'filerenameerror'      => 'Ne može se promjeniti ime fajla "$1" to "$2".',
@@ -380,51 +373,52 @@ Pretraga: $2',
 'sqlhidden'            => '(SQL pretraga sakrivena)',
 
 # Login and logout pages
-'logouttitle'           => 'Odjavite se',
-'logouttext'            => '<strong>Sad ste odjavljeni.</strong><br />
+'logouttitle'             => 'Odjavite se',
+'logouttext'              => '<strong>Sad ste odjavljeni.</strong><br />
 Možete nastaviti da koristite {{SITENAME}} anonimno, ili se ponovo prijaviti
 kao isti ili kao drugi korisnik.  Obratite pažnju da neke stranice mogu nastaviti da se prikazuju kao da ste još uvijek prijavljeni, dok ne očistite keš svog brauzera.',
-'welcomecreation'       => '<h2>Dobro došli, $1!</h2><p>Vaš nalog je napravljen.
+'welcomecreation'         => '<h2>Dobro došli, $1!</h2><p>Vaš nalog je napravljen.
 Ne zaboravite da prilagodite sebi svoja podešavanja.',
-'loginpagetitle'        => 'Prijavljivanje',
-'yourname'              => 'Korisničko ime',
-'yourpassword'          => 'Lozinka',
-'yourpasswordagain'     => 'Ponovite lozinku',
-'remembermypassword'    => 'Zapamti me',
-'yourdomainname'        => 'Vaš domen',
-'loginproblem'          => '<b>Bilo je problema sa vašim prijavljivanjem.</b><br />Probajte ponovo!',
-'login'                 => 'Prijavi se',
-'loginprompt'           => "Morate imati kolačiće ('''cookies''') omogućene da biste se prijavili na {{SITENAME}}.",
-'userlogin'             => 'Prijavite se / Registrujte se',
-'logout'                => 'Odjavi me',
-'userlogout'            => 'Odjavi me',
-'notloggedin'           => 'Niste prijavljeni',
-'nologinlink'           => 'Napravite nalog',
-'createaccount'         => 'Napravi nalog',
-'gotaccount'            => 'Imate nalog? $1.',
-'gotaccountlink'        => 'Prijavi se',
-'createaccountmail'     => 'e-poštom',
-'badretype'             => 'Lozinke koje ste unijeli se ne poklapaju.',
-'userexists'            => 'Korisničko ime koje ste unijeli je već u upotrebi.  Molimo Vas da izaberete drugo ime.',
-'youremail'             => 'E-pošta *',
-'username'              => 'Korisničko ime:',
-'uid'                   => 'Korisnički ID:',
-'yourrealname'          => 'Vaše pravo ime *',
-'yournick'              => 'Nadimak (za potpise):',
-'email'                 => 'E-mail',
-'loginerror'            => 'Greška pri prijavljivanju',
-'prefs-help-email'      => '* E-mail (optional): Enables others to contact you through your user or user_talk page without the need of revealing your identity.',
-'nocookiesnew'          => "Korisnički nalog je napravljen, ali niste prijavljeni.  {{SITENAME}} koristi kolačiće (''cookies'') da bi se korisnici prijavili.  Vi ste onemogućili kolačiće na Vašem kompjuteru.  molimo Vas da ih omogućite, a onda se prijavite sa svojim novim korisničkim imenom i lozinkom.",
-'nocookieslogin'        => "{{SITENAME}} koristi kolačiće (''cookies'') da bi se korisnici prijavili.  Vi ste onemogućili kolačiće na Vašem kompjuteru.  Molimo Vas da ih omogućite i da pokušate ponovo sa prijavom.",
-'noname'                => 'Niste izabrali ispravno korisničko ime.',
-'loginsuccesstitle'     => 'Prijavljivanje uspješno',
-'loginsuccess'          => "'''Sad ste prijavljeni na {{SITENAME}} kao \"\$1\".'''",
-'nosuchuser'            => 'Ne postoji korisnik sa imenom "$1". Provjerite Vaše kucanje, ili upotrebite donji upitnik da napravite novi korisnički nalog.',
-'wrongpassword'         => 'Unijeli ste neispravnu lozinku.  Molimo Vas da pokušate ponovo.',
-'wrongpasswordempty'    => 'Lozinka je bila prazna.  Molimo Vas da pokušate ponovo.',
-'mailmypassword'        => 'Pošalji mi moju lozinku',
-'passwordremindertitle' => '{{SITENAME}} podsjetnik za lozinku',
-'passwordremindertext'  => 'Neko (vjerovatno Vi, sa IP adrese $1)
+'loginpagetitle'          => 'Prijavljivanje',
+'yourname'                => 'Korisničko ime',
+'yourpassword'            => 'Lozinka',
+'yourpasswordagain'       => 'Ponovite lozinku',
+'remembermypassword'      => 'Zapamti šifru za iduće posjete',
+'yourdomainname'          => 'Vaš domen',
+'loginproblem'            => '<b>Bilo je problema sa vašim prijavljivanjem.</b><br />Probajte ponovo!',
+'login'                   => 'Prijavi se',
+'nav-login-createaccount' => 'Prijavi se / Registruj se',
+'loginprompt'             => "Morate imati kolačiće ('''cookies''') omogućene da biste se prijavili na {{SITENAME}}.",
+'userlogin'               => 'Prijavi se / Registruj se',
+'logout'                  => 'Odjavi me',
+'userlogout'              => 'Odjavi me',
+'notloggedin'             => 'Niste prijavljeni',
+'nologinlink'             => 'Napravite nalog',
+'createaccount'           => 'Napravi nalog',
+'gotaccount'              => 'Imate nalog? $1.',
+'gotaccountlink'          => 'Prijavi se',
+'createaccountmail'       => 'e-poštom',
+'badretype'               => 'Lozinke koje ste unijeli se ne poklapaju.',
+'userexists'              => 'Korisničko ime koje ste unijeli je već u upotrebi.  Molimo Vas da izaberete drugo ime.',
+'youremail'               => 'E-pošta *',
+'username'                => 'Korisničko ime:',
+'uid'                     => 'Korisnički ID:',
+'yourrealname'            => 'Vaše pravo ime *',
+'yournick'                => 'Nadimak (za potpise):',
+'email'                   => 'E-mail',
+'loginerror'              => 'Greška pri prijavljivanju',
+'prefs-help-email'        => '* E-mail (optional): Enables others to contact you through your user or user_talk page without the need of revealing your identity.',
+'nocookiesnew'            => "Korisnički nalog je napravljen, ali niste prijavljeni.  {{SITENAME}} koristi kolačiće (''cookies'') da bi se korisnici prijavili.  Vi ste onemogućili kolačiće na Vašem kompjuteru.  molimo Vas da ih omogućite, a onda se prijavite sa svojim novim korisničkim imenom i lozinkom.",
+'nocookieslogin'          => "{{SITENAME}} koristi kolačiće (''cookies'') da bi se korisnici prijavili.  Vi ste onemogućili kolačiće na Vašem kompjuteru.  Molimo Vas da ih omogućite i da pokušate ponovo sa prijavom.",
+'noname'                  => 'Niste izabrali ispravno korisničko ime.',
+'loginsuccesstitle'       => 'Prijavljivanje uspješno',
+'loginsuccess'            => "'''Sad ste prijavljeni na {{SITENAME}} kao \"\$1\".'''",
+'nosuchuser'              => 'Ne postoji korisnik sa imenom "$1". Provjerite Vaše kucanje, ili upotrebite donji upitnik da napravite novi korisnički nalog.',
+'wrongpassword'           => 'Unijeli ste neispravnu lozinku.  Molimo Vas da pokušate ponovo.',
+'wrongpasswordempty'      => 'Lozinka je bila prazna.  Molimo Vas da pokušate ponovo.',
+'mailmypassword'          => 'Pošalji mi moju lozinku',
+'passwordremindertitle'   => '{{SITENAME}} podsjetnik za lozinku',
+'passwordremindertext'    => 'Neko (vjerovatno Vi, sa IP adrese $1)
 je zahtjevao da vam pošaljemo novu {{SITENAME}} lozinku za prijavljivanje na {{SERVERNAME}}.
 Lozinka za korisnika "$2" je sad "$3".
 Sad treba da se prijavite i promjenite lozinku.
@@ -432,16 +426,16 @@ Sad treba da se prijavite i promjenite lozinku.
 Ako je neko drugi napravio ovaj zahtjev ili ako ste se sjetili vaše lozinke i
 ne želite više da je promjenite, možete da ignorišete ovu poruku i da nastavite koristeći
 vašu staru lozinku.',
-'noemail'               => 'Ne postoji adresa e-pošte za korisnika "$1".',
-'passwordsent'          => 'Nova lozinka je poslata na adresu e-pošte
+'noemail'                 => 'Ne postoji adresa e-pošte za korisnika "$1".',
+'passwordsent'            => 'Nova lozinka je poslata na adresu e-pošte
 korisnika "$1".
 Molimo Vas da se prijavite pošto je primite.',
-'blocked-mailpassword'  => 'Da bi se spriječila nedozvoljena akcija, vašoj IP adresi je onemogućeno uređivanje stranica kao i mogućnost zahtijevanje nove lozinke.',
-'mailerror'             => 'Greška pri slanju e-pošte: $1',
-'emailconfirmlink'      => 'Potvrdite Vašu e-mail adresu',
-'accountcreated'        => 'Korisnički račun je napravljen',
-'accountcreatedtext'    => 'Korisnički račun za $1 je napravljen.',
-'loginlanguagelabel'    => 'Jezik: $1',
+'blocked-mailpassword'    => 'Da bi se spriječila nedozvoljena akcija, vašoj IP adresi je onemogućeno uređivanje stranica kao i mogućnost zahtijevanje nove lozinke.',
+'mailerror'               => 'Greška pri slanju e-pošte: $1',
+'emailconfirmlink'        => 'Potvrdite Vašu e-mail adresu',
+'accountcreated'          => 'Korisnički račun je napravljen',
+'accountcreatedtext'      => 'Korisnički račun za $1 je napravljen.',
+'loginlanguagelabel'      => 'Jezik: $1',
 
 # Password reset dialog
 'resetpass' => 'Resetuj korisničku lozinku',
@@ -598,9 +592,6 @@ Možete '''[[:$1|da napravite članak sa tim naslovom]]''' ili [[{{MediaWiki:Hel
 koje nisu indeksirane, ili navođenjem više od jednog izraza za traženje (samo stranice
 koje sadrže sve izraze koji se traže će se pojaviti u rezultatima).",
 'powersearch'           => 'Traži',
-'powersearchtext'       => 'Pretraga u imenskim prostorima :<br />
-$1<br />
-$2 Izlistajte preusmjerenja &nbsp; Tražite $3 $9',
 'searchdisabled'        => '<p>Izvinjavamo se!  Puno pretraga teksta je privremeno onemogućena.  U međuvremenu, možete koristiti Google za pretragu.  Indeks može biti stariji.',
 
 # Preferences page
@@ -654,7 +645,7 @@ $2 Izlistajte preusmjerenja &nbsp; Tražite $3 $9',
 'defaultns'               => 'Uobičajeno tražite u ovim imenskim prostorima:',
 
 # User rights
-'editinguser' => 'Uređujete $1',
+'editinguser' => "Uređujete '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 
 # Recent changes
 'recentchanges'                  => 'Nedavne izmjene',
@@ -680,7 +671,7 @@ $2 Izlistajte preusmjerenja &nbsp; Tražite $3 $9',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Srodne izmjene',
-'recentchangeslinked-title'    => 'Srodne promjene sa $1',
+'recentchangeslinked-title'    => 'Srodne promjene sa "$1"',
 'recentchangeslinked-noresult' => 'Nema izmjena na povezanim stranicama u zadanom periodu.',
 'recentchangeslinked-summary'  => "Ova posebna stranica prikazuje promjene na povezanim stranicama. Stranice koje su na vašem spisku praćenja su '''podebljane'''.",
 
@@ -703,7 +694,7 @@ da bi ste slali fajlove.',
 'uploadedfiles'               => 'Poslati fajlovi',
 'badfilename'                 => 'Ime slike je promjenjeno u "$1".',
 'emptyfile'                   => 'Fajl koji ste poslali je prazan. Ovo je moguće zbog greške u imenu fajla. Molimo Vas da provjerite da li stvarno želite da pošaljete ovaj fajl.',
-'fileexists'                  => 'Fajl sa ovim imenom već postoji.  Molimo Vas da provjerite $1 ako niste sigurni da li želite da ga promjenite.',
+'fileexists'                  => 'Fajl sa ovim imenom već postoji.  Molimo Vas da provjerite <strong><tt>$1</tt></strong> ako niste sigurni da li želite da ga promjenite.',
 'fileexists-forbidden'        => 'Fajl sa ovim imenom već postoji; molimo Vas da se vratite i pošaljete ovaj fajl pod novim imenom. [[Image:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Fajl sa ovim imenom već postoji u zajedničkoj ostavi; molimo Vas da se vratite i pošaljete ovaj fajl pod novim imenom. [[Image:$1|thumb|center|$1]]',
 'successfulupload'            => 'Uspješno slanje',
@@ -714,7 +705,6 @@ da bi ste slali fajlove.',
 'uploadvirus'                 => 'Fajl sadrži virus!  Detalji:  $1',
 
 # Special:Imagelist
-'imgdesc'   => 'opis',
 'imagelist' => 'Spisak slika',
 
 # Image description page
@@ -753,7 +743,7 @@ Totalni broj stranica u bazi:  '''$1'''.
 Bilo je '''$3''' pogleda stranica, i '''$4''' izmjena otkad je viki bio instaliran.
 To izađe u prosjeku oko '''$5''' izmjena po stranici, i '''$6''' pogleda po izmjeni.
 
-The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''.",
+The [http://www.mediawiki.org/wiki/Manual:Job_queue job queue] length is '''$7'''.",
 'userstatstext' => "Postoji '''$1''' registrovanih korisnika, od kojih
 su '''$2''' (ili '''$4%''') administratori.",
 
@@ -783,8 +773,6 @@ su '''$2''' (ili '''$4%''') administratori.",
 'longpages'               => 'Dugačke stranice',
 'deadendpages'            => 'Stranice bez internih veza',
 'listusers'               => 'Spisak korisnika',
-'specialpages'            => 'Posebne stranice',
-'spheading'               => 'Posebne stranice za sve korisnike',
 'newpages'                => 'Nove stranice',
 'ancientpages'            => 'Najstarije stranice',
 'move'                    => 'Preusmjeri',
@@ -811,6 +799,11 @@ na kome bi se izvela ova funkcija.',
 'alphaindexline' => '$1 do $2',
 'allarticles'    => 'Svi članci',
 'allpagessubmit' => 'Idi',
+
+# Special:Categories
+'categories'                  => 'Kategorije',
+'categoriespagetext'          => 'Sledeće kategorije već postoje u {{SITENAME}}',
+'special-categories-sort-abc' => 'sortiraj po abecedi',
 
 # E-mail user
 'mailnologin'     => 'Nema adrese za slanje',
@@ -1073,8 +1066,6 @@ da biste premjestili stranicu.',
 stranica za razgovor nije mogla biti premještena jer takva već postoji na novom naslovu.  Molimo Vas da ih spojite ručno.',
 'movedto'          => 'premještena na',
 'movetalk'         => 'Premjestite "stranicu za razgovor" takođe, ako je moguće.',
-'talkpagemoved'    => 'Odgovarajuća stranica za razgovor je takođe premještena.',
-'talkpagenotmoved' => 'Odgovarajuća stranica za razgovor <strong>nije</strong> premještena.',
 '1movedto2'        => 'članak [[$1]] premješten na [[$2]]',
 '1movedto2_redir'  => 'stranica [[$1]] premještena u stranicu [[$2]] putem preusmjerenja',
 'movelogpage'      => 'Protokol premještanja',
@@ -1116,7 +1107,7 @@ U drugom slučaju možete koristiti i vezu, npr. [[{{ns:special}}:Export/{{Media
 'tooltip-pt-preferences'          => 'Moja podešavanja',
 'tooltip-pt-watchlist'            => 'Spisak članaka koje pratite.',
 'tooltip-pt-mycontris'            => 'Spisak mog doprinosa',
-'tooltip-pt-login'                => 'Prijava nije obavezna, ali donosi mnogo koristi.',
+'tooltip-pt-login'                => 'Predlažemo da se prijavite, ali nije obvezno.',
 'tooltip-pt-anonlogin'            => 'Prijava nije obavezna, ali donosi mnogo koristi.',
 'tooltip-pt-logout'               => 'Odjava sa projekta {{SITENAME}}',
 'tooltip-ca-talk'                 => 'Razgovor o sadržaju',
@@ -1130,14 +1121,14 @@ U drugom slučaju možete koristiti i vezu, npr. [[{{ns:special}}:Export/{{Media
 'tooltip-ca-move'                 => 'Pomjerite stranicu',
 'tooltip-ca-watch'                => 'Dodajte stranicu u listu praćnih članaka',
 'tooltip-ca-unwatch'              => 'Izbrišite stranicu sa liste praćnih članaka',
-'tooltip-search'                  => 'Pretražite projekat {{SITENAME}}',
+'tooltip-search'                  => 'Pretraži projekat {{SITENAME}}',
 'tooltip-p-logo'                  => 'Glavna stranica',
 'tooltip-n-mainpage'              => 'Posjetite početnu stranicu',
-'tooltip-n-portal'                => 'O projektu, kako Vi možete pomoći, i gdje da nađete potrebne stvari o projektu {{SITENAME}}',
+'tooltip-n-portal'                => 'O projektu, šta možete da uradite, gdje se šta nalazi',
 'tooltip-n-currentevents'         => 'Podaci o onome na čemu se trenutno radi',
-'tooltip-n-recentchanges'         => 'Spisak nedavnih izmjena na projektu {{SITENAME}}.',
+'tooltip-n-recentchanges'         => 'Spisak nedavnih izmjena na wiki.',
 'tooltip-n-randompage'            => 'Otvorite slučajan članak',
-'tooltip-n-help'                  => 'Naučite da uređujete projekat {{SITENAME}}.',
+'tooltip-n-help'                  => 'Mjesto gdje možete nešto da naučite.',
 'tooltip-n-sitesupport'           => 'Podržite nas',
 'tooltip-t-whatlinkshere'         => 'Spisak svih članaka koji su povezani sa ovim',
 'tooltip-t-recentchangeslinked'   => 'Nedavne izmjene na stranicama koje su povezane sa ovom',
@@ -1145,8 +1136,8 @@ U drugom slučaju možete koristiti i vezu, npr. [[{{ns:special}}:Export/{{Media
 'tooltip-feed-atom'               => 'Atom za ovu stranicu',
 'tooltip-t-contributions'         => 'Pogledajte spisak doprinosa ovog korisnika',
 'tooltip-t-emailuser'             => 'Pošaljite pismo ovom korisniku',
-'tooltip-t-upload'                => 'Pošaljite slike i medija fajlove',
-'tooltip-t-specialpages'          => 'Spisak svih posebih stranica',
+'tooltip-t-upload'                => 'Postavi slike i druge medije',
+'tooltip-t-specialpages'          => 'Spisak svih posebnih stranica',
 'tooltip-ca-nstab-main'           => 'Pogledajte sadržaj članka',
 'tooltip-ca-nstab-user'           => 'Pogledajte korisničku stranicu',
 'tooltip-ca-nstab-media'          => 'Pogledajte medija fajl',
@@ -1263,5 +1254,15 @@ Molimo Vas da potvrdite da stvarno želite da ponovo napravite ovaj članak.",
 
 # Special:Version
 'version' => 'Verzija', # Not used as normal message but as header for the special page itself
+
+# Special:SpecialPages
+'specialpages'                   => 'Posebne stranice',
+'specialpages-group-maintenance' => 'Izvještaji za održavanje',
+'specialpages-group-other'       => 'Ostale posebne stranice',
+'specialpages-group-login'       => 'Prijava / Otvaranje računa',
+'specialpages-group-changes'     => 'Nedavne izmjene i evidencije',
+'specialpages-group-media'       => 'Mediji i postavljanje datoteka',
+'specialpages-group-users'       => 'Korisnici i korisnička prava',
+'specialpages-group-highuse'     => 'Najčešće korištene stranice',
 
 );

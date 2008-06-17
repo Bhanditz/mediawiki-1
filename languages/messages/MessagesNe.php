@@ -1,7 +1,8 @@
 <?php
 /** Nepali (नेपाली)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author ne.wikipedia.org sysops
  * @author SPQRobin
@@ -61,7 +62,6 @@ $messages = array(
 'nov'           => 'नोभ',
 
 # Categories related messages
-'categories'      => 'श्रेणीहरू',
 'category_header' => '"$1" श्रेणीमा भएका लेखहरू',
 'subcategories'   => 'उपश्रेणीहरु',
 
@@ -331,7 +331,7 @@ $messages = array(
 'brokenredirects'     => 'टुटेका रिडाइरेक्टहरू',
 'brokenredirectstext' => 'तलका लिङ्कहरु ले हुदै नभएका पृष्ठहरुलाइ जोड्न खोज्छन्:',
 
-'withoutinterwiki-header' => 'यी पानाहरूले अन्य भाषाका संस्करणहरूमा संबन्ध राखेका छैनन्:',
+'withoutinterwiki-summary' => 'यी पानाहरूले अन्य भाषाका संस्करणहरूमा संबन्ध राखेका छैनन्:',
 
 # Miscellaneous special pages
 'specialpage-empty' => 'यो पृष्ठ खाली छ।',
@@ -345,7 +345,6 @@ $messages = array(
 'shortpages'        => 'छोटा पृष्ठहरु',
 'protectedpages'    => 'संरक्षित पृष्ठहरु',
 'listusers'         => 'प्रयोगकर्ता सूची',
-'specialpages'      => 'विशेष पृष्ठ',
 'newpages'          => 'नयाँ पृष्ठहरू',
 'newpages-username' => 'युजरनेम:',
 'ancientpages'      => 'सबैभन्दा पुराना पृष्ठहरु',
@@ -371,6 +370,9 @@ $messages = array(
 'allpagesprev'   => 'अघिल्लो',
 'allpagesnext'   => 'अर्को',
 'allpagessubmit' => 'जानुहोस्',
+
+# Special:Categories
+'categories' => 'श्रेणीहरू',
 
 # Special:Listusers
 'listusers-submit' => 'देखाउनुहोस्',
@@ -620,5 +622,8 @@ $messages = array(
 
 # Special:Filepath
 'filepath-page' => 'फाइल',
+
+# Special:SpecialPages
+'specialpages' => 'विशेष पृष्ठ',
 
 );

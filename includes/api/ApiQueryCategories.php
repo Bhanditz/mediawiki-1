@@ -30,8 +30,8 @@ if (!defined('MEDIAWIKI')) {
 
 /**
  * A query module to enumerate categories the set of pages belong to.
- * 
- * @addtogroup API
+ *
+ * @ingroup API
  */
 class ApiQueryCategories extends ApiQueryGeneratorBase {
 
@@ -59,7 +59,7 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 			'cl_from',
 			'cl_to'
 		));
-		
+
 		$fld_sortkey = false;
 		if (!is_null($prop)) {
 			foreach($prop as $p) {
@@ -73,7 +73,7 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 				}
 			}
 		}
-		
+
 		$this->addTables('categorylinks');
 		$this->addWhereFld('cl_from', array_keys($this->getPageSet()->getGoodTitles()));
 		$this->addOption('ORDER BY', "cl_from, cl_to");
@@ -82,9 +82,9 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 		$res = $this->select(__METHOD__);
 
 		if (is_null($resultPageSet)) {
-			
+
 			$data = array();
-			$lastId = 0;	// database has no ID 0	
+			$lastId = 0;	// database has no ID 0
 			while ($row = $db->fetchObject($res)) {
 				if ($lastId != $row->cl_from) {
 					if($lastId != 0) {
@@ -93,9 +93,9 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 					}
 					$lastId = $row->cl_from;
 				}
-				
+
 				$title = Title :: makeTitle(NS_CATEGORY, $row->cl_to);
-				
+
 				$vals = array();
 				ApiQueryBase :: addTitleInfo($vals, $title);
 				if ($fld_sortkey)
@@ -151,7 +151,6 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiQueryCategories.php 30222 2008-01-28 19:05:26Z catrope $';
+		return __CLASS__ . ': $Id$';
 	}
 }
-

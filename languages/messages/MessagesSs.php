@@ -1,7 +1,8 @@
 <?php
 /** Swati (SiSwati)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author MF-Warburg
  * @author Jatrobat
@@ -42,8 +43,9 @@ $messages = array(
 'november-gen'  => 'Lídvúba',
 'december-gen'  => 'íNgongóni',
 
-'qbfind' => 'Kúkhándza',
-'qbedit' => 'Kúhlela',
+'qbfind'         => 'Kúkhándza',
+'qbedit'         => 'Kúhlela',
+'qbspecialpages' => 'Emakhasi labalulekile',
 
 'help'             => 'Kúsíta',
 'search'           => 'Kucálata',
@@ -58,8 +60,10 @@ $messages = array(
 'jumptosearch'     => 'kucálata',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'portal'     => 'Likhefi leinthanethi',
-'portal-url' => 'Project:Likhefi leinthanethi',
+'mainpage'             => 'Likhasi Lelikhulu',
+'mainpage-description' => 'Likhasi Lelikhulu',
+'portal'               => 'Likhefi leinthanethi',
+'portal-url'           => 'Project:Likhefi leinthanethi',
 
 'youhavenewmessages' => 'Ube $1 ($2).',
 'editsection'        => 'kúhlela',
@@ -111,6 +115,10 @@ $messages = array(
 # Special:Listusers
 'listusers-submit' => 'Kúfúna',
 
+# Watchlist
+'watch'   => 'Gadza',
+'unwatch' => 'Yekela kugadza',
+
 # Restrictions (nouns)
 'restriction-edit'   => 'Kúhlela',
 'restriction-move'   => 'Kúgojotîsa',
@@ -133,6 +141,7 @@ $messages = array(
 
 # Tooltip help for the actions
 'tooltip-search' => 'Kucálata {{SITENAME}}',
+'tooltip-p-logo' => 'Likhasi Lelikhulu',
 
 # Special:Newimages
 'ilsubmit' => 'Kucálata',
@@ -142,5 +151,11 @@ $messages = array(
 
 # Table pager
 'table_pager_limit_submit' => 'Kúhámba',
+
+# Special:Version
+'version-specialpages' => 'Emakhasi labalulekile',
+
+# Special:SpecialPages
+'specialpages' => 'Emakhasi labalulekile',
 
 );

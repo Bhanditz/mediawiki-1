@@ -1,16 +1,15 @@
 <?php
 /** Tonga (faka-Tonga)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author SPQRobin
- * @author לערי ריינהארט
  * @author Tauʻolunga
- * @author Cbrown1023
  * @author Siebrand
+ * @author לערי ריינהארט
+ * @author Cbrown1023
  */
-
-
 
 $messages = array(
 # User preference toggles
@@ -85,8 +84,6 @@ $messages = array(
 'dec'           => 'Tis',
 
 # Categories related messages
-'categories'             => 'Faʻahinga',
-'categoriespagetext'     => 'ʻOku ʻi ai ha ngaahi faʻahinga pehē.',
 'pagecategories'         => 'Faʻahinga',
 'category_header'        => 'Ngaahi kupu ʻi he faʻahinga "$1"',
 'subcategories'          => 'Ngaahi faʻahinga siʻi',
@@ -260,6 +257,7 @@ Kuo fakatupu hoʻo tohi kau-ki-ai. ʻOua ʻe ngalo ke liliu hoʻo faʻiteliha {{
 'yourdomainname'             => 'ho ngāueʻanga',
 'loginproblem'               => '<b>Naʻe ʻi ai ha meʻafihi mo hoʻo kau-ki-ai.</b><br />Toe feinga.',
 'login'                      => 'Kau ki ai',
+'nav-login-createaccount'    => 'Kau ki ai',
 'loginprompt'                => 'ʻOku pau te ke fakamafeia ʻa e ngaahi foʻi keke kapau te ke fie kau-ki-ai ki he {{SITENAME}}.',
 'userlogin'                  => 'Kau ki ai',
 'logout'                     => 'ʻAlu mamaʻo',
@@ -436,7 +434,6 @@ Ko e konga ʻi olunga, ko e '''konga pē ʻe taha''' ʻe haofaki ʻi he lomiʻi 
 'showingresultsnum' => "ʻOku ʻasi ʻi lalo ha fua ʻe '''$3''', ʻoku kamata mo e #'''$2'''.",
 'nonefound'         => "'''Tokanga''': ko e ngaahi kumi ʻikai ke siaʻa, ko e ʻuhinga tuʻo lahi ia ko e ngāueʻaki he ʻū foʻi lea fuʻu noa pe he ʻū foʻi lea fuʻu lahi (ko e ngaahi peesi mo e ʻū foʻi lea kotoa ʻi loto, ʻe ʻasi mai pē).",
 'powersearch'       => 'Kumi',
-'powersearchtext'   => 'Kumi ʻi he vā hingoa:<br />$1<br />$2 Hokohoko leʻei<br />Kumi $3 $9',
 
 # Preferences page
 'preferences'           => 'Faʻiteliha',
@@ -562,7 +559,6 @@ Ko e konga ʻi olunga, ko e '''konga pē ʻe taha''' ʻe haofaki ʻi he lomiʻi 
 
 # Special:Imagelist
 'imagelist_search_for'  => 'Kumi ki he hingoa ʻo e faitā:',
-'imgdesc'               => 'fkmat',
 'imgfile'               => 'faile',
 'imagelist'             => 'Hokohoko faitā',
 'imagelist_date'        => 'ʻAho',
@@ -629,8 +625,8 @@ Ko e konga ʻi olunga, ko e '''konga pē ʻe taha''' ʻe haofaki ʻi he lomiʻi 
 'brokenredirects'     => 'Ngaahi leʻei maumau',
 'brokenredirectstext' => 'ʻOku leʻei ʻa e ngaahi fehokotakí ni ki he peesi taʻetuʻu:',
 
-'withoutinterwiki'        => 'Ngaahi kupu taʻefehokotaki fakalea',
-'withoutinterwiki-header' => 'Ko e ngaahi peesi ʻoku ʻasi ʻi lalo ʻoku ʻikai ʻi ai haʻanau fehokotaki fakalea:',
+'withoutinterwiki'         => 'Ngaahi kupu taʻefehokotaki fakalea',
+'withoutinterwiki-summary' => 'Ko e ngaahi peesi ʻoku ʻasi ʻi lalo ʻoku ʻikai ʻi ai haʻanau fehokotaki fakalea:',
 
 'fewestrevisions' => 'Kupu mo e ngaahi paaki siʻi taha',
 
@@ -663,9 +659,6 @@ Ko e konga ʻi olunga, ko e '''konga pē ʻe taha''' ʻe haofaki ʻi he lomiʻi 
 'protectedpages'          => 'Peesi maluʻi',
 'protectedtitles'         => 'Ngaahi ʻuluʻitohi maluʻi',
 'listusers'               => 'Hokohoko kau-ki-ai',
-'specialpages'            => 'Ngaahi peesi makehe',
-'spheading'               => 'Ngaahi peesi makehe maʻa e kau ʻetita kotoa pē',
-'restrictedpheading'      => 'Ngaahi peesi makehe fakangatangata',
 'newpages'                => 'Peesi foʻou',
 'newpages-username'       => 'Ko e ʻetita hono hingoa:',
 'ancientpages'            => 'Peesi motuʻa taha',
@@ -702,6 +695,10 @@ Ko e konga ʻi olunga, ko e '''konga pē ʻe taha''' ʻe haofaki ʻi he lomiʻi 
 'allpagessubmit'    => 'Fai ā',
 'allpagesprefix'    => 'ʻAsi mai ngaahi peesi mo ʻenau fakapipikimuʻa:',
 'allpagesbadtitle'  => "Naʻe taʻeʻaonga ʻa e hingoa ʻo e peesi naʻa ke fili, pe naʻe ʻi ai ha fakapipikimuʻa  fakalea kehe pe ha fakapipikimuʻa faka''wiki'' kehe. Mahalo pe ʻoku ʻi loto ha ʻū mataʻitohi ʻoku ʻikai lava ngāueʻaki ʻi ha hingoa.",
+
+# Special:Categories
+'categories'         => 'Faʻahinga',
+'categoriespagetext' => 'ʻOku ʻi ai ha ngaahi faʻahinga pehē.',
 
 # Special:Listusers
 'listusersfrom'    => 'ʻAsi mai kau ʻetita mei he:',
@@ -924,8 +921,6 @@ Vakai ki he [[Special:Log/delete|hokohoko tāmateʻi]] ki he lekooti ʻo e ngaah
 'talkexists'              => "'''Kuo ola ʻa e ʻunu ʻo e peesi ia, kā naʻe ʻikai ʻunu he peesi alea koeʻuhi ʻoku toe tuʻu ha peesi pehē mo e hingoa foʻou. Kātaki fakataha kinaua faiʻaki ʻa e nima.'''",
 'movedto'                 => 'kuo ʻunu ki he',
 'movetalk'                => 'ʻUnu he peesi alea fekauʻaki',
-'talkpagemoved'           => 'Naʻe foki ʻunu ʻa e peesi alea fekauʻaki.',
-'talkpagenotmoved'        => 'Naʻe <strong>ʻikai</strong> ʻunu ʻa e peesi alea fekauʻaki.',
 '1movedto2'               => 'Kuo ʻunu ʻa e [[$1]] ki he [[$2]]',
 '1movedto2_redir'         => 'Kuo ʻunu ʻa e [[$1]] ki he [[$2]] ʻi he leʻei',
 'movelogpage'             => 'Tohinoa ʻo e ʻunu',
@@ -1230,5 +1225,8 @@ $1',
 'filepath'        => 'Hala ki he faile',
 'filepath-page'   => 'Faile:',
 'filepath-submit' => 'Ko e hala',
+
+# Special:SpecialPages
+'specialpages' => 'Ngaahi peesi makehe',
 
 );

@@ -1,13 +1,10 @@
 <?php
-/**
- * @addtogroup Language
- */
 
 require_once( dirname(__FILE__).'/../LanguageConverter.php' );
 
-
 /**
  * Converts Tajiki to latin orthography
+ * @ingroup Language
  */
 class TgConverter extends LanguageConverter {
 	private $table = array(
@@ -95,6 +92,9 @@ class TgConverter extends LanguageConverter {
 
 }
 
+/**
+ * @ingroup Language
+ */
 class LanguageTg extends Language {
 	function __construct() {
 		parent::__construct();
@@ -102,4 +102,3 @@ class LanguageTg extends Language {
 		$this->mConverter = new TgConverter( $this, 'tg', $variants );
 	}
 }
-

@@ -1,15 +1,13 @@
 <?php
 /** Southern Sami (Åarjelsaemien gïele)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
- * @author Max sonnelid
+ * @author M.M.S.
  * @author Siebrand
  * @author Nike
- * @author M.M.S.
  */
-
-
 
 $messages = array(
 # User preference toggles
@@ -74,7 +72,6 @@ $messages = array(
 'dec'           => 'Goe',
 
 # Categories related messages
-'categories'             => 'Karegorijeh',
 'pagecategories'         => '{{PLURAL:$1|Kategorije|Kategorijeh}}',
 'category_header'        => 'Bielie sïjse kategorije "$1"',
 'subcategories'          => 'Subkategorijeh',
@@ -206,46 +203,47 @@ $messages = array(
 'viewsourcetext'     => 'Dov dorje vuesehte jih kåpieerae gaaltjie dejstie dïhte bielie:',
 
 # Login and logout pages
-'yourname'              => 'Nuhtjiennomme:',
-'yourpassword'          => 'Loevesbaakoe:',
-'remembermypassword'    => 'Måjhtije mov loggesïjse nille dïhte daatovre',
-'yourdomainname'        => 'Dov domäne:',
-'login'                 => 'Logge sïjse',
-'loginprompt'           => 'Dov galkedh luhpede cookies ihke logge sïjse nille {{SITENAME}}.',
-'userlogin'             => 'Logge sïjse / skaepede nuhtjien',
-'logout'                => 'Logge olkese',
-'userlogout'            => 'Logge ålkone',
-'nologin'               => 'Lea dov ijje registreered? $1.',
-'nologinlink'           => 'Skaepede nuhtjien',
-'createaccount'         => 'Skaepede nuhtjien',
-'gotaccount'            => 'Åtna dov joe nuhtjiennomme? $1.',
-'gotaccountlink'        => 'Logge sïjse',
-'createaccountmail'     => 'meatan e-påaste',
-'youremail'             => 'E-påaste:',
-'username'              => 'Nuhtjiennomme:',
-'uid'                   => 'Nuhtjien ID:',
-'yourrealname'          => 'Ov nomme:',
-'yourlanguage'          => 'Gïele:',
-'yournick'              => 'Nuhjiennomme:',
-'email'                 => 'E-påaste',
-'prefs-help-realname'   => 'Ov nomme galkedh ijje tjaeledh. Bïjre datne veeljeme tjaeledh dov ov nomme, båetedh dïhte nuhtjie ihke tjaeledh dov barkoe.',
-'loginerror'            => 'Logge sïjse båajhtode',
-'loginsuccesstitle'     => 'Dov lea daelie sïjse logge',
-'loginsuccess'          => "'''Dov lea daelie sïjselogge nille {{SITENAME}} goh \"\$1\".'''",
-'nosuchuser'            => 'Dïhte gååvnese ijje nuhtjien goh nomme "$1". Gïehtjedidh dov baakoehtidh, jallh skaepede orre nuhtjien.',
-'nosuchusershort'       => 'Dïhte gååvnese ijje nuhtjien goh nomme "<nowiki>$1</nowiki>". Gïehtjedidh baakoehtidh.',
-'nouserspecified'       => 'Dov galkedh tjaeledh nuhtjiennomme.',
-'wrongpassword'         => 'Loevesbaakoe lea gåarhmede. Vuejnedh vihth.',
-'wrongpasswordempty'    => 'Loevesbaakoe lea gåaroes. Vuejnedh vihth.',
-'passwordtooshort'      => 'Dov loevesbaakoe lea ov-jiltighe jallh ihke åenehks. Dïhte galkedh åtna unnemes $1 vähta jih sjädta jeatjebe raejeste dov nuhtjiennomme.',
-'mailmypassword'        => 'E-påaste loevesbaakoe',
-'passwordremindertitle' => 'Orre loevesbaakoe ihke {{SITENAME}}',
-'noemail'               => 'Dïhte lea ijje e-påaste tjaalesijjie registreeredh ihke nuhtjien "$1".',
-'passwordsent'          => 'Orre loevesbaakoe åtna sjädta seedtie gåajkoe e-påaste tjaalesijjie
+'yourname'                => 'Nuhtjiennomme:',
+'yourpassword'            => 'Loevesbaakoe:',
+'remembermypassword'      => 'Måjhtije mov loggesïjse nille dïhte daatovre',
+'yourdomainname'          => 'Dov domäne:',
+'login'                   => 'Logge sïjse',
+'nav-login-createaccount' => 'Logge sïjse / skaepede nuhtjien',
+'loginprompt'             => 'Dov galkedh luhpede cookies ihke logge sïjse nille {{SITENAME}}.',
+'userlogin'               => 'Logge sïjse / skaepede nuhtjien',
+'logout'                  => 'Logge olkese',
+'userlogout'              => 'Logge ålkone',
+'nologin'                 => 'Lea dov ijje registreered? $1.',
+'nologinlink'             => 'Skaepede nuhtjien',
+'createaccount'           => 'Skaepede nuhtjien',
+'gotaccount'              => 'Åtna dov joe nuhtjiennomme? $1.',
+'gotaccountlink'          => 'Logge sïjse',
+'createaccountmail'       => 'meatan e-påaste',
+'youremail'               => 'E-påaste:',
+'username'                => 'Nuhtjiennomme:',
+'uid'                     => 'Nuhtjien ID:',
+'yourrealname'            => 'Ov nomme:',
+'yourlanguage'            => 'Gïele:',
+'yournick'                => 'Nuhjiennomme:',
+'email'                   => 'E-påaste',
+'prefs-help-realname'     => 'Ov nomme galkedh ijje tjaeledh. Bïjre datne veeljeme tjaeledh dov ov nomme, båetedh dïhte nuhtjie ihke tjaeledh dov barkoe.',
+'loginerror'              => 'Logge sïjse båajhtode',
+'loginsuccesstitle'       => 'Dov lea daelie sïjse logge',
+'loginsuccess'            => "'''Dov lea daelie sïjselogge nille {{SITENAME}} goh \"\$1\".'''",
+'nosuchuser'              => 'Dïhte gååvnese ijje nuhtjien goh nomme "$1". Gïehtjedidh dov baakoehtidh, jallh skaepede orre nuhtjien.',
+'nosuchusershort'         => 'Dïhte gååvnese ijje nuhtjien goh nomme "<nowiki>$1</nowiki>". Gïehtjedidh baakoehtidh.',
+'nouserspecified'         => 'Dov galkedh tjaeledh nuhtjiennomme.',
+'wrongpassword'           => 'Loevesbaakoe lea gåarhmede. Vuejnedh vihth.',
+'wrongpasswordempty'      => 'Loevesbaakoe lea gåaroes. Vuejnedh vihth.',
+'passwordtooshort'        => 'Dov loevesbaakoe lea ov-jiltighe jallh ihke åenehks. Dïhte galkedh åtna unnemes $1 vähta jih sjädta jeatjebe raejeste dov nuhtjiennomme.',
+'mailmypassword'          => 'E-påaste loevesbaakoe',
+'passwordremindertitle'   => 'Orre loevesbaakoe ihke {{SITENAME}}',
+'noemail'                 => 'Dïhte lea ijje e-påaste tjaalesijjie registreeredh ihke nuhtjien "$1".',
+'passwordsent'            => 'Orre loevesbaakoe åtna sjädta seedtie gåajkoe e-påaste tjaalesijjie
 registreered ihke "$1".
 Gïemhpes logge sïjse vihth männgan datne åtna låhka dïhte.',
-'accountcreated'        => 'Nuhtjien skaepede',
-'loginlanguagelabel'    => 'Gïele: $1',
+'accountcreated'          => 'Nuhtjien skaepede',
+'loginlanguagelabel'      => 'Gïele: $1',
 
 # Edit page toolbar
 'bold_sample'     => 'Buajtehks tjaalege',
@@ -360,7 +358,7 @@ Dov dorje värrhtoedimmie gååvnese bielieh, jallh [[Special:Userlogin|logge s�
 'localtime'          => 'Byjrehks tïjje',
 
 # User rights
-'editinguser' => 'Värrhtoedimmie nuhtjien <b>$1</b>',
+'editinguser' => "Värrhtoedimmie nuhtjien '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 
 # Groups
 'group'       => 'Tjïerte:',
@@ -399,7 +397,7 @@ Dov dorje värrhtoedimmie gååvnese bielieh, jallh [[Special:Userlogin|logge s�
 
 # Recent changes linked
 'recentchangeslinked'          => 'Värrhtoedimmieh nille krïense bielieh',
-'recentchangeslinked-title'    => 'Värrhtoedimmie laktaseaddji gåajkoe $1',
+'recentchangeslinked-title'    => 'Värrhtoedimmie laktaseaddji gåajkoe "$1"',
 'recentchangeslinked-noresult' => 'Ijje kïrense bielieh värrhtoedimmie nuelesne dïhte veeljeme tïjje-boelhke.',
 'recentchangeslinked-summary'  => "Dïhte joekoelaakan bielie lästoe dah minngemes värrhtoedimmieh nille bielieh goh lea lïenghke. Bielieh nille dov sïektjedhlästoe lea '''buajtehks'''.",
 
@@ -507,7 +505,6 @@ Dov dorje värrhtoedimmie gååvnese bielieh, jallh [[Special:Userlogin|logge s�
 'deadendpages'            => 'Tsuvvedh bielieh',
 'protectedpages'          => 'Sïektjedh bielieh',
 'listusers'               => 'Nuhtjien lästoe',
-'specialpages'            => 'Joekoen bielieh',
 'newpages'                => 'Orre bielie',
 'newpages-username'       => 'Nuhtjiennomme:',
 'ancientpages'            => 'Båarasåabpoe bielieh',
@@ -537,6 +534,9 @@ Dov dorje värrhtoedimmie gååvnese bielieh, jallh [[Special:Userlogin|logge s�
 'allpagesnext'   => 'Minngebe',
 'allpagessubmit' => 'Vaadtsa',
 'allpagesprefix' => 'Vuesehte bielieh meatan prefihkse:',
+
+# Special:Categories
+'categories' => 'Karegorijeh',
 
 # Special:Listusers
 'listusers-submit' => 'Vuesehte',
@@ -688,8 +688,6 @@ nome dov åtna veeljeme lea ijje jiiltige.
 Gïemhpes veeljeme jeatjebh nomme.',
 'movedto'          => 'jåhta gåajkoe',
 'movetalk'         => 'Jåhta aaj dïerkestidhbielie, bïjre dïhte gååvnese.',
-'talkpagemoved'    => 'Dïhte dïerhkestidhbielie goh majd gåajkoe jåhta aaj.',
-'talkpagenotmoved' => 'Dïhte dïerhkestidhbielie goh majd gåajkoe jåhta <strong>ijje</strong>.',
 '1movedto2'        => '[[$1]] jåhta gåajkoe [[$2]]',
 'movelogpage'      => 'Jåhta logge',
 'movereason'       => 'Gaavhtan:',
@@ -870,7 +868,6 @@ $1',
 'imgmultipageprev' => '← övtebe bielie',
 'imgmultipagenext' => 'minngebe bielie →',
 'imgmultigo'       => 'Vaadtsa!',
-'imgmultigotopre'  => 'Vaadtsa gåajkoe bielie',
 
 # Table pager
 'table_pager_next'         => 'Minngebe bielie',
@@ -896,5 +893,8 @@ $1',
 
 # Special:Version
 'version' => 'Låhkoe', # Not used as normal message but as header for the special page itself
+
+# Special:SpecialPages
+'specialpages' => 'Joekoen bielieh',
 
 );

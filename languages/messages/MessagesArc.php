@@ -1,7 +1,8 @@
 <?php
 /** Aramaic (ܐܪܡܝܐ)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author A2raya07
  * @author The Thadman
@@ -167,8 +168,7 @@ $messages = array(
 'randompage' => 'ܡܓܠܬܐ ܚܘܝܚܐ',
 
 # Miscellaneous special pages
-'specialpages' => 'ܦܐܬܘܬ̈ܐ ܪܫܝܐ',
-'move'         => 'ܡܓ̰ܘܓ̰',
+'move' => 'ܡܓ̰ܘܓ̰',
 
 # Book sources
 'booksources'    => 'ܙܠ',
@@ -224,5 +224,8 @@ $messages = array(
 # Special:Filepath
 'filepath'        => 'ܫܒܝܠܐ ܕܫܘܦܝܢܐ',
 'filepath-submit' => 'ܫܒܝܠܐ',
+
+# Special:SpecialPages
+'specialpages' => 'ܦܐܬܘܬ̈ܐ ܪܫܝܐ',
 
 );

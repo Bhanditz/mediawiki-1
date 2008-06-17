@@ -1,7 +1,8 @@
 <?php
 /** Aromanian (Armãneashce)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  * @author Niklas Laxström
  * @author Hakka (with the help of a native speaker Dumitrachi T. Fundu)
  */
@@ -143,7 +144,6 @@ Isape a vostrã ira adratã. Nu agãrshits s-le alãxits alidzerle-a vostre ti {
 'brokenredirects-delete' => '(Ashcirdzire)',
 
 # Miscellaneous special pages
-'specialpages'      => 'Frãndzã spetsiale',
 'newpages-username' => 'Numa di ufilizitor:',
 'move'              => 'Tradzets',
 'movethispage'      => 'Tradzets-u frãndza aistã',
@@ -210,5 +210,8 @@ Isape a vostrã ira adratã. Nu agãrshits s-le alãxits alidzerle-a vostre ti {
 
 # Table pager
 'table_pager_limit_submit' => 'Du-vã',
+
+# Special:SpecialPages
+'specialpages' => 'Frãndzã spetsiale',
 
 );

@@ -31,7 +31,7 @@ if (!defined('MEDIAWIKI')) {
  * API module that facilitates the unblocking of users. Requires API write mode
  * to be enabled.
  *
- * @addtogroup API
+ * @ingroup API
  */
 class ApiUnblock extends ApiBase {
 
@@ -41,7 +41,7 @@ class ApiUnblock extends ApiBase {
 
 	/**
 	 * Unblocks the specified user or provides the reason the unblock failed.
-	 */	
+	 */
 	public function execute() {
 		global $wgUser;
 		$this->getMain()->requestWriteMode();
@@ -74,13 +74,12 @@ class ApiUnblock extends ApiBase {
 		if(!empty($retval))
 			$this->dieUsageMsg($retval);
 
-		$this->getMain()->scheduleCommit();
 		$res['id'] = $id;
 		$res['user'] = $user;
 		$res['reason'] = $reason;
 		$this->getResult()->addValue(null, $this->getModuleName(), $res);
 	}
-	
+
 	public function mustBePosted() { return true; }
 
 	public function getAllowedParams() {
@@ -117,6 +116,6 @@ class ApiUnblock extends ApiBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiUnblock.php 33133 2008-04-11 15:20:45Z catrope $';
+		return __CLASS__ . ': $Id$';
 	}
 }

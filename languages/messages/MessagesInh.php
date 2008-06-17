@@ -1,7 +1,8 @@
 <?php
 /** Ingush (ГІалгІай Ğalğaj)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Tagir
  * @author Siebrand
@@ -109,7 +110,6 @@ $messages = array(
 'dec'           => 'Дек',
 
 # Categories related messages
-'categories'            => 'Категореш',
 'pagecategories'        => '{{PLURAL:$1|Категори|Категореш}}',
 'category_header'       => '"$1" категори оагIонаш',
 'subcategories'         => 'Чура-категореш',
@@ -152,7 +152,7 @@ $messages = array(
 'editthispage'      => 'Хувца ер оагIув',
 'delete'            => 'Дiадаккха',
 'deletethispage'    => 'Дiайаккха ер оагIув',
-'undelete_short'    => 'ЮхаметтаоттадеU{PLURAL:$1|oхувцам$1 eхувцамаш}',
+'undelete_short'    => 'Юхаметтаоттаде {{PLURAL:$1|oхувцам|$1 eхувцамаш}}',
 'protect'           => 'Лораде',
 'protect_change'    => 'Лорадер хувца',
 'protectthispage'   => 'Лораде ер оагIув',
@@ -218,5 +218,8 @@ $messages = array(
 'versionrequiredtext' => '$1 MediaWiki верси йиза ер оагIув хьажа. [[Special:Version|version page]] хьажа.',
 
 'ok' => 'ОК',
+
+# Special:Categories
+'categories' => 'Категореш',
 
 );

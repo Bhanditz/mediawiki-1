@@ -1,8 +1,11 @@
 <?php
 /** Cornish (Kernewek)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
+ * @author MF-Warburg
+ * @author Malafaya
  * @author MF-Warburg
  */
 
@@ -59,6 +62,7 @@ $messages = array(
 'mainpage'             => 'Pennfolenn/Penfolen',
 'mainpage-description' => 'Pennfolenn/Penfolen',
 'portal'               => 'Porth kemmynieth',
+'portal-url'           => 'Project:Porth Kemmynieth',
 'sitesupport'          => 'Riansow',
 
 'ok'          => 'Sur',
@@ -95,8 +99,7 @@ $messages = array(
 'randompage' => 'Folenn war amkan',
 
 # Miscellaneous special pages
-'specialpages' => 'Folennow arbennik',
-'move'         => 'Movya',
+'move' => 'Movya',
 
 # Watchlist
 'watchlist'   => 'Ow rol goelyas',
@@ -115,5 +118,8 @@ $messages = array(
 
 # Special:Newimages
 'ilsubmit' => 'Hwilas',
+
+# Special:SpecialPages
+'specialpages' => 'Folennow arbennik',
 
 );

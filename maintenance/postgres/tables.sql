@@ -40,8 +40,9 @@ CREATE TABLE user_groups (
 CREATE UNIQUE INDEX user_groups_unique ON user_groups (ug_user, ug_group);
 
 CREATE TABLE user_newtalk (
-  user_id  INTEGER NOT NULL  REFERENCES mwuser(user_id) ON DELETE CASCADE,
-  user_ip  TEXT        NULL
+  user_id              INTEGER      NOT NULL  REFERENCES mwuser(user_id) ON DELETE CASCADE,
+  user_ip              TEXT             NULL,
+  user_last_timestamp  TIMESTAMPTZ
 );
 CREATE INDEX user_newtalk_id_idx ON user_newtalk (user_id);
 CREATE INDEX user_newtalk_ip_idx ON user_newtalk (user_ip);
@@ -514,6 +515,7 @@ $mw$;
 CREATE TABLE profiling (
   pf_count   INTEGER         NOT NULL DEFAULT 0,
   pf_time    NUMERIC(18,10)  NOT NULL DEFAULT 0,
+  pf_memory  NUMERIC(18,10)  NOT NULL DEFAULT 0,
   pf_name    TEXT            NOT NULL,
   pf_server  TEXT            NULL
 );
@@ -567,5 +569,5 @@ CREATE TABLE mediawiki_version (
 );
 
 INSERT INTO mediawiki_version (type,mw_version,sql_version,sql_date)
-  VALUES ('Creation','??','$LastChangedRevision: 33155 $','$LastChangedDate: 2008-04-11 17:29:43 -0700 (Fri, 11 Apr 2008) $');
+  VALUES ('Creation','??','$LastChangedRevision$','$LastChangedDate$');
 

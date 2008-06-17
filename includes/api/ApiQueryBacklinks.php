@@ -33,14 +33,14 @@ if (!defined('MEDIAWIKI')) {
  *   * backlinks  - links pointing to the given page,
  *   * embeddedin - what pages transclude the given page within themselves,
  *   * imageusage - what pages use the given image
- * 
- * @addtogroup API
+ *
+ * @ingroup API
  */
 class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 
 	private $params, $rootTitle, $contRedirs, $contLevel, $contTitle, $contID, $redirID;
 
-	// output element name, database column field prefix, database table 
+	// output element name, database column field prefix, database table
 	private $backlinksSettings = array (
 		'backlinks' => array (
 			'code' => 'bl',
@@ -93,16 +93,16 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 	public function executeGenerator($resultPageSet) {
 		$this->run($resultPageSet);
 	}
-	
+
 	private function prepareFirstQuery($resultPageSet = null) {
 		/* SELECT page_id, page_title, page_namespace, page_is_redirect
-		 * FROM pagelinks JOIN page ON pl_from=page_id
-		 * WHERE pl_title='Foo' AND pl_namespace=0
+		 * FROM pagelinks, page WHERE pl_from=page_id
+		 * AND pl_title='Foo' AND pl_namespace=0
 		 * LIMIT 11 ORDER BY pl_from
 		 */
 		$db = $this->getDb();
-		list($tblpage, $tbllinks) = $db->tableNamesN('page', $this->bl_table);
-		$this->addTables("$tbllinks JOIN $tblpage ON {$this->bl_from}=page_id");
+		$this->addTables(array('page', $this->bl_table));
+		$this->addWhere("{$this->bl_from}=page_id");
 		if(is_null($resultPageSet))
 			$this->addFields(array('page_id', 'page_title', 'page_namespace'));
 		else
@@ -121,16 +121,16 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 		$this->addOption('LIMIT', $this->params['limit'] + 1);
 		$this->addOption('ORDER BY', $this->bl_from);
 	}
-	
+
 	private function prepareSecondQuery($resultPageSet = null) {
 		/* SELECT page_id, page_title, page_namespace, page_is_redirect, pl_title, pl_namespace
-		 * FROM pagelinks JOIN page ON pl_from=page_id
-		 * WHERE (pl_title='Foo' AND pl_namespace=0) OR (pl_title='Bar' AND pl_namespace=1)
+		 * FROM pagelinks, page WHERE pl_from=page_id
+		 * AND (pl_title='Foo' AND pl_namespace=0) OR (pl_title='Bar' AND pl_namespace=1)
 		 * LIMIT 11 ORDER BY pl_namespace, pl_title, pl_from
 		 */
 		$db = $this->getDb();
-		list($tblpage, $tbllinks) = $db->tableNamesN('page', $this->bl_table);
-		$this->addTables("$tbllinks JOIN $tblpage ON {$this->bl_from}=page_id");
+		$this->addTables(array('page', $this->bl_table));
+		$this->addWhere("{$this->bl_from}=page_id");
 		if(is_null($resultPageSet))
 			$this->addFields(array('page_id', 'page_title', 'page_namespace', 'page_is_redirect'));
 		else
@@ -140,8 +140,8 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 			$this->addFields($this->bl_ns);
 		$titleWhere = '';
 		foreach($this->redirTitles as $t)
-			$titleWhere .= ($titleWhere != '' ? " OR " : '') . 
-					"({$this->bl_title} = '{$t->getDBKey()}'" .
+			$titleWhere .= ($titleWhere != '' ? " OR " : '') .
+					"({$this->bl_title} = ".$db->addQuotes($t->getDBKey()).
 					($this->hasNS ? " AND {$this->bl_ns} = '{$t->getNamespace()}'" : "") .
 					")";
 		$this->addWhere($titleWhere);
@@ -158,8 +158,9 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 
 	private function run($resultPageSet = null) {
 		$this->params = $this->extractRequestParams(false);
-		$userMax = ( $this->params['redirect'] ? ApiBase::LIMIT_BIG1/2 : ApiBase::LIMIT_BIG1 );
-		$botMax  = ( $this->params['redirect'] ? ApiBase::LIMIT_BIG2/2 : ApiBase::LIMIT_BIG2 );
+		$this->redirect = isset($this->params['redirect']) && $this->params['redirect'];
+		$userMax = ( $this->redirect ? ApiBase::LIMIT_BIG1/2 : ApiBase::LIMIT_BIG1 );
+		$botMax  = ( $this->redirect ? ApiBase::LIMIT_BIG2/2 : ApiBase::LIMIT_BIG2 );
 		if( $this->params['limit'] == 'max' ) {
 			$this->params['limit'] = $this->getMain()->canApiHighLimits() ? $botMax : $userMax;
 			$this->getResult()->addValue( 'limits', $this->getModuleName(), $this->params['limit'] );
@@ -191,10 +192,10 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 					$this->redirTitles[] = Title::makeTitle($row->page_namespace, $row->page_title);
 				$resultPageSet->processDbRow($row);
 			}
-		}	
+		}
 		$db->freeResult($res);
-		
-		if($this->params['redirect'] && !empty($this->redirTitles))
+
+		if($this->redirect && !empty($this->redirTitles))
 		{
 			$this->resetQueryParams();
 			$this->prepareSecondQuery($resultPageSet);
@@ -213,7 +214,7 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 					$this->continueStr = $this->getContinueRedirStr($contTitle->getArticleID(), $row->page_id);
 					break;
 				}
-				
+
 				if(is_null($resultPageSet))
 					$this->extractRedirRowInfo($row);
 				else
@@ -246,7 +247,7 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 			}
 		}
 	}
-	
+
 	private function extractRedirRowInfo($row)
 	{
 		$a['pageid'] = $row->page_id;
@@ -255,24 +256,22 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 			$a['redirect'] = '';
 		$ns = $this->hasNS ? $row->{$this->bl_ns} : NS_IMAGE;
 		$this->data[$ns][$row->{$this->bl_title}]['redirlinks'][] = $a;
-		$this->getResult()->setIndexedTagName($this->data[$ns][$row->{$this->bl_title}]['redirlinks'], $this->bl_code); 
+		$this->getResult()->setIndexedTagName($this->data[$ns][$row->{$this->bl_title}]['redirlinks'], $this->bl_code);
 	}
 
 	protected function processContinue() {
-		$pageSet = $this->getPageSet();
-		$count = $pageSet->getTitleCount();
-		
 		if (!is_null($this->params['continue']))
 			$this->parseContinueParam();
 		else {
-			$title = $this->params['title'];
-			if (!is_null($title)) {
-				$this->rootTitle = Title :: newFromText($title);
-			} else {  // This case is obsolete. Will support this for a while
-				if ($count !== 1)
-					$this->dieUsage("The {$this->getModuleName()} query requires one title to start", 'bad_title_count');
-				$this->rootTitle = current($pageSet->getTitles()); // only one title there
-				$this->setWarning('Using titles parameter is obsolete for this list. Use ' . $this->encodeParamName('title') . ' instead.');
+			if ( $this->params['title'] !== "" ) {
+				$title = Title::newFromText( $this->params['title'] );
+				if ( !$title ) {
+					$this->dieUsageMsg(array('invalidtitle', $this->params['title']));
+				} else {
+					$this->rootTitle = $title;
+				}
+			} else {
+				$this->dieUsageMsg(array('missingparam', 'title'));
 			}
 		}
 
@@ -288,7 +287,7 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 		// ns+key: root title
 		// id1: first-level page ID to continue from
 		// id2: second-level page ID to continue from
-		
+
 		// null stuff out now so we know what's set and what isn't
 		$this->rootTitle = $this->contID = $this->redirID = null;
 		$rootNs = intval($continueList[0]);
@@ -307,7 +306,7 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 			// This one isn't required
 			return;
 		$this->redirID = $redirID;
-		
+
 	}
 
 	protected function getContinueStr($lastPageID) {
@@ -400,7 +399,6 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiQueryBacklinks.php 32125 2008-03-18 19:31:02Z catrope $';
+		return __CLASS__ . ': $Id$';
 	}
 }
-

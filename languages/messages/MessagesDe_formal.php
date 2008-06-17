@@ -1,12 +1,13 @@
 <?php
-/**
- * German - formal address (Deutsch - "Sie-Anrede")
+/** German (formal address) (Deutsch (Sie-Form))
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Jimmy Collins <jimmy.collins@web.de>
  * @author Raimond Spekking (Raymond) <raimond.spekking@gmail.com> since January 2007
  * @author Tim Bartel (avatar) <wikipedia@computerkultur.org> formal addressing
+ * @author Siebrand
  */
 
 $fallback = 'de';
@@ -33,7 +34,7 @@ $messages = array(
 'readonlytext'         => 'Die Datenbank ist vorübergehend für Neueinträge und Änderungen gesperrt. Bitte versuchen Sie es später noch einmal.
 
 Grund der Sperrung: $1',
-'missingarticle'       => 'Der Text für „$1“ wurde nicht in der Datenbank gefunden.
+'missing-article'      => 'Der Text für „$1“ $2 wurde nicht in der Datenbank gefunden.
 
 Die Seite ist möglicherweise gelöscht oder verschoben worden.
 
@@ -64,7 +65,7 @@ Ihr Benutzerkonto wurde eingerichtet. Vergessen Sie nicht, Ihre Einstellungen an
 'nosuchusershort'            => 'Der Benutzername „<nowiki>$1</nowiki>“ existiert nicht. Bitte überprüfen Sie die Schreibweise.',
 'nouserspecified'            => 'Bitte geben Sie einen Benutzernamen an.',
 'wrongpassword'              => 'Das Passwort ist falsch (oder fehlt). Bitte versuchen Sie es erneut.',
-'wrongpasswordempty'         => 'Das eingegebene Passwort war leer. Bitte versuchen Sie es erneut.',
+'wrongpasswordempty'         => 'Es wurde kein Passwort eingegeben. Bitte versuchen Sie es erneut.',
 'passwordremindertext'       => 'Jemand mit der IP-Adresse $1, wahrscheinlich Sie selbst, hat ein neues Passwort für die Anmeldung bei {{SITENAME}} ($4) angefordert.
 
 Das automatisch generierte Passwort für Benutzer $2 lautet nun: $3
@@ -93,11 +94,11 @@ Falls das Benutzerkonto irrtümlich angelegt wurde, können Sie diese Nachricht 
 'sig_tip' => 'Ihre Signatur mit Zeitstempel',
 
 # Edit pages
-'anoneditwarning'           => "Sie bearbeiten diese Seite unangemeldet. Wenn Sie speichern, wird Ihre aktuelle IP-Adresse in der Versionsgeschichte aufgezeichnet und ist damit unwiderruflich '''öffentlich''' einsehbar.",
-'missingsummary'            => "'''Hinweis:''' Sie haben keine Zusammenfassung angegeben. Wenn Sie erneut auf „Seite speichern“ klicken, wird Ihre Änderung ohne Zusammenfassung übernommen.",
-'missingcommenttext'        => 'Bitte geben Sie eine Zusammenfassung ein.',
-'missingcommentheader'      => "'''ACHTUNG:''' Sie haben keine Überschrift im Feld „Betreff:“ eingegeben. Wenn Sie erneut auf „Seite speichern“ klicken, wird Ihre Bearbeitung ohne Überschrift gespeichert.",
-'blockedtext'               => 'Ihr Benutzername oder Ihre IP-Adresse wurde von $1 gesperrt. Als Grund wurde angegeben:
+'anoneditwarning'                  => "Sie bearbeiten diese Seite unangemeldet. Wenn Sie speichern, wird Ihre aktuelle IP-Adresse in der Versionsgeschichte aufgezeichnet und ist damit unwiderruflich '''öffentlich''' einsehbar.",
+'missingsummary'                   => "'''Hinweis:''' Sie haben keine Zusammenfassung angegeben. Wenn Sie erneut auf „Seite speichern“ klicken, wird Ihre Änderung ohne Zusammenfassung übernommen.",
+'missingcommenttext'               => 'Bitte geben Sie eine Zusammenfassung ein.',
+'missingcommentheader'             => "'''ACHTUNG:''' Sie haben keine Überschrift im Feld „Betreff:“ eingegeben. Wenn Sie erneut auf „Seite speichern“ klicken, wird Ihre Bearbeitung ohne Überschrift gespeichert.",
+'blockedtext'                      => 'Ihr Benutzername oder Ihre IP-Adresse wurde von $1 gesperrt. Als Grund wurde angegeben:
 
 :\'\'$2\'\' (<span class="plainlinks">[{{fullurl:Special:Ipblocklist|&action=search&limit=&ip=%23}}$5 Logbucheintrag]</span>)
 
@@ -117,7 +118,7 @@ Sie können $1 oder einen der anderen [[{{MediaWiki:Grouppage-sysop}}|Administra
 *Sperre betrifft: $7
 *Sperr-ID: #$5
 </div>',
-'autoblockedtext'           => 'Ihre IP-Adresse wurde automatisch gesperrt, da sie von einem anderen Benutzer genutzt wurde, der durch $1 gesperrt wurde.
+'autoblockedtext'                  => 'Ihre IP-Adresse wurde automatisch gesperrt, da sie von einem anderen Benutzer genutzt wurde, der durch $1 gesperrt wurde.
 Als Grund wurde angegeben:
 
 :\'\'$2\'\' (<span class="plainlinks">[{{fullurl:Special:Ipblocklist|&action=search&limit=&ip=%23}}$5 Logbucheintrag]</span>)
@@ -137,58 +138,59 @@ Sie können $1 oder einen der anderen [[{{MediaWiki:Grouppage-sysop}}|Administra
 *IP-Adresse: $3
 *Sperr-ID: #$5
 </div>',
-'blockededitsource'         => "Der Quelltext '''Ihrer Änderungen''' an '''$1''':",
-'whitelistedittext'         => 'Sie müssen sich $1, um Seiten bearbeiten zu können.',
-'whitelistreadtext'         => 'Sie müssen sich [[Special:Userlogin|hier anmelden]], um Seiten lesen zu können.',
-'whitelistacctitle'         => 'Sie sind nicht berechtigt, ein Benutzerkonto anzulegen.',
-'whitelistacctext'          => 'Um in {{SITENAME}} Benutzer anlegen zu dürfen, müssen Sie sich [[Special:Userlogin|hier anmelden]] und die nötigen Berechtigungen haben.',
-'confirmedittext'           => 'Sie müssen Ihre E-Mail-Adresse erst bestätigen, bevor Sie Bearbeitungen vornehmen können. Bitte ergänzen und bestätigen Sie Ihre E-Mail in den [[Special:Preferences|Einstellungen]].',
-'nosuchsectiontext'         => 'Sie versuchen den nicht vorhandenen Abschnitt $1 zu bearbeiten. Es können jedoch nur bereits vorhandene Abschnitte bearbeitet werden.',
-'loginreqpagetext'          => 'Sie müssen sich $1, um Seiten lesen zu können.',
-'anontalkpagetext'          => "---- ''Diese Seite dient dazu, einem nicht angemeldeten Benutzer Nachrichten zu hinterlassen. Wenn Sie mit den Kommentaren auf dieser Seite nichts anfangen können, richten sie sich vermutlich an einen früheren Inhaber Ihrer IP-Adresse und Sie können sie ignorieren.''",
-'userpage-userdoesnotexist' => 'Das Benutzerkonto „$1“ ist nicht vorhanden. Bitte prüfen Sie, ob Sie diese Seite wirklich erstellen/bearbeiten möchten.',
-'clearyourcache'            => "'''Hinweis:''' Leeren Sie nach dem Speichern den Browser-Cache, um die Änderungen zu sehen: '''Mozilla/Firefox:''' ''Shift-Strg-R'', '''Internet Explorer:''' ''Strg-F5'', '''Opera:''' ''F5'', '''Safari:''' ''⌘-R'', '''Konqueror:''' ''Strg-R''.",
-'usercssjsyoucanpreview'    => '<strong>Tipp:</strong> Benutzen Sie den Vorschau-Button, um Ihr neues CSS/JS vor dem Speichern zu testen.',
-'usercsspreview'            => "== Vorschau Ihres Benutzer-CSS ==
+'blockededitsource'                => "Der Quelltext '''Ihrer Änderungen''' an '''$1''':",
+'whitelistedittext'                => 'Sie müssen sich $1, um Seiten bearbeiten zu können.',
+'whitelistreadtext'                => 'Sie müssen sich [[Special:Userlogin|hier anmelden]], um Seiten lesen zu können.',
+'whitelistacctitle'                => 'Sie sind nicht berechtigt, ein Benutzerkonto anzulegen.',
+'whitelistacctext'                 => 'Um in {{SITENAME}} Benutzer anlegen zu dürfen, müssen Sie sich [[Special:Userlogin|hier anmelden]] und die nötigen Berechtigungen haben.',
+'confirmedittext'                  => 'Sie müssen Ihre E-Mail-Adresse erst bestätigen, bevor Sie Bearbeitungen vornehmen können. Bitte ergänzen und bestätigen Sie Ihre E-Mail in den [[Special:Preferences|Einstellungen]].',
+'nosuchsectiontext'                => 'Sie versuchen den nicht vorhandenen Abschnitt $1 zu bearbeiten. Es können jedoch nur bereits vorhandene Abschnitte bearbeitet werden.',
+'loginreqpagetext'                 => 'Sie müssen sich $1, um Seiten lesen zu können.',
+'anontalkpagetext'                 => "---- ''Diese Seite dient dazu, einem nicht angemeldeten Benutzer Nachrichten zu hinterlassen. Wenn Sie mit den Kommentaren auf dieser Seite nichts anfangen können, richten sie sich vermutlich an einen früheren Inhaber Ihrer IP-Adresse und Sie können sie ignorieren.''",
+'userpage-userdoesnotexist'        => 'Das Benutzerkonto „$1“ ist nicht vorhanden. Bitte prüfen Sie, ob Sie diese Seite wirklich erstellen/bearbeiten möchten.',
+'clearyourcache'                   => "'''Hinweis:''' Leeren Sie nach dem Speichern den Browser-Cache, um die Änderungen zu sehen: '''Mozilla/Firefox:''' ''Shift-Strg-R'', '''Internet Explorer:''' ''Strg-F5'', '''Opera:''' ''F5'', '''Safari:''' ''⌘-R'', '''Konqueror:''' ''Strg-R''.",
+'usercssjsyoucanpreview'           => '<strong>Tipp:</strong> Benutzen Sie den Vorschau-Button, um Ihr neues CSS/JS vor dem Speichern zu testen.',
+'usercsspreview'                   => "== Vorschau Ihres Benutzer-CSS ==
 '''Hinweis:''' Nach dem Speichern müssen Sie Ihren Browser anweisen, die neue Version zu laden: '''Mozilla/Firefox:''' ''Strg-Shift-R'', '''Internet Explorer:''' ''Strg-F5'', '''Opera:''' ''F5'', '''Safari:''' ''Cmd-Shift-R'', '''Konqueror:''' ''F5''.",
-'userjspreview'             => "== Vorschau Ihres Benutzer-JavaScript ==
+'userjspreview'                    => "== Vorschau Ihres Benutzer-JavaScript ==
 '''Hinweis:''' Nach dem Speichern müssen Sie Ihren Browser anweisen, die neue Version zu laden: '''Mozilla/Firefox:''' ''Strg-Shift-R'', '''Internet Explorer:''' ''Strg-F5'', '''Opera:''' ''F5'', '''Safari:''' ''Cmd-Shift-R'', '''Konqueror:''' ''F5''.",
-'userinvalidcssjstitle'     => "'''Warnung:''' Es existiert kein Skin „$1“. Bitte bedenken Sie, dass benutzerspezifische .css- und .js-Seiten mit einem Kleinbuchstaben anfangen müssen, also z.B. ''{{ns:user}}:Mustermann/monobook.css'' an Stelle von ''{{ns:user}}:Mustermann/Monobook.css''.",
-'previewconflict'           => 'Diese Vorschau gibt den Inhalt des oberen Textfeldes wieder. So wird die Seite aussehen, wenn Sie jetzt speichern.',
-'session_fail_preview'      => '<strong>Ihre Bearbeitung konnte nicht gespeichert werden, da Ihre Sitzungsdaten verloren gegangen sind.
+'userinvalidcssjstitle'            => "'''Warnung:''' Es existiert kein Skin „$1“. Bitte bedenken Sie, dass benutzerspezifische .css- und .js-Seiten mit einem Kleinbuchstaben anfangen müssen, also z.B. ''{{ns:user}}:Mustermann/monobook.css'' an Stelle von ''{{ns:user}}:Mustermann/Monobook.css''.",
+'previewconflict'                  => 'Diese Vorschau gibt den Inhalt des oberen Textfeldes wieder. So wird die Seite aussehen, wenn Sie jetzt speichern.',
+'session_fail_preview'             => '<strong>Ihre Bearbeitung konnte nicht gespeichert werden, da Ihre Sitzungsdaten verloren gegangen sind.
 Bitte versuchen Sie es erneut, indem Sie unter der folgenden Textvorschau nochmals auf „Seite speichern“ klicken.
 Sollte das Problem bestehen bleiben, melden Sie sich ab und danach wieder an.</strong>',
-'session_fail_preview_html' => "<strong>Ihre Bearbeitung konnte nicht gespeichert werden, da Ihre Sitzungsdaten verloren gegangen sind.</strong>
+'session_fail_preview_html'        => "<strong>Ihre Bearbeitung konnte nicht gespeichert werden, da Ihre Sitzungsdaten verloren gegangen sind.</strong>
 
 ''Da in {{SITENAME}} das Speichern von reinem HTML aktiviert ist, wurde die Vorschau ausgeblendet, um JavaScript-Attacken vorzubeugen.''
 
 <strong>Bitte versuchen Sie es erneut, indem Sie unter der folgenden Textvorschau nochmals auf „Seite speichern“ klicken. Sollte das Problem bestehen bleiben, melden Sie sich ab und danach wieder an.</strong>",
-'token_suffix_mismatch'     => '<strong>Ihre Bearbeitung wurde zurückgewiesen, da Ihr Browser Zeichen im Bearbeiten-Token verstümmelt hat.
+'token_suffix_mismatch'            => '<strong>Ihre Bearbeitung wurde zurückgewiesen, da Ihr Browser Zeichen im Bearbeiten-Token verstümmelt hat.
 Eine Speicherung kann den Seiteninhalt zerstören. Dies geschieht bisweilen durch die Benutzung eines anonymen Proxy-Dienstes, der fehlerhaft arbeitet.</strong>',
-'explainconflict'           => "Jemand anders hat diese Seite geändert, nachdem Sie angefangen haben diese zu bearbeiten.
+'explainconflict'                  => "Jemand anders hat diese Seite geändert, nachdem Sie angefangen haben diese zu bearbeiten.
 Das obere Textfeld enthält den aktuellen Stand.
 Das untere Textfeld enthält Ihre Änderungen.
 Bitte fügen Sie Ihre Änderungen in das obere Textfeld ein.
 '''Nur''' der Inhalt des oberen Textfeldes wird gespeichert, wenn Sie auf „Seite speichern“ klicken!",
-'yourtext'                  => 'Ihr Text',
-'nonunicodebrowser'         => '<strong>Achtung:</strong> Ihr Browser kann Unicode-Zeichen nicht richtig verarbeiten. Bitte verwenden Sie einen anderen Browser um Seiten zu bearbeiten.',
-'editingold'                => '<strong>ACHTUNG: Sie bearbeiten eine alte Version dieser Seite. Wenn Sie speichern, werden alle neueren Versionen überschrieben.</strong>',
-'copyrightwarning'          => '<strong>Bitte <big>kopieren Sie keine Webseiten</big>, die nicht Ihre eigenen sind, benutzen Sie <big>keine urheberrechtlich geschützten Werke</big> ohne Erlaubnis des Copyright-Inhabers!</strong><br />
+'yourtext'                         => 'Ihr Text',
+'nonunicodebrowser'                => '<strong>Achtung:</strong> Ihr Browser kann Unicode-Zeichen nicht richtig verarbeiten. Bitte verwenden Sie einen anderen Browser um Seiten zu bearbeiten.',
+'editingold'                       => '<strong>ACHTUNG: Sie bearbeiten eine alte Version dieser Seite. Wenn Sie speichern, werden alle neueren Versionen überschrieben.</strong>',
+'copyrightwarning'                 => '<strong>Bitte <big>kopieren Sie keine Webseiten</big>, die nicht Ihre eigenen sind, benutzen Sie <big>keine urheberrechtlich geschützten Werke</big> ohne Erlaubnis des Copyright-Inhabers!</strong><br />
 Sie geben uns hiermit Ihre Zusage, dass Sie den Text <strong>selbst verfasst</strong> haben, dass der Text Allgemeingut (<strong>public domain</strong>) ist, oder dass der <strong>Copyright-Inhaber</strong> seine <strong>Zustimmung</strong> gegeben hat. Falls dieser Text bereits woanders veröffentlicht wurde, weisen Sie bitte auf der Diskussionsseite darauf hin.
 <i>Bitte beachten Sie, dass alle {{SITENAME}}-Beiträge automatisch unter der „$2“ stehen (siehe $1 für Details). Falls Sie nicht möchten, dass Ihre Arbeit hier von anderen verändert und verbreitet wird, dann drücken Sie nicht auf „Seite speichern“.</i>',
-'copyrightwarning2'         => 'Bitte beachten Sie, dass alle Beiträge zu {{SITENAME}} von anderen Mitwirkenden bearbeitet, geändert oder gelöscht werden können.
+'copyrightwarning2'                => 'Bitte beachten Sie, dass alle Beiträge zu {{SITENAME}} von anderen Mitwirkenden bearbeitet, geändert oder gelöscht werden können.
 Reichen Sie keine Texte ein, falls Sie nicht wollen, dass diese ohne Einschränkung geändert werden können.
 
 Sie bestätigen hiermit auch, dass Sie diese Texte selbst geschrieben haben oder diese von einer gemeinfreien Quelle kopiert haben
 (siehe $1 für weitere Details). <strong>ÜBERTRAGEN SIE OHNE GENEHMIGUNG KEINE URHEBERRECHTLICH GESCHÜTZTEN INHALTE!</strong>',
-'longpagewarning'           => '<strong>WARNUNG: Diese Seite ist $1 kB groß; einige Browser könnten Probleme haben, Seiten zu bearbeiten, die größer als 32 KB sind.
+'longpagewarning'                  => '<strong>WARNUNG: Diese Seite ist $1 kB groß; einige Browser könnten Probleme haben, Seiten zu bearbeiten, die größer als 32 KB sind.
 Überlegen Sie bitte, ob eine Aufteilung der Seite in kleinere Abschnitte möglich ist.</strong>',
-'readonlywarning'           => '<strong>WARNUNG: Die Datenbank wurde während der Seitenbearbeitung für Wartungsarbeiten gesperrt, so dass Sie die Seite im Moment nicht
+'readonlywarning'                  => '<strong>WARNUNG: Die Datenbank wurde während der Seitenbearbeitung für Wartungsarbeiten gesperrt, so dass Sie die Seite im Moment nicht
 speichern können. Sichern Sie den Text und versuchen Sie die Änderungen später einzuspielen.</strong>',
-'nocreatetext'              => 'Auf {{SITENAME}} wurde das Erstellen neuer Seiten eingeschränkt. Sie können bestehende Seiten ändern oder sich [[Special:Userlogin|anmelden]].',
-'nocreate-loggedin'         => 'Sie haben keine Berechtigung, neue Seiten in {{SITENAME}} anzulegen.',
-'permissionserrorstext'     => 'Sie sind nicht berechtigt, die Aktion auszuführen. {{PLURAL:$1|Grund|Gründe}}:',
-'recreate-deleted-warn'     => "'''Achtung: Sie erstellen eine Seite, die bereits früher gelöscht wurde.'''
+'nocreatetext'                     => 'Auf {{SITENAME}} wurde das Erstellen neuer Seiten eingeschränkt. Sie können bestehende Seiten ändern oder sich [[Special:Userlogin|anmelden]].',
+'nocreate-loggedin'                => 'Sie haben keine Berechtigung, neue Seiten in {{SITENAME}} anzulegen.',
+'permissionserrorstext'            => 'Sie sind nicht berechtigt, die Aktion auszuführen. {{PLURAL:$1|Grund|Gründe}}:',
+'permissionserrorstext-withaction' => 'Sie sind nicht berechtigt, die Aktion „$2“ auszuführen, {{PLURAL:$1|Grund|Gründe}}:',
+'recreate-deleted-warn'            => "'''Achtung: Sie erstellen eine Seite, die bereits früher gelöscht wurde.'''
 
 Bitte prüfen Sie sorgfältig, ob die erneute Seitenerstellung den Richtlinien entspricht.
 Zu Ihrer Information folgt das Lösch-Logbuch mit der Begründung für die vorhergehende Löschung:",
@@ -213,22 +215,24 @@ Stellen Sie sicher, dass die Versionsgeschichte eines Artikels historisch korrek
 'searchsubtitleinvalid' => 'Ihre Suchanfrage: „$1“.',
 'noexactmatch'          => "'''Es existiert keine Seite mit dem Titel „$1“.'''
 
-Versuchen Sie es über die Volltextsuche.
 Alternativ können Sie auch den [[Special:Allpages|alphabetischen Index]] nach ähnlichen Begriffen durchsuchen.
 
 Wenn Sie sich mit dem Thema auskennen, können Sie selbst die Seite „[[$1]]“ verfassen.",
 'toomanymatches'        => 'Es Anzahl der Suchergnisse ist zu groß, bitte versuchen Sie eine andere Abfrage.',
 'search-suggest'        => 'Meinten Sie „$1“?',
+'nonefound'             => "'''Hinweis:''' Es werden standardmäßig nur einige Namensräume durchsucht. Setzen Sie ''all:'' vor Ihren Suchbegriff, um alle Seiten (inkl. Diskussionsseiten, Vorlagen usw.) zu durchsuchen oder gezielt den Namen des zu durchsuchenden Namensraumes.",
 'searchdisabled'        => 'Die {{SITENAME}} Suche wurde deaktiviert. Sie können unterdessen mit Google suchen. Bitte bedenken Sie, dass der Suchindex für {{SITENAME}} veraltet sein kann.',
 
 # Preferences page
-'preferences-summary' => 'Auf dieser Spezialseite können Sie Ihre Zugangsdaten ändern und bestimmte Teile der Oberfläche individuell anpassen ',
+'preferences-summary' => 'Auf dieser Spezialseite können Sie Ihre Zugangsdaten ändern und bestimmte Teile der Oberfläche individuell anpassen.',
 'prefsnologintext'    => 'Sie müssen [[Special:Userlogin|angemeldet]] sein, um Ihre Einstellungen ändern zu können.',
 'savedprefs'          => 'Ihre Einstellungen wurden gespeichert.',
 'timezonetext'        => 'Geben Sie die Anzahl der Stunden ein, die zwischen Ihrer Zeitzone und UTC liegen.',
 
 # User rights
-'userrights-groups-help'           => 'Sie können die Gruppenzugehörigkeit für diesen Benutzer ändern. Ein markiertes Kästchen bedeutet, dass der Benutzer Mitglied dieser Gruppe ist. Ein unmarkiertes Kästchen, dass er kein Mitglied ist.',
+'userrights-groups-help'           => 'Sie können die Gruppenzugehörigkeit für diesen Benutzer ändern.
+* Ein markiertes Kästchen bedeutet, dass der Benutzer Mitglied dieser Gruppe ist.
+* Ein * bedeutet, dass Sie das Benutzerrecht nach Erteilung nicht wieder zurücknehmen können (oder umgekehrt).',
 'userrights-available-none'        => 'Sie dürfen keine Benutzerrechte verändern.',
 'userrights-available-add'         => 'Sie können Benutzer {{PLURAL:$2|der folgenden Gruppe|den folgenden $2 Gruppen}} hinzufügen: $1.',
 'userrights-available-remove'      => 'Sie können Benutzer aus {{PLURAL:$2|der folgenden Gruppe|den folgenden $2 Gruppen}} entfernen: $1.',
@@ -316,7 +320,7 @@ Bitte geben Sie der Datei einen Namen, der den Inhalt besser beschreibt.',
 'booksources-summary' => 'Auf dieser Spezialseite können Sie eine ISBN eingeben und erhalten dann eine Liste mit Onlinekatalogen und Bezugsmöglichkeiten zur gesuchten ISBN. Bindestriche oder Leerzeichen zwischen den Ziffern spielen für die Suche keine Rolle.',
 
 # E-mail user
-'mailnologintext' => 'Sie müssen [[{{ns:special}}:Userlogin|angemeldet sein]] und eine [[{{ns:special}}:Confirmemail|bestätigte]] E-Mail-Adresse haben, um anderen Benutzern E-Mails schicken zu können.',
+'mailnologintext' => 'Sie müssen [[Special:Userlogin|angemeldet sein]] und eine [[Special:Confirmemail|bestätigte]] E-Mail-Adresse haben, um anderen Benutzern E-Mails schicken zu können.',
 'emailpagetext'   => 'Wenn dieser Benutzer eine gültige E-Mail-Adresse angegeben hat, können Sie ihm mit dem untenstehenden Formular eine E-Mail senden. Als Absender wird die E-Mail-Adresse aus Ihren Einstellungen eingetragen, damit der Benutzer Ihnen antworten kann.',
 'emailccsubject'  => 'Kopie Ihrer Nachricht an $1: $2',
 'emailsenttext'   => 'Ihre E-Mail wurde verschickt.',

@@ -1,18 +1,22 @@
 <?php
 /** Korean (한국어)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Klutzy
+ * @author ToePeu
  * @author PuzzletChung
+ * @author Siebrand
+ * @author ITurtle
  * @author לערי ריינהארט
  * @author TheAlpha for knowledge
+ * @author Kwj2772
  * @author Nike
- * @author Teak
- * @author Siebrand
- * @author SPQRobin
- * @author ToePeu
+ * @author Ficell
  * @author Jon Harald Søby
+ * @author Pi.C.Noizecehx
+ * @author SPQRobin
  */
 
 $namespaceNames = array(
@@ -87,13 +91,15 @@ $messages = array(
 'tog-fancysig'                => '서명에 링크를 걸지 않기',
 'tog-externaleditor'          => '외부 입력기를 기본값으로 사용하기',
 'tog-externaldiff'            => '외부 비교 툴을 기본값으로 사용하기',
-'tog-uselivepreview'          => '실시간 미리 보기 사용하기 (자바스크립트) (실험적 기능)',
+'tog-showjumplinks'           => '접근성을 위한 "이동" 링크 쓰기 (일부 스킨에서만 작동)',
+'tog-uselivepreview'          => '실시간 미리 보기 사용하기 (자바스크립트, 실험적 기능)',
 'tog-forceeditsummary'        => '편집 요약을 쓰지 않았을 때 알려주기',
 'tog-watchlisthideown'        => '주시문서 목록에서 내 편집을 숨기기',
 'tog-watchlisthidebots'       => '주시문서 목록에서 봇 편집을 숨기기',
 'tog-watchlisthideminor'      => '주시문서 목록에서 사소한 편집을 숨기기',
 'tog-ccmeonemails'            => '이메일을 보낼 때 내 이메일로 복사본을 보내기',
 'tog-diffonly'                => '편집 차이를 비교할 때 문서 내용을 보여주지 않기',
+'tog-showhiddencats'          => '숨겨진 분류 보기',
 
 'underline-always'  => '항상',
 'underline-never'   => '치지 않음',
@@ -154,16 +160,19 @@ $messages = array(
 'dec'           => '12',
 
 # Categories related messages
-'categories'                     => '분류',
-'categoriespagetext'             => '문서나 자료를 담고 있는 분류 목록입니다.',
-'pagecategories'                 => '분류',
+'pagecategories'                 => '{{PLURAL:$1|분류|분류}}',
 'category_header'                => '‘$1’ 분류에 속하는 문서',
 'subcategories'                  => '하위 분류',
 'category-media-header'          => '‘$1’ 분류에 속하는 자료',
 'category-empty'                 => '이 분류에 속하는 문서나 자료가 없습니다.',
+'hidden-categories'              => '숨겨진 분류',
+'hidden-category-category'       => '숨겨진 분류', # Name of the category where hidden categories will be listed
 'category-subcat-count'          => '이 분류에는 하위 분류가 $1개 있고, 그 중 $2개를 보여주고 있습니다.',
 'category-subcat-count-limited'  => '이 분류에는 하위 분류가 $1개 있습니다.',
-'category-article-count-limited' => '이 분류에는 문서가 $1개 있습니다.',
+'category-article-count'         => '{{PLURAL:$2|이 분류에는 1개의 문서가 있습니다.|이 분류에는 $2개의 문서가 있습니다.}}',
+'category-article-count-limited' => '이 분류에 $1개의 문서가 속해 있습니다.',
+'category-file-count'            => '{{PLURAL:$2|이 분류에는 1개의 파일이 있습니다.|이 분류에는 $2개의 파일이 있습니다.}}',
+'category-file-count-limited'    => '$1개의 파일이 이 분류에 있습니다.',
 'listingcontinuesabbrev'         => ' (계속)',
 
 'mainpagetext'      => "<big>'''미디어위키가 성공적으로 설치되었습니다.'''</big>",
@@ -212,7 +221,9 @@ $messages = array(
 'permalink'         => '고유링크',
 'print'             => '인쇄',
 'edit'              => '편집',
+'create'            => '생성',
 'editthispage'      => '이 문서 편집하기',
+'create-this-page'  => '이 문서 만들기',
 'delete'            => '삭제',
 'deletethispage'    => '이 문서 삭제하기',
 'undelete_short'    => '$1개의 편집 되살리기',
@@ -233,7 +244,7 @@ $messages = array(
 'toolbox'           => '도구모음',
 'userpage'          => '사용자 문서 보기',
 'projectpage'       => '프로젝트 문서 보기',
-'imagepage'         => '그림 문서 보기',
+'imagepage'         => '자료 문서 보기',
 'mediawikipage'     => '메시지 문서 보기',
 'templatepage'      => '틀 문서 보기',
 'viewhelppage'      => '도움말 문서 보기',
@@ -263,6 +274,8 @@ $messages = array(
 'disclaimerpage'       => 'Project:면책 조항',
 'edithelp'             => '편집 도움말',
 'edithelppage'         => 'Help:편집하기',
+'faq'                  => 'FAQ',
+'faqpage'              => 'Project:FAQ',
 'helppage'             => 'Help:목차',
 'mainpage'             => '대문',
 'mainpage-description' => '대문',
@@ -276,12 +289,12 @@ $messages = array(
 
 'badaccess'        => '권한 오류',
 'badaccess-group0' => '요청한 동작을 실행할 권한이 없습니다.',
-'badaccess-group1' => '요청한 동작은 $1 권한을 가진 사용자에게만 가능합니다.',
+'badaccess-group1' => '요청한 동작에는 $1 권한이 필요합니다.',
 'badaccess-group2' => '요청한 동작은 $1 중 하나의 권한을 가진 사용자에게만 가능합니다.',
 'badaccess-groups' => '요청한 동작은 $1 중 하나의 권한을 가진 사용자에게만 가능합니다.',
 
 'versionrequired'     => '미디어위키 $1 버전 필요',
-'versionrequiredtext' => '이 문서를 보기 위해서는 미디어위키 $1 버전이 필요합니다. [[Special:Version|설치되어 있는 미디어위키의 버전]]을 확인해주세요.',
+'versionrequiredtext' => '이 문서를 사용하려면 $1 버전 미디어위키가 필요합니다. [[Special:Version|설치된 미디어위키 버전]]을 확인해주세요.',
 
 'ok'                      => '확인',
 'retrievedfrom'           => '원본 주소 ‘$1’',
@@ -291,6 +304,7 @@ $messages = array(
 'youhavenewmessagesmulti' => '$1 란에 누군가 글을 남겼습니다.',
 'editsection'             => '편집',
 'editold'                 => '편집',
+'viewsourceold'           => '내용 보기',
 'editsectionhint'         => '부분 편집: $1',
 'toc'                     => '목차',
 'showtoc'                 => '보이기',
@@ -303,6 +317,8 @@ $messages = array(
 'site-rss-feed'           => '$1 RSS 피드',
 'site-atom-feed'          => '$1 Atom 피드',
 'page-rss-feed'           => '‘$1’ RSS 피드',
+'page-atom-feed'          => '"$1" Atom 피드',
+'red-link-title'          => '$1 (없는 문서)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => '문서',
@@ -335,15 +351,11 @@ $messages = array(
 'laggedslavemode'      => '주의: 문서가 최근 것이 아닐 수 있습니다.',
 'readonly'             => '데이터베이스 잠김',
 'enterlockreason'      => '데이터베이스를 잠그는 이유와 예상되는 기간을 적어 주세요.',
-'readonlytext'         => '현재 데이터베이스는 편집을 하지 못하도록 잠겨 있습니다. 데이터베이스 관리가 끝난 후에는 다시 정상으로 돌아올 것입니다.
+'readonlytext'         => '데이터베이스가 잠겨 있어서 문서를 편집할 수 없습니다. 데이터베이스 관리가 끝난 후에는 정상으로 돌아올 것입니다.
 
-관리자가 데이터베이스를 잠근 이유는 다음과 같습니다: $1',
-'missingarticle'       => '데이터베이스에서 "$1" 문서를 찾지 못했습니다.
-
-보통 이것은 삭제된 문서의 비교/역사를 가리키는 링크일 것입니다.
-
-만약 그런 경우가 아니라면, 프로그램에 버그가 있을 수도 있습니다. 관리자에게 이 URL을 보내 주세요.',
-'readonly_lag'         => '슬레이브 서버에서 마스터 서버를 따라잡을 때까지 데이터베이스가 자동적으로 잠깁니다.',
+관리자가 데이터베이스를 잠글 때 남긴 메시지는 다음과 같습니다: $1',
+'missingarticle-diff'  => '(차이: $1, $2)',
+'readonly_lag'         => '슬레이브 데이터베이스가 마스터 서버의 자료를 갱신하는 중입니다. 데이터베이스가 자동으로 잠겨 있습니다.',
 'internalerror'        => '내부 오류',
 'internalerror_info'   => '내부 오류: $1',
 'filecopyerror'        => '‘$1’ 파일을 ‘$2’(으)로 복사할 수 없습니다.',
@@ -365,13 +377,14 @@ $messages = array(
 'wrong_wfQuery_params' => 'wfQuery()에서 잘못된 매개변수 발생<br />함수: $1<br />쿼리: $2',
 'viewsource'           => '내용 보기',
 'viewsourcefor'        => '$1의 문서 내용',
+'actionthrottledtext'  => '스팸을 막기 위해 이 작업을 짧은 시간에 너무 많이 하는 것을 막고 있습니다.
+제한을 넘었으니 몇 분 후에 새로 시도하세요.',
 'protectedpagetext'    => '이 문서는 문서 편집이 불가능하도록 보호되어 있습니다.',
 'viewsourcetext'       => '문서의 원본을 보거나 복사할 수 있습니다:',
 'protectedinterface'   => '이 문서는 소프트웨어 인터페이스에 쓰이는 문서로, 잠겨 있습니다.',
 'editinginterface'     => "'''경고''': 소프트웨어에서 사용하는 메시지 문서를 고치고 있습니다. 이것은 모든 사용자에게 영향을 끼칩니다. 번역되지 않은 메시지를 번역하려는 경우에는, [http://translatewiki.net/wiki/Main_Page?setlang=ko Betawiki]에 참여하면 메시지 번역을 미디어위키에 직접 반영할 수 있습니다.",
 'sqlhidden'            => '(SQL 쿼리 숨겨짐)',
-'cascadeprotected'     => '다음의 문서에서 이 문서를 사용하고 있고 그 문서에 연쇄적 보호 설정이 걸려 있어, 이 문서도 편집에서 보호됩니다:
-$2',
+'cascadeprotected'     => '이 문서는 자동으로 보호되어 있습니다. 연쇄적 보호를 건 문서에서 이 문서를 사용하고 있습니다. 그 문서들은 다음과 같습니다:',
 'namespaceprotected'   => "'''$1''' 네임스페이스를 편집할 수 있는 권한이 없습니다.",
 'customcssjsprotected' => '이 문서는 다른 사용자의 개인 설정을 담고 있기 때문에, 편집할 권한이 없습니다.',
 'ns-specialprotected'  => '{{ns:special}} 네임스페이스의 문서는 편집할 수 없습니다.',
@@ -384,14 +397,15 @@ $2',
 
 계정이 만들어졌습니다. [[Special:Preferences|사용자 환경 설정]]에서 당신의 {{SITENAME}} 사용자 환경 설정을 바꿀 수 있습니다.',
 'loginpagetitle'             => '로그인',
-'yourname'                   => '이름',
-'yourpassword'               => '암호',
+'yourname'                   => '사용자 이름:',
+'yourpassword'               => '비밀번호:',
 'yourpasswordagain'          => '암호 확인',
 'remembermypassword'         => '로그인 상태를 저장하기',
 'yourdomainname'             => '도메인 이름',
 'externaldberror'            => '외부 인증 데이터베이스에 오류가 있거나, 외부 계정을 갱신할 권한이 없습니다.',
 'loginproblem'               => "'''로그인에 문제가 발생했습니다.'''<br />다시 시도해 보세요.",
 'login'                      => '로그인',
+'nav-login-createaccount'    => '로그인 / 계정 만들기',
 'loginprompt'                => '{{SITENAME}}에 로그인하려면 쿠키를 사용할 수 있어야 합니다.',
 'userlogin'                  => '로그인 / 계정 만들기',
 'logout'                     => '로그아웃',
@@ -400,7 +414,7 @@ $2',
 'nologin'                    => '계정이 없나요? $1.',
 'nologinlink'                => '계정을 만들 수 있습니다',
 'createaccount'              => '계정 만들기',
-'gotaccount'                 => '계정이 이미 있나요? $1.',
+'gotaccount'                 => '계정이 이미 있다면, $1.',
 'gotaccountlink'             => '로그인하세요',
 'createaccountmail'          => '이메일로 보내기',
 'badretype'                  => '암호가 서로 다릅니다.',
@@ -408,15 +422,16 @@ $2',
 'youremail'                  => '이메일:',
 'username'                   => '사용자 이름:',
 'uid'                        => '사용자 ID:',
+'prefs-memberingroups'       => '가지고 있는 권한 목록:',
 'yourrealname'               => '실명:',
 'yourlanguage'               => '언어:',
-'yournick'                   => '닉네임:',
+'yournick'                   => '서명:',
 'badsig'                     => '서명이 잘못되었습니다. HTML 태그를 확인해주세요.',
 'badsiglength'               => '서명이 너무 깁니다. 서명은 $1자보다 짧아야 합니다.',
 'email'                      => '이메일',
 'prefs-help-realname'        => '실명 기입은 자유입니다. 실명을 입력할 경우 문서 기여에 자신의 이름이 들어가게 됩니다.',
 'loginerror'                 => '로그인 오류',
-'prefs-help-email'           => '이메일 주소 입력은 선택사항입니다. 이메일 주소를 입력하면, 이메일을 직접 공개하지 않고도 다른 사용자가 연락을 보낼 수 있습니다.',
+'prefs-help-email'           => "이메일 주소 입력은 선택사항으로, 다른 사용자에게 이메일 주소가 공개되지는 않습니다. 이 기능을 사용하면 '메일 보내기' 기능을 통해 다른 사용자가 보내는 메일을 받을 수 있습니다.",
 'prefs-help-email-required'  => '이메일 주소가 필요합니다.',
 'nocookiesnew'               => '사용자 계정을 만들었지만, 아직 로그인하지 않았습니다. {{SITENAME}}에서는 로그인 정보를 저장하기 위해 쿠키를 사용합니다. 지금 사용하는 웹 브라우저는 쿠키를 사용하지 않도록 설정되어 있습니다. 로그인하기 전에 웹 브라우저에서 쿠키를 사용하도록 설정해주세요.',
 'nocookieslogin'             => '{{SITENAME}}에서는 로그인을 위해 쿠키를 사용합니다. 당신의 웹 브라우저에서 쿠키가 비활성되어 있습니다. 쿠키 사용을 활성화한 다음 로그인해 주세요.',
@@ -428,7 +443,7 @@ $2',
 'nouserspecified'            => '사용자 이름을 입력하지 않았습니다.',
 'wrongpassword'              => '암호가 틀립니다. 다시 시도해 주세요.',
 'wrongpasswordempty'         => '비밀번호가 비었습니다. 다시 시도해 주세요.',
-'passwordtooshort'           => '암호가 너무 짧습니다. 암호 길이는 적어도 $1글자 이상이어야 합니다.',
+'passwordtooshort'           => '암호가 너무 짧습니다. 암호 길이는 적어도 $1자 이상이어야 합니다.',
 'mailmypassword'             => '새 암호를 이메일로 보내기',
 'passwordremindertitle'      => '{{SITENAME}}에서 보내는 새 임시 암호',
 'passwordremindertext'       => 'IP 주소 $1에게서 당신에게 {{SITENAME}}의 새 암호를 보내달라는 요청이 왔습니다. ($4)
@@ -459,9 +474,9 @@ $2',
 'resetpass'               => '계정 비밀번호 초기화',
 'resetpass_announce'      => '이메일로 받은 임시 암호로 로그인했습니다. 로그인을 마치려면 새 암호를 입력해 주세요:',
 'resetpass_header'        => '암호 재설정',
-'resetpass_submit'        => '암호를 변경하고 로그인 하기',
+'resetpass_submit'        => '암호를 변경하고 로그인하기',
 'resetpass_success'       => '암호가 성공적으로 변경되었습니다! 로그인을 해 주세요.',
-'resetpass_bad_temporary' => '잘못된 임시 암호. 암호를 이미 바꾸었거나 새로운 임시 암호를 받았을 수 있습니다.',
+'resetpass_bad_temporary' => '임시 암호가 잘못되었습니다. 암호를 이미 바꾸었거나, 임시 암호를 새로 받았을 수 있습니다.',
 'resetpass_forbidden'     => '{{SITENAME}}에서 암호 변경 불가',
 'resetpass_missing'       => '입력값 없음.',
 
@@ -486,21 +501,21 @@ $2',
 'hr_tip'          => '가로줄(되도록 사용하지 말아 주세요)',
 
 # Edit pages
-'summary'                   => '편집 요약',
-'subject'                   => '주제/제목',
-'minoredit'                 => '사소한 편집',
-'watchthis'                 => '이 문서 주시하기',
-'savearticle'               => '저장',
-'preview'                   => '미리 보기',
-'showpreview'               => '미리 보기',
-'showlivepreview'           => '실시간 미리 보기',
-'showdiff'                  => '차이 보기',
-'anoneditwarning'           => "'''주의''': 로그인하고 있지 않습니다. 당신의 IP 주소가 문서 역사에 남게 됩니다.",
-'missingsummary'            => "'''알림:''' 편집 요약을 적지 않았습니다. 그대로 저장하면 편집 요약 없이 저장됩니다.",
-'summary-preview'           => '편집 요약 미리 보기',
-'subject-preview'           => '주제/제목 미리 보기',
-'blockedtitle'              => '차단됨',
-'blockedtext'               => '<big>\'\'\'당신의 계정 혹은 IP 주소가 차단되었습니다.\'\'\'</big>
+'summary'                          => '편집 요약',
+'subject'                          => '주제/제목',
+'minoredit'                        => '사소한 편집',
+'watchthis'                        => '이 문서 주시하기',
+'savearticle'                      => '저장',
+'preview'                          => '미리 보기',
+'showpreview'                      => '미리 보기',
+'showlivepreview'                  => '실시간 미리 보기',
+'showdiff'                         => '차이 보기',
+'anoneditwarning'                  => "'''주의''': 로그인하고 있지 않습니다. 당신의 IP 주소가 문서 역사에 남게 됩니다.",
+'missingsummary'                   => "'''알림:''' 편집 요약을 적지 않았습니다. 그대로 저장하면 편집 요약 없이 저장됩니다.",
+'summary-preview'                  => '편집 요약 미리 보기',
+'subject-preview'                  => '주제/제목 미리 보기',
+'blockedtitle'                     => '차단됨',
+'blockedtext'                      => '<big>\'\'\'당신의 계정 혹은 IP 주소가 차단되었습니다.\'\'\'</big>
 
 계정을 차단한 사람은 $1이고, 차단한 이유는 다음과 같습니다: "$2"
 
@@ -508,97 +523,100 @@ $2',
 * 차단이 만료되는 시간: $6
 * 차단된 사용자: $7
 
-$1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 대해 연락할 수 있습니다. [[Special:Preferences|계정 환경 설정]]에 올바른 이메일 주소가 있어야만 \'이메일 보내기\' 기능을 사용할 수 있습니다. 당신의 현재 IP 주소는 $3이고, 차단 ID는 #$5입니다. 이메일을 보낼 때에 이 주소를 같이 알려주세요.',
-'autoblockedtext'           => "당신의 IP 주소는 $1이 차단한 사용자가 사용했던 IP이기 때문에, 자동으로 차단되었습니다. 차단된 이유는 다음과 같습니다:
+$1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 대해 문의할 수 있습니다. [[Special:Preferences|계정 환경 설정]]에 올바른 이메일 주소가 있어야만 \'이메일 보내기\' 기능을 사용할 수 있습니다. 당신의 현재 IP 주소는 $3이고, 차단 ID는 #$5입니다. 문의할 때에 이 정보를 같이 알려주세요.',
+'autoblockedtext'                  => "당신의 IP 주소는 $1이 차단한 사용자가 사용했던 IP이기 때문에, 자동으로 차단되었습니다. 차단된 이유는 다음과 같습니다:
 
 :$2
 
 * 차단이 시작된 시간: $8
 * 차단이 만료되는 시간: $6
 
-$1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 대해 연락할 수 있습니다.
+$1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 대해 문의할 수 있습니다.
 
 [[Special:Preferences|계정 환경 설정]]에 올바른 이메일 주소가 있어야만 '이메일 보내기' 기능을 사용할 수 있습니다. 또한 이메일 보내기 기능이 차단되어 있으면 이메일을 보낼 수 없습니다.
 
-당신의 현재 IP 주소는 $3이고, 차단 ID는 #$5입니다. 이메일을 보낼 때에 이 주소를 같이 알려주세요.",
-'blockedoriginalsource'     => "아래에 '''$1'''의 내용이 나와 있습니다:",
-'blockededitsource'         => "아래에 '''$1'''에서의 '''당신의 편집'''이 나와 있습니다:",
-'whitelistedittitle'        => '편집하려면 로그인 필요',
-'whitelistedittext'         => '문서를 편집하려면 $1해야 합니다.',
-'whitelistreadtitle'        => '문서를 보려면 로그인 필요',
-'whitelistreadtext'         => '문서를 읽기 위해서는 [[Special:Userlogin|로그인]]해야 합니다.',
-'whitelistacctitle'         => '계정을 만들도록 허용되어 있지 않습니다.',
-'confirmedittitle'          => '편집하려면 이메일 인증 필요',
-'confirmedittext'           => '문서를 고치려면 이메일 인증 절차가 필요합니다. [[Special:Preferences|사용자 환경 설정]]에서 이메일 주소를 입력하고 이메일 주소 인증을 해 주시기 바랍니다.',
-'nosuchsectiontitle'        => '해당 부분 없음',
-'nosuchsectiontext'         => '편집하려는 문단이 존재하지 않습니다. $1번째 문단이 없기 때문에 편집한 내용을 저장할 수 없습니다.',
-'loginreqtitle'             => '로그인 필요',
-'loginreqlink'              => '로그인',
-'loginreqpagetext'          => '다른 문서를 보기 위해서는 $1해야 합니다.',
-'accmailtitle'              => '암호를 보냈습니다.',
-'accmailtext'               => '‘$1’의 암호를 $2로 보냈습니다.',
-'newarticle'                => '(새 문서)',
-'newarticletext'            => "이 문서는 아직 만들어지지 않았습니다. 새 문서를 만들려면 아래의 상자에 문서 내용을 입력하면 됩니다(자세한 내용은 [[{{MediaWiki:Helppage}}|도움말]]을 읽어 주세요).
+당신의 차단 ID는 #$5입니다. 문의할 때에 이 ID를 같이 알려주세요.",
+'blockednoreason'                  => '이유를 입력하지 않음',
+'blockedoriginalsource'            => "아래에 '''$1'''의 내용이 나와 있습니다:",
+'blockededitsource'                => "아래에 '''$1'''에서의 '''당신의 편집'''이 나와 있습니다:",
+'whitelistedittitle'               => '편집하려면 로그인 필요',
+'whitelistedittext'                => '문서를 편집하려면 $1해야 합니다.',
+'whitelistreadtitle'               => '문서를 보려면 로그인 필요',
+'whitelistreadtext'                => '문서를 읽기 위해서는 [[Special:Userlogin|로그인]]해야 합니다.',
+'whitelistacctitle'                => '계정을 만들도록 허용되어 있지 않습니다.',
+'confirmedittitle'                 => '편집하려면 이메일 인증 필요',
+'confirmedittext'                  => '문서를 고치려면 이메일 인증 절차가 필요합니다. [[Special:Preferences|사용자 환경 설정]]에서 이메일 주소를 입력하고 이메일 주소 인증을 해 주시기 바랍니다.',
+'nosuchsectiontitle'               => '해당 부분 없음',
+'nosuchsectiontext'                => '편집하려는 문단이 존재하지 않습니다. $1번째 문단이 없기 때문에 편집한 내용을 저장할 수 없습니다.',
+'loginreqtitle'                    => '로그인 필요',
+'loginreqlink'                     => '로그인',
+'loginreqpagetext'                 => '다른 문서를 보기 위해서는 $1해야 합니다.',
+'accmailtitle'                     => '암호를 보냈습니다.',
+'accmailtext'                      => '‘$1’의 암호를 $2로 보냈습니다.',
+'newarticle'                       => '(새 문서)',
+'newarticletext'                   => "이 문서는 아직 만들어지지 않았습니다. 새 문서를 만들려면 아래의 상자에 문서 내용을 입력하면 됩니다(자세한 내용은 [[{{MediaWiki:Helppage}}|도움말]]을 읽어 주세요).
 만약 잘못 찾아온 문서라면, 웹 브라우저의 '''뒤로''' 버튼을 눌러 주세요.",
-'anontalkpagetext'          => '----
+'anontalkpagetext'                 => '----
 여기는 계정에 로그인하지 않은 익명 사용자를 위한 토론 문서입니다. 익명 사용자의 사용자 이름은 IP 주소로 나오기 때문에, 한 IP 주소를 여러 명이 같이 쓰거나 유동 IP를 사용하는 경우 엉뚱한 사람에게 의견이 전달될 수 있습니다. 이러한 문제를 피하려면 [[Special:Userlogin|계정을 만들거나 로그인해 주시기 바랍니다]].',
-'noarticletext'             => '현재 문서는 비어 있습니다. 이 제목으로 [[Special:Search/{{PAGENAME}}|검색]]하거나 문서를 [{{fullurl:{{FULLPAGENAME}}|action=edit}} 편집]할 수 있습니다.',
-'userpage-userdoesnotexist' => '‘$1’ 사용자 이름은 등록되어 있지 않습니다. 이 문서를 만들거나 편집하려면 계정을 확인해주세요.',
-'clearyourcache'            => "'''참고''': 설정을 저장한 후에 바뀐 점을 확인하기 위해서는 브라우저의 캐시를 갱신해야 합니다. '''모질라 / 파이어폭스 / 사파리''': ‘시프트’ 키를 누르면서 ‘새로 고침’을 클릭하거나, ''Ctrl-F5''를 입력; '''컨커러''': 단순히 '새로고침'을 클릭하거나 ''F5''를 입력; '''오페라''' 사용자는 ‘도구→설정’에서 캐시를 완전히 비워야 합니다.",
-'usercssjsyoucanpreview'    => "'''안내''': CSS/JS 문서를 저장하기 전에 ‘미리 보기’ 기능을 통해 작동을 확인해주세요.",
-'usercsspreview'            => "'''이것은 CSS 미리 보기로, 아직 저장하지 않았다는 것을 주의해 주세요!'''",
-'userjspreview'             => "'''이것은 자바스크립트 미리 보기로, 아직 저장하지 않았다는 것을 주의해 주세요!'''",
-'userinvalidcssjstitle'     => "'''경고''': ‘$1’ 스킨이 존재하지 않습니다. .css와 .js 문서의 제목은 {{ns:user}}:Foo/monobook.css처럼 소문자로 써야 합니다. {{ns:user}}:Foo/Monobook.css와 같이 대문자로 쓸 경우 작동하지 않습니다.",
-'updated'                   => '(바뀜)',
-'note'                      => "'''주의''':",
-'previewnote'               => "'''지금 미리 보기로 보고 있는 내용은 아직 저장되지 않았습니다!'''",
-'previewconflict'           => '이 미리 보기는 저장할 때의 모습, 즉 위쪽 편집창의 문서를 반영합니다.',
-'session_fail_preview'      => "'''죄송합니다. 세션 데이터가 없어져 편집을 저장하지 못했습니다. 다시 시도해도 되지 않으면 로그아웃한 다음 다시 로그인해 보십시오.'''",
-'session_fail_preview_html' => "'''죄송합니다. 세션 데이터가 없어져 편집을 저장하지 못했습니다.'''
+'noarticletext'                    => '현재 문서는 비어 있습니다. 이 제목으로 [[Special:Search/{{PAGENAME}}|검색]]하거나 문서를 [{{fullurl:{{FULLPAGENAME}}|action=edit}} 편집]할 수 있습니다.',
+'userpage-userdoesnotexist'        => '‘$1’ 사용자 이름은 등록되어 있지 않습니다. 이 문서를 만들거나 편집하려면 계정을 확인해주세요.',
+'clearyourcache'                   => "'''참고''': 설정을 저장한 후에 바뀐 점을 확인하기 위해서는 브라우저의 캐시를 갱신해야 합니다. '''모질라 / 파이어폭스 / 사파리''': ‘시프트’ 키를 누르면서 ‘새로 고침’을 클릭하거나, ''Ctrl-F5''를 입력; '''컨커러''': 단순히 '새로고침'을 클릭하거나 ''F5''를 입력; '''오페라''' 사용자는 ‘도구→설정’에서 캐시를 완전히 비워야 합니다.",
+'usercssjsyoucanpreview'           => "'''안내''': CSS/JS 문서를 저장하기 전에 ‘미리 보기’ 기능을 통해 작동을 확인해주세요.",
+'usercsspreview'                   => "'''이것은 CSS 미리 보기로, 아직 저장하지 않았다는 것을 주의해 주세요!'''",
+'userjspreview'                    => "'''이것은 자바스크립트 미리 보기로, 아직 저장하지 않았다는 것을 주의해 주세요!'''",
+'userinvalidcssjstitle'            => "'''경고''': ‘$1’ 스킨이 존재하지 않습니다. .css와 .js 문서의 제목은 {{ns:user}}:Foo/monobook.css처럼 소문자로 써야 합니다. {{ns:user}}:Foo/Monobook.css와 같이 대문자로 쓸 경우 작동하지 않습니다.",
+'updated'                          => '(바뀜)',
+'note'                             => '<strong>주의:</strong>',
+'previewnote'                      => '<strong>지금 미리 보기로 보고 있는 내용은 아직 저장되지 않았습니다!</strong>',
+'previewconflict'                  => '이 미리 보기는 저장할 때의 모습, 즉 위쪽 편집창의 문서를 반영합니다.',
+'session_fail_preview'             => "'''죄송합니다. 세션 데이터가 없어져 편집을 저장하지 못했습니다. 다시 시도해도 되지 않으면 로그아웃한 다음 다시 로그인해 보십시오.'''",
+'session_fail_preview_html'        => "'''죄송합니다. 세션 데이터가 없어져 편집을 저장하지 못했습니다.'''
 
 {{SITENAME}}에서 HTML 입력을 허용하기 때문에, 자바스크립트 공격을 막기 위해 미리 보기는 숨겨져 있습니다.
 
 '''다시 저장을 해 주세요. 만약 계속해서 문제가 생긴다면 로그아웃한 다음 다시 로그인을 해 보세요.'''",
-'editing'                   => '$1 편집하기',
-'editingsection'            => '$1 편집하기 (부분)',
-'editingcomment'            => '$1 편집하기 (덧붙이기)',
-'editconflict'              => '편집 충돌: $1',
-'explainconflict'           => "문서를 편집하는 도중에 누군가가 이 문서를 바꾸었습니다.
+'editing'                          => '$1 편집하기',
+'editingsection'                   => '$1 편집하기 (부분)',
+'editingcomment'                   => '$1 편집하기 (덧붙이기)',
+'editconflict'                     => '편집 충돌: $1',
+'explainconflict'                  => "문서를 편집하는 도중에 누군가가 이 문서를 바꾸었습니다.
 위쪽에 있는 문서가 현재 바뀐 문서이고, 아래쪽의 문서가 당신이 편집한 문서입니다.
 아래쪽의 내용을 위쪽에 적절히 합쳐 주시기 바랍니다.
 '''위쪽의 편집 내역만이''' 저장됩니다.",
-'yourtext'                  => '당신의 편집',
-'storedversion'             => '현재 문서',
-'nonunicodebrowser'         => "'''주의: 당신의 웹 브라우저가 유니코드를 완벽하게 지원하지 않습니다. 몇몇 문자가 16진수 코드로 나타날 수 있습니다.'''",
-'editingold'                => '<strong>경고:
+'yourtext'                         => '당신의 편집',
+'storedversion'                    => '현재 문서',
+'nonunicodebrowser'                => "'''주의: 당신의 웹 브라우저가 유니코드를 완벽하게 지원하지 않습니다. 몇몇 문자가 16진수 코드로 나타날 수 있습니다.'''",
+'editingold'                       => '<strong>경고:
 지금 옛날 버전의 문서를 고치고 있습니다.
 이것을 저장하면 최근에 편집된 부분이 사라질 수 있습니다.</strong>',
-'yourdiff'                  => '차이',
-'copyrightwarning'          => "{{SITENAME}}에서의 모든 기여는 $2 라이센스에 따라 배포된다는 점을 유의해 주세요($1에서 자세한 사항을 읽어 주세요). 만약 이에 대해 찬성하지 않는다면, 문서를 저장하지 말아 주세요.<br />
+'yourdiff'                         => '차이',
+'copyrightwarning'                 => "{{SITENAME}}에서의 모든 기여는 $2 라이센스에 따라 배포된다는 점을 유의해 주세요($1에서 자세한 사항을 읽어 주세요). 만약 이에 대해 찬성하지 않는다면, 문서를 저장하지 말아 주세요.<br />
 또한 당신의 기여는 직접 작성했거나, 또는 퍼블릭 도메인과 같은 자유 문서에서 가져왔다는 것을 보증해야 합니다.
 '''저작권이 있는 내용을 허가 없이 저장하지 마세요!'''",
-'copyrightwarning2'         => "{{SITENAME}}에서의 모든 기여는 다른 사용자가 편집, 수정, 삭제할 수 있다는 점을 유의해 주세요. 만약 이에 대해 찬성하지 않는다면, 문서를 저장하지 말아 주세요.<br />
+'copyrightwarning2'                => "{{SITENAME}}에서의 모든 기여는 다른 사용자가 편집, 수정, 삭제할 수 있다는 점을 유의해 주세요. 만약 이에 대해 찬성하지 않는다면, 문서를 저장하지 말아 주세요.<br />
 또한 당신의 기여는 직접 작성했거나, 또는 퍼블릭 도메인과 같은 자유 문서에서 가져왔다는 것을 보증해야 합니다($1에서 자세한 사항을 읽어 주세요).
 '''저작권이 있는 내용을 허가 없이 저장하지 마세요!'''",
-'longpagewarning'           => "'''주의: 이 문서의 용량이 $1킬로바이트입니다. 몇몇 웹 브라우저에서는 32킬로바이트 이상의 문서를 편집할 때 문제가 발생할 수 있습니다. 만약의 경우를 대비하여, 문서를 여러 문단으로 나누어서 편집할 수 있습니다.'''",
-'longpageerror'             => "'''오류: 문서의 크기가 $1킬로바이트로, 최대 가능한 크기인 $2킬로바이트보다 큽니다. 저장할 수 없습니다.'''",
-'readonlywarning'           => "'''주의: 데이터베이스가 관리를 위해 잠겨 있습니다. 따라서 문서를 편집한 내용을 지금 저장할 수 없습니다. 편집 내용을 일단 다른 곳에 저장한 후, 나중에 다시 시도해 주세요.'''",
-'protectedpagewarning'      => "'''경고: 이 문서는 관리자만이 편집할 수 있도록 보호되어 있습니다.'''",
-'semiprotectedpagewarning'  => "'''주의''': 이 문서는 등록된 사용자만이 편집할 수 있도록 잠겨 있습니다.",
-'cascadeprotectedwarning'   => '<strong>주의: 다음의 문서에서 이 문서를 사용하고 있고 그 문서에 연쇄적 보호 설정이 걸려 있어, 이 문서도 편집에서 보호되어 관리자만이 편집할 수 있습니다</strong>:',
-'titleprotectedwarning'     => '<strong>주의: 이 문서는 잠겨 있어, 일부 사용자만이 생성할 수 있습니다.</strong>',
-'templatesused'             => '이 문서에서 사용한 틀:',
-'templatesusedpreview'      => '이 미리 보기에서 사용하고 있는 틀:',
-'templatesusedsection'      => '이 부분에서 사용하고 있는 틀:',
-'template-protected'        => '(보호됨)',
-'template-semiprotected'    => '(준보호됨)',
-'edittools'                 => '<!-- 이 문서는 편집 창과 파일 올리기 창에 출력됩니다. -->',
-'nocreatetitle'             => '문서 생성 제한',
-'nocreatetext'              => '{{SITENAME}}에서 새로운 문서를 생성하는 것은 제한되어 있습니다. 이미 존재하는 다른 문서를 편집하거나, [[Special:Userlogin|로그인하거나 계정을 만들 수 있습니다]].',
-'nocreate-loggedin'         => '{{SITENAME}}에서 새 문서를 만들 권한이 없습니다.',
-'permissionserrors'         => '권한 오류',
-'permissionserrorstext'     => '해당 명령을 수행할 권한이 없습니다. 다음의 이유를 확인해보세요:',
-'recreate-deleted-warn'     => "'''주의: 과거에 삭제된 문서를 다시 만들고 있습니다.'''
+'longpagewarning'                  => "'''주의: 이 문서의 용량이 $1킬로바이트입니다. 몇몇 웹 브라우저에서는 32킬로바이트 이상의 문서를 편집할 때 문제가 발생할 수 있습니다. 만약의 경우를 대비하여, 문서를 여러 문단으로 나누어서 편집할 수 있습니다.'''",
+'longpageerror'                    => "'''오류: 문서의 크기가 $1킬로바이트로, 최대 가능한 크기인 $2킬로바이트보다 큽니다. 저장할 수 없습니다.'''",
+'readonlywarning'                  => "'''주의: 데이터베이스가 관리를 위해 잠겨 있습니다. 따라서 문서를 편집한 내용을 지금 저장할 수 없습니다. 편집 내용을 일단 다른 곳에 저장한 후, 나중에 다시 시도해 주세요.'''",
+'protectedpagewarning'             => "'''경고: 이 문서는 관리자만이 편집할 수 있도록 보호되어 있습니다.'''",
+'semiprotectedpagewarning'         => "'''주의''': 이 문서는 등록된 사용자만이 편집할 수 있도록 잠겨 있습니다.",
+'cascadeprotectedwarning'          => "'''주의''': 이 문서는 자동으로 잠겨 있어, 관리자만이 편집할 수 있습니다. 연쇄적 보호가 걸린 문서에서 이 문서를 사용하고 있습니다. 그 문서는 다음과 같습니다:",
+'titleprotectedwarning'            => '<strong>주의: 이 문서는 잠겨 있어, 일부 사용자만이 생성할 수 있습니다.</strong>',
+'templatesused'                    => '이 문서에서 사용한 틀:',
+'templatesusedpreview'             => '이 미리 보기에서 사용하고 있는 틀:',
+'templatesusedsection'             => '이 부분에서 사용하고 있는 틀:',
+'template-protected'               => '(보호됨)',
+'template-semiprotected'           => '(준보호됨)',
+'hiddencategories'                 => '이 문서는 아래의 $1개의 숨겨진 분류에 속해 있습니다.',
+'edittools'                        => '<!-- 이 문서는 편집 창과 파일 올리기 창에 출력됩니다. -->',
+'nocreatetitle'                    => '문서 생성 제한',
+'nocreatetext'                     => '{{SITENAME}}에서 새로운 문서를 생성하는 것은 제한되어 있습니다. 이미 존재하는 다른 문서를 편집하거나, [[Special:Userlogin|로그인하거나 계정을 만들 수 있습니다]].',
+'nocreate-loggedin'                => '{{SITENAME}}에서 새 문서를 만들 권한이 없습니다.',
+'permissionserrors'                => '권한 오류',
+'permissionserrorstext'            => '해당 명령을 수행할 권한이 없습니다. 다음의 이유를 확인해보세요:',
+'permissionserrorstext-withaction' => '$2 명령을 수행할 권한이 없습니다. 다음의 이유를 확인해보세요:',
+'recreate-deleted-warn'            => "'''주의: 과거에 삭제된 문서를 다시 만들고 있습니다.'''
 
 이 문서를 계속 편집하는 것이 적합한 것인지 확인해주세요.
 과거 삭제 기록은 다음과 같습니다:",
@@ -606,6 +624,7 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 # "Undo" feature
 'undo-success' => '이 편집을 되돌리려면 아래의 변경되는 사항을 확인한 후 저장해주세요.',
 'undo-failure' => '중간의 다른 편집과 충돌하여 이 편집을 되돌릴 수 없습니다.',
+'undo-norev'   => '문서가 없거나 삭제되었기 때문에, 편집을 되돌릴 수 없습니다.',
 'undo-summary' => '[[Special:Contributions/$2|$2]]([[User talk:$2|토론]])의 $1판 편집을 되돌림',
 
 # Account creation failure
@@ -638,15 +657,19 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'historyempty'        => '(비었음)',
 
 # Revision feed
-'history-feed-title'       => '편집 역사',
-'history-feed-description' => '이 문서의 편집 역사',
-'history-feed-empty'       => '요청한 문서가 존재하지 않습니다.
+'history-feed-title'          => '편집 역사',
+'history-feed-description'    => '이 문서의 편집 역사',
+'history-feed-item-nocomment' => '$2에 대한 $1의 편집', # user at time
+'history-feed-empty'          => '요청한 문서가 존재하지 않습니다.
 해당 문서가 삭제되었거나, 문서 이름이 바뀌었을 수 있습니다.
 [[Special:Search|위키 검색 기능]]을 이용해 관련 문서를 찾아보세요.',
 
 # Revision deletion
-'rev-delundel'   => '보이기/숨기기',
-'revisiondelete' => '버전 삭제/복구',
+'rev-delundel'      => '보이기/숨기기',
+'revisiondelete'    => '버전 삭제/복구',
+'pagehist'          => '문서 역사',
+'deletedhist'       => '삭제된 역사',
+'revdelete-content' => '내용',
 
 # Diffs
 'history-title'           => '‘$1’의 문서 역사',
@@ -657,24 +680,27 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'diff-multi'              => '(중간 $1개의 편집이 숨겨짐)',
 
 # Search results
-'searchresults'         => '검색 결과',
-'searchresulttext'      => '{{SITENAME}}의 찾기 기능에 대한 자세한 정보는 [[{{MediaWiki:Helppage}}|{{int:help}}]] 문서를 참고해주세요.',
-'searchsubtitle'        => "검색 단어 '''[[:$1]]'''",
-'searchsubtitleinvalid' => "검색 단어 '''$1'''",
-'noexactmatch'          => "'''$1 문서가 없습니다.''' 문서를 [[:$1|만들 수]] 있습니다.",
-'titlematches'          => '문서 제목 일치',
-'notitlematches'        => '해당하는 제목 없음',
-'textmatches'           => '문서 내용 일치',
-'notextmatches'         => '해당하는 문서 없음',
-'prevn'                 => '이전 $1개',
-'nextn'                 => '다음 $1개',
-'viewprevnext'          => '보기: ($1) ($2) ($3).',
-'showingresults'        => '<strong>$2</strong>번 부터 <strong>$1</strong>개의 결과입니다.',
-'showingresultsnum'     => "'''$2'''번 부터 '''$3'''개의 결과입니다.",
-'nonefound'             => "'''참고''': ‘have’, ‘from’과 같은 일반적인 단어는 검색 색인에 들어가지 않아서, 이런 단어를 포함한 경우 검색이 효과적이지 않을 수 있습니다. 또는 여러 단어를 동시에 검색한 경우에도 효과적인 검색이 되지 않습니다(검색하려는 단어가 모두 들어 있는 문서만이 결과에 나타납니다).",
-'powersearch'           => '찾기',
-'powersearchtext'       => '다음의 네임스페이스에서 찾기:<br />$1<br />$2 넘겨주기 표시<br />$3를 $9',
-'searchdisabled'        => '{{SITENAME}} 검색 기능이 비활성화되어 있습니다. 기능이 작동하지 않는 동안에는 구글(Google)을 이용해 검색할 수 있습니다. 검색 엔진의 내용은 최근 것이 아닐 수 있다는 점을 주의해주세요.',
+'searchresults'            => '검색 결과',
+'searchresulttext'         => '{{SITENAME}}의 찾기 기능에 대한 자세한 정보는 [[{{MediaWiki:Helppage}}|{{int:help}}]] 문서를 참고해주세요.',
+'searchsubtitle'           => "검색 단어 '''[[:$1]]'''",
+'searchsubtitleinvalid'    => "검색 단어 '''$1'''",
+'noexactmatch'             => "'''$1 문서가 없습니다.''' 문서를 [[:$1|만들 수]] 있습니다.",
+'titlematches'             => '문서 제목 일치',
+'notitlematches'           => '해당하는 제목 없음',
+'textmatches'              => '문서 내용 일치',
+'notextmatches'            => '해당하는 문서 없음',
+'prevn'                    => '이전 $1개',
+'nextn'                    => '다음 $1개',
+'viewprevnext'             => '보기: ($1) ($2) ($3).',
+'search-interwiki-caption' => '자매 프로젝트',
+'search-interwiki-default' => '$1 결과:',
+'search-interwiki-more'    => '(더 보기)',
+'showingresults'           => '<strong>$2</strong>번 부터 <strong>$1</strong>개의 결과입니다.',
+'showingresultsnum'        => "'''$2'''번 부터 '''$3'''개의 결과입니다.",
+'nonefound'                => "'''참고''': ‘have’, ‘from’과 같은 일반적인 단어는 검색 색인에 들어가지 않아서, 이런 단어를 포함한 경우 검색이 효과적이지 않을 수 있습니다. 또는 여러 단어를 동시에 검색한 경우에도 효과적인 검색이 되지 않습니다(검색하려는 단어가 모두 들어 있는 문서만이 결과에 나타납니다).",
+'powersearch'              => '찾기',
+'powersearch-legend'       => '더 찾아보기',
+'searchdisabled'           => '{{SITENAME}} 검색 기능이 비활성화되어 있습니다. 기능이 작동하지 않는 동안에는 구글(Google)을 이용해 검색할 수 있습니다. 검색 엔진의 내용은 최근 것이 아닐 수 있다는 점을 주의해주세요.',
 
 # Preferences page
 'preferences'              => '사용자 환경 설정',
@@ -727,7 +753,7 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'recentchangescount'       => '최근 바뀜에 표시할 항목 수:',
 'savedprefs'               => '설정을 저장했습니다.',
 'timezonelegend'           => '시간대',
-'timezonetext'             => '현지 시각과 서버 시각(UTC) 사이의 시차를 써 주세요.',
+'timezonetext'             => '¹현지 시각과 서버 시각(UTC) 사이의 시차를 써 주세요.',
 'localtime'                => '현지 시각',
 'timezoneoffset'           => '시차¹',
 'servertime'               => '서버 시각',
@@ -738,23 +764,35 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'files'                    => '파일',
 
 # User rights
-'userrights'                 => '사용자 권한 관리', # Not used as normal message but as header for the special page itself
-'userrights-lookup-user'     => '사용자 권한 관리',
-'userrights-user-editname'   => '사용자 이름:',
-'editusergroup'              => '사용자 그룹 편집',
-'editinguser'                => "'''[[User:$1|$1]]'''([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]]) 사용자의 권한 변경",
-'userrights-editusergroup'   => '사용자 그룹 편집',
-'saveusergroups'             => '사용자 권한 저장',
-'userrights-groupsmember'    => '현재 권한:',
-'userrights-groupsavailable' => '가능한 권한:',
+'userrights'                  => '사용자 권한 관리', # Not used as normal message but as header for the special page itself
+'userrights-lookup-user'      => '사용자 권한 관리',
+'userrights-user-editname'    => '사용자 이름:',
+'editusergroup'               => '사용자 그룹 편집',
+'editinguser'                 => "'''[[User:$1|$1]]'''([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]]) 사용자의 권한 변경",
+'userrights-editusergroup'    => '사용자 그룹 편집',
+'saveusergroups'              => '사용자 권한 저장',
+'userrights-groupsmember'     => '현재 권한:',
+'userrights-groupsavailable'  => '가능한 권한:',
+'userrights-groups-help'      => '이 사용자의 권한을 바꿀 수 있습니다.
+표시가 된 것은 갖는 권한이고 표시가 없는 것은 갖지 않는 권한입니다.
+<nowiki>*</nowiki>표시는 은 권한을 주거나 거두는 것 중 하나만 할 수 있다는 뜻입니다.',
+'userrights-reason'           => '바꾸는 이유:',
+'userrights-no-interwiki'     => '다른 위키의 사용자 권한을 바꿀 권한이 없습니다.',
+'userrights-nologin'          => '사용자의 권한을 바꾸기 위해서는 반드시 관리자 계정으로 [[Special:Userlogin|로그인]]해야 합니다.',
+'userrights-notallowed'       => '다른 사용자의 권한을 조정할 권한이 없습니다.',
+'userrights-changeable-col'   => '바꿀 수 있는 권한',
+'userrights-unchangeable-col' => '바꿀 수 없는 권한',
 
 # Groups
-'group'            => '권한:',
-'group-bot'        => '봇',
-'group-sysop'      => '관리자',
-'group-bureaucrat' => '뷰로크랫',
-'group-all'        => '(모두)',
+'group'               => '권한:',
+'group-user'          => '사용자',
+'group-autoconfirmed' => '자동 인증된 사용자',
+'group-bot'           => '봇',
+'group-sysop'         => '관리자',
+'group-bureaucrat'    => '뷰로크랫',
+'group-all'           => '(모두)',
 
+'group-user-member'       => '사용자',
 'group-bot-member'        => '봇',
 'group-sysop-member'      => '관리자',
 'group-bureaucrat-member' => '뷰로크랫',
@@ -762,6 +800,22 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'grouppage-bot'        => '{{ns:project}}:봇',
 'grouppage-sysop'      => '{{ns:project}}:관리자',
 'grouppage-bureaucrat' => '{{ns:project}}:뷰로크랫',
+
+# Rights
+'right-read'             => '문서 읽기',
+'right-edit'             => '문서 편집',
+'right-createpage'       => '문서 생성 (토론 문서 제외)',
+'right-createtalk'       => '토론 문서 생성',
+'right-createaccount'    => '새 계정 만들기',
+'right-minoredit'        => '사소한 편집 사용 가능',
+'right-move'             => '문서 이동',
+'right-upload'           => '파일 올리기',
+'right-reupload'         => '이미 존재하는 파일 덮어쓰기',
+'right-reupload-own'     => '자신이 이미 올린 파일 덮어쓰기',
+'right-upload_by_url'    => 'URL 주소에서 파일 올리기',
+'right-delete'           => '문서 삭제',
+'right-browsearchive'    => '삭제된 문서 검색',
+'right-suppressrevision' => '관리자도 보지 못하도록 숨겨진 판의 확인 및 복구',
 
 # User rights log
 'rightslog'      => '사용자 권한 기록',
@@ -773,6 +827,7 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'nchanges'                          => '$1개 바뀜',
 'recentchanges'                     => '최근 바뀜',
 'recentchangestext'                 => '위키의 최근 바뀜 내역이 나와 있습니다.',
+'recentchanges-feed-description'    => '위키의 최근 바뀜',
 'rcnote'                            => '다음은 $3까지 <strong>$2</strong>일간 바뀐 <strong>$1</strong>개의 문서입니다.',
 'rcnotefrom'                        => "다음은 '''$2'''에서부터 바뀐 '''$1'''개의 문서입니다.",
 'rclistfrom'                        => '$1 이래로 바뀐 문서',
@@ -789,16 +844,20 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'show'                              => '보이기',
 'minoreditletter'                   => '잔글',
 'newpageletter'                     => '새글',
-'boteditletter'                     => 'b',
+'boteditletter'                     => '봇',
 'number_of_watching_users_pageview' => '[$1명이 주시하고 있음]',
 'rc_categories'                     => '다음 분류로 제한 (‘|’로 구분)',
 'rc_categories_any'                 => '모두',
 'newsectionsummary'                 => '새 주제: /* $1 */',
 
 # Recent changes linked
-'recentchangeslinked'         => '가리키는 글의 바뀜',
-'recentchangeslinked-title'   => '$1 문서에 관련된 문서 바뀜',
-'recentchangeslinked-summary' => "해당 문서를 링크한 문서에 대한 최근 바뀜이 나와 있습니다. 주시하는 문서의 경우에는 '''굵은''' 글씨로 나타납니다.",
+'recentchangeslinked'          => '가리키는 글의 바뀜',
+'recentchangeslinked-title'    => '"$1" 문서에 관련된 문서 바뀜',
+'recentchangeslinked-noresult' => '여기를 가리키는 글 중에는 주어진 기간 동안의 최근 바뀜이 없습니다.',
+'recentchangeslinked-summary'  => "여기를 가리키는 문서(분류일 경우 이 분류에 포함된 문서)에 대한 최근 바뀜이 나와 있습니다.
+[[Special:Watchlist|주시하는 문서]]는 '''굵은''' 글씨로 나타납니다.",
+'recentchangeslinked-page'     => '문서 이름:',
+'recentchangeslinked-to'       => '여기를 가리키는 문서의 최근 바뀜',
 
 # Upload
 'upload'                      => '파일 올리기',
@@ -809,9 +868,14 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'uploadnologintext'           => '파일을 올리려면 [[Special:Userlogin|로그인]]해야 합니다.',
 'upload_directory_read_only'  => '파일 저장 디렉토리($1)에 쓰기 권한이 없습니다.',
 'uploaderror'                 => '올리기 오류',
-'uploadtext'                  => "파일을 올리기 위해서는 아래의 양식을 채워주세요. 또는 예전에 올라온 그림을 찾으려면 [[Special:Imagelist|파일 목록]]을 사용할 수 있습니다. [[Special:Log/upload|올리기 기록]]에서 파일이 올라온 기록과 삭제된 기록을 볼 수 있습니다.
+'uploadtext'                  => "파일을 올리기 위해서는 아래의 양식을 채워주세요.
+[[Special:Imagelist|파일 목록]]에서 이전에 올라온 파일을 찾을 수 있습니다.
+[[Special:Log/upload|올리기 기록]]에도 파일이 올라오거나 지워진 기록이 남습니다.
 
-문서에 그림을 집어넣으려면 '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.jpg]]</nowiki>''', '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.png|대체 설명]]</nowiki>'''과 같이 사용합니다. 또는 파일에 직접 링크하려면 '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:File.ogg]]</nowiki>'''와 같이 씁니다.",
+문서에 그림을 넣으려면
+'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.jpg]]</nowiki>''',
+'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.png|대체 설명]]</nowiki>'''와 같이 씁니다.
+파일에 직접 링크하려면 '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:File.ogg]]</nowiki>'''와 같이 씁니다.",
 'upload-permitted'            => '허용하는 파일 확장자: $1',
 'upload-preferred'            => '권장하는 파일 확장자: $1',
 'upload-prohibited'           => '금지하는 파일 확장자: $1',
@@ -836,7 +900,7 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'large-file'                  => '파일 크기는 $1을 넘지 않는 것을 추천합니다. 이 파일의 크기는 $2입니다.',
 'largefileserver'             => '이 파일의 크기가 서버에서 허용된 설정보다 큽니다.',
 'emptyfile'                   => '당신이 올린 파일이 빈 파일입니다. 파일명을 잘못 입력했을 수도 있습니다. 다시 한 번 확인해 주시기 바랍니다.',
-'fileexists'                  => '같은 이름의 파일이 이미 있습니다. 파일을 바꾸고 싶지 않다면 $1 파일을 확인해 주세요.',
+'fileexists'                  => '같은 이름의 파일이 이미 있습니다. 파일을 바꾸고 싶지 않다면 <strong><tt>$1</tt></strong> 파일을 확인해 주세요.',
 'fileexists-extension'        => '비슷한 이름의 파일이 존재합니다:<br />
 올리려는 파일 이름: <strong><tt>$1</tt></strong><br />
 존재하는 파일 이름: <strong><tt>$2</tt></strong><br />
@@ -856,8 +920,16 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'uploadvirus'                 => '파일이 바이러스를 포함하고 있습니다! 상세 설명: $1',
 'sourcefilename'              => '원본 파일 이름:',
 'destfilename'                => '파일의 새 이름:',
+'upload-maxfilesize'          => '파일의 최대 크기: $1',
 'watchthisupload'             => '이 문서 주시하기',
 'filewasdeleted'              => '같은 이름을 가진 파일이 올라온 적이 있었고, 그 후에 삭제되었습니다. 올리기 전에 $1을 확인해 주시기 바랍니다.',
+'upload-wasdeleted'           => "'''경고: 삭제된 적이 있는 파일을 다시 올리려 하고 있습니다.'''
+
+이 파일을 올리는 것이 적절한지 다시 한번 생각해주십시오.
+편의를 위해 삭제 기록을 제공합니다.",
+'filename-bad-prefix'         => '올리려고 하는 파일 이름이 <strong>"$1"</strong>로 시작합니다.
+"$1"은 디지털 사진기가 자동으로 붙이는 의미없는 이름입니다.
+파일에 대해 알기 쉬운 이름을 골라주세요.',
 
 'upload-proto-error'      => '잘못된 프로토콜',
 'upload-proto-error-text' => '파일을 URL로 올리려면 <code>http://</code>이나 <code>ftp://</code>로 시작해야 합니다.',
@@ -868,6 +940,8 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'URL 접근 불가',
+'upload-curl-error6-text'  => 'URL에 접근할 수 없습니다.
+URL이 맞고 해당 웹사이트가 작동하는지 확인해주세요.',
 'upload-curl-error28'      => '업로드 시간 초과',
 'upload-curl-error28-text' => '사이트에서 응답하는 시간이 너무 깁니다. 사이트 접속이 가능한지 확인한 다음 다시 시도해주세요. 해당 사이트에 접속이 많을 경우, 접속이 원활한 시간대에 시도해주세요.',
 
@@ -876,7 +950,9 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'license-nopreview' => '(미리보기 불가능)',
 
 # Special:Imagelist
-'imgdesc'               => '설명',
+'imagelist-summary'     => '이 특수문서는 올라온 모든 파일의 목록입니다.
+기본적으로 마지막으로 올라온 파일이 맨 위에 보입니다.
+다르게 정렬하려면 원하는 기준 열의 첫 칸을 누르세요.',
 'imgfile'               => '파일',
 'imagelist'             => '그림 목록',
 'imagelist_date'        => '날짜',
@@ -898,14 +974,16 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'filehist-filesize'         => '파일 크기',
 'filehist-comment'          => '내용',
 'imagelinks'                => '그림 링크',
-'linkstoimage'              => '다음 문서들이 이 그림을 사용하고 있습니다:',
+'linkstoimage'              => '다음 $1개의 문서가 이 그림을 사용하고 있습니다:',
 'nolinkstoimage'            => '이 그림을 사용하는 문서가 없습니다.',
+'duplicatesoffile'          => '다음의 $1개의 파일이 중복됩니다:',
 'sharedupload'              => '이 파일은 공용 저장소에 있습니다. 다른 프로젝트에서 사용하고 있을 가능성이 있습니다.',
 'shareduploadwiki'          => '$1에서 더 자세한 정보를 얻을 수 있습니다.',
 'shareduploadwiki-linktext' => '파일 설명 문서',
 'noimage'                   => '파일이 없습니다. $1할 수 있습니다.',
 'noimage-linktext'          => '업로드',
 'uploadnewversion-linktext' => '이 파일의 새로운 버전을 올리기',
+'imagepage-searchdupe'      => '중복 파일 찾기',
 
 # File reversion
 'filerevert'                => '$1 되돌리기',
@@ -933,6 +1011,7 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'filedelete-reason-dropdown'  => '*일반적인 삭제 이유
 ** 저작권 침해
 ** 중복된 파일',
+'filedelete-edit-reasonlist'  => '지운 이유 고치기',
 
 # MIME search
 'mimesearch' => 'MIME 검색',
@@ -968,7 +1047,7 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 
 위키가 설치된 후 문서는 전체 '''\$3'''번 읽혔고, '''\$4'''번 편집되었습니다. 문서당 평균 편집 횟수는 '''\$5'''번이고, 한번 편집할 때마다 평균 '''\$6'''번 문서를 보았습니다.
 
-[http://meta.wikimedia.org/wiki/Help:Job_queue job queue]의 길이는 '''\$7'''입니다.",
+[http://www.mediawiki.org/wiki/Manual:Job_queue job queue]의 길이는 '''\$7'''입니다.",
 'userstatstext'          => "'''$1'''명의 [[Special:Listusers|사용자]]가 등록되어 있고, 이 중 $5 권한을 가진 사용자 수는 '''$2'''명('''$4%''')입니다.",
 'statistics-mostpopular' => '가장 많이 읽힌 문서',
 
@@ -984,8 +1063,9 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'brokenredirects-edit'   => '(편집)',
 'brokenredirects-delete' => '(삭제)',
 
-'withoutinterwiki'        => '언어 인터위키 링크가 없는 문서 목록',
-'withoutinterwiki-header' => '다른 언어로의 연결이 없는 문서의 목록입니다:',
+'withoutinterwiki'         => '언어 인터위키 링크가 없는 문서 목록',
+'withoutinterwiki-summary' => '다른 언어로의 연결이 없는 문서의 목록입니다:',
+'withoutinterwiki-submit'  => '보이기',
 
 'fewestrevisions' => '편집 역사가 짧은 문서 목록',
 
@@ -1020,15 +1100,13 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'deadendpages'            => '막다른 문서 목록',
 'deadendpagestext'        => '{{SITENAME}}에서, 다른 문서로 연결하는 링크가 없는 문서의 목록입니다.',
 'protectedpages'          => '보호된 문서 목록',
+'protectedpages-indef'    => '오른쪽 조건에 맞는 보호만 보기',
 'protectedpagestext'      => '다음의 문서는 이동/편집이 불가능하도록 보호되어 있습니다.',
 'protectedpagesempty'     => '보호되어 있는 문서가 없습니다.',
 'protectedtitles'         => '생성 보호된 표제어 목록',
 'protectedtitlestext'     => '다음 표제어들은 생성이 금지되어 있습니다.',
 'protectedtitlesempty'    => '해당 조건에 맞는 생성 금지 표제어가 없습니다.',
 'listusers'               => '사용자 목록',
-'specialpages'            => '특수 문서 목록',
-'spheading'               => '일반 특수 문서',
-'restrictedpheading'      => '제한된 특수 문서',
 'newpages'                => '새 문서 목록',
 'newpages-username'       => '이름:',
 'ancientpages'            => '오래된 문서 목록',
@@ -1064,7 +1142,7 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'prevpage'          => '이전 문서 ($1)',
 'allpagesfrom'      => '다음으로 시작하는 문서들을 보여주기:',
 'allarticles'       => '모든 문서',
-'allinnamespace'    => '$1 네임스페이스의 모든 문서',
+'allinnamespace'    => '$1 이름공간의 모든 문서',
 'allnotinnamespace' => '$1 네임스페이스를 제외한 모든 문서 목록',
 'allpagesprev'      => '이전',
 'allpagesnext'      => '다음',
@@ -1073,10 +1151,17 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'allpagesbadtitle'  => '문서 제목이 잘못되었거나 다른 사이트로 연결되는 인터위키를 가지고 있습니다. 문서 제목에 사용할 수 없는 문자를 사용했을 수 있습니다.',
 'allpages-bad-ns'   => '{{SITENAME}}에는 ‘$1’ 네임스페이스를 사용하지 않습니다.',
 
+# Special:Categories
+'categories'         => '분류',
+'categoriespagetext' => '문서나 자료를 담고 있는 분류 목록입니다.',
+
 # Special:Listusers
 'listusersfrom'      => '다음으로 시작하는 사용자 보이기:',
 'listusers-submit'   => '보이기',
 'listusers-noresult' => '해당 사용자가 없습니다.',
+
+# Special:Listgrouprights
+'listgrouprights' => '사용자 권한 목록',
 
 # E-mail user
 'mailnologin'     => '보낼 이메일 주소가 없음',
@@ -1221,7 +1306,8 @@ $NEWPAGE
 'protect-locked-blocked'      => "차단된 동안에는 보호 설정을 바꿀 수 없습니다. '''$1''' 문서의 보호 설정은 다음과 같습니다:",
 'protect-locked-dblock'       => "데이터베이스가 잠겨 문서 보호 설정을 바꿀 수 없습니다. '''$1''' 문서의 현재 설정은 다음과 같습니다:",
 'protect-locked-access'       => '문서 보호 수준을 변경할 권한이 없습니다. <strong>$1</strong> 문서의 권한은 다음과 같습니다.',
-'protect-cascadeon'           => '다음의 틀에서 이 문서를 사용하고 있고 그 틀에 연쇄적 보호가 걸려 있어 이 문서도 자동으로 보호됩니다. 이 문서의 보호 설정을 바꾸어도 연쇄적 보호에 영향을 받지 않습니다.',
+'protect-cascadeon'           => '다음의 틀에서 이 문서를 사용하고 있고 그 틀에 연쇄적 보호가 걸려 있어 이 문서도 자동으로 보호됩니다.
+이 문서의 보호 설정을 바꾸어도 연쇄적 보호에 영향을 받지 않습니다.',
 'protect-default'             => '(기본값)',
 'protect-fallback'            => '‘$1’ 권한 필요',
 'protect-level-autoconfirmed' => '등록된 사용자만 가능',
@@ -1232,11 +1318,14 @@ $NEWPAGE
 'protect-cantedit'            => '이 문서의 보호 설정을 바꿀 권한이 없습니다.',
 'restriction-type'            => '권한:',
 'restriction-level'           => '보호 수준:',
+'minimum-size'                => '최소 크기',
+'maximum-size'                => '최대 크기:',
 'pagesize'                    => '(바이트)',
 
 # Restrictions (nouns)
-'restriction-edit' => '편집',
-'restriction-move' => '이동',
+'restriction-edit'   => '편집',
+'restriction-move'   => '이동',
+'restriction-create' => '만들기',
 
 # Restriction levels
 'restriction-level-sysop'         => '보호됨',
@@ -1245,6 +1334,7 @@ $NEWPAGE
 # Undelete
 'undelete'                 => '삭제된 문서 보기',
 'undeletepage'             => '삭제된 문서를 보거나 되살리기',
+'undeletepagetitle'        => "'''아래는 [[:$1|$1]]의 삭제된 판입니다.'''.",
 'viewdeletedpage'          => '삭제된 문서 보기',
 'undeletepagetext'         => '다음의 문서는 삭제되었지만 보관되어 있고, 되살릴 수 있습니다. 보관된 문서들은 주기적으로 삭제될 것입니다.',
 'undeleteextrahelp'        => "문서 역사 전체를 복구하려면 모든 체크박스를 선택 해제한 뒤 '''복구'''를 누르세요.
@@ -1253,7 +1343,9 @@ $NEWPAGE
 'undeletehistory'          => '문서를 되살리면 모든 역사가 같이 복구됩니다. 문서가 삭제된 후에 같은 이름의 문서가 만들어졌다면, 복구되는 버전들은 역사의 과거 부분에 나타날 것입니다. 문서 보호 등의 설정은 역사를 복구하는 과정에서 사라진다는 점을 유의해 주세요.',
 'undeletehistorynoadmin'   => '이 문서는 삭제되어 있습니다. 삭제된 이유와 삭제되기 전에 이 문서를 편집한 사용자들이 아래에 나와 있습니다. 삭제된 문서를 보려면 관리자 권한이 필요합니다.',
 'undeletebtn'              => '복구',
+'undeletelink'             => '되살리기',
 'undeletereset'            => '초기화',
+'undeletecomment'          => '설명:',
 'undeletedarticle'         => '"[[$1]]" 복구됨',
 'undeletedrevisions'       => '$1개의 버전이 복구되었습니다.',
 'undeletedrevisions-files' => '$1개의 버전과 $2개의 파일이 복구되었습니다.',
@@ -1347,6 +1439,7 @@ $1',
 'unblocked'                   => '[[User:$1|$1]] 사용자 차단 해제됨',
 'unblocked-id'                => '차단 $1 해제됨',
 'ipblocklist'                 => '현재 차단 중인 IP 주소와 사용자 이름 목록',
+'ipblocklist-submit'          => '찾기',
 'blocklistline'               => '$1, $2 사용자는 $3을 차단함 ($4)',
 'infiniteblock'               => '무기한',
 'expiringblock'               => '$1에 해제',
@@ -1364,6 +1457,7 @@ $1',
 'unblocklogentry'             => '$1을 차단 해제했습니다.',
 'block-log-flags-anononly'    => 'IP만 막음',
 'block-log-flags-nocreate'    => '계정 생성 막음',
+'block-log-flags-noautoblock' => '자동 차단 비활성화됨',
 'block-log-flags-noemail'     => '이메일 막음',
 'range_block_disabled'        => 'IP 범위 차단 기능이 비활성화되어 있습니다.',
 'ipb_expiry_invalid'          => '차단 기간이 잘못되었습니다.',
@@ -1427,8 +1521,6 @@ $1',
 'talkexists'              => "'''문서는 이동되었습니다. 하지만 딸린 토론 문서의 새 이름으로 된 문서가 이미 존재해서, 토론 문서는 이동하지 않았습니다. 직접 문서를 합쳐 주세요.'''",
 'movedto'                 => '새 이름',
 'movetalk'                => '딸린 토론도 함께 이동합니다.',
-'talkpagemoved'           => '딸린 토론도 이동했습니다.',
-'talkpagenotmoved'        => "딸린 토론은 이동하지 '''않았습니다'''.",
 '1movedto2'               => '[[$1]]을(를) [[$2]](으)로 옮김',
 '1movedto2_redir'         => '[[$1]]을(를) [[$2]](으)로 옮기면서 넘겨주기를 덮어 씀',
 'movelogpage'             => '이동 기록',
@@ -1461,8 +1553,7 @@ $1',
 'allmessagesname'           => '이름',
 'allmessagesdefault'        => '기본 내용',
 'allmessagescurrent'        => '현재 내용',
-'allmessagestext'           => 'MediaWiki 네임스페이스에 있는 모든 시스템 메시지의 목록입니다.
-Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation] and [http://translatewiki.net Betawiki] if you wish to contribute to the generic MediaWiki localisation.',
+'allmessagestext'           => 'MediaWiki 네임스페이스에 있는 모든 시스템 메시지의 목록입니다. 미디어위키의 번역 작업에 관심이 있으시다면 [http://www.mediawiki.org/wiki/Localisation 미디어위키 지역화]나 [http://translatewiki.net 베타위키]에 참가해주세요.',
 'allmessagesnotsupportedDB' => "'''\$wgUseDatabaseMessages'''가 해제되어 있어서 '''{{ns:special}}:Allmessages'''를 사용할 수 없습니다.",
 'allmessagesfilter'         => '다음 메시지만 보이기:',
 'allmessagesmodified'       => '변경된 것만 보여주기',
@@ -1633,6 +1724,13 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'bydate'                => '날짜',
 'sp-newimages-showfrom' => '$1 $2부터 올라온 그림 목록 보기',
 
+# Bad image list
+'bad_image_list' => '형식은 아래와 같습니다.
+
+"*"로 시작하는 목록의 내용만 적용됩니다.
+매 줄의 첫번째 고리는 부적절한 파일을 가리켜야 합니다.
+같은 줄에 따라오는 모든 고리는 예외로 봅니다. (예: 파일이 사용되어야 하는 문서)',
+
 # Metadata
 'metadata'          => '메타데이터',
 'metadata-help'     => '이 파일은 카메라/스캐너에서 추가한 부가 정보를 담고 있습니다. 파일을 편집한다면, 변경된 그림에는 일부 부가 정보가 빠질 수 있습니다.',
@@ -1646,6 +1744,13 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 * fnumber
 * focallength', # Do not translate list items
 
+# EXIF tags
+'exif-imagedescription'  => '그림 제목',
+'exif-make'              => '카메라 제조사',
+'exif-model'             => '카메라 모델',
+'exif-exposuretime'      => '노출 시간',
+'exif-shutterspeedvalue' => '셔터 속도',
+
 # External editor support
 'edit-externally'      => '이 파일을 외부 프로그램을 사용해서 편집하기',
 'edit-externally-help' => '[http://meta.wikimedia.org/wiki/Help:External_editors 여기]에서 외부 편집기에 대한 정보를 얻을 수 있습니다.',
@@ -1658,22 +1763,22 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'monthsall'        => '모든 달',
 
 # E-mail address confirmation
-'confirmemail'            => '이메일 주소 확인',
-'confirmemail_noemail'    => '[[Special:Preferences|환경 설정]]에 이메일을 설정하지 않았습니다.',
-'confirmemail_text'       => '{{SITENAME}}에서는 이메일 기능을 사용하기 전에, 이메일 인증을 받아야 합니다. 아래의 버튼을 누르면 인증 메일을 보냅니다. 메일에는 인증 코드가 들어있는 링크가 있습니다. 그 링크를 웹 브라우저로 열면 인증이 완료됩니다.',
-'confirmemail_pending'    => '<div class="error">이미 확인 이메일을 보냈습니다. 계정을 최근에 만들었다면 이메일을 보내는 데에 몇 분이 걸릴 수 있으므로 잠시 후에 다시 확인해 주세요.</div>',
-'confirmemail_send'       => '인증 코드를 메일로 보내기',
-'confirmemail_sent'       => '인증 이메일을 보냈습니다.',
-'confirmemail_sendfailed' => '인증 이메일을 보낼 수 없습니다. 이메일 주소를 잘못 입력했는지 확인해주세요.
+'confirmemail'             => '이메일 주소 확인',
+'confirmemail_noemail'     => '[[Special:Preferences|환경 설정]]에 이메일을 설정하지 않았습니다.',
+'confirmemail_text'        => '{{SITENAME}}에서는 이메일 기능을 사용하기 전에, 이메일 인증을 받아야 합니다. 아래의 버튼을 누르면 인증 메일을 보냅니다. 메일에는 인증 코드가 들어있는 링크가 있습니다. 그 링크를 웹 브라우저로 열면 인증이 완료됩니다.',
+'confirmemail_pending'     => '<div class="error">이미 확인 이메일을 보냈습니다. 계정을 최근에 만들었다면 이메일을 보내는 데에 몇 분이 걸릴 수 있으므로 잠시 후에 다시 확인해 주세요.</div>',
+'confirmemail_send'        => '인증 코드를 메일로 보내기',
+'confirmemail_sent'        => '인증 이메일을 보냈습니다.',
+'confirmemail_sendfailed'  => '인증 이메일을 보낼 수 없습니다. 이메일 주소를 잘못 입력했는지 확인해주세요.
 
 메일 서버로부터의 응답: $1',
-'confirmemail_invalid'    => '인증 코드가 올바르지 않습니다. 코드가 소멸되었을 수도 있습니다.',
-'confirmemail_needlogin'  => '이메일 주소를 인증하려면 $1이 필요합니다.',
-'confirmemail_success'    => '이메일 주소가 인증되었습니다. 이제 로그인해서 위키를 사용하세요.',
-'confirmemail_loggedin'   => '이메일 주소가 인증되었습니다.',
-'confirmemail_error'      => '당신의 인증을 저장하는 도중 오류가 발생했습니다.',
-'confirmemail_subject'    => '{{SITENAME}} 이메일 주소 인증',
-'confirmemail_body'       => '$1 아이피 주소를 사용하는 사용자가 {{SITENAME}}의 ‘$2’ 계정에 이메일 인증 신청을 했습니다.
+'confirmemail_invalid'     => '인증 코드가 올바르지 않습니다. 코드가 소멸되었을 수도 있습니다.',
+'confirmemail_needlogin'   => '이메일 주소를 인증하려면 $1이 필요합니다.',
+'confirmemail_success'     => '이메일 주소가 인증되었습니다. 이제 로그인해서 위키를 사용하세요.',
+'confirmemail_loggedin'    => '이메일 주소가 인증되었습니다.',
+'confirmemail_error'       => '당신의 인증을 저장하는 도중 오류가 발생했습니다.',
+'confirmemail_subject'     => '{{SITENAME}} 이메일 주소 인증',
+'confirmemail_body'        => '$1 아이피 주소를 사용하는 사용자가 {{SITENAME}}의 ‘$2’ 계정에 이메일 인증 신청을 했습니다.
 
 이 계정이 당신의 계정이라면, 아래 주소를 열어서 이메일 인증을 해 주세요.
 
@@ -1684,6 +1789,8 @@ $3
 $5
 
 인증 코드는 $4에 만료됩니다.',
+'confirmemail_invalidated' => '이메일 확인이 취소됨',
+'invalidateemail'          => '이메일 확인 취소',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[인터위키가 비활성되어 있습니다]',
@@ -1738,6 +1845,9 @@ $1',
 'autoredircomment' => '[[$1]](으)로 넘겨주기',
 'autosumm-new'     => '새 문서: $1',
 
+# Live preview
+'livepreview-loading' => '불러오는 중...',
+
 # Watchlist editor
 'watchlistedit-numitems'       => '주시문서 목록에는 토론 문서를 제외하고 $1개의 문서가 들어 있습니다.',
 'watchlistedit-noitems'        => '주시문서 목록이 비어 있습니다.',
@@ -1762,16 +1872,49 @@ $1',
 'watchlisttools-raw'  => '주시문서 목록 직접 편집하기',
 
 # Special:Version
-'version'                  => '버전', # Not used as normal message but as header for the special page itself
-'version-extensions'       => '설치된 확장 기능',
-'version-specialpages'     => '특수 문서',
-'version-parserhooks'      => '파서 훅',
-'version-other'            => '기타',
-'version-hook-name'        => '훅 이름',
-'version-version'          => '버전',
-'version-license'          => '라이센스',
-'version-software'         => '설치된 프로그램',
-'version-software-product' => '제품',
-'version-software-version' => '버전',
+'version'                      => '버전', # Not used as normal message but as header for the special page itself
+'version-extensions'           => '설치된 확장 기능',
+'version-specialpages'         => '특수 문서',
+'version-parserhooks'          => '파서 훅',
+'version-other'                => '기타',
+'version-extension-functions'  => '확장 함수',
+'version-parser-extensiontags' => '파서 확장 태그',
+'version-hook-name'            => '훅 이름',
+'version-version'              => '버전',
+'version-license'              => '라이센스',
+'version-software'             => '설치된 프로그램',
+'version-software-product'     => '제품',
+'version-software-version'     => '버전',
+
+# Special:Filepath
+'filepath'         => '파일 주소',
+'filepath-page'    => '파일:',
+'filepath-submit'  => '주소',
+'filepath-summary' => '파일의 전체 주소를 알려줍니다.
+그림은 최고 해상도로 보여주고 다른 파일은 연결된 프로그램으로 바로 실행합니다.
+
+"{{ns:image}}:" 접두어를 빼고 파일 이름만 넣으세요.',
+
+# Special:FileDuplicateSearch
+'fileduplicatesearch'          => '중복 파일 찾기',
+'fileduplicatesearch-summary'  => '해시 값으로 중복 파일을 찾습니다.
+
+"{{ns:image}}:" 접두어를 빼고 파일 이름만 넣으세요.',
+'fileduplicatesearch-legend'   => '중복 찾기',
+'fileduplicatesearch-filename' => '파일이름:',
+'fileduplicatesearch-submit'   => '찾기',
+'fileduplicatesearch-info'     => '$1 × $2 픽셀<br />파일 크기: $3<br />MIME 유형: $4',
+'fileduplicatesearch-result-1' => '"$1"은 중복 파일이 없습니다.',
+'fileduplicatesearch-result-n' => '"$1"파일은 $2개의 중복 파일이 있습니다.',
+
+# Special:SpecialPages
+'specialpages'                   => '특수 문서 목록',
+'specialpages-group-maintenance' => '관리용 목록',
+'specialpages-group-other'       => '다른 특수문서',
+'specialpages-group-login'       => '로그인 / 등록',
+'specialpages-group-changes'     => '최근 바뀜과 기록',
+'specialpages-group-media'       => '파일 관리',
+'specialpages-group-users'       => '사용자와 권한',
+'specialpages-group-highuse'     => '많이 쓰이는 문서 목록',
 
 );

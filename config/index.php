@@ -67,6 +67,18 @@ $ourdb['postgres']['compile']    = 'pgsql';
 $ourdb['postgres']['bgcolor']    = '#aaccff';
 $ourdb['postgres']['rootuser']   = 'postgres';
 
+$ourdb['sqlite']['fullname']      = 'SQLite';
+$ourdb['sqlite']['havedriver']    = 0;
+$ourdb['sqlite']['compile']       = 'pdo_sqlite';
+$ourdb['sqlite']['bgcolor']       = '#b1ebb1';
+$ourdb['sqlite']['rootuser']      = '';
+
+$ourdb['mssql']['fullname']      = 'MSSQL';
+$ourdb['mssql']['havedriver']    = 0;
+$ourdb['mssql']['compile']       = 'mssql not ready'; # Change to 'mssql' after includes/DatabaseMssql.php added;
+$ourdb['mssql']['bgcolor']       = '#ffc0cb';
+$ourdb['mssql']['rootuser']      = 'administrator';
+
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -164,15 +176,15 @@ $ourdb['postgres']['rootuser']   = 'postgres';
 	<!--
 	function hideall() {
 		<?php foreach (array_keys($ourdb) as $db) {
-		echo "\n		document.getElementById('$db').style.display='none';";
+		echo "\n		var i = document.getElementById('$db'); if (i) i.style.display='none';";
 		}
 		?>
 
 	}
 	function toggleDBarea(id,defaultroot) {
 		hideall();
-		var dbarea = document.getElementById(id).style;
-		dbarea.display = (dbarea.display == 'none') ? 'block' : 'none';
+		var dbarea = document.getElementById(id);
+		if (dbarea) dbarea.style.display = (dbarea.style.display == 'none') ? 'block' : 'none';
 		var db = document.getElementById('RootUser');
 		if (defaultroot) {
 <?php foreach (array_keys($ourdb) as $db) {
@@ -597,6 +609,14 @@ print "<li style='font-weight:bold;color:green;font-size:110%'>Environment check
 	$conf->DBport      = importPost( "DBport",      "5432" );
 	$conf->DBmwschema  = importPost( "DBmwschema",  "mediawiki" );
 	$conf->DBts2schema = importPost( "DBts2schema", "public" );
+	
+	## SQLite specific
+	$conf->SQLiteDataDir = importPost( "SQLiteDataDir", "" );
+	
+	## MSSQL specific
+	// We need a second field so it doesn't overwrite the MySQL one
+	$conf->DBprefix2 = importPost( "DBprefix2" );
+
 
 /* Check for validity */
 $errs = array();
@@ -752,6 +772,11 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 		$wgDBmwschema  = $conf->DBmwschema;
 		$wgDBts2schema = $conf->DBts2schema;
 
+		if( $conf->DBprefix2 != '' ) {
+			// For MSSQL
+			$wgDBprefix = $conf->DBprefix2;
+		}
+
 		$wgCommandLineMode = true;
 		if (! defined ( 'STDERR' ) )
 			define( 'STDERR', fopen("php://stderr", "wb"));
@@ -828,11 +853,11 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 
 			if( !$ok ) { continue; }
 
-		} else /* not mysql */ {
+		} else { # not mysql
 			error_reporting( E_ALL );
 			$wgSuperUser = '';
 			## Possible connect as a superuser
-			if( $useRoot ) {
+			if( $useRoot && $conf->DBtype != 'sqlite' ) {
 				$wgDBsuperuser = $conf->RootUser;
 				echo( "<li>Attempting to connect to database \"postgres\" as superuser \"$wgDBsuperuser\"..." );
 				$wgDatabase = $dbc->newFromParams($wgDBserver, $wgDBsuperuser, $conf->RootPW, "postgres", 1);
@@ -852,8 +877,8 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			} else {
 				$myver = $wgDatabase->getServerVersion();
 			}
-			$wgDatabase->initial_setup('', $wgDBname);
-		}
+			if (is_callable(array($wgDatabase, 'initial_setup'))) $wgDatabase->initial_setup('', $wgDBname);
+		} 
 
 		if ( !$wgDatabase->isOpen() ) {
 			$errs["DBserver"] = "Couldn't connect to database";
@@ -1006,7 +1031,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			if ($conf->DBtype == 'mysql') {
 				dbsource( "../maintenance/tables.sql", $wgDatabase );
 				dbsource( "../maintenance/interwiki.sql", $wgDatabase );
-			} else if ($conf->DBtype == 'postgres') {
+			} elseif (is_callable(array($wgDatabase, 'setup_database'))) {
 				$wgDatabase->setup_database();
 			}
 			else {
@@ -1407,7 +1432,7 @@ if( count( $errs ) ) {
 		cause things to break. <b>If upgrading an older installation, leave
 		in backwards-compatible mode.</b>
 	</p>
-	</div>
+	</fieldset>
 
 	<?php database_switcher('postgres'); ?>
 	<div class="config-input"><?php
@@ -1423,6 +1448,35 @@ if( count( $errs ) ) {
 		<p>The username specified above (at "DB username") will have its search path set to the above schemas, 
 		so it is recommended that you create a new user. The above schemas are generally correct: 
         only change them if you are sure you need to.</p>
+	</div>
+	</fieldset>
+
+	<?php database_switcher('sqlite'); ?>
+	<div class="config-desc">
+		<b>NOTE:</b> SQLite only uses the <i>Database name</i> setting above, the user, password and root settings are ignored.
+	</div>
+	<div class="config-input"><?php
+		aField( $conf, "SQLiteDataDir", "SQLite data directory:" );
+	?></div>
+	<div class="config-desc">
+		<p>SQLite stores table data into files in the filesystem.
+		If you do not provide an explicit path, a "data" directory in
+		the parent of your document root will be used.</p>
+		
+		<p>This directory must exist and be writable by the web server.</p>
+	</div>
+	</fieldset>
+
+	<?php database_switcher('mssql'); ?>
+	<div class="config-input"><?php
+		aField( $conf, "DBprefix2", "Database table prefix:" );
+	?></div>
+	<div class="config-desc">
+		<p>If you need to share one database between multiple wikis, or
+		between MediaWiki and another web application, you may choose to
+		add a prefix to all the table names to avoid conflicts.</p>
+
+		<p>Avoid exotic characters; something like <tt>mw_</tt> is good.</p>
 	</div>
 	</fieldset>
 
@@ -1568,6 +1622,36 @@ function writeLocalSettings( $conf ) {
 		$slconf['RightsIcon'] = $conf->RightsIcon;
 	}
 
+	if( $conf->DBtype == 'mysql' ) {
+		$dbsettings =
+"# MySQL specific settings
+\$wgDBprefix         = \"{$slconf['DBprefix']}\";
+
+# MySQL table options to use during installation or update
+\$wgDBTableOptions   = \"{$slconf['DBTableOptions']}\";
+
+# Experimental charset support for MySQL 4.1/5.0.
+\$wgDBmysql5 = {$conf->DBmysql5};";
+	} elseif( $conf->DBtype == 'postgres' ) {
+		$dbsettings =
+"# Postgres specific settings
+\$wgDBport           = \"{$slconf['DBport']}\";
+\$wgDBmwschema       = \"{$slconf['DBmwschema']}\";
+\$wgDBts2schema      = \"{$slconf['DBts2schema']}\";";
+	} elseif( $conf->DBtype == 'sqlite' ) {
+		$dbsettings =
+"# SQLite-specific settings
+\$wgSQLiteDataDir    = \"{$slconf['SQLiteDataDir']}\";";
+	} elseif( $conf->DBtype == 'mssql' ) {
+		$dbsettings =
+"# MSSQL specific settings
+\$wgDBprefix         = \"{$slconf['DBprefix2']}\";";
+	} else {
+		// ummm... :D
+		$dbsettings = '';
+	}
+
+
 	$localsettings = "
 # This file was automatically generated by the MediaWiki installer.
 # If you make manual changes, please keep track in case you need to
@@ -1631,19 +1715,7 @@ if ( \$wgCommandLineMode ) {
 \$wgDBuser           = \"{$slconf['DBuser']}\";
 \$wgDBpassword       = \"{$slconf['DBpassword']}\";
 
-# MySQL specific settings
-\$wgDBprefix         = \"{$slconf['DBprefix']}\";
-
-# MySQL table options to use during installation or update
-\$wgDBTableOptions   = \"{$slconf['DBTableOptions']}\";
-
-# Experimental charset support for MySQL 4.1/5.0.
-\$wgDBmysql5 = {$conf->DBmysql5};
-
-# Postgres specific settings
-\$wgDBport           = \"{$slconf['DBport']}\";
-\$wgDBmwschema       = \"{$slconf['DBmwschema']}\";
-\$wgDBts2schema      = \"{$slconf['DBts2schema']}\";
+{$dbsettings}
 
 ## Shared memory settings
 \$wgMainCacheType = $cacheType;

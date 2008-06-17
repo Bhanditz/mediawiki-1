@@ -1,21 +1,22 @@
 <?php
 /** Malay (Bahasa Melayu)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
- * CHANGELOG
- * =========
- * Init - This localisation is based on a file kindly donated by the folks at MIMOS
- * http://www.asiaosc.org/enwiki/page/Knowledgebase_Home.html
- * Sep 2007 - Rewritten by the folks at ms.wikipedia.org
  * @author Aviator
  * @author Aurora
  * @author Siebrand
  * @author לערי ריינהארט
  */
 
-# Uncomment line below to use space charecter as thousands separator
-# $separatorTransformTable = array(',', ' ');
+/**
+ * CHANGELOG
+ * =========
+ * Init - This localisation is based on a file kindly donated by the folks at MIMOS
+ * http://www.asiaosc.org/enwiki/page/Knowledgebase_Home.html
+ * Sep 2007 - Rewritten by the folks at ms.wikipedia.org
+ */
 
 $defaultDateFormat = 'dmy';
 
@@ -241,11 +242,7 @@ $messages = array(
 'dec'           => 'Dis',
 
 # Categories related messages
-'categories'                     => 'Kategori',
-'categoriespagetext'             => 'Kategori-kategori berikut wujud dalam wiki ini.',
-'special-categories-sort-count'  => 'susun mengikut tertib bilangan',
-'special-categories-sort-abc'    => 'susun mengikut tertib abjad',
-'pagecategories'                 => 'Kategori',
+'pagecategories'                 => '{{PLURAL:$1|Kategori|Kategori}}',
 'category_header'                => 'Laman-laman dalam kategori "$1"',
 'subcategories'                  => 'Subkategori',
 'category-media-header'          => 'Media-media dalam kategori "$1"',
@@ -443,13 +440,6 @@ bila kunci ini akan dibuka.',
 'readonlytext'         => 'Pangkalan data sedang dikunci. Hal ini mungkin disebabkan oleh penyenggaraan rutin, dan akan dibuka semula selepas proses penyenggaraan ini siap.
 
 Pentadbir yang menguncinya memberi penjelasan ini: $1',
-'missingarticle'       => 'Pangkalan data kami tidak menjumpai teks bagi laman "$1".
-
-Perkara ini biasanya berlaku apabila anda mengikuti pautan perbezaan yang
-ketinggalan zaman ataupun pautan sejarah ke laman yang telah dihapuskan.
-
-Kalau bukan ini sebabnya, anda mungkin telah menjumpai pepijat dalam perisian
-ini. Sila laporkan masalah ini berserta URL yang anda buka kepada seorang pentadbir.',
 'readonly_lag'         => 'Pangkalan data telah dikunci secara automatik sementara semua pelayan pangkalan data diselaraskan.',
 'internalerror'        => 'Ralat dalaman',
 'internalerror_info'   => 'Ralat dalaman: $1',
@@ -504,6 +494,7 @@ Akaun anda telah dibuka. Jangan lupa untuk mengubah keutamaan {{SITENAME}} anda.
 'externaldberror'            => 'Berlaku ralat pangkalan data bagi pengesahan luar atau anda tidak dibenarkan mengemaskinikan akaun luar anda.',
 'loginproblem'               => '<b>Berlaku sedikit masalah ketika log masuk.</b><br />Sila cuba lagi!',
 'login'                      => 'Log masuk',
+'nav-login-createaccount'    => 'Log masuk / buka akaun',
 'loginprompt'                => "Anda mesti membenarkan ''cookies'' untuk log masuk ke dalam {{SITENAME}}.",
 'userlogin'                  => 'Log masuk / buka akaun',
 'logout'                     => 'Log keluar',
@@ -904,7 +895,6 @@ dan \"dari\" yang tidak diindekskan, atau disebabkan oleh pencarian lebih
 daripada satu kata kunci (hanya laman yang mengandungi kesemua kata kunci akan ditunjukkan).",
 'powersearch'           => 'Cari',
 'powersearch-legend'    => 'Gelintar maju',
-'powersearchtext'       => 'Cari dalam ruang nama:<br />$1<br />$2 Senaraikan pelencongan<br />Cari $3 $9',
 'searchdisabled'        => 'Ciri pencarian dalam {{SITENAME}} dimatikan. Anda boleh mencari melalui Google. Sila ambil perhatian bahawa indeks dalam Google mungkin bukan yang terkini.',
 
 # Preferences page
@@ -1087,7 +1077,7 @@ Untuk menyertakan imej tersebut dalam sesebuah laman, sila masukkan teks
 'large-file'                  => 'Saiz fail ini ialah $2. Anda dinasihati supaya memuat naik fail yang tidak melebihi $1.',
 'largefileserver'             => 'Fail ini telah melebihi had muat naik pelayan web.',
 'emptyfile'                   => 'Fail yang dimuat naik adalah kosong. Ini mungkin disebabkan oleh kesilapan menaip nama fail. Sila pastikan bahawa anda betul-betul mahu memuat naik fail ini.',
-'fileexists'                  => 'Sebuah fail dengan nama ini telah pun wujud. Sila semak $1 sekiranya anda tidak pasti bahawa anda mahu menukarnya atau tidak.',
+'fileexists'                  => 'Sebuah fail dengan nama ini telah pun wujud. Sila semak <strong><tt>$1</tt></strong> sekiranya anda tidak pasti bahawa anda mahu menukarnya atau tidak.',
 'filepageexists'              => 'Sebuah lama (bukan imej) dengan nama ini telah pun wujud. Sila semak <strong><tt>$1</tt></strong> sekiranya anda tidak pasti bahawa anda mahu menukarnya atau tidak.',
 'fileexists-extension'        => 'Sebuah fail dengan nama yang sama telah pun wujud:<br />
 Nama fail yang dimuat naik: <strong><tt>$1</tt></strong><br />
@@ -1143,7 +1133,6 @@ Untuk rujukan, berikut ialah log penghapusan bagi fail ini:",
 'imagelist-summary'     => 'Laman khas ini memaparkan senarai fail yang telah dimuat naik.
 Klik di atas mana-mana lajur yang berkenaan untuk menukar tertib susunan.',
 'imagelist_search_for'  => 'Cari nama imej:',
-'imgdesc'               => 'hurai',
 'imgfile'               => 'fail',
 'imagelist'             => 'Senarai fail',
 'imagelist_date'        => 'Tarikh',
@@ -1242,7 +1231,7 @@ pelencongan, dan lain-lain yang tidak layak menjadi laman kandungan. Dengan meng
 
 Terdapat sejumlah '''\$3''' paparan laman dan '''\$4''' penyuntingan dilakukan sejak {{SITENAME}} dimulakan. Secara purata, terdapat '''\$5''' suntingan bagi setiap laman, dan '''\$6''' paparan bagi setiap suntingan.
 
-Jumlah [http://meta.wikimedia.org/wiki/Help:Job_queue tugas yang tertunggak] ialah '''\$7'''.",
+Jumlah [http://www.mediawiki.org/wiki/Manual:Job_queue tugas yang tertunggak] ialah '''\$7'''.",
 'userstatstext'          => "Terdapat '''$1''' pengguna berdaftar. '''$2''' (atau '''$4''') daripadanya mempunyai hak $5.",
 'statistics-mostpopular' => 'Laman dilihat terbanyak',
 
@@ -1258,9 +1247,9 @@ Jumlah [http://meta.wikimedia.org/wiki/Help:Job_queue tugas yang tertunggak] ial
 'brokenredirects-edit'   => '(sunting)',
 'brokenredirects-delete' => '(hapus)',
 
-'withoutinterwiki'        => 'Laman tanpa pautan bahasa',
-'withoutinterwiki-header' => 'Laman-laman berikut tidak mempunyai pautan ke versi bahasa lain:',
-'withoutinterwiki-submit' => 'Tunjuk',
+'withoutinterwiki'         => 'Laman tanpa pautan bahasa',
+'withoutinterwiki-summary' => 'Laman-laman berikut tidak mempunyai pautan ke versi bahasa lain:',
+'withoutinterwiki-submit'  => 'Tunjuk',
 
 'fewestrevisions' => 'Laman dengan semakan tersedikit',
 
@@ -1301,9 +1290,6 @@ Jumlah [http://meta.wikimedia.org/wiki/Help:Job_queue tugas yang tertunggak] ial
 'protectedtitlestext'     => 'Tajuk-tajuk berikut dilindungi daripada dicipta',
 'protectedtitlesempty'    => 'Tiada tajuk yang dilindungi yang sepadan dengan kriteria yang diberikan.',
 'listusers'               => 'Senarai pengguna',
-'specialpages'            => 'Laman khas',
-'spheading'               => 'Laman khas untuk semua pengguna',
-'restrictedpheading'      => 'Laman khas terhad',
 'newpages'                => 'Laman baru',
 'newpages-username'       => 'Nama pengguna:',
 'ancientpages'            => 'Laman lapuk',
@@ -1352,6 +1338,12 @@ Anda boleh menapis senarai ini dengan memilih jenis log, nama pengguna atau nama
 'allpagesprefix'    => 'Tunjukkan laman dengan awalan:',
 'allpagesbadtitle'  => 'Tajuk laman yang dinyatakan tidak sah atau mempunyai awalam antara bahasa atau antara wiki. Ia mungkin mengandungi aksara yang tidak boleh digunakan dalam tajuk laman.',
 'allpages-bad-ns'   => '{{SITENAME}} tidak mempunyai ruang nama "$1".',
+
+# Special:Categories
+'categories'                    => 'Kategori',
+'categoriespagetext'            => 'Kategori-kategori berikut wujud dalam wiki ini.',
+'special-categories-sort-count' => 'susun mengikut tertib bilangan',
+'special-categories-sort-abc'   => 'susun mengikut tertib abjad',
 
 # Special:Listusers
 'listusersfrom'      => 'Tunjukkan pengguna bermula pada:',
@@ -1795,8 +1787,6 @@ Sila pilih nama lain.',
 'talkexists'              => "'''Laman tersebut berjaya dipindahkan, akan tetapi laman perbincangannya tidak dapat dipindahkan kerana laman dengan tajuk baru tersebut telah pun wujud. Anda perlu menggabungkannya secara manual.'''",
 'movedto'                 => 'dipindahkan ke',
 'movetalk'                => 'Pindahkan laman perbincangan yang berkaitan',
-'talkpagemoved'           => 'Laman perbincangan yang mengiringi dipindahkan bersama.',
-'talkpagenotmoved'        => 'Laman perbincangan yang mengiringi <strong>tidak</strong> dipindahkan bersama.',
 '1movedto2'               => '[[$1]] dipindahkan ke [[$2]]',
 '1movedto2_redir'         => '[[$1]] dipindahkan ke [[$2]] menerusi pelencongan',
 'movelogpage'             => 'Log pemindahan',
@@ -2043,7 +2033,7 @@ $1',
 'noimages'              => 'Tiada imej.',
 'ilsubmit'              => 'Cari',
 'bydate'                => 'mengikut tarikh',
-'sp-newimages-showfrom' => 'Tunjukkan imej-imej baru bermula daripada $1',
+'sp-newimages-showfrom' => 'Tunjukkan imej baru bermula daripada $2, $1',
 
 # Video information, used by Language::formatTimePeriod() to format lengths in the above messages
 'hours-abbrev' => 'j',
@@ -2357,16 +2347,18 @@ Pelayan mel memulangkan: $1',
 'confirmemail_loggedin'    => 'Alamat e-mel anda telah disahkan.',
 'confirmemail_error'       => 'Sesuatau yang tidak kena berlaku ketika kami menyimpan pengesahan anda.',
 'confirmemail_subject'     => 'Pengesahan alamat e-mel di {{SITENAME}}',
-'confirmemail_body'        => 'Seseorang, barangkali anda, daripada alamat IP $1, telah mendaftarkan sebuah
-akaun "$2" dengan alamat e-mel ini di {{SITENAME}}.
+'confirmemail_body'        => 'Seseorang, barangkali anda, daripada alamat IP $1, telah mendaftarkan akaun "$2" dengan alamat e-mel ini di {{SITENAME}}.
 
 Untuk mengesahkan bahawa akaun ini milik anda dan mengaktifkan
-ciri-ciri e-mel di {{SITENAME}}, sila buka pautan ini dalam pelayar anda:
+ciri e-mel di {{SITENAME}}, sila buka pautan ini dalam pelayar anda:
 
 $3
 
-Jika ini *bukan* anda, jangan buka pautan tersebut. Kod pengesahan ini
-akan luput pada $4.',
+Jika ini *bukan* anda, ikuti pautan ini untuk membatalkan pengesahan alamat e-mel:
+
+$5
+
+Kod pengesahan ini akan luput pada $4.',
 'confirmemail_invalidated' => 'Pengesahan alamat e-mel telah dibatalkan',
 'invalidateemail'          => 'Batalkan pengesahan e-mel',
 
@@ -2411,7 +2403,6 @@ $1',
 'imgmultipageprev' => '← halaman sebelumnya',
 'imgmultipagenext' => 'halaman berikutnya →',
 'imgmultigo'       => 'Pergi!',
-'imgmultigotopre'  => 'Buka halaman',
 
 # Table pager
 'ascending_abbrev'         => 'menaik',
@@ -2509,5 +2500,8 @@ Sila masukkan nama fail tanpa awalan "{{ns:image}}:".',
 'fileduplicatesearch-info'     => '$1 × $2 piksel<br />Saiz fail: $3<br />Jenis MIME: $4',
 'fileduplicatesearch-result-1' => 'Tiada fail yang serupa dengan "$1".',
 'fileduplicatesearch-result-n' => 'Terdapat $2 fail yang serupa dengan "$1".',
+
+# Special:SpecialPages
+'specialpages' => 'Laman khas',
 
 );

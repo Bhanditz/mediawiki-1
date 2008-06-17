@@ -1,7 +1,8 @@
 <?php
 /** Ewe (Eʋegbe)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Natsubee
  * @author Cbrown1023
@@ -144,7 +145,6 @@ $messages = array(
 'shortpages'     => 'Axa kpuiwo',
 'protectedpages' => 'Axawo siwo ŋu wole dzɔdzɔm',
 'listusers'      => 'Ezãlawo ƒe xexlẽme',
-'specialpages'   => 'Axa tɔxewo',
 'newpages'       => 'Axa yeyewo',
 'move'           => 'Ɖɔli eƒe nɔƒe',
 'movethispage'   => 'Ɖɔli axa sia ƒe nɔƒe',
@@ -198,5 +198,8 @@ $messages = array(
 
 # Special:Version
 'version' => 'Tata', # Not used as normal message but as header for the special page itself
+
+# Special:SpecialPages
+'specialpages' => 'Axa tɔxewo',
 
 );

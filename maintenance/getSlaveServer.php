@@ -1,6 +1,16 @@
 <?php
+/**
+ * @file
+ * @ingroup Maintenance
+ */
 
 require_once( dirname(__FILE__).'/commandLine.inc' );
+
+if ( $wgAllDBsAreLocalhost ) {
+	# Can't fool the backup script
+	print "localhost\n";
+	exit;
+}
 
 if( isset( $options['group'] ) ) {
 	$db = wfGetDB( DB_SLAVE, $options['group'] );

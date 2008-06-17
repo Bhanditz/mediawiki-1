@@ -1,8 +1,9 @@
 <?php
 /** Tibetan (བོད་ཡིག)
-  *
-  * @addtogroup Language
-  */
+ *
+ * @ingroup Language
+ * @file
+ */
 
 $digitTransformTable = array(
 	'0' => '༠', # &#x0f20;
@@ -70,6 +71,7 @@ $messages = array(
 'nov'           => 'ཟླ་བཅུ་གཅིག་པ།',
 'dec'           => 'ཟླ་བཅུ་གཉིས་པ།',
 
+'about'          => 'ཨཱབོཨུཏ་',
 'cancel'         => 'དོར་བ།',
 'qbedit'         => 'རྩོམ་སྒྲིག',
 'qbspecialpages' => 'དམིཊ་བསལ་གྱི་བཟོ་བཅོས།',
@@ -93,8 +95,10 @@ $messages = array(
 'jumptosearch'     => 'འཚོལ།',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+'aboutsite'            => 'ཨཱབོཨུཏ་ {{SITENAME}}',
+'aboutpage'            => 'Project:ཨཱབོཨུཏ་',
 'currentevents'        => 'ད་ལྟའི་བྱ་བ།',
-'currentevents-url'    => 'ད་ལྟའི་བྱ་བ།',
+'currentevents-url'    => 'Project:ད་ལྟའི་བྱ་བ།',
 'edithelp'             => 'རྩོམ་སྒྲིག་གི་རོགས་རམ།',
 'mainpage'             => 'གཙོ་ངོས།',
 'mainpage-description' => 'གཙོ་ངོས།',
@@ -137,6 +141,7 @@ $messages = array(
 'showpreview'  => 'སྔ་ལྟས་སྟོན།',
 'showdiff'     => 'བཟོས་བཅོས་སྟོན།',
 'loginreqlink' => 'ནང་འཛུལ།',
+'newarticle'   => '(ཎེཝ་)',
 
 # History pages
 'cur'  => 'ད་ལྟ།',
@@ -152,7 +157,9 @@ $messages = array(
 'searchresultshead' => 'འཚོལ།',
 
 # Recent changes
-'recentchanges' => 'ཉེ་བའི་བཟོ་བཅོས།',
+'recentchanges'   => 'ཉེ་བའི་བཟོ་བཅོས།',
+'minoreditletter' => 'ཨཾི',
+'newpageletter'   => 'ཎེ',
 
 # Recent changes linked
 'recentchangeslinked' => 'འབྲེལ་བའི་བཟོ་བཅོས།',
@@ -172,7 +179,6 @@ $messages = array(
 'brokenredirects-delete' => '(གསུབ་པ།)',
 
 # Miscellaneous special pages
-'specialpages'      => 'དམིཊ་བསལ་གྱི་བཟོ་བཅོས།',
 'newpages-username' => 'དྲ་མིང་།:',
 'move'              => 'སྤོར།',
 
@@ -223,6 +229,7 @@ $messages = array(
 # Tooltip help for the actions
 'tooltip-pt-preferences' => 'ངའི་ལེགས་སྒྲིག',
 'tooltip-pt-logout'      => 'ཕྱིར་འབུད།',
+'tooltip-ca-move'        => 'ཨཾོབེ༹་ ཐིས་ པགེ་',
 'tooltip-p-logo'         => 'གཙོ་ངོས།',
 
 # Special:Newimages
@@ -233,5 +240,8 @@ $messages = array(
 
 # Table pager
 'table_pager_limit_submit' => 'སོང་།',
+
+# Special:SpecialPages
+'specialpages' => 'དམིཊ་བསལ་གྱི་བཟོ་བཅོས།',
 
 );

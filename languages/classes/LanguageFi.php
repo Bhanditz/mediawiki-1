@@ -1,7 +1,8 @@
 <?php
+
 /** Finnish (Suomi)
  *
- * @addtogroup Language
+ * @ingroup Language
  *
  * @author Niklas Laxström
  */
@@ -131,7 +132,4 @@ class LanguageFi extends Language {
 
 		return htmlspecialchars( trim( $final ) );
 	}
-
 }
-
-

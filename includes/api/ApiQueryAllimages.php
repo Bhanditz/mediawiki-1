@@ -31,8 +31,8 @@ if (!defined('MEDIAWIKI')) {
 
 /**
  * Query module to enumerate all available pages.
- * 
- * @addtogroup API
+ *
+ * @ingroup API
  */
 class ApiQueryAllimages extends ApiQueryGeneratorBase {
 
@@ -52,11 +52,14 @@ class ApiQueryAllimages extends ApiQueryGeneratorBase {
 	}
 
 	private function run($resultPageSet = null) {
+		$repo = RepoGroup::singleton()->getLocalRepo();
+		if ( !$repo instanceof LocalRepo )
+			$this->dieUsage('Local file repository does not support querying all images', 'unsupportedrepo');
 
 		$db = $this->getDB();
 
 		$params = $this->extractRequestParams();
-		
+
 		// Image filters
 		if (!is_null($params['from']))
 			$this->addWhere('img_name>=' . $db->addQuotes(ApiQueryBase :: titleToKey($params['from'])));
@@ -66,7 +69,7 @@ class ApiQueryAllimages extends ApiQueryGeneratorBase {
 		if (isset ($params['minsize'])) {
 			$this->addWhere('img_size>=' . intval($params['minsize']));
 		}
-		
+
 		if (isset ($params['maxsize'])) {
 			$this->addWhere('img_size<=' . intval($params['maxsize']));
 		}
@@ -84,11 +87,7 @@ class ApiQueryAllimages extends ApiQueryGeneratorBase {
 		$this->addTables('image');
 
 		$prop = array_flip($params['prop']);
-		$this->addFields('img_name');
-		$this->addFieldsIf('img_size', isset($prop['size']));
-		$this->addFieldsIf(array('img_width', 'img_height'), isset($prop['dimensions']));
-		$this->addFieldsIf(array('img_major_mime', 'img_minor_mime'), isset($prop['mime']));
-		$this->addFieldsIf('img_timestamp', isset($prop['timestamp']));
+		$this->addFields( LocalFile::selectFields() );
 
 		$limit = $params['limit'];
 		$this->addOption('LIMIT', $limit+1);
@@ -99,6 +98,7 @@ class ApiQueryAllimages extends ApiQueryGeneratorBase {
 
 		$data = array ();
 		$count = 0;
+		$result = $this->getResult();
 		while ($row = $db->fetchObject($res)) {
 			if (++ $count > $limit) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
@@ -108,24 +108,9 @@ class ApiQueryAllimages extends ApiQueryGeneratorBase {
 			}
 
 			if (is_null($resultPageSet)) {
-				$file = wfLocalFile( $row->img_name );
-				$item['name'] = $row->img_name;
-				if(isset($prop['size']))
-					$item['size'] = $file->getSize();
-				if(isset($prop['dimensions']))
-				{
-					$item['width'] = $file->getWidth();
-					$item['height'] = $file->getHeight();
-				}
-				if(isset($prop['mime']))
-					$item['mime'] = $row->img_major_mime . '/' . $row->img_minor_mime;
-				if(isset($prop['sha1']))
-					$item['sha1'] = wfBaseConvert($file->getSha1(), 36, 16, 31);
-				if(isset($prop['timestamp']))
-					$item['timestamp'] = wfTimestamp(TS_ISO_8601, $file->getTimestamp());
-				if(isset($prop['url']))
-					$item['url'] = $file->getUrl();
-				$data[] = $item;
+				$file = $repo->newFileFromRow( $row );
+
+				$data[] = ApiQueryImageInfo::getInfo( $file, $prop, $result );
 			} else {
 				$data[] = Title::makeTitle( NS_IMAGE, $row->img_name );
 			}
@@ -147,7 +132,7 @@ class ApiQueryAllimages extends ApiQueryGeneratorBase {
 			'prefix' => null,
 			'minsize' => array (
 				ApiBase :: PARAM_TYPE => 'integer',
-			), 
+			),
 			'maxsize' => array (
 				ApiBase :: PARAM_TYPE => 'integer',
 			),
@@ -170,11 +155,14 @@ class ApiQueryAllimages extends ApiQueryGeneratorBase {
 			'prop' => array (
 				ApiBase :: PARAM_TYPE => array(
 					'timestamp',
+					'user',
+					'comment',
 					'url',
 					'size',
-					'dimensions',
+					'dimensions', // Obsolete
 					'mime',
-					'sha1'
+					'sha1',
+					'metadata'
 				),
 				ApiBase :: PARAM_DFLT => 'timestamp|url',
 				ApiBase :: PARAM_ISMULTI => true
@@ -212,7 +200,6 @@ class ApiQueryAllimages extends ApiQueryGeneratorBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiQueryAllimages.php 32072 2008-03-17 19:02:29Z ialex $';
+		return __CLASS__ . ': $Id$';
 	}
 }
-

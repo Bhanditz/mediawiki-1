@@ -1,10 +1,13 @@
 <?php
 /** Sanskrit (संस्कृत)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Kaustubh
  */
+
+$fallback = 'hi';
 
 $digitTransformTable = array(
 	'0' => '०', # &#x0966;

@@ -2,10 +2,13 @@
 
 ## Rough check that the base and postgres "tables.sql" are in sync
 ## Should be run from maintenance/postgres
+## Checks a few other things as well...
 
 use strict;
 use warnings;
 use Data::Dumper;
+
+check_includes_dir();
 
 my @old = ('../tables.sql');
 my $new = 'tables.sql';
@@ -64,7 +67,7 @@ my ($table,%old);
 my %xinfo;
 for my $xfile (@xfile) {
 	print "Loading $xfile\n";
-	my $info = &parse_sql($xfile);
+	my $info = parse_sql($xfile);
 	for (keys %$info) {
 		$xinfo{$_} = $info->{$_};
 	}
@@ -72,7 +75,7 @@ for my $xfile (@xfile) {
 
 for my $oldfile (@old) {
 	print "Loading $oldfile\n";
-	my $info = &parse_sql($oldfile);
+	my $info = parse_sql($oldfile);
 	for (keys %xinfo) {
 		$info->{$_} = $xinfo{$_};
 	}
@@ -97,7 +100,7 @@ sub parse_sql {
 			$table = $1;
 			$info{$table}{name}=$table;
 		}
-		elsif (m#^\) /\*\$wgDBTableOptions\*/#) {
+		elsif (m{^\) /\*\$wgDBTableOptions\*/}) {
 			$info{$table}{engine} = 'TYPE';
 			$info{$table}{type} = 'variable';
 		}
@@ -124,7 +127,7 @@ sub parse_sql {
 		}
 
 	}
-	close $oldfh;
+	close $oldfh or die qq{Could not close "$oldfile": $!\n};
 
 	return \%info;
 
@@ -142,10 +145,10 @@ while (<$pfh>) {
 		}
 		next;
 	}
-	$ptable{$1}=2 while /'(\w+)'/g;
+	$ptable{$1}=2 while m{'(\w+)'}g;
 	last if /\);/;
 }
-close $pfh;
+close $pfh or die qq{Could not close "$parsefile": $!\n};
 
 my $OK_NOT_IN_PTABLE = '
 filearchive
@@ -452,6 +455,38 @@ for (sort keys %new) {
 
 } ## end each file to be parsed
 
+
+sub check_includes_dir {
+
+	## Check for some common errors in the files in the includes directory
+
+	print "Checking files in includes directory...\n";
+	my $dir = '../../includes';
+	opendir my $dh, $dir or die qq{Could not opendir $dir: $!\n};
+	for my $file (grep { -f "$dir/$_" and /\.php$/ } readdir $dh) {
+		$file = "$dir/$file";
+		open my $fh, '<', $file or die qq{Could not open "$file": $!\n};
+		while (<$fh>) {
+			if (/FORCE INDEX/ and $file !~ /Database.php/) {
+				warn "Found FORCE INDEX string at line $. of $file\n";
+			}
+			if (/REPLACE INTO/ and $file !~ /Database/) {
+				warn "Found REPLACE INTO string at line $. of $file\n";
+			}
+			if (/\bIF\s*\(/ and $file !~ /Database.php/) {
+				warn "Found IF string at line $. of $file\n";
+			}
+			if (/\bCONCAT\b/ and $file !~ /Database.php/) {
+				warn "Found CONCAT string at line $. of $file\n";
+			}
+		}
+		close $fh or die qq{Could not close "$file": $!\n};
+	}
+	closedir $dh or die qq{Closedir failed?!\n};
+
+	return;
+
+} ## end of check_includes_dir
 
 __DATA__
 ## Known exceptions
