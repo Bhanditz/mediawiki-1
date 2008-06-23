@@ -29,7 +29,6 @@ class UserloginTemplate extends QuickTemplate {
 <form name="userlogin" method="post" action="<?php $this->text('action') ?>">
 	<h2><?php $this->msg('login') ?></h2>
 	<p id="userloginlink"><?php $this->html('link') ?></p>
-	<?php $this->html('header'); /* pre-table point for form plugins... */ ?>
 	<div id="userloginprompt"><?php  $this->msgWiki('loginprompt') ?></div>
 	<?php if( @$this->haveData( 'languages' ) ) { ?><div id="languagelinks"><p><?php $this->html( 'languages' ); ?></p></div><?php } ?>
 	<table>
@@ -46,7 +45,7 @@ class UserloginTemplate extends QuickTemplate {
 			<td class="mw-input">
 				<input type='password' class='loginPassword' name="wpPassword" id="wpPassword1"
 					tabindex="2"
-					value="" size='20' />
+					value="<?php $this->text('password') ?>" size='20' />
 			</td>
 		</tr>
 	<?php if( $this->data['usedomain'] ) {
@@ -130,7 +129,7 @@ class UsercreateTemplate extends QuickTemplate {
 			<td class="mw-input">
 				<input type='password' class='loginPassword' name="wpPassword" id="wpPassword2"
 					tabindex="2"
-					value="" size='20' />
+					value="<?php $this->text('password') ?>" size='20' />
 			</td>
 		</tr>
 	<?php if( $this->data['usedomain'] ) {
@@ -154,7 +153,7 @@ class UsercreateTemplate extends QuickTemplate {
 			<td class="mw-input">
 				<input type='password' class='loginPassword' name="wpRetype" id="wpRetype"
 					tabindex="4"
-					value=""
+					value="<?php $this->text('retype') ?>"
 					size='20' />
 			</td>
 		</tr>
@@ -165,6 +164,7 @@ class UsercreateTemplate extends QuickTemplate {
 					<input type='text' class='loginText' name="wpEmail" id="wpEmail"
 						tabindex="5"
 						value="<?php $this->text('email') ?>" size='20' />
+						<span><strong>Required if you want to make edits!</strong></span>
 					<div class="prefsectiontip">
 						<?php if( $this->data['emailrequired'] ) {
 									$this->msgWiki('prefs-help-email-required');
@@ -182,9 +182,6 @@ class UsercreateTemplate extends QuickTemplate {
 						<input type='text' class='loginText' name="wpRealName" id="wpRealName"
 							tabindex="6"
 							value="<?php $this->text('realname') ?>" size='20' />
-						<div class="prefsectiontip">
-							<?php $this->msgWiki('prefs-help-realname'); ?>
-						</div>
 					</td>
 			<?php } ?>
 		</tr>
@@ -212,6 +209,24 @@ class UsercreateTemplate extends QuickTemplate {
 			</td>
 		</tr>
 	</table>
+	<?php
+
+		if ($this->data['userealname'] || $this->data['useemail']) {
+			echo '<div id="login-sectiontip">';
+			if ( $this->data['useemail'] ) {
+				echo '<div>';
+				$this->msgHtml('prefs-help-email');
+				echo '</div>';
+			}
+			if ( $this->data['userealname'] ) {
+				echo '<div>';
+				$this->msgHtml('prefs-help-realname');
+				echo '</div>';
+			}
+			echo '</div>';
+		}
+
+	?>
 <?php if( @$this->haveData( 'uselang' ) ) { ?><input type="hidden" name="uselang" value="<?php $this->text( 'uselang' ); ?>" /><?php } ?>
 </form>
 </div>

@@ -693,7 +693,10 @@ END;
 		return $copy;
 	}
 
-	function imageInfo( $filename ) {
+	function imageInfo( $name, $subdirCallback='wfImageDir', $basename = null ) {
+		if( is_null( $basename ) ) $basename = $name;
+		$dir = call_user_func( $subdirCallback, $basename );
+		$filename = $dir . '/' . $name;
 		$info = array(
 			'width'  => 0,
 			'height' => 0,
@@ -708,13 +711,20 @@ END;
 
 		$info['media'] = $magic->getMediaType( $filename, $mime );
 
-		$image = UnregisteredLocalFile::newFromPath( $filename, $mime );
-
-		$info['width'] = $image->getWidth();
-		$info['height'] = $image->getHeight();
-
-		$gis = $image->getImageSize();
-		if ( isset( $gis['bits'] ) ) {
+		# Height and width
+		$gis = false;
+		if( $mime == 'image/svg' ) {
+			$gis = wfGetSVGsize( $filename );
+		} elseif( $magic->isPHPImageType( $mime ) ) {
+			$gis = getimagesize( $filename );
+		} else {
+			$this->log( "Surprising mime type: $mime" );
+		}
+		if( $gis ) {
+			$info['width' ] = $gis[0];
+			$info['height'] = $gis[1];
+		}
+		if( isset( $gis['bits'] ) ) {
 			$info['bits'] = $gis['bits'];
 		}
 

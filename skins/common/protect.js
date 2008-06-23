@@ -9,9 +9,9 @@ function protectInitialize( tableId, labelText, types ) {
 	if( !( document.createTextNode && document.getElementById && document.getElementsByTagName ) )
 		return false;
 		
-	var box = document.getElementById( tableId );
-	if( !box )
-		return false;
+		var tbody = box.getElementsByTagName('tbody')[0];
+		var row = document.createElement('tr');
+		tbody.appendChild(row);
 		
 	var tbody = box.getElementsByTagName( 'tbody' )[0];
 	var row = document.createElement( 'tr' );
@@ -67,9 +67,10 @@ function setCascadeCheckbox() {
 				return false;
 			}
 		}
+		
+		return true;
 	}
-	document.getElementById( 'mwProtect-cascade' ).disabled = false;
-	return true;
+	return false;
 }
 
 /**
@@ -100,25 +101,17 @@ function protectLevelsUpdate(source) {
 	setCascadeCheckbox();
 }
 
-/**
- * Update chain status and enable/disable various bits of the UI
- * when the user changes the "unlock move permissions" checkbox
- */
 function protectChainUpdate() {
-	if( protectUnchained() ) {
-		protectEnable( true );
+	if (protectUnchained()) {
+		protectEnable(true);
 	} else {
 		protectChain();
-		protectEnable( false );
+		protectEnable(false);
 	}
 	setCascadeCheckbox();
 }
 
-/**
- * Are all actions protected at the same level?
- *
- * @return boolean
- */
+
 function protectAllMatch() {
 	var values = new Array();
 	protectForSelectors(function(set) {
@@ -132,22 +125,17 @@ function protectAllMatch() {
 	return true;
 }
 
-/**
- * Is protection chaining on or off?
- *
- * @return bool
- */
 function protectUnchained() {
-	var unchain = document.getElementById( 'mwProtectUnchained' );
-	return unchain
-		? unchain.checked
-		: true; // No control, so we need to let the user set both levels
+	var unchain = document.getElementById("mwProtectUnchained");
+	if (!unchain) {
+		alert("This shouldn't happen");
+		return false;
+	}
+	return unchain.checked;
 }
 
-/**
- * Find the highest-protected action and set all others to that level
- */
 function protectChain() {
+	// Find the highest-protected action and bump them all to this level
 	var maxIndex = -1;
 	protectForSelectors(function(set) {
 		if (set.selectedIndex > maxIndex) {

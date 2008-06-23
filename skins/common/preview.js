@@ -63,11 +63,11 @@ function lpStatusUpdate() {
 		lpShowNormalPreview();
 		return;
 	}
+	prevTarget.innerHTML = prevReq.responseText;
 
 	/* All good */
 	dismissNotify(i18n(wgLivepreviewMessageReady), 750);
 
-	
 	var XMLObject = lpRequest.responseXML.documentElement;
 
 

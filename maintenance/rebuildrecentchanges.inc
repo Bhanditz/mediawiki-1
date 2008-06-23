@@ -55,9 +55,10 @@ function rebuildRecentChangesTablePass2()
 	$dbw = wfGetDB( DB_MASTER );
 	list ($recentchanges, $revision) = $dbw->tableNamesN( 'recentchanges', 'revision' );
 
-	print( "Updating links and size differences...\n" );
+	print( "Updating links...\n" );
 
 	# Fill in the rc_last_oldid field, which points to the previous edit
+	#
 	$sql = "SELECT rc_cur_id,rc_this_oldid,rc_timestamp FROM $recentchanges " .
 	  "ORDER BY rc_cur_id,rc_timestamp";
 	$res = $dbw->query( $sql, DB_MASTER );
@@ -70,17 +71,15 @@ function rebuildRecentChangesTablePass2()
 			# Switch! Look up the previous last edit, if any
 			$lastCurId = intval( $obj->rc_cur_id );
 			$emit = $obj->rc_timestamp;
-			$sql2 = "SELECT rev_id, rev_len FROM $revision " .
+			$sql2 = "SELECT rev_id FROM $revision " .
 				"WHERE rev_page={$lastCurId} ".
 				"AND rev_timestamp<'{$emit}' ORDER BY rev_timestamp DESC LIMIT 1";
 			$res2 = $dbw->query( $sql2 );
 			if( $row = $dbw->fetchObject( $res2 ) ) {
 				$lastOldId = intval( $row->rev_id );
-				$lastSize = $row->rev_len; # Grab the last text size
 			} else {
 				# No previous edit
 				$lastOldId = 0;
-				$lastSize = 'NULL';
 				$new = 1;
 			}
 			$dbw->freeResult( $res2 );
@@ -88,15 +87,9 @@ function rebuildRecentChangesTablePass2()
 		if( $lastCurId == 0 ) {
 			print "Uhhh, something wrong? No curid\n";
 		} else {
-			# Grab the entry's text size
-			$size = $dbw->selectField( 'revision', 'rev_len', array('rev_id' => $obj->rc_this_oldid ) );
-			$size = $size ? $size : 'NULL';
-			
-			$sql3 = "UPDATE $recentchanges SET rc_last_oldid=$lastOldId,rc_new=$new,rc_type=$new," .
-				"rc_old_len='$lastSize',rc_new_len='$size' " .
+			$sql3 = "UPDATE $recentchanges SET rc_last_oldid=$lastOldId,rc_new=$new,rc_type=$new " .
 				"WHERE rc_cur_id={$lastCurId} AND rc_this_oldid={$obj->rc_this_oldid}";
 			$dbw->query( $sql3 );
-			
 			$lastOldId = intval( $obj->rc_this_oldid );
 		}
 	}

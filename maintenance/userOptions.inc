@@ -108,25 +108,10 @@ class userOptions {
 			$user = User::newFromId( $id->user_id );
 
 			// Get the options and update stats
-			if( $this->mAnOption ) {
-
-				if(!array_key_exists( $this->mAnOption, $defaultOptions ) ) {
-					print "Invalid user option. Use --list to see valid choices\n";
-					exit;
-				}
-
-				$userValue = $user->getOption( $this->mAnOption );
-				if( $userValue <> $defaultOptions[$this->mAnOption] ) {
-					@$ret[$this->mAnOption][$userValue]++;
-				}
-
-			} else {
-
-				foreach( $defaultOptions as $name => $defaultValue ) {
-					$userValue = $user->getOption( $name );
-					if( $userValue <> $defaultValue ) {
-						@$ret[$name][$userValue]++;
-					}
+			foreach( $defaultOptions as $name => $defaultValue ) {
+				$userValue = $user->getOption( $name );
+				if( $userValue <> $defaultValue ) {
+					@$ret[$name][$userValue]++;
 				}
 			}
 		}
@@ -205,13 +190,13 @@ The new option is NOT validated.
 
 Usage:
     php userOptions.php --list
-    php userOptions.php [user option] --usage
+    php userOptions.php <user option> --usage
     php userOptions.php [options] <user option> --old <old value> --new <new value>
 
 Switchs:
     --list : list available user options and their default value
 
-    --usage : report all options statistics or just one if you specify it.
+    --usage <option name> : report statistics about an option
 
     --old <old value> : the value to look for
     --new <new value> : new value to update users with

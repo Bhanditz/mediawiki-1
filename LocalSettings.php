@@ -285,6 +285,11 @@ $wgMainCacheType = CACHE_ACCEL;
 
 # Add support for Semantic Layers
 # http://s89238293.onlinehome.us/w/index.php?title=Help:Semantic_Layers
-require_once("$IP/extensions/SemanticLayers/includes/SL_Settings.php");
+#require_once("$IP/extensions/SemanticLayers/includes/SL_Settings.php");
 #$slgGoogleMapsKey = 'ABQIAAAAhTiiR2mt-xxEb4aoichygBStAoWTT717mL003kCtCEc19VRPIxQ_B6IyJoKoAHVFfjr8L_Cr1gqZUA';
 
+# SemanticDrilldown http://www.mediawiki.org/wiki/Extension:Semantic_Drilldown
+include_once('extensions/SemanticDrilldown/includes/SD_Settings.php');
+
+# Added this extension per request from GSoC person Hugo Dworak (nkinkade 2008-06-11)
+require_once("extensions/SyntaxHighlight_GeSHi/SyntaxHighlight_GeSHi.php");

@@ -22,11 +22,13 @@ a.new{ color:#ba0000; text-decoration:none; }
 .tocline {
 	margin-bottom: 0px;
 }
+.toctoggle, .editsection {
+	font-size: smaller;
+}
 
 /* images */
 div.floatright { 
-    float: right;
-    clear: right;
+    float: right; 
     margin: 0;
     position:relative;
     border: 0.5em solid White;
@@ -65,16 +67,12 @@ div.thumb div div.thumbcaption {
 div.magnify { display: none; }
 div.tright {
     float: right;
-    clear: right;
     border-width: 0.5em 0 0.8em 1.4em;
 }
 div.tleft {
     float: left;
     margin-right:0.5em;
     border-width: 0.5em 1.4em 0.8em 0;
-}
-img.thumbborder {
-	border: 1px solid #dddddd;
 }
 
 /* table standards */
@@ -105,10 +103,10 @@ div#column-one,
 .tochidden,
 div#f-poweredbyico,
 div#f-copyrightico,
-li#viewcount,
-li#about,
-li#disclaimer,
-li#privacy {
+li#f-viewcount,
+li#f-about,
+li#f-disclaimer,
+li#f-privacy {
     /* Hides all the elements irrelevant for printing */
     display: none;
 }
@@ -120,6 +118,7 @@ ul {
 #content {
     background: none;
     border: none ! important;
+    font-size: 11pt;
     padding: 0 ! important;
     margin: 0 ! important;
 }
@@ -160,8 +159,7 @@ table.listing td {
 
 a {
     color: Black !important;
-    background: none !important;
-    padding: 0 !important;
+    padding: 0 !important
 }
 
 a:link, a:visited {
@@ -285,8 +283,5 @@ td.diff-context {
     background:#eeeeee;
     font-size: smaller;
 }
-.diffchange {
-    color: silver;
-    font-weight: bold;
-    text-decoration: underline;
-}
+span.diffchange { color: silver; font-weight: bold; text-decoration: underline; }
+

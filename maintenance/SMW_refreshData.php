@@ -1,0 +1,1 @@
+../extensions/SemanticMediaWiki/maintenance/SMW_refreshData.php

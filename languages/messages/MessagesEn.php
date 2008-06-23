@@ -2846,7 +2846,11 @@ Mailer returned: $1',
 'confirmemail_loggedin'   => 'Your e-mail address has now been confirmed.',
 'confirmemail_error'      => 'Something went wrong saving your confirmation.',
 'confirmemail_subject'    => '{{SITENAME}} e-mail address confirmation',
-'confirmemail_body'       => 'Someone, probably you, from IP address $1, has registered an account "$2" with this e-mail address on {{SITENAME}}.
+
+# Do not include the users IP address because it will just show 127.0.0.1
+# because of Varnish (nkinkade 2008-04-25)
+'confirmemail_body'       => 'Someone, probably you, has registered an
+account "$2" with this e-mail address on {{SITENAME}}.
 
 To confirm that this account really does belong to you and activate e-mail features on {{SITENAME}}, open this link in your browser:
 
