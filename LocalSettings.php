@@ -273,7 +273,7 @@ require_once('extensions/ImageMap/ImageMap.php');
 $wgAllowExternalImages = true;
 
 # Put a reCaptcha on the registration form
-require_once( "$IP/extensions/recaptcha/ReCaptcha.php" );
+require_once( "$IP/extensions/reCAPTCHA/ReCaptcha.php" );
 $recaptcha_public_key = '6LfFQQEAAAAAAPTcluUIkwdwqoj65TxYzbhjuTdS';
 $recaptcha_private_key = '6LfFQQEAAAAAAN0h0UMx-4QtbG-BXAB7--gTRtwU';
 
