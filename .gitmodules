@@ -40,3 +40,6 @@
 [submodule "extensions/SMW_InlineQueryParserFunction"]
 	path = extensions/SMW_InlineQueryParserFunction
 	url = git://code.creativecommons.org/smw_inlinequeryparserfunction.git
+[submodule "extensions/SimpleForms"]
+	path = extensions/SimpleForms
+	url = git://code.creativecommons.org/simpleforms.git
