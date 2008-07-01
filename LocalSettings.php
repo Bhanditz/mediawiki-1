@@ -247,7 +247,6 @@ include_once('extensions/SemanticForms/includes/SF_Settings.php');
 	#------ OpenID ----------------
 require_once("$IP/extensions/OpenID/OpenID.php");
 
-require_once("$IP/extensions/CC_Semantic_Extensions/CC_Semantic_Extensions.php");
 require_once("$IP/extensions/CC_SMW_Extensions/Settings.php");
 
 #------ SpamBlackList ---------
