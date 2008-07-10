@@ -73,6 +73,8 @@ class Linker {
 		} else {
 			$r .= ' title="' . htmlspecialchars( $titleAttr ) . '"';
 		}
+		 wfRunHooks( 'LinkerInternalLinkAttributesObj',
+			array( &$this, &$nt, $text, $class, $titleAttr, &$r ) );
 		return $r;
 	}
 
