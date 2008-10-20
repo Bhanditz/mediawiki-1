@@ -48,9 +48,6 @@ $messages = array(
 'watchthis'          => 'De Seitn beobachtn',
 'whitelistedittitle' => 'Zum Bearbatn miaßn Sie si oomeidn',
 'whitelistedittext'  => 'Sie miaßn si $1, um Seiten bearbatn zum kinna.',
-'whitelistreadtitle' => 'Zum Lesn is erforderlich, ogmeldt zum sei',
-'whitelistreadtext'  => 'Sie miaßn si [[Special:UserLogin|da oomeidn]], um de Seitn lesen zum kinna.',
-'whitelistacctitle'  => 'Sie san net berechtigt, a Benutzerkonto ozumlegn.',
 'accmailtitle'       => 'Passwort is vaschickt worn',
 'newarticle'         => '(Nei)',
 'yourtext'           => 'Eana Text',
@@ -72,7 +69,7 @@ $messages = array(
 # Special:Log
 'all-logs-page' => 'Alle Logbiacha',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'          => 'Alle Seitn',
 'allarticles'       => 'Alle Seitn',
 'allinnamespace'    => 'Alle Seitn (Namensraum: $1)',
@@ -108,7 +105,7 @@ $messages = array(
 Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation] and [http://translatewiki.net Betawiki] if you wish to contribute to the generic MediaWiki localisation.',
 'allmessagesmodified' => 'Nur geänderte zoagn',
 
-# Special:Newimages
+# Special:NewImages
 'newimages' => 'Neie Dateien',
 
 );

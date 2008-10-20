@@ -155,7 +155,7 @@ Isape a vostrã ira adratã. Nu agãrshits s-le alãxits alidzerle-a vostre ti {
 # Special:Log
 'log-search-submit' => 'Du-vã',
 
-# Special:Allpages
+# Special:AllPages
 'allpagessubmit' => 'Du-vã',
 
 # Watchlist
@@ -203,7 +203,7 @@ Isape a vostrã ira adratã. Nu agãrshits s-le alãxits alidzerle-a vostre ti {
 'tooltip-pt-logout'      => 'Disligats-vã',
 'tooltip-p-logo'         => 'Prota frãndzã',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'Caftã',
 
 # Multipage image navigation

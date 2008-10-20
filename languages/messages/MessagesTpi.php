@@ -4,18 +4,10 @@
  * @ingroup Language
  * @file
  *
- * @author Niklas Laxström
  * @author Wantok
- * @author לערי ריינהארט
- * @author Siebrand
  * @author Wytukaze
- * @author Wantok
  * @author לערי ריינהארט
- * @author Siebrand
- * @author Wytukaze
  */
-
-
 
 $messages = array(
 # User preference toggles
@@ -176,7 +168,7 @@ Na tu yu tok tru nau olsem yu raitim dispela yu yet, o yu kisim long wanpela hap
 'movethispage'            => 'Surikim dispela pes',
 'unusedcategoriestext'    => 'Ol dispela grup istap yet, tasol i no gat wanpela pes o grup i stap insait long ol.',
 
-# Special:Allpages
+# Special:AllPages
 'allpages' => 'Olgeta pes',
 
 # Special:Categories

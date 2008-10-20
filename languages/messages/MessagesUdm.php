@@ -3,6 +3,7 @@
  *
  * @ingroup Language
  * @file
+ *
  * @author ОйЛ
  * @author לערי ריינהארט
  */
@@ -52,11 +53,11 @@ $messages = array(
 'talk'             => 'Вераськон',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'currentevents'     => 'Выль иворъёс',
-'currentevents-url' => 'Project:Выль иворъёс',
-'helppage'          => 'Help:Валэктон',
-'mainpage'          => 'Кутскон бам',
-'sitesupport'       => 'Проектлы юрттон',
+'currentevents'        => 'Выль иворъёс',
+'currentevents-url'    => 'Project:Выль иворъёс',
+'helppage'             => 'Help:Валэктон',
+'mainpage'             => 'Кутскон бам',
+'mainpage-description' => 'Кутскон бам',
 
 'editsection' => 'тупатыны',
 
@@ -89,8 +90,7 @@ $messages = array(
 'randompage' => 'Олокыӵе статья',
 
 # Miscellaneous special pages
-'specialpages' => 'Ваньмыз панельёс',
-'move'         => 'Мукет интые выжтыны',
+'move' => 'Мукет интые выжтыны',
 
 # Watchlist
 'watchlist' => 'Чаклано статьяос',
@@ -106,5 +106,8 @@ $messages = array(
 # Move page
 'movearticle'     => 'Статьяез мукет интые выжтыны',
 'delete_and_move' => 'Быдтыны но мукет интые выжтыны',
+
+# Special:SpecialPages
+'specialpages' => 'Ваньмыз панельёс',
 
 );
