@@ -4,19 +4,11 @@
  * @ingroup Language
  * @file
  *
- * @author Flrn
  * @author Runningfridgesrule
  */
 
 $messages = array(
 # Dates
-'sunday'        => 'Ýekşenbe',
-'monday'        => 'Duşenbe',
-'tuesday'       => 'Sişenbe',
-'wednesday'     => 'Çarşenbe',
-'thursday'      => 'Penşenbe',
-'friday'        => 'Anna',
-'saturday'      => 'Şenbe',
 'sun'           => 'Dynç.',
 'mon'           => 'Baş.',
 'tue'           => 'Ýaş.',
@@ -24,42 +16,42 @@ $messages = array(
 'thu'           => 'Sogap.',
 'fri'           => 'Anna.',
 'sat'           => 'Ruh.',
-'january'       => 'ýanwar',
-'february'      => 'fewral',
-'march'         => 'mart',
-'april'         => 'aprel',
-'may_long'      => 'maý',
-'june'          => 'iýun',
-'july'          => 'iýul',
-'august'        => 'awgust',
-'september'     => 'sentýabr',
-'october'       => 'oktýabr',
-'november'      => 'noýabr',
-'december'      => 'dekabr',
-'january-gen'   => 'ýanwar',
-'february-gen'  => 'fewral',
-'march-gen'     => 'mart',
-'april-gen'     => 'aprel',
-'may-gen'       => 'maý',
-'june-gen'      => 'iýun',
-'july-gen'      => 'iýul',
-'august-gen'    => 'awgust',
-'september-gen' => 'sentýabr',
-'october-gen'   => 'oktýabr',
-'november-gen'  => 'noýabr',
-'december-gen'  => 'dekabr',
-'jan'           => 'ýan',
-'feb'           => 'few',
-'mar'           => 'mar',
-'apr'           => 'apr',
-'may'           => 'maý',
-'jun'           => 'iýun',
-'jul'           => 'iýul',
-'aug'           => 'awg',
-'sep'           => 'sen',
-'oct'           => 'okt',
-'nov'           => 'noý',
-'dec'           => 'dek',
+'january'       => 'Türkmenbaşy aý',
+'february'      => 'Baýdak aý',
+'march'         => 'Nowruz aý',
+'april'         => 'Gurbansoltan aý',
+'may_long'      => 'Magtymguly aý',
+'june'          => 'Oguzhan aý',
+'july'          => 'Gorkut aý',
+'august'        => 'Alp Arslan aý',
+'september'     => 'Ruhnama aý',
+'october'       => 'Garaşsyzlyk aý',
+'november'      => 'Sanjar aý',
+'december'      => 'Bitaraplyk aý',
+'january-gen'   => 'Türkmenbaşy aý',
+'february-gen'  => 'Baýdak aý',
+'march-gen'     => 'Nowruz aý',
+'april-gen'     => 'Gurbansoltan aý',
+'may-gen'       => 'Magtymguly aý',
+'june-gen'      => 'Oguzhan aý',
+'july-gen'      => 'Gorkut aý',
+'august-gen'    => 'Alp Arslan aý',
+'september-gen' => 'Ruhnama aý',
+'october-gen'   => 'Garaşsyzlyk aý',
+'november-gen'  => 'Sanjar aý',
+'december-gen'  => 'Bitaraplyk aý',
+'jan'           => 'Türkmenbaşy aý',
+'feb'           => 'Baýdak aý',
+'mar'           => 'Nowruz aý',
+'apr'           => 'Gurbansoltan aý',
+'may'           => 'Magtymguly aý',
+'jun'           => 'Oguzhan aý',
+'jul'           => 'Gorkut aý',
+'aug'           => 'Alp Arslan aý',
+'sep'           => 'Ruhnama aý',
+'oct'           => 'Garaşsyzlyk aý',
+'nov'           => 'Sanjar aý',
+'dec'           => 'Bitaraplyk aý',
 
 'newwindow' => '(täze bir penjirede açylyr)',
 'mytalk'    => 'Tabşyryk sahypam',
@@ -78,9 +70,10 @@ $messages = array(
 'jumptosearch'     => 'gözle',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'helppage' => 'Help:Içindäkiler',
-'mainpage' => 'Baş Sahypa',
-'privacy'  => 'Hususylyk ýörelgesi',
+'helppage'             => 'Help:Içindäkiler',
+'mainpage'             => 'Baş Sahypa',
+'mainpage-description' => 'Baş Sahypa',
+'privacy'              => 'Hususylyk ýörelgesi',
 
 'editsection'     => 'redakte',
 'editsectionhint' => '$1. bölümü redaktirle',
@@ -94,8 +87,9 @@ $messages = array(
 'viewsource' => 'Gözbaşy gör',
 
 # Login and logout pages
-'userlogin'  => 'Sessiýa aç / täze hasap edin',
-'userlogout' => 'Sessiýaýy kapas',
+'nav-login-createaccount' => 'Sessiýa aç / täze hasap edin',
+'userlogin'               => 'Sessiýa aç / täze hasap edin',
+'userlogout'              => 'Sessiýaýy kapas',
 
 # Edit page toolbar
 'bold_tip'        => 'Galyň ýazgy',
@@ -128,15 +122,14 @@ $messages = array(
 # Recent changes linked
 'recentchangeslinked' => 'Meňzeçli özgertişler',
 
-# Image list
+# Image description page
 'filehist-current'  => 'häzirki',
 'filehist-datetime' => 'Gün/Zaman',
 'filehist-user'     => 'Ulanyjy',
 'imagelinks'        => 'Aragatnaşyklar',
 
 # Miscellaneous special pages
-'specialpages' => 'Yörite sahypalar',
-'move'         => 'Atyňy özgert',
+'move' => 'Atyňy özgert',
 
 # Special:Allpages
 'allpagessubmit' => 'Git',
@@ -168,5 +161,8 @@ $messages = array(
 'tooltip-pt-logout'         => 'Sessiýaýy kapas',
 'tooltip-ca-move'           => 'Bu sahypanyň atyňy özgert',
 'tooltip-ca-nstab-category' => 'Kategoriya sahypsayny gör',
+
+# Special:SpecialPages
+'specialpages' => 'Yörite sahypalar',
 
 );

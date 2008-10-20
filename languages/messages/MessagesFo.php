@@ -4,17 +4,20 @@
  * @ingroup Language
  * @file
  *
- * @author Krun
- * @author Max sonnelid
- * @author Quackor
- * @author S.Örvarr.S
  * @author Spacebirdy
  * @author לערי ריינהארט
+ * @author M.M.S.
+ * @author Krun
+ * @author S.Örvarr.S
+ * @author Siebrand
+ * @author Quackor
+ * @author SPQRobin
+ * @author Jon Harald Søby
  */
 
 $skinNames = array(
-	'standard'    => 'Standardur', 
-	'nostalgia'   => 'Nostalgiskur', 
+	'standard'    => 'Standardur',
+	'nostalgia'   => 'Nostalgiskur',
 	'cologneblue' => 'Cologne-bláur'
 );
 
@@ -196,13 +199,13 @@ $messages = array(
 'nov'           => 'nov',
 'dec'           => 'des',
 
-# Bits of text used by many pages
-'categories'            => 'Bólkar',
-'pagecategories'        => '{{PLURAL:$1|Bólkur|Bólkar}}',
-'category_header'       => 'Greinir í bólki "$1"',
-'subcategories'         => 'Undirbólkur',
-'category-media-header' => 'Media í bólkur "$1"',
-'category-empty'        => "''Hesin bólkur inniheldur ongar greinir ella miðlar í løtuni.''",
+# Categories related messages
+'pagecategories'         => '{{PLURAL:$1|Bólkur|Bólkar}}',
+'category_header'        => 'Greinir í bólki "$1"',
+'subcategories'          => 'Undirbólkur',
+'category-media-header'  => 'Media í bólkur "$1"',
+'category-empty'         => "''Hesin bólkur inniheldur ongar greinir ella miðlar í løtuni.''",
+'listingcontinuesabbrev' => 'frh.',
 
 'mainpagetext' => "<big>'''Innlegging av Wiki-ritbúnaði væleydnað.'''</big>",
 
@@ -239,7 +242,9 @@ $messages = array(
 'permalink'         => 'Støðug slóð',
 'print'             => 'Prenta',
 'edit'              => 'Rætta',
+'create'            => 'Stovna',
 'editthispage'      => 'Rætta hesa síðuna',
+'create-this-page'  => 'Stovna hesa síðuna',
 'delete'            => 'Strika',
 'deletethispage'    => 'Strika hesa síðuna',
 'protect'           => 'Friða',
@@ -274,28 +279,29 @@ $messages = array(
 'jumptosearch'      => 'leita',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutsite'         => 'Um {{SITENAME}}',
-'aboutpage'         => 'Project:Um',
-'bugreports'        => 'Lúsafrágreiðingar',
-'bugreportspage'    => 'Project:Lúsafrágreiðingar',
-'copyright'         => 'Innihald er tøkt undir $1.',
-'copyrightpagename' => '{{SITENAME}} útgávurættur',
-'copyrightpage'     => '{{ns:project}}:Útgávurættur',
-'currentevents'     => 'Núverandi hendingar',
-'currentevents-url' => 'Project:Núverandi hendingar',
-'disclaimers'       => 'Fyrivarni',
-'disclaimerpage'    => 'Project:Fyrivarni',
-'edithelp'          => 'Rættihjálp',
-'edithelppage'      => 'Help:Rættihjálp',
-'faq'               => 'OSS',
-'faqpage'           => 'Project:OSS',
-'helppage'          => 'Help:Innihald',
-'mainpage'          => 'Forsíða',
-'policy-url'        => 'Project:Handfaring av persónligum upplýsingum',
-'portal'            => 'Forsíða fyri høvundar',
-'portal-url'        => 'Project:Forsíða fyri høvundar',
-'privacy'           => 'Handfaring av persónligum upplýsingum',
-'privacypage'       => 'Project:Handfaring av persónligum upplýsingum',
+'aboutsite'            => 'Um {{SITENAME}}',
+'aboutpage'            => 'Project:Um',
+'bugreports'           => 'Lúsafrágreiðingar',
+'bugreportspage'       => 'Project:Lúsafrágreiðingar',
+'copyright'            => 'Innihald er tøkt undir $1.',
+'copyrightpagename'    => '{{SITENAME}} útgávurættur',
+'copyrightpage'        => '{{ns:project}}:Útgávurættur',
+'currentevents'        => 'Núverandi hendingar',
+'currentevents-url'    => 'Project:Núverandi hendingar',
+'disclaimers'          => 'Fyrivarni',
+'disclaimerpage'       => 'Project:Fyrivarni',
+'edithelp'             => 'Rættihjálp',
+'edithelppage'         => 'Help:Rættihjálp',
+'faq'                  => 'OSS',
+'faqpage'              => 'Project:OSS',
+'helppage'             => 'Help:Innihald',
+'mainpage'             => 'Forsíða',
+'mainpage-description' => 'Forsíða',
+'policy-url'           => 'Project:Handfaring av persónligum upplýsingum',
+'portal'               => 'Forsíða fyri høvundar',
+'portal-url'           => 'Project:Forsíða fyri høvundar',
+'privacy'              => 'Handfaring av persónligum upplýsingum',
+'privacypage'          => 'Project:Handfaring av persónligum upplýsingum',
 
 'badaccess' => 'Loyvisbrek',
 
@@ -307,6 +313,7 @@ $messages = array(
 'youhavenewmessagesmulti' => 'Tú hevur nýggj boð á $1',
 'editsection'             => 'rætta',
 'editold'                 => 'rætta',
+'viewsourceold'           => 'vís keldu',
 'editsectionhint'         => 'Rætta part: $1',
 'toc'                     => 'Innihaldsyvirlit',
 'showtoc'                 => 'skoða',
@@ -338,18 +345,11 @@ afturkend av wiki',
 'nosuchspecialpage' => 'Ongin slík serlig síða',
 'nospecialpagetext' => "<big>'''Tú hevur biðið um eina serliga síðu, sum wiki ikki kennir aftur.'''</big>
 
-<!-- A list of valid special pages can be found at [[Special:SpecialPages]]. -->",
+<!-- A list of valid special pages can be found at [[Special:Specialpages]]. -->",
 
 # General errors
 'error'             => 'Villa',
 'databaseerror'     => 'Villa í dátagrunni',
-'missingarticle'    => 'Dátugrunnurin fann ikki tekstin á síðuni, sum átti at verið funnin, nevndur "$1".
-
-Hetta er vanliga orsakað av at fara eftir einari gamlari diff- ella søguslóð til eina
-síðu, ið er strikað.
-
-Er tað ikki soleiðis, er møguligt at tú hevur funnið eitt brek í ritbúnaðinum.
-Vinarliga boða einum umboðsstjóra frá hesum og gev honum url-ið.',
 'internalerror'     => 'Innvortis brek',
 'filecopyerror'     => 'Kundi ikki avrita fíluna "$1" til "$2".',
 'filerenameerror'   => 'Kundi ikki umdoypa fílu "$1" til "$2".',
@@ -383,6 +383,7 @@ Tín konto er nú stovnað. Gloym ikki at broyta tínar {{SITENAME}} innstilling
 'remembermypassword'         => 'Minst til loyniorðið hjá mær.',
 'loginproblem'               => '<b>Trupulleikar vóru við tíni innritan.</b><br />Royn aftur!',
 'login'                      => 'Rita inn',
+'nav-login-createaccount'    => 'Stovna kontu ella rita inn',
 'loginprompt'                => 'Cookies má verða sett til fyri at innrita á {{SITENAME}}.',
 'userlogin'                  => 'Stovna kontu ella rita inn',
 'logout'                     => 'Útrita',
@@ -469,7 +470,7 @@ Tín IP-adressa verður goymd í rættisøguni fyri hesa síðuna.",
 Ert tú komin higar av einum mistaki, kanst tú trýsta á '''aftur'''-knøttin á kagaranum.",
 'anontalkpagetext'         => "----''Hetta er ein kjaksíða hjá einum dulnevndum brúkara, sum ikki hevur stovnað eina kontu enn, ella ikki brúkar hana. Tí noyðast vit at brúka nummerisku IP-adressuna hjá honum ella henni.
 Ein slík IP-adressa kann verða brúkt av fleiri brúkarum.
-Ert tú ein dulnevndur brúkari, og kennir, at óvikomandi viðmerkingar eru vendar til tín, so vinarliga [[Special:UserLogin|stovna eina kontu]] fyri at sleppa undan samanblanding við aðrar dulnevndar brúkarar í framtíðini.''",
+Ert tú ein dulnevndur brúkari, og kennir, at óvikomandi viðmerkingar eru vendar til tín, so vinarliga [[Special:Userlogin|stovna eina kontu]] fyri at sleppa undan samanblanding við aðrar dulnevndar brúkarar í framtíðini.''",
 'clearyourcache'           => "'''Viðmerking:''' Eftir at hava goymt mást tú fara uttanum minnið á sneytara tínum fyri at síggja broytingarnar. '''Mozilla/Safari/Konqueror:''' halt knøttinum ''Shift'' niðri meðan tú trýstir á ''Reload'' (ella trýst ''Ctrl-Shift-R''), '''IE:''' trýst ''Ctrl-F5'', '''Opera:''' trýst F5.",
 'note'                     => '<strong>Viðmerking:</strong>',
 'previewnote'              => '<strong>Minst til at hetta bara er ein forskoðan, sum enn ikki er goymd!</strong>',
@@ -495,7 +496,6 @@ Vinarliga umhugsa at býta síðuna sundur í styttri pettir.</strong>',
 # History pages
 'viewpagelogs'        => 'Sí logg fyri hesa grein',
 'nohistory'           => 'Eingin broytisøga er til hesa síðuna.',
-'loadhist'            => 'Lesur síðusøgu',
 'currentrev'          => 'Núverandi endurskoðan',
 'revisionasof'        => 'Endurskoðan frá $1',
 'previousrevision'    => '←Eldri endurskoðan',
@@ -518,9 +518,6 @@ Vinarliga umhugsa at býta síðuna sundur í styttri pettir.</strong>',
 # Revision deletion
 'rev-delundel' => 'skoða/fjal',
 
-# Oversight log
-'oversightlog' => 'Yvurlits logg',
-
 # History merging
 'mergehistory-from' => 'Keldusíða:',
 
@@ -541,10 +538,10 @@ Vinarliga umhugsa at býta síðuna sundur í styttri pettir.</strong>',
 'prevn'                 => 'undanfarnu $1',
 'nextn'                 => 'næstu $1',
 'viewprevnext'          => 'Vís ($1) ($2) ($3).',
+'search-result-size'    => '$1 ({{PLURAL:$2|1 orð|$2 orð}})',
 'showingresults'        => "Niðanfyri standa upp til {{PLURAL:$1|'''$1''' úrslit, sum byrjar|'''$1''' úrslit, sum byrja}} við #<b>$2</b>.",
 'showingresultsnum'     => "Niðanfyri standa {{PLURAL:$3|'''1''' úrslit, sum byrjar|'''$3''' úrslit, sum byrja}} við #<b>$2</b>.",
 'powersearch'           => 'Leita',
-'powersearchtext'       => 'Leita í navnaøki:<br />$1<br />$2 Sýn ávísingar<br />Leita eftur $3 $9',
 
 # Preferences page
 'preferences'             => 'Innstillingar',
@@ -581,7 +578,7 @@ Vinarliga umhugsa at býta síðuna sundur í styttri pettir.</strong>',
 'recentchangescount'      => 'Heiti í seinastu broytingum:',
 'savedprefs'              => 'Tínar innstillingar eru goymdar.',
 'timezonelegend'          => 'Lokal tíð',
-'timezonetext'            => 'Talið av tímum, ið tín lokala tíð víkir frá ambætaratíð (UTC).',
+'timezonetext'            => '¹Talið av tímum, ið tín lokala tíð víkir frá ambætaratíð (UTC).',
 'localtime'               => 'Lokal klokka',
 'timezoneoffset'          => 'Frávik¹',
 'servertime'              => 'Ambætaraklokkan er nú',
@@ -636,7 +633,7 @@ Vinarliga umhugsa at býta síðuna sundur í styttri pettir.</strong>',
 'upload'            => 'Legg fílu upp',
 'uploadbtn'         => 'Legg fílu upp',
 'uploadnologin'     => 'Ikki ritað inn',
-'uploadnologintext' => 'Tú mást hava [[Special:UserLogin|ritað inn]]
+'uploadnologintext' => 'Tú mást hava [[Special:Userlogin|ritað inn]]
 fyri at leggja fílur upp.',
 'uploadlog'         => 'fílu logg',
 'uploadlogpage'     => 'Fílugerðabók',
@@ -660,14 +657,12 @@ fyri at leggja fílur upp.',
 'license'   => 'Loyvi:',
 'nolicense' => 'Onki valt',
 
-# Image list
-'imagelist'         => 'Myndalisti',
-'ilsubmit'          => 'Leita',
-'byname'            => 'eftir navni',
-'bydate'            => 'eftir dato',
-'bysize'            => 'eftir stød',
-'imgdelete'         => 'strik',
-'imgdesc'           => 'lýs',
+# Special:Imagelist
+'imagelist'      => 'Myndalisti',
+'imagelist_name' => 'Navn',
+'imagelist_user' => 'Brúkari',
+
+# Image description page
 'filehist'          => 'Søga fílu',
 'filehist-current'  => 'streymur',
 'filehist-datetime' => 'Dagur/Tíð',
@@ -678,8 +673,6 @@ fyri at leggja fílur upp.',
 'linkstoimage'      => 'Hesar síður slóða til hesa mynd:',
 'nolinkstoimage'    => 'Ongar síður slóða til hesa myndina.',
 'sharedupload'      => 'This file is a shared upload and may be used by other projects.',
-'imagelist_name'    => 'Navn',
-'imagelist_user'    => 'Brúkari',
 
 # File deletion
 'filedelete'        => 'Strika $1',
@@ -718,7 +711,7 @@ síðani henda wikan varð sett up.
 Tað gevur í miðal '''$5''' broytingar fyri hvørja síðu og '''$6''' skoðanir fyri hvørja broyting.
 
 <!--The [http://www.mediawiki.org/wiki/Manual:Job_queue job queue] length is '''$7'''.-->",
-'userstatstext' => "Tilsamans  {{PLURAL:$1|er '''1''' skrásettur [[Special:ListUsers|brúkari]]|eru '''$1''' skrásettir [[Special:ListUsers|brúkarar]]}}. '''$2''' (ella '''$4%''') av hesum {{PLURAL:$2|er umboðsstjóri|eru umboðsstjórar}} (sí $5).",
+'userstatstext' => "Tilsamans  {{PLURAL:$1|er '''1''' skrásettur [[Special:Listusers|brúkari]]|eru '''$1''' skrásettir [[Special:Listusers|brúkarar]]}}. '''$2''' (ella '''$4%''') av hesum {{PLURAL:$2|er umboðsstjóri|eru umboðsstjórar}} (sí $5).",
 
 'disambiguations'     => 'Síður við fleirfaldum týdningi',
 'disambiguationspage' => 'Template:fleiri týdningar',
@@ -733,7 +726,6 @@ Hvørt rað inniheldur slóðir til fyrstu og aðru ávísing, umframt tekstin �
 'brokenredirects-delete' => '(strika)',
 
 'withoutinterwiki'         => 'Síður uttan málslóðir',
-'withoutinterwiki-header'  => 'Fylgjandi síður slóða ikki til útgávur á øðrum málum:',
 'withoutinterwiki-summary' => 'Fylgjandi síður slóða ikki til útgávur á øðrum málum:',
 'withoutinterwiki-submit'  => 'Skoða',
 
@@ -754,18 +746,14 @@ Hvørt rað inniheldur slóðir til fyrstu og aðru ávísing, umframt tekstin �
 'wantedpages'             => 'Ynsktar síður',
 'mostcategories'          => 'Greinir við flest bólkum',
 'mostrevisions'           => 'Greinir við flestum útgávum',
-'allpages'                => 'Allar síður',
 'shortpages'              => 'Stuttar síður',
 'longpages'               => 'Langar síður',
 'deadendpages'            => 'Gøtubotnssíður',
 'protectedpages'          => 'Friðaðar síður',
 'listusers'               => 'Brúkaralisti',
-'specialpages'            => 'Serligar síður',
-'spheading'               => 'Serligar síður til allar brúkarar',
 'newpages'                => 'Nýggjar síður',
 'newpages-username'       => 'Brúkaranavn:',
 'ancientpages'            => 'Elstu síður',
-'intl'                    => 'Slóðir millum mál',
 'move'                    => 'Flyt',
 'movethispage'            => 'Flyt hesa síðuna',
 'unusedimagestext'        => 'Vinarliga legg merki til, at vevsíður kunnu slóða til eina mynd við beinleiðis URL, so hon kann síggjast her hóast at hon er í regluligari nýtslu.',
@@ -774,11 +762,6 @@ Hvørt rað inniheldur slóðir til fyrstu og aðru ávísing, umframt tekstin �
 # Book sources
 'booksources'    => 'Bókakeldur',
 'booksources-go' => 'Far',
-
-'categoriespagetext' => 'Eftirfylgjandi bólkar eru í hesu wiki.',
-'data'               => 'Dáta',
-'alphaindexline'     => '$1 til $2',
-'version'            => 'Útgáva',
 
 # Special:Log
 'specialloguserlabel'  => 'Brúkari:',
@@ -790,6 +773,8 @@ Hvørt rað inniheldur slóðir til fyrstu og aðru ávísing, umframt tekstin �
 Tú kanst avmarka sýningina við at velja gerðabókaslag, brúkaranavn ella ávirkaðu síðuna.',
 
 # Special:Allpages
+'allpages'       => 'Allar síður',
+'alphaindexline' => '$1 til $2',
 'nextpage'       => 'Næsta síða ($1)',
 'prevpage'       => 'Fyrrverandi síða ($1)',
 'allarticles'    => 'Allar greinir',
@@ -798,13 +783,17 @@ Tú kanst avmarka sýningina við at velja gerðabókaslag, brúkaranavn ella á
 'allpagesnext'   => 'Næstu',
 'allpagessubmit' => 'Far',
 
+# Special:Categories
+'categories'         => 'Bólkar',
+'categoriespagetext' => 'Eftirfylgjandi bólkar eru í hesu wiki.',
+
 # Special:Listusers
 'listusersfrom'      => 'Vís brúkarar ið byrja við:',
 'listusers-submit'   => 'Sýna',
 'listusers-noresult' => 'Ongin brúkari var funnin.',
 
 # E-mail user
-'mailnologintext' => 'Tú mást hava [[Special:UserLogin|ritað inn]]
+'mailnologintext' => 'Tú mást hava [[Special:Userlogin|ritað inn]]
 og hava virkandi teldupostadressu í [[Special:Preferences|innstillingum]] tínum
 fyri at senda teldupost til aðrar brúkarar.',
 'emailuser'       => 'Send t-post til brúkara',
@@ -829,7 +818,7 @@ ella hevur hann valt ikki at taka ímóti t-posti frá øðrum brúkarum.',
 'addedwatch'           => 'Lagt undir eftirlit',
 'addedwatchtext'       => "Síðan \"<nowiki>\$1</nowiki>\" er løgd undir [[Special:Watchlist|eftirlit]] hjá tær.
 Framtíðar broytingar á hesi síðu og tilknýttu kjaksíðuni verða at síggja her.
-Tá sæst síðan sum '''feit skrift''' í [[Special:RecentChanges|broytingaryvirlitinum]] fyri at gera hana lættari at síggja.
+Tá sæst síðan sum '''feit skrift''' í [[Special:Recentchanges|broytingaryvirlitinum]] fyri at gera hana lættari at síggja.
 
 Vilt tú flyta síðuna undan tínum eftirliti, kanst tú trýsta á \"Strika eftirlit\" á síðuni.",
 'removedwatch'         => 'Strikað úr eftirliti',
@@ -850,7 +839,7 @@ Vilt tú flyta síðuna undan tínum eftirliti, kanst tú trýsta á \"Strika ef
 'watchlist-show-minor' => 'Vís minni rættingar',
 'watchlist-hide-minor' => 'Fjal minni rættingar',
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Eftirlitir...',
 'unwatching' => 'Strikar eftirlit...',
 
@@ -884,8 +873,8 @@ Sí $2 fyri fulla skráseting av strikingum.',
 'protectlogpage'      => 'Friðingarbók',
 'protectedarticle'    => 'friðaði "[[$1]]"',
 'unprotectedarticle'  => 'ófriðaði "[[$1]]"',
-'protectsub'          => '(Friðar "$1")',
-'confirmprotect'      => 'Vátta friðing',
+'protect-title'       => 'Friðar "$1"',
+'protect-legend'      => 'Vátta friðing',
 'protectcomment'      => 'Orsøk til friðing:',
 'protectexpiry'       => 'Gongur út:',
 'protect-default'     => '(fyridømi)',
@@ -911,7 +900,6 @@ Sí $2 fyri fulla skráseting av strikingum.',
 'contributions' => 'Brúkaraíkast',
 'mycontris'     => 'Mítt íkast',
 'contribsub2'   => 'Eftir $1 ($2)',
-'uclinks'       => 'Skoða seinastu $1 broytingarnar; skoða seinastu $2 dagarnar.',
 'uctop'         => '(ovast)',
 'month'         => 'Frá mánaði (og áðrenn):',
 'year'          => 'Frá ár (og áðrenn):',
@@ -961,10 +949,10 @@ Vinarliga vátta, at hetta er tað, ið tú ætlar at gera, og at tú fert
 at læsa dátugrunnin upp aftur tá ið viðgerðin er liðug.',
 'locknoconfirm'     => 'Tú krossaði ikki váttanarkassan.',
 'lockdbsuccesstext' => 'Dátugrunnurin er læstur.
-<br />Minst til at [[Special:UnlockDB|læsa upp]] aftur, tá ið viðgerðin er liðug.',
+<br />Minst til at [[Special:Unlockdb|læsa upp]] aftur, tá ið viðgerðin er liðug.',
 
 # Move page
-'movepage'                => 'Flyt síðu',
+'move-page-legend'        => 'Flyt síðu',
 'movepagetext'            => "Við frymlinum niðanfyri kanst tú umnevna eina síðu og flyta alla hennara søgu við til nýggja navnið.
 Gamla navnið verður ein tilvísingarsíða til ta nýggju.
 Slóðirnar til gomlu síðuna verða ikki broyttar.
@@ -984,14 +972,11 @@ Vinarliga tryggja tær, at tú skilur avleiðingarnar av hesum áðrenn tú held
 'move-watch'              => 'Hav eftirlit við hesi síðuni',
 'movepagebtn'             => 'Flyt síðu',
 'pagemovedsub'            => 'Flyting væleydnað',
-'movepage-moved'          => '<big>\'\'\'"$1" er flutt til "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'Ein síða finst longu við hasum navninum,
 ella er navnið tú valdi ógyldugt.
 Vinarliga vel eitt annað navn.',
 'movedto'                 => 'flyt til',
 'movetalk'                => 'Flyt kjaksíðuna eisini, um hon er til.',
-'talkpagemoved'           => 'Tilhoyrandi kjaksíðan varð eisini flutt.',
-'talkpagenotmoved'        => 'Tilhoyrandi kjaksíðan varð <strong>ikki</strong> flutt.',
 '1movedto2'               => '$1 flutt til $2',
 '1movedto2_redir'         => '$1 flutt til $2 um ávísing',
 'movelogpage'             => 'Flyt gerðabók',
@@ -999,7 +984,7 @@ Vinarliga vel eitt annað navn.',
 'delete_and_move'         => 'Strika og flyt',
 'delete_and_move_text'    => '==Striking krevst==
 
-Grein við navninum "[[:$1]]" finst longu. Ynskir tú at strika hana til tess at skapa pláss til flytingina?',
+Grein við navninum "[[$1]]" finst longu. Ynskir tú at strika hana til tess at skapa pláss til flytingina?',
 'delete_and_move_confirm' => 'Ja, strika hesa síðuna',
 'delete_and_move_reason'  => 'Strika til at gera pláss til flyting',
 
@@ -1052,7 +1037,6 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'tooltip-n-recentchanges'       => 'Listi av teimum seinastu broytingunum í wikinum.',
 'tooltip-n-randompage'          => 'Far til tilvildarliga síðu',
 'tooltip-n-help'                => 'Staðurin at finna út.',
-'tooltip-n-sitesupport'         => 'Stuðla okkum',
 'tooltip-t-whatlinkshere'       => 'Yvirlit yvir allar wikisíður, ið slóða higar',
 'tooltip-t-recentchangeslinked' => 'Broytingar á síðum, ið slóða higar, í seinastuni',
 'tooltip-feed-rss'              => 'RSS-fóðurið til hesa síðuna',
@@ -1079,11 +1063,6 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'othercontribs' => 'Grundað á arbeiði eftir $1.',
 'others'        => 'onnur',
 'siteusers'     => '{{SITENAME}}brúkari(ar) $1',
-
-# Spam protection
-'subcategorycount'       => 'Tað {{PLURAL:$1|er ein undirbólkur|eru $1 undirbólkar}} í hesum bólki.',
-'categoryarticlecount'   => 'Tað {{PLURAL:$1|er ein grein|eru $1 greinir}} í hesum bólki.',
-'listingcontinuesabbrev' => 'frh.',
 
 # Info page
 'infosubtitle' => 'Upplýsingar um síðu',
@@ -1113,6 +1092,8 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 # Special:Newimages
 'newimages' => 'Nýggjar myndir',
 'noimages'  => 'Einki at síggja.',
+'ilsubmit'  => 'Leita',
+'bydate'    => 'eftir dato',
 
 # Metadata
 'metadata' => 'Metadáta',
@@ -1177,6 +1158,7 @@ fer úr gildi tann $4.',
 'watchlisttools-raw'  => 'Rætta rátt eftirlit',
 
 # Special:Version
+'version'                  => 'Útgáva', # Not used as normal message but as header for the special page itself
 'version-hooks'            => 'Krókur',
 'version-hook-name'        => 'Krókurnavn',
 'version-version'          => 'Útgáva',
@@ -1184,5 +1166,8 @@ fer úr gildi tann $4.',
 
 # Special:Filepath
 'filepath-page' => 'Fíla:',
+
+# Special:SpecialPages
+'specialpages' => 'Serligar síður',
 
 );

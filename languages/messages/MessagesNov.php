@@ -5,6 +5,7 @@
  * @file
  *
  * @author Malafaya
+ * @author SPQRobin
  * @author nov.wikipedia.org sysops
  */
 
@@ -48,8 +49,7 @@ $messages = array(
 'nov'          => 'nov',
 'dec'          => 'des',
 
-# Bits of text used by many pages
-'categories'      => 'Kategories',
+# Categories related messages
 'pagecategories'  => '{{PLURAL:$1|Kategorie|Kategories}}',
 'category_header' => 'Artikles in kategorie "$1"',
 
@@ -100,16 +100,16 @@ $messages = array(
 'jumptosearch'     => 'sercha',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutsite'         => 'Pri {{SITENAME}}',
-'aboutpage'         => 'Project:Pri',
-'currentevents'     => 'Nuni eventes',
-'currentevents-url' => 'Project:Nuni eventes',
-'edithelp'          => 'Helpo pri modifiko de pagines',
-'helppage'          => 'Help:Kontenaje',
-'mainpage'          => 'Chefi pagine',
-'portal'            => 'Li komun chambre',
-'portal-url'        => 'Project:Li komun chambre',
-'sitesupport'       => 'Donationes',
+'aboutsite'            => 'Pri {{SITENAME}}',
+'aboutpage'            => 'Project:Pri',
+'currentevents'        => 'Nuni eventes',
+'currentevents-url'    => 'Project:Nuni eventes',
+'edithelp'             => 'Helpo pri modifiko de pagines',
+'helppage'             => 'Help:Kontenaje',
+'mainpage'             => 'Chefi pagine',
+'mainpage-description' => 'Chefi pagine',
+'portal'               => 'Li komun chambre',
+'portal-url'           => 'Project:Li komun chambre',
 
 'badaccess' => 'Permisione erore',
 
@@ -212,7 +212,7 @@ Proba [[Special:Search|sercho sur li wiki]] por relatet pagines.',
 'preferences'       => 'Preferos',
 'mypreferences'     => 'Men preferos',
 'prefsnologin'      => 'Non ensignatat',
-'prefsnologintext'  => 'Vu mus es [[Special:UserLogin|ensignatat]] por determina useren preferos.',
+'prefsnologintext'  => 'Vu mus es [[Special:Userlogin|ensignatat]] por determina useren preferos.',
 'prefs-rc'          => 'Resenti chanjos',
 'searchresultshead' => 'Sercha',
 
@@ -237,17 +237,16 @@ Proba [[Special:Search|sercho sur li wiki]] por relatet pagines.',
 'fileuploadsummary' => 'Resume:',
 'watchthisupload'   => 'Observa disi pagine',
 
-# Image list
-'ilsubmit'              => 'Sercha',
-'byname'                => 'segun nome',
-'bydate'                => 'segun date',
-'filehist-user'         => 'Usere',
-'imagelinks'            => 'Linkes',
+# Special:Imagelist
+'imagelist_search_for'  => 'Sercha imaje nome:',
 'imagelist_name'        => 'Nome',
 'imagelist_user'        => 'Usere',
 'imagelist_size'        => 'Grandeso (bites)',
 'imagelist_description' => 'Deskriptione',
-'imagelist_search_for'  => 'Sercha imaje nome:',
+
+# Image description page
+'filehist-user' => 'Usere',
+'imagelinks'    => 'Linkes',
 
 # Random page
 'randompage' => 'Arbitriari pagine',
@@ -267,12 +266,10 @@ Proba [[Special:Search|sercho sur li wiki]] por relatet pagines.',
 'popularpages'            => 'Popular pagines',
 'mostcategories'          => 'Artikles kun maxim multi kategories',
 'mostrevisions'           => 'Artikles kun maxim multi revisiones',
-'allpages'                => 'Omni pagines',
 'shortpages'              => 'Kurti pagines',
 'longpages'               => 'Longi pagines',
 'deadendpages'            => 'Pagines sin kuplures',
 'listusers'               => 'Liste de useres',
-'specialpages'            => 'Spesial pagines',
 'newpages'                => 'Novi pagines',
 'ancientpages'            => 'Maxim ansieni pagines',
 'move'                    => 'Mova',
@@ -283,21 +280,22 @@ Proba [[Special:Search|sercho sur li wiki]] por relatet pagines.',
 'booksources-search-legend' => 'Sercha libral fontes',
 'booksources-go'            => 'Vada',
 
-'categoriespagetext' => 'Li sekuenti kategories exista in li wiki.',
-'groups'             => 'Usere grupes',
-'alphaindexline'     => '$1 a $2',
-'version'            => 'Versione',
-
 # Special:Log
 'specialloguserlabel' => 'Usere:',
 
 # Special:Allpages
+'allpages'          => 'Omni pagines',
+'alphaindexline'    => '$1 a $2',
 'allarticles'       => 'Omni artikles',
 'allinnamespace'    => 'Omni pagines ($1 nome-spatie)',
 'allnotinnamespace' => 'Omni pagines (non in $1 nome-spatie)',
 'allpagesprev'      => 'Antei',
 'allpagesnext'      => 'Sekuenti',
 'allpagessubmit'    => 'Vada',
+
+# Special:Categories
+'categories'         => 'Kategories',
+'categoriespagetext' => 'Li sekuenti kategories exista in li wiki.',
 
 # Watchlist
 'watchlist'       => 'Men liste de observos',
@@ -306,7 +304,7 @@ Proba [[Special:Search|sercho sur li wiki]] por relatet pagines.',
 'watchnologin'    => 'Non ensignatat',
 'addedwatch'      => 'Adit a observa-liste',
 'addedwatchtext'  => "Li pagine \"[[:\$1]]\" ha bli adi a vun [[Special:Watchlist|observa-liste]].
-Futuri chanjos a disi pagine e lun asosiati Parla-pagine sal bli lista tilok, e li pagine sal apari '''diki''' in li [[Special:RecentChanges|liste de resenti chanjos]] por ke on trova lu plu fasilim.
+Futuri chanjos a disi pagine e lun asosiati Parla-pagine sal bli lista tilok, e li pagine sal apari '''diki''' in li [[Special:Recentchanges|liste de resenti chanjos]] por ke on trova lu plu fasilim.
 
 Si vu voli plu tardim ekarta li pagine fro vun observa-liste, klikta \"Desobserva\" in li lateral kolumne.",
 'watch'           => 'Observa',
@@ -329,7 +327,7 @@ Si vu voli plu tardim ekarta li pagine fro vun observa-liste, klikta \"Desobserv
 'deletionlog'         => 'registre de ekartos',
 'deletecomment'       => 'Resone de ekarto',
 'revertpage'          => 'Riverted modifikos da [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]); restaurad lasti versione da [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
-'confirmprotect'      => 'Konfirma protektione',
+'protect-legend'      => 'Konfirma protektione',
 'protect-level-sysop' => 'Sisopes nur',
 
 # Namespace form on various pages
@@ -379,6 +377,10 @@ Si vu voli plu tardim ekarta li pagine fro vun observa-liste, klikta \"Desobserv
 # Info page
 'infosubtitle' => 'Informatione pri pagine',
 
+# Special:Newimages
+'ilsubmit' => 'Sercha',
+'bydate'   => 'segun date',
+
 # EXIF tags
 'exif-imagewidth'       => 'Larjeso',
 'exif-imagelength'      => 'Alteso',
@@ -399,7 +401,11 @@ Si vu voli plu tardim ekarta li pagine fro vun observa-liste, klikta \"Desobserv
 'autosumm-new'     => 'Novi pagine: $1',
 
 # Special:Version
+'version'                  => 'Versione', # Not used as normal message but as header for the special page itself
 'version-specialpages'     => 'Spesial pagines',
 'version-software-version' => 'Versione',
+
+# Special:SpecialPages
+'specialpages' => 'Spesial pagines',
 
 );

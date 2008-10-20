@@ -3,7 +3,6 @@
  *
  * @ingroup Language
  * @file
- *
  * @author ОйЛ
  * @author לערי ריינהארט
  */

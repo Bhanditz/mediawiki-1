@@ -6,6 +6,8 @@
  *
  * @author Saluyot
  * @author לערי ריינהארט
+ * @author SPQRobin
+ * @author Siebrand
  */
 
 $messages = array(
@@ -48,6 +50,7 @@ $messages = array(
 'tog-watchlisthideminor'      => 'Ilemmeng dagiti minor nga edits manipud iti listaan dagiti bambantayan',
 'tog-ccmeonemails'            => 'Patulodandak iti kopia dagiti emails nga ipatulodko iti sabsabali nga agar-aramat',
 'tog-diffonly'                => 'Saan nga iparang ti linaon ti panid iti baba ti diffs',
+'tog-showhiddencats'          => 'Ipakita dagiti nakalemmeng a categoria',
 
 'underline-always'  => 'Kanayon',
 'underline-never'   => 'Saan',
@@ -107,13 +110,21 @@ $messages = array(
 'nov'           => 'Nov',
 'dec'           => 'Dec',
 
-# Bits of text used by many pages
-'categories'            => 'Dagiti Categoria',
-'pagecategories'        => '{{PLURAL:$1|Categoria|Categorias}}',
-'category_header'       => 'Dagiti articulo iti categoria "$1"',
-'subcategories'         => 'Dagiti subcategoria',
-'category-media-header' => 'Media iti categoria "$1"',
-'category-empty'        => "''Daytoy a categoria ket awanan pampanid wenno media iti agdama.''",
+# Categories related messages
+'pagecategories'                 => '{{PLURAL:$1|Categoria|Categorias}}',
+'category_header'                => 'Dagiti articulo iti categoria "$1"',
+'subcategories'                  => 'Dagiti subcategoria',
+'category-media-header'          => 'Media iti categoria "$1"',
+'category-empty'                 => "''Daytoy a categoria ket awanan pampanid wenno media iti agdama.''",
+'hidden-categories'              => '{{PLURAL:$1|Nakalemmeng a categoria|Nakalemmeng a categorias}}',
+'hidden-category-category'       => 'Nailemmeng a categorias', # Name of the category where hidden categories will be listed
+'category-subcat-count'          => '{{PLURAL:$2|Daytoy a categoria ket addaan laeng iti sumaganad a subcategoria.|Daytoy a categoria ket addaan iti sumaganad a {{PLURAL:$1|subcategoria|$1 subcategorias}}, manipud iti dagup a $2.}}',
+'category-subcat-count-limited'  => 'Daytoy a categoria ket addaan kadagiti sumaganad a {{PLURAL:$1|subcategoria|$1 subcategorias}}.',
+'category-article-count'         => '{{PLURAL:$2|Daytoy a categoria ket addaan laeng iti sumaganad a panid.|Ti sumaganad a {{PLURAL:$1|panid|$1 pampanid}} iti daytoy a categoria, manipud iti total a $2.}}',
+'category-article-count-limited' => 'Ti sumaganad a {{PLURAL:$1|panid ket|$1 pampanid ket}} adda iti agdama a categoria.',
+'category-file-count'            => '{{PLURAL:$2|Daytoy a categoria ket aglaon laeng kadagiti sumaganad a file.|Ti sumaganad a {{PLURAL:$1|file|$1 files}} ti adda itoy a categoria, iti $2 a dagup.}}',
+'category-file-count-limited'    => 'Ti sumaganad a {{PLURAL:$1|file|$1 files}} ket adda iti agdama a categoria.',
+'listingcontinuesabbrev'         => 'tuloy.',
 
 'mainpagetext' => "<big>'''Sibaballigi a nainstolar ti MediaWiki.'''</big>",
 
@@ -154,7 +165,9 @@ $messages = array(
 'permalink'         => 'Permanente a silpo',
 'print'             => 'Imaldit',
 'edit'              => 'baliwan',
+'create'            => 'Parnuayen',
 'editthispage'      => 'baliwan daytoy a panid',
+'create-this-page'  => 'Partuaten daytoy a panid',
 'delete'            => 'ikkaten',
 'deletethispage'    => 'Ikkaten daytoy a panid',
 'undelete_short'    => 'Isubli ti naikkat a {{PLURAL:$1|maysa nga edit|$1 nga edits}}',
@@ -192,30 +205,29 @@ $messages = array(
 'jumptosearch'      => 'agbirok',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutsite'         => 'Maipapan iti {{SITENAME}}',
-'aboutpage'         => 'Project:Maipapan',
-'bugreports'        => 'Dagiti report iti kammali',
-'bugreportspage'    => 'Project:Dagiti report iti kammali',
-'copyright'         => 'Dagiti linaon ket maidaya babaen ti $1.',
-'copyrightpagename' => '{{SITENAME}} karbengan-pablaak',
-'copyrightpage'     => '{{ns:project}}:Dagiti Karbengan-Panagipablaak',
-'currentevents'     => 'Paspasamak',
-'currentevents-url' => 'Project:Agdama a paspasamak',
-'disclaimers'       => 'Dagiti disclaimer',
-'disclaimerpage'    => 'Project:Sapasap a disclaimer',
-'edithelp'          => 'Tulong iti panagedit',
-'edithelppage'      => 'Help:Panagedit',
-'faq'               => 'FAQ',
-'faqpage'           => 'Project:FAQ',
-'helppage'          => 'Help:Dagiti Linaon',
-'mainpage'          => 'Umuna a Panid',
-'policy-url'        => 'Project:Annuroten',
-'portal'            => 'Pagdadanonan',
-'portal-url'        => 'Project:Portal ti Komunidad',
-'privacy'           => 'Annuroten iti kinaprivado',
-'privacypage'       => 'Project:Annuroten iti kinaprivado',
-'sitesupport'       => 'Donasion',
-'sitesupport-url'   => 'Project:Suporta iti sitio',
+'aboutsite'            => 'Maipapan iti {{SITENAME}}',
+'aboutpage'            => 'Project:Maipapan',
+'bugreports'           => 'Dagiti report iti kammali',
+'bugreportspage'       => 'Project:Dagiti report iti kammali',
+'copyright'            => 'Dagiti linaon ket maidaya babaen ti $1.',
+'copyrightpagename'    => '{{SITENAME}} karbengan-pablaak',
+'copyrightpage'        => '{{ns:project}}:Dagiti Karbengan-Panagipablaak',
+'currentevents'        => 'Paspasamak',
+'currentevents-url'    => 'Project:Agdama a paspasamak',
+'disclaimers'          => 'Dagiti disclaimer',
+'disclaimerpage'       => 'Project:Sapasap a disclaimer',
+'edithelp'             => 'Tulong iti panagedit',
+'edithelppage'         => 'Help:Panagedit',
+'faq'                  => 'FAQ',
+'faqpage'              => 'Project:FAQ',
+'helppage'             => 'Help:Dagiti Linaon',
+'mainpage'             => 'Umuna a Panid',
+'mainpage-description' => 'Umuna a Panid',
+'policy-url'           => 'Project:Annuroten',
+'portal'               => 'Pagdadanonan',
+'portal-url'           => 'Project:Portal ti Komunidad',
+'privacy'              => 'Annuroten iti kinaprivado',
+'privacypage'          => 'Project:Annuroten iti kinaprivado',
 
 'badaccess'        => 'Biddut iti pammalubos',
 'badaccess-group0' => 'Saanka a mapalubosan a mangpataray iti aksion a kiniddawmo.',
@@ -234,6 +246,7 @@ $messages = array(
 'youhavenewmessagesmulti' => 'Addada kabarbaro a mensahem iti $1',
 'editsection'             => 'baliwan',
 'editold'                 => 'baliwan',
+'viewsourceold'           => 'kitaen ti taudan',
 'editsectionhint'         => 'Baliwan ti benneg: $1',
 'toc'                     => 'Linaon',
 'showtoc'                 => 'ipakita',
@@ -268,7 +281,7 @@ $messages = array(
 'nosuchspecialpage' => 'Awan ti kasta a naiduma a panid',
 'nospecialpagetext' => "<big>'''Saan a mabalin ti kiniddawmo a naiduma a panid.'''</big>
 
-Masarakan ti listaan dagiti mabalin a a naiduma a pampanid iti [[Special:SpecialPages|{{int:specialpages}}]].",
+Masarakan ti listaan dagiti mabalin a a naiduma a pampanid iti [[Special:Specialpages|{{int:specialpages}}]].",
 
 # General errors
 'error'                => 'Biddut',
@@ -280,6 +293,8 @@ $1',
 'laggedslavemode'      => 'Ballaag: Mabalin a ti panid ket awanan laon a naudi a panagpabaro.',
 'readonly'             => 'Nakakandado ti database',
 'enterlockreason'      => 'Mangipan iti rason no apay nga ibalunet, agraman no kaano a maluktan ti pannakabalunet',
+'missingarticle-rev'   => '(revision#: $1)',
+'missingarticle-diff'  => '(Naggidiatan: $1, $2)',
 'readonly_lag'         => 'Automatiko a naibalunet ti database kabayatan a dagiti slave database servers ket kumamakam iti master',
 'internalerror'        => 'Internal a biddut',
 'internalerror_info'   => 'Internal a biddut: $1',
@@ -335,6 +350,7 @@ Dimo liplipatan a sukatan dagiti preferenciam iti {{SITENAME}}.',
 'yourdomainname'             => 'Ti bukodmo a domain:',
 'loginproblem'               => '<b>Adda a parikut iti panag-loginmo.</b><br />Padasem manen!',
 'login'                      => 'Sumrek',
+'nav-login-createaccount'    => 'Mangaramid iti account wenno ag-login',
 'loginprompt'                => 'Nasken a naka-enable dagiti cookies ti browser tapno maka-login iti {{SITENAME}}.',
 'userlogin'                  => 'Mangaramid iti account wenno ag-login',
 'logout'                     => 'Rummuar',
@@ -352,10 +368,13 @@ Pangngaasim ta mangpilika sabali a nagan.',
 'youremail'                  => 'Email:',
 'username'                   => 'Nagan ti agar-aramat:',
 'uid'                        => 'ID ti agar-aramat:',
+'prefs-memberingroups'       => 'Kameng ti {{PLURAL:$1|bunggoy|bungbunggoy}}:',
 'yourrealname'               => 'Pudno a nagan:',
 'yourlanguage'               => 'Pagsasao:',
 'yournick'                   => 'Birngas:',
 'badsig'                     => 'Saan a valido a raw signature; itsekmo ti HTML tags.',
+'badsiglength'               => 'Atiddog unay ti palayawmo.
+Nasken a nababbaba ngem $1 a {{PLURAL:$1|character|characters}}.',
 'email'                      => 'E-mail',
 'prefs-help-realname'        => 'Saan a nasken ti pudno a nagan.
 Ngem no kayatmo nga ited, maaramat daytoy kas pammadayaw ken pangpatalged iti obram.',
@@ -427,26 +446,26 @@ Saankan a makaaramid pay.',
 'hr_tip'          => 'Pakuros a linia (manmano la nga aramaten)',
 
 # Edit pages
-'summary'                   => 'Pakabuklan',
-'subject'                   => 'Sujeto/paulo',
-'minoredit'                 => 'Bassit a balbaliw laeng daytoy',
-'watchthis'                 => 'Bantayan',
-'savearticle'               => 'Idulin ti panid',
-'preview'                   => 'I-preview',
-'showpreview'               => 'Ipakita ti preview',
-'showlivepreview'           => 'Live a preview',
-'showdiff'                  => 'Ipakita ti balbaliw',
-'anoneditwarning'           => "'''Ballaag:''' Saanka a naka-login.
+'summary'                          => 'Pakabuklan',
+'subject'                          => 'Sujeto/paulo',
+'minoredit'                        => 'Bassit a balbaliw laeng daytoy',
+'watchthis'                        => 'Bantayan',
+'savearticle'                      => 'Idulin ti panid',
+'preview'                          => 'I-preview',
+'showpreview'                      => 'Ipakita ti preview',
+'showlivepreview'                  => 'Live a preview',
+'showdiff'                         => 'Ipakita ti balbaliw',
+'anoneditwarning'                  => "'''Ballaag:''' Saanka a naka-login.
 Mairekord ti IP addressmo iti pakasaritaan ti panangbalbaliw daytoy a panid.",
-'missingsummary'            => "'''Palagip:''' Saanka a nangipan iti pakabuklan ti edit.
+'missingsummary'                   => "'''Palagip:''' Saanka a nangipan iti pakabuklan ti edit.
 No iklikmo ti Idulin manen, saan a maidulin ti editmo no awan pakabuklan.",
-'missingcommenttext'        => 'Pangngaasim ta mangipanka iti komento iti baba.',
-'missingcommentheader'      => "'''Palagip:''' Saanka a nangipan iti subject/paulo para iti daytoy a komento.
+'missingcommenttext'               => 'Pangngaasim ta mangipanka iti komento iti baba.',
+'missingcommentheader'             => "'''Palagip:''' Saanka a nangipan iti subject/paulo para iti daytoy a komento.
 No iklikmo manen ti Save, maidulin ti panageditmo nga awanan subject wenno paulo.",
-'summary-preview'           => 'Preview ti pakabuklan',
-'subject-preview'           => 'Preview ti subject/headline',
-'blockedtitle'              => 'Nabangenan ti agar-aramat',
-'blockedtext'               => "<big>'''Naserraan ti nagan wenno ti IP addressmo.'''</big>
+'summary-preview'                  => 'Preview ti pakabuklan',
+'subject-preview'                  => 'Preview ti subject/headline',
+'blockedtitle'                     => 'Nabangenan ti agar-aramat',
+'blockedtext'                      => "<big>'''Naserraan ti nagan wenno ti IP addressmo.'''</big>
 
 Ni $1 ti nangserra kenka. Ti rason ket ''$2''.
 
@@ -457,69 +476,77 @@ Ni $1 ti nangserra kenka. Ti rason ket ''$2''.
 Mabalinmo a kontaken ni $1 wenno sabali pay nga [[{{MediaWiki:Grouppage-sysop}}|administrador]] no kayatmo a mapagsaritaan daytoy a panagserra.
 Dimo mabalin nga aramaten ti ramit nga 'emailan daytoy nga agar-aramat' malaksid no adda valido nga email address a naipan iti  [[Special:Preferences|preferecian ti accountmo]] ken no saanka a naparitan nga agaramat iti daytoy.
 Ti agdama nga IP addressmo ket $3, ket ti block ID ket #$5. Pangngaasim ta iramanmo nga ited ti ania man wenno agpada kadagitoy iti ania man a panagsaludsodmo.",
-'blockednoreason'           => 'awan rason a naited',
-'blockedoriginalsource'     => "Makita iti baba ti taudan ti '''$1''':",
-'blockededitsource'         => "Makita iti baba '''dagiti panangbalbaliwmo''' iti '''$1''':",
-'whitelistedittitle'        => 'Masapul a nakastrekka tapno makaeditka',
-'whitelistedittext'         => 'Nasken a $1 ka tapno makaeditka iti pampanid.',
-'whitelistreadtitle'        => 'Masapul a nakastrekka tapno makabasaka',
-'whitelistreadtext'         => 'Masapul a [[Special:UserLogin|sumrekka]] tapno makabasaka iti pampanid.',
-'whitelistacctitle'         => 'Saanka a mapalubosan a mangaramid iti account',
-'whitelistacctext'          => 'Tapno mapalubosanka a mangaramid iti accounts iti {{SITENAME}} masapul a [[Special:UserLogin|sumrekka]] ken maaddaan kadagiti mainugot a pammalubos.',
-'confirmedittitle'          => 'Masapul ti pammasingked ti email tapno makaedit',
-'nosuchsectiontitle'        => 'Awan ti kasta a benneg',
-'nosuchsectiontext'         => 'Pinadasmo nga editen ti maysa a benneg nga awan pay.
+'blockednoreason'                  => 'awan rason a naited',
+'blockedoriginalsource'            => "Makita iti baba ti taudan ti '''$1''':",
+'blockededitsource'                => "Makita iti baba '''dagiti panangbalbaliwmo''' iti '''$1''':",
+'whitelistedittitle'               => 'Masapul a nakastrekka tapno makaeditka',
+'whitelistedittext'                => 'Nasken a $1 ka tapno makaeditka iti pampanid.',
+'whitelistreadtitle'               => 'Masapul a nakastrekka tapno makabasaka',
+'whitelistreadtext'                => 'Masapul a [[Special:Userlogin|sumrekka]] tapno makabasaka iti pampanid.',
+'whitelistacctitle'                => 'Saanka a mapalubosan a mangaramid iti account',
+'whitelistacctext'                 => 'Tapno mapalubosanka a mangaramid iti accounts iti {{SITENAME}} masapul a [[Special:Userlogin|sumrekka]] ken maaddaan kadagiti mainugot a pammalubos.',
+'confirmedittitle'                 => 'Masapul ti pammasingked ti email tapno makaedit',
+'nosuchsectiontitle'               => 'Awan ti kasta a benneg',
+'nosuchsectiontext'                => 'Pinadasmo nga editen ti maysa a benneg nga awan pay.
 Ket agsipud ta awan ti $1 a benneg, awan ti pangidulinan iti editmo.',
-'loginreqtitle'             => 'Masapul ti panag-login',
-'loginreqlink'              => 'sumrek',
-'loginreqpagetext'          => 'Nasken a $1 ka tapno makakitaka iti sabsabali a pampanid.',
-'accmailtitle'              => 'Naipatuloden ti pasesbalikas.',
-'accmailtext'               => 'Ti pasesbalikas para ken ni "$1" ket naipatuloden ken ni $2.',
-'newarticle'                => '(Baro)',
-'newarticletext'            => "Nasurotmo ti maysa a panilpo iti saan pay a narugian wenno naaramid a panid. Tapno marugian daytoy a panid, rugiamon ti agikur-it wenno agisurat iti pagsuratan a kahon iti baba (kitaen ti [[{{MediaWiki:Helppage}}|panid ti tulong]] para iti ad-adu pay nga informasion). No met nakadanonka ditoy a dimo inggagara wenno gapu iti biddut, iklikmo laeng ti '''back''' button ti browsermo tapno makasublika iti naggapuam a panid.",
-'noarticletext'             => 'Awan pay ti texto wenno linaonna daytoy a panid, mabalinmo ti [[Special:Search/{{PAGENAME}}|agsapul iti kastoy a titulo ti panid]] iti sabsabali a pampanid wenno [{{fullurl:{{NAMESPACE}}:{{PAGENAME}}|action=edit}} rugianen daytoy a panid].',
-'userpage-userdoesnotexist' => 'Ti account ti agar-aramat "$1" ket saan a nakarehistro. Pangngaasim ta tsek-apem no kayatmo a partuaten wenno editen daytoy a panid.',
-'usercsspreview'            => "'''Laglagipem nga ipre-previem laeng ti user CSS, saan pay a naidulin!'''",
-'updated'                   => '(Napabaro)',
-'note'                      => '<strong>Palagip:</strong>',
-'previewnote'               => '<strong>Maysa laeng a preview daytoy; dagiti balbaliw ket saan pay a naidulin!</strong>',
-'editing'                   => 'Mabalbaliwan ti $1',
-'editingsection'            => 'Mabalbaliwan ti $1 (benneg)',
-'editingcomment'            => 'Mabalbaliwan ti $1 (komento)',
-'editconflict'              => 'Adda kasinnungat ti edit: $1',
-'yourtext'                  => 'Ti textom',
-'storedversion'             => 'Version a nakakamada',
-'yourdiff'                  => 'Dagiti nagdudumaan',
-'copyrightwarning'          => 'Laglagipenyo koma, apo, nga amin a kontribusion iti {{SITENAME}} ket maibilang a nairuar iti babaen ti $2 (kitaen ti $1 para kadagiti detalie). No dimo kayat a ti sinuratmo ket maedit wenno mabalbaliwan nga awanan-asi ken maiwaras nga awan sungsungbatan kenka, saanmo laengen nga ip-ipan wenno ipabpablaak ditoy.<br /><br /> Kasta met nga ikarim kadakami a bukodmo a sinurat wenno gapuanan daytoy, wenno kinopiam ngem iti maysa a nawaya a pagtagikuaan ti publiko wenno pumadmad a libre a pagtaudan. <strong>SAAN A MANGIPAN ITI ADDAAN COPYRIGHT NGA OBRA NO AWANAN PAMMALUBOS!</strong>',
-'copyrightwarning2'         => 'Pangngaasiyo, apo, ta laglagipen nga amin a kontribusion iti {{SITENAME}} ket mabalin a maedit wenno mabalbaliwan, masuktan, wenno ikkaten dagiti sabali pay a nga agar-aramat.
+'loginreqtitle'                    => 'Masapul ti panag-login',
+'loginreqlink'                     => 'sumrek',
+'loginreqpagetext'                 => 'Nasken a $1 ka tapno makakitaka iti sabsabali a pampanid.',
+'accmailtitle'                     => 'Naipatuloden ti pasesbalikas.',
+'accmailtext'                      => 'Ti pasesbalikas para ken ni "$1" ket naipatuloden ken ni $2.',
+'newarticle'                       => '(Baro)',
+'newarticletext'                   => "Nasurotmo ti maysa a panilpo iti saan pay a narugian wenno naaramid a panid. Tapno marugian daytoy a panid, rugiamon ti agikur-it wenno agisurat iti pagsuratan a kahon iti baba (kitaen ti [[{{MediaWiki:Helppage}}|panid ti tulong]] para iti ad-adu pay nga informasion). No met nakadanonka ditoy a dimo inggagara wenno gapu iti biddut, iklikmo laeng ti '''back''' button ti browsermo tapno makasublika iti naggapuam a panid.",
+'noarticletext'                    => 'Awan pay ti texto wenno linaonna daytoy a panid, mabalinmo ti [[Special:Search/{{PAGENAME}}|agsapul iti kastoy a titulo ti panid]] iti sabsabali a pampanid wenno [{{fullurl:{{NAMESPACE}}:{{PAGENAME}}|action=edit}} rugianen daytoy a panid].',
+'userpage-userdoesnotexist'        => 'Ti account ti agar-aramat "$1" ket saan a nakarehistro. Pangngaasim ta tsek-apem no kayatmo a partuaten wenno editen daytoy a panid.',
+'usercsspreview'                   => "'''Laglagipem nga ipre-previem laeng ti user CSS, saan pay a naidulin!'''",
+'updated'                          => '(Napabaro)',
+'note'                             => '<strong>Palagip:</strong>',
+'previewnote'                      => '<strong>Maysa laeng a preview daytoy; dagiti balbaliw ket saan pay a naidulin!</strong>',
+'editing'                          => 'Mabalbaliwan ti $1',
+'editingsection'                   => 'Mabalbaliwan ti $1 (benneg)',
+'editingcomment'                   => 'Mabalbaliwan ti $1 (komento)',
+'editconflict'                     => 'Adda kasinnungat ti edit: $1',
+'yourtext'                         => 'Ti textom',
+'storedversion'                    => 'Version a nakakamada',
+'yourdiff'                         => 'Dagiti nagdudumaan',
+'copyrightwarning'                 => 'Laglagipenyo koma, apo, nga amin a kontribusion iti {{SITENAME}} ket maibilang a nairuar iti babaen ti $2 (kitaen ti $1 para kadagiti detalie). No dimo kayat a ti sinuratmo ket maedit wenno mabalbaliwan nga awanan-asi ken maiwaras nga awan sungsungbatan kenka, saanmo laengen nga ip-ipan wenno ipabpablaak ditoy.<br /><br /> Kasta met nga ikarim kadakami a bukodmo a sinurat wenno gapuanan daytoy, wenno kinopiam ngem iti maysa a nawaya a pagtagikuaan ti publiko wenno pumadmad a libre a pagtaudan. <strong>SAAN A MANGIPAN ITI ADDAAN COPYRIGHT NGA OBRA NO AWANAN PAMMALUBOS!</strong>',
+'copyrightwarning2'                => 'Pangngaasiyo, apo, ta laglagipen nga amin a kontribusion iti {{SITENAME}} ket mabalin a maedit wenno mabalbaliwan, masuktan, wenno ikkaten dagiti sabali pay a nga agar-aramat.
 No dimo kayat a ti sinuratmo ket maedit wenno mabalbaliwan nga awanan-asi ken maiwaras nga awan sungsungbatan kenka, saanmo laengen nga ip-ipan wenno ipabpablaak ditoy.<br />
 Kasta met nga ikarim kadakami a bukodmo a sinurat wenno gapuanan daytoy, wenno kinopiam ngem iti maysa a nawaya a pagtagikuaan ti publiko wenno pumadmad a libre a pagtaudan (kitaen ti $1 para iti detalie).
 <strong>SAAN A MANGIPAN ITI ADDAAN COPYRIGHT NGA OBRA NO AWANAN PAMMALUBOS!</strong>',
-'longpagewarning'           => '<strong>BALLAAG: Agatiddog daytoy a panid iti $1 a kilobytes;
+'longpagewarning'                  => '<strong>BALLAAG: Agatiddog daytoy a panid iti $1 a kilobytes;
 amangan ta sumagmamano a browsers ket agparikut iti panagedit iti pampanid a dandani 32kb, wenno ad-adu pay, ti kaatiddogna.
 Pangngaasim ta padasem a pasetpasetem ti panid iti babbabassit a benneg.</strong>',
-'longpageerror'             => "<strong>BIDDUT: Ti texto nga insumitem ket agatiddog iti $1 a kilobytes, nga at-atiddog nga amang ngem ti maximum a $2 a kilobytes.
+'longpageerror'                    => "<strong>BIDDUT: Ti texto nga insumitem ket agatiddog iti $1 a kilobytes, nga at-atiddog nga amang ngem ti maximum a $2 a kilobytes.
 Isut' gapuna a saan a maidulin.</strong>",
-'protectedpagewarning'      => '<strong>BALLAAG:  Daytoy a panid ket nabalunetan tapno dagiti laeng agar-aramat nga addaan previlehio a sysop wenno administrador ti makabalbaliw itoy.</strong>',
-'semiprotectedpagewarning'  => "'''Pakaammo:''' Nabalunetan daytoy a panid tapno dagiti laeng nakarehistro nga agar-aramat ti makaedit.",
-'titleprotectedwarning'     => '<strong>BALLAAG:  Nabalunetan daytoy a panid tapno sumagmamano laeng nga agar-aramat ti mabalin a mangparnuay.</strong>',
-'templatesused'             => 'Dagiti template a naaramat iti daytoy a panid:',
-'templatesusedpreview'      => 'Dagiti template a naaramat iti daytoy a preview:',
-'templatesusedsection'      => 'Dagiti templates a naaramat iti daytoy a benneg:',
-'template-protected'        => '(nasaluadan)',
-'template-semiprotected'    => '(nasaluadan bassit)',
-'nocreatetitle'             => 'Limitado ti panagaramid iti panid',
-'nocreatetext'              => 'Pinaritan ti {{SITENAME}} ti kabalinan a makapartuat iti kabarbaro a pampanid.
-Mabalinmo ti agsubli ken agedit iti adda a panid, wenno [[Special:UserLogin|sumrek wenno mangaramid iti account]].',
-'nocreate-loggedin'         => 'Awananka iti pammalubos a mangaramid iti kabarbaro a pampanid iti {{SITENAME}}.',
-'permissionserrors'         => 'Bidbiddut iti Pammalubos',
-'permissionserrorstext'     => 'Awananka iti pammalubos a mangaramid iti dayta, gapu iti sumaganad a {{PLURAL:$1|rason|rasrason}}:',
-'recreate-deleted-warn'     => "'''Ballaag: Mangar-aramidka iti panid a naikkaten iti kallabes.'''
+'protectedpagewarning'             => '<strong>BALLAAG:  Daytoy a panid ket nabalunetan tapno dagiti laeng agar-aramat nga addaan previlehio a sysop wenno administrador ti makabalbaliw itoy.</strong>',
+'semiprotectedpagewarning'         => "'''Pakaammo:''' Nabalunetan daytoy a panid tapno dagiti laeng nakarehistro nga agar-aramat ti makaedit.",
+'titleprotectedwarning'            => '<strong>BALLAAG:  Nabalunetan daytoy a panid tapno sumagmamano laeng nga agar-aramat ti mabalin a mangparnuay.</strong>',
+'templatesused'                    => 'Dagiti template a naaramat iti daytoy a panid:',
+'templatesusedpreview'             => 'Dagiti template a naaramat iti daytoy a preview:',
+'templatesusedsection'             => 'Dagiti templates a naaramat iti daytoy a benneg:',
+'template-protected'               => '(nasaluadan)',
+'template-semiprotected'           => '(nasaluadan bassit)',
+'hiddencategories'                 => 'Daytoy a panid ket kameng ti {{PLURAL:$1|1 a nakalemmeng a categoria|$1 a nakalemmeng a catcategoria}}:',
+'nocreatetitle'                    => 'Limitado ti panagaramid iti panid',
+'nocreatetext'                     => 'Pinaritan ti {{SITENAME}} ti kabalinan a makapartuat iti kabarbaro a pampanid.
+Mabalinmo ti agsubli ken agedit iti adda a panid, wenno [[Special:Userlogin|sumrek wenno mangaramid iti account]].',
+'nocreate-loggedin'                => 'Awananka iti pammalubos a mangaramid iti kabarbaro a pampanid iti {{SITENAME}}.',
+'permissionserrors'                => 'Bidbiddut iti Pammalubos',
+'permissionserrorstext'            => 'Awananka iti pammalubos a mangaramid iti dayta, gapu iti sumaganad a {{PLURAL:$1|rason|rasrason}}:',
+'permissionserrorstext-withaction' => 'Awananka iti pammalubos nga $2, gapu iti sumaganad a {{PLURAL:$1|rason|rasrason}}:',
+'recreate-deleted-warn'            => "'''Ballaag: Mangar-aramidka iti panid a naikkaten iti kallabes.'''
 
 Nasken a siguraduem no maikanatad nga ituloymo a parnuayen manen wenno editen daytoy a panid.
 Adda ti log ti pannakaikkat daytoy a panid ditoy kas pangkitaan:",
 
+# Parser/template warnings
+'expensive-parserfunction-category'       => 'Dagiti panid nga addaan iti adu la unay nga expensive parser function calls',
+'post-expand-template-inclusion-category' => 'Dagiti pampanid nga ayan dagiti a nagsobra ti rukod dagiti template include',
+'post-expand-template-argument-category'  => 'Dagiti panid a naglaon iti naikkat a template arguments',
+
 # "Undo" feature
+'undo-norev'   => 'Saan a maibabawi ti edit ta awan met daytoy wenno mabalin a naikkat.',
 'undo-summary' => 'Ibabawi ti revision $1 ni [[Special:Contributions/$2|$2]] ([[User talk:$2|Makipatang]])',
 
 # Account creation failure
@@ -574,6 +601,21 @@ Legend: (agdama) = paggidiatan iti agdama a version,
 'revdelete-submit'        => 'Ipakat iti napili a panamalbaliw',
 'revdelete-logentry'      => 'nasuktan ti visibility ti [[$1]]',
 'logdelete-logentry'      => 'nasuktan ti event visibility ti [[$1]]',
+'revdel-restore'          => 'Sukatan ti visibility',
+'pagehist'                => 'Pakasaritaan ti panid',
+'deletedhist'             => 'Naikkat ti pakasaritaan',
+'revdelete-content'       => 'linaon',
+'revdelete-summary'       => 'pakabuklan ti panagedit',
+'revdelete-uname'         => 'nagan ti agar-aramat',
+'revdelete-restricted'    => 'naipakat dagiti pammarit kadagiti sysops',
+'revdelete-unrestricted'  => 'naikkat dagiti pammarit para kadagiti sysops',
+'revdelete-hid'           => 'ilemmeng ti $1',
+'revdelete-unhid'         => 'saanen nga ilemmeng ti $1',
+'revdelete-log-message'   => '$1 para iti $2 {{PLURAL:$2|a panamalbaliw|a panamalbaliw}}',
+'logdelete-log-message'   => '$1 para iti $2 {{PLURAL:$2|a pasamak|a paspasamak}}',
+
+# Suppression log
+'suppressionlog' => 'Log ti suppression',
 
 # History merging
 'mergehistory-box'            => 'Pagtiponen dagiti revisions dagiti dua a pampanid:',
@@ -585,6 +627,8 @@ Legend: (agdama) = paggidiatan iti agdama a version,
 'mergehistory-no-source'      => 'Awan ti taudan a panid a $1.',
 'mergehistory-no-destination' => 'Awan ti papanan a panid a $1.',
 'mergehistory-invalid-source' => 'Masapul nga addaan valido a titulo ti taudan a panid.',
+'mergehistory-autocomment'    => 'Naitipon ti [[:$1]] iti [[:$2]]',
+'mergehistory-comment'        => 'Naitipon ti [[:$1]] iti [[:$2]]: $3',
 
 # Merge log
 'mergelog'           => 'Itipon ti log',
@@ -600,19 +644,38 @@ Legend: (agdama) = paggidiatan iti agdama a version,
 'diff-multi'              => '({{PLURAL:$1|Maysa nga intermediate a panangbalbaliw|$1 intermediate a panangbalbaliw}} ti saan a naipakita.)',
 
 # Search results
-'searchresults'         => 'Dagiti resulta ti panagbirok',
-'searchsubtitle'        => "Sinapul mo ti '''[[:$1]]'''",
-'searchsubtitleinvalid' => "Sinapulmo ti '''$1'''",
-'noexactmatch'          => "'''Awan ti panid nga addaan titulo a \"\$1\".'''
+'searchresults'             => 'Dagiti resulta ti panagbirok',
+'searchsubtitle'            => "Sinapul mo ti '''[[:$1]]'''",
+'searchsubtitleinvalid'     => "Sinapulmo ti '''$1'''",
+'noexactmatch'              => "'''Awan ti panid nga addaan titulo a \"\$1\".'''
 Mabalinmo a [[:\$1|partuaten daytoy a panid]].",
-'noexactmatch-nocreate' => "'''Awan panid nga addaan titulo a \"\$1\".'''",
-'notextmatches'         => 'Awan ti page text matches',
-'prevn'                 => 'napalabas $1',
-'nextn'                 => 'sumaruno $1',
-'viewprevnext'          => 'Kitaen ($1) ($2) ($3)',
-'showingresults'        => "Maiparang iti baba ti agingga iti {{PLURAL:$1|'''1''' a resulta|'''$1''' a resresulta}} a mangrugi iti #'''$2'''.",
-'showingresultsnum'     => "Makita iti baba ti {{PLURAL:$3|'''1''' a resulta|'''$3''' a resresulta}} a mangrugi iti #'''$2'''.",
-'powersearch'           => 'agbirok',
+'noexactmatch-nocreate'     => "'''Awan panid nga addaan titulo a \"\$1\".'''",
+'notextmatches'             => 'Awan ti page text matches',
+'prevn'                     => 'napalabas $1',
+'nextn'                     => 'sumaruno $1',
+'viewprevnext'              => 'Kitaen ($1) ($2) ($3)',
+'search-result-size'        => '$1 ({{PLURAL:$2|1 a balikas|$2 a balbalikas}})',
+'search-result-score'       => 'Relevance: $1%',
+'search-redirect'           => '(ibaw-ing ti $1)',
+'search-section'            => '(benneg $1)',
+'search-suggest'            => 'Daytoy kadi: $1',
+'search-interwiki-caption'  => 'Agkakabsat a projecto',
+'search-interwiki-default'  => '$1 results:',
+'search-interwiki-more'     => '(adu pay)',
+'search-mwsuggest-enabled'  => 'addaan singasing',
+'search-mwsuggest-disabled' => 'awanan singasing',
+'search-relatedarticle'     => 'Mainaig',
+'mwsuggest-disable'         => 'Pagsardengen dagiti AJAX suggestions',
+'searchrelated'             => 'mainaig',
+'searchall'                 => 'amin',
+'showingresults'            => "Maiparang iti baba ti agingga iti {{PLURAL:$1|'''1''' a resulta|'''$1''' a resresulta}} a mangrugi iti #'''$2'''.",
+'showingresultsnum'         => "Makita iti baba ti {{PLURAL:$3|'''1''' a resulta|'''$3''' a resresulta}} a mangrugi iti #'''$2'''.",
+'showingresultstotal'       => "Maiparang iti baba {{PLURAL:$3|ti resulta '''$1''' ti '''$3'''|dagiti resulta '''$1 - $2''' ti '''$3'''}}",
+'powersearch'               => 'agbirok',
+'powersearch-legend'        => 'Advanced a panagsapul',
+'powersearch-redir'         => 'Ilista dagiti panagibaw-ing',
+'powersearch-field'         => 'Agsapul iti',
+'search-external'           => 'Akinruar a pagsapul',
 
 # Preferences page
 'preferences'              => 'preferencias',
@@ -661,31 +724,56 @@ itsek ti husto a panangikapet iti latex, dvips, gs, samo i-convert',
 'files'                    => 'Dagiti files',
 
 # User rights
-'userrights-user-editname'         => 'Mangiserrek iti nagan-agar-aramat:',
-'userrights-groupsmember'          => 'Kameng ti:',
-'userrights-groupsremovable'       => 'Mabalin a maikkat a bungbunggoy:',
-'userrights-groupsavailable'       => 'Dagiti adda a bungbunggoy:',
-'userrights-reason'                => 'Rason ti panangbaliw:',
-'userrights-available-add-self'    => 'Mabalinmo nga inayon ti bagim {{PLURAL:$2|kadaytoy a bunggoy|kadagitoy a bunggoy}}: $1.',
-'userrights-available-remove-self' => 'Mabalinmo na ikkaten ti bagim {{PLURAL:$2|kadaytoy a bunggoy|kadagitoy a bunggoy}}: $1.',
-'userrights-no-interwiki'          => 'Awananka iti pammalubos a mangedit iti karkarbengan ti agar-aramat iti sabali a wikwiki.',
-'userrights-nodatabase'            => 'Awan ti database a $1 wenno baka saan a local.',
-'userrights-notallowed'            => 'Awanan pammalubos ti accountmo a mangted iti karkarbengan ti agar-aramat.',
+'userrights-user-editname'    => 'Mangiserrek iti nagan-agar-aramat:',
+'userrights-groupsmember'     => 'Kameng ti:',
+'userrights-reason'           => 'Rason ti panangbaliw:',
+'userrights-no-interwiki'     => 'Awananka iti pammalubos a mangedit iti karkarbengan ti agar-aramat iti sabali a wikwiki.',
+'userrights-nodatabase'       => 'Awan ti database a $1 wenno baka saan a local.',
+'userrights-notallowed'       => 'Awanan pammalubos ti accountmo a mangted iti karkarbengan ti agar-aramat.',
+'userrights-changeable-col'   => 'Dagiti grupo a mabalinmo a baliwan',
+'userrights-unchangeable-col' => 'Dagiti grupo a dimo mabalin a baliwan',
 
 # Groups
 'group'            => 'Grupo:',
+'group-user'       => 'Dagiti agar-aramat',
 'group-bot'        => 'Dagiti bots',
 'group-sysop'      => 'Dagiti sysops',
 'group-bureaucrat' => 'Dagiti bureaucrat',
 'group-all'        => '(amin)',
 
+'group-user-member'       => 'Agar-aramat',
 'group-bot-member'        => 'Bot',
 'group-sysop-member'      => 'Sysop',
 'group-bureaucrat-member' => 'Bureaucrat',
 
+'grouppage-user'       => '{{ns:project}}:Dagiti agar-aramat',
 'grouppage-bot'        => '{{ns:project}}:Dagiti Bots',
 'grouppage-sysop'      => '{{ns:project}}:Dagiti Administrador',
 'grouppage-bureaucrat' => '{{ns:project}}:Bureaucrats',
+
+# Rights
+'right-read'                 => 'Basaen dagiti panid',
+'right-edit'                 => 'Editen dagiti pampanid',
+'right-createtalk'           => 'Mangparnuay iti pampanid ti diskusion',
+'right-createaccount'        => 'Mangparnuay kadagiti kabarbaro nga accounts ti agar-aramat',
+'right-minoredit'            => 'Markaan dagiti edit a kas minor',
+'right-move'                 => 'Iyakar dagiti pampanid',
+'right-upload'               => 'Agipan iti files',
+'right-autoconfirmed'        => 'Editen dagiti nasaluadan-bassit a pampanid',
+'right-delete'               => 'Ikkaten dagiti pampanid',
+'right-bigdelete'            => 'Ikkaten dagiti pampanid nga addaan dadakkel a pakasaritaan',
+'right-browsearchive'        => 'Biroken dagiti naikkat a pampanid',
+'right-undelete'             => 'Isubli ti naikkat a panid',
+'right-block'                => 'Pengdan dagiti sabali nga agar-aramat nga agedit',
+'right-editinterface'        => 'Editen ti user interface',
+'right-import'               => 'Agangkat iti pampanid manipud iti sabsabali a wikis',
+'right-patrol'               => 'Markaan a kas napatruliaan dagiti edits ti dadduma',
+'right-unwatchedpages'       => 'Kitaen ti listaan dagiti saan a mabambantayan a pampanid',
+'right-trackback'            => 'Mangisumite iti trackback',
+'right-mergehistory'         => 'Pagtitiponen ti pakasaritaan dagiti pampanid',
+'right-userrights'           => 'Editen amin a karbengan ti agar-aramat',
+'right-userrights-interwiki' => 'Editen ti karbengan-agar-aramat dagiti agar-aramat iti sabsabali a wikis',
+'right-siteadmin'            => 'Balunetan ken lukatan ti database',
 
 # User rights log
 'rightslog'      => 'Log dagiti karbengan ti agar-aramat',
@@ -723,13 +811,16 @@ itsek ti husto a panangikapet iti latex, dvips, gs, samo i-convert',
 'recentchangeslinked'          => 'Mainaig a balbaliw',
 'recentchangeslinked-title'    => 'Panangbalbaliw a mainaig iti "$1"',
 'recentchangeslinked-noresult' => 'Awan panamalbaliw kadagiti naisilpo a pampanid kabayatan ti naited a panawen.',
+'recentchangeslinked-summary'  => "Listaan daytoy dagiti kaudian a naaramid a panangbalbaliw kadagiti pampanid a nakasilpo manipud iti maysa a napili a panid (wenno kadagiti kameng ti maysa a napili a categoria).
+Dagiti panid iti [[Special:Watchlist|listaan ti bambantayam]] ket '''naipuskol'''.",
+'recentchangeslinked-page'     => 'Nagan ti panid:',
 
 # Upload
 'upload'                 => 'Mangipan iti file',
 'uploadbtn'              => 'Ipan ti file',
 'reupload'               => 'I-upload manen',
 'uploadnologin'          => 'Saan a nakastrek',
-'uploadnologintext'      => 'Nasken a [[Special:UserLogin|nakaserrekka]] tapno makaipanka iti files.',
+'uploadnologintext'      => 'Nasken a [[Special:Userlogin|nakaserrekka]] tapno makaipanka iti files.',
 'uploaderror'            => 'Kammali iti panangipan',
 'upload-permitted'       => 'Dagiti mapalubosan a tipo ti file: $1.',
 'upload-preferred'       => 'Dagiti mabalbalin a file types: $1.',
@@ -761,6 +852,7 @@ itsek ti husto a panangikapet iti latex, dvips, gs, samo i-convert',
 'uploadvirus'            => 'Addaan virus daytoy a file! Detalie: $1',
 'sourcefilename'         => 'Taudan a nagan ti file:',
 'destfilename'           => 'Destinasion a filename:',
+'upload-maxfilesize'     => 'Maximum a file size: $1',
 'watchthisupload'        => 'Bantayan daytoy a panid',
 
 'upload-proto-error'      => 'Saan a husto a protocol',
@@ -778,39 +870,43 @@ itsek ti husto a panangikapet iti latex, dvips, gs, samo i-convert',
 'upload_source_url'  => ' (maysa a valido, ken maakses ti publico nga URL)',
 'upload_source_file' => ' (file iti kompiutermo)',
 
-# Image list
-'imagelist'                 => 'Listaan ti file',
-'imagelisttext'             => "Adda iti baba ti listaan ti '''$1''' {{PLURAL:$1|a file|a files}} a naurnos kas $2.",
-'ilsubmit'                  => 'agbirok',
-'byname'                    => 'babaen ti nagan',
-'bydate'                    => 'babaen ti petsa',
-'imgfile'                   => 'file',
-'filehist'                  => 'Pakasaritaan ti file',
-'filehist-help'             => 'Mangiklikka iti maysa a petsa/oras tapno makitam ti file iti kasisigudna a langa iti dayta nga oras.',
-'filehist-deleteall'        => 'ikkaten amin',
-'filehist-deleteone'        => 'ikkaten',
-'filehist-revert'           => 'isubli',
-'filehist-current'          => 'agdama',
-'filehist-datetime'         => 'Petsa/Oras',
-'filehist-user'             => 'Agar-aramat',
-'filehist-dimensions'       => 'Dagiti dimension',
-'filehist-filesize'         => 'Kadakkel ti file',
-'filehist-comment'          => 'Komento',
-'imagelinks'                => 'Dagiti kasilpo',
-'linkstoimage'              => 'Dagiti sumaganad a panid ket nakasilpo itoy a file:',
-'nolinkstoimage'            => 'Awan ti pampanid a nakasilpo iti daytoy a file.',
-'sharedupload'              => 'Daytoy a file ket pagraranudan nga upload ket mabalin nga aramaten ti sabsabali pay a projectos.',
-'shareduploadwiki'          => 'Pangngaasim ta kitaem ti $1 para iti ad-adu pay nga informasion.',
-'shareduploadwiki-linktext' => 'panid ti file description',
-'noimage'                   => 'Awan ti file iti kasta a nagan, mabalinmo ti $1.',
-'noimage-linktext'          => 'ipanen',
-'uploadnewversion-linktext' => 'Mangipan iti kabarbaro a version daytoy a file',
-'imagelist_date'            => 'Petsa',
-'imagelist_name'            => 'Nagan',
-'imagelist_user'            => 'Agar-aramat',
-'imagelist_size'            => 'Kadakkel',
-'imagelist_description'     => 'Deskripsion',
-'imagelist_search_for'      => 'Agsapul iti nagan ti media:',
+# Special:Imagelist
+'imagelist_search_for'  => 'Agsapul iti nagan ti media:',
+'imgfile'               => 'file',
+'imagelist'             => 'Listaan ti file',
+'imagelist_date'        => 'Petsa',
+'imagelist_name'        => 'Nagan',
+'imagelist_user'        => 'Agar-aramat',
+'imagelist_size'        => 'Kadakkel',
+'imagelist_description' => 'Deskripsion',
+
+# Image description page
+'filehist'                       => 'Pakasaritaan ti file',
+'filehist-help'                  => 'Mangiklikka iti maysa a petsa/oras tapno makitam ti file iti kasisigudna a langa iti dayta nga oras.',
+'filehist-deleteall'             => 'ikkaten amin',
+'filehist-deleteone'             => 'ikkaten',
+'filehist-revert'                => 'isubli',
+'filehist-current'               => 'agdama',
+'filehist-datetime'              => 'Petsa/Oras',
+'filehist-user'                  => 'Agar-aramat',
+'filehist-dimensions'            => 'Dagiti dimension',
+'filehist-filesize'              => 'Kadakkel ti file',
+'filehist-comment'               => 'Komento',
+'imagelinks'                     => 'Dagiti kasilpo',
+'linkstoimage'                   => 'Dagiti sumaganad a panid ket nakasilpo itoy a file:',
+'nolinkstoimage'                 => 'Awan ti pampanid a nakasilpo iti daytoy a file.',
+'morelinkstoimage'               => 'Kitaen ti [[Special:Whatlinkshere/$1|ad-adu pay a panilpo]] kadaytoy a file.',
+'redirectstofile'                => 'Dagiti sumaganad a files ket ag-redirect iti daytoy a file:',
+'duplicatesoffile'               => 'Dagiti sumaganad a files ket duplikado daytoy a file:',
+'sharedupload'                   => 'Daytoy a file ket pagraranudan nga upload ket mabalin nga aramaten ti sabsabali pay a projectos.',
+'shareduploadwiki'               => 'Pangngaasim ta kitaem ti $1 para iti ad-adu pay nga informasion.',
+'shareduploadwiki-linktext'      => 'panid ti file description',
+'shareduploadduplicate-linktext' => 'sabali a file',
+'shareduploadconflict-linktext'  => 'sabali a file',
+'noimage'                        => 'Awan ti file iti kasta a nagan, mabalinmo ti $1.',
+'noimage-linktext'               => 'ipanen',
+'uploadnewversion-linktext'      => 'Mangipan iti kabarbaro a version daytoy a file',
+'imagepage-searchdupe'           => 'Agsapul kadagiti duplikado a files',
 
 # File reversion
 'filerevert'                => 'Isubli ti $1',
@@ -872,6 +968,7 @@ itsek ti husto a panangikapet iti latex, dvips, gs, samo i-convert',
 'brokenredirects-delete' => '(ikkaten)',
 
 'withoutinterwiki'        => 'Dagiti panid nga awanan panilpo a pagsasao',
+'withoutinterwiki-legend' => 'Prefix',
 'withoutinterwiki-submit' => 'Ipakita',
 
 'fewestrevisions' => 'Dagiti panid nga addaan kababassitan a panangbalbaliw',
@@ -900,24 +997,22 @@ itsek ti husto a panangikapet iti latex, dvips, gs, samo i-convert',
 'mostcategories'          => 'Dagiti panid nga addaan adu a categoria',
 'mostimages'              => 'Dagiti files a kaaduan iti nakasilpo',
 'mostrevisions'           => 'Dagiti articulo a kakaaduan iti pannakabalbaliwna',
-'allpages'                => 'Amin a panid',
 'prefixindex'             => 'Index ti prefix',
 'shortpages'              => 'Ababa a pampanid',
 'longpages'               => 'Atitiddog a pampanid',
 'deadendpages'            => 'Ngudo a pampanid',
 'protectedpages'          => 'Nasaluadan a pampanid',
+'protectedpages-indef'    => 'Indefinite protections laeng',
 'protectedpagesempty'     => 'Awan pampanid a madama a masalsaluadan babaen kadagitoy a parameters.',
 'protectedtitles'         => 'Nasaluadan a tittitulo',
 'listusers'               => 'Listaan dagiti agar-aramat',
-'specialpages'            => 'Naiduma a pampanid',
-'spheading'               => 'Naiduma a pampanid para kadagiti amin nga agar-aramat',
-'restrictedpheading'      => 'Maiparit a naiduma a pampanid',
 'newpages'                => 'Baro a pampanid',
 'newpages-username'       => 'Nagan:',
 'ancientpages'            => 'Kadaanan a pampanid',
 'move'                    => 'Iyakar',
 'movethispage'            => 'Iyakar daytoy a panid',
 'notargettitle'           => 'Awanan target',
+'nopagetitle'             => 'Awan ti kasta a target a panid',
 'pager-newer-n'           => '{{PLURAL:$1|nabarbaro 1|nabarbaro $1}}',
 'pager-older-n'           => '{{PLURAL:$1|nadadaan 1|nadadaan $1}}',
 
@@ -925,10 +1020,6 @@ itsek ti husto a panangikapet iti latex, dvips, gs, samo i-convert',
 'booksources'               => 'Nagtaudan a liblibro',
 'booksources-search-legend' => 'Agsapul kadagiti taudan a liblibro',
 'booksources-go'            => 'Inkan',
-
-'categoriespagetext' => 'Dagiti sumaganad a categoria ket addaan pampanid wenno media.',
-'alphaindexline'     => '$1 iti $2',
-'version'            => 'Version',
 
 # Special:Log
 'specialloguserlabel'  => 'Agar-aramat:',
@@ -940,6 +1031,8 @@ itsek ti husto a panangikapet iti latex, dvips, gs, samo i-convert',
 'log-title-wildcard'   => 'Agsapul iti titulos nga agrugi iti daytoy a texto',
 
 # Special:Allpages
+'allpages'          => 'Amin a panid',
+'alphaindexline'    => '$1 iti $2',
 'nextpage'          => 'sumaruno a panid ($1)',
 'prevpage'          => 'Napalabas a panid ($1)',
 'allpagesfrom'      => 'Ipakita dagiti panid a mangrugi iti:',
@@ -952,10 +1045,21 @@ itsek ti husto a panangikapet iti latex, dvips, gs, samo i-convert',
 'allpagesprefix'    => 'Iparang dagiti pampanid nga addaan prefix:',
 'allpages-bad-ns'   => 'Awanan ti {{SITENAME}} iti namespace a "$1".',
 
+# Special:Categories
+'categories'                    => 'Dagiti Categoria',
+'categoriespagetext'            => 'Dagiti sumaganad a categoria ket addaan pampanid wenno media.',
+'special-categories-sort-count' => 'urnosen babaen ti bilang',
+'special-categories-sort-abc'   => 'urnosen nga alfabetikal',
+
 # Special:Listusers
 'listusersfrom'      => 'Iparang dagiti agar-aramat mangrugi iti:',
 'listusers-submit'   => 'Ipakita',
 'listusers-noresult' => 'Awan nasarakan nga agar-aramat.',
+
+# Special:Listgrouprights
+'listgrouprights-group'   => 'Grupo',
+'listgrouprights-rights'  => 'Dagiti Karbengan',
+'listgrouprights-members' => '(listaan dagiti kameng)',
 
 # E-mail user
 'mailnologin'     => 'Awan pagipatulodan nga adres',
@@ -979,16 +1083,17 @@ itsek ti husto a panangikapet iti latex, dvips, gs, samo i-convert',
 'watchlistfor'         => "(para ken ni '''$1''')",
 'nowatchlist'          => 'Awan ti pampanid iti listaan dagiti bambantayam.',
 'watchnologin'         => 'Saan a nakastrek',
-'watchnologintext'     => 'Nasken a [[Special:UserLogin|naka-loginka]] tapno mabaliwam dagiti bambantayam a panid.',
+'watchnologintext'     => 'Nasken a [[Special:Userlogin|naka-loginka]] tapno mabaliwam dagiti bambantayam a panid.',
 'addedwatch'           => 'Nainayon kadagiti bambantayan',
 'addedwatchtext'       => "Nainayonen ti panid a \"[[:\$1]]\" iti [[Special:Watchlist|listaan ti bambantayam]].
-Mailistanto ditoy dagiti pannkabalbaliw daytoy a panid iti masakbayan agraman ti kanaigna a panid-tungtongan, ket agparang ti panid a kas '''napuskol''' iti [[Special:RecentChanges|listaan ti naudi a balbaliw]] tapno nalaklaka a malasin.",
+Mailistanto ditoy dagiti pannkabalbaliw daytoy a panid iti masakbayan agraman ti kanaigna a panid-tungtongan, ket agparang ti panid a kas '''napuskol''' iti [[Special:Recentchanges|listaan ti naudi a balbaliw]] tapno nalaklaka a malasin.",
 'removedwatch'         => 'Naikkaten kadagiti bambantayan',
 'removedwatchtext'     => 'Naikkaten ti panid a "[[:$1]]" iti listaan ti bambantayam.',
 'watch'                => 'bantayan',
 'watchthispage'        => 'Bantayan daytoy a panid',
 'unwatch'              => 'saanen a bantayan',
 'unwatchthispage'      => 'Isardeng a bantayan daytoy a panid',
+'notvisiblerev'        => 'Naikkaten ti panangbalbaliw',
 'watchlist-details'    => '{{PLURAL:$1|$1 panid|$1 pampanid}} a bambantayan, saan a mairaman dagiti panid ti tungtongan.',
 'wlheader-enotif'      => '* Napagbalin ti email notification.',
 'watchlistcontains'    => 'Addaan ti listaan ti bambantayam iti $1 {{PLURAL:$1|a panid|a pampanid}}.',
@@ -1002,7 +1107,7 @@ Mailistanto ditoy dagiti pannkabalbaliw daytoy a panid iti masakbayan agraman ti
 'watchlist-show-minor' => 'Ipakita dagiti babassit a baliw',
 'watchlist-hide-minor' => 'Ilemmeng dagiti babassit a baliw',
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Bambantayan...',
 'unwatching' => 'Saanen a bantayan...',
 
@@ -1043,6 +1148,7 @@ Kitaen ti $2 para iti record dagiti naudi a naikkat.',
 ** Kiddaw ti autor
 ** Panaglabsing iti copyright
 ** Vandalismo',
+'delete-edit-reasonlist'      => 'Editen dagiti rason ti panangikkat',
 'rollback'                    => 'Isubli dagiti panangbaliw',
 'rollback_short'              => 'Isubli',
 'rollbacklink'                => 'isubli',
@@ -1055,7 +1161,8 @@ naisubli manen iti naudi a version ni $2.',
 'protectedarticle'            => 'nasaluadanen ti "[[$1]]"',
 'modifiedarticleprotection'   => 'nasukatan ti level ti saluad para iti "[[$1]]"',
 'unprotectedarticle'          => 'naikkat ti saluad ti "[[$1]]"',
-'confirmprotect'              => 'Pasingkedan ti panangsaluad',
+'protect-title'               => 'Sukatan ti level ti saluad para iti "$1"',
+'protect-legend'              => 'Pasingkedan ti panangsaluad',
 'protectcomment'              => 'Rason no apay a saluadan daytoy a panid',
 'protectexpiry'               => 'Agpaso inton:',
 'protect_expiry_invalid'      => 'Saan a mabalin ti oras a panagpaso.',
@@ -1084,6 +1191,7 @@ Mabalinmo a sukatan ti level ti saluad daytoy a panid, ngem saanna nga apektaran
 'restriction-edit'   => 'Baliwan',
 'restriction-move'   => 'Iyakar',
 'restriction-create' => 'Aramiden',
+'restriction-upload' => 'I-upload',
 
 # Restriction levels
 'restriction-level-sysop'         => 'sibubukel a nasaluadan',
@@ -1093,6 +1201,7 @@ Mabalinmo a sukatan ti level ti saluad daytoy a panid, ngem saanna nga apektaran
 # Undelete
 'undelete'                 => 'Kitaen dagiti naikkat a pampanid',
 'undeletepage'             => 'Kitaen ken isubli dagiti naikkat a panid',
+'undeletepagetitle'        => "'''TI sumaganad ket buklen dagiti naikkat a revisions ti [[:$1|$1]]'''.",
 'viewdeletedpage'          => 'Kitaen dagiti naikkat a pampanid',
 'undeleterevisions'        => '$1 {{PLURAL:$1|a revision|a revisions}} ti nailebben',
 'undelete-revision'        => 'Naikkat ti revision a $1 (sipud $2) ni $3:',
@@ -1132,23 +1241,28 @@ Binsiren ti [[Special:Log/delete|log ti naik-ikkat]] para iti rekord dagiti naud
 'sp-contributions-username'    => 'IP Address wenno nagan-agar-aramat:',
 'sp-contributions-submit'      => 'Agsapul',
 
-'sp-newimages-showfrom' => 'Iparang dagiti baro a files mangrugi iti $2, $1',
-
 # What links here
-'whatlinkshere'       => 'Dagiti nakasilpo ditoy',
-'whatlinkshere-title' => 'Dagiti panid a nakasilpo iti $1',
-'whatlinkshere-page'  => 'Panid:',
-'linklistsub'         => '(Listaan dagiti panilpo)',
-'linkshere'           => "Nakasilpo ti sumaganad a pampanid iti '''[[:$1]]''':",
-'nolinkshere'         => "Awan pampanid a nakasilpo iti '''[[:$1]]'''.",
-'isredirect'          => 'ibaw-ing ti panid',
-'istemplate'          => 'mairaman',
-'whatlinkshere-prev'  => '{{PLURAL:$1|kallabes|kallabes $1}}',
-'whatlinkshere-next'  => '{{PLURAL:$1|sumaruno|sumaruno $1}}',
-'whatlinkshere-links' => '← silsilpo',
+'whatlinkshere'            => 'Dagiti nakasilpo ditoy',
+'whatlinkshere-title'      => 'Dagiti panid a nakasilpo iti $1',
+'whatlinkshere-page'       => 'Panid:',
+'linklistsub'              => '(Listaan dagiti panilpo)',
+'linkshere'                => "Nakasilpo ti sumaganad a pampanid iti '''[[:$1]]''':",
+'nolinkshere'              => "Awan pampanid a nakasilpo iti '''[[:$1]]'''.",
+'isredirect'               => 'ibaw-ing ti panid',
+'istemplate'               => 'mairaman',
+'isimage'                  => 'panilpo ti ladawan',
+'whatlinkshere-prev'       => '{{PLURAL:$1|kallabes|kallabes $1}}',
+'whatlinkshere-next'       => '{{PLURAL:$1|sumaruno|sumaruno $1}}',
+'whatlinkshere-links'      => '← silsilpo',
+'whatlinkshere-hideredirs' => '$1 a panangibaw-ing',
+'whatlinkshere-hidetrans'  => '$1 a transclusions',
+'whatlinkshere-hidelinks'  => '$1 a pampanilpo',
+'whatlinkshere-hideimages' => '$1 a pampanilpo ti imahen',
+'whatlinkshere-filters'    => 'Filters',
 
 # Block/unblock
 'blockip'                     => 'Pengdan ti agar-aramat',
+'blockip-legend'              => 'Pengdan ti agar-aramat',
 'ipaddress'                   => 'IP Address:',
 'ipadressorusername'          => 'IP Address wenno nagan-agar-aramat:',
 'ipbexpiry'                   => 'Panagpaso:',
@@ -1162,6 +1276,7 @@ Binsiren ti [[Special:Log/delete|log ti naik-ikkat]] para iti rekord dagiti naud
 'ipboptions'                  => '2 nga oras:2 hours,1 nga aldaw:1 day,3 nga aldaw:3 days,1 a lawas:1 week,2 a lawas:2 weeks,1 a bulan:1 month,3 a bulan:3 months,6 a bulan:6 months,1 a tawen:1 year,awan inggana:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'sabali',
 'ipbotherreason'              => 'Sabali/nayon a rason:',
+'ipbwatchuser'                => 'Bantayan ti panid-agar-ramat ken panid-tungtongan daytoy nga agar-aramat',
 'badipaddress'                => 'Saan a valido nga IP address',
 'blockipsuccesssub'           => 'Balligi ti panangserra',
 'ipb-edit-dropdown'           => 'Dagiti rason iti panagedit ti block',
@@ -1208,12 +1323,13 @@ Binsiren ti [[Special:Log/delete|log ti naik-ikkat]] para iti rekord dagiti naud
 'lockdbsuccesssub'    => 'Balligi ti pannakabalunet ti database',
 'unlockdbsuccesssub'  => 'Naikkaten ti balunet ti database',
 'lockdbsuccesstext'   => 'Nabalunetan ti database.<br />
-Laglagipem nga [[Special:UnlockDB|ikkaten ti balunetna]] kalpasan a makompletom ti maintenance.',
+Laglagipem nga [[Special:Unlockdb|ikkaten ti balunetna]] kalpasan a makompletom ti maintenance.',
 'unlockdbsuccesstext' => 'Naluktanen ti database.',
 'databasenotlocked'   => 'Saan a nabalunetan ti database.',
 
 # Move page
-'movepage'                => 'Iyakar ti panid',
+'move-page'               => 'Iyakar ti $1',
+'move-page-legend'        => 'Iyakar ti panid',
 'movepagetext'            => "Iti panangaramat iti formulario iti baba, suktanna ti nagan ti panid, ken maiyakar amin a pakasaritaanna iti maisukat a baro a nagan.
 Agbalin ti daan a titulo a kas panid a mangibaw-ing iti kabarbaro a titulo.
 Dagiti panilpo iti titulo ti daan a panid ket saan a mabalbaliwan;
@@ -1232,7 +1348,7 @@ pangngaasim ta pasingkedam a maawatam ti ibunga dayoty sakbay nga agtuloyka a ma
 Kadagitoy a kaso, masapul nga iyakar wenno itiponmo a manual ti panid no kayatmo.",
 'movearticle'             => 'Iyakar ti panid',
 'movenologin'             => 'Saan a nakastrek',
-'movenologintext'         => 'Nasken a nakarehistroka nga agar-aramat ken [[Special:UserLogin|nakastrek]] tapno makaiyakarka iti panid.',
+'movenologintext'         => 'Nasken a nakarehistroka nga agar-aramat ken [[Special:Userlogin|nakastrek]] tapno makaiyakarka iti panid.',
 'movenotallowed'          => 'Awanka iti pammalubos nga agiyakar iti pampanid iti {{SITENAME}}.',
 'newtitle'                => 'Iti baro a titulo:',
 'move-watch'              => 'Bantayan daytoy a panid',
@@ -1245,8 +1361,8 @@ Pangngaasim ta mangpilika iti sabali a nagan.',
 Pangngaasim ta i-manualmo lattan a pagtiponem ida.'''",
 'movedto'                 => 'naiyakar iti',
 'movetalk'                => 'Iyakar ti mainaig a panid ti tungtongan',
-'talkpagemoved'           => 'Naiyakar met ti kanaigna a panid ti tungtongan.',
-'talkpagenotmoved'        => 'Ti mainaig a panid ti tungtongan ket <strong>saan</strong> a naiyakar.',
+'movepage-page-moved'     => 'Naiyakar ti panid a $1 iti $2.',
+'movepage-page-unmoved'   => 'Saan a maiyakar ti panid $1 iti $2.',
 '1movedto2'               => '[[$1]] naiyakar iti [[$2]]',
 '1movedto2_redir'         => '[[$1]] naiyakar iti [[$2]] over redirect',
 'movelogpage'             => 'Iyakar ti log',
@@ -1290,6 +1406,7 @@ Pangngaasim ta i-manualmo lattan a pagtiponem ida.'''",
 'import-parse-failure'     => 'Palso ti XML import parse',
 'import-noarticle'         => 'Awan panid a maangkat!',
 'xml-error-string'         => '$1 iti linia $2, col $3 (byte $4): $5',
+'import-upload'            => 'Ipan ti XML data',
 
 # Import log
 'importlogpage'                    => 'Angkaten ti log',
@@ -1323,7 +1440,6 @@ Pangngaasim ta i-manualmo lattan a pagtiponem ida.'''",
 'tooltip-n-recentchanges'         => 'Listaan dagiti naudi a panangbalbaliw iti wiki.',
 'tooltip-n-randompage'            => 'Mangiparuar iti pugto a panid',
 'tooltip-n-help'                  => 'Ti lugar a pakasapulan.',
-'tooltip-n-sitesupport'           => 'Suportarandakami',
 'tooltip-t-whatlinkshere'         => 'Listaan ti am-amin a pampanid ti wiki a nakasilpo ditoy',
 'tooltip-feed-rss'                => 'RSS feed para iti daytoy a panid',
 'tooltip-feed-atom'               => 'Atom feed para itoy a panid',
@@ -1359,9 +1475,7 @@ Pangngaasim ta i-manualmo lattan a pagtiponem ida.'''",
 'creditspage'      => 'Credits ti panid',
 
 # Spam protection
-'subcategorycount'       => 'Addaan {{PLURAL:$1|1 subcategoria|$1 subcategorias}} daytoy a categoria.',
-'listingcontinuesabbrev' => 'tuloy.',
-'spambot_username'       => 'Panagdalus iti MediaWiki spam',
+'spambot_username' => 'Panagdalus iti MediaWiki spam',
 
 # Info page
 'infosubtitle' => 'Informasion para iti panid',
@@ -1390,6 +1504,7 @@ Pangngaasim ta i-manualmo lattan a pagtiponem ida.'''",
 
 # Media information
 'thumbsize'            => 'Kakasla kuko a rukod:',
+'widthheightpage'      => '$1×$2, $3 a {{PLURAL:$3|panid|pampanid}}',
 'file-info'            => '(kadakkel ti file: $1, MIME type: $2)',
 'file-info-size'       => '($1 × $2 a pixel, kadakkel ti file: $3, MIME type: $4)',
 'file-nohires'         => '<small>Awan mabalin a nangatngato a resolusion.</small>',
@@ -1398,9 +1513,13 @@ Pangngaasim ta i-manualmo lattan a pagtiponem ida.'''",
 'show-big-image-thumb' => '<small>Rukod daytoy a preview: $1 × $2 a pixels</small>',
 
 # Special:Newimages
-'newimages'    => 'Galeria dagiti kabarbaro a files',
-'showhidebots' => '($1 bots)',
-'noimages'     => 'Awan ti makita.',
+'newimages'             => 'Galeria dagiti kabarbaro a files',
+'imagelisttext'         => "Adda iti baba ti listaan ti '''$1''' {{PLURAL:$1|a file|a files}} a naurnos kas $2.",
+'showhidebots'          => '($1 bots)',
+'noimages'              => 'Awan ti makita.',
+'ilsubmit'              => 'agbirok',
+'bydate'                => 'babaen ti petsa',
+'sp-newimages-showfrom' => 'Iparang dagiti baro a files mangrugi iti $2, $1',
 
 # Bad image list
 'bad_image_list' => 'Ti format ket kas iti sumaganad:
@@ -1659,7 +1778,7 @@ ODagiti dadduma ket sigud a nakalemmeng.
 
 # External editor support
 'edit-externally'      => 'Editen daytoy a file babaen ti akinruar nga aplikasion',
-'edit-externally-help' => 'Kitaen ti [http://www.mediawiki.org/wiki/Manual:External_editors instruksion iti panangikabil] para iti ad-adu pay nga informasion.',
+'edit-externally-help' => 'Kitaen ti [http://meta.wikimedia.org/wiki/Help:External_editors instruksion iti panangikabil] para iti ad-adu pay nga informasion.',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'amin',
@@ -1669,16 +1788,18 @@ ODagiti dadduma ket sigud a nakalemmeng.
 'monthsall'        => 'am-amin',
 
 # E-mail address confirmation
-'confirmemail'           => 'Pasingkedan ti email address',
-'confirmemail_sent'      => 'Naipatuloden ti pammasingked nga email.',
-'confirmemail_invalid'   => 'Saan a mabalin a kodigo ti pammasingked.
+'confirmemail'             => 'Pasingkedan ti email address',
+'confirmemail_sent'        => 'Naipatuloden ti pammasingked nga email.',
+'confirmemail_invalid'     => 'Saan a mabalin a kodigo ti pammasingked.
 Nalabit a nagpason daytoy a kodigo.',
-'confirmemail_needlogin' => 'Masapulmo nga $1 tapno mapasingkedan ti email addressmo.',
-'confirmemail_success'   => 'Napasingkedanen ti email addressmo.
+'confirmemail_needlogin'   => 'Masapulmo nga $1 tapno mapasingkedan ti email addressmo.',
+'confirmemail_success'     => 'Napasingkedanen ti email addressmo.
 Mabalinmon ti sumrek ket naragsak a panag-wiki.',
-'confirmemail_loggedin'  => 'Napasingkedanen ti email addressmon.',
-'confirmemail_error'     => 'Adda banag a biddut iti panangidulin iti pammasingkedmo.',
-'confirmemail_subject'   => 'Pammasingked ti email address ti {{SITENAME}}',
+'confirmemail_loggedin'    => 'Napasingkedanen ti email addressmon.',
+'confirmemail_error'       => 'Adda banag a biddut iti panangidulin iti pammasingkedmo.',
+'confirmemail_subject'     => 'Pammasingked ti email address ti {{SITENAME}}',
+'confirmemail_invalidated' => 'Nakansela ti panangpasingked iti email address',
+'invalidateemail'          => 'Ikansel ti email confirmation',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[Naiddep ti Interwiki transcluding]',
@@ -1697,7 +1818,7 @@ $1
 'recreate'            => 'Partuaten manen',
 
 # HTML dump
-'redirectingto' => 'Maibawbaw-ing iti [[:$1]]...',
+'redirectingto' => 'Maibawbaw-ing iti [[$1]]...',
 
 # action=purge
 'confirm_purge'        => 'Dalusan ti cache daytoy a panid?
@@ -1716,6 +1837,7 @@ $1',
 'imgmultipageprev' => '← napalabas a panid',
 'imgmultipagenext' => 'sumaruno a panid →',
 'imgmultigo'       => 'Inkan!',
+'imgmultigoto'     => 'Mapan iti panid $1',
 
 # Table pager
 'ascending_abbrev'         => 'asc',
@@ -1767,6 +1889,7 @@ $1',
 'unknown_extension_tag' => 'Di ammo nga extension tag "$1"',
 
 # Special:Version
+'version'                          => 'Version', # Not used as normal message but as header for the special page itself
 'version-extensions'               => 'Naikapet nga extensions',
 'version-specialpages'             => 'Naiduma a pampanid',
 'version-parserhooks'              => 'Parser hooks',
@@ -1790,5 +1913,29 @@ $1',
 'filepath'        => 'Dalanan ti file',
 'filepath-page'   => 'File:',
 'filepath-submit' => 'Dalan ti file',
+
+# Special:FileDuplicateSearch
+'fileduplicatesearch'          => 'Agbirok kadagiti duplikado a files',
+'fileduplicatesearch-legend'   => 'Agsapul iti duplikado',
+'fileduplicatesearch-filename' => 'Filename:',
+'fileduplicatesearch-submit'   => 'Agbirok',
+'fileduplicatesearch-info'     => '$1 × $2 pixel<br />Rukod ti file: $3<br />MIME type: $4',
+'fileduplicatesearch-result-1' => 'Awanan iti identical duplication ti file a "$1".',
+'fileduplicatesearch-result-n' => 'Ti file a "$1" ket addaan {{PLURAL:$2|1 nga identical duplication|$2 nga identical duplications}}.',
+
+# Special:SpecialPages
+'specialpages'                   => 'Naiduma a pampanid',
+'specialpages-group-maintenance' => 'Dagiti maintenance reports',
+'specialpages-group-other'       => 'Sabali pay nga espesial a pampanid',
+'specialpages-group-login'       => 'Sumrek / agrehistro',
+'specialpages-group-changes'     => 'Kaudian a balbaliw ken logs',
+'specialpages-group-media'       => 'Dagiti report ti media ken uploads',
+'specialpages-group-users'       => 'Dagiti agar-aramat ken karkarbengan',
+'specialpages-group-highuse'     => 'Nangato ti pannakaaramatna a pampanid',
+'specialpages-group-pages'       => 'Listaan ti pampanid',
+'specialpages-group-pagetools'   => 'Ramramit para panid',
+'specialpages-group-wiki'        => 'Wiki data ken ramramit',
+'specialpages-group-redirects'   => 'Maibawbaw-ing dagiti naiduma a pampanid',
+'specialpages-group-spam'        => 'Ramramit kontra spam',
 
 );

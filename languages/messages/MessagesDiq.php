@@ -4,8 +4,10 @@
  * @ingroup Language
  * @file
  *
- * @author Belekvor
  * @author Mirzali
+ * @author Belekvor
+ * @author Siebrand
+ * @author SPQRobin
  */
 
 $messages = array(
@@ -49,6 +51,7 @@ href="" class="internal"}?{/a}) bımocne.',
 'tog-watchlisthideminor'      => 'Vurnayışanê qıckekan lista mına seyr-kerdışi de bınımne/wedare',
 'tog-ccmeonemails'            => 'E-mailanê ke ez karberanê binan rê rışenan, mı rê kopya inan bırışe',
 'tog-diffonly'                => 'Qıyasê verziyonan de tek ferqan bımocne, perra butıne nê',
+'tog-showhiddencats'          => 'Kategoriyanê dızdine bımocne',
 
 'underline-always'  => 'tım',
 'underline-never'   => 'qet',
@@ -108,13 +111,14 @@ href="" class="internal"}?{/a}) bımocne.',
 'nov'           => 'Tşp',
 'dec'           => 'Gağ',
 
-# Bits of text used by many pages
-'categories'            => 'Kategoriy',
-'pagecategories'        => '{{PLURAL:$1|Kategoriya|Kategoriyê}} perre',
-'category_header'       => 'Nuşteyê ke kategoriya "$1"(-i/-an) derê.',
-'subcategories'         => 'Kategoriyê bınêni',
-'category-media-header' => 'Medyawa ke kategoriya "$1" (-i/-an) dera',
-'category-empty'        => "''Ena kategoriye de hewna qet nuştey ya ki medyay çıniyê.''",
+# Categories related messages
+'pagecategories'           => '{{PLURAL:$1|Kategoriya|Kategoriyê}} perre',
+'category_header'          => 'Nuşteyê ke kategoriya "$1"(-i/-an) derê.',
+'subcategories'            => 'Kategoriyê bınêni',
+'category-media-header'    => 'Medyawa ke kategoriya "$1" (-i/-an) dera',
+'category-empty'           => "''Ena kategoriye de hewna qet nuştey ya ki medyay çıniyê.''",
+'hidden-categories'        => '{{PLURAL:$1|Kategoriya nımıtiye|Kategoriyê nımıtey}}',
+'hidden-category-category' => 'Kategoriyê nımıtey', # Name of the category where hidden categories will be listed
 
 'mainpagetext'      => "<big>'''MediaWiki vıst ra ser, vıraziya.'''</big>",
 'mainpagedocfooter' => "Gurenayış u ayarkerdena Wiki-Software rê yardım etıya de vênenay: [http://meta.wikimedia.org/wiki/Help:Contents User's Guide]
@@ -160,6 +164,7 @@ href="" class="internal"}?{/a}) bımocne.',
 'print'             => 'çap ke',
 'edit'              => 'bıvurne',
 'editthispage'      => 'Ena pele bıvurne',
+'create-this-page'  => 'Na pele bınuse',
 'delete'            => 'bıestere',
 'deletethispage'    => 'Ena pele bıestere',
 'undelete_short'    => 'Vurnayışê $1 peyser bia',
@@ -193,27 +198,26 @@ href="" class="internal"}?{/a}) bımocne.',
 'jumptosearch'      => 'cıgeyre',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutsite'         => 'Heqa {{SITENAME}} de',
-'aboutpage'         => 'Project:Sero',
-'bugreports'        => 'Xebera xeteyan',
-'bugreportspage'    => 'Project:Xebera xeteyan',
-'copyright'         => 'Nuştey bınê Lisansê $1 de vêrenê.',
-'copyrightpagename' => 'Heqa telifê {{SITENAME}}',
-'copyrightpage'     => '{{ns:project}}:Heqê telifi',
-'currentevents'     => 'Textey cerrebi',
-'currentevents-url' => 'Project:Textey Cerrebi',
-'disclaimers'       => 'Reddê mesuliyeti',
-'disclaimerpage'    => 'Project:Reddê mesuliyetê bıngey',
-'edithelp'          => 'Çıturi vurniyeno?',
-'edithelppage'      => 'Help:Perre çıtewr vurniyena',
-'helppage'          => 'Help:Tedeestey',
-'mainpage'          => 'Pela Seri',
-'portal'            => 'Portalê cemaeti',
-'portal-url'        => 'Project:Portalê cemaeti',
-'privacy'           => 'Maddey dızdine',
-'privacypage'       => 'Project:Maddey dızdine',
-'sitesupport'       => 'Beğş',
-'sitesupport-url'   => 'Project:Beğş',
+'aboutsite'            => 'Heqa {{SITENAME}} de',
+'aboutpage'            => 'Project:Sero',
+'bugreports'           => 'Xebera xeteyan',
+'bugreportspage'       => 'Project:Xebera xeteyan',
+'copyright'            => 'Nuştey bınê Lisansê $1 de vêrenê.',
+'copyrightpagename'    => 'Heqa telifê {{SITENAME}}',
+'copyrightpage'        => '{{ns:project}}:Heqê telifi',
+'currentevents'        => 'Textey cerrebi',
+'currentevents-url'    => 'Project:Textey Cerrebi',
+'disclaimers'          => 'Reddê mesuliyeti',
+'disclaimerpage'       => 'Project:Reddê mesuliyetê bıngey',
+'edithelp'             => 'Çıturi vurniyeno?',
+'edithelppage'         => 'Help:Perre çıtewr vurniyena',
+'helppage'             => 'Help:Tedeestey',
+'mainpage'             => 'Pela Seri',
+'mainpage-description' => 'Pela Seri',
+'portal'               => 'Portalê cemaeti',
+'portal-url'           => 'Project:Portalê cemaeti',
+'privacy'              => 'Maddey dızdine',
+'privacypage'          => 'Project:Maddey dızdine',
 
 'badaccess' => 'Xeta mısadey',
 
@@ -251,7 +255,7 @@ href="" class="internal"}?{/a}) bımocne.',
 'nosuchspecialpage' => 'Pela xasa henêne/otir çina',
 'nospecialpagetext' => "<big>'''To yew pela xasa nêvêrdiye waşte.'''</big>
 
-Seba /qandê lista pelanê xasanê vêrdeyan kerem ke: [[Special:SpecialPages|{{int:specialpages}}]].",
+Seba /qandê lista pelanê xasanê vêrdeyan kerem ke: [[Special:Specialpages|{{int:specialpages}}]].",
 
 # General errors
 'error'               => 'Ğelet',
@@ -290,6 +294,8 @@ Seba /qandê lista pelanê xasanê vêrdeyan kerem ke: [[Special:SpecialPages|{{
 If you choose to provide it, this will be used for giving you attribution for your work.',
 'prefs-help-email-required' => 'E-mail adrese mecburiya.',
 'wrongpassword'             => 'Parola ğeleta. Rêna / fına bıcerrebne .',
+'passwordtooshort'          => 'Parola to nêvêrena ya ki zaf kılma.
+It must have at least $1 characters and be different from your username.',
 'mailmypassword'            => 'Mı rê e-mail sera parola bırışe',
 'loginlanguagelabel'        => 'Zıwan: $1',
 
@@ -341,15 +347,16 @@ If you choose to provide it, this will be used for giving you attribution for yo
 'filesource' => 'Çımey:',
 'savefile'   => 'Dosya qeyd ke',
 
-# Image list
-'imagelist'         => 'Lista Dosya',
-'ilsubmit'          => 'Cıgeyre',
-'imgfile'           => 'dosya',
+# Special:Imagelist
+'imgfile'        => 'dosya',
+'imagelist'      => 'Lista Dosya',
+'imagelist_date' => 'Tarix',
+'imagelist_user' => 'Karber',
+
+# Image description page
 'filehist-datetime' => 'Tarix/Zeman',
 'filehist-user'     => 'Karber',
 'noimage-linktext'  => 'Bar ke',
-'imagelist_date'    => 'Tarix',
-'imagelist_user'    => 'Karber',
 
 # File deletion
 'filedelete'        => '$1 bıestere',
@@ -372,7 +379,6 @@ If you choose to provide it, this will be used for giving you attribution for yo
 'shortpages'        => 'Pelê kılmi',
 'longpages'         => 'Pelê dergi',
 'listusers'         => 'Lista karberan',
-'specialpages'      => 'Pelê xasi',
 'newpages'          => 'Pelê newey',
 'newpages-username' => 'Namey Karberi:',
 'ancientpages'      => 'Pelê khanêri',
@@ -387,6 +393,9 @@ If you choose to provide it, this will be used for giving you attribution for yo
 
 # Special:Allpages
 'allpagessubmit' => 'Şo',
+
+# Special:Categories
+'categories' => 'Kategoriy',
 
 # Special:Listusers
 'listusers-submit' => 'Bımocne',
@@ -416,8 +425,8 @@ If you choose to provide it, this will be used for giving you attribution for yo
 # Attribution
 'lastmodifiedatby' => 'Ena pele tewr peyên roca $2, $1 by $3. de biya rocaniye', # $1 date, $2 time, $3 user
 
-# Spam protection
-'categoryarticlecount' => 'Ena kategoriye de {{PLURAL:$1|yew nuşte|$1 nuştey}} estê.',
+# Special:Newimages
+'ilsubmit' => 'Cıgeyre',
 
 'exif-gaincontrol-0' => 'çino',
 
@@ -426,5 +435,8 @@ If you choose to provide it, this will be used for giving you attribution for yo
 
 # Special:Filepath
 'filepath-page' => 'Dosya:',
+
+# Special:SpecialPages
+'specialpages' => 'Pelê xasi',
 
 );

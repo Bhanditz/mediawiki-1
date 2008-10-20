@@ -4,8 +4,9 @@
  * @ingroup Language
  * @file
  *
- * @author AlefZet
  * @author Alessandro
+ * @author Siebrand
+ * @author AlefZet
  */
 
 $fallback8bitEncoding = 'windows-1254';
@@ -146,6 +147,7 @@ $messages = array(
 'tog-nolangconversion'        => 'Yazuv sisteması variantları deñiştirüvni işletme',
 'tog-ccmeonemails'            => 'Diger qullanıcılarğa yollağan mektüplerimniñ kopiyalarını maña da yolla',
 'tog-diffonly'                => 'Teñeştirme saifelerinde saifeniñ esas mündericesini kösterme',
+'tog-showhiddencats'          => 'Gizli kategoriyalarnı köster',
 
 'underline-always'  => 'Daima',
 'underline-never'   => 'Asla',
@@ -205,13 +207,21 @@ $messages = array(
 'nov'           => 'noy',
 'dec'           => 'dek',
 
-# Bits of text used by many pages
-'categories'            => 'Saife kategoriyaları',
-'pagecategories'        => '{{PLURAL:$1|Saifeniñ kategoriyası|Saifeniñ kategoriyaları}}',
-'category_header'       => '"$1" kategoriyasındaki saifeler',
-'subcategories'         => 'Alt kategoriyalar',
-'category-media-header' => '"$1" kategoriyasındaki media faylları',
-'category-empty'        => "''İşbu kategoriyada iç bir saife ya da media fayl yoq.''",
+# Categories related messages
+'pagecategories'                 => '{{PLURAL:$1|Saifeniñ kategoriyası|Saifeniñ kategoriyaları}}',
+'category_header'                => '"$1" kategoriyasındaki saifeler',
+'subcategories'                  => 'Alt kategoriyalar',
+'category-media-header'          => '"$1" kategoriyasındaki media faylları',
+'category-empty'                 => "''İşbu kategoriyada iç bir saife ya da media fayl yoq.''",
+'hidden-categories'              => 'Gizli {{PLURAL:$1|kategoriya|kategoriyalar}}',
+'hidden-category-category'       => 'Gizli kategoriyalar', # Name of the category where hidden categories will be listed
+'category-subcat-count'          => '{{PLURAL:$2|Bu kategoriyada tek bir aşağıdaki alt kategoriya bar.|Bu kategoriyada toplam $2 kategoriyadan aşağıdaki $1 alt kategoriya bar.}}',
+'category-subcat-count-limited'  => 'Bu kategoriyada aşağıdaki $1 alt kategoriya bar.',
+'category-article-count'         => '{{PLURAL:$2|Bu kategoriyada tek bir aşağıdaki saife bar.|Bu kategoriyadaki toplam $2 saifeden aşağıdaki $1 saife kösterilgen.}}',
+'category-article-count-limited' => 'Bu kategoriyada aşağıdaki $1 saife bar.',
+'category-file-count'            => '{{PLURAL:$2|Bu kategoriyada tek bir aşağıdaki fayl bar.|Bu kategoriyadaki toplam $2 fayldan aşağıdaki $1 fayl kösterilgen.}}',
+'category-file-count-limited'    => 'Bu kategoriyada aşağıdaki $1 fayl bar.',
+'listingcontinuesabbrev'         => ' (devam)',
 
 'linkprefix'        => '/^(.*?)([a-zâçğıñöşüA-ZÂÇĞİÑÖŞÜa-яёА-ЯЁ«„]+)$/sDu',
 'mainpagetext'      => "<big>'''MediaWiki muvafaqiyetnen quruldı.'''</big>",
@@ -259,7 +269,9 @@ $messages = array(
 'permalink'         => 'Soñki alına bağlantı',
 'print'             => 'Bastır',
 'edit'              => 'Deñiştir',
+'create'            => 'Yarat',
 'editthispage'      => 'Saifeni deñiştir',
+'create-this-page'  => 'Bu saifeni yarat',
 'delete'            => 'Yoq et',
 'deletethispage'    => 'Saifeni yoq et',
 'undelete_short'    => '{{PLURAL:$1|1|$1}} deñişiklikni keri ketir',
@@ -297,30 +309,29 @@ $messages = array(
 'jumptosearch'      => 'qıdır',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutsite'         => '{{SITENAME}} aqqında',
-'aboutpage'         => 'Project:Aqqında',
-'bugreports'        => 'Hatalar aqqında esabatlar',
-'bugreportspage'    => 'Project:Hatalar aqqında esabatlar',
-'copyright'         => 'Malümat $1 binaen keçilip ola.',
-'copyrightpagename' => '{{SITENAME}} müellif aqları',
-'copyrightpage'     => '{{ns:project}}:Müellif aqları',
-'currentevents'     => 'Ağımdaki vaqialar',
-'currentevents-url' => 'Project:Ağımdaki vaqialar',
-'disclaimers'       => 'Cevapkârlıq redi',
-'disclaimerpage'    => 'Project:Umumiy Malümat Muqavelesi',
-'edithelp'          => 'Nasıl deñiştirilir?',
-'edithelppage'      => 'Help:Saife nasıl deñiştirilir',
-'faq'               => 'Sıq berilgen sualler',
-'faqpage'           => 'Project:Sıq berilgen sualler',
-'helppage'          => 'Help:Münderice',
-'mainpage'          => 'Baş Saife',
-'policy-url'        => 'Project:Qaideler',
-'portal'            => 'Cemaat portalı',
-'portal-url'        => 'Project:Cemaat portalı',
-'privacy'           => 'Gizlilik esası',
-'privacypage'       => 'Project:Gizlilik esası',
-'sitesupport'       => 'Bağışlar',
-'sitesupport-url'   => 'Project:Bağış',
+'aboutsite'            => '{{SITENAME}} aqqında',
+'aboutpage'            => 'Project:Aqqında',
+'bugreports'           => 'Hatalar aqqında esabatlar',
+'bugreportspage'       => 'Project:Hatalar aqqında esabatlar',
+'copyright'            => 'Malümat $1 binaen keçilip ola.',
+'copyrightpagename'    => '{{SITENAME}} müellif aqları',
+'copyrightpage'        => '{{ns:project}}:Müellif aqları',
+'currentevents'        => 'Ağımdaki vaqialar',
+'currentevents-url'    => 'Project:Ağımdaki vaqialar',
+'disclaimers'          => 'Cevapkârlıq redi',
+'disclaimerpage'       => 'Project:Umumiy Malümat Muqavelesi',
+'edithelp'             => 'Nasıl deñiştirilir?',
+'edithelppage'         => 'Help:Saife nasıl deñiştirilir',
+'faq'                  => 'Sıq berilgen sualler',
+'faqpage'              => 'Project:Sıq berilgen sualler',
+'helppage'             => 'Help:Münderice',
+'mainpage'             => 'Baş Saife',
+'mainpage-description' => 'Baş Saife',
+'policy-url'           => 'Project:Qaideler',
+'portal'               => 'Cemaat portalı',
+'portal-url'           => 'Project:Cemaat portalı',
+'privacy'              => 'Gizlilik esası',
+'privacypage'          => 'Project:Gizlilik esası',
 
 'badaccess'        => 'İzin hatası',
 'badaccess-group0' => 'Yapacaq olğan areketiñizni yapmağa aqqıñız yoq.',
@@ -339,6 +350,7 @@ $messages = array(
 'youhavenewmessagesmulti' => '$1 saifesinde yañı beyanatıñız bar.',
 'editsection'             => 'deñiştir',
 'editold'                 => 'deñiştir',
+'viewsourceold'           => 'menbanı kör',
 'editsectionhint'         => 'Deñiştirilgen bölüm: $1',
 'toc'                     => 'Münderice',
 'showtoc'                 => 'köster',
@@ -373,7 +385,7 @@ $messages = array(
 'nosuchspecialpage' => 'Bu isimde bir mahsus saife yoq',
 'nospecialpagetext' => "<big>'''Tapılmağan bir mahsus saifege kirdiñiz.'''</big>
 
-Bar olğan bütün mahsus saifelerni [[Special:SpecialPages|{{int:specialpages}}]] saifesinde körip olursıñız.",
+Bar olğan bütün mahsus saifelerni [[Special:Specialpages|{{int:specialpages}}]] saifesinde körip olursıñız.",
 
 # General errors
 'error'                => 'Hata',
@@ -397,12 +409,8 @@ MySQL "$3: $4" hatasını bildirdi.',
 'readonlytext'         => 'Plan işlemelerinden sebep malümat bazası vaqtınca blok etildi. İşlemeler tamamlanğan soñ normalge dönecek.
 
 Malümat bazasını kilitlegen administratornıñ açıqlaması: $1',
-'missingarticle'       => 'Malümat bazası "$1" adınen tapmaq kerek olğan saifesiniñ metnini tapıp olamadı.
-
-Adeti üzre, bunıñ sebebi yoq etilgen bir saife deñişiklik jurnalına eskirgen bağlantı qullanıluvdır.
-
-Problema bunda degil olsa, ihtimalı bar ki, viki programmasında bir hata tapqandırsıñız.
-Lütfen, URL belgilep bundan administratorğa haber beriñiz.',
+'missingarticle-rev'   => '(versiya No. $1)',
+'missingarticle-diff'  => '(Farq: $1, $2)',
 'readonly_lag'         => 'Malümat bazasınıñ ekilemci serveri birlemci serverinen sinhronizirlengence malümat bazası deñiştirilmemesi içün avtomatik olaraq blok etildi.',
 'internalerror'        => 'İçki hata',
 'internalerror_info'   => 'İçki hata: $1',
@@ -458,6 +466,7 @@ Bu saytnıñ ayarlarını şahsıñızğa köre deñiştirmege unutmañız.',
 'externaldberror'            => 'Oturımıñız açılğanda bir hata oldı. Bu tış esabıñızğa deñişiklik yapmağa aqqıñız olmayuvından meydanğa kelip ola.',
 'loginproblem'               => '<b>Oturımıñız açılğanda problema çıqtı.</b><br />Bir daa etiñiz!',
 'login'                      => 'Oturım aç',
+'nav-login-createaccount'    => 'Oturım aç / Qayd ol',
 'loginprompt'                => 'Oturım açmaq içün "cookies"ge izin bermelisiñiz.',
 'userlogin'                  => 'Oturım aç / Qayd ol',
 'logout'                     => 'Oturımnı qapat',
@@ -479,7 +488,7 @@ Bu saytnıñ ayarlarını şahsıñızğa köre deñiştirmege unutmañız.',
 'yourvariant'                => 'Til saylavı:',
 'yournick'                   => 'Siziñ lağabıñız (imzalarda kösterilecek):',
 'badsig'                     => 'Yañlış imza. HTML tegleriniñ doğrulığını baqıñız.',
-'badsiglength'               => 'Qarardan ziyade uzun lağaptır, $1-den ziyade simvoldan ibaret olması mümkün degil.',
+'badsiglength'               => 'Qarardan ziyade uzun imzadır, $1-den ziyade simvoldan ibaret olması mümkün degil.',
 'email'                      => 'E-mail',
 'prefs-help-realname'        => 'Adıñız (mecburiy degildir): Eger belgileseñiz, saifelerdeki deñişikliklerini kimniñ yapqanını köstermek içün qullanılacaq.',
 'loginerror'                 => 'Oturım açma hatası',
@@ -495,7 +504,7 @@ Bu saytnıñ ayarlarını şahsıñızğa köre deñiştirmege unutmañız.',
 'nouserspecified'            => 'Qullanıcı adını belgilemek kereksiñiz.',
 'wrongpassword'              => 'Kirsetken paroliñiz yañlıştır. Lütfen, tekrar etiñiz.',
 'wrongpasswordempty'         => 'Boş parol kirmeñiz/belgilemeñiz.',
-'passwordtooshort'           => 'Paroliñiz pek qısqa. Eñ az $1 ariften ve/ya da raqamdan ibaret olmalı.',
+'passwordtooshort'           => 'Paroliñiz pek qısqa. Eñ az $1 arif ve ya raqamdan ibaret olmalı.',
 'mailmypassword'             => 'Yañı parol yiber',
 'passwordremindertitle'      => '{{grammar:genitive|{{SITENAME}}}} qullanıcınıñ parol hatırlatuvı',
 'passwordremindertext'       => 'Birev (er alda bu sizsiñiz) $1 IP adresinden yañı qullanıcı {{SITENAME}} ($4) parolini talap etti.
@@ -618,7 +627,7 @@ Siziñ blok identifikatorıñız — #$5. Lütfen, administratorlarğa mektüple
 'accmailtext'               => '$1 içün parol mında yollandı: $2.',
 'newarticle'                => '(Yañı)',
 'newarticletext'            => "Siz bu bağlantınen şimdilik yoq olğan saifege avuştıñız. Yañı bir saife yaratmaq içün aşağıda bulunğan pencerege metin yazıñız (tafsilâtlı malümat almaq içün [[{{MediaWiki:Helppage}}|yardım saifesine]] baqıñız). Bu saifege tesadüfen avuşqan olsañız, brauzeriñizdeki '''keri''' dögmesine basıñız.",
-'anontalkpagetext'          => "----''Bu muzakere saifesi şimdilik qayd olunmağan ya da oturımını açmağan adsız (anonim) qullanıcığa mensüptir. İdentifikatsiya içün IP adres işletile. Eger siz anonim qullanıcı olsañız ve sizge kelgen beyanatlarnı yañlıştan kelgenini belleseñiz (bir IP adresinden bir qaç qullanıcı faydalanıp ola), lütfen, artıq bunıñ kibi qarışıqlıq olmasın dep [[Special:UserLogin|oturım açıñız]].''",
+'anontalkpagetext'          => "----''Bu muzakere saifesi şimdilik qayd olunmağan ya da oturımını açmağan adsız (anonim) qullanıcığa mensüptir. İdentifikatsiya içün IP adres işletile. Eger siz anonim qullanıcı olsañız ve sizge kelgen beyanatlarnı yañlıştan kelgenini belleseñiz (bir IP adresinden bir qaç qullanıcı faydalanıp ola), lütfen, artıq bunıñ kibi qarışıqlıq olmasın dep [[Special:Userlogin|oturım açıñız]].''",
 'noarticletext'             => 'Bu saife boştır. Bu serlevanı başqa saifelerde [[Special:Search/{{PAGENAME}}|qıdırıp olasıñız]] ya da bu saifeni özüñiz [{{fullurl:{{FULLPAGENAME}}|action=edit}} yazıp olasıñız].',
 'userpage-userdoesnotexist' => '"$1" adlı qullanıcı yoqtır. Tamam bu saifeni deñiştirmege istegeniñizni teşkeriñiz.',
 'clearyourcache'            => "'''İhtar:''' Ayarlarıñıznı saqlağandan soñ, brauzeriñizniñ keşini de temizlemek kereksiñiz: '''Mozilla / Firefox / Safari:''' ''Shift'' basılı ekende saifeni yañıdan yüklep ya da ''Ctrl-Shift-R'' yapıp (Apple Mac içün ''Cmd-Shift-R'');, '''Internet Explorer:''' ''Ctrl-F5'', '''Konqueror:''' Tek saifeni yañıdan yükle dögmesine basıp.",
@@ -638,7 +647,6 @@ açıñız.</strong>',
 'token_suffix_mismatch'     => '<strong>Siziñ programmañız tarir penceresinde punktuatsiya işaretlerini doğru işlemegeni içün yapqan deñişikligiñiz qabul olunmadı. Deñişiklik saifeniñ metni körünişiniñ bozulmaması içün lâğu etildi.
 Bunıñ kibi problemalar anonimizirlegen hatalı web-proksiler qullanuvdan çıqıp olalar.</strong>',
 'editing'                   => '"$1" saifesini deñiştirmektesiñiz',
-'editinguser'               => "'''[[User:$1|$1]]''' qullanıcısınıñ ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]]) izinlerini deñiştirmektesiñiz",
 'editingsection'            => '"$1" saifesinde bölüm deñiştirmektesiñiz',
 'editingcomment'            => '$1 saifesine beyanat eklemektesiñiz.',
 'editconflict'              => 'Deñişiklik zıt ketüvi: $1',
@@ -671,9 +679,10 @@ Ayrıca, mında isse qoşıp, bu isseniñ özüñiz tarafından yazılğanına, 
 'templatesusedsection'      => 'Bu bölümde qullanılğan şablonlar:',
 'template-protected'        => '(qorçalav altında)',
 'template-semiprotected'    => '(qısmen qorçalav altında)',
+'hiddencategories'          => 'Bu saife $1 gizli kategoriyağa mensüptir:',
 'nocreatetitle'             => 'Saife yaratuv sıñırlıdır',
 'nocreatetext'              => '{{SITENAME}} saytında yañı saife yaratuv sıñırlıdır.
-Keri qaytıp mevcüt olğan saifeni deñiştire, [[Special:UserLogin|oturım aça ya da yañı bir esap yaratıp olasıñız]].',
+Keri qaytıp mevcüt olğan saifeni deñiştire, [[Special:Userlogin|oturım aça ya da yañı bir esap yaratıp olasıñız]].',
 'nocreate-loggedin'         => '{{SITENAME}} saytında yañı saifeler yaratmağa iziniñiz yoqtır.',
 'permissionserrors'         => 'İrişim aqlarınıñ hataları',
 'permissionserrorstext'     => 'Bunı yapmağa iziniñiz yoqtır. {{PLURAL:$1|Sebep|Sebepler}}:',
@@ -697,7 +706,6 @@ $3 mına böyle bir sebep belgiledi: ''$2''",
 'nohistory'           => 'Bu saifeniñ keçmiş versiyası yoq.',
 'revnotfound'         => 'Versiya tapılmadı',
 'revnotfoundtext'     => 'Saifeniñ eski versiyası tapılmadı. Lütfen, bu saifege kirmek içün qullanğan bağlantıñıznıñ doğrulığını teşkeriñiz.',
-'loadhist'            => 'Saife keçmişi yüklene',
 'currentrev'          => 'Al-azırki versiya',
 'revisionasof'        => 'Saifeniñ $1 tarihındaki alı',
 'revision-info'       => 'Saifeniñ $2 tarafından oluştırılğan $1 tarihındaki alı',
@@ -707,7 +715,6 @@ $3 mına böyle bir sebep belgiledi: ''$2''",
 'cur'                 => 'farq',
 'next'                => 'soñraki',
 'last'                => 'soñki',
-'orig'                => 'asıl',
 'page_first'          => 'ilk',
 'page_last'           => 'soñki',
 'histlegend'          => "(farq) = al-azırki versiya ile aradaki farq,
@@ -737,9 +744,6 @@ Vikide bu saifege oşağan saifelerni [[Special:Search|tapıp baqıñız]].',
 'revdelete-hide-restricted' => 'Bu sıñırlavlarnı administratorlar ve qullanıcılar içün işlet',
 'revdelete-submit'          => 'Saylanğan versiyağa işlet',
 
-# Oversight log
-'oversightlog' => 'Gizleme jurnalı',
-
 # Diffs
 'history-title'           => '"$1" saifesiniñ deñişiklik tarihı',
 'difference'              => '(Versiyalar arası farqlar)',
@@ -766,7 +770,6 @@ Vikide bu saifege oşağan saifelerni [[Special:Search|tapıp baqıñız]].',
 'showingresultsnum'     => "Aşağıda №&nbsp;'''$2'''den başlap {{PLURAL:$3|'''1''' netice|'''$3''' netice}} buluna.",
 'nonefound'             => "'''Tenbi''': Muvafaqiyetsiz qıdıruvnıñ sebebi indeksirlenip olamağan \"bu\" ve \"da\" kibi sözlerni qıdıruv ya da birden ziyade qıdırılğan sözni qullanuv ola bile (tek qıdıruv içün kirsetilgen bütün sözleri olğan saifeler kösterile).",
 'powersearch'           => 'Qıdır',
-'powersearchtext'       => 'Qıdıruv yapılacaq isim fezalarnı saylañız:<br />$1<br />$2 yollanmalarnı cedvelle<br />Qıdırılacaq: $3 $9',
 'searchdisabled'        => '{{SITENAME}} saytında qıdıruv yapma vaqtınca toqtatıldı. Bu arada Google qullanıp {{SITENAME}} içinde qıdıruv yapıp olasıñız. Qıdıruv saytlarında indekslemeleriniñ biraz eski qalğan ola bilecegini köz ögüne alıñız.',
 
 # Preferences page
@@ -774,7 +777,7 @@ Vikide bu saifege oşağan saifelerni [[Special:Search|tapıp baqıñız]].',
 'mypreferences'         => 'Ayarlarım',
 'prefs-edits'           => 'Yapqan deñişiklik sayısı:',
 'prefsnologin'          => 'Oturım açmadıñız',
-'prefsnologintext'      => 'Şahsiy ayarlarıñıznı deñiştirmek içün [[Special:UserLogin|oturım açmaq]] kereksiñiz.',
+'prefsnologintext'      => 'Şahsiy ayarlarıñıznı deñiştirmek içün [[Special:Userlogin|oturım açmaq]] kereksiñiz.',
 'prefsreset'            => 'Ayarlar ilk alına ketirildi.',
 'qbsettings'            => 'Vızlı irişim sutun ayarları',
 'changepassword'        => 'Parol deñiştir',
@@ -820,9 +823,11 @@ Vikide bu saifege oşağan saifelerni [[Special:Search|tapıp baqıñız]].',
 'files'                 => 'Fayllar',
 
 # User rights
+'userrights'               => 'Qullanıcı aqları idare etüvi.', # Not used as normal message but as header for the special page itself
 'userrights-lookup-user'   => 'Qullanıcı gruppalarnını idare et',
 'userrights-user-editname' => 'Öz qullanıcı adıñıznen kiriñiz:',
 'editusergroup'            => 'Qullanıcı gruppaları nizamla',
+'editinguser'              => "'''[[User:$1|$1]]''' qullanıcısınıñ ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]]) izinlerini deñiştirmektesiñiz",
 'userrights-editusergroup' => 'Qullanıcı gruppaları nizamla',
 
 # Groups
@@ -873,7 +878,7 @@ Vikide bu saifege oşağan saifelerni [[Special:Search|tapıp baqıñız]].',
 'recentchangeslinked'          => 'Bağlı deñişiklikler',
 'recentchangeslinked-title'    => '"$1" ile bağlı deñişiklikler',
 'recentchangeslinked-noresult' => 'Saylanğan vaqıtta bağlı saifelerde iç deñişiklik yoq edi.',
-'recentchangeslinked-summary'  => "Bu mahsus saifede bağlı saifelerde soñki yapqan deñişiklikler cedveli mevcüt. Közetüv cedveliñizdeki saifeler '''qalın''' olaraq kösterile.",
+'recentchangeslinked-summary'  => "Bu mahsus saifede bağlı saifelerde soñki yapqan deñişiklikler cedveli mevcüt. [[Special:Watchlist|Közetüv cedveliñiz]]deki saifeler '''qalın''' olaraq kösterile.",
 
 # Upload
 'upload'                      => 'Fayl yükle',
@@ -881,10 +886,10 @@ Vikide bu saifege oşağan saifelerni [[Special:Search|tapıp baqıñız]].',
 'reupload'                    => 'Yañıdan yükle',
 'reuploaddesc'                => 'Yükleme formasına keri qayt.',
 'uploadnologin'               => 'Oturım açmadıñız',
-'uploadnologintext'           => 'Fayl yüklep olmaq içün [[Special:UserLogin|oturım açmaq]] kereksiñiz.',
+'uploadnologintext'           => 'Fayl yüklep olmaq içün [[Special:Userlogin|oturım açmaq]] kereksiñiz.',
 'upload_directory_read_only'  => 'Web serverniñ ($1) cüzdanına fayllar saqlamağa aqları yoqtır.',
 'uploaderror'                 => 'Yükleme hatası',
-'uploadtext'                  => "Fayllar yüklemek içün aşağıdaki formanı qullanıñız. Evelce yüklengen resim tapmaq ya da baqmaq içün [[Special:ImageList|yüklengen fayllar cedveline]] keçiñiz, bundan ğayrı fayl yüklenüv ve yoq etilüv qaydlarını [[Special:Log/upload|yüklenüv jurnalında]] tapıp olasıñız.
+'uploadtext'                  => "Fayllar yüklemek içün aşağıdaki formanı qullanıñız. Evelce yüklengen resim tapmaq ya da baqmaq içün [[Special:Imagelist|yüklengen fayllar cedveline]] keçiñiz, bundan ğayrı fayl yüklenüv ve yoq etilüv qaydlarını [[Special:Log/upload|yüklenüv jurnalında]] tapıp olasıñız.
 
 Saifede resim qullanmaq içün böyle şekilli bağlantılar qullanıñız '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.jpg]]</nowiki>''', '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.png|resim tarifi]]</nowiki>''' ya da '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:File.ogg]]</nowiki>''' faylğa vastasız bağlantı içün.",
 'upload-permitted'            => 'İzinli fayl çeşitleri: $1.',
@@ -938,6 +943,7 @@ Lütfen, keri qaytıñız, fayl ismini deñiştirip yañıdan yükleñiz. [[Imag
 'uploadvirus'                 => 'Bu fayl viruslıdır! $1 baqıñız',
 'sourcefilename'              => 'Yüklemege istegeniñiz fayl:',
 'destfilename'                => 'Faylnıñ istenilgen adı:',
+'upload-maxfilesize'          => 'Maksimal fayl büyükligi: $1',
 'watchthisupload'             => 'Bu faylnı közetüv cedveline kirset',
 'filewasdeleted'              => 'Bu isimde bir fayl mevcüt edi, amma yoq etilgen edi. Lütfen, tekrar yüklemeden evel $1 teşkeriñiz.',
 'upload-wasdeleted'           => "'''Diqqat: Evelde yoq etilgen faylnı yüklemektesiñiz.'''
@@ -965,18 +971,17 @@ Bu fayl içün yoq etüvniñ jurnalını mında baqıp olasıñız:",
 'upload_source_url'  => ' (doğru, püblik tarzda kirmege musaadeli internet adres)',
 'upload_source_file' => ' (kompyuteriñizdeki fayl)',
 
-# Image list
-'imagelist'                 => 'Resim cedveli',
-'imagelisttext'             => "Aşağıdaki cedvelde $2 köre tizilgen {{PLURAL:$1|'''1''' fayldır|'''$1''' fayldır}}.",
-'getimagelist'              => 'fayllar cedveli alınmaqta',
-'ilsubmit'                  => 'Qıdır',
-'showlast'                  => 'Eñ soñki $1 faylnı $2 köster.',
-'byname'                    => 'elifbe sırasınen',
-'bydate'                    => 'hronologik sıranen',
-'bysize'                    => 'büyüklik sırasınen',
-'imgdelete'                 => 'yoq et',
-'imgdesc'                   => 'tanıtuv',
-'imgfile'                   => 'fayl',
+# Special:Imagelist
+'imagelist_search_for'  => 'Fayl adı qıdıruv:',
+'imgfile'               => 'fayl',
+'imagelist'             => 'Resim cedveli',
+'imagelist_date'        => 'Tarih',
+'imagelist_name'        => 'Fayl adı',
+'imagelist_user'        => 'Qullanıcı',
+'imagelist_size'        => 'Büyüklik',
+'imagelist_description' => 'Tasvir',
+
+# Image description page
 'filehist'                  => 'Faylnıñ keçmişi',
 'filehist-help'             => 'Faylnıñ kerekli anki alını körmek içün tarihqa/saatqa basıñız.',
 'filehist-deleteall'        => 'episini yoq et',
@@ -989,7 +994,7 @@ Bu fayl içün yoq etüvniñ jurnalını mında baqıp olasıñız:",
 'filehist-filesize'         => 'Fayl büyükligi',
 'filehist-comment'          => 'İzaat',
 'imagelinks'                => 'Qullanılğanı saifeler',
-'linkstoimage'              => 'Bu faylğa bağlantı olğan saifeler:',
+'linkstoimage'              => 'Bu faylğa bağlantı olğan $1 saife:',
 'nolinkstoimage'            => 'Bu faylğa bağlanğan saife yoq.',
 'sharedupload'              => 'Bu fayl ortaq fezağa yüklengen ve diger proyektlerde de qullanılğan bir fayl ola bilir.',
 'shareduploadwiki'          => 'Tafsilâtnı $1 saifesinde tapmaq mümkün.',
@@ -997,12 +1002,6 @@ Bu fayl içün yoq etüvniñ jurnalını mında baqıp olasıñız:",
 'noimage'                   => 'Bu isimde fayl yoq. Siz $1.',
 'noimage-linktext'          => 'yüklep olasıñız',
 'uploadnewversion-linktext' => 'Faylnıñ yañısını yükleñiz',
-'imagelist_date'            => 'Tarih',
-'imagelist_name'            => 'Fayl adı',
-'imagelist_user'            => 'Qullanıcı',
-'imagelist_size'            => 'Büyüklik',
-'imagelist_description'     => 'Tasvir',
-'imagelist_search_for'      => 'Fayl adı qıdıruv:',
 
 # File reversion
 'filerevert'                => 'Eski versiyağa keri qayt $1',
@@ -1067,7 +1066,6 @@ Eger saifede, [[MediaWiki:Disambiguationspage]] saifesinde adı keçken şablon 
 'brokenredirects-delete' => '(yoq et)',
 
 'withoutinterwiki'         => 'Diger tillerdeki versiyalarğa bağlantıları olmağan saifeler',
-'withoutinterwiki-header'  => 'Bu saifelerde diger tillerdeki versiyalarğa bağlantılar yoq:',
 'withoutinterwiki-summary' => 'Bu saifelerde diger tillerdeki versiyalarğa bağlantılar yoq:',
 
 'fewestrevisions' => 'Eñ az deñiştirme yapılğan saifeler',
@@ -1096,7 +1094,6 @@ Eger saifede, [[MediaWiki:Disambiguationspage]] saifesinde adı keçken şablon 
 'mostcategories'          => 'Eñ ziyade kategoriyağa bağlanğan saifeler',
 'mostimages'              => 'Eñ çoq qullanılğan resimler',
 'mostrevisions'           => 'Eñ çoq deñişiklikke oğrağan saifeler',
-'allpages'                => 'Bütün saifeler',
 'prefixindex'             => 'Prefiks cedveli',
 'shortpages'              => 'Qısqa saifeler',
 'longpages'               => 'Uzun saifeler',
@@ -1106,13 +1103,9 @@ Eger saifede, [[MediaWiki:Disambiguationspage]] saifesinde adı keçken şablon 
 'protectedpagestext'      => 'Bu saifelerniñ deñiştirüvge qarşı qorçalavı bar',
 'protectedtitles'         => 'Yasaqlanğan serlevalar',
 'listusers'               => 'Qullanıcılar cedveli',
-'specialpages'            => 'Mahsus saifeler',
-'spheading'               => 'Bütün qullanıcılarnı meraqlandırıp olacaq mahsus saifeler',
-'restrictedpheading'      => 'Administratorlarnıñ tesirlerinen bağlı mahsus saifeler',
 'newpages'                => 'Yañı saifeler',
 'newpages-username'       => 'Qullanıcı adı:',
 'ancientpages'            => 'Eñ eski saifeler',
-'intl'                    => 'Tiller arası bağlantılar',
 'move'                    => 'Adını deñiştir',
 'movethispage'            => 'Saifeniñ adını deñiştir',
 'pager-newer-n'           => '{{PLURAL:$1|1 daa yañıca|$1 daa yañıca}}',
@@ -1122,13 +1115,6 @@ Eger saifede, [[MediaWiki:Disambiguationspage]] saifesinde adı keçken şablon 
 'booksources'               => 'Kitaplar menbası',
 'booksources-search-legend' => 'Kitaplar menbasını qıdıruv',
 'booksources-go'            => 'Qıdır',
-
-'categoriespagetext' => 'Vikide aşağıdaki kategoriyalar mevcüttir.',
-'data'               => 'Malümatlar',
-'userrights'         => 'Qullanıcı aqları idare etüvi.',
-'groups'             => 'Qullanıcı gruppaları',
-'alphaindexline'     => '$1-den $2-ge',
-'version'            => 'Versiya',
 
 # Special:Log
 'specialloguserlabel'  => 'Qullanıcı:',
@@ -1141,6 +1127,8 @@ Eger saifede, [[MediaWiki:Disambiguationspage]] saifesinde adı keçken şablon 
 'log-title-wildcard'   => 'Bu simvollardan başlanğan serlevalarnı qıdır',
 
 # Special:Allpages
+'allpages'          => 'Bütün saifeler',
+'alphaindexline'    => '$1-den $2-ge',
 'nextpage'          => 'Soñraki saife ($1)',
 'prevpage'          => 'Evelki saife ($1)',
 'allpagesfrom'      => 'Cedvelge çekmege başlanılacaq arifler:',
@@ -1154,13 +1142,19 @@ Eger saifede, [[MediaWiki:Disambiguationspage]] saifesinde adı keçken şablon 
 'allpagesbadtitle'  => 'Saifeniñ adı keçerli degil. Serlevada tiller arası prefiksi ya da vikiler arası bağlantı ya da başqa qullanıluvı yasaq olğan simvollar bardır.',
 'allpages-bad-ns'   => '{{SITENAME}} saytında "$1" isim fezası yoqtır.',
 
+# Special:Categories
+'categories'                    => 'Saife kategoriyaları',
+'categoriespagetext'            => 'Vikide aşağıdaki kategoriyalar mevcüttir.',
+'special-categories-sort-count' => 'sayılarına köre sırala',
+'special-categories-sort-abc'   => 'elifbe sırasınen sırala',
+
 # Special:Listusers
 'listusers-submit'   => 'Köster',
 'listusers-noresult' => 'İç bir qullanıcı tapılmadı.',
 
 # E-mail user
 'mailnologin'     => 'Mektüp yollanacaq adresi yoqtır',
-'mailnologintext' => 'Diger qullanıcılarğa elektron mektüpler yollap olmaq içün [[Special:UserLogin|oturım açmalısıñız]] ve [[Special:Preferences|ayarlarıñızda]] mevcüt olğan e-mail adresiniñ saibi olmalısıñız.',
+'mailnologintext' => 'Diger qullanıcılarğa elektron mektüpler yollap olmaq içün [[Special:Userlogin|oturım açmalısıñız]] ve [[Special:Preferences|ayarlarıñızda]] mevcüt olğan e-mail adresiniñ saibi olmalısıñız.',
 'emailuser'       => 'Qullanıcığa mektüp',
 'emailpage'       => 'Qullanıcığa elektron mektüp yolla',
 'emailpagetext'   => 'İşbu qullanıcı öz ayarlarında mevcüt olğan elektron poçta adresini yazğan olsa, aşağıdaki formanı toldurıp oña beyanat yollap olursıñız.
@@ -1186,9 +1180,9 @@ Eger saifede, [[MediaWiki:Disambiguationspage]] saifesinde adı keçken şablon 
 'nowatchlist'          => 'Siziñ közetüv cedveliñiz boştır.',
 'watchlistanontext'    => 'Közetüv cedvelini baqmaq ya da deñiştirmek içün $1 borclusıñız.',
 'watchnologin'         => 'Oturım açmaq kerek',
-'watchnologintext'     => 'Öz közetüv cedveliñizni deñiştirmek içün [[Special:UserLogin|oturım açıñız]]',
+'watchnologintext'     => 'Öz közetüv cedveliñizni deñiştirmek içün [[Special:Userlogin|oturım açıñız]]',
 'addedwatch'           => 'Közetüv cedveline kirsetmek',
-'addedwatchtext'       => '"[[:$1]]" saifesi [[Special:Watchlist|kozetüv cevdeliñizge]] kirsetildi. Bu saifedeki ve onıñnen bağlı saifelerdeki olacaq deñişiklikler bu cedvelde belgilenecek, em de olar közge çarpması içün [[Special:RecentChanges|yañı deñişiklik cedveli]] bulunğan saifede qalın olaraq kösterilir.
+'addedwatchtext'       => '"[[:$1]]" saifesi [[Special:Watchlist|kozetüv cevdeliñizge]] kirsetildi. Bu saifedeki ve onıñnen bağlı saifelerdeki olacaq deñişiklikler bu cedvelde belgilenecek, em de olar közge çarpması içün [[Special:Recentchanges|yañı deñişiklik cedveli]] bulunğan saifede qalın olaraq kösterilir.
 Birazdan soñ közetüv cedveliñizden bir de bir saifeni yoq etmege isteseñiz de, saifeniñ yuqarısındaki sol tarafta "közetme" dögmesine basıñız.',
 'removedwatch'         => 'Közetüv cedvelinden yoq et',
 'removedwatchtext'     => '"[[:$1]]" saifesi közetüv cedveliñizden yoq etildi.',
@@ -1214,7 +1208,7 @@ Birazdan soñ közetüv cedveliñizden bir de bir saifeni yoq etmege isteseñiz 
 'watchlist-show-minor' => 'Kiçik deñişikliklerni köster',
 'watchlist-hide-minor' => 'Kiçik deñişikliklerni gizle',
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Közetüv cedveline eklenmekte...',
 'unwatching' => 'Közetüv cedvelinden yoq etilmekte...',
 
@@ -1260,7 +1254,7 @@ Yardım ve teklifler içün:
 'exblank'                     => 'saife metini boş',
 'historywarning'              => 'Tenbi: Siz yoq etmek üzre olğan saifeniñ keçmişi bardır:',
 'confirmdeletetext'           => 'Bir saifeni ya da resimni bütün keçmişi ile birlikte malümat bazasından qalıcı olaraq yoq etmek üzresiñiz.
-Lütfen, neticelerini añlağanıñıznı, [[Special:WhatLinksHere/{{FULLPAGENAME}}|saifege bağlantılarını]] teşkergenden soñ ve [[{{MediaWiki:Policy-url}}|yoq etüv politikasına]] uyğunlığını diqqatqa alıp, bunı yapmağa istegeniñizni tasdıqlañız.',
+Lütfen, neticelerini añlağanıñıznı, [[Special:Whatlinkshere/{{FULLPAGENAME}}|saifege bağlantılarını]] teşkergenden soñ ve [[{{MediaWiki:Policy-url}}|yoq etüv politikasına]] uyğunlığını diqqatqa alıp, bunı yapmağa istegeniñizni tasdıqlañız.',
 'actioncomplete'              => 'İşlem tamamlandı.',
 'deletedtext'                 => '"<nowiki>$1</nowiki>" yoq etildi.
 yaqın zamanda yoq etilgenlerni körmek içün: $2.',
@@ -1281,15 +1275,14 @@ yaqın zamanda yoq etilgenlerni körmek içün: $2.',
 'revertpage'                  => '[[Special:Contributions/$2|$2]] ([[User talk:$2|muzakere]]) tarafından yapılğan deñişiklikler keri alınıp, [[User:$1|$1]] tarafından deñiştirilgen evelki versiya keri ketirildi.', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'protectlogpage'              => 'Qorçalav jurnalı',
 'protectlogtext'              => 'Qorçalavğa aluv/çıqaruv ile bağlı deñişiklikler jurnalını körmektesiñiz.
-Qorçalav altına alınğan saifeler tam cedveli [[Special:ProtectedPages|bu saifede]] körip olasıñız.',
+Qorçalav altına alınğan saifeler tam cedveli [[Special:Protectedpages|bu saifede]] körip olasıñız.',
 'protectedarticle'            => '"[[$1]]" qorçalav altına alındı',
 'unprotectedarticle'          => 'qorçalav çıqarlıdı: "[[$1]]"',
-'confirmprotect'              => 'Qorçalavnı tasdıqla',
+'protect-legend'              => 'Qorçalavnı tasdıqla',
 'protectcomment'              => 'Qorçalav altına aluv sebebi',
 'protectexpiry'               => 'Bitiş tarihı:',
 'protect_expiry_invalid'      => 'Bitiş tarihı keçersiz.',
 'protect_expiry_old'          => 'Bitiş zamanı keçmiştedir.',
-'unprotectsub'                => '(qorçalav çıqarılır "$1")',
 'protect-unchain'             => 'Saife adı deñiştirüv kilitini çıqar',
 'protect-text'                => '<strong>[[<nowiki>$1</nowiki>]]</strong> saifesiniñ qorçalav seviyesini mından körip olur ve deñiştirip olasıñız.',
 'protect-locked-access'       => 'Qullanıcı esabıñız saifeniñ qorçalav seviyelerini deñiştirme yetkisine saip degil. <strong>$1</strong> saifesiniñ keçerli ayarları şularıdır:',
@@ -1337,8 +1330,6 @@ Bu saifeniñ qorçalav seviyesini deñiştirip olasıñız, amma kaskadlı qorç
 'mycontris'     => 'isselerim',
 'contribsub2'   => '$1 ($2)',
 'nocontribs'    => 'Bu kriteriylerge uyğan deñişiklik tapılamadı',
-'ucnote'        => 'Aşağıda bu qullanıcı yapqan soñki <b>$2</b> kün içinde soñki <b>$1</b> deñişikligi bulunmaqta.',
-'uclinks'       => 'Soñki $1 deñişiklini baq; soñki $2 kün içün baq.',
 'uctop'         => '(soñki)',
 'month'         => 'Bu ay (ve ondan erte):',
 'year'          => 'Bu sene (ve ondan erte):',
@@ -1349,8 +1340,6 @@ Bu saifeniñ qorçalav seviyesini deñiştirip olasıñız, amma kaskadlı qorç
 'sp-contributions-search'      => 'İsseler qıdıruv',
 'sp-contributions-username'    => 'IP adresi ya da qullanıcı adı:',
 'sp-contributions-submit'      => 'Qıdır',
-
-'sp-newimages-showfrom' => '$1, $2 tarihından başlap yañı fayllar köster',
 
 # What links here
 'whatlinkshere'       => 'Saifege bağlantılar',
@@ -1381,7 +1370,7 @@ Bu saifeniñ qorçalav seviyesini deñiştirip olasıñız, amma kaskadlı qorç
 'badipaddress'            => 'Keçersiz IP adresi',
 'blockipsuccesssub'       => 'IP adresni ban etüv işlevi muvafaqiyetli oldı',
 'blockipsuccesstext'      => '"$1" ban etildi.
-<br />[[Special:IPBlockList|IP adresi ban etilgenler]] cedveline baqıñız .',
+<br />[[Special:Ipblocklist|IP adresi ban etilgenler]] cedveline baqıñız .',
 'unblockip'               => 'Qullanıcınıñ ban etüvini çıqar',
 'ipusubmit'               => 'Bu adresniñ ban etüvini çıqar',
 'ipblocklist'             => 'Blok etilgen qullanıcılar ve IP adresleri cedveli',
@@ -1394,7 +1383,7 @@ Bu saifeniñ qorçalav seviyesini deñiştirip olasıñız, amma kaskadlı qorç
 'autoblocker'             => 'Avtomatik olaraq ban ettiñiz çünki yaqın zamanda IP adresiñiz "[[User:$1|$1]]" qullanıcısı tarafından qullanıldı. $1 adlı qullanıcınıñ ban etilüvi içün berilgen sebep: "\'\'\'$2\'\'\'"',
 'blocklogpage'            => 'İrişim ban etüv jurnalı',
 'blocklogentry'           => '"[[$1]]" irişimi $2 $3 toqtatıldı. Sebep',
-'blocklogtext'            => 'Mında qullanıcı irişimine yönelik ban etüv ve ban çıqaruv jurnalı cedvellene. Avtomatik IP adresi ban etüvleri cedvelge kirsetilmedi. Al-azırda irişimi toqtatılğan qullanıcılarnı [[Special:IPBlockList|IP ban etüv cedveli]] saifesinden körip olasıñız.',
+'blocklogtext'            => 'Mında qullanıcı irişimine yönelik ban etüv ve ban çıqaruv jurnalı cedvellene. Avtomatik IP adresi ban etüvleri cedvelge kirsetilmedi. Al-azırda irişimi toqtatılğan qullanıcılarnı [[Special:Ipblocklist|IP ban etüv cedveli]] saifesinden körip olasıñız.',
 'unblocklogentry'         => '$1 qullanıcınıñ ban etüvi çıqarıldı',
 'block-log-flags-noemail' => 'e-mail blok etildi',
 'ipb_expiry_invalid'      => 'Keçersiz bitiş zamanı.',
@@ -1406,7 +1395,7 @@ Bu saifeniñ qorçalav seviyesini deñiştirip olasıñız, amma kaskadlı qorç
 'lockbtn' => 'Malümat bazası kilitli',
 
 # Move page
-'movepage'                => 'Ad deñişikligi',
+'move-page-legend'        => 'Ad deñişikligi',
 'movepagetext'            => "Aşağıdaki formanı qullanıp saifeniñ adını deñiştirirsiñiz.
 Bunıñnen beraber deñişiklik jurnalını da yañı adğa avuştırırsıñız.
 Eski ad yañı adğa yollama olur.
@@ -1427,21 +1416,18 @@ adı avtomatik tarzda deñiştirilecek. '''Müstesnalar:'''
 Böyle allarda, kerek olsa, saifelerni qolnen taşımağa ya da birleştirmege mecbur olursıñız.",
 'movearticle'             => 'Eski ad',
 'movenologin'             => 'Oturım açmadıñız',
-'movenologintext'         => 'Saifeniñ adını deñiştirip olmaq içün [[Special:UserLogin|oturım açıñız]].',
+'movenologintext'         => 'Saifeniñ adını deñiştirip olmaq içün [[Special:Userlogin|oturım açıñız]].',
 'movenotallowed'          => '{{SITENAME}} saytında saifeler adlarını deñiştirmege iziniñiz yoq.',
 'newtitle'                => 'Yañı ad',
 'move-watch'              => 'Bu saifeni közet',
 'movepagebtn'             => 'Adını deñiştir',
 'pagemovedsub'            => 'Ad deñişikligi tamamlandı',
-'movepage-moved'          => '<big>\'\'\'"$1" saifesiniñ yañı adı: "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'Bu adda bir saife endi mevcüt ya da siz yazğan ad yasaqlı.
 Lütfen, başqa bir ad saylap yazıñız.',
 'cantmove-titleprotected' => 'Siz yazğan yañı ad yasaqlıdır, bunıñ içün saife adını deñiştirmekniñ çaresi yoq.',
 'talkexists'              => "'''Saifeniñ adı deñiştirildi, amma muzakere saifesiniñ adını deñiştirmege mümkünlik yoqtır, çünki aynı bu adda bir saife endi mevcüttir. Lütfen, bularnı qolnen birleştiriñiz.'''",
 'movedto'                 => 'adı deñiştirildi:',
 'movetalk'                => 'Muzakere saifesiniñ adını deñiştir.',
-'talkpagemoved'           => 'Bağlı muzakere saifesiniñ de adı deñiştirildi.',
-'talkpagenotmoved'        => 'Bağlı muzakere seifesiniñ adı <strong>deñiştirilmedi</strong>.',
 '1movedto2'               => '"[[$1]]" saifesiniñ adı "[[$2]]" olaraq deñiştirildi',
 '1movedto2_redir'         => '[[$1]] serlevası [[$2]] saifesine yollandı',
 'movelogpage'             => 'Ad deñişikligi jurnalı',
@@ -1451,7 +1437,7 @@ Lütfen, başqa bir ad saylap yazıñız.',
 'delete_and_move'         => 'Yoq et ve adını deñiştir',
 'delete_and_move_text'    => '==Yoq etmek lâzimdir==
 
-"[[:$1]]" saifesi endi mevcüt. Adını deñiştirip olmaq içün onı yoq etmege isteysiñizmi?',
+"[[$1]]" saifesi endi mevcüt. Adını deñiştirip olmaq içün onı yoq etmege isteysiñizmi?',
 'delete_and_move_confirm' => 'Ebet, bu saifeni yoq et',
 'delete_and_move_reason'  => 'İsim deñiştirip olmaq içün yoq etildi',
 'selfmove'                => 'Bu saifeniñ adını deñiştirmege imkân yoqtır, çünki asıl ile yañı adları bir kele.',
@@ -1512,7 +1498,6 @@ MediaWiki interfeysiniñ çeşit tillerge tercime etüvde iştirak etmege istese
 'tooltip-n-recentchanges'         => 'Vikide yapılğan soñki deñişikliklerniñ cedveli.',
 'tooltip-n-randompage'            => 'Tesadüfiy bir saifege barıñız',
 'tooltip-n-help'                  => 'Yardım almaq içün.',
-'tooltip-n-sitesupport'           => 'Maddiy destek',
 'tooltip-t-whatlinkshere'         => 'Bu saifege bağlantı bergen diger viki saifeleriniñ cedveli',
 'tooltip-t-recentchangeslinked'   => 'Bu saifege bağlantı bergen saifelerdeki soñki deñişiklikler',
 'tooltip-feed-rss'                => 'Bu saife içün RSS translâtsiyası',
@@ -1561,16 +1546,12 @@ MediaWiki interfeysiniñ çeşit tillerge tercime etüvde iştirak etmege istese
 'nocredits'        => 'Bu saife içün qullanıcılar cedveli yoq.',
 
 # Spam protection
-'spamprotectiontitle'    => 'Spam qarşı qorçalav filtri',
-'spamprotectiontext'     => 'Saqlamağa istegen saifeñiz spam filtri tarafından blok etildi. Büyük ihtimallı ki, bir tış bağlantıdan menbalana.',
-'spamprotectionmatch'    => 'Spam-filtrden işbu beyanat keldi: $1',
-'subcategorycount'       => 'Bu kategoriyada {{PLURAL:$1|1|$1}} alt kategoriya bar.',
-'categoryarticlecount'   => 'Bu kategoriyada {{PLURAL:$1|1|$1}} saife bar.',
-'category-media-count'   => 'Bu kategoriyada {{PLURAL:$1|1|$1}} fayl bar.',
-'listingcontinuesabbrev' => ' (devam)',
-'spambot_username'       => 'Spamdan temizlev',
-'spam_reverting'         => '$1 saytına bağlantısı olmağan soñki versiyağa keri ketirüv',
-'spam_blanking'          => 'Bar olğan versiyalarda $1 saytına bağlantılar bar, temizlev',
+'spamprotectiontitle' => 'Spam qarşı qorçalav filtri',
+'spamprotectiontext'  => 'Saqlamağa istegen saifeñiz spam filtri tarafından blok etildi. Büyük ihtimallı ki, bir tış bağlantıdan menbalana.',
+'spamprotectionmatch' => 'Spam-filtrden işbu beyanat keldi: $1',
+'spambot_username'    => 'Spamdan temizlev',
+'spam_reverting'      => '$1 saytına bağlantısı olmağan soñki versiyağa keri ketirüv',
+'spam_blanking'       => 'Bar olğan versiyalarda $1 saytına bağlantılar bar, temizlev',
 
 # Info page
 'infosubtitle'   => 'Saife aqqında malümat',
@@ -1613,9 +1594,13 @@ MediaWiki interfeysiniñ çeşit tillerge tercime etüvde iştirak etmege istese
 'show-big-image-thumb' => '<small>Ög baquvda resim büyükligi: $1 × $2 piksel</small>',
 
 # Special:Newimages
-'newimages'    => 'Yañı resimler',
-'showhidebots' => '(botlarnı $1)',
-'noimages'     => 'Resim yoq.',
+'newimages'             => 'Yañı resimler',
+'imagelisttext'         => "Aşağıdaki cedvelde $2 köre tizilgen {{PLURAL:$1|'''1''' fayldır|'''$1''' fayldır}}.",
+'showhidebots'          => '(botlarnı $1)',
+'noimages'              => 'Resim yoq.',
+'ilsubmit'              => 'Qıdır',
+'bydate'                => 'hronologik sıranen',
+'sp-newimages-showfrom' => '$1, $2 tarihından başlap yañı fayllar köster',
 
 # Video information, used by Language::formatTimePeriod() to format lengths in the above messages
 'video-dims'     => '$1, $2 × $3',
@@ -1698,7 +1683,7 @@ Er satır * simvolınen başlamalı. Satırnıñ birinci bağlantısı eklemege 
 
 # External editor support
 'edit-externally'      => 'Fayl üzerinde kompyuteriñizde bulunğan programmalar ile deñişiklikler yapıñız',
-'edit-externally-help' => 'Daa fazla malümat içün [http://www.mediawiki.org/wiki/Manual:External_editors bu saifege] (İnglizce)  baqıp olasıñız.',
+'edit-externally-help' => 'Daa fazla malümat içün [http://meta.wikimedia.org/wiki/Help:External_editors bu saifege] (İnglizce)  baqıp olasıñız.',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'episini',
@@ -1708,36 +1693,41 @@ Er satır * simvolınen başlamalı. Satırnıñ birinci bağlantısı eklemege 
 'monthsall'        => 'Episi',
 
 # E-mail address confirmation
-'confirmemail'            => 'E-mail adresini tasdıqla',
-'confirmemail_noemail'    => '[[Special:Preferences|Qullanıcı ayarlarıñızda]] keçerli bir e-mail adresiñiz yoq.',
-'confirmemail_text'       => '{{SITENAME}} saytınıñ e-mail funktsiyalarını qullanmazdan evel e-mail adresiñizniñ tasdıqlanması kerek. Adresiñizge tasdıq e-mail mektübini yollamaq içün aşağıdaki dögmeni basıñız. Yollanacaq beyanatta adresiñizni tasdıqlamaq içün brauzeriñiznen irişip olacaq, tasdıq kodu olğan bir bağlantı olacaq.',
-'confirmemail_pending'    => '<div class="error">
+'confirmemail'             => 'E-mail adresini tasdıqla',
+'confirmemail_noemail'     => '[[Special:Preferences|Qullanıcı ayarlarıñızda]] keçerli bir e-mail adresiñiz yoq.',
+'confirmemail_text'        => '{{SITENAME}} saytınıñ e-mail funktsiyalarını qullanmazdan evel e-mail adresiñizniñ tasdıqlanması kerek. Adresiñizge tasdıq e-mail mektübini yollamaq içün aşağıdaki dögmeni basıñız. Yollanacaq beyanatta adresiñizni tasdıqlamaq içün brauzeriñiznen irişip olacaq, tasdıq kodu olğan bir bağlantı olacaq.',
+'confirmemail_pending'     => '<div class="error">
 Tasdıq kodu endi sizge yollandı.
 Eger esabıñıznı keçenleri açsa ediñiz, belki de yañnı kodnı bir daa sorağanıñızda, biraz beklemek kerek olur.
 </div>',
-'confirmemail_send'       => 'Tasdıq kodunı yolla',
-'confirmemail_sent'       => 'Tasdıq e-mail mektübini yollandı.',
-'confirmemail_oncreate'   => 'Belgilegen e-mail adresiñizge tasdıq kodunen mektüp yollandı.
+'confirmemail_send'        => 'Tasdıq kodunı yolla',
+'confirmemail_sent'        => 'Tasdıq e-mail mektübini yollandı.',
+'confirmemail_oncreate'    => 'Belgilegen e-mail adresiñizge tasdıq kodunen mektüp yollandı.
 İşbu kod oturım açmaq içün lâzim degil, amma bu proyektte elektron poçtasınıñ çarelerini qullanmaq içün ruhset berilmezden evel onı belgilemelisiñiz.',
-'confirmemail_sendfailed' => 'Tasdıq kodu yollanmadı. Adreste keçersiz arif ya da işaret olmağanından eminsiñizmi? Mektüp qaytıldı: $1',
-'confirmemail_invalid'    => 'Keçersiz tasdıq kodu. Tasdıq kodunıñ soñki qullanma tarihı keçken ola bilir.',
-'confirmemail_needlogin'  => '$1 yapmaq içün başta e-mail adresiñizni tasdıqlamalısıñız.',
-'confirmemail_success'    => 'E-mail adresiñiz tasdıqlandı.',
-'confirmemail_loggedin'   => 'E-mail adresiñiz tasdıqlandı.',
-'confirmemail_error'      => 'Tasdıqıñız bilinmegen bir hata sebebinden qayd etilmedi.',
-'confirmemail_subject'    => '{{SITENAME}} e-mail adres tasdıqı.',
-'confirmemail_body'       => '$1 internet adresinden yapılğan irişim ile {{SITENAME}} saytında
-bu e-mail adresi ile bağlanğan $2 qullanıcı esabı
+'confirmemail_sendfailed'  => 'Tasdıq kodu yollanmadı. Adreste keçersiz arif ya da işaret olmağanından eminsiñizmi? Mektüp qaytıldı: $1',
+'confirmemail_invalid'     => 'Keçersiz tasdıq kodu. Tasdıq kodunıñ soñki qullanma tarihı keçken ola bilir.',
+'confirmemail_needlogin'   => '$1 yapmaq içün başta e-mail adresiñizni tasdıqlamalısıñız.',
+'confirmemail_success'     => 'E-mail adresiñiz tasdıqlandı.',
+'confirmemail_loggedin'    => 'E-mail adresiñiz tasdıqlandı.',
+'confirmemail_error'       => 'Tasdıqıñız bilinmegen bir hata sebebinden qayd etilmedi.',
+'confirmemail_subject'     => '{{SITENAME}} e-mail adres tasdıqı.',
+'confirmemail_body'        => '$1 IP adresinden yapılğan irişim ile {{SITENAME}} saytında
+bu e-mail adresinen bağlanğan $2 qullanıcı esabı
 açıldı.
 
 Bu e-mail adresiniñ bahsı keçken qullanıcı esabına ait olğanını
 tasdıqlamaq ve {{SITENAME}} saytındaki e-mail funktsiyalarını aktiv alğa
-ketirmek içün aşağıdaki bağlantını basıñız.
+ketirmek içün aşağıdaki bağlantını basıñız:
 
 $3
 
-Bahsı keçken qullanıcı esabı sizge ait olmağan olsa siz yapmaq kerek olğan
-bir şeyiñiz yoq. Bu tasdıq kodu $4 tarihına qadar keçerli olacaq.',
+Bahsı keçken qullanıcı esabı sizge *ait olmağan* olsa bu bağlantını basıñız:
+
+$5
+
+Bu tasdıq kodu $4 tarihına qadar keçerli olacaq.',
+'confirmemail_invalidated' => 'E-mail adresiniñ tasdıqı lâğu etildi',
+'invalidateemail'          => 'E-mail adresiniñ tasdıqı lâğu et',
 
 # Scary transclusion
 'scarytranscludedisabled' => '["Interwiki transcluding" işlemey]',
@@ -1761,7 +1751,7 @@ Saifeni yañıdan yaratmağa isteseñiz, lütfen, bunı tasdıqlañız.",
 'recreate'            => 'Saifeni yañıdan yarat',
 
 # HTML dump
-'redirectingto' => 'Yollama [[:$1]]...',
+'redirectingto' => 'Yollama [[$1]]...',
 
 # action=purge
 'confirm_purge'        => 'Saife keşini temizlesinmi?
@@ -1780,7 +1770,6 @@ $1',
 'imgmultipageprev' => '← evelki saife',
 'imgmultipagenext' => 'soñraki saife →',
 'imgmultigo'       => 'Bar',
-'imgmultigotopre'  => 'Bu saifege bar',
 
 # Table pager
 'ascending_abbrev'         => 'kiçikten büyükke',
@@ -1830,5 +1819,11 @@ $1',
 'watchlisttools-view' => 'Deñişikliklerni köster',
 'watchlisttools-edit' => 'Közetüv cedvelini kör ve deñiştir',
 'watchlisttools-raw'  => 'Közetüv cedvelini adiy metin olaraq deñiştir',
+
+# Special:Version
+'version' => 'Versiya', # Not used as normal message but as header for the special page itself
+
+# Special:SpecialPages
+'specialpages' => 'Mahsus saifeler',
 
 );

@@ -5,6 +5,9 @@
  * @file
  *
  * @author Aursani
+ * @author SPQRobin
+ * @author Siebrand
+ * @author Jon Harald Søby
  */
 
 $rtl = true;
@@ -22,6 +25,7 @@ $messages = array(
 'tog-shownumberswatching' => 'ٽيٽيندڙ يوزرس جو تعداد ڏيکاريو',
 'tog-ccmeonemails'        => 'ٻين يوزرس ڏانهن منهنجي موڪليل برق ٽپال جو پرت مون کي اماڻيو',
 'tog-diffonly'            => 'تفاوت هيٺان صفحي جو مواد نه ڏيکاريو',
+'tog-showhiddencats'      => 'لڪل زمرا ڏيکاريو',
 
 'underline-always' => 'هميشه',
 'underline-never'  => 'ڪڏهن به نه',
@@ -80,12 +84,13 @@ $messages = array(
 'nov'           => 'نومبر',
 'dec'           => 'ڊسمبر',
 
-# Bits of text used by many pages
-'categories'            => 'زمرا',
-'category_header'       => '"$1" زمري جا صفحا',
-'subcategories'         => 'ذيلي زمرا',
-'category-media-header' => ' "$1" زمري اندر ذريعات',
-'category-empty'        => "''في الوقت هن زمري ۾ ڪي به صفحا يا ذريعات شامل ناهن.''",
+# Categories related messages
+'category_header'          => '"$1" زمري جا صفحا',
+'subcategories'            => 'ذيلي زمرا',
+'category-media-header'    => ' "$1" زمري اندر ذريعات',
+'category-empty'           => "''في الوقت هن زمري ۾ ڪي به صفحا يا ذريعات شامل ناهن.''",
+'hidden-category-category' => 'لڪل زمرا', # Name of the category where hidden categories will be listed
+'listingcontinuesabbrev'   => 'جاري..',
 
 'about'          => 'بابت',
 'article'        => 'مسوَدو',
@@ -117,7 +122,9 @@ $messages = array(
 'permalink'         => 'مسقتل ڳنڍڻو',
 'print'             => 'ڇاپيو',
 'edit'              => 'سنواريو',
+'create'            => 'سرجيو',
 'editthispage'      => 'هيءُ صفحو سنواريو',
+'create-this-page'  => 'اهو صفحو نئين سر جوڙيو',
 'delete'            => 'ڊاھيو',
 'deletethispage'    => 'هيءُ صفحو ڊاهيو',
 'undelete_short'    => 'اڻڊاهيو {{PLURAL:$1|هڪ ترميم|$1 ترميمون}}',
@@ -152,29 +159,29 @@ $messages = array(
 'jumptosearch'      => 'ڳولا',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutsite'         => '{{SITENAME}} بابت',
-'aboutpage'         => 'Project:بابت',
-'bugreports'        => 'چُڪَ ناما',
-'bugreportspage'    => 'Project:چُڪَ ناما',
-'copyright'         => 'سمورو مواد $1 تحت ميسر ڪجي ٿو',
-'copyrightpagename' => '{{SITENAME}} حق ۽ واسطا',
-'copyrightpage'     => '{{ns:project}}:حق ۽ واسطا',
-'currentevents'     => 'ھاڻوڪا واقعا',
-'currentevents-url' => 'Project: اعداد',
-'disclaimers'       => 'غيرجوابداريناما',
-'disclaimerpage'    => 'Project:عام غيرجوابدارينامو',
-'edithelp'          => 'مدد براءِ ترميم',
-'edithelppage'      => 'Help:سنوارڻ',
-'faq'               => 'ڪپوس',
-'faqpage'           => 'Project:ڪپوس',
-'helppage'          => 'Help:فهرست',
-'mainpage'          => 'مُک صفحو',
-'policy-url'        => 'Project:پاليسي',
-'portal'            => 'نياتي باب',
-'portal-url'        => 'Project:نياتي باب',
-'privacy'           => 'ذاتيات پاليسي',
-'privacypage'       => 'Project:ذاتيات پاليسي',
-'sitesupport'       => 'مالي امداد',
+'aboutsite'            => '{{SITENAME}} بابت',
+'aboutpage'            => 'Project:بابت',
+'bugreports'           => 'چُڪَ ناما',
+'bugreportspage'       => 'Project:چُڪَ ناما',
+'copyright'            => 'سمورو مواد $1 تحت ميسر ڪجي ٿو',
+'copyrightpagename'    => '{{SITENAME}} حق ۽ واسطا',
+'copyrightpage'        => '{{ns:project}}:حق ۽ واسطا',
+'currentevents'        => 'ھاڻوڪا واقعا',
+'currentevents-url'    => 'Project: اعداد',
+'disclaimers'          => 'غيرجوابداريناما',
+'disclaimerpage'       => 'Project:عام غيرجوابدارينامو',
+'edithelp'             => 'مدد براءِ ترميم',
+'edithelppage'         => 'Help:سنوارڻ',
+'faq'                  => 'ڪپوس',
+'faqpage'              => 'Project:ڪپوس',
+'helppage'             => 'Help:فهرست',
+'mainpage'             => 'مُک صفحو',
+'mainpage-description' => 'مُک صفحو',
+'policy-url'           => 'Project:پاليسي',
+'portal'               => 'نياتي باب',
+'portal-url'           => 'Project:نياتي باب',
+'privacy'              => 'ذاتيات پاليسي',
+'privacypage'          => 'Project:ذاتيات پاليسي',
 
 'ok'                  => 'ٺيڪ',
 'retrievedfrom'       => '"$1" تان ورتل',
@@ -214,6 +221,7 @@ $messages = array(
 'databaseerror'       => 'اعدادخاني ۾ چڪ',
 'nodb'                => 'اعدادخانو $1 چونڊجي نه سگھيو',
 'readonly'            => 'اعدادخانو بنديل',
+'missingarticle-diff' => '(تفاوت: $1، $2)',
 'internalerror'       => 'اندروني خرابي',
 'internalerror_info'  => 'داخلي چُڪَ: $1',
 'filerenameerror'     => '"$1" نالي فائيل تي نئون نالو "$2" رکجي نه سگھجو.',
@@ -234,6 +242,7 @@ $messages = array(
 'yourpassword'               => 'ڳجھو لفظ:',
 'remembermypassword'         => 'هن ڳڻپيوڪر تي مون کي ياد رکو',
 'login'                      => 'لاگ اِن',
+'nav-login-createaccount'    => 'لاگ اِن ٿيو / کاتو کوليو',
 'loginprompt'                => '{{SITENAME}} ۾ لاگ اِن ٿيڻ لاءِ ڪوڪيز جي قبوليت لازمي آهي.',
 'userlogin'                  => 'لاگ اِن ٿيو / کاتو کوليو',
 'logout'                     => 'لاگ آئوٽ',
@@ -245,6 +254,8 @@ $messages = array(
 'gotaccountlink'             => 'لاگ اِن',
 'createaccountmail'          => 'بذريعه برق ٽپال',
 'yourrealname'               => 'اصل نالو:',
+'badsiglength'               => 'اها صحيح تمام وڏي آهي.
+$1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'prefs-help-realname'        => 'اصل نالو اختياري آهي.
 جيڪڏهن توهان اصل نالو ڄاڻائڻ جو فيصلو ٿا ڪريو، ته اهو توهان کي مڃتا ڏيڻ لاءِ ڪم آندو ويندو.',
 'loginsuccesstitle'          => 'لاگ اِن ڪامياب',
@@ -255,6 +266,7 @@ $messages = array(
 'nouserspecified'            => 'توهان کي ڪو يوزرنانءُ ڄاڻائڻو پوندو.',
 'wrongpassword'              => 'ڏنل ڳجھو لفظ غير درست آهي. مهرباني ڪري ٻيهر ڪوشش ڪندا.',
 'wrongpasswordempty'         => 'ڏنل ڳجھو لفظ خالي هو. مهرباني ڪري وري ڪوشش ڪندا.',
+'passwordtooshort'           => 'توهان جو ڳجھو لفظ ناقابلڪار آهي يا تمام ننڍو آهي. اهو توهان جي يُوزرنانءُ کان لازماً مختلف ۽ {{PLURAL:$1|1 اکر|$1 اکرن}} کان ڊگھو هوڻ گھرجي.',
 'mailmypassword'             => 'ڳجھو لفظ برق ٽپاليو',
 'passwordremindertitle'      => '{{SITENAME}} لاءِ نئون عارضي ڳجھو لفظ',
 'passwordremindertext'       => 'ڪنهن (شايد توهان آءِ پي پتي $1 تان) اسان کي {{SITENAME}} ($4) لاءِ نئون ڳجھو لفظ اماڻڻ جي گھُرَ ڪئي.
@@ -327,7 +339,7 @@ $messages = array(
 'template-protected'     => '(تحفظيل)',
 'template-semiprotected' => '(نيم تحفظيل)',
 'nocreatetext'           => '{{SITENAME}} نوان صفحا سرجڻ جي روڪَ ڪئي آهي.
-توهان اڳي ئي موجود صفحن کي سنواري سگھو ٿا، يا [[Special:UserLogin|لاگ اِن ٿي يا نئون کاتو کولي سگھو ٿا]].',
+توهان اڳي ئي موجود صفحن کي سنواري سگھو ٿا، يا [[Special:Userlogin|لاگ اِن ٿي يا نئون کاتو کولي سگھو ٿا]].',
 'recreate-deleted-warn'  => "'''خبردار: توهان اهڙو صفحو نئين سر سرجي رهيا آهيو جيڪو اڳي ڊاٺو ويو آهي.'''
 
 بهتر ٿيندو ته توهان سوچي وٺو ته ڇا ان صفحي کي سنوارڻ بهتر ٿيندو.
@@ -352,6 +364,9 @@ $messages = array(
 # Revision feed
 'history-feed-item-nocomment' => '$2 تي $1', # user at time
 
+# Revision deletion
+'pagehist' => 'صفحي جي سوانح',
+
 # Diffs
 'history-title'           => '"$1" جي سوانح',
 'difference'              => '(مسودن درميان تفاوت)',
@@ -361,12 +376,13 @@ $messages = array(
 'diff-multi'              => '({{PLURAL:$1|هڪ وسطي مسودو|$1 وسطي مسودا}} لڪايل.)',
 
 # Search results
-'noexactmatch' => "'''\"\$1\" جي عنوان سان ڪو به صفحو ناهي.'''
+'noexactmatch'      => "'''\"\$1\" جي عنوان سان ڪو به صفحو ناهي.'''
 توهان [[:\$1|اهو صفحو سرجيو]].",
-'prevn'        => 'پويان $1',
-'nextn'        => 'اڳيان $1',
-'viewprevnext' => 'ڏسو ($1) ($2) ($3)',
-'powersearch'  => 'نفيس ڳولا',
+'prevn'             => 'پويان $1',
+'nextn'             => 'اڳيان $1',
+'viewprevnext'      => 'ڏسو ($1) ($2) ($3)',
+'powersearch'       => 'نفيس ڳولا',
+'powersearch-redir' => 'چورڻن جي فهرست ڏيکاريو',
 
 # Preferences page
 'preferences'    => 'ترجيحات',
@@ -381,9 +397,13 @@ $messages = array(
 'userrights-reason' => 'تبديليءَ جو سبب:',
 
 # Groups
-'group' => 'گروپ:',
+'group'      => 'گروپ:',
+'group-user' => 'يوزرس',
 
 'grouppage-sysop' => '{{ns:project}}:منتظمين',
+
+# Rights
+'right-undelete' => 'ڪو صفحو اڻڊاهيو',
 
 # User rights log
 'rightslog' => 'يُوزر حق لاگ',
@@ -392,6 +412,7 @@ $messages = array(
 'nchanges'                       => '$1 {{PLURAL:$1|تبديلي|تبديليون}}',
 'recentchanges'                  => 'تازيون تبديليون',
 'recentchanges-feed-description' => 'ۡهن روان رسد ۾ آيل تازيون تبديليون لهو',
+'rcnote'                         => "پوين {{PLURAL:$2|ڏينهن|'''$2''' ڏينهن}} ۾، يعني $3 تائين آيل {{PLURAL:$1| '''1''' تبديلي|'''$1''' تبديليون}} هيٺ پيش ڪجن ٿيون.",
 'rcnotefrom'                     => "هيٺ '''$2''' کان ٿيندڙ تبديليون پيش ڪجن ٿيون ('''$1''' تائين ڏيکارجن ٿيون).",
 'rclistfrom'                     => '$1 کان شروع ٿيندڙ نيون تبديليون',
 'rcshowhideminor'                => '$1 معمولي ترميمون',
@@ -420,24 +441,26 @@ $messages = array(
 'uploadlogpage' => 'چاڙهه لاگ',
 'uploadedimage' => '"[[$1]]" چاڙهيو ويو',
 
-# Image list
-'imagelist'                 => 'فائيل فهرست',
-'byname'                    => 'ناليوار',
-'bydate'                    => 'تاريخوار',
-'filehist'                  => 'فائيل جي سوانح',
-'filehist-help'             => 'ڪنهن به تاريخ/وقت تي ڪلڪ ڪري ڏسندا ته تڏڻي اهو فائيل ڪيئن هو.',
-'filehist-current'          => 'هاڻوڪو',
-'filehist-datetime'         => 'تاريخ/وقت',
-'filehist-user'             => 'يُوزر',
-'filehist-dimensions'       => 'ماپَ',
-'filehist-filesize'         => 'فائيل سائيز',
-'filehist-comment'          => 'تاثرات',
-'imagelinks'                => 'ڳنڍڻا',
-'nolinkstoimage'            => 'هن فائيل سان ڪو به صفحو ڳنڍيل ناهي.',
-'sharedupload'              => 'هيءَ هڪ شراڪتي چاڙهه آهي، تنهنڪري ان کي ٻيون رٿائون به استعمال ڪري سگھن ٿيون.',
-'noimage'                   => 'ان نالي سان ڪو به فائيل وجود نٿو رکي، جي چاهيو ته $1.',
-'noimage-linktext'          => 'اهو چاڙهيو',
-'uploadnewversion-linktext' => 'هن فائيل جو نئون پرت چاڙهيو',
+# Special:Imagelist
+'imagelist' => 'فائيل فهرست',
+
+# Image description page
+'filehist'                       => 'فائيل جي سوانح',
+'filehist-help'                  => 'ڪنهن به تاريخ/وقت تي ڪلڪ ڪري ڏسندا ته تڏڻي اهو فائيل ڪيئن هو.',
+'filehist-current'               => 'هاڻوڪو',
+'filehist-datetime'              => 'تاريخ/وقت',
+'filehist-user'                  => 'يُوزر',
+'filehist-dimensions'            => 'ماپَ',
+'filehist-filesize'              => 'فائيل سائيز',
+'filehist-comment'               => 'تاثرات',
+'imagelinks'                     => 'ڳنڍڻا',
+'linkstoimage'                   => 'هن فائيل سان {{PLURAL:$1|هيٺيون صفحو ڳنڍيل آهي |$1 هيٺيان صفحا ڳنڍيل آهن}}:',
+'nolinkstoimage'                 => 'هن فائيل سان ڪو به صفحو ڳنڍيل ناهي.',
+'sharedupload'                   => 'هيءَ هڪ شراڪتي چاڙهه آهي، تنهنڪري ان کي ٻيون رٿائون به استعمال ڪري سگھن ٿيون.',
+'shareduploadduplicate-linktext' => 'ڪو ٻيو فائيل',
+'noimage'                        => 'ان نالي سان ڪو به فائيل وجود نٿو رکي، جي چاهيو ته $1.',
+'noimage-linktext'               => 'اهو چاڙهيو',
+'uploadnewversion-linktext'      => 'هن فائيل جو نئون پرت چاڙهيو',
 
 # MIME search
 'mimesearch' => 'مائيم ڳولا',
@@ -488,14 +511,12 @@ $messages = array(
 'mostcategories'          => 'گھڻي کان گھڻا زمرا رکندڙ صفحا',
 'mostimages'              => 'وڌانوڌ ڳنڍيندڙ فائيل',
 'mostrevisions'           => 'وڌانوڌ ترميميل صفحا',
-'allpages'                => 'سڀ صفحا',
 'prefixindex'             => 'اڳياڙي ڏسڻي',
 'shortpages'              => 'مختصر صفحا',
 'longpages'               => 'طويل صفحا',
 'deadendpages'            => 'اڻ ڳنڍيندڙ صفحا',
 'protectedpages'          => 'تحفظيل صفحا',
 'listusers'               => 'يُوزر فهرست',
-'specialpages'            => 'خاص صفحا',
 'newpages'                => 'نوان صفحا',
 'ancientpages'            => 'قديم ترين صفحا',
 'move'                    => 'چوريو',
@@ -504,10 +525,6 @@ $messages = array(
 # Book sources
 'booksources' => 'ڪتابي وسيلا',
 
-'data'           => 'اعداد',
-'alphaindexline' => '$1 کان $2',
-'version'        => 'ورزن',
-
 # Special:Log
 'specialloguserlabel'  => 'يُوزر:',
 'speciallogtitlelabel' => 'عنوان:',
@@ -515,6 +532,8 @@ $messages = array(
 'all-logs-page'        => 'سڀئي لاگس',
 
 # Special:Allpages
+'allpages'       => 'سڀ صفحا',
+'alphaindexline' => '$1 کان $2',
 'nextpage'       => 'اڳيون صفحو ($1)',
 'prevpage'       => 'پويون صفحو ($1)',
 'allpagesfrom'   => 'ھتان شروع ٿيندڙ صفحا نمايو',
@@ -522,6 +541,9 @@ $messages = array(
 'allpagesprev'   => 'اڳوڻو',
 'allpagessubmit' => 'ھلو',
 'allpagesprefix' => 'صفحا نمايو بمع اڳياڙي:',
+
+# Special:Categories
+'categories' => 'زمرا',
 
 # E-mail user
 'emailuser' => 'هن يوزر کي برق ٽپال اماڻيو',
@@ -531,7 +553,7 @@ $messages = array(
 'mywatchlist'          => 'منهنجي ٽيٽ فهرست',
 'watchlistfor'         => "(براءِ '''$1''')",
 'addedwatch'           => 'ٽيٽ فھرست ۾ شامل ڪيو ويو.',
-'addedwatchtext'       => "صفحو بعنوان \"[[:\$1]]\" اوهان جي [[Special:Watchlist|ٽيٽ فهرست]] ۾ شامل ٿي ويو. استقبالي تبديليون هتي درج ٿينديون وينديون. اهو صفحو [[Special:RecentChanges|تازين تبديلين]] واري صفحي تي '''گهرن''' اکرن ۾ نمايان ڪري ڏيکاريو ويندو. جيڪڏهن اوهان اهو سڀ نه ٿا چاهيو ته '''اڻ ٽيٽيو''' تي ڪلڪ ڪريو.",
+'addedwatchtext'       => "صفحو بعنوان \"[[:\$1]]\" اوهان جي [[Special:Watchlist|ٽيٽ فهرست]] ۾ شامل ٿي ويو. استقبالي تبديليون هتي درج ٿينديون وينديون. اهو صفحو [[Special:Recentchanges|تازين تبديلين]] واري صفحي تي '''گهرن''' اکرن ۾ نمايان ڪري ڏيکاريو ويندو. جيڪڏهن اوهان اهو سڀ نه ٿا چاهيو ته '''اڻ ٽيٽيو''' تي ڪلڪ ڪريو.",
 'removedwatch'         => 'ٽيٽ فهرست مان هٽايو ويو',
 'removedwatchtext'     => 'صفحو بعنوان "[[:$1]]" توهان جي ٽيٽ فهرست مان هٽي چڪو آهي.',
 'watch'                => 'ٽيٽيو',
@@ -544,7 +566,7 @@ $messages = array(
 'watchlist-hide-own'   => 'منهنجون ڪيل ترميمون لڪايو',
 'watchlist-hide-minor' => 'معمولي ترميمون لڪايو',
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'ٽيٽيندي...',
 'unwatching' => 'اڻ ٽيٽيندي...',
 
@@ -567,7 +589,7 @@ $messages = array(
 'deletereasonotherlist'       => 'ٻيو سبب',
 'rollbacklink'                => 'واپس ورايو',
 'protectlogpage'              => 'تحفظ لاگ',
-'confirmprotect'              => 'تحفظڻ جي پڪ ڪريو',
+'protect-legend'              => 'تحفظڻ جي پڪ ڪريو',
 'protectcomment'              => 'تاثرات:',
 'protectexpiry'               => 'اختتام:',
 'protect_expiry_invalid'      => 'انجامي مدو ناقابلڪار آهي.',
@@ -705,7 +727,6 @@ $messages = array(
 'tooltip-n-recentchanges'         => 'هن وڪيءَ ۾ تازين تبديلين جي فهرست.',
 'tooltip-n-randompage'            => 'بلاترتيب ڪو به صفحو اتاريو',
 'tooltip-n-help'                  => 'ڳولي لهڻ جي جاءِ.',
-'tooltip-n-sitesupport'           => 'اسان جي مدد ڪريو',
 'tooltip-t-whatlinkshere'         => 'هتان ڳنڍيل سمورا وڪي صفحا',
 'tooltip-t-contributions'         => 'هن يُوزر جون ڀاڱيداريون ڏسو',
 'tooltip-t-emailuser'             => 'هن يُوزر کي برق ٽپال اماڻيو',
@@ -728,9 +749,6 @@ $messages = array(
 # Attribution
 'anonymous' => '{{SITENAME}} جا نامعلوم يوزرس',
 
-# Spam protection
-'listingcontinuesabbrev' => 'جاري..',
-
 # Browsing diffs
 'previousdiff' => '← اڳوڻو تفاوت',
 'nextdiff'     => 'نئون تفاوت -->',
@@ -745,6 +763,7 @@ $messages = array(
 # Special:Newimages
 'newimages' => 'نون فائيلن جي گيلري',
 'noimages'  => 'ڏسڻ لاءِ ڪجھه ناهي.',
+'bydate'    => 'تاريخوار',
 
 # Metadata
 'metadata'          => 'اعدادِ اعداد',
@@ -798,7 +817,7 @@ $messages = array(
 
 # External editor support
 'edit-externally'      => 'هيءُ فائيل ڪنهن خارجي منتقڪريءَ سان سنواريو',
-'edit-externally-help' => 'وڌيڪ معلومات لاءِ [http://www.mediawiki.org/wiki/Manual:External_editors هدايتون براءِ تنصيبڪاري] ڏسندا.',
+'edit-externally-help' => 'وڌيڪ معلومات لاءِ [http://meta.wikimedia.org/wiki/Help:External_editors هدايتون براءِ تنصيبڪاري] ڏسندا.',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'سڀ',
@@ -820,5 +839,12 @@ $messages = array(
 'watchlisttools-view' => 'لاڳاپيل تبديليون ڏسو',
 'watchlisttools-edit' => 'ٽيٽ فهرست ڏسو ۽ سنواريو',
 'watchlisttools-raw'  => 'ڪچي ٽيٽ فهرست سنواريو',
+
+# Special:Version
+'version' => 'ورزن', # Not used as normal message but as header for the special page itself
+
+# Special:SpecialPages
+'specialpages'             => 'خاص صفحا',
+'specialpages-group-users' => 'يوزرس ۽ حق',
 
 );

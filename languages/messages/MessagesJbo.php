@@ -6,6 +6,8 @@
  *
  * @author Malafaya
  * @author OldakQuill
+ * @author OldakQuill
+ * @author Malafaya
  */
 
 $messages = array(
@@ -45,8 +47,7 @@ $messages = array(
 'december-gen'  => 'la gaimast.',
 'may'           => 'la mumast.',
 
-# Bits of text used by many pages
-'categories'     => 'klesi',
+# Categories related messages
 'pagecategories' => '{{PLURAL:$1|klesi|klesi}}',
 
 'qbedit'        => 'stika',
@@ -73,15 +74,15 @@ $messages = array(
 'jumptosearch'     => 'sisku',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'copyright'         => "lo selvau cu gubni ja'i la'o gy. $1 .gy.",
-'currentevents'     => 'nuzba ckupau',
-'currentevents-url' => 'Project:nuzba ckupau',
-'disclaimers'       => "xusra lo za'i na fuzme",
-'mainpage'          => 'ralju ckupau',
-'portal'            => 'bende ckupau',
-'portal-url'        => 'Project:bende ckupau',
-'privacy'           => "javni be sera'a lo sivni",
-'sitesupport'       => 'jdini sidju',
+'copyright'            => "lo selvau cu gubni ja'i la'o gy. $1 .gy.",
+'currentevents'        => 'nuzba ckupau',
+'currentevents-url'    => 'Project:nuzba ckupau',
+'disclaimers'          => "xusra lo za'i na fuzme",
+'mainpage'             => 'ralju ckupau',
+'mainpage-description' => 'ralju ckupau',
+'portal'               => 'bende ckupau',
+'portal-url'           => 'Project:bende ckupau',
+'privacy'              => "javni be sera'a lo sivni",
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-mediawiki' => 'notci',
@@ -128,11 +129,13 @@ $messages = array(
 'randompage' => 'cunso ckupau',
 
 # Miscellaneous special pages
-'specialpages' => 'steci ckupau',
-'move'         => 'stika lo cmene',
+'move' => 'stika lo cmene',
 
 # Special:Allpages
 'allarticles' => 'ro notci',
+
+# Special:Categories
+'categories' => 'klesi',
 
 # Watchlist
 'watch'         => 'zgana',
@@ -167,5 +170,8 @@ $messages = array(
 
 # Special:Filepath
 'filepath-page' => 'se datnyvei zoi',
+
+# Special:SpecialPages
+'specialpages' => 'steci ckupau',
 
 );

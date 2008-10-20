@@ -1,7 +1,9 @@
 <?php
 /**
+ * @file
  * @todo document
- * @addtogroup Maintenance
+ * @ingroup Maintenance
+ * @defgroup Maintenance Maintenance
  */
 
 $wgRequestTime = microtime(true);
@@ -34,9 +36,12 @@ if ( !isset( $optionsWithArgs ) ) {
 	$optionsWithArgs = array();
 }
 $optionsWithArgs[] = 'conf'; # For specifying the location of LocalSettings.php
+$optionsWithArgs[] = 'wiki'; # For specifying the wiki ID
 
 $self = array_shift( $argv );
-$IP = realpath( dirname( __FILE__ ) . '/..' );
+$IP = ( getenv('MW_INSTALL_PATH') !== false
+	? getenv('MW_INSTALL_PATH')
+	: realpath( dirname( __FILE__ ) . '/..' ) );
 #chdir( $IP );
 require_once( "$IP/StartProfiler.php" );
 
@@ -60,7 +65,7 @@ for( $arg = reset( $argv ); $arg !== false; $arg = next( $argv ) ) {
 		if ( in_array( $option, $optionsWithArgs ) ) {
 			$param = next( $argv );
 			if ( $param === false ) {
-				echo "$arg needs an value after it\n";
+				echo "$arg needs a value after it\n";
 				die( -1 );
 			}
 			$options[$option] = $param;
@@ -81,7 +86,7 @@ for( $arg = reset( $argv ); $arg !== false; $arg = next( $argv ) ) {
 			if ( in_array( $option, $optionsWithArgs ) ) {
 				$param = next( $argv );
 				if ( $param === false ) {
-					echo "$arg needs an value after it\n";
+					echo "$arg needs a value after it\n";
 					die( -1 );
 				}
 				$options[$option] = $param;
@@ -108,7 +113,9 @@ if (!isset( $wgUseNormalUser ) ) {
 
 if ( file_exists( '/home/wikipedia/common/langlist' ) ) {
 	$wgWikiFarm = true;
-	$cluster = trim( file_get_contents( '/etc/cluster' ) );
+	#$cluster = trim( file_get_contents( '/etc/cluster' ) );
+	$cluster = 'pmtpa';
+	require_once( "$IP/includes/AutoLoader.php" );
 	require_once( "$IP/includes/SiteConfiguration.php" );
 
 	# Get $wgConf
@@ -116,7 +123,11 @@ if ( file_exists( '/home/wikipedia/common/langlist' ) ) {
 
 	if ( empty( $wgNoDBParam ) ) {
 		# Check if we were passed a db name
-		$db = array_shift( $args );
+		if ( isset( $options['wiki'] ) ) {
+			$db = $options['wiki'];
+		} else {
+			$db = array_shift( $args );
+		}
 		list( $site, $lang ) = $wgConf->siteFromDB( $db );
 
 		# If not, work out the language and site the old way
@@ -149,6 +160,10 @@ if ( file_exists( '/home/wikipedia/common/langlist' ) ) {
 	$DP = $IP;
 	ini_set( 'include_path', ".:$IP:$IP/includes:$IP/languages:$IP/maintenance" );
 
+	if ( $lang == 'test' && $site == 'wikipedia' ) {
+		define( 'TESTWIKI', 1 );
+	}
+	
 	#require_once( $IP.'/includes/ProfilerStub.php' );
 	require_once( $IP.'/includes/Defines.php' );
 	require_once( $IP.'/CommonSettings.php' );
@@ -168,6 +183,14 @@ if ( file_exists( '/home/wikipedia/common/langlist' ) ) {
 	} else {
 		$settingsFile = "$IP/LocalSettings.php";
 	}
+	if ( isset( $options['wiki'] ) ) {
+		$bits = explode( '-', $options['wiki'] );
+		if ( count( $bits ) == 1 ) {
+			$bits[] = '';
+		}
+		define( 'MW_DB', $bits[0] );
+		define( 'MW_PREFIX', $bits[1] );
+	}
 
 	if ( ! is_readable( $settingsFile ) ) {
 		print "A copy of your installation's LocalSettings.php\n" .
@@ -176,6 +199,7 @@ if ( file_exists( '/home/wikipedia/common/langlist' ) ) {
 	}
 	$wgCommandLineMode = true;
 	$DP = $IP;
+	require_once( "$IP/includes/AutoLoader.php" );
 	#require_once( $IP.'/includes/ProfilerStub.php' );
 	require_once( $IP.'/includes/Defines.php' );
 	require_once( $settingsFile );
@@ -202,6 +226,10 @@ if ( empty( $wgUseNormalUser ) && isset( $wgDBadminuser ) ) {
 			$wgDBservers[$i]['user'] = $wgDBuser;
 			$wgDBservers[$i]['password'] = $wgDBpassword;
 		}
+	}
+	if( isset( $wgLBFactoryConf['serverTemplate'] ) ) {
+		$wgLBFactoryConf['serverTemplate']['user'] = $wgDBuser;
+		$wgLBFactoryConf['serverTemplate']['password'] = $wgDBpassword;
 	}
 }
 
@@ -231,28 +259,4 @@ $wgShowSQLErrors = true;
 require_once( 'Setup.php' );
 require_once( 'install-utils.inc' );
 $wgTitle = null; # Much much faster startup than creating a title object
-set_time_limit(0);
-
-// --------------------------------------------------------------------
-// Functions
-// --------------------------------------------------------------------
-
-function wfWaitForSlaves( $maxLag ) {
-	global $wgLoadBalancer;
-	if ( $maxLag ) {
-		list( $host, $lag ) = $wgLoadBalancer->getMaxLag();
-		while ( $lag > $maxLag ) {
-			$name = @gethostbyaddr( $host );
-			if ( $name !== false ) {
-				$host = $name;
-			}
-			print "Waiting for $host (lagged $lag seconds)...\n";
-			sleep($maxLag);
-			list( $host, $lag ) = $wgLoadBalancer->getMaxLag();
-		}
-	}
-}
-
-
-
-?>
+@set_time_limit(0);

@@ -6,8 +6,9 @@
  *
  * @author Blake
  * @author Niklas Laxström
- * @author Node ue
  * @author Teak
+ * @author Node ue
+ * @author Siebrand
  */
 
 $messages = array(
@@ -62,8 +63,9 @@ $messages = array(
 'jumptosearch'  => 'ድሉይ',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutsite' => 'ብዛዕባ ዊኪፒዲያ ብጠቅላላ',
-'mainpage'  => 'መበገሲ ገጽ',
+'aboutsite'            => 'ብዛዕባ ዊኪፒዲያ ብጠቅላላ',
+'mainpage'             => 'መበገሲ ገጽ',
+'mainpage-description' => 'መበገሲ ገጽ',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'    => 'ፅሑፍ',
@@ -115,10 +117,9 @@ $messages = array(
 # Upload
 'savefile' => 'ምስሊ ኣቐምጥ',
 
-# Image list
-'imagelist'      => 'ምስልታት',
-'ilsubmit'       => 'ድሉይ',
+# Special:Imagelist
 'imgfile'        => 'ምስሊ',
+'imagelist'      => 'ምስልታት',
 'imagelist_name' => 'ሽም',
 'imagelist_user' => 'ኣባል',
 
@@ -132,13 +133,12 @@ $messages = array(
 # Book sources
 'booksources-go' => 'ኪድ',
 
-'alphaindexline' => '$1 ናብ $2',
-
 # Special:Log
 'specialloguserlabel' => 'ኣባል:',
 'log-search-submit'   => 'ኪድ',
 
 # Special:Allpages
+'alphaindexline' => '$1 ናብ $2',
 'nextpage'       => 'ዝቕጽል ፅሑፍ ($1)',
 'prevpage'       => 'ናይ ቀደም ፅሑፍ ($1)',
 'allarticles'    => 'ኵሎም ፅሑፋት',
@@ -168,6 +168,9 @@ $messages = array(
 
 # Tooltip help for the actions
 'tooltip-pt-preferences' => 'ናተይ ኣማረጽቲ',
+
+# Special:Newimages
+'ilsubmit' => 'ድሉይ',
 
 # Metadata
 'metadata' => 'ሜታዳታ',

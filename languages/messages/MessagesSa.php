@@ -7,6 +7,8 @@
  * @author Kaustubh
  */
 
+$fallback = 'hi';
+
 $digitTransformTable = array(
 	'0' => '०', # &#x0966;
 	'1' => '१', # &#x0967;
@@ -86,8 +88,9 @@ $messages = array(
 'help' => 'सहायता',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'edithelp' => 'संपादनार्थं सहायता',
-'mainpage' => 'मुखपृष्ठं',
+'edithelp'             => 'संपादनार्थं सहायता',
+'mainpage'             => 'मुखपृष्ठं',
+'mainpage-description' => 'मुखपृष्ठं',
 
 # Miscellaneous special pages
 'ancientpages' => 'प्राचीनतम् पृष्ठा',

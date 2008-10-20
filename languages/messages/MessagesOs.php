@@ -5,6 +5,7 @@
  * @file
  *
  * @author Amikeco
+ * @author Siebrand
  * @author לערי ריינהארט
  */
 
@@ -64,6 +65,7 @@ $messages = array(
 'tog-watchlisthidebots'       => 'Мæ цæстдарды номхыгъды роботты куыст бамбæхс',
 'tog-watchlisthideminor'      => 'Мæ цæстдарды номхыгъды чысыл ивддзинæдтæ бамбæхс',
 'tog-ccmeonemails'            => 'Æз электронон фыстæг æндæр архайæгæн куы рарвитын, уæд уыцы иу фыстæг мæхи адрисмæ дæр æрбацæуæд.',
+'tog-showhiddencats'          => 'Æмбæхст категоритæ æвдис',
 
 'underline-always' => 'Æдзух',
 'underline-never'  => 'Никуы',
@@ -120,12 +122,16 @@ $messages = array(
 'nov'           => 'ноя',
 'dec'           => 'дек',
 
-# Bits of text used by many pages
-'categories'      => 'Категоритæ',
-'pagecategories'  => '{{PLURAL:$1|Категори|Категоритæ}}',
-'category_header' => 'Категори "$1"',
-'subcategories'   => 'Дæлкатегоритæ',
-'category-empty'  => "''Ацы категори афтид ма у.''",
+# Categories related messages
+'pagecategories'                => '{{PLURAL:$1|Категори|Категоритæ}}',
+'category_header'               => 'Категори "$1"',
+'subcategories'                 => 'Дæлкатегоритæ',
+'category-empty'                => "''Ацы категори афтид ма у.''",
+'hidden-categories'             => 'Æмбæхст {{PLURAL:$1|категори|категоритæ}}',
+'hidden-category-category'      => 'Æмбæхст категоритæ', # Name of the category where hidden categories will be listed
+'category-subcat-count-limited' => 'Ацы категорийы мидæг ис {{PLURAL:$1|$1 дæлкатегори|$1 дæлкатегорийы}}.',
+'category-file-count-limited'   => 'Ацы категорийы {{PLURAL:$1|$1 файл|$1 файлы}} ис.',
+'listingcontinuesabbrev'        => '(дарддæрдзу)',
 
 'about'          => 'Афыст',
 'newwindow'      => '(ног рудзынджы)',
@@ -179,15 +185,16 @@ $messages = array(
 'protectedpage'    => 'Æхгæд фарс',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutsite'         => '{{grammar:genitive|{{SITENAME}}}} тыххæй',
-'aboutpage'         => 'Project:Афыст',
-'bugreports'        => 'Рæдыдыл хъуысынгæнинаг',
-'currentevents'     => 'Ног хабæрттæ',
-'currentevents-url' => 'Project:Xabar',
-'mainpage'          => 'Сæйраг фарс',
-'portal'            => 'Архайджыты æхсæнад',
-'privacy'           => 'Хибардзинады политикæ',
-'privacypage'       => 'Project:Хибардзинады политикæ',
+'aboutsite'            => '{{grammar:genitive|{{SITENAME}}}} тыххæй',
+'aboutpage'            => 'Project:Афыст',
+'bugreports'           => 'Рæдыдыл хъуысынгæнинаг',
+'currentevents'        => 'Ног хабæрттæ',
+'currentevents-url'    => 'Project:Xabar',
+'mainpage'             => 'Сæйраг фарс',
+'mainpage-description' => 'Сæйраг фарс',
+'portal'               => 'Архайджыты æхсæнад',
+'privacy'              => 'Хибардзинады политикæ',
+'privacypage'          => 'Project:Хибардзинады политикæ',
 
 'versionrequired' => 'Хъæуы MediaWiki-йы версии $1',
 
@@ -198,6 +205,7 @@ $messages = array(
 'newmessagesdifflink' => 'фæстаг ивддзинад',
 'editsection'         => 'баив æй',
 'editold'             => 'баив æй',
+'viewsourceold'       => 'йæ код фен',
 'editsectionhint'     => 'Баив æй: $1',
 'toc'                 => 'Сæргæндтæ',
 'showtoc'             => 'равдис',
@@ -221,7 +229,7 @@ $messages = array(
 'nosuchspecialpage' => 'Ахæм сæрмагонд фарс нæй',
 'nospecialpagetext' => "<big>'''Нæй ахæм сæрмагонд фарс.'''</big>
 
-Кæс [[Special:SpecialPages|æппæт сæрмагонд фæрсты номхыгъд]].",
+Кæс [[Special:Specialpages|æппæт сæрмагонд фæрсты номхыгъд]].",
 
 # General errors
 'error'                => 'Рæдыд',
@@ -236,29 +244,31 @@ $messages = array(
 'ns-specialprotected'  => 'Сæрмагонд фæрстæ ({{ns:special}}) баивæн нæй.',
 
 # Login and logout pages
-'logouttitle'        => 'Номсусæг суын',
-'welcomecreation'    => '<h2>Æгас цу, $1!</h2><p>Регистрацигонд æрцыдтæ.',
-'loginpagetitle'     => 'Дæхи бацамон системæйæн',
-'yourname'           => 'Архайæджы ном:',
-'yourpassword'       => 'Пароль:',
-'remembermypassword' => 'Системæ бахъуыды кæнæд мæ пароль ацы компьютерыл',
-'yourdomainname'     => 'Дæ домен:',
-'login'              => 'Дæхи бавдис системæйæн',
-'userlogin'          => 'Системæйæн дæхи бавдис',
-'logout'             => 'Номсусæг суын',
-'userlogout'         => 'Номсусæг суын',
-'notloggedin'        => 'Системæйæн дæхи нæ бацамыдтай',
-'createaccountmail'  => 'адрисмæ гæсгæ',
-'youremail'          => 'Дæ электронон посты адрис',
-'username'           => 'Регистрацигонд ном:',
-'yourrealname'       => 'Дæ æцæг ном*',
-'yourlanguage'       => 'Техникон фыстыты æвзаг:',
-'yourvariant'        => 'Æвзаджы вариант:',
-'yournick'           => 'Фæсномыг (къухæрфыстытæм):',
-'email'              => 'Эл. посты адрис',
-'loginsuccess'       => 'Ныр та Википедийы архайыс $1, зæгъгæ, ахæм номæй.',
-'wrongpasswordempty' => 'Пароль афтид уыд. Афтæ нæ баззы, ныффыс-ма исты пароль.',
-'loginlanguagelabel' => 'Æвзаг: $1',
+'logouttitle'             => 'Номсусæг суын',
+'welcomecreation'         => '<h2>Æгас цу, $1!</h2><p>Регистрацигонд æрцыдтæ.',
+'loginpagetitle'          => 'Дæхи бацамон системæйæн',
+'yourname'                => 'Архайæджы ном:',
+'yourpassword'            => 'Пароль:',
+'remembermypassword'      => 'Системæ бахъуыды кæнæд мæ пароль ацы компьютерыл',
+'yourdomainname'          => 'Дæ домен:',
+'login'                   => 'Дæхи бавдис системæйæн',
+'nav-login-createaccount' => 'Системæйæн дæхи бавдис',
+'userlogin'               => 'Системæйæн дæхи бавдис',
+'logout'                  => 'Номсусæг суын',
+'userlogout'              => 'Номсусæг суын',
+'notloggedin'             => 'Системæйæн дæхи нæ бацамыдтай',
+'createaccountmail'       => 'адрисмæ гæсгæ',
+'youremail'               => 'Дæ электронон посты адрис',
+'username'                => 'Регистрацигонд ном:',
+'yourrealname'            => 'Дæ æцæг ном*',
+'yourlanguage'            => 'Техникон фыстыты æвзаг:',
+'yourvariant'             => 'Æвзаджы вариант:',
+'yournick'                => 'Фæсномыг (къухæрфыстытæм):',
+'badsiglength'            => 'Æгæр даргъ къухæрфыст, хъуамæ $1 дамгъæйæ къаддæр уа.',
+'email'                   => 'Эл. посты адрис',
+'loginsuccess'            => 'Ныр та Википедийы архайыс $1, зæгъгæ, ахæм номæй.',
+'wrongpasswordempty'      => 'Пароль афтид уыд. Афтæ нæ баззы, ныффыс-ма исты пароль.',
+'loginlanguagelabel'      => 'Æвзаг: $1',
 
 # Password reset dialog
 'resetpass_text' => '<!-- Бахæсс дæ текст ам -->',
@@ -298,12 +308,14 @@ $messages = array(
 'lineno' => 'Рæнхъ $1:',
 
 # Search results
-'searchresults' => 'Цы ссардæуы',
-'titlematches'  => 'Статьяты сæргæндты æмцаутæ',
-'textmatches'   => 'Статьяты æмцаутæ',
-'prevn'         => '$1 фæстæмæ',
-'nextn'         => '$1 размæ',
-'powersearch'   => 'Сæрмагонд агуырд',
+'searchresults'      => 'Цы ссардæуы',
+'titlematches'       => 'Статьяты сæргæндты æмцаутæ',
+'textmatches'        => 'Статьяты æмцаутæ',
+'prevn'              => '$1 фæстæмæ',
+'nextn'              => '$1 размæ',
+'searchall'          => 'æппæт',
+'powersearch'        => 'Сæрмагонд агуырд',
+'powersearch-legend' => 'Сæрмагонд агуырд',
 
 # Preferences page
 'mypreferences'           => 'Æрмадз',
@@ -345,12 +357,10 @@ $3',
 'savefile'      => 'Бавæр æй',
 'uploadvirus'   => 'Файлы разынд вирус! Кæс $1',
 
-# Image list
-'imagelist'        => 'Нывты номхыгъд',
-'ilsubmit'         => 'Агур',
-'byname'           => 'номмæ гæсгæ',
-'bydate'           => 'рæстæгмæ гæсгæ',
-'bysize'           => 'асмæ гæсгæ',
+# Special:Imagelist
+'imagelist' => 'Нывты номхыгъд',
+
+# Image description page
 'filehist'         => 'Файлы истори',
 'filehist-current' => 'нырыккон',
 'imagelinks'       => 'Æрвитæнтæ',
@@ -364,7 +374,7 @@ $3',
 
 # Statistics
 'userstats'     => 'Архайджыты статистикæ',
-'userstatstext' => "Регистрацигонд {{PLURAL:$1|æрцыд '''иу архайæг'''|æрцыдысты $1 [[Special:ListUsers|архайæджы]]}}, уыдонæй '''$2''' (ома сæ '''$4%''') {{PLURAL:$2|у|сты}} $5.",
+'userstatstext' => 'Регистрацигонд æрцыдысты <b>$1</b> архайджыты, уыдонæй <b>$2</b> — админтæ (кæс $3).',
 
 'brokenredirects-edit'   => '(баив æй)',
 'brokenredirects-delete' => '(аппар)',
@@ -372,37 +382,37 @@ $3',
 'withoutinterwiki-submit' => 'Равдис',
 
 # Miscellaneous special pages
-'nbytes'            => '$1 {{PLURAL:$1|байт|байты}}',
-'nlinks'            => '$1 {{PLURAL:$1|æрвитæн|æрвитæны}}',
+'nbytes'            => '$1 байт(ы)',
+'nlinks'            => '$1 æрвитæн(ы)',
 'nviews'            => '$1 {{PLURAL:$1|æркаст|æркасты}}',
 'lonelypages'       => 'Сидзæр фæрстæ',
 'wantedpages'       => 'Хъæугæ фæрстæ',
-'allpages'          => 'Æппæт фæрстæ',
 'shortpages'        => 'Цыбыр фæрстæ',
 'longpages'         => 'Даргъ фæрстæ',
 'listusers'         => 'Архайджыты номхыгъд',
-'specialpages'      => 'Сæрмагонд фæрстæ',
-'spheading'         => 'Сæрмагонд фæрстæ',
 'newpages'          => 'Ног фæрстæ',
 'newpages-username' => 'Архайæг:',
 'ancientpages'      => 'Зæронддæр фæрстæ',
-'intl'              => 'Æндæр æвзæгтæм æрвитæнтæ',
 'move'              => 'Ном баив',
 
-'categoriespagetext' => 'Мæнæ ахæм категоритæ ирон Википедийы ис.',
-'alphaindexline'     => '$1 (уыдоны ’хсæн цы статьятæ ис, фен) $2',
-'version'            => 'MediaWiki-йы верси',
-
 # Special:Allpages
-'allarticles'  => 'Æппæт статьятæ',
-'allpagesprev' => 'фæстæмæ',
-'allpagesnext' => 'дарддæр',
+'allpages'       => 'Æппæт фæрстæ',
+'alphaindexline' => '$1 (уыдоны ’хсæн цы статьятæ ис, фен) $2',
+'allarticles'    => 'Æппæт статьятæ',
+'allpagesprev'   => 'фæстæмæ',
+'allpagesnext'   => 'дарддæр',
+
+# Special:Categories
+'categories'                    => 'Категоритæ',
+'categoriespagetext'            => 'Мæнæ ахæм категоритæ ирон Википедийы ис.',
+'special-categories-sort-count' => 'нымæцмæ гæсгæ равæр',
+'special-categories-sort-abc'   => 'алфавитмæ гæсгæ равæр',
 
 # Special:Listusers
 'listusers-submit' => 'Равдис',
 
 # E-mail user
-'mailnologintext' => 'Фыстæгтæ æрвитынмæ хъуамæ [[Special:UserLogin|системæйæн дæхи бавдисай]] æмæ дæ бæлвырд электронон посты адрис [[Special:Preferences|ныффыссай]].',
+'mailnologintext' => 'Фыстæгтæ æрвитынмæ хъуамæ [[Special:Userlogin|системæйæн дæхи бавдисай]] æмæ дæ бæлвырд электронон посты адрис [[Special:Preferences|ныффыссай]].',
 'emailpage'       => 'Электронон фыстæг йæм барвит',
 
 # Watchlist
@@ -410,7 +420,7 @@ $3',
 'mywatchlist'          => 'Дæ цæст кæмæ дарыс, уыцы фæрстæ',
 'nowatchlist'          => 'Иу статьямæ дæр дæ цæст нæ дарыс.',
 'watchnologin'         => 'Системæйæн дæхи нæ бацамыдтай',
-'watchnologintext'     => 'Ацы номхыгъд ивынмæ [[Special:UserLogin|хъуамæ дæхи бацамонай системæйæн]].',
+'watchnologintext'     => 'Ацы номхыгъд ивынмæ [[Special:Userlogin|хъуамæ дæхи бацамонай системæйæн]].',
 'addedwatch'           => 'Дæ цæст кæмæ дарыс, уыцы статьятæм бафтыд.',
 'watch'                => 'Дæ цæст æрдар',
 'watchthispage'        => 'Ацы фарсмæ дæ цæст æрдар',
@@ -441,10 +451,11 @@ $3',
 'uctop'         => '(уæле баззад)',
 
 # What links here
-'whatlinkshere'       => 'Цавæр æрвитæнтæ цæуынц ардæм',
-'whatlinkshere-page'  => 'Фарс:',
-'linklistsub'         => '(Æрвитæнты номхыгъд)',
-'whatlinkshere-links' => '← æрвитæнтæ',
+'whatlinkshere'           => 'Цавæр æрвитæнтæ цæуынц ардæм',
+'whatlinkshere-page'      => 'Фарс:',
+'linklistsub'             => '(Æрвитæнты номхыгъд)',
+'whatlinkshere-links'     => '← æрвитæнтæ',
+'whatlinkshere-hidelinks' => '$1 æрвитæнтæ',
 
 # Block/unblock
 'ipbreason'    => 'Аххос',
@@ -471,13 +482,13 @@ $3',
 # Attribution
 'others' => 'æндæртæ',
 
-# Spam protection
-'subcategorycount'       => 'Ацы категорийы мидæг $1 дæлкатегорийы ис.',
-'categoryarticlecount'   => 'Ацы категорийы мидæг $1 статьяйы ис.',
-'listingcontinuesabbrev' => '(дарддæрдзу)',
+# Media information
+'widthheightpage' => '$1 × $2, $3 фарсы',
 
 # Special:Newimages
 'newimages' => 'Ног нывты галерей',
+'ilsubmit'  => 'Агур',
+'bydate'    => 'рæстæгмæ гæсгæ',
 
 # EXIF tags
 'exif-artist' => 'Чи йæ систа',
@@ -507,7 +518,11 @@ $3',
 'watchlisttools-edit' => 'Номхыгъд фен/баив',
 
 # Special:Version
+'version'                  => 'MediaWiki-йы верси', # Not used as normal message but as header for the special page itself
 'version-version'          => 'Верси',
 'version-software-version' => 'Верси',
+
+# Special:SpecialPages
+'specialpages' => 'Сæрмагонд фæрстæ',
 
 );

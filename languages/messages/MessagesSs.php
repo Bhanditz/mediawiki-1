@@ -4,8 +4,9 @@
  * @ingroup Language
  * @file
  *
- * @author Jatrobat
  * @author MF-Warburg
+ * @author Jatrobat
+ * @author Siebrand
  */
 
 $messages = array(
@@ -59,14 +60,14 @@ $messages = array(
 'jumptosearch'     => 'kucálata',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'mainpage'   => 'Likhasi Lelikhulu',
-'portal'     => 'Likhefi leinthanethi',
-'portal-url' => 'Project:Likhefi leinthanethi',
+'mainpage'             => 'Likhasi Lelikhulu',
+'mainpage-description' => 'Likhasi Lelikhulu',
+'portal'               => 'Likhefi leinthanethi',
+'portal-url'           => 'Project:Likhefi leinthanethi',
 
 'youhavenewmessages' => 'Ube $1 ($2).',
 'editsection'        => 'kúhlela',
 'editold'            => 'kúhlela',
-'hidetoc'            => 'hide',
 'viewdeleted'        => 'Kúfúna $1?',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
@@ -85,21 +86,21 @@ $messages = array(
 # Preferences page
 'searchresultshead' => 'Kucálata',
 
-# Image list
-'ilsubmit'          => 'Kucálata',
+# Special:Imagelist
+'imagelist_date' => 'Lusuku',
+'imagelist_name' => 'Ligama',
+'imagelist_user' => 'Umuntfu',
+
+# Image description page
 'filehist-datetime' => 'Lusuku/Síkhatsí',
 'filehist-user'     => 'Umuntfu',
-'imagelist_date'    => 'Lusuku',
-'imagelist_name'    => 'Ligama',
-'imagelist_user'    => 'Umuntfu',
 
 'brokenredirects-edit' => '(kúhlela)',
 
 'withoutinterwiki-submit' => 'Kúfúna',
 
 # Miscellaneous special pages
-'specialpages' => 'Emakhasi labalulekile',
-'move'         => 'Kúgojotîsa',
+'move' => 'Kúgojotîsa',
 
 # Book sources
 'booksources-go' => 'Kúhámba',
@@ -142,6 +143,9 @@ $messages = array(
 'tooltip-search' => 'Kucálata {{SITENAME}}',
 'tooltip-p-logo' => 'Likhasi Lelikhulu',
 
+# Special:Newimages
+'ilsubmit' => 'Kucálata',
+
 # Multipage image navigation
 'imgmultigo' => 'Kúhámba!',
 
@@ -150,5 +154,8 @@ $messages = array(
 
 # Special:Version
 'version-specialpages' => 'Emakhasi labalulekile',
+
+# Special:SpecialPages
+'specialpages' => 'Emakhasi labalulekile',
 
 );

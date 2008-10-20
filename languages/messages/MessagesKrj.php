@@ -4,17 +4,14 @@
  * @ingroup Language
  * @file
  *
- * @author Harvzsf
- * @author Joebertj
- * @author Jose77
  * @author RonaldPanaligan
- * @author RonaldPanaligan, Harvzsf (September 2007)
+ * @author Jose77
+ * @author Harvzsf
  */
 
 $messages = array(
 # User preference toggles
 'tog-underline'            => "Koritan ang dalum kang manga ''link'':",
-'tog-highlightbroken'      => 'I-format ang mga guba nga links <a href="" class="new">paryas kaja</a> (alternative: paryas kaja<a href="" class="internal">?</a>).',
 'tog-justify'              => 'Tururupungun ang kilid kang manga paragraph',
 'tog-hideminor'            => "Tagoon ang gagmay nga ''edit'' sa mga bag-o nga ilis",
 'tog-extendwatchlist'      => "Palapadun ang ''watchlist'' agud nga mapakita ang tanan nga ginasogtan nga pag-ilis",
@@ -94,8 +91,7 @@ $messages = array(
 'nov'           => 'Nob',
 'dec'           => 'Dis',
 
-# Bits of text used by many pages
-'categories'            => 'Manga Kategorya',
+# Categories related messages
 'category_header'       => 'Manga artikolo sa "$1"',
 'subcategories'         => "Manga ''subcategory''",
 'category-media-header' => 'Manga midya sa "$1"',
@@ -154,30 +150,15 @@ $messages = array(
 'jumptosearch'      => 'sagap',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutsite'      => 'Tunggəd sa {{SITENAME}}',
-'aboutpage'      => 'Proyekto:Tunggəd',
-'bugreports'     => "Mga report kang ''bug''",
-'disclaimers'    => 'Mga Panginwala',
-'disclaimerpage' => 'Proyekto:Panginwala nga Pangtanan',
-'edithelp'       => 'Panoytoy sa Pag-ilis',
-'edithelppage'   => 'Bulig:Pag-ilis',
-'faq'            => 'FAQ',
-'faqpage'        => 'Proyekto:FAQ',
-'mainpage'       => 'Pono nga Pahina',
-'privacy'        => 'Surundun sa Privacy',
-'privacypage'    => 'Proyekto:Surundun sa Privacy',
-'sitesupport'    => 'Donasyon',
+'bugreports'           => "Mga report kang ''bug''",
+'edithelp'             => 'Panoytoy sa Pag-ilis',
+'mainpage'             => 'Pono nga Pahina',
+'mainpage-description' => 'Pono nga Pahina',
 
 'badaccess'        => 'Sayup sa lisensya',
 'badaccess-group0' => 'Indi kaw ginpasogtan nga himoon ang lihuk nga ginalaum mo.',
-'badaccess-groups' => 'Ang imo ginpangayo nga lihuk ay para lang sa mga users sa {{PLURAL:$2|nga grupo|sara sa mga grupo}}: $1.',
-
-'versionrequired'     => 'Version $1 kang MediaWiki kinahanglan',
-'versionrequiredtext' => 'Version $1 of MediaWiki kinahanglan para magamit ang page nga ja.
-Lantawa sa [[Special:Version|version kang page]].',
 
 'ok'                      => 'OK dun',
-'pagetitle'               => '$1 - {{SITENAME}}',
 'youhavenewmessages'      => 'May rudyan kaw nga $1 ($2).',
 'newmessageslink'         => 'bag-o nga manga mensahe',
 'newmessagesdifflink'     => 'orihi nga ilis',
@@ -233,9 +214,8 @@ Lantawa sa [[Special:Version|version kang page]].',
 
 'upload-file-error' => 'Sayup internal',
 
-# Image list
-'ilsubmit' => 'Sagap',
-'imgfile'  => 'inayap',
+# Special:Imagelist
+'imgfile' => 'inayap',
 
 # File deletion
 'filedelete-submit' => 'Para',
@@ -245,14 +225,14 @@ Lantawa sa [[Special:Version|version kang page]].',
 
 'withoutinterwiki-submit' => 'Ipakita',
 
-# Miscellaneous special pages
-'specialpages' => 'Manga espesyal nga pahina',
-
 # Book sources
 'booksources-go' => 'Agto',
 
 # Special:Log
 'log-search-submit' => 'Agto',
+
+# Special:Categories
+'categories' => 'Manga Kategorya',
 
 # Special:Listusers
 'listusers-submit' => 'Ipakita',
@@ -279,21 +259,12 @@ Lantawa sa [[Special:Version|version kang page]].',
 'ipblocklist-submit' => 'Sagap',
 
 # Tooltip help for the actions
-'tooltip-ca-protect'            => 'Amligan ang dya nga pahina',
-'tooltip-ca-delete'             => 'Paraun ang dya nga Pahina',
-'tooltip-p-logo'                => 'Pono nga Pahina',
-'tooltip-n-mainpage'            => 'Agtoni ang Main Page',
-'tooltip-n-portal'              => 'Tunggəd sa project, ano pwede mo mahimo, diin mo makita ang mga bagay bagay',
-'tooltip-n-currentevents'       => 'Pangita-a ang mga ginhalinan sa mga nagakaratabo sa tulad',
-'tooltip-n-recentchanges'       => 'Listahan kang mga bag-o lang na-ilis sa wiki.',
-'tooltip-n-randompage'          => 'Magkarga kang random nga page',
-'tooltip-n-help'                => 'Lugar kun diin mo masagap.',
-'tooltip-t-whatlinkshere'       => 'Listahan kang tanan nga mga wiki pages nga naga-link paagto ja',
-'tooltip-t-recentchangeslinked' => 'Mga bag-o lng ilis nga mga page nga naka-link halin sa page nga ja',
-'tooltip-feed-rss'              => 'RSS feed para sa page nga ja',
-'tooltip-feed-atom'             => 'Atom feed para sa page nga ja',
-'tooltip-t-contributions'       => 'Lantawa ang listahan kang mga ginbulig kang user nga ja',
-'tooltip-t-emailuser'           => 'Padarhi kang e-mail ang user nga ja',
+'tooltip-ca-protect' => 'Amligan ang dya nga pahina',
+'tooltip-ca-delete'  => 'Paraun ang dya nga Pahina',
+'tooltip-p-logo'     => 'Pono nga Pahina',
+
+# Special:Newimages
+'ilsubmit' => 'Sagap',
 
 # action=purge
 'confirm_purge_button' => 'OK dun',
@@ -309,5 +280,11 @@ Lantawa sa [[Special:Version|version kang page]].',
 
 # Special:Filepath
 'filepath-page' => 'Inayap:',
+
+# Special:FileDuplicateSearch
+'fileduplicatesearch-submit' => 'Sagap',
+
+# Special:SpecialPages
+'specialpages' => 'Manga espesyal nga pahina',
 
 );

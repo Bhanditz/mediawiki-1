@@ -22,9 +22,10 @@ $messages = array(
 'talk'              => 'bschprecha',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutsite' => 'Üba {{SITENAME}}',
-'aboutpage' => 'Project:Üba_{{SITENAME}}',
-'mainpage'  => 'Hauptsaitn',
+'aboutsite'            => 'Üba {{SITENAME}}',
+'aboutpage'            => 'Project:Üba_{{SITENAME}}',
+'mainpage'             => 'Hauptsaitn',
+'mainpage-description' => 'Hauptsaitn',
 
 'youhavenewmessagesmulti' => 'Sie ham neie Nachrichten: $1',
 
@@ -64,7 +65,6 @@ $messages = array(
 'watchthisupload' => 'De Seitn beobachtn',
 
 # Miscellaneous special pages
-'allpages'     => 'Alle Seitn',
 'newpages'     => 'Neie Seitn',
 'ancientpages' => 'Scho länger nimma bearbate Artikel',
 'move'         => 'vaschiam',
@@ -73,6 +73,7 @@ $messages = array(
 'all-logs-page' => 'Alle Logbiacha',
 
 # Special:Allpages
+'allpages'          => 'Alle Seitn',
 'allarticles'       => 'Alle Seitn',
 'allinnamespace'    => 'Alle Seitn (Namensraum: $1)',
 'allnotinnamespace' => 'Alle Seitn (net im $1 Namensraum)',
@@ -95,10 +96,10 @@ $messages = array(
 'whatlinkshere' => 'Links auf de Seitn',
 
 # Move page
-'movepage'        => 'Seitn vaschiam',
-'move-watch'      => 'De Seitn beobachten',
-'1movedto2'       => 'håt [[$1]] nåch [[$2]] verschom',
-'1movedto2_redir' => 'håt [[$1]] nåch [[$2]] verschom und dabei a Weiterleitung überschriem',
+'move-page-legend' => 'Seitn vaschiam',
+'move-watch'       => 'De Seitn beobachten',
+'1movedto2'        => 'håt [[$1]] nåch [[$2]] verschom',
+'1movedto2_redir'  => 'håt [[$1]] nåch [[$2]] verschom und dabei a Weiterleitung überschriem',
 
 # Namespace 8 related
 'allmessagesname'     => 'Nam',

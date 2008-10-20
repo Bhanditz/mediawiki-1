@@ -3,7 +3,6 @@
  *
  * @ingroup Language
  * @file
- *
  */
 
 $digitTransformTable = array(
@@ -72,9 +71,6 @@ $messages = array(
 'nov'           => 'ཟླ་བཅུ་གཅིག་པ།',
 'dec'           => 'ཟླ་བཅུ་གཉིས་པ།',
 
-# Bits of text used by many pages
-'subcategories' => 'རིགས་ཕལ་བ།',
-
 'about'          => 'ཨཱབོཨུཏ་',
 'cancel'         => 'དོར་བ།',
 'qbedit'         => 'རྩོམ་སྒྲིག',
@@ -99,14 +95,14 @@ $messages = array(
 'jumptosearch'     => 'འཚོལ།',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutsite'         => 'ཨཱབོཨུཏ་ {{SITENAME}}',
-'aboutpage'         => 'Project:ཨཱབོཨུཏ་',
-'currentevents'     => 'ད་ལྟའི་བྱ་བ།',
-'currentevents-url' => 'Project:ད་ལྟའི་བྱ་བ།',
-'edithelp'          => 'རྩོམ་སྒྲིག་གི་རོགས་རམ།',
-'mainpage'          => 'གཙོ་ངོས།',
-'portal'            => 'ཁོངས་མི་འདུ་ར།',
-'sitesupport'       => 'ཞལ་འདེབས།',
+'aboutsite'            => 'ཨཱབོཨུཏ་ {{SITENAME}}',
+'aboutpage'            => 'Project:ཨཱབོཨུཏ་',
+'currentevents'        => 'ད་ལྟའི་བྱ་བ།',
+'currentevents-url'    => 'Project:ད་ལྟའི་བྱ་བ།',
+'edithelp'             => 'རྩོམ་སྒྲིག་གི་རོགས་རམ།',
+'mainpage'             => 'གཙོ་ངོས།',
+'mainpage-description' => 'གཙོ་ངོས།',
+'portal'               => 'ཁོངས་མི་འདུ་ར།',
 
 'editsection' => 'རྩོམ་སྒྲིག',
 'editold'     => 'རྩོམ་སྒྲིག',
@@ -175,9 +171,6 @@ $messages = array(
 'fileuploadsummary' => 'བསྡུས་དོན།:',
 'watchthisupload'   => 'དྲ་ངོས་འདི་ལ་མཉམ་འཇོག་པ།',
 
-# Image list
-'ilsubmit' => 'འཚོལ།',
-
 # Random page
 'randompage' => 'རང་མོས་ཤོག་ངོས།',
 
@@ -185,8 +178,6 @@ $messages = array(
 'brokenredirects-delete' => '(གསུབ་པ།)',
 
 # Miscellaneous special pages
-'allpages'          => 'དྲ་ངོས་ཡོངས།',
-'specialpages'      => 'དམིཊ་བསལ་གྱི་བཟོ་བཅོས།',
 'newpages-username' => 'དྲ་མིང་།:',
 'move'              => 'སྤོར།',
 
@@ -194,6 +185,7 @@ $messages = array(
 'booksources-go' => 'སོང་།',
 
 # Special:Allpages
+'allpages'       => 'དྲ་ངོས་ཡོངས།',
 'allpagessubmit' => 'སོང་།',
 
 # E-mail user
@@ -226,6 +218,7 @@ $messages = array(
 
 # Move page
 'movearticle' => 'སྤོར་ངོས།',
+'movenologin' => 'ནང་འཛུལ་བྱས་མེད།',
 'move-watch'  => 'དྲ་ངོས་འདི་ལ་མཉམ་འཇོག་པ།',
 'movereason'  => 'རྒྱུ་མཚན།',
 
@@ -238,10 +231,16 @@ $messages = array(
 'tooltip-ca-move'        => 'ཨཾོབེ༹་ ཐིས་ པགེ་',
 'tooltip-p-logo'         => 'གཙོ་ངོས།',
 
+# Special:Newimages
+'ilsubmit' => 'འཚོལ།',
+
 # Multipage image navigation
 'imgmultigo' => 'སོང་།!',
 
 # Table pager
 'table_pager_limit_submit' => 'སོང་།',
+
+# Special:SpecialPages
+'specialpages' => 'དམིཊ་བསལ་གྱི་བཟོ་བཅོས།',
 
 );

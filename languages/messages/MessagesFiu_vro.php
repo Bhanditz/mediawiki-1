@@ -4,9 +4,12 @@
  * @ingroup Language
  * @file
  *
+ * @author Võrok
+ * @author Siebrand
+ * @author SPQRobin
+ * @author Jon Harald Søby
  * @author Niklas Laxsröm
  * @author Sulev Iva (Võrok)
- * @author Võrok
  */
 
 $fallback = 'et';
@@ -142,13 +145,13 @@ $messages = array(
 'nov'           => 'märtek',
 'dec'           => 'jouluk',
 
-# Bits of text used by many pages
-'categories'            => 'Katõgooriaq',
-'pagecategories'        => '{{PLURAL:$1|Katõgooria|Katõgooriaq}}',
-'category_header'       => 'Katõgooria "$1" artikliq',
-'subcategories'         => 'Allkatõgooriaq',
-'category-media-header' => 'Kiräkotus katõgoorian "$1"',
-'category-empty'        => "''Seon katõgoorian olõ-i parhilla artikliid ega teedüstüid.''",
+# Categories related messages
+'pagecategories'         => '{{PLURAL:$1|Katõgooria|Katõgooriaq}}',
+'category_header'        => 'Katõgooria "$1" artikliq',
+'subcategories'          => 'Allkatõgooriaq',
+'category-media-header'  => 'Kiräkotus katõgoorian "$1"',
+'category-empty'         => "''Seon katõgoorian olõ-i parhilla artikliid ega teedüstüid.''",
+'listingcontinuesabbrev' => 'lätt edesi',
 
 'mainpagetext'      => 'Wiki tarkvara paika säet.',
 'mainpagedocfooter' => 'Vikitarkvara pruukmisõ kotsilõ loeq mano:
@@ -232,30 +235,29 @@ $messages = array(
 'jumptosearch'      => 'otsminõ',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutsite'         => '{{SITENAME}} tutvustus',
-'aboutpage'         => 'Project:Pääteedüs',
-'bugreports'        => 'Viateedüseq',
-'bugreportspage'    => 'Project:Viateedüseq',
-'copyright'         => "Teksti või vabalt pruukiq $1'i perrä.",
-'copyrightpagename' => '{{SITENAME}} ja tegijäõigusõq',
-'copyrightpage'     => '{{ns:project}}:Tegijäõigusõq',
-'currentevents'     => 'Miä sünnüs',
-'currentevents-url' => 'Project:Miä sünnüs',
-'disclaimers'       => 'Hoiatuisi',
-'disclaimerpage'    => 'Project:Üledseq hoiatusõq',
-'edithelp'          => 'Toimõndamisoppus',
-'edithelppage'      => 'Help:Kuis_artiklit_toimõndaq',
-'faq'               => 'Sagõhõhe küsüdüq küsümiseq',
-'faqpage'           => 'Project:KKK',
-'helppage'          => 'Help:Oppus',
-'mainpage'          => 'Pääleht',
-'policy-url'        => 'Project:Säädüseq',
-'portal'            => 'Arotusõtarõ',
-'portal-url'        => 'Project:Arotusõtarõ',
-'privacy'           => 'Eräteedüse kaitsminõ',
-'privacypage'       => 'Project:Eräteedüse kaitsminõ',
-'sitesupport'       => 'Tugõminõ',
-'sitesupport-url'   => 'Project:Tugõminõ',
+'aboutsite'            => '{{SITENAME}} tutvustus',
+'aboutpage'            => 'Project:Pääteedüs',
+'bugreports'           => 'Viateedüseq',
+'bugreportspage'       => 'Project:Viateedüseq',
+'copyright'            => "Teksti või vabalt pruukiq $1'i perrä.",
+'copyrightpagename'    => '{{SITENAME}} ja tegijäõigusõq',
+'copyrightpage'        => '{{ns:project}}:Tegijäõigusõq',
+'currentevents'        => 'Miä sünnüs',
+'currentevents-url'    => 'Project:Miä sünnüs',
+'disclaimers'          => 'Hoiatuisi',
+'disclaimerpage'       => 'Project:Üledseq hoiatusõq',
+'edithelp'             => 'Toimõndamisoppus',
+'edithelppage'         => 'Help:Kuis_artiklit_toimõndaq',
+'faq'                  => 'Sagõhõhe küsüdüq küsümiseq',
+'faqpage'              => 'Project:KKK',
+'helppage'             => 'Help:Oppus',
+'mainpage'             => 'Pääleht',
+'mainpage-description' => 'Pääleht',
+'policy-url'           => 'Project:Säädüseq',
+'portal'               => 'Arotusõtarõ',
+'portal-url'           => 'Project:Arotusõtarõ',
+'privacy'              => 'Eräteedüse kaitsminõ',
+'privacypage'          => 'Project:Eräteedüse kaitsminõ',
 
 'badaccess'        => 'Lubamalda tallitus',
 'badaccess-group0' => 'Sul olõ-i õigust seod tallitust tetäq.',
@@ -329,11 +331,6 @@ MySQL and\' via "$3: $4".',
 'readonlytext'         => "Teedüskogo om kirotuskaitsõ all, arvadaq niikavvas ku tedä parandõdas.
 Kõrraldaja, kiä taa kirotuskaitsõ alaq võtt', and' sääntse selgütüse:
 <p>$1",
-'missingarticle'       => 'Lövvä es teedüskogost leheküle "$1" teksti, kuiki olõsiq pidänüq löüdmä.
-
-Hariligult om taa põhjusõs vanaslännüq sisuvaihidõ- vai aoluulink lehekülele, miä om ärq kistutõt.
-
-Ku olõ-i tegemist sääntse johtumisõga, sis või ollaq tegemist tarkvaraviaga. Annaq taast teedäq kõrraldajalõ.',
 'readonly_lag'         => 'Teedüskogo panti automaatsõhe kinniq, et kõik teedüskogoserveriq saasiq kätte kõik värskiq muutmisõq',
 'internalerror'        => 'Sisemäne viga',
 'internalerror_info'   => 'Viga: $1',
@@ -386,6 +383,7 @@ Võit ilma nimeldä edesi toimõndaq vai minnäq sisse tõõsõ nimega.',
 'externaldberror'            => 'Välitsen kimmästegemisteedüskogon om viga vai olõ-i sul lubat umma pruukjanimme muutaq.',
 'loginproblem'               => '<b>Es saaq sisse.</b><br />Prooviq vahtsõst!',
 'login'                      => 'Nimega sisseminek',
+'nav-login-createaccount'    => 'Mineq nimega sisse',
 'loginprompt'                => '{{SITENAME}} lask nimega sisse õnnõ sis, ku lubatas valmistuisi.',
 'userlogin'                  => 'Mineq nimega sisse',
 'logout'                     => 'Nime alt välläminek',
@@ -532,9 +530,9 @@ Suq kinniqpidämise tunnusnummõr om $5. Olõq hää, kirodaq taa nummõr egä p
 'whitelistedittitle'        => 'Toimõndamisõs piät nimega sisse minemä',
 'whitelistedittext'         => 'Lehekülgi toimõndamisõs $1.',
 'whitelistreadtitle'        => 'Lugõmisõs piät olõma nimega sisse lännüq',
-'whitelistreadtext'         => 'Lehekülgi lugõmisõs piät [[Special:UserLogin|nimega sisse minemä]].',
+'whitelistreadtext'         => 'Lehekülgi lugõmisõs piät [[Special:Userlogin|nimega sisse minemä]].',
 'whitelistacctitle'         => 'Sul olõ-i õigust pruukjakontot luvvaq',
-'whitelistacctext'          => '{{SITENAME}} kontodõ luumisõs piät olõma [[Special:UserLogin|nimega sisse lännüq]] ja sul piät olõma tuu jaos nõvvõtavaq õigusõq.',
+'whitelistacctext'          => '{{SITENAME}} kontodõ luumisõs piät olõma [[Special:Userlogin|nimega sisse lännüq]] ja sul piät olõma tuu jaos nõvvõtavaq õigusõq.',
 'confirmedittitle'          => 'E-posti kinnütüs',
 'confirmedittext'           => 'Sa saa-i inne lehekülgi toimõndaq, ku olõt kinnütänüq ärq uma e-postiaadrõsi. Tuud saat tetäq uma [[Special:Preferences|säädmislehe]] pääl.',
 'nosuchsectiontitle'        => 'Olõ-i säänest lõiku',
@@ -548,7 +546,7 @@ Suq kinniqpidämise tunnusnummõr om $5. Olõq hää, kirodaq taa nummõr egä p
 'newarticletext'            => "Taad lehekülge olõ-i viil.
 Leheküle luumisõs nakkaq kirotama alanolõvahe kasti.
 Ku sa johtuq siiäq kogõmaldaq, sis klõpsaq võrgokaeja '''Tagasi'''-nuppi.",
-'anontalkpagetext'          => "---- ''Taa om arotusleht nimeldä pruukja kotsilõ, kiä olõ-i loonuq kontot vai pruugi-i tuud. Tuuperäst tulõ meil pruukja kimmästegemises pruukiq timä puutri võrgoaadrõssit. Taa aadrõs või ollaq mitmõ pruukja pääle ütine. Ku olõt nimeldä pruukja ja lövvät, et taa leheküle pääle kirotõt jutt käü suq kotsilõ, sis olõq hää, [[Special:UserLogin|luuq konto vai mineq nimega sisse]], et edespiten segähüisi ärq hoitaq.''",
+'anontalkpagetext'          => "---- ''Taa om arotusleht nimeldä pruukja kotsilõ, kiä olõ-i loonuq kontot vai pruugi-i tuud. Tuuperäst tulõ meil pruukja kimmästegemises pruukiq timä puutri võrgoaadrõssit. Taa aadrõs või ollaq mitmõ pruukja pääle ütine. Ku olõt nimeldä pruukja ja lövvät, et taa leheküle pääle kirotõt jutt käü suq kotsilõ, sis olõq hää, [[Special:Userlogin|luuq konto vai mineq nimega sisse]], et edespiten segähüisi ärq hoitaq.''",
 'noarticletext'             => 'Seo leht om parlaq tühi. Võit [[Special:Search/{{PAGENAME}}|otsiq seo lehe nimme]] tõisi lehti päält vai [{{fullurl:{{FULLPAGENAME}}|action=edit}} naataq seod lehte esiq kirotama].',
 'userpage-userdoesnotexist' => 'Pruukjanimme "$1" olõ-i kirjä pant. Kaeq perrä, kas olõt iks kimmäs, et tahat taad lehte toimõndaq.',
 'clearyourcache'            => "'''Panõq tähele:''' perän pästmist piät muutmiisi nägemises uma võrgokaeja vaihõmälo tühäs tegemä: '''Mozilla:''' vaodaq ''reload''  vai ''ctrl-r'', '''IE / Opera:''' ''ctrl-f5'', '''Safari:''' ''cmd-r'', '''Konqueror''' ''ctrl-r''.",
@@ -567,7 +565,6 @@ Ku sa johtuq siiäq kogõmaldaq, sis klõpsaq võrgokaeja '''Tagasi'''-nuppi.",
 
 <strong>Ku taa om õigõ toimõnduskatsõq, prooviq viilkõrd. Ku iks tüütä-i, prooviq nime alt vällä minekit ja vahtsõst sissetulõkit.</strong>",
 'editing'                   => 'Toimõndõdas artiklit $1',
-'editinguser'               => "Pruukja '''[[User:$1|$1]]''' õigusõq ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'editingsection'            => 'Toimõndõdas lõiku artiklist $1',
 'editingcomment'            => 'Toimõndõdas kommõntaari lehe $1 pääl',
 'editconflict'              => 'Toimõndamisvastaolo: $1',
@@ -597,7 +594,7 @@ Ku klõpsahtat nuppi \"Pästäq\", sis pästetäs '''õnnõ''' ülembädse toim�
 'template-semiprotected'    => '(ärqkaidsõduq nimeldä ja vahtsõq pruukjaq)',
 'nocreatetitle'             => 'Lehekülgi luuminõ piiret',
 'nocreatetext'              => '{{SITENAME}} lupa-i luvvaq vahtsit lehti.
-Võit toimõndaq olõmanolõvit lehti vai [[Special:UserLogin|minnäq nimega sisse]].',
+Võit toimõndaq olõmanolõvit lehti vai [[Special:Userlogin|minnäq nimega sisse]].',
 'nocreate-loggedin'         => 'Sul olõ-i lupa seon vikin vahtsit lehti luvvaq.',
 'permissionserrors'         => 'Õigusõq ei klapiq',
 'permissionserrorstext'     => 'Sul olõ-i lubat taad tetäq, {{PLURAL:$1|tuuperäst, et|tuuperäst, et}}:',
@@ -622,7 +619,6 @@ $3 kirjäpant põhjus: ''$2''",
 'revnotfound'         => 'Es lövväq kujjo',
 'revnotfoundtext'     => 'Es lövväq su otsitut vanna kujjo.
 Kaeq üle aadrõs, kost sa taad löüdäq proovõq.',
-'loadhist'            => 'Leheküle aoluu laatminõ',
 'currentrev'          => 'Viimäne kujo',
 'revisionasof'        => 'Kujo $1',
 'revision-info'       => 'Kujo aost $1 - tennüq $2',
@@ -632,7 +628,6 @@ Kaeq üle aadrõs, kost sa taad löüdäq proovõq.',
 'cur'                 => 'viim',
 'next'                => 'järgm',
 'last'                => 'minev',
-'orig'                => 'alg',
 'page_first'          => 'edimäne leht',
 'page_last'           => 'viimäne leht',
 'histlegend'          => "Märgiq ärq kujoq, midä tahat kõrvo säädiq ja vaodaq võrdõlõmisnuppi.
@@ -664,7 +659,7 @@ Lisateedüst või ollaq [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} k
 'revdelete-nooldid-title'     => 'Olõ-i säänest kujjo',
 'revdelete-nooldid-text'      => 'Sa olõ-i valinuq kujjo vai kujjõ.',
 'revdelete-selected'          => "{{PLURAL:$2|Valit kujo|Validuq kujoq}} lehele '''$1:'''",
-'logdelete-selected'          => "{{PLURAL:$2|Valit muutminõ|Validuq muutmisõq}} lehele '''$1:'''",
+'logdelete-selected'          => '{{PLURAL:$1|Valit muutminõ|Validuq muutmisõq}}:',
 'revdelete-text'              => 'Kistudõduq kujoq ommaq olõman lehe aoluun, a näide sissu saa-i avaligult nätäq. Seo viki tõõsõq kõrraldajaq saavaq taad käkitüt teksti lukõq ja taa tagasi avaligult nättäväs tetäq, ku olõ-i säet muid piirdmiisi.',
 'revdelete-legend'            => 'Nättävüse piirdmiseq',
 'revdelete-hide-text'         => 'Käkiq kujo sisu',
@@ -679,14 +674,8 @@ Lisateedüst või ollaq [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} k
 'revdelete-submit'            => 'Võtaq käüki valitulõ kujolõ',
 'revdelete-logentry'          => 'muudõt lehe [[$1]] kujo nättävüst',
 'logdelete-logentry'          => 'muudõt lehe [[$1]] muutmiisi nättävüst',
-'revdelete-logaction'         => '$1 {{PLURAL:$1|kujo|kujjo}} säet muudu $2',
-'logdelete-logaction'         => '$1 {{plural:$1|muutminõ|muutmist}} lehele [[$3]] säet muudu $2',
 'revdelete-success'           => "'''Kujo nättävüs paika säet.'''",
 'logdelete-success'           => "'''Muutmiisi nättävüs paika säet.'''",
-
-# Oversight log
-'oversightlog'    => 'Perrävalvmismuutuisi nimekiri',
-'overlogpagetext' => 'Tan om nimekiri vahtsõmbist kistutuisist ja kinniqpidämiisist, miä pututasõq kõrraldajidõ iist käkitüt sissu. Kaeq [[Special:IPBlockList|puutridõ võrgoaadrõssidõ kinniqpidämisnimekirjä]], et nätäq, määntseq kinniqpidämiseq ommaq parhillaq jovvun.',
 
 # History merging
 'mergehistory'       => 'Panõq lehti aoluuq kokko',
@@ -706,32 +695,41 @@ Lisateedüst või ollaq [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} k
 'diff-multi'              => '(Kujjõ vaihõl {{PLURAL:$1|üts näütämäldä muutminõ|$1 näütämäldä muutmist}}.)',
 
 # Search results
-'searchresults'         => 'Otsmisõ tulõmusõq',
-'searchresulttext'      => 'Lisateedüst otsmisõ kotsilõ kaeq [[{{MediaWiki:Helppage}}|{{SITENAME}} otsmisoppusõst]].',
-'searchsubtitle'        => "Otsminõ '''[[:$1]]''' perrä",
-'searchsubtitleinvalid' => 'Otsminõ "$1"',
-'noexactmatch'          => "'''Olõ-i lehte päälkiräga \"\$1\".''' Võit tuu [[:\$1|esiq luvvaq]].",
-'titlematches'          => "Artiklipäälkir'ost löüt",
-'notitlematches'        => "Artiklipäälkir'ost es lövväq",
-'textmatches'           => 'Artiklitekstest löüt',
-'notextmatches'         => 'Artiklitekstest es lövväq',
-'prevn'                 => 'minevädseq $1',
-'nextn'                 => 'järgmädseq $1',
-'viewprevnext'          => 'Näütäq ($1) ($2) ($3).',
-'showingresults'        => "{{PLURAL:$1|'''Üts''' tulõmus|'''$1''' tulõmust}} (tulõmusõst '''$2''' pääle).",
-'showingresultsnum'     => "Näüdätäs {{PLURAL:$3|'''1''' tulõmus|'''$3''' tulõmust}} tulõmusõst #'''$2''' pääle.",
-'nonefound'             => '<strong>Hoiatus</strong>: otsmishäti sakõs põhjusõs om tuu, et väega sagehõhe ettetulõvit sõnno võta-i massin otsmisõ man arvõhe. Tõõnõ põhjus või ollaq
+'searchresults'             => 'Otsmisõ tulõmusõq',
+'searchresulttext'          => 'Lisateedüst otsmisõ kotsilõ kaeq [[{{MediaWiki:Helppage}}|{{SITENAME}} otsmisoppusõst]].',
+'searchsubtitle'            => "Otsminõ '''[[:$1]]''' perrä",
+'searchsubtitleinvalid'     => 'Otsminõ "$1"',
+'noexactmatch'              => "'''Olõ-i lehte päälkiräga \"\$1\".''' Võit tuu [[:\$1|esiq luvvaq]].",
+'titlematches'              => "Artiklipäälkir'ost löüt",
+'notitlematches'            => "Artiklipäälkir'ost es lövväq",
+'textmatches'               => 'Artiklitekstest löüt',
+'notextmatches'             => 'Artiklitekstest es lövväq',
+'prevn'                     => 'minevädseq $1',
+'nextn'                     => 'järgmädseq $1',
+'viewprevnext'              => 'Näütäq ($1) ($2) ($3).',
+'search-interwiki-more'     => '(viil)',
+'search-mwsuggest-enabled'  => 'näütäq soovituisi',
+'search-mwsuggest-disabled' => 'ilma soovituisilda',
+'search-relatedarticle'     => 'Otsiq samasugutsit lehti',
+'mwsuggest-disable'         => 'Näüdäku-i AJAX-i soovituisi',
+'searchrelated'             => 'samasugunõ',
+'searchall'                 => 'kõik',
+'showingresults'            => "{{PLURAL:$1|'''Üts''' tulõmus|'''$1''' tulõmust}} (tulõmusõst '''$2''' pääle).",
+'showingresultsnum'         => "Näüdätäs {{PLURAL:$3|'''1''' tulõmus|'''$3''' tulõmust}} tulõmusõst #'''$2''' pääle.",
+'showingresultstotal'       => "Tan ommaq tulõmusõq '''$1 - $2''' (kokko '''$3''')",
+'nonefound'                 => '<strong>Hoiatus</strong>: otsmishäti sakõs põhjusõs om tuu, et väega sagehõhe ettetulõvit sõnno võta-i massin otsmisõ man arvõhe. Tõõnõ põhjus või ollaq
 mitmõ otsmissõna pruukminõ (sis ilmusõq õnnõ leheküleq, kon ommaq kõik otsiduq sõnaq).',
-'powersearch'           => 'Otsminõ',
-'powersearchtext'       => 'Otsitas nimeruumõn:<br />$1<br />$2 List redirects<br />Otsitas $3 $9',
-'searchdisabled'        => "{{SITENAME}} otsminõ parhillaq ei tüütäq. Niikavva, ku otsminõ jälq tüüle saa, võit pruukiq otsmisõs alanolõvat Google'i otsikasti, a näide teedüs {{SITENAME}} sisust pruugi-i ollaq alasi kõgõ värskimb.",
+'powersearch'               => 'Otsminõ',
+'powersearch-legend'        => 'Laendõt otsminõ',
+'search-external'           => 'Väline otsminõ',
+'searchdisabled'            => "{{SITENAME}} otsminõ parhillaq ei tüütäq. Niikavva, ku otsminõ jälq tüüle saa, võit pruukiq otsmisõs alanolõvat Google'i otsikasti, a näide teedüs {{SITENAME}} sisust pruugi-i ollaq alasi kõgõ värskimb.",
 
 # Preferences page
 'preferences'              => 'Säädmine',
 'mypreferences'            => 'Mu säädmiseq',
 'prefs-edits'              => 'Tõimõndamiisi arv:',
 'prefsnologin'             => 'Sa olõ-i nimega sisse lännüq',
-'prefsnologintext'         => 'Et säädmiisi tetäq, tulõ sul [[Special:UserLogin|nimega sisse minnäq]].',
+'prefsnologintext'         => 'Et säädmiisi tetäq, tulõ sul [[Special:Userlogin|nimega sisse minnäq]].',
 'prefsreset'               => 'Su säädmiseq ommaq puutrimälo perrä tagasi tettüq.',
 'qbsettings'               => 'Kipõriba säädmine',
 'qbsettings-none'          => 'Olõ-i',
@@ -788,16 +786,15 @@ mitmõ otsmissõna pruukminõ (sis ilmusõq õnnõ leheküleq, kon ommaq kõik o
 'files'                    => 'Teedüstüq',
 
 # User rights
-'userrights-lookup-user'     => 'Pruukjaõiguisi muutminõ',
-'userrights-user-editname'   => 'Kirodaq pruukjanimi:',
-'editusergroup'              => 'Muudaq pruukjidõ rühmi',
-'userrights-editusergroup'   => 'Pruukjidõrühmä valik',
-'saveusergroups'             => 'Pästäq pruukjidõrühmä muutmisõq',
-'userrights-groupsmember'    => 'Kuulus rühmä:',
-'userrights-groupsremovable' => 'Ärqvõetavaq rühmäq:',
-'userrights-groupsavailable' => 'Või mano pandaq rühmihe:',
-'userrights-groupshelp'      => 'Valiq rühmäq, minkast sa tahat pruukjat ärq võttaq vai kohe mano pandaq. Valimalda jätetüid rühmi muudõda-i. Rühmä valimist saa tühäs tetäq CTRL + hüä hiirevaotusõga.',
-'userrights-reason'          => 'Muutmisõ põhjus:',
+'userrights'               => 'Pruukja õiguisi muutminõ', # Not used as normal message but as header for the special page itself
+'userrights-lookup-user'   => 'Pruukjaõiguisi muutminõ',
+'userrights-user-editname' => 'Kirodaq pruukjanimi:',
+'editusergroup'            => 'Muudaq pruukjidõ rühmi',
+'editinguser'              => "Pruukja '''[[User:$1|$1]]''' õigusõq ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup' => 'Pruukjidõrühmä valik',
+'saveusergroups'           => 'Pästäq pruukjidõrühmä muutmisõq',
+'userrights-groupsmember'  => 'Kuulus rühmä:',
+'userrights-reason'        => 'Muutmisõ põhjus:',
 
 # Groups
 'group'            => 'Rühm:',
@@ -850,7 +847,7 @@ mitmõ otsmissõna pruukminõ (sis ilmusõq õnnõ leheküleq, kon ommaq kõik o
 'recentchangeslinked'          => 'Siiäq putvaq muutmisõq',
 'recentchangeslinked-title'    => 'Muutusõq noidõ lehti pääl, kohe näüdätäs lähe päält "$1"',
 'recentchangeslinked-noresult' => 'Taaha putvit lehti olõ-i taa ao seen muudõt.',
-'recentchangeslinked-summary'  => "Taan nimekirän ommaq noidõ lehti muutmisõq, mink pääle näütäs linke. Naad leheq ommaq perräkaemisnimekirän märgidüq '''paksu kiräga'''.",
+'recentchangeslinked-summary'  => "Taan nimekirän ommaq noidõ lehti muutmisõq, mink pääle näütäs seo lehe päält linke. Naad leheq ommaq [[Special:Watchlist|perräkaemisnimekirän]] märgidüq '''paksu kiräga'''.",
 
 # Upload
 'upload'                      => 'Teedüstü üleslaatminõ',
@@ -858,11 +855,11 @@ mitmõ otsmissõna pruukminõ (sis ilmusõq õnnõ leheküleq, kon ommaq kõik o
 'reupload'                    => 'Vahtsõst üleslaatminõ',
 'reuploaddesc'                => 'Tagasi üleslaatmisõ vormi mano.',
 'uploadnologin'               => 'Sa olõ-i nimega sisse lännüq',
-'uploadnologintext'           => 'Kui tahat teedüstüid üles laatiq, piät [[Special:UserLogin|nimega sisse minemä]].',
+'uploadnologintext'           => 'Kui tahat teedüstüid üles laatiq, piät [[Special:Userlogin|nimega sisse minemä]].',
 'upload_directory_read_only'  => 'Serveril olõ-i üleslaatmiskausta ($1) kirotamisõ õigust.',
 'uploaderror'                 => 'Üleslaatmisviga',
 'uploadtext'                  => '<strong>PIÄQ KINNIQ!</strong> Inne ülelaatmist kaeq, et taa käünüq {{SITENAME}} [[{{MediaWiki:Policy-url}}|pilte pruukmisõ kõrra]] perrä.
-<p>Innembält üleslaadiduq pildiq lövvät [[Special:ImageList|pilte nimekiräst]].
+<p>Innembält üleslaadiduq pildiq lövvät [[Special:Imagelist|pilte nimekiräst]].
 <p>Järgmädse vormi abiga saat laatiq üles vahtsit pilte ummi artiklide ilostamisõs. Inämbüsel võrgokaejil näet nuppi "Browse..." vai "Valiq...", miä vii sinno
 su opõratsioonisüsteemi standardsõhe teedüstüide vallalõtegemise aknõhe. Teedüstü valimisõs pandas timä nimi tekstivälä pääle, miä om nupi kõrval.
 Piät ka kastikõistõ märgi tegemä, et kinnütät,
@@ -938,18 +935,17 @@ Kas olõt kimmäs, et tahat taad üles laatiq? Kaeq ka sissekirotust taa teedüs
 'upload_source_url'  => ' (avalik tüütäv võrgoaadrõs)',
 'upload_source_file' => ' (teedüstü su puutrin)',
 
-# Image list
-'imagelist'                 => 'Pilte nimekiri',
-'imagelisttext'             => 'Pilte nimekirän $1 (sordiduq $2).',
-'getimagelist'              => 'hangi pilte nimekirjä',
-'ilsubmit'                  => 'Otsminõ',
-'showlast'                  => 'Näütäq viimäst $1 pilti sorditult $2.',
-'byname'                    => 'nime perrä',
-'bydate'                    => 'kuupäävä perrä',
-'bysize'                    => 'suurusõ perrä',
-'imgdelete'                 => 'kistudaq',
-'imgdesc'                   => 'seletüs',
-'imgfile'                   => 'teedüstü',
+# Special:Imagelist
+'imagelist_search_for'  => 'Pildi nime otsminõ:',
+'imgfile'               => 'teedüstü',
+'imagelist'             => 'Pilte nimekiri',
+'imagelist_date'        => 'Kuupäiv',
+'imagelist_name'        => 'Nimi',
+'imagelist_user'        => 'Pruukja',
+'imagelist_size'        => 'Suurus (baidõn)',
+'imagelist_description' => 'Seletüs',
+
+# Image description page
 'filehist'                  => 'Teedüstü aolugu',
 'filehist-help'             => "Klõpsaq kuupäävä/kelläao pääl, et nätäq määne taa teedüstü sis oll'.",
 'filehist-deleteall'        => 'kistudaq kõik ärq',
@@ -970,12 +966,7 @@ Kas olõt kimmäs, et tahat taad üles laatiq? Kaeq ka sissekirotust taa teedüs
 'noimage'                   => 'Olõ-i säänest teedüstüt, võit taa esiq {{SITENAME}}he $1.',
 'noimage-linktext'          => 'üles laatiq',
 'uploadnewversion-linktext' => 'Laadiq taa teedüstü vahtsõnõ kujo',
-'imagelist_date'            => 'Kuupäiv',
-'imagelist_name'            => 'Nimi',
-'imagelist_user'            => 'Pruukja',
-'imagelist_size'            => 'Suurus (baidõn)',
-'imagelist_description'     => 'Seletüs',
-'imagelist_search_for'      => 'Pildi nime otsminõ:',
+'imagepage-searchdupe'      => 'Otsiq ütesugutsit teedüstüid',
 
 # File reversion
 'filerevert'         => 'Võtaq tagasi $1',
@@ -1042,7 +1033,6 @@ Lehte peetäs täpsüstüslehes, ku timän om pruugit näüdüst, kohe näütäs
 'brokenredirects-delete' => '(kistudaq ärq)',
 
 'withoutinterwiki'         => 'Keelelingeldä leheq',
-'withoutinterwiki-header'  => 'Nail lehil olõ-i linke tõisi kiili lehti pääle:',
 'withoutinterwiki-summary' => 'Nail lehil olõ-i linke tõisi kiili lehti pääle:',
 
 'fewestrevisions' => 'Kõgõ veidemb kõrdo toimõndõduq leheq',
@@ -1072,7 +1062,6 @@ Lehte peetäs täpsüstüslehes, ku timän om pruugit näüdüst, kohe näütäs
 'mostcategories'          => 'Artikliq, mil om kõgõ rohkõmb katõgoorijit',
 'mostimages'              => 'Kõgõ inämb pruugiduq teedüstüq',
 'mostrevisions'           => 'Artikliq, mil om kõgõ rohkõmb toimõnduisi',
-'allpages'                => 'Kõik artikliq',
 'prefixindex'             => 'Leheq päälkirä algusõ perrä',
 'shortpages'              => 'Lühküq artikliq',
 'longpages'               => 'Pikäq artikliq',
@@ -1082,13 +1071,9 @@ Lehte peetäs täpsüstüslehes, ku timän om pruugit näüdüst, kohe näütäs
 'protectedpagestext'      => 'Naaq leheq kaidsõtasõq ärq tõistõ paika panõkist ja muutmisõst.',
 'protectedpagesempty'     => 'Olõ-i kaidsõtuid lehti.',
 'listusers'               => 'Pruukjaq',
-'specialpages'            => 'Tallitusleheküleq',
-'spheading'               => 'Tallitusleheküleq',
-'restrictedpheading'      => 'Piiredüq tallitusleheküleq',
 'newpages'                => 'Vahtsõq leheküleq',
 'newpages-username'       => 'Pruukjanimi:',
 'ancientpages'            => 'Kõgõ vanõmbaq leheküleq',
-'intl'                    => 'Kiilivaihõlidsõq lingiq',
 'move'                    => 'Nõstaq ümbre',
 'movethispage'            => 'Panõq lehekülg tõistõ paika',
 'unusedimagestext'        => 'Panõq tähele, et tõõsõq leheküleq, nigu tõisi maiõ Vikipeediäq, võivaq pandaq siiäq lehekülgi pääle õkvalinke, tuuperäst võidas siin antuid pilte ka parhilla aktiivsõhe pruukiq.',
@@ -1102,13 +1087,6 @@ Lehte peetäs täpsüstüslehes, ku timän om pruugit näüdüst, kohe näütäs
 'booksources-go'            => 'Otsiq',
 'booksources-text'          => 'Tan om linke lehekülile, kon müvväs raamatit vai andas raamatidõ kotsilõ teedüst.',
 
-'categoriespagetext' => 'Seon vikin ommaq sääntseq katõgooriaq:',
-'data'               => 'Teedüs',
-'userrights'         => 'Pruukja õiguisi muutminõ',
-'groups'             => 'Pruukjarühmäq',
-'alphaindexline'     => '$1 kooniq $2',
-'version'            => 'Kujo',
-
 # Special:Log
 'specialloguserlabel'  => 'Pruukja:',
 'speciallogtitlelabel' => 'Päälkiri:',
@@ -1121,6 +1099,8 @@ Lehte peetäs täpsüstüslehes, ku timän om pruugit näüdüst, kohe näütäs
 'log-title-wildcard'   => 'Otsiq päälkirjo, miä alostasõq taa tekstiga',
 
 # Special:Allpages
+'allpages'          => 'Kõik artikliq',
+'alphaindexline'    => '$1 kooniq $2',
 'nextpage'          => 'Järgmäne lehekülg ($1)',
 'prevpage'          => 'Mineväne lehekülg ($1)',
 'allpagesfrom'      => 'Nakkaq näütämä lehekülest:',
@@ -1134,14 +1114,21 @@ Lehte peetäs täpsüstüslehes, ku timän om pruugit näüdüst, kohe näütäs
 'allpagesbadtitle'  => "Taa päälkiri oll' viganõ vai vikidevaihõlidsõ edejakuga. Tan või ollaq märke, midä tohe-i päälkir'on pruukiq.",
 'allpages-bad-ns'   => '{{SITENAME}}n olõ-i nimeruumi "$1".',
 
+# Special:Categories
+'categories'         => 'Katõgooriaq',
+'categoriespagetext' => 'Seon vikin ommaq sääntseq katõgooriaq:',
+
 # Special:Listusers
 'listusersfrom'      => 'Näütäq pruukjit alostõn:',
 'listusers-submit'   => 'Näütäq',
 'listusers-noresult' => 'Olõ-s pruukjit.',
 
+# Special:Listgrouprights
+'listgrouprights' => 'Pruukjarühmi õigusõq',
+
 # E-mail user
 'mailnologin'     => 'Olõ-i saatja aadrõssit',
-'mailnologintext' => 'Sa piät olõma [[Special:UserLogin|nimega sisse lännüq]]
+'mailnologintext' => 'Sa piät olõma [[Special:Userlogin|nimega sisse lännüq]]
 ja sul piät umin [[Special:Preferences|säädmiisin]] olõma e-postiaadrõs, et sa saasiq tõisilõ pruukjilõ e-kirjo saataq.',
 'emailuser'       => 'Kirodaq taalõ pruukjalõ e-kiri',
 'emailpage'       => 'Kirodaq pruukjalõ e-kiri',
@@ -1167,9 +1154,9 @@ ja sul piät umin [[Special:Preferences|säädmiisin]] olõma e-postiaadrõs, et
 'nowatchlist'          => 'Perräkaemisnimekiri om tühi.',
 'watchlistanontext'    => 'Perräkaemisnimekirä pruukmisõs $1.',
 'watchnologin'         => 'Olõ-i nimega sisse mint',
-'watchnologintext'     => 'Perräkaemisnimekirä muutmisõs piät [[Special:UserLogin|nimega sisse minemä]].',
+'watchnologintext'     => 'Perräkaemisnimekirä muutmisõs piät [[Special:Userlogin|nimega sisse minemä]].',
 'addedwatch'           => 'Perräkaemisnimekirjä pant',
-'addedwatchtext'       => "Lehekülg \"<nowiki>\$1</nowiki>\" om pant su [[Special:Watchlist|perräkaemisnimekirjä]]. Edespididseq muutmisõq seo lehe ja tä arotuskülgi pääl pandasõq ritta siin ja [[Special:RecentChanges|viimätside muutmiisi lehe pääl]] tuvvasõq '''paksun kirän'''. Ku tahat taad lehte perräkaemisnimekiräst vällä võttaq, klõpsaq nuppi \"Lõpõdaq perräkaeminõ ärq\".",
+'addedwatchtext'       => "Lehekülg \"<nowiki>\$1</nowiki>\" om pant su [[Special:Watchlist|perräkaemisnimekirjä]]. Edespididseq muutmisõq seo lehe ja tä arotuskülgi pääl pandasõq ritta siin ja [[Special:Recentchanges|viimätside muutmiisi lehe pääl]] tuvvasõq '''paksun kirän'''. Ku tahat taad lehte perräkaemisnimekiräst vällä võttaq, klõpsaq nuppi \"Lõpõdaq perräkaeminõ ärq\".",
 'removedwatch'         => 'Perräkaemisnimekiräst vällä võet',
 'removedwatchtext'     => 'Lehekülg "<nowiki>$1</nowiki>" om su perräkaemisnimekiräst vällä võet.',
 'watch'                => 'Kaeq perrä',
@@ -1194,7 +1181,7 @@ ja sul piät umin [[Special:Preferences|säädmiisin]] olõma e-postiaadrõs, et
 'watchlist-show-minor' => "Näütäq tsill'okõisi muutmiisi",
 'watchlist-hide-minor' => "Näüdäku-i tsill'okõisi muutmiisi",
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Pandas perräkaemisnimekirjä...',
 'unwatching' => 'Võetas perräkaemisõ alt maaha...',
 
@@ -1264,16 +1251,15 @@ Kelläaoq ummaq serveriao perrä (UTC).',
 'revertpage'                  => 'Pruukja [[Special:Contributions/$2|$2]] ([[User_talk:$2|arotus]]) toimõndusõq pöörediq tagasi ja leht panti tagasi pruukja [[User:$1|$1]] tettü kujo pääle.', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'sessionfailure'              => 'Paistus ollõv määnegi hädä su toimõndamiskõrraga, tuuperäst om viimäne muutminõ egäs johtumisõs jätet tegemäldä. Vaodaq võrgokaeja "tagasi"-nuppi, laadiq üle lehekülg, kost sa tullit ja prooviq vahtsõst.',
 'protectlogpage'              => 'Lehti kaitsmiisi nimekiri',
-'protectlogtext'              => 'Tan om nimekiri lehti kaitsmiisist ja kaitsmisõ maahavõtmiisist. Parhilla kaitsõ all olõvidõ lehti nimekirä lövvät [[Special:ProtectedPages|tast]].',
+'protectlogtext'              => 'Tan om nimekiri lehti kaitsmiisist ja kaitsmisõ maahavõtmiisist. Parhilla kaitsõ all olõvidõ lehti nimekirä lövvät [[Special:Protectedpages|tast]].',
 'protectedarticle'            => 'pand\' lehe "[[$1]]" kaitsõ ala',
 'unprotectedarticle'          => 'võtt\' lehe "[[$1]]" kaitsõ alt maaha',
-'protectsub'                  => 'Lehe "$1" kaitsminõ',
-'confirmprotect'              => 'Kinnüdäq kaitsõ ala pandmist',
+'protect-title'               => 'Lehe "$1" kaitsminõ',
+'protect-legend'              => 'Kinnüdäq kaitsõ ala pandmist',
 'protectcomment'              => 'Kaitsõ ala pandmisõ põhjus',
 'protectexpiry'               => 'Tähtaig',
 'protect_expiry_invalid'      => 'Kõlbmaldaq tähtaig.',
 'protect_expiry_old'          => 'Tähtaig om joba läbi.',
-'unprotectsub'                => 'Lehe "$1" kaitsõ alt maahavõtminõ',
 'protect-unchain'             => 'Pruugiq tõistõ paika pandmisõ kaidsõt',
 'protect-text'                => 'Tan saat kaiaq ja säädäq lehe <strong><nowiki>$1</nowiki></strong> kaitsmist.',
 'protect-locked-blocked'      => 'Kinniqpeetült saa-i kaitsmiisi muutaq. Tan ommaq lehe <strong>$1</strong> parhilladsõq säädmiseq:',
@@ -1344,8 +1330,6 @@ Perämäidsi kistutuisi ja tagasitegemiisi saat kaiaq [[Special:Log/delete|kistu
 'mycontris'     => 'Mu kirotusõq',
 'contribsub2'   => 'Pruukja "$1 ($2)" kirotusõq',
 'nocontribs'    => 'Sääntsit muutmiisi es lövväq.',
-'ucnote'        => 'Näüdätäseq taa pruukja tettüid <b>$1</b> viimäst muutmist viimädse <b>$2</b> päävä seen.',
-'uclinks'       => 'Näütäq viimäst $1 muutmist; viimädse $2 päävä seen.',
 'uctop'         => '(kõgõ vahtsõmb)',
 'month'         => 'Alostõn kuust (ja varrampa):',
 'year'          => 'Alostõn aastagast (ja varrampa):',
@@ -1356,8 +1340,6 @@ Perämäidsi kistutuisi ja tagasitegemiisi saat kaiaq [[Special:Log/delete|kistu
 'sp-contributions-search'      => 'Otsiq muutmiisi',
 'sp-contributions-username'    => 'Puutri võrgoaadrõs vai pruukjanimi:',
 'sp-contributions-submit'      => 'Otsiq',
-
-'sp-newimages-showfrom' => 'Näütäq vahtsit pilte kuupääväst $1 pääle',
 
 # What links here
 'whatlinkshere'       => 'Siiäq näütäjäq lingiq',
@@ -1402,7 +1384,7 @@ Perämäidsi kistutuisi ja tagasitegemiisi saat kaiaq [[Special:Log/delete|kistu
 'badipaddress'                => 'Puutri võrgoaadrõs om võlssi kirotõt.',
 'blockipsuccesssub'           => 'Kinniqpidämine läts kõrda',
 'blockipsuccesstext'          => 'Puutri võrgoaadrõs "$1" om kinniq peet.
-<br />Kõik parhilladsõq kinniqpidämiseq lövvät [[Special:IPBlockList|kinniqpidämiisi nimekiräst]].',
+<br />Kõik parhilladsõq kinniqpidämiseq lövvät [[Special:Ipblocklist|kinniqpidämiisi nimekiräst]].',
 'ipb-edit-dropdown'           => 'Toimõndaq kinniqpidämise põhjuisi',
 'ipb-unblock-addr'            => 'Lõpõdaq pruukja $1 kinniqpidämine ärq',
 'ipb-unblock'                 => 'Lõpõdaq pruukja vai puutri võrgoaadrõasi kinniqpidämine ärq',
@@ -1432,7 +1414,7 @@ Perämäidsi kistutuisi ja tagasitegemiisi saat kaiaq [[Special:Log/delete|kistu
 'autoblocker'                 => 'Olõt automaatsõhe kinniq peet, selle et jaat puutri võrgoaadrõssit pruukjaga $1. Kinniqpidämise põhjus: $2.',
 'blocklogpage'                => 'Kinniqpidämiisi nimekiri',
 'blocklogentry'               => 'pidi kinniq pruukja vai puutri võrgoaadrõsi "[[$1]]". Kinniqpidämise tähtaig $2 $3',
-'blocklogtext'                => 'Taa om kinniqpidämiisi ja naidõ maahavõtmiisi nimekiri. Automaatsõhe kinniqpeetüisi puutridõ võrgoaadrõssiid tan näüdätä-i, noid kaeq [[Special:IPBlockList|puutridõ võrgoaadrõssidõ kinniqpidämise nimekiräst]].',
+'blocklogtext'                => 'Taa om kinniqpidämiisi ja naidõ maahavõtmiisi nimekiri. Automaatsõhe kinniqpeetüisi puutridõ võrgoaadrõssiid tan näüdätä-i, noid kaeq [[Special:Ipblocklist|puutridõ võrgoaadrõssidõ kinniqpidämise nimekiräst]].',
 'unblocklogentry'             => "lõpõt' pruukja $1 kinniqpidämise ärq",
 'block-log-flags-anononly'    => 'õnnõ nimeldä pruukjaq',
 'block-log-flags-nocreate'    => 'pruukjanime luuminõ kinniq peet',
@@ -1468,7 +1450,7 @@ Perämäidsi kistutuisi ja tagasitegemiisi saat kaiaq [[Special:Log/delete|kistu
 'databasenotlocked'   => 'Teedüskoko panda-s lukku.',
 
 # Move page
-'movepage'                => 'Nõstaq artikli tõistõ paika',
+'move-page-legend'        => 'Nõstaq artikli tõistõ paika',
 'movepagetext'            => "Taad vormi pruukin saat lehe ümbre nimetäq.
 Lehe aolugu pandas kah vahtsõ päälkirä ala.
 Vana päälkiräga lehest saa vahtsõ lehe pääle ümbresaatmisõ leht.
@@ -1490,19 +1472,16 @@ inne, ku midä muudat, märgiq perrä, miä tuust tullaq või.",
 Kui om nii, sis panõq vana arotuskülg eräle vai panõq taa kokko vahtsõ arotuskülega.",
 'movearticle'             => 'Panõq artiklilehekülg tõistõ paika',
 'movenologin'             => 'Sa olõ-i nimega sisse lännüq',
-'movenologintext'         => 'Et lehekülge tõistõ paika pandaq, piät hindä pruukjas kirjä pandma ja [[Special:UserLogin|nimega sisse minemä]]',
+'movenologintext'         => 'Et lehekülge tõistõ paika pandaq, piät hindä pruukjas kirjä pandma ja [[Special:Userlogin|nimega sisse minemä]]',
 'movenotallowed'          => 'Sul olõ-i lupa {{SITENAME}} lehti tõistõ paika nõstaq.',
 'newtitle'                => 'Vahtsõ päälkirä ala',
 'move-watch'              => 'Kaeq taa lehe perrä',
 'movepagebtn'             => 'Panõq artikli tõistõ paika',
 'pagemovedsub'            => 'Artikli om tõistõ paika pant',
-'movepage-moved'          => '<big>\'\'\'"$1" om pant nime ala "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'Sääntse nimega artikli om jo olõman vai olõ-i lubat säänest nimme valliq. Valiq vahtsõnõ nimi.',
 'talkexists'              => 'Artikli om tõistõ paika pant, a arotuslehekülge saa-s pandaq, selle et vahtsõ nime all om jo arotuskülg. Panõq arotusküleq esiq kokko.',
 'movedto'                 => 'Pant päälkirä ala:',
 'movetalk'                => 'Panõq ka "arotus", ku saa.',
-'talkpagemoved'           => 'Arotuslehekülg om kah tõistõ paika pant.',
-'talkpagenotmoved'        => 'Arotuslehekülg jäi tõistõ paika pandmaldaq.',
 '1movedto2'               => "pand' lehe [[$1]] vahtsõ nime [[$2]] ala",
 '1movedto2_redir'         => "pand' lehe [[$1]] ümbresaatmislehe [[$2]] pääle",
 'movelogpage'             => 'Tõistõ paika pandmiisi nimekiri',
@@ -1510,7 +1489,7 @@ Kui om nii, sis panõq vana arotuskülg eräle vai panõq taa kokko vahtsõ arot
 'movereason'              => 'Põhjus',
 'revertmove'              => 'võtaq tagasi',
 'delete_and_move'         => 'Kistudaq tsihtlehekülg ärq ja panõq timä asõmalõ taa leht',
-'delete_and_move_text'    => 'Tsihtlehekülg  "[[:$1]]" om jo olõman, kas tahat tuu ärq kistutaq, et taa leht timä asõmalõ pandaq?',
+'delete_and_move_text'    => 'Tsihtlehekülg  "[[$1]]" om jo olõman, kas tahat tuu ärq kistutaq, et taa leht timä asõmalõ pandaq?',
 'delete_and_move_confirm' => 'Jah, kistudaq tuu leht ärq',
 'delete_and_move_reason'  => 'Ärq kistutõt, et tõõnõ timä asõmalõ pandaq',
 'selfmove'                => 'Lätte- ja tsihtnimi ommaq samaq; saa-i lehte timä hindä pääle pandaq.',
@@ -1616,7 +1595,6 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'tooltip-n-recentchanges'         => 'Perämäidsi muutmiisi nimekiri',
 'tooltip-n-randompage'            => 'Tiiq vallalõ johuslinõ lehekülg',
 'tooltip-n-help'                  => 'Abiotsmisõ kotus',
-'tooltip-n-sitesupport'           => 'Tukõq mi tüüd',
 'tooltip-t-whatlinkshere'         => 'Siiäq näütäjide linkega lehti nimekiri',
 'tooltip-t-recentchangeslinked'   => 'Viimädseq muutmisõq lehile, mink pääle näüdätäs linkega seo lehe päält',
 'tooltip-feed-rss'                => 'Taa lehe RSS-kujo',
@@ -1670,16 +1648,12 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'nocredits'        => 'Taa lehe tegijide nimekirjä olõ-i.',
 
 # Spam protection
-'spamprotectiontitle'    => 'Prahisõgõl',
-'spamprotectiontext'     => 'Prahisõgõl om lehe kinniq pidänüq ja lasõ-i taad pästäq. Tuu põhjus om arvadaq vikist välläpoolõ näütäjä link.',
-'spamprotectionmatch'    => 'Tekst, midä prahisõgõl läbi lasõ-s: $1',
-'subcategorycount'       => 'Seol katõgoorial om {{PLURAL:$1|üts allkatõgooria|$1 allkatõgooriat}}.',
-'categoryarticlecount'   => 'Seon katõgoorian om {{PLURAL:$1|üts leht|$1 lehte}}.',
-'category-media-count'   => 'Seon katõgoorian om {{PLURAL:$1|üts teedüstü|$1 teedüstüt}}.',
-'listingcontinuesabbrev' => 'lätt edesi',
-'spambot_username'       => 'MediaWiki prahihäötäjä',
-'spam_reverting'         => 'Tagasi pööret viimädse kujo pääle, koh olõ-i linke lehele $1',
-'spam_blanking'          => "Kõigin kujõn oll' linke lehele $1. Leht tühäs tett.",
+'spamprotectiontitle' => 'Prahisõgõl',
+'spamprotectiontext'  => 'Prahisõgõl om lehe kinniq pidänüq ja lasõ-i taad pästäq. Tuu põhjus om arvadaq vikist välläpoolõ näütäjä link.',
+'spamprotectionmatch' => 'Tekst, midä prahisõgõl läbi lasõ-s: $1',
+'spambot_username'    => 'MediaWiki prahihäötäjä',
+'spam_reverting'      => 'Tagasi pööret viimädse kujo pääle, koh olõ-i linke lehele $1',
+'spam_blanking'       => "Kõigin kujõn oll' linke lehele $1. Leht tühäs tett.",
 
 # Info page
 'infosubtitle'   => 'Teedüs lehe kotsilõ',
@@ -1732,9 +1706,13 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'show-big-image-thumb' => '<small>Proovikaemisõ suurus: $1×$2 pikslit</small>',
 
 # Special:Newimages
-'newimages'    => 'Vahtsõq pildiq',
-'showhidebots' => '($1 robodiq)',
-'noimages'     => 'Olõ-i vahtsit pilte.',
+'newimages'             => 'Vahtsõq pildiq',
+'imagelisttext'         => 'Pilte nimekirän $1 (sordiduq $2).',
+'showhidebots'          => '($1 robodiq)',
+'noimages'              => 'Olõ-i vahtsit pilte.',
+'ilsubmit'              => 'Otsminõ',
+'bydate'                => 'kuupäävä perrä',
+'sp-newimages-showfrom' => 'Näütäq vahtsit pilte kuupääväst $1 pääle',
 
 # Bad image list
 'bad_image_list' => 'Nimekirä muud om sääne:
@@ -2007,7 +1985,7 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 
 # External editor support
 'edit-externally'      => 'Toimõndaq taad teedüstüt välidse programmiga',
-'edit-externally-help' => 'Lisateedüst: [http://www.mediawiki.org/wiki/Manual:External_editors kaeq siist].',
+'edit-externally-help' => 'Lisateedüst: [http://meta.wikimedia.org/wiki/Help:External_editors kaeq siist].',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'kõik',
@@ -2052,7 +2030,7 @@ Olõq hää, kinnüdäq, et tahat taad lehte vahtsõst luvvaq.",
 'recreate'            => 'Luuq vahtsõst',
 
 # HTML dump
-'redirectingto' => 'Saadõtas ümbre lehe pääle [[:$1]]...',
+'redirectingto' => 'Saadõtas ümbre lehe pääle [[$1]]...',
 
 # action=purge
 'confirm_purge'        => 'Kas taa lehe vaihõmälokujoq tulõvaq ärq kistutaq?
@@ -2070,7 +2048,6 @@ $1',
 'imgmultipageprev' => '← mineväne leht',
 'imgmultipagenext' => 'järgmäne leht →',
 'imgmultigo'       => 'Mineq!',
-'imgmultigotopre'  => 'Mineq lehe pääle',
 
 # Table pager
 'ascending_abbrev'         => 'ülespoolõ',
@@ -2119,6 +2096,7 @@ Prooviq harilikku kaehust.',
 'watchlisttools-raw'  => 'Toimõndaq lätteteedüstüt',
 
 # Special:Version
+'version'                  => 'Kujo', # Not used as normal message but as header for the special page itself
 'version-version'          => 'Kujo',
 'version-software-version' => 'Kujo',
 
@@ -2126,5 +2104,26 @@ Prooviq harilikku kaehust.',
 'filepath'        => 'Teedüstü aadrõs',
 'filepath-page'   => 'Teedüstü:',
 'filepath-submit' => 'Aadrõs',
+
+# Special:FileDuplicateSearch
+'fileduplicatesearch-filename' => 'Teedüstünimi:',
+'fileduplicatesearch-submit'   => 'Otsiq',
+
+# Special:SpecialPages
+'specialpages'                   => 'Tallitusleheküleq',
+'specialpages-note'              => '----
+* Hariliguq tallitusleheq.
+* <span class="mw-specialpagerestricted">Piiredüq tallitusleheq.</span>',
+'specialpages-group-maintenance' => 'Kõrranpidämisteedüseq',
+'specialpages-group-other'       => 'Muuq tallitusleheq',
+'specialpages-group-login'       => 'Nimega sisseminek / Pruukjanime luuminõ',
+'specialpages-group-changes'     => 'Muutmisõq ja muutmisnimekiräq',
+'specialpages-group-media'       => 'Meediäteedüstüq',
+'specialpages-group-users'       => 'Pruukjaq ja õigusõq',
+'specialpages-group-highuse'     => 'Rohkõmbpruugiduq leheq',
+'specialpages-group-pages'       => 'Lehenimekiräq',
+'specialpages-group-pagetools'   => 'Lehetüüriistaq',
+'specialpages-group-wiki'        => 'Vikiteedüseq ja tüüriistaq',
+'specialpages-group-redirects'   => 'Ümbrenäütämistallitusleheq',
 
 );

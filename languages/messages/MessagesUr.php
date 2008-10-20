@@ -4,9 +4,10 @@
  * @ingroup Language
  * @file
  *
- * @author Chris H
- * @author Wisesabre
  * @author לערי ריינהארט
+ * @author Wisesabre
+ * @author Siebrand
+ * @author Chris H
  */
 
 $rtl = true;
@@ -80,11 +81,11 @@ $messages = array(
 'december-gen'  => 'دسمبر',
 'may'           => 'مئی',
 
-# Bits of text used by many pages
-'categories'      => 'زمرہ',
-'pagecategories'  => '{{PLURAL:$1|زمرہ|زمرہ جات}}',
-'category_header' => 'زمرہ "$1" میں مضامین',
-'subcategories'   => 'ذیلی ذمرہ جات',
+# Categories related messages
+'pagecategories'         => '{{PLURAL:$1|زمرہ|زمرہ جات}}',
+'category_header'        => 'زمرہ "$1" میں مضامین',
+'subcategories'          => 'ذیلی ذمرہ جات',
+'listingcontinuesabbrev' => '۔جاری',
 
 'mainpagetext' => "<big>'''میڈیاوکی کو کامیابی سے چالو کردیا گیا ہے۔.'''</big>",
 
@@ -135,24 +136,23 @@ $messages = array(
 'protectedpage'     => 'محفوظ شدہ صفحہ',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutsite'         => '{{SITENAME}} کا تعارف',
-'aboutpage'         => 'Project:تعارف',
-'copyright'         => 'تمام مواد $1 کے تحت میسر ہے۔',
-'copyrightpagename' => '{{SITENAME}} حق تصنیف',
-'copyrightpage'     => '{{ns:project}}:حقوق تصانیف',
-'currentevents'     => 'تعارف وکیپیڈیا',
-'currentevents-url' => 'Project:تعارف وکیپیڈیا',
-'disclaimers'       => 'اعلانات',
-'edithelp'          => 'معاونت براۓ ترمیم',
-'faq'               => 'معلوماتِ عامہ',
-'faqpage'           => 'Project:معلوماتِ عامہ',
-'helppage'          => 'Help:فہرست',
-'mainpage'          => 'صفحہ اول',
-'portal'            => 'دیوان عام',
-'portal-url'        => 'Project:دیوان عام',
-'privacy'           => 'اصول براۓ اخفائے راز',
-'sitesupport'       => 'رابطہ',
-'sitesupport-url'   => 'Project:رابطہ',
+'aboutsite'            => '{{SITENAME}} کا تعارف',
+'aboutpage'            => 'Project:تعارف',
+'copyright'            => 'تمام مواد $1 کے تحت میسر ہے۔',
+'copyrightpagename'    => '{{SITENAME}} حق تصنیف',
+'copyrightpage'        => '{{ns:project}}:حقوق تصانیف',
+'currentevents'        => 'تعارف وکیپیڈیا',
+'currentevents-url'    => 'Project:تعارف وکیپیڈیا',
+'disclaimers'          => 'اعلانات',
+'edithelp'             => 'معاونت براۓ ترمیم',
+'faq'                  => 'معلوماتِ عامہ',
+'faqpage'              => 'Project:معلوماتِ عامہ',
+'helppage'             => 'Help:فہرست',
+'mainpage'             => 'صفحہ اول',
+'mainpage-description' => 'صفحہ اول',
+'portal'               => 'دیوان عام',
+'portal-url'           => 'Project:دیوان عام',
+'privacy'              => 'اصول براۓ اخفائے راز',
 
 'badaccess-group0' => 'آپ متمنی عمل کا اجراء کرنے کے مُجاز نہیں۔',
 
@@ -206,6 +206,7 @@ $messages = array(
 'yourdomainname'             => 'آپکا ڈومین',
 'loginproblem'               => '<b>داخلے میں کوئی مسلہ درپیش ہے</b><br />دوبارہ اندراج کیجیۓ!',
 'login'                      => 'داخل ہوں',
+'nav-login-createaccount'    => 'کھاتہ بنائیں یا اندراج کریں',
 'loginprompt'                => '{{SITENAME}} میں داخلے کیلۓ آپکے پاس قند (کوکیز) مجازہوناچاہیں۔',
 'userlogin'                  => 'کھاتہ بنائیں یا اندراج کریں',
 'logout'                     => 'اخراج',
@@ -254,14 +255,14 @@ $messages = array(
 'showpreview'          => 'نمائش',
 'anoneditwarning'      => 'آپ {{SITENAME}} میں داخل نہیں ہوۓ لہذا آپکا IP پتہ اس صفحہ کے تاریخچہ ء ترمیم میں محفوظ ہوجاۓ گا۔',
 'summary-preview'      => 'نمائش خلاصہ',
-'whitelistedittext'    => 'ترمیم و تدوین کے لیۓ آپکا [[Special:UserLogin|داخل ہونا]] لا زمی ہے۔',
+'whitelistedittext'    => 'ترمیم و تدوین کے لیۓ آپکا [[Special:Userlogin|داخل ہونا]] لا زمی ہے۔',
 'loginreqtitle'        => 'داخلہ / اندراج لازم',
 'loginreqlink'         => 'داخلہ',
 'accmailtitle'         => 'کلمہ شناخت بھیج دیا گیا۔',
 'accmailtext'          => '"$1" کیلیۓ کلمہ شناخت $2 کو ارسال کردیا گیا۔',
 'newarticle'           => '(نیا)',
 'newarticletext'       => 'آپ ایک ایسے صفحے کے ربط تک آگۓ ہیں جو ابھی موجود نہیں۔ اگر آپ اس عنوان سے صفحہ بنانا چاہتے ہیں تو اپنا مضمون نیچے دیۓ گۓ احاطہ میں تحریر کیجیۓ اور محفوظ کردیجیۓ (مزید معلومات کیلیۓ معاونت کا صفحہ ملاحظہ کیجیۓ)۔ اگر آپ غلطی سے یہاں پہنچے ہیں تو واپسی کے لیۓ اپنے تصفحہ (براؤزر) کا بیک بٹن ٹک کیجیۓ۔',
-'anontalkpagetext'     => "----''یہ صفحہ ایک ایسے صارف کا ہے جنہوں نے یا تو اب تک اپنا کھاتا نہیں بنایا یا پھر وہ اسے استعمال نہیں کر رہے/ رہی ہیں۔ لہذا ہمیں انکی شناخت کے لیۓ ایک اعدادی آئی پی پتہ استعمال کرنا پڑرہا ہے۔ اس قسم کا آئی پی ایک سے زائد صارفین کے لیۓ مشترک بھی ہوسکتا ہے۔ اگر آپکی موجودہ حیثیت ایک گمنام صارف کی ہے اور آپ محسوس کریں کہ اس صفحہ پر آپکی جانب منسوب یہ بیان غیرضروری ہے تو براہ کرم [[Special:UserLogin|کھاتا بنائیے یا داخل نوشتہ (لاگ ان) ہوں]] تاکہ مستقبل میں آپکو، گمنام صارفین میں شمار کرنے سے پرہیز کیا جاسکے۔\"",
+'anontalkpagetext'     => "----''یہ صفحہ ایک ایسے صارف کا ہے جنہوں نے یا تو اب تک اپنا کھاتا نہیں بنایا یا پھر وہ اسے استعمال نہیں کر رہے/ رہی ہیں۔ لہذا ہمیں انکی شناخت کے لیۓ ایک اعدادی آئی پی پتہ استعمال کرنا پڑرہا ہے۔ اس قسم کا آئی پی ایک سے زائد صارفین کے لیۓ مشترک بھی ہوسکتا ہے۔ اگر آپکی موجودہ حیثیت ایک گمنام صارف کی ہے اور آپ محسوس کریں کہ اس صفحہ پر آپکی جانب منسوب یہ بیان غیرضروری ہے تو براہ کرم [[Special:Userlogin|کھاتا بنائیے یا داخل نوشتہ (لاگ ان) ہوں]] تاکہ مستقبل میں آپکو، گمنام صارفین میں شمار کرنے سے پرہیز کیا جاسکے۔\"",
 'note'                 => '<strong>نوٹ:</strong>',
 'previewnote'          => '<strong>یاد رکھیں، یہ صرف نمائش ہے ۔آپ کی ترامیم ابھی محفوظ نہیں کی گئیں۔</strong>',
 'editing'              => 'آپ "$1" میں ترمیم کر رہے ہیں۔',
@@ -331,6 +332,7 @@ $messages = array(
 'files'             => 'فائلیں',
 
 # User rights
+'userrights'               => 'صارف کے حقوق کا انتظام', # Not used as normal message but as header for the special page itself
 'userrights-user-editname' => 'اسمِ رکنیت داخل کریں:',
 
 'group-bot-member' => 'خودکار صارف',
@@ -365,7 +367,7 @@ $messages = array(
 'reupload'          => 'زبراثقال مکرر',
 'reuploaddesc'      => 'زبراثقال ورقہ (فارم) کیجانب واپس۔',
 'uploadnologin'     => 'آپ داخل شدہ حالت میں نہیں',
-'uploadnologintext' => 'زبراثقال ملف (فائل اپ لوڈ) کے لیۓ آپکو  [[Special:UserLogin|داخل شدہ]] حالت میں ہونا لازم ہے۔',
+'uploadnologintext' => 'زبراثقال ملف (فائل اپ لوڈ) کے لیۓ آپکو  [[Special:Userlogin|داخل شدہ]] حالت میں ہونا لازم ہے۔',
 'uploadtext'        => "
 <big>'''یادآوری''': اگر آپ اپنی ملف (فائل) زبراثقال کرتے وقت ، خلاصہ کے خانے میں ،  درج ذیل دو باتوں کی وضاحت نہیں کرتے تو ملف کو حذف کیا جاسکتا ہے:</big>
 #ملف یا فائل کا '''مـاخـذ''' ، یعنی: 
@@ -379,7 +381,7 @@ $messages = array(
 
 جب کوئی صارف مستقل ایسی ملف زبراثقال کرتا رہے کہ جس کے اجازہ کے بارے میں غلط بیانی کی گئی ہو یا وہ مستقل ایسے عکس زبراثقال کرتا رہے کہ جنکے بارے میں کوئی بیان تحریر نہ کیا گیا ہو تو ایسی صورت میں پابندی لگاۓ جانے کا قوی امکان موجود ہے۔ 
 
-مِلَف (فائل) بھیجنے کیلیے درج ذیل ورقہ (فارم) استعمال کیجیے، اگر آپ اب تک ارسال کردہ تصاویر کو دیکھنا یا تلاش کرنا چاہتے ہیں تو [[Special:ImageList|ارسال کردہ تصاویر]] کے ربط پر جائیے۔ <br /> تمام ارسال و حذف کی گئی تصاویر کو [[Special:Log/upload|نوشتۂ منتقلی]] میں درج کر لیا جاتا ہے۔
+مِلَف (فائل) بھیجنے کیلیے درج ذیل ورقہ (فارم) استعمال کیجیے، اگر آپ اب تک ارسال کردہ تصاویر کو دیکھنا یا تلاش کرنا چاہتے ہیں تو [[Special:Imagelist|ارسال کردہ تصاویر]] کے ربط پر جائیے۔ <br /> تمام ارسال و حذف کی گئی تصاویر کو [[Special:Log/upload|نوشتۂ منتقلی]] میں درج کر لیا جاتا ہے۔
 
 تصویر کی منتقلی کے بعد، اسکو کسی صفحہ پر رکھنے کیلیے مندرجہ ذیل صورت میں رمـز (کوڈ) استعمال کیجیۓ۔
 
@@ -412,12 +414,10 @@ $messages = array(
 'destfilename'      => 'تعین شدہ اسم ملف:',
 'watchthisupload'   => 'یہ صفحہ زیر نظر کیجیۓ',
 
-# Image list
-'imagelist'      => 'فہرست فائل',
-'ilsubmit'       => 'تلاش',
-'byname'         => 'بالحاظ اسم',
-'bydate'         => 'بالحاظ تاریخ',
-'bysize'         => 'بالحاظ جسامت',
+# Special:Imagelist
+'imagelist' => 'فہرست فائل',
+
+# Image description page
 'imagelinks'     => 'روابط',
 'linkstoimage'   => 'اس ملف (فائل) سے درج ذیل صفحات رابطہ رکھتے ہیں:',
 'nolinkstoimage' => 'ایسے کوئی صفحات نہیں جو اس ملف (فائل) سے رابطہ رکھتے ہوں۔',
@@ -466,14 +466,10 @@ $messages = array(
 'mostcategories'          => 'سب سے زیادہ زمرہ جات والے مضامین',
 'mostimages'              => 'سب سے زیادہ استعمال کردہ تصاویر',
 'mostrevisions'           => 'زیادہ تجدید نظر کیے جانے والے صفحات',
-'allpages'                => 'تمام صفحات',
 'shortpages'              => 'چھوٹے صفحات',
 'longpages'               => 'طویل ترین صفحات',
 'deadendpages'            => 'مردہ صفحات',
 'listusers'               => 'فہرست ارکان',
-'specialpages'            => 'خصوصی صفحات',
-'spheading'               => 'خصوصی صفحات براۓ تمام صارفین',
-'restrictedpheading'      => 'ممنوعہ خاص صفحہ',
 'newpages'                => 'جدید صفحات',
 'ancientpages'            => 'قدیم ترین صفحات',
 'move'                    => 'منتقـل',
@@ -481,16 +477,13 @@ $messages = array(
 # Book sources
 'booksources' => 'کتابی وسائل',
 
-'categoriespagetext' => 'مندرجہ ذیل زمرہ جات اس وکی میں موجود ہیں۔',
-'userrights'         => 'صارف کے حقوق کا انتظام',
-'version'            => 'ورژن',
-
 # Special:Log
 'specialloguserlabel'  => 'صارف:',
 'speciallogtitlelabel' => 'عنوان:',
 'log'                  => 'نوشتہ جات',
 
 # Special:Allpages
+'allpages'       => 'تمام صفحات',
 'nextpage'       => 'اگلا صفحہ ($1)',
 'prevpage'       => 'پچھلا صفحہ ($1)',
 'allpagesfrom'   => 'مطلوبہ حرف شروع ہونے والے صفحات کی نمائش:',
@@ -499,8 +492,12 @@ $messages = array(
 'allpagesnext'   => 'اگلا',
 'allpagesprefix' => 'مطلوبہ سابقہ سے شروع ہونے والے صفحات کی نمائش:',
 
+# Special:Categories
+'categories'         => 'زمرہ',
+'categoriespagetext' => 'مندرجہ ذیل زمرہ جات اس وکی میں موجود ہیں۔',
+
 # E-mail user
-'mailnologintext' => 'دیگر ارکان کو برقی خط ارسال کرنے کیلیۓ لازم ہے کہ آپ [[Special:UserLogin|داخل شدہ]] حالت میں ہوں اور آپ کی [[Special:Preferences|ترجیحات]] ایک درست برقی خط کا پتا درج ہو۔',
+'mailnologintext' => 'دیگر ارکان کو برقی خط ارسال کرنے کیلیۓ لازم ہے کہ آپ [[Special:Userlogin|داخل شدہ]] حالت میں ہوں اور آپ کی [[Special:Preferences|ترجیحات]] ایک درست برقی خط کا پتا درج ہو۔',
 'emailuser'       => 'صارف کو برقی خط لکھیں',
 'defemailsubject' => '{{SITENAME}} سے برقی خط',
 'noemailtext'     => 'اس صارف نے برقی خط کے لیے کوئی پتہ فراہم نہیں کیا، یا یہ چاہتا ہے کا اس سے کوئی صارف رابطہ نہ کرے۔',
@@ -552,7 +549,6 @@ $messages = array(
 'protectedarticle'    => '"[[$1]]" کومحفوظ کردیا',
 'unprotectedarticle'  => '"[[$1]]" کوغیر محفوظ کیا',
 'protectcomment'      => 'محفوظ کرنے کی وجہ',
-'unprotectsub'        => '("$1" غیر محفوظ کی جا رہی ہے۔)',
 'protect-default'     => '(طے شدہ)',
 'protect-level-sysop' => 'صرف منتظمین',
 
@@ -573,7 +569,6 @@ $messages = array(
 'contributions' => 'صارف کا حصہ',
 'mycontris'     => 'میرا حصہ',
 'contribsub2'   => 'براۓ $1 ($2)',
-'uclinks'       => 'دیکھیں آخری $1 تبدیلیاں؛ دیکھیں آخری $2 دن.',
 'uctop'         => ' (اوپر)',
 
 'sp-contributions-blocklog' => 'نوشتۂ پابندی',
@@ -595,7 +590,7 @@ $messages = array(
 'proxyblocksuccess' => 'کردیا.',
 
 # Move page
-'movepage'                => 'منتقلئ صفحہ',
+'move-page-legend'        => 'منتقلئ صفحہ',
 'movepagetext'            => 'نیچے دیا گیا تشکیلہ (فـارم) استعمال کرکے اس صفحہ کا عنوان دوبارہ منتخب کیا جاسکتا ہے، ساتھ ہی اس سے منسلک تاریخچہ بھی نۓ نام پر منتقل ہوجاۓ گا۔ اسکے بعد سے اس صفحے کا پرانا نام ، نۓ نام کی جانب -- لوٹایا گیا صفحہ -- کی حیثیت اختیار کرلے گا۔ لیکن یادآوری کرلیجیۓ دیگر صفحات پر ، پرانے صفحہ کی جانب دیۓ گۓ روابط (لنکس) تبدیل نہیں ہونگے؛ اس بات کو یقینی بنانا ضروری ہے کہ کوئی دوہرا یا شکستہ -- پلٹایا گیا ربط -- نہ رہ جاۓ۔ 
 
 لہذا یہ یقینی بنانا آپکی ذمہ داری ہے کہ تمام روابط درست صفحات کی جانب رہنمائی کرتے رہیں۔
@@ -614,7 +609,7 @@ $messages = array(
 'delete_and_move'         => 'حذف اور منتقل',
 'delete_and_move_text'    => '==حذف شدگی لازم==
 
-منتقلی کے سلسلے میں انتخاب کردہ مضمون "[[:$1]]" پہلے ہی موجود ہے۔ کیا آپ اسے حذف کرکے منتقلی کیلیۓ راستہ بنانا چاہتے ہیں؟',
+منتقلی کے سلسلے میں انتخاب کردہ مضمون "[[$1]]" پہلے ہی موجود ہے۔ کیا آپ اسے حذف کرکے منتقلی کیلیۓ راستہ بنانا چاہتے ہیں؟',
 'delete_and_move_confirm' => 'ہاں، صفحہ حذف کر دیا جائے',
 'delete_and_move_reason'  => 'منتقلی کے سلسلے میں حذف',
 
@@ -637,11 +632,6 @@ $messages = array(
 'anonymous' => '{{SITENAME}} گمنام صارف',
 'others'    => 'دیگر',
 
-# Spam protection
-'subcategorycount'       => 'اس زمرے  {{PLURAL:$1|کا ایک ذیلی زمرہ ہے|کے $1 ذیلی زمرہ جات ہیں}}۔',
-'categoryarticlecount'   => 'اس زمرے میں {{PLURAL:$1|ایک مضمون ہے|$1 مضامین ہیں}}۔',
-'listingcontinuesabbrev' => '۔جاری',
-
 # Image deletion
 'deletedrevision' => 'حذف شدہ پرانی ترمیم $1۔',
 
@@ -652,6 +642,8 @@ $messages = array(
 # Special:Newimages
 'newimages'    => 'نئی فائلوں کی گیلری',
 'showhidebots' => '($1 بوٹ)',
+'ilsubmit'     => 'تلاش',
+'bydate'       => 'بالحاظ تاریخ',
 
 # Metadata
 'metadata' => 'میٹا ڈیٹا',
@@ -667,7 +659,7 @@ $messages = array(
 'deletedwhileediting' => 'انتباہ: آپ کے ترمیم شروع کرنے کے بعد یہ صفحہ حذف کیا جا چکا ہے!',
 
 # HTML dump
-'redirectingto' => 'کی جانب پلٹایا گیا [[:$1]]...',
+'redirectingto' => 'کی جانب پلٹایا گیا [[$1]]...',
 
 # action=purge
 'confirm_purge_button' => 'جی!',
@@ -681,5 +673,11 @@ $messages = array(
 'autosumm-blank'   => 'تمام مندرجات حذف',
 'autoredircomment' => '[[$1]] سے رجوع مکرر',
 'autosumm-new'     => 'نیا صفحہ: $1',
+
+# Special:Version
+'version' => 'ورژن', # Not used as normal message but as header for the special page itself
+
+# Special:SpecialPages
+'specialpages' => 'خصوصی صفحات',
 
 );

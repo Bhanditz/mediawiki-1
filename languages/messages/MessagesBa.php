@@ -5,6 +5,7 @@
  * @file
  *
  * @author Рустам Нурыев
+ * @author Siebrand
  */
 
 $fallback = 'ru';
@@ -135,20 +136,19 @@ $messages = array(
 'jumptosearch'     => 'эҙләү',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutsite'         => '{{grammar:genitive|{{SITENAME}}}}-ның тасуирламаһы',
-'aboutpage'         => 'Project:Тасуирлама',
-'copyright'         => '$1 ярашлы эстәлеге менән һәр кем файҙалана ала.',
-'currentevents'     => 'Ағымдағы ваҡиғалар',
-'currentevents-url' => 'Project:Ағымдағы ваҡиғалар',
-'disclaimers'       => 'Яуаплылыҡтан баш тартыу',
-'disclaimerpage'    => 'Project:Яуаплылыҡтан баш тартыу',
-'edithelp'          => 'Мөхәрирләү белешмәһе',
-'mainpage'          => 'Баш бит',
-'portal'            => 'Берләшмә',
-'portal-url'        => 'Project:Берләшмә ҡоро',
-'privacy'           => 'Сер һаҡлау сәйәсәте',
-'sitesupport'       => 'Ярҙам итеү',
-'sitesupport-url'   => 'Project:Эскерһеҙ ярҙам',
+'aboutsite'            => '{{grammar:genitive|{{SITENAME}}}}-ның тасуирламаһы',
+'aboutpage'            => 'Project:Тасуирлама',
+'copyright'            => '$1 ярашлы эстәлеге менән һәр кем файҙалана ала.',
+'currentevents'        => 'Ағымдағы ваҡиғалар',
+'currentevents-url'    => 'Project:Ағымдағы ваҡиғалар',
+'disclaimers'          => 'Яуаплылыҡтан баш тартыу',
+'disclaimerpage'       => 'Project:Яуаплылыҡтан баш тартыу',
+'edithelp'             => 'Мөхәрирләү белешмәһе',
+'mainpage'             => 'Баш бит',
+'mainpage-description' => 'Баш бит',
+'portal'               => 'Берләшмә',
+'portal-url'           => 'Project:Берләшмә ҡоро',
+'privacy'              => 'Сер һаҡлау сәйәсәте',
 
 'editsection' => 'үҙгәртергә',
 'toc'         => 'Эстәлеге',
@@ -167,32 +167,33 @@ $messages = array(
 'badtitle'        => 'Ярамаған исем',
 
 # Login and logout pages
-'loginpagetitle'     => 'Танышыу йәки теркәлеү',
-'yourname'           => 'Ҡатнашыусы исеме',
-'yourpassword'       => 'Һеҙҙең пароль',
-'yourpasswordagain'  => 'Парольде ҡабаттан яҙыу',
-'remembermypassword' => 'Парольде хәтерҙә ҡалдырырға',
-'yourdomainname'     => 'Һеҙҙең домен',
-'login'              => 'Танышыу йәки теркәлеү',
-'userlogin'          => 'Танышыу йәки теркәлеү',
-'logout'             => 'Тамамлау',
-'userlogout'         => 'Тамамлау',
-'nologin'            => 'Һеҙ әле теркәлмәгәнме? $1.',
-'nologinlink'        => 'Иҫәп яҙыуын булдырырға',
-'createaccount'      => 'Яңы ҡатнашыусыны теркәү',
-'gotaccount'         => 'Әгәр Һеҙ теркәлеү үткән булһағыҙ? $1.',
-'gotaccountlink'     => 'Үҙегеҙ менән таныштырығыҙ',
-'createaccountmail'  => 'эл. почта буйынса',
-'youremail'          => 'Электрон почта *',
-'yourrealname'       => 'Һеҙҙең ысын исемегеҙ (*)',
-'yourlanguage'       => 'Тышҡы күренештә ҡулланылған тел:',
-'yourvariant'        => 'Тел төрө',
-'yournick'           => 'Һеҙҙең уйҙырма исемегеҙ/ҡушаматығыҙ (имза өсөн):',
-'prefs-help-email'   => '* Электрон почта (күрһәтмәһәң дә була) башҡа ҡатнашыусылар менән туры бәйләнешкә инергә мөмкинселек бирә.',
-'loginsuccesstitle'  => 'Танышыу уңышлы үтте',
-'loginsuccess'       => 'Хәҙер һеҙ $1 исеме менән эшләйһегеҙ.',
-'wrongpassword'      => 'Һеҙ ҡулланған пароль ҡабул ителмәй. Яңынан яҙып ҡарағыҙ.',
-'mailmypassword'     => 'Яңы пароль ебәрергә',
+'loginpagetitle'          => 'Танышыу йәки теркәлеү',
+'yourname'                => 'Ҡатнашыусы исеме',
+'yourpassword'            => 'Һеҙҙең пароль',
+'yourpasswordagain'       => 'Парольде ҡабаттан яҙыу',
+'remembermypassword'      => 'Парольде хәтерҙә ҡалдырырға',
+'yourdomainname'          => 'Һеҙҙең домен',
+'login'                   => 'Танышыу йәки теркәлеү',
+'nav-login-createaccount' => 'Танышыу йәки теркәлеү',
+'userlogin'               => 'Танышыу йәки теркәлеү',
+'logout'                  => 'Тамамлау',
+'userlogout'              => 'Тамамлау',
+'nologin'                 => 'Һеҙ әле теркәлмәгәнме? $1.',
+'nologinlink'             => 'Иҫәп яҙыуын булдырырға',
+'createaccount'           => 'Яңы ҡатнашыусыны теркәү',
+'gotaccount'              => 'Әгәр Һеҙ теркәлеү үткән булһағыҙ? $1.',
+'gotaccountlink'          => 'Үҙегеҙ менән таныштырығыҙ',
+'createaccountmail'       => 'эл. почта буйынса',
+'youremail'               => 'Электрон почта *',
+'yourrealname'            => 'Һеҙҙең ысын исемегеҙ (*)',
+'yourlanguage'            => 'Тышҡы күренештә ҡулланылған тел:',
+'yourvariant'             => 'Тел төрө',
+'yournick'                => 'Һеҙҙең уйҙырма исемегеҙ/ҡушаматығыҙ (имза өсөн):',
+'prefs-help-email'        => '* Электрон почта (күрһәтмәһәң дә була) башҡа ҡатнашыусылар менән туры бәйләнешкә инергә мөмкинселек бирә.',
+'loginsuccesstitle'       => 'Танышыу уңышлы үтте',
+'loginsuccess'            => 'Хәҙер һеҙ $1 исеме менән эшләйһегеҙ.',
+'wrongpassword'           => 'Һеҙ ҡулланған пароль ҡабул ителмәй. Яңынан яҙып ҡарағыҙ.',
+'mailmypassword'          => 'Яңы пароль ебәрергә',
 
 # Edit pages
 'summary'        => 'Үҙгәртеүҙең ҡыҫҡаса тасуирламаһы',
@@ -204,7 +205,6 @@ $messages = array(
 'showdiff'       => 'Индерелгән үҙгәрештәр',
 'previewnote'    => '<strong>Ҡарап сығыу өлгөһө, әлегә үҙгәрештәр яҙҙырылмаған!</strong>',
 'editing'        => 'Мөхәрирләү  $1',
-'editinguser'    => "Мөхәрирләү  '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'editingsection' => 'Мөхәрирләү  $1 (секция)',
 'editingcomment' => 'Мөхәрирләү $1 (комментарий)',
 'yourtext'       => 'Һеҙҙең текст',
@@ -212,6 +212,9 @@ $messages = array(
 
 # Preferences page
 'preferences' => 'Көйләүҙәр',
+
+# User rights
+'editinguser' => "Мөхәрирләү  '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 
 # Groups
 'group-all' => '(бөтә)',
@@ -223,7 +226,7 @@ $messages = array(
 # Recent changes linked
 'recentchangeslinked' => 'Бәйле үҙгәртеүҙәр',
 
-# Image list
+# Special:Imagelist
 'imagelist_user' => 'Ҡатнашыусы',
 
 # MIME search
@@ -239,20 +242,17 @@ $messages = array(
 'userstatstext' => "Бөтәһе '''$1''' ҡатнашыусы теркәлгән, шуларҙан '''$2''' ($4 %) хәким бурыстарын үтәй.",
 
 # Miscellaneous special pages
-'allpages'          => 'Бөтә биттәр',
 'listusers'         => 'Ҡатнашыусылар исемлеге',
-'specialpages'      => 'Махсус биттәр',
-'spheading'         => 'Ярҙамсы биттәр',
 'newpages-username' => 'Ҡатнашыусы:',
 'ancientpages'      => 'Иң иҫке мәҡәләләр',
 'move'              => 'Яңы исем биреү',
-
-'alphaindexline' => '$1 алып $2 тиклем',
 
 # Special:Log
 'specialloguserlabel' => 'Ҡатнашыусы:',
 
 # Special:Allpages
+'allpages'          => 'Бөтә биттәр',
+'alphaindexline'    => '$1 алып $2 тиклем',
 'allpagesfrom'      => 'Ошондай хәрефтәрҙән башланған биттәрҙе күрһәтергә:',
 'allarticles'       => 'Бөтә мәҡәләләр',
 'allinnamespace'    => 'Бөтә биттәр (Исемдәре «$1» арауығында)',
@@ -264,7 +264,7 @@ $messages = array(
 # E-mail user
 'emailuser'    => 'Ҡатнашыусыға хат',
 'emailfrom'    => 'Кемдән',
-'emailto'      => 'Кемгә:',
+'emailto'      => 'Кемгә',
 'emailmessage' => 'Хәбәр',
 
 # Watchlist
@@ -308,5 +308,8 @@ $messages = array(
 'imagelistall'     => 'бөтә',
 'watchlistall2'    => 'бөтә',
 'namespacesall'    => 'бөтә',
+
+# Special:SpecialPages
+'specialpages' => 'Махсус биттәр',
 
 );

@@ -1,17 +1,10 @@
 <?php
-/** Serbian (Српски / Srpski)
+/**
+ * Serbian
  *
  * @ingroup Language
  * @file
- *
- * @author INkubusse
  */
 
 $fallback = 'sr-ec';
 $linkTrail = '/^([abvgdđežzijklljmnnjoprstćufhcčdžšабвгдђежзијклљмнњопрстћуфхцчџш]+)(.*)$/usD';
-
-$messages = array(
-# Edit pages
-'template-protected' => '(заштићен)',
-
-);

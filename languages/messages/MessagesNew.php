@@ -5,6 +5,9 @@
  * @file
  *
  * @author Eukesh
+ * @author SPQRobin
+ * @author Siebrand
+ * @author Jon Harald Søby
  */
 
 $namespaceNames = array(
@@ -53,8 +56,7 @@ $messages = array(
 'january'  => 'ज्यानुवरी',
 'february' => 'फेब्रुवरी',
 
-# Bits of text used by many pages
-'categories'     => 'पुचःत',
+# Categories related messages
 'category-empty' => "''थ्व पुचले आःईले पौ वा मिदिया मदु।''",
 
 'about'         => 'विषयक',
@@ -87,13 +89,13 @@ $messages = array(
 'jumptosearch'     => 'मालादिसँ',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'edithelppage' => 'Help:सम्पादन',
-'mainpage'     => 'मू पौ',
-'policy-url'   => 'Project:नीति',
-'portal'       => 'सामाजिक दबू',
-'portal-url'   => 'Project:सामाजिक दबू',
-'privacy'      => 'दुबिस्ता नियम',
-'sitesupport'  => 'दान',
+'edithelppage'         => 'Help:सम्पादन',
+'mainpage'             => 'मू पौ',
+'mainpage-description' => 'मू पौ',
+'policy-url'           => 'Project:नीति',
+'portal'               => 'सामाजिक दबू',
+'portal-url'           => 'Project:सामाजिक दबू',
+'privacy'              => 'दुबिस्ता नियम',
 
 'ok'                      => 'ज्यु',
 'newmessageslink'         => 'न्हुगु सन्देश',
@@ -179,13 +181,15 @@ $messages = array(
 'withoutinterwiki-submit' => 'क्यनादिसँ',
 
 # Miscellaneous special pages
-'allpages'          => 'सकल पौत',
-'specialpages'      => 'विषेश पौत:',
 'newpages-username' => 'छ्येलेमि नां:',
 
 # Special:Allpages
+'allpages'    => 'सकल पौत',
 'nextpage'    => 'मेगु पौ ($1)',
 'allarticles' => 'सकल च्वसुत',
+
+# Special:Categories
+'categories' => 'पुचःत',
 
 # Restrictions (nouns)
 'restriction-edit' => 'सम्पादन',
@@ -208,5 +212,8 @@ $messages = array(
 
 # Auto-summaries
 'autosumm-new' => 'न्हुगु पौ: $1',
+
+# Special:SpecialPages
+'specialpages' => 'विषेश पौत:',
 
 );

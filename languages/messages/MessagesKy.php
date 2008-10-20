@@ -80,17 +80,17 @@ $messages = array(
 'jumptosearch'     => 'издөө',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutsite'         => '{{SITENAME}} тууралуу',
-'aboutpage'         => 'Project:тууралуу',
-'copyrightpagename' => '{{SITENAME}} автордук укугу',
-'copyrightpage'     => '{{ns:project}}:Автордук укуктар',
-'currentevents'     => 'Учурдагы окуялар',
-'currentevents-url' => 'Project:Учурдагы окуялар',
-'edithelppage'      => 'Help:Оңдоо',
-'mainpage'          => 'Башбарак',
-'portal'            => 'Жамаат порталы',
-'portal-url'        => 'Project:Жамаат порталы',
-'sitesupport'       => 'Демөөр',
+'aboutsite'            => '{{SITENAME}} тууралуу',
+'aboutpage'            => 'Project:тууралуу',
+'copyrightpagename'    => '{{SITENAME}} автордук укугу',
+'copyrightpage'        => '{{ns:project}}:Автордук укуктар',
+'currentevents'        => 'Учурдагы окуялар',
+'currentevents-url'    => 'Project:Учурдагы окуялар',
+'edithelppage'         => 'Help:Оңдоо',
+'mainpage'             => 'Башбарак',
+'mainpage-description' => 'Башбарак',
+'portal'               => 'Жамаат порталы',
+'portal-url'           => 'Project:Жамаат порталы',
 
 'youhavenewmessages'      => 'Сизге $1 ($2) бар.',
 'newmessageslink'         => 'жаңы билдирүүлөр',
@@ -203,12 +203,10 @@ $messages = array(
 
 'license' => 'Лицензиялоо:',
 
-# Image list
-'imagelist'  => 'Файлдар тизмеси',
-'ilsubmit'   => 'Издөө',
-'byname'     => 'Аталышы боюнча',
-'bydate'     => 'Күнү боюнча',
-'bysize'     => 'Көлөмү боюнча',
+# Special:Imagelist
+'imagelist' => 'Файлдар тизмеси',
+
+# Image description page
 'imagelinks' => 'Шилтемелер',
 
 # Unused templates
@@ -225,22 +223,18 @@ $messages = array(
 # Miscellaneous special pages
 'unusedcategories' => 'Колдонулбаган категориялар',
 'unusedimages'     => 'Колдонулбаган файлдар',
-'allpages'         => 'Бардык барактар',
 'shortpages'       => 'Кыска макалалар',
 'listusers'        => 'Колдонуучулар тизмеси',
-'specialpages'     => 'Атайын барактар',
 'newpages'         => 'Жаңы барактар',
 'ancientpages'     => 'Эң эски барактар',
 'move'             => 'Аталышын өзгөртүү',
-
-'groups'  => 'Колдонуучу топтор',
-'version' => 'Версия',
 
 # Special:Log
 'specialloguserlabel'  => 'Колдонуучу:',
 'speciallogtitlelabel' => 'Аталышы:',
 
 # Special:Allpages
+'allpages'       => 'Бардык барактар',
 'nextpage'       => 'Кийинки барак ($1)',
 'allpagesfrom'   => '-дан башталган барактарды көрсөт:',
 'allarticles'    => 'Бардык макалалар',
@@ -310,6 +304,8 @@ $messages = array(
 
 # Special:Newimages
 'newimages' => 'Жаңы файлдардын галлереясы',
+'ilsubmit'  => 'Издөө',
+'bydate'    => 'Күнү боюнча',
 
 # EXIF tags
 'exif-artist'   => 'Автор',
@@ -327,5 +323,11 @@ $messages = array(
 # E-mail address confirmation
 'confirmemail'          => 'Электрондук даректи ырастоо',
 'confirmemail_loggedin' => 'Электрондук дарегиңиз ырасталды.',
+
+# Special:Version
+'version' => 'Версия', # Not used as normal message but as header for the special page itself
+
+# Special:SpecialPages
+'specialpages' => 'Атайын барактар',
 
 );

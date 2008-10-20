@@ -5,7 +5,11 @@
  * @file
  *
  * @author לערי ריינהארט
+ * @author SPQRobin
+ * @author M.M.S.
  */
+
+$fallback = 'da';
 
 $messages = array(
 # Dates
@@ -75,11 +79,12 @@ $messages = array(
 'jumptosearch'     => 'ujaarlerit',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutsite'     => '{{SITENAME}} pillugu',
-'aboutpage'     => 'Project:Pillugu',
-'currentevents' => 'Maannakkut pisut',
-'mainpage'      => 'Saqqaa',
-'portal'        => 'Allaatiginnittartup saqqai',
+'aboutsite'            => '{{SITENAME}} pillugu',
+'aboutpage'            => 'Project:Pillugu',
+'currentevents'        => 'Maannakkut pisut',
+'mainpage'             => 'Saqqaa',
+'mainpage-description' => 'Saqqaa',
+'portal'               => 'Allaatiginnittartup saqqai',
 
 'editsection'     => 'aaqqissuutiguk',
 'editold'         => 'aaqqissuutiguk',
@@ -119,7 +124,7 @@ $messages = array(
 # Upload
 'upload' => 'Læg en fil op',
 
-# Image list
+# Image description page
 'filehist-user' => 'Pineqartoq',
 
 # MIME search
@@ -132,8 +137,7 @@ $messages = array(
 'statistics' => 'Kisitsisinngorlugit paasissutissat',
 
 # Miscellaneous special pages
-'specialpages' => 'Quppernerit immikkut ittut',
-'move'         => 'Nuunneq',
+'move' => 'Nuunneq',
 
 # Special:Log
 'specialloguserlabel' => 'Pineqartoq:',
@@ -143,7 +147,7 @@ $messages = array(
 
 # Watchlist
 'addedwatch'     => 'Nakkutilliinermi allattorsimaffimmut ilanngunneqarsimavoq',
-'addedwatchtext' => "Qupperneq \"[[:\$1]]\" ilanngunneqarsimavoq [[Special:Watchlist|nakkutilliinermut allattorsimaffimmut]] ilanngunneqarsimavoq. Matumani quppernermi siunissami allannguutit, aammalu oqallinnermi qupperneq, maani saqqummersinneqassapput, quppernerlu '''erseqqissagaasoq''' inisseqqassalluni [[Special:RecentChanges|allattorsimaffik kingullermi allannguutinik imalik]] ajornannginnerussammat nassaariniarnissaanut.
+'addedwatchtext' => "Qupperneq \"<nowiki>\$1</nowiki>\" ilanngunneqarsimavoq [[Special:Watchlist|nakkutilliinermut allattorsimaffimmut]] ilanngunneqarsimavoq. Matumani quppernermi siunissami allannguutit, aammalu oqallinnermi qupperneq, maani saqqummersinneqassapput, quppernerlu '''erseqqissagaasoq''' inisseqqassalluni [[Special:Recentchanges|allattorsimaffik kingullermi allannguutinik imalik]] ajornannginnerussammat nassaariniarnissaanut.
 
 Qupperneq nakkutilliinermi allattorsimaffik kingusinnerusukkut piissagukku, taava quppernerup sinaatungaani \"Nakkutilliinermi allattorsimaffik peeruk\" tooruk.",
 'watch'          => 'Piggassineq',
@@ -166,5 +170,8 @@ Qupperneq nakkutilliinermi allattorsimaffik kingusinnerusukkut piissagukku, taav
 
 # Tooltip help for the actions
 'tooltip-search' => 'Ujaarlerit {{SITENAME}}',
+
+# Special:SpecialPages
+'specialpages' => 'Quppernerit immikkut ittut',
 
 );

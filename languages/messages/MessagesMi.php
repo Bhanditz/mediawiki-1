@@ -49,14 +49,14 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'Mo {{SITENAME}}',
-'currentevents'     => 'Kōrero',
-'currentevents-url' => 'Project:Kōrero',
-'mainpage'          => 'Hau Kāinga',
-'portal'            => 'Tomokanga hapori',
-'portal-url'        => 'Project:Tomokanga hapori',
+'currentevents'        => 'Kōrero',
+'currentevents-url'    => 'Project:Kōrero',
+'mainpage'             => 'Hau Kāinga',
+'mainpage-description' => 'Hau Kāinga',
+'portal'               => 'Tomokanga hapori',
+'portal-url'           => 'Project:Tomokanga hapori',
 'privacy'           => 'Tikanga tūmataiti',
 'privacypage'       => 'Project:Tikanga tūmataiti',
-'sitesupport'       => 'Koha',
 
 'toc'     => 'Rārangi kōrero',
 'showtoc' => 'whakakite',
@@ -93,11 +93,10 @@ $messages = array(
 'randompage' => 'Tipihaere',
 
 # Miscellaneous special pages
-'allpages'     => 'Ngā whārangi katoa',
-'specialpages' => 'Whārangi motuhake',
-'move'         => 'Nekehia',
+'move' => 'Nekehia',
 
 # Special:Allpages
+'allpages'       => 'Ngā whārangi katoa',
 'allpagessubmit' => 'Haere',
 
 # Watchlist
@@ -115,5 +114,8 @@ $messages = array(
 
 # Namespace 8 related
 'allmessages' => 'Pānui pūnaha',
+
+# Special:SpecialPages
+'specialpages' => 'Whārangi motuhake',
 
 );

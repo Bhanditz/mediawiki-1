@@ -7,6 +7,7 @@
  * @author Кумулај Маркус
  * @author Макѕе
  * @author Приетен тев
+ * @author Siebrand
  */
 
 $fallback = 'ro';
@@ -60,9 +61,10 @@ $messages = array(
 'nov'           => 'nov',
 'dec'           => 'dec',
 
-# Bits of text used by many pages
-'category_header' => 'Pažus en kategoria "$1"',
-'subcategories'   => 'Subkategorii',
+# Categories related messages
+'category_header'        => 'Pažus en kategoria "$1"',
+'subcategories'          => 'Subkategorii',
+'listingcontinuesabbrev' => 'kontinu',
 
 'about'  => 'Dajpul',
 'cancel' => 'renuntǎe',
@@ -93,21 +95,20 @@ $messages = array(
 'jumptosearch'     => 'kaută',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutsite'         => 'Dajpul {{SITENAME}}',
-'aboutpage'         => 'Project:Dajpul {{SITENAME}}',
-'copyrightpage'     => "{{ns:project}}:Prava d'autoru",
-'currentevents'     => 'Tebikoru',
-'currentevents-url' => 'Project:Tebikoru',
-'disclaimers'       => 'tǎmenuls',
-'disclaimerpage'    => 'Project:tǎmenul',
-'edithelp'          => 'Ajutor pentru editaere',
-'edithelppage'      => 'Help:Editaere',
-'helppage'          => 'Help:Ajutor',
-'mainpage'          => 'Pažu principu',
-'privacy'           => 'Politikmus de ližitul',
-'privacypage'       => 'Project:Politikmus de ližitul',
-'sitesupport'       => 'Donacions',
-'sitesupport-url'   => 'Project:Donaţi',
+'aboutsite'            => 'Dajpul {{SITENAME}}',
+'aboutpage'            => 'Project:Dajpul {{SITENAME}}',
+'copyrightpage'        => "{{ns:project}}:Prava d'autoru",
+'currentevents'        => 'Tebikoru',
+'currentevents-url'    => 'Project:Tebikoru',
+'disclaimers'          => 'tǎmenuls',
+'disclaimerpage'       => 'Project:tǎmenul',
+'edithelp'             => 'Ajutor pentru editaere',
+'edithelppage'         => 'Help:Editaere',
+'helppage'             => 'Help:Ajutor',
+'mainpage'             => 'Pažu principu',
+'mainpage-description' => 'Pažu principu',
+'privacy'              => 'Politikmus de ližitul',
+'privacypage'          => 'Project:Politikmus de ližitul',
 
 'retrievedfrom'      => 'Aduse de "$1"',
 'youhavenewmessages' => 'Veses $1 ($2).',
@@ -134,10 +135,11 @@ $messages = array(
 'viewsourcefor' => 'pentru $1',
 
 # Login and logout pages
-'yourname'   => "Nom d'utilizatoru:",
-'login'      => 'Prilasnaere',
-'userlogin'  => 'Prilasnaere / kreare nutilizatoru',
-'userlogout' => 'otlastaere',
+'yourname'                => "Nom d'utilizatoru:",
+'login'                   => 'Prilasnaere',
+'nav-login-createaccount' => 'Prilasnaere / Nažbe',
+'userlogin'               => 'Prilasnaere / kreare nutilizatoru',
+'userlogout'              => 'otlastaere',
 
 # Edit page toolbar
 'bold_sample'     => 'Eskrire aldin',
@@ -197,6 +199,7 @@ Te rog notari la din kontribuţi al {{SITENAME}} sunt konsideraere relesavat sup
 
 # Recent changes
 'recentchanges'   => 'şumbărae recentae',
+'rcnote'          => "Mai hos se flă {{PLURAL:$|ultima modifikare|ultimele '''$1''' modifikări}} din {{PLURAL:$2|ultima zi|ultimele '''$2''' zile}}, encepând cu $3.",
 'rcshowhideminor' => '$1 modifikările minore',
 'rcshowhidebots'  => '$1 roboti',
 'rcshowhideliu'   => '$1 utilizatori prilasnaeri',
@@ -218,7 +221,7 @@ $3',
 # Upload
 'upload' => 'trimiţe fişirul',
 
-# Image list
+# Image description page
 'filehist'            => 'Historia fişirulu',
 'filehist-current'    => 'kurentu',
 'filehist-datetime'   => 'Data/Temp',
@@ -232,18 +235,17 @@ $3',
 'randompage' => 'alaeţu',
 
 # Miscellaneous special pages
-'nbytes'       => '$1 {{PLURAL:$1|bătul|bătuls}}',
-'nmembers'     => '$1 {{PLURAL:$1|membru|membri}}',
-'allpages'     => 'Toats paži',
-'specialpages' => 'Paži specalus',
-'newpages'     => 'Paži novi',
+'nbytes'   => '$1 {{PLURAL:$1|bătul|bătuls}}',
+'nmembers' => '$1 {{PLURAL:$1|membru|membri}}',
+'newpages' => 'Paži novi',
 
 # Book sources
 'booksources' => 'Surse de cărţi',
 
-'alphaindexline' => '$1 vo $2',
 
 # Special:Allpages
+'allpages'       => 'Toats paži',
+'alphaindexline' => '$1 vo $2',
 'allarticles'    => 'Toats paži',
 'allpagessubmit' => 'Treme',
 
@@ -254,7 +256,7 @@ $3',
 'watch'        => 'klăaere',
 'unwatch'      => 'Deklăaera',
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'O klăaere...',
 'unwatching' => 'O deklăaere...',
 
@@ -314,7 +316,6 @@ $3',
 'tooltip-n-recentchanges'   => "Lista des şumbǎrae recentae en l'wiki.",
 'tooltip-n-randompage'      => 'Donare npažu alaetoare',
 'tooltip-n-help'            => 'Ajutor truves isi.',
-'tooltip-n-sitesupport'     => 'Supora-nostre',
 'tooltip-t-whatlinkshere'   => 'Lista tuturor pažinilor wiki care konduc spre această pažină',
 'tooltip-t-contributions'   => "Vu lista de kontribuţi de c'utilizatoru",
 'tooltip-t-upload'          => 'Tremer fişirul',
@@ -325,9 +326,6 @@ $3',
 'tooltip-minoredit'         => "ce-est n'modifikacion minoru",
 'tooltip-save'              => 'Salvaere tes modifikacions',
 'tooltip-diff'              => 'Rată ce modifikări ai făcut tekstului.',
-
-# Spam protection
-'listingcontinuesabbrev' => 'kontinu',
 
 # Media information
 'file-nohires'   => "<small>Ce-n-est n'resolucion mai mari.</small>",
@@ -349,5 +347,8 @@ Orice legături ce urmează pe acenaşi linie sunt consideraete excepţii, dică
 'watchlistall2' => 'toat',
 'namespacesall' => 'toat',
 'monthsall'     => 'toat',
+
+# Special:SpecialPages
+'specialpages' => 'Paži specalus',
 
 );

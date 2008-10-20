@@ -4,12 +4,13 @@
  * @ingroup Language
  * @file
  *
- * @author Carmine Colacino
+ * @author SabineCretella
  * @author Cryptex
  * @author E. abu Filumena
- * @author G - ג
- * @author SabineCretella
+ * @author SPQRobin
+ * @author Siebrand
  * @author לערי ריינהארט
+ * @author Carmine Colacino
  */
 
 $fallback = 'it';
@@ -67,8 +68,7 @@ $messages = array(
 'nov'       => 'nuv',
 'dec'       => 'dic',
 
-# Bits of text used by many pages
-'categories'      => 'Categurìe',
+# Categories related messages
 'category_header' => 'Paggene rìnt\'a categurìa "$1"',
 'subcategories'   => 'Categurìe secunnarie',
 
@@ -119,17 +119,16 @@ $messages = array(
 'jumptosearch'      => 'truova',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutsite'       => "'Nfrummazione ncòpp'a {{SITENAME}}",
-'aboutpage'       => "Project:'Nfrummazione",
-'disclaimers'     => 'Avvertimiènte',
-'disclaimerpage'  => 'Project:Avvertimiènte generale',
-'edithelp'        => 'Guida',
-'helppage'        => 'Help:Ajùto',
-'mainpage'        => 'Paggena prencepale',
-'portal'          => "Porta d''a cummunetà",
-'portal-url'      => "Project:Porta d''a cummunetà",
-'sitesupport'     => 'Donazzione',
-'sitesupport-url' => 'Project:Donazzione',
+'aboutsite'            => "'Nfrummazione ncòpp'a {{SITENAME}}",
+'aboutpage'            => "Project:'Nfrummazione",
+'disclaimers'          => 'Avvertimiènte',
+'disclaimerpage'       => 'Project:Avvertimiènte generale',
+'edithelp'             => 'Guida',
+'helppage'             => 'Help:Ajùto',
+'mainpage'             => 'Paggena prencepale',
+'mainpage-description' => 'Paggena prencepale',
+'portal'               => "Porta d''a cummunetà",
+'portal-url'           => "Project:Porta d''a cummunetà",
 
 'badaccess' => "Nun haje 'e premmesse abbastante.",
 
@@ -258,14 +257,13 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'fileexists-thumb' => "<center>'''Immagine esistente'''</center>",
 'uploadedimage'    => 'ha carecato "[[$1]]"',
 
-# Image list
-'ilsubmit'         => 'Truova',
-'byname'           => 'nomme',
-'imgdelete'        => 'scanc',
+# Special:Imagelist
+'imagelist_name' => 'Nomme',
+
+# Image description page
 'filehist-user'    => 'Utente',
 'imagelinks'       => 'Jonte ê ffiure',
 'noimage-linktext' => 'carrecarlo mmo',
-'imagelist_name'   => 'Nomme',
 
 # Random page
 'randompage'         => 'Na paggena qualsiase',
@@ -281,19 +279,20 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'nlinks'       => '$1 {{PLURAL:$1|cullegamiento|cullegamiente}}',
 'popularpages' => "Paggene cchiù 'speziunate",
 'wantedpages'  => 'Paggene cchiù addemannate',
-'allpages'     => "Tutte 'e ppaggene",
 'shortpages'   => 'Paggene curte',
 'longpages'    => 'Paggene cchiú longhe',
-'specialpages' => 'Paggene speciale',
 'newpages'     => 'Paggene cchiù frische',
 'move'         => 'Spusta',
 'movethispage' => 'Spusta chesta paggena',
 
-'categoriespagetext' => "Lista cumpleta d\"e categurie presente ncopp' 'o sito.",
-
 # Special:Allpages
+'allpages'       => "Tutte 'e ppaggene",
 'allarticles'    => "Tutt' 'e vvoce",
 'allinnamespace' => "Tutt' 'e ppaggene d&#39;&#39;o namespace $1",
+
+# Special:Categories
+'categories'         => 'Categurìe',
+'categoriespagetext' => "Lista cumpleta d\"e categurie presente ncopp' 'o sito.",
 
 # Watchlist
 'addedwatch'   => 'Aggiunto ai Osservate Speciale tue',
@@ -342,7 +341,7 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'blocklink'          => 'ferma',
 'blocklogpage'       => 'Blocche',
 'blocklogentry'      => 'ha fermato "[[$1]]" pe\' nu mumento \'e $2 $3',
-'blocklogtext'       => "Chesta è 'a lista d&#39;&#39;e azzione 'e blocco e sblocco utente.  'E nnerizze IP bloccate automaticamente nun nce so'. Addumannà 'a [[Special:IPBlockList|lista IP bloccate]] pp' 'a lista d&#39;&#39;e nnerizze e nomme utente 'o ca blocco nce sta.",
+'blocklogtext'       => "Chesta è 'a lista d&#39;&#39;e azzione 'e blocco e sblocco utente.  'E nnerizze IP bloccate automaticamente nun nce so'. Addumannà 'a [[Special:Ipblocklist|lista IP bloccate]] pp' 'a lista d&#39;&#39;e nnerizze e nomme utente 'o ca blocco nce sta.",
 
 # Move page
 'movearticle'             => "Spusta 'a paggena",
@@ -382,16 +381,13 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 # Attribution
 'others' => 'ate',
 
-# Spam protection
-'subcategorycount'     => "Ce {{PLURAL:$1|sta n'ata categurìa|stanno ate $1 categurìe}} rìnt'a chésta categurìa.",
-'categoryarticlecount' => 'Nce {{PLURAL:$1|sta na voce|stanno $1 voce}} intâ sta categoria.',
-
 # Info page
 'numedits'    => "Nummero 'e cagnamiente (articulo): $1",
 'numwatchers' => "Nummero 'e asservature: $1",
 
 # Special:Newimages
 'noimages' => "Nun nc'è nind' 'a veré.",
+'ilsubmit' => 'Truova',
 
 'exif-xyresolution-i' => '$1 punte pe pollice (dpi)',
 
@@ -407,7 +403,7 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'exif-subjectdistancerange-0' => 'Scanusciuta',
 
 # External editor support
-'edit-externally-help' => "Pe piglià cchiù nfromma veré 'e [http://www.mediawiki.org/wiki/Manual:External_editors struzione] ('n ngrese)",
+'edit-externally-help' => "Pe piglià cchiù nfromma veré 'e [http://meta.wikimedia.org/wiki/Help:External_editors struzione] ('n ngrese)",
 
 # 'all' in various places, this might be different for inflected languages
 'namespacesall' => 'Tutte',
@@ -428,5 +424,8 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 # Auto-summaries
 'autoredircomment' => 'Redirect â paggena [[$1]]',
 'autosumm-new'     => 'Paggena nuova: $1',
+
+# Special:SpecialPages
+'specialpages' => 'Paggene speciale',
 
 );

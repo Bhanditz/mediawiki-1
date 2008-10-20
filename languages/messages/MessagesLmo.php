@@ -4,16 +4,18 @@
  * @ingroup Language
  * @file
  *
- * @author Amgine
- * @author Clamengh
  * @author Dakrismeno
- * @author DracoRoboter
- * @author Flavio05
- * @author Kemmótar
- * @author Malafaya
- * @author Remulazz
+ * @author SPQRobin
  * @author SabineCretella
+ * @author Malafaya
+ * @author Siebrand
+ * @author Kemmótar
+ * @author Flavio05
+ * @author Clamengh
  * @author Snowdog
+ * @author Amgine
+ * @author Remulazz
+ * @author DracoRoboter
  */
 
 $fallback = 'it';
@@ -70,8 +72,7 @@ süi titul dai sezziún (JavaScript)',
 'oct'       => 'utu',
 'nov'       => 'nuv',
 
-# Bits of text used by many pages
-'categories'      => 'Categurii',
+# Categories related messages
 'pagecategories'  => '{{PLURAL:$1|Categuria|Categurij}}',
 'category_header' => 'Vus in de la categuria "$1"',
 'subcategories'   => 'Sót-categurii',
@@ -96,6 +97,7 @@ süi titul dai sezziún (JavaScript)',
 'permalink'        => 'Culegament permanent',
 'edit'             => 'Mudifica',
 'editthispage'     => 'Mudifica cula pagina chi',
+'create-this-page' => 'Crea cula pagina chi',
 'delete'           => 'Scancela',
 'undelete_short'   => 'Rimett a post {{PLURAL:$1|1 mudifica|$1 mudifich}}',
 'protect'          => 'Bloca',
@@ -111,19 +113,18 @@ süi titul dai sezziún (JavaScript)',
 'jumptosearch'     => 'truvá',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutsite'         => 'A prupòsit də {{SITENAME}}',
-'copyright'         => 'Tücc i cuntegnüü inn dispunibil cuma $1.',
-'currentevents'     => 'Atüalitaa',
-'currentevents-url' => 'Project:Avenimeent Receent',
-'disclaimers'       => 'Esclüsiun da respunsabilitaa',
-'edithelp'          => 'Jütt',
-'helppage'          => 'Help:Contegnüü',
-'mainpage'          => 'Pagina prinçipala',
-'portal'            => 'Purtaal da cumünitaa',
-'portal-url'        => 'Project:Purtaal da cumünitaa',
-'privacy'           => "Pulitica de la ''privacy''",
-'sitesupport'       => 'Dunazziun',
-'sitesupport-url'   => 'Project:Donazioni',
+'aboutsite'            => 'A prupòsit də {{SITENAME}}',
+'copyright'            => 'Tücc i cuntegnüü inn dispunibil cuma $1.',
+'currentevents'        => 'Atüalitaa',
+'currentevents-url'    => 'Project:Avenimeent Receent',
+'disclaimers'          => 'Esclüsiun da respunsabilitaa',
+'edithelp'             => 'Jütt',
+'helppage'             => 'Help:Contegnüü',
+'mainpage'             => 'Pagina prinçipala',
+'mainpage-description' => 'Pagina prinçipala',
+'portal'               => 'Purtaal da cumünitaa',
+'portal-url'           => 'Project:Purtaal da cumünitaa',
+'privacy'              => "Pulitica de la ''privacy''",
 
 'retrievedfrom'           => 'Utegnüü da "$1"',
 'youhavenewmessages'      => "Gh'hinn di $1 ($2).",
@@ -155,38 +156,39 @@ süi titul dai sezziún (JavaScript)',
 'editinginterface'  => "'''Attenzion''': el testo de quella pagina chì el fà part de l'interfacia utent del sitt. Tutt i modifigh che te fet se vedaran subit su i messagg visualizzaa per tutt i utent.",
 
 # Login and logout pages
-'logouttext'            => '<strong>Adess a sii descuness.</strong><br />
+'logouttext'              => '<strong>Adess a sii descuness.</strong><br />
 A pudii ná innaanz a druvá la {{SITENAME}} in manera anònima, a pudii
 cunètas ancamò cul istéss u cunt un altar nomm. Tegnii cüünt che di
 pagin a pudarian véss visüalizaat cuma se vüü füdéssuf ancamò cuness, finn a che
 vüü a scancelii mía la memòria cava dal voost bigatt.',
-'welcomecreation'       => "== Benvegnüü, $1! ==
+'welcomecreation'         => "== Benvegnüü, $1! ==
 Ul tò permèss d'entrava l è prunt. Dismentéga mia de mudifigá i prefereenz dala {{SITENAME}}.",
-'yourname'              => 'Nomm ütent',
-'yourpassword'          => "Parola d'urdin",
-'yourpasswordagain'     => "Mett dent ammò la parola d'urdin",
-'remembermypassword'    => "Regordass la mè parola d'urdin",
-'loginprompt'           => 'Par cunett a {{SITENAME}}, a duvii abilitá i galet.',
-'userlogin'             => 'Entra/Crea un cünt',
-'logout'                => 'Và fö',
-'userlogout'            => 'Và fö',
-'nologin'               => 'Sii-f gnamò registraa? $1.',
-'nologinlink'           => 'Creé un cüünt!',
-'createaccount'         => 'Creá un cüünt',
-'createaccountmail'     => 'par adressa da cureel (e-mail)',
-'youremail'             => 'E-mail',
-'username'              => 'Nomm registraa:',
-'yourrealname'          => 'Nomm:',
-'yourlanguage'          => 'Lengua:',
-'yournick'              => 'Suranomm:',
-'email'                 => 'Indirizz de pòsta elettrònica.',
-'prefs-help-email'      => 'E-mail (mia ubligatòri): ga permètt ai óltar üteent da cuntatátt senza da büsögn che i sapia la tóa identitaa.',
-'noname'                => "Vüü avii mía specificaa un nomm d'üsüari valévul.",
-'loginsuccesstitle'     => "La cunessiun l'è scumenzada cun sücess.",
-'loginsuccess'          => 'Te set cuness a {{SITENAME}} cume "$1".',
-'mailmypassword'        => "Desmentegaa la parola d'urdin?",
-'emailauthenticated'    => 'Ul tò adrèss e-mail l è staa verificaa: $1.',
-'emailnotauthenticated' => 'Ul tò adrèss da pòsta letronica l è mia staa gnamò verificaa. Nissün mesacc al saraa mandaa par i servizzi che segütan.',
+'yourname'                => 'Nomm ütent',
+'yourpassword'            => "Parola d'urdin",
+'yourpasswordagain'       => "Mett dent ammò la parola d'urdin",
+'remembermypassword'      => "Regordass la mè parola d'urdin",
+'nav-login-createaccount' => 'Vena drenta / Crea un cünt',
+'loginprompt'             => 'Par cunett a {{SITENAME}}, a duvii abilitá i galet.',
+'userlogin'               => 'Entra/Crea un cünt',
+'logout'                  => 'Và fö',
+'userlogout'              => 'Và fö',
+'nologin'                 => 'Sii-f gnamò registraa? $1.',
+'nologinlink'             => 'Creé un cüünt!',
+'createaccount'           => 'Creá un cüünt',
+'createaccountmail'       => 'par adressa da cureel (e-mail)',
+'youremail'               => 'E-mail',
+'username'                => 'Nomm registraa:',
+'yourrealname'            => 'Nomm:',
+'yourlanguage'            => 'Lengua:',
+'yournick'                => 'Suranomm:',
+'email'                   => 'Indirizz de pòsta elettrònica.',
+'prefs-help-email'        => 'E-mail (mia ubligatòri): ga permètt ai óltar üteent da cuntatátt senza da büsögn che i sapia la tóa identitaa.',
+'noname'                  => "Vüü avii mía specificaa un nomm d'üsüari valévul.",
+'loginsuccesstitle'       => "La cunessiun l'è scumenzada cun sücess.",
+'loginsuccess'            => 'Te set cuness a {{SITENAME}} cume "$1".',
+'mailmypassword'          => "Desmentegaa la parola d'urdin?",
+'emailauthenticated'      => 'Ul tò adrèss e-mail l è staa verificaa: $1.',
+'emailnotauthenticated'   => 'Ul tò adrèss da pòsta letronica l è mia staa gnamò verificaa. Nissün mesacc al saraa mandaa par i servizzi che segütan.',
 
 # Edit pages
 'summary'              => 'Argument de la mudifica',
@@ -198,7 +200,7 @@ Ul tò permèss d'entrava l è prunt. Dismentéga mia de mudifigá i prefereenz 
 'showdiff'             => 'Famm vedè i cambiament',
 'anoneditwarning'      => 'Tì te set minga entraa. In de la crunulugia de la pagina se vedarà el tò IP.',
 'accmailtext'          => 'La parola d\'urdin per "$1" l\'è stada mandada a $2.',
-'anontalkpagetext'     => "----''Questa chì l'è la pagina de discüssiun de un ütent che l'ha minga ammò registraa un cünt, upür che el vör minga duperàll; dunca, el pò vess identificaa dumà cunt el sò IP, ch'el pò vess spartii tra tanti ütent diferent. Se ti te set un ütent anonim e t'hee vist un quai messacc ch'el te par ch'el gh'entra nagott cun tì, pröva a [[Special:UserLogin|creà el tò cünt]] per fà pü casott.''",
+'anontalkpagetext'     => "----''Questa chì l'è la pagina de discüssiun de un ütent che l'ha minga ammò registraa un cünt, upür che el vör minga duperàll; dunca, el pò vess identificaa dumà cunt el sò IP, ch'el pò vess spartii tra tanti ütent diferent. Se ti te set un ütent anonim e t'hee vist un quai messacc ch'el te par ch'el gh'entra nagott cun tì, pröva a [[Special:Userlogin|creà el tò cünt]] per fà pü casott.''",
 'noarticletext'        => "Gh'è minga del test in quella pagina chì. Te pòdet [[Special:Search/{{PAGENAME}}|cercà in d'on'altra pagina]] oppur [{{fullurl:{{FULLPAGENAME}}|action=edit}} creàla tì].",
 'clearyourcache'       => "'''Nòta:''' dòpu che avii salvaa, pudaría véss neçessari de scancelá la memòria \"cache\" dal vòst prugráma də navigazziún in reet par vidé i mudifich faa. '''Mozilla / Firefox / Safari:''' tegní schiscjaa al butún ''Shift'' intaant che sə clica ''Reload'', upüür schiscjá ''Ctrl-Shift-R'' (''Cmd-Shift-R'' sül Apple Mac); '''IE:''' schiscjá ''Ctrl'' intaant che sə clica ''Refresh'', upüür schiscjá ''Ctrl-F5''; '''Konqueror:''': semplicemeent clicá al butún ''Reload'', upüür schiscjá ''F5''; '''Opera''' i üteent pudarían vech büsögn da scancelá cumpletameent la memòria \"cache\" in ''Tools&rarr;Preferences''.",
 'previewnote'          => "<strong>'''Atenziun'''! Questa pagina la serviss dumà de vardà. I cambiament hinn minga staa salvaa.</strong>",
@@ -265,23 +267,17 @@ Spiegazziún di símbui: (cur) = difərenza cun la versiún curénta, (ültima) 
 'files'              => 'Archivi',
 
 # User rights
-'userrights-lookup-user'      => 'Gestione dei gruppi utente',
-'userrights-user-editname'    => 'Inserire il nome utente:',
-'editusergroup'               => 'Modifica gruppi utente',
-'userrights-editusergroup'    => 'Modifica gruppi utente',
-'saveusergroups'              => 'Salva gruppi utente',
-'userrights-groupsmember'     => 'Appartiene ai gruppi:',
-'userrights-groupsremovable'  => 'Gruppi eliminabili:',
-'userrights-groupsavailable'  => 'Gruppi disponibili:',
-'userrights-groupshelp'       => "Selezionare i gruppi ai quali si vuole associare o rimuovere l'utente. L'appartenenza ai gruppi non selezionati non verrà modificata. Per deselezionare un gruppo, premere Ctrl + il tasto sinistro del mouse.",
-'userrights-reason'           => 'Motivo della modifica:',
-'userrights-available-none'   => "Non è consentito modificare l'appartenenza ai gruppi.",
-'userrights-available-add'    => 'È possibile associare utenti {{PLURAL:$2|al gruppo|ai gruppi}}: $1.',
-'userrights-available-remove' => 'È possibile rimuovere utenti {{PLURAL:$2|dal gruppo|dai gruppi}}: $1.',
-'userrights-no-interwiki'     => 'Non si dispone dei permessi necessari per modificare i diritti degli utenti su altri siti.',
-'userrights-nodatabase'       => 'Il database $1 non esiste o non è un database locale.',
-'userrights-nologin'          => "Per assegnare diritti agli utenti è necessario [[Special:UserLogin|effettuare l'accesso]] come amministratore.",
-'userrights-notallowed'       => "L'utente non dispone dei permessi necessari per assegnare diritti agli utenti.",
+'userrights-lookup-user'   => 'Gestione dei gruppi utente',
+'userrights-user-editname' => 'Inserire il nome utente:',
+'editusergroup'            => 'Modifica gruppi utente',
+'userrights-editusergroup' => 'Modifica gruppi utente',
+'saveusergroups'           => 'Salva gruppi utente',
+'userrights-groupsmember'  => 'Appartiene ai gruppi:',
+'userrights-reason'        => 'Motivo della modifica:',
+'userrights-no-interwiki'  => 'Non si dispone dei permessi necessari per modificare i diritti degli utenti su altri siti.',
+'userrights-nodatabase'    => 'Il database $1 non esiste o non è un database locale.',
+'userrights-nologin'       => "Per assegnare diritti agli utenti è necessario [[Special:Userlogin|effettuare l'accesso]] come amministratore.",
+'userrights-notallowed'    => "L'utente non dispone dei permessi necessari per assegnare diritti agli utenti.",
 
 # Recent changes
 'recentchanges'     => 'Cambiameent reçeent',
@@ -311,9 +307,10 @@ Spiegazziún di símbui: (cur) = difərenza cun la versiún curénta, (ültima) 
 'sourcefilename'    => "Nomm da l'archivi surgeent:",
 'destfilename'      => "Nomm da l'archivi da destinazziun:",
 
-# Image list
-'imagelist'  => 'Listá i imàgin',
-'ilsubmit'   => 'Truvá',
+# Special:Imagelist
+'imagelist' => 'Listá i imàgin',
+
+# Image description page
 'imagelinks' => 'Ligámm',
 
 # MIME search
@@ -353,22 +350,16 @@ Spiegazziún di símbui: (cur) = difərenza cun la versiún curénta, (ültima) 
 'mostcategories'          => 'Articui cun püssè categurii',
 'mostimages'              => 'Püssè ligaa a imagin',
 'mostrevisions'           => 'Articui cun püssè revisiún',
-'allpages'                => 'Tücc i pagin',
 'prefixindex'             => 'Pagin cul nóm che cumencja par...',
 'shortpages'              => 'Pagin püssee curt',
 'longpages'               => 'Pagin püssè luunch',
 'deadendpages'            => 'Pagin senza surtida',
 'listusers'               => 'Listá i üteent registraa',
-'specialpages'            => 'Pagin special',
-'spheading'               => 'Pagin specjai par tücc i üteent',
-'restrictedpheading'      => 'Pagin specjai riservaa',
 'newpages'                => 'Pagin nööf',
 'ancientpages'            => 'Pagin püssee vecc',
 
 # Book sources
 'booksources' => 'Surgeent librari',
-
-'version' => 'Versiun',
 
 # Special:Log
 'specialloguserlabel'  => 'Üteent:',
@@ -376,12 +367,16 @@ Spiegazziún di símbui: (cur) = difərenza cun la versiún curénta, (ültima) 
 'logempty'             => "El log l'è vöj.",
 
 # Special:Allpages
+'allpages'       => 'Tücc i pagin',
 'allpagesfrom'   => 'Famm vedè i pagin a partì de:',
 'allarticles'    => 'Tütt i vus',
 'allpagesprev'   => 'Precedent',
 'allpagesnext'   => 'Pròssim',
 'allpagessubmit' => 'Innanz',
 'allpagesprefix' => "Varda i pagin ch'i scumenza per:",
+
+# Special:Categories
+'categories' => 'Categurii',
 
 # E-mail user
 'emailuser' => 'Manda un email al duvrátt',
@@ -392,7 +387,7 @@ Spiegazziún di símbui: (cur) = difərenza cun la versiún curénta, (ültima) 
 'addedwatchtext'   => "La pagina \"[[:\$1]]\" l'è staja gjüntava a la lista dii [[Special:Watchlist|paginn da tegn d'öcc]].
 I cambiameent che i vegnará fai a chesta pagina chi e a la sóa pagina dii cumünicazziún
 i vegnará segnalaa chichinscí e la pagina la sa vedará cun caráter '''spèss''' in la
-[[Special:RecentChanges|lista dii cambiameent reçeent]] gjüst par evidenziála.
+[[Special:Recentchanges|lista dii cambiameent reçeent]] gjüst par evidenziála.
 <p>Se ti vörat tirá via chesta pagina chi dala lista dai paginn da tegn d'öcc ti pòdat schiscjá
 al butún \"tegn piü d'öcc\".",
 'removedwatch'     => 'Scancelaa dala lista di usservazziún.',
@@ -403,7 +398,7 @@ al butún \"tegn piü d'öcc\".",
 'watchnochange'    => "Nissün cambiameent l è stai faa süi articui/págin che ti tegnat d'öcc indal períut da teemp selezziunaa.",
 'wlshowlast'       => 'Fa vidé i ültim $1 uur $2 dí $3',
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => "Giuntà ai pagin da ten d'ögg...",
 'unwatching' => "Eliminà dai pagin da ten d'ögg...",
 
@@ -428,10 +423,9 @@ al butún \"tegn piü d'öcc\".",
 'alreadyrolled'         => "L è mia pussibil turná indré al'ültima versiún da [[:$1]] dal [[User:$2|$2]] ([[User talk:$2|Discüssiún]]); un quaivün l á gjamò redataa o giraa indré la pagina.
 L'ültima redatazziún l eva da [[User:$3|$3]] ([[User talk:$3|Discüssiún]]).",
 'unprotectedarticle'    => 'l\'ha sblucaa "[[$1]]"',
-'protectsub'            => '(Prutezziún da "$1")',
-'confirmprotect'        => 'Cunferma de blocch',
+'protect-title'         => 'Prutezziún da "$1"',
+'protect-legend'        => 'Cunferma de blocch',
 'protectcomment'        => 'Spiega parchè ti vörat blucá la pagina',
-'unprotectsub'          => '(Sblocch de "$1")',
 
 # Undelete
 'undelete'           => 'Varda i pagin scancelaa',
@@ -514,10 +508,11 @@ Cheest-chí al pöö vess un canbi dràstegh e inaspetaa par una pàgina pupüla
 
 # Special:Newimages
 'newimages' => 'Espusizziun di imàgin nööf',
+'ilsubmit'  => 'Truvá',
 
 # External editor support
 'edit-externally'      => 'Redatá chest archivi cunt un prugramari da fö',
-'edit-externally-help' => 'Vidé i [http://www.mediawiki.org/wiki/Manual:External_editors istrüzziún] pər vech püssè infurmazziún (in Inglees).',
+'edit-externally-help' => 'Vidé i [http://meta.wikimedia.org/wiki/Help:External_editors istrüzziún] pər vech püssè infurmazziún (in Inglees).',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'tücc',
@@ -538,7 +533,13 @@ Te riçevaree un mesacc cun deent un ligamm specjal; ti duvaree clicaa sül liga
 # Auto-summaries
 'autosumm-blank' => 'Pagina svujada',
 
+# Special:Version
+'version' => 'Versiun', # Not used as normal message but as header for the special page itself
+
 # Special:Filepath
 'filepath' => 'Percuurz daj archivi',
+
+# Special:SpecialPages
+'specialpages' => 'Pagin special',
 
 );

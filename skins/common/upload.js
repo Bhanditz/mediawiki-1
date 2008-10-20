@@ -106,6 +106,9 @@ var wgUploadWarningObj = {
 }
 
 function fillDestFilename(id) {
+	if (!wgUploadAutoFill) {
+		return;
+	}
 	if (!document.getElementById) {
 		return;
 	}
@@ -130,6 +133,17 @@ function fillDestFilename(id) {
 	if (destFile) {
 		destFile.value = fname;
 		wgUploadWarningObj.checkNow(fname) ;
+	}
+}
+
+function toggleFilenameFiller() {
+	if(!document.getElementById) return;
+	var upfield = document.getElementById('wpUploadFile');
+	var destName = document.getElementById('wpDestFile').value;
+	if (destName=='' || destName==' ') {
+		wgUploadAutoFill = true;
+	} else {
+		wgUploadAutoFill = false;
 	}
 }
 

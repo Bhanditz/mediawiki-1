@@ -4,9 +4,10 @@
  * @ingroup Language
  * @file
  *
- * @author Jmb
  * @author Malafaya
+ * @author SPQRobin
  * @author לערי ריינהארט
+ * @author Jmb
  */
 
 $messages = array(
@@ -62,10 +63,10 @@ $messages = array(
 'nov'           => 'nov',
 'dec'           => 'dec',
 
-# Bits of text used by many pages
-'categories'      => 'Categories',
-'pagecategories'  => '{{PLURAL:$1|Categorie|Categories}}',
-'category_header' => 'Articules in categorie "$1"',
+# Categories related messages
+'pagecategories'         => '{{PLURAL:$1|Categorie|Categories}}',
+'category_header'        => 'Articules in categorie "$1"',
+'listingcontinuesabbrev' => 'cont.',
 
 'mainpagetext' => "<big>'''Software del wiki installat con successe.'''</big>",
 
@@ -119,19 +120,19 @@ $messages = array(
 'jumptonavigation' => 'navigation',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutsite'      => 'Apropó de {{SITENAME}}',
-'aboutpage'      => 'Project:Apropó',
-'bugreports'     => 'Raportes de malfunctiones',
-'bugreportspage' => 'Project:Raportes de malfunctiones',
-'copyright'      => 'Contenete disponibil sub $1.',
-'disclaimers'    => 'Advertimentes',
-'edithelp'       => 'Auxilie',
-'edithelppage'   => 'Help:Qualmen modificar un págine',
-'helppage'       => 'Help:Auxilie',
-'mainpage'       => 'Principal págine',
-'portal'         => 'Págine del comunité',
-'portal-url'     => 'Project:Págine del comunité',
-'sitesupport'    => 'Donationes',
+'aboutsite'            => 'Apropó de {{SITENAME}}',
+'aboutpage'            => 'Project:Apropó',
+'bugreports'           => 'Raportes de malfunctiones',
+'bugreportspage'       => 'Project:Raportes de malfunctiones',
+'copyright'            => 'Contenete disponibil sub $1.',
+'disclaimers'          => 'Advertimentes',
+'edithelp'             => 'Auxilie',
+'edithelppage'         => 'Help:Qualmen modificar un págine',
+'helppage'             => 'Help:Auxilie',
+'mainpage'             => 'Principal págine',
+'mainpage-description' => 'Principal págine',
+'portal'               => 'Págine del comunité',
+'portal-url'           => 'Project:Págine del comunité',
 
 'youhavenewmessages' => 'Vu have $1 ($2).',
 'newmessageslink'    => 'nov missages',
@@ -166,6 +167,7 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'remembermypassword'         => 'Memorar mi passa-parol (per cookie)',
 'loginproblem'               => '<b>Hay un problema pri vor intrada.</b><br />Pena far it denov!',
 'login'                      => 'Aperter session',
+'nav-login-createaccount'    => 'Crear un conto o intrar',
 'loginprompt'                => 'Cookies deve esser permisset por intrar in {{SITENAME}}.',
 'userlogin'                  => 'Crear un conto o intrar',
 'logout'                     => 'Surtir',
@@ -217,6 +219,13 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'newpassword'    => 'Nov passa-parol:',
 'retypenew'      => 'Confirmar nov passa-parol',
 
+# Groups
+'group-user' => 'Usatores',
+
+'group-user-member' => 'Usator',
+
+'grouppage-user' => '{{ns:project}}:Usatores',
+
 # Recent changes
 'nchanges'          => '$1 {{PLURAL:$1|change|changes}}',
 'recentchanges'     => 'Recent modificationes',
@@ -240,8 +249,10 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'filedesc'  => 'Descrition',
 'savefile'  => 'Conservar file',
 
-# Image list
-'imagelist'        => 'Liste de images',
+# Special:Imagelist
+'imagelist' => 'Liste de images',
+
+# Image description page
 'filehist-comment' => 'Comenta',
 
 # Random page
@@ -257,13 +268,10 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'uncategorizedcategories' => 'Categories sin categories',
 'unusedimages'            => 'Orfani images',
 'wantedpages'             => 'Li max demandat págines',
-'allpages'                => 'Omni págines',
 'shortpages'              => 'Curt págines',
 'longpages'               => 'Long págines',
 'deadendpages'            => 'Págines sin exeada',
 'listusers'               => 'Liste de usatores',
-'specialpages'            => 'Special págines',
-'spheading'               => 'Special págines por omni usatores',
 'newpages'                => 'Nov págines',
 'ancientpages'            => 'Li max old págines',
 'move'                    => 'Mover',
@@ -271,20 +279,22 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 # Book sources
 'booksources' => 'Librari fontes',
 
-'version' => 'Version',
-
 # Special:Log
 'specialloguserlabel'  => 'Usator:',
 'speciallogtitlelabel' => 'Titul:',
 
 # Special:Allpages
+'allpages'       => 'Omni págines',
 'allarticles'    => 'Omni págines',
 'allpagessubmit' => 'Vade',
+
+# Special:Categories
+'categories' => 'Categories',
 
 # Watchlist
 'watchlist'            => 'Liste de sequet págines',
 'addedwatch'           => 'Adjuntet al liste',
-'addedwatchtext'       => "Li págine ''[[$1]]'' ha esset adjuntet a vor [[Special:Watchlist|liste de sequet págines]]. Li proxim modificationes de ti ci págine e del associat págine de discussion va esser listat ci, e li págine va aperir '''aspessat''' in li [[Special:RecentChanges|liste de recent modificationes]] por esser trovat plu facilmen. Por supresser ti ci págine ex vor liste, ples claccar sur « Ne plu sequer » in li cadre de navigation.",
+'addedwatchtext'       => "Li págine ''[[$1]]'' ha esset adjuntet a vor [[Special:Watchlist|liste de sequet págines]]. Li proxim modificationes de ti ci págine e del associat págine de discussion va esser listat ci, e li págine va aperir '''aspessat''' in li [[Special:Recentchanges|liste de recent modificationes]] por esser trovat plu facilmen. Por supresser ti ci págine ex vor liste, ples claccar sur « Ne plu sequer » in li cadre de navigation.",
 'watch'                => 'Sequer',
 'watchthispage'        => 'Sequer ti págine',
 'watchlist-hide-bots'  => 'Celar modificationes de bot',
@@ -335,9 +345,6 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'tooltip-n-mainpage'     => 'Visita li Principal págine',
 'tooltip-t-specialpages' => 'Liste de omni special págines',
 
-# Spam protection
-'listingcontinuesabbrev' => 'cont.',
-
 # Special:Newimages
 'newimages' => 'Galerie de nov images',
 
@@ -345,5 +352,11 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'watchlistall2' => 'omni',
 'namespacesall' => 'omni',
 'monthsall'     => 'omni',
+
+# Special:Version
+'version' => 'Version', # Not used as normal message but as header for the special page itself
+
+# Special:SpecialPages
+'specialpages' => 'Special págines',
 
 );

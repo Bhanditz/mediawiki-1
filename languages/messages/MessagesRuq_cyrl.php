@@ -7,6 +7,7 @@
  * @author Кумулај Маркус
  * @author Макѕе
  * @author Приетен тев
+ * @author Siebrand
  */
 
 $fallback = 'mk';
@@ -60,9 +61,10 @@ $messages = array(
 'nov'           => 'нов',
 'dec'           => 'дец',
 
-# Bits of text used by many pages
-'category_header' => 'Пажус ен категориа "$1"',
-'subcategories'   => 'Субкатегории',
+# Categories related messages
+'category_header'        => 'Пажус ен категориа "$1"',
+'subcategories'          => 'Субкатегории',
+'listingcontinuesabbrev' => 'контину',
 
 'about'  => 'Дајпул',
 'cancel' => 'ренунтаје',
@@ -93,21 +95,20 @@ $messages = array(
 'jumptosearch'     => 'каутај',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutsite'         => 'дајпул {{SITENAME}}',
-'aboutpage'         => 'Project:дајпул {{SITENAME}}',
-'copyrightpage'     => '{{ns:project}}:Права даутору',
-'currentevents'     => 'Тебикору',
-'currentevents-url' => 'Project:Тебикору',
-'disclaimers'       => 'Тајменулс',
-'disclaimerpage'    => 'Project:тајменул',
-'edithelp'          => 'Ајутор пентре едитаере',
-'edithelppage'      => 'Help:Едитаере',
-'helppage'          => 'Help:Ајутор',
-'mainpage'          => 'Пажу принципу',
-'privacy'           => 'Политикмус де лижитул',
-'privacypage'       => 'Project:политикмус де лижитул',
-'sitesupport'       => 'Донационс',
-'sitesupport-url'   => 'Project:Донаћи',
+'aboutsite'            => 'дајпул {{SITENAME}}',
+'aboutpage'            => 'Project:дајпул {{SITENAME}}',
+'copyrightpage'        => '{{ns:project}}:Права даутору',
+'currentevents'        => 'Тебикору',
+'currentevents-url'    => 'Project:Тебикору',
+'disclaimers'          => 'Тајменулс',
+'disclaimerpage'       => 'Project:тајменул',
+'edithelp'             => 'Ајутор пентре едитаере',
+'edithelppage'         => 'Help:Едитаере',
+'helppage'             => 'Help:Ајутор',
+'mainpage'             => 'Пажу принципу',
+'mainpage-description' => 'Пажу принципу',
+'privacy'              => 'Политикмус де лижитул',
+'privacypage'          => 'Project:политикмус де лижитул',
 
 'retrievedfrom'      => 'адусе де "$1"',
 'youhavenewmessages' => 'Весес $1 ($2).',
@@ -134,10 +135,11 @@ $messages = array(
 'viewsourcefor' => 'пентру $1',
 
 # Login and logout pages
-'yourname'   => 'Ном дутилизатору:',
-'login'      => 'Приласнаере',
-'userlogin'  => 'Приласнаере / креаре нутилизатору',
-'userlogout' => 'отластаере',
+'yourname'                => 'Ном дутилизатору:',
+'login'                   => 'Приласнаере',
+'nav-login-createaccount' => 'Приласнаере / Нажбе',
+'userlogin'               => 'Приласнаере / креаре нутилизатору',
+'userlogout'              => 'отластаере',
 
 # Edit page toolbar
 'bold_sample'     => 'Ескрире алдин',
@@ -197,6 +199,7 @@ $messages = array(
 
 # Recent changes
 'recentchanges'   => 'шумбајрае рецентае',
+'rcnote'          => "Маи хос се флај {{PLURAL:$|ултима модификаре|ултимеле '''$1''' модификајри}} дин {{PLURAL:$2|ултима зи|ултимеле '''$2''' зиле}}, енцепонд цу $3.",
 'rcshowhideminor' => '$1 модификајриле миноре',
 'rcshowhidebots'  => '$1 роботи',
 'rcshowhideliu'   => '$1 утилизатори приласнаери',
@@ -218,7 +221,7 @@ $3',
 # Upload
 'upload' => 'тримиће фиширул',
 
-# Image list
+# Image description page
 'filehist'            => 'Хисториа фиширулу',
 'filehist-current'    => 'куренту',
 'filehist-datetime'   => 'Дата/Темп',
@@ -232,18 +235,17 @@ $3',
 'randompage' => 'алаећу',
 
 # Miscellaneous special pages
-'nbytes'       => '$1 {{PLURAL:$1|бајтул|бајтулс}}',
-'nmembers'     => '$1 {{PLURAL:$1|мембру|мембри}}',
-'allpages'     => 'Тоатс пажи',
-'specialpages' => 'Пажи спецалус',
-'newpages'     => 'Пажи нови',
+'nbytes'   => '$1 {{PLURAL:$1|бајтул|бајтулс}}',
+'nmembers' => '$1 {{PLURAL:$1|мембру|мембри}}',
+'newpages' => 'Пажи нови',
 
 # Book sources
 'booksources' => 'Сурсе де цајрћи',
 
-'alphaindexline' => '$1 во $2',
 
 # Special:Allpages
+'allpages'       => 'Тоатс пажи',
+'alphaindexline' => '$1 во $2',
 'allarticles'    => 'Тоат пажи',
 'allpagessubmit' => 'Треме',
 
@@ -254,7 +256,7 @@ $3',
 'watch'        => 'клајаере',
 'unwatch'      => 'Деклајаера',
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'О клајаере...',
 'unwatching' => 'О деклајаере...',
 
@@ -314,7 +316,6 @@ $3',
 'tooltip-n-recentchanges'   => 'Листа дес шумбајрае рецентае ен лБики.',
 'tooltip-n-randompage'      => 'Донаре нпажу алаетоаре',
 'tooltip-n-help'            => 'Ајутор трувес иси.',
-'tooltip-n-sitesupport'     => 'Супора-ностре',
 'tooltip-t-whatlinkshere'   => 'Листа тутурор пажинилор вики царе кондуц спре ацестај пажинај',
 'tooltip-t-contributions'   => 'Ву листа де контрибући де цутилизатору',
 'tooltip-t-upload'          => 'Тремер фиширул',
@@ -325,9 +326,6 @@ $3',
 'tooltip-minoredit'         => 'Це-ест нмодификацион минару',
 'tooltip-save'              => 'Салваере тес модификационс',
 'tooltip-diff'              => 'Ратај це модификајри аи фајцут текстулуи.',
-
-# Spam protection
-'listingcontinuesabbrev' => 'контину',
 
 # Media information
 'file-nohires'   => '<small>Це-н-ест нресолуцион маи мари.</small>',
@@ -349,5 +347,8 @@ $3',
 'watchlistall2' => 'тоат',
 'namespacesall' => 'тоат',
 'monthsall'     => 'тоат',
+
+# Special:SpecialPages
+'specialpages' => 'Пажи спецалус',
 
 );

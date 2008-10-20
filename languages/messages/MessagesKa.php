@@ -5,10 +5,12 @@
  * @file
  *
  * @author Alsandro
- * @author Malafaya
  * @author Sopho
- * @author ka.wikipedia.org sysops
+ * @author Malafaya
  * @author לערי ריינהארט
+ * @author Siebrand
+ * @author ka.wikipedia.org sysops
+ * @author SPQRobin
  */
 
 $namespaceNames = array(
@@ -82,6 +84,7 @@ $messages = array(
 'tog-watchlisthideminor'      => 'დამალეთ საკონტროლო სიიდან მცირე რედაქტირებები',
 'tog-ccmeonemails'            => 'გამომიგზავნე ელფოსტების ასლები, რომლებსაც მე სხვა მომხმარებლებს ვუგზავნი',
 'tog-diffonly'                => 'დამალე გვერდის შიგთავსი ცვლილების ქვევით',
+'tog-showhiddencats'          => 'დამალული კატეგორიების ჩვენება',
 
 'underline-always'  => 'მუდამ',
 'underline-never'   => 'არასდროს',
@@ -141,13 +144,16 @@ $messages = array(
 'nov'           => 'ნოე',
 'dec'           => 'დეკ',
 
-# Bits of text used by many pages
-'categories'            => 'კატეგორიები',
-'pagecategories'        => '{{PLURAL:$1|კატეგორია|კატეგორიები}}',
-'category_header'       => 'სტატიები კატეგორიაში "$1"',
-'subcategories'         => 'ქვეკატეგორიები',
-'category-media-header' => 'მედია კატეგორიაში "$1"',
-'category-empty'        => "''ეს კატეგორია ამჟამად გვერდებს ან მედიას არ შეიცავს.''",
+# Categories related messages
+'pagecategories'           => '{{PLURAL:$1|კატეგორია|კატეგორიები}}',
+'category_header'          => 'სტატიები კატეგორიაში "$1"',
+'subcategories'            => 'ქვეკატეგორიები',
+'category-media-header'    => 'მედია კატეგორიაში "$1"',
+'category-empty'           => "''ეს კატეგორია ამჟამად გვერდებს ან მედიას არ შეიცავს.''",
+'hidden-categories'        => 'დამალული {{PLURAL:$1|კატეგორია|კატეგორიები}}',
+'hidden-category-category' => 'დამალული კატეგორიები', # Name of the category where hidden categories will be listed
+'category-subcat-count'    => '{{PLURAL:$2|ეს კატეგორია შეიცავს მხოლოდ შემდეგ ქვეკატეგორიას.|ამ კატეგორიაში მოცემულია $1 ქვეკატეგორია $2-დან.}}',
+'listingcontinuesabbrev'   => 'გაგრძ.',
 
 'linkprefix'        => '/^(.*?)(„|«)$/sD',
 'mainpagetext'      => "<big>'''მედიავიკი წარმატებით ჩაიტვირთა.'''</big>",
@@ -196,7 +202,9 @@ $messages = array(
 'permalink'         => 'მუდმივი ბმული',
 'print'             => 'ამობეჭდე',
 'edit'              => 'რედაქტირება',
+'create'            => 'შექმნა',
 'editthispage'      => 'გვერდის რედაქტირება',
+'create-this-page'  => 'ამ გვერდის შექმნა',
 'delete'            => 'წაშლა',
 'deletethispage'    => 'გვერდის წაშლა',
 'undelete_short'    => 'გააუქმე წაშლა {{PLURAL:$1|ერთი რედაქტირება|$1 რედაქტირება}}',
@@ -234,30 +242,28 @@ $messages = array(
 'jumptosearch'      => 'ძიება',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutsite'         => '{{SITENAME}}-ის შესახებ',
-'aboutpage'         => 'Project:შესახებ',
-'bugreports'        => 'ანგარიში შეცდომის შესახებ',
-'bugreportspage'    => 'Project:ანგარიში შეცდომის შესახებ',
-'copyright'         => 'შინაარსი წარმოდგენილია <a class=\'internal\' href="/wiki/GFDL">GFDL</a> ლიცენზიის თანახმად.<br />ვიკიპედია<sup>®</sup> კორპ. ფონდი ვიკიმედიის რეგისტრირებული საფირმო ნიშანია.<br />',
-'copyrightpagename' => 'ვიკიპედია საავტორო უფლებები',
-'copyrightpage'     => '{{ns:project}}:საავტორო უფლებები',
-'currentevents'     => 'მიმდინარე მოვლენები',
-'currentevents-url' => 'Project:მიმდინარე მოვლენები',
-'disclaimers'       => 'პასუხისმგებლობის მოხსნა',
-'disclaimerpage'    => 'Project::პასუხისმგებლობის უარყოფა',
-'edithelp'          => 'დახმარება',
-'edithelppage'      => 'Help:ტექსტის რედაქტირება (მარტივი)',
-'faq'               => 'ხშირი შეკითხვები',
-'faqpage'           => 'Project:ხშირი შეკითხვები',
-'helppage'          => 'Help:დახმარება',
-'mainpage'          => 'მთავარი გვერდი',
-'policy-url'        => 'Project:პოლიტიკა',
-'portal'            => 'საზოგადოების გვერდები',
-'portal-url'        => 'Project:საზოგადოების გვერდები',
-'privacy'           => 'ანონიმურობის პოლიტიკა',
-'privacypage'       => 'Project:ანონიმურობის პოლიტიკა',
-'sitesupport'       => 'შეწირულობები',
-'sitesupport-url'   => 'Project:საიტის მხარდაჭერა',
+'aboutsite'            => '{{SITENAME}}-ის შესახებ',
+'aboutpage'            => 'Project:შესახებ',
+'bugreports'           => 'ანგარიში შეცდომის შესახებ',
+'bugreportspage'       => 'Project:ანგარიში შეცდომის შესახებ',
+'copyrightpagename'    => 'ვიკიპედია საავტორო უფლებები',
+'copyrightpage'        => '{{ns:project}}:საავტორო უფლებები',
+'currentevents'        => 'მიმდინარე მოვლენები',
+'currentevents-url'    => 'Project:მიმდინარე მოვლენები',
+'disclaimers'          => 'პასუხისმგებლობის მოხსნა',
+'disclaimerpage'       => 'Project::პასუხისმგებლობის უარყოფა',
+'edithelp'             => 'დახმარება',
+'edithelppage'         => 'Help:ტექსტის რედაქტირება (მარტივი)',
+'faq'                  => 'ხშირი შეკითხვები',
+'faqpage'              => 'Project:ხშირი შეკითხვები',
+'helppage'             => 'Help:დახმარება',
+'mainpage'             => 'მთავარი გვერდი',
+'mainpage-description' => 'მთავარი გვერდი',
+'policy-url'           => 'Project:პოლიტიკა',
+'portal'               => 'საზოგადოების გვერდები',
+'portal-url'           => 'Project:საზოგადოების გვერდები',
+'privacy'              => 'ანონიმურობის პოლიტიკა',
+'privacypage'          => 'Project:ანონიმურობის პოლიტიკა',
 
 'badaccess'        => 'ნებართვის შეცდომა',
 'badaccess-group0' => 'თქვენ არ გაქვთ მოთხოვნილი მოქმედების შესრულების უფლება',
@@ -276,6 +282,7 @@ $messages = array(
 'youhavenewmessagesmulti' => 'თქვენ გაქვთ ახალი შეტყობინება $1-ზე',
 'editsection'             => 'რედაქტირება',
 'editold'                 => 'რედაქტირება',
+'viewsourceold'           => 'წყაროს ჩვენება',
 'editsectionhint'         => 'სექციის რედაქტირება: $1',
 'toc'                     => 'სარჩევი',
 'showtoc'                 => 'ჩვენება',
@@ -308,7 +315,7 @@ $messages = array(
 'nosuchspecialpage' => 'სპეციალური გვერდი არ არსებობს',
 'nospecialpagetext' => "<big>'''თქვენ არასწორი სპეციალური გვერდი მოითხოვეთ.'''</big>
 
-სწორი სპეციალური გვერდების სია შეგიძლიათ იხილოთ აქ: [[Special:SpecialPages|{{int:specialpages}}]].",
+სწორი სპეციალური გვერდების სია შეგიძლიათ იხილოთ აქ: [[Special:Specialpages|{{int:specialpages}}]].",
 
 # General errors
 'error'                => 'შეცდომა',
@@ -380,6 +387,7 @@ $2',
 'yourdomainname'             => 'თქვენი დომენი',
 'loginproblem'               => '<b>თქვენი რეგისტრაცია ვერ მოხერხდა.</b><br />სცადეთ ხელმეორედ!',
 'login'                      => 'შესვლა',
+'nav-login-createaccount'    => 'შესვლა',
 'loginprompt'                => 'ვიკიპედიაში შესასვლელად საჭიროა კუკის (cookies) გააქტიურება.',
 'userlogin'                  => 'შესვლა',
 'logout'                     => 'გასვლა',
@@ -534,7 +542,7 @@ $1 საათში.',
 'whitelistedittitle'        => 'რედაქტირება საჭიროებს სისტემაში შესვლას',
 'whitelistedittext'         => 'გვერდების რედაქტირებისათვის თქვენ გესაჭიროებათ $1.',
 'whitelistreadtitle'        => 'წასაკითხად საჭიროა რეგისტრაცია',
-'whitelistreadtext'         => 'გვერდების წასაკითხად უნდა [[Special:UserLogin|დარეგისტრირდეთ]].',
+'whitelistreadtext'         => 'გვერდების წასაკითხად უნდა [[Special:Userlogin|დარეგისტრირდეთ]].',
 'whitelistacctitle'         => 'ანგარიშის შექმნის ნებართვა არ გაქვთ',
 'whitelistacctext'          => 'იმისათვის, რათა გქონდეთ ვიკიპედიაში ანგარიშების გახსნის უფლება, უნდა გაიაროთ [[Special:Userlogin|რეგისტრაცია]] და მოიპოვოთ სათანადო ნებართვები.',
 'confirmedittitle'          => 'რედაქტირებისთვის საჭიროა ელფოსტის დამოწმება',
@@ -547,11 +555,11 @@ $1 საათში.',
 'accmailtitle'              => 'პაროლი გაგზავნილია.',
 'accmailtext'               => "'$1'-ის პაროლი გადაგზავნილია $2-ზე.",
 'newarticle'                => '(ახალი)',
-'newarticletext'            => 'ბმულის მეშვეობით თქვენ მოხვდით გვერდზე, რომელიც ჯერ არ არსებობს.
+'newarticletext'            => 'ბმულის მეშვებით თქვენ მოხვდით გვერდზე, რომელიც ჯერ არ არსებობს.
 გვერდის შესაქმნელად შეიყვანეთ ინფორმაცია ქვემო ფანჯარაში
 (იხ. [[{{MediaWiki:Helppage}}|დახმარების გვერდი]] დამატებითი ინფორმაციისთვის).
 თუ ამ გვერდზე შეცდომით მოხვდით, დაბრუნდით უკან თქვენი ბრაუზერის მეშვეობით.',
-'anontalkpagetext'          => "----''ეს არის ანონიმური მომხმარებლის განხილვის გვერდი, რომელსაც ანგარიში ჯერ არ შეუქმნია ან არ იყენებს მას. შესაბამისად, ჩვენ მისი ციფრული IP მისამართი უნდა გამოვიყენოთ მისი იდენტიფიცირებისთვის. ამგვარი მისამართი შეიძლება რამდენიმე მომხმარებელმა გამოიყენოს. თუ თქვენ ანონიმური მომხმარებელი ხართ და თვლით, რომ სხვისთვის გამიზნული მითითება მიიღეთ, გთხოვთ [[Special:UserLogin|შექმენით ანგარიში ან დარეგისტრირდით]] მომავალში გაუგებრობის თავიდან ასაცილებლად.''",
+'anontalkpagetext'          => "----''ეს არის ანონიმური მომხმარებლის განხილვის გვერდი, რომელსაც ანგარიში ჯერ არ შეუქმნია ან არ იყენებს მას. შესაბამისად, ჩვენ მისი ციფრული IP მისამართი უნდა გამოვიყენოთ მისი იდენტიფიცირებისთვის. ამგვარი მისამართი შეიძლება რამდენიმე მომხმარებელმა გამოიყენოს. თუ თქვენ ანონიმური მომხმარებელი ხართ და თვლით, რომ სხვისთვის გამიზნული მითითება მიიღეთ, გთხოვთ [[Special:Userlogin|შექმენით ანგარიში ან დარეგისტრირდით]] მომავალში გაუგებრობის თავიდან ასაცილებლად.''",
 'noarticletext'             => 'ამჟამად ამ გვერდზე ტექსტი არ არსებობს, თქვენ შგიძლიათ [[Special:Search/{{PAGENAME}}|მოძებნოთ ამ გვერდის სათაური]] სხვა გვერდებზე ან [{{fullurl:{{FULLPAGENAME}}|action=edit}} დაიწყოთ ამ გვერდის რედაქტირება].',
 'clearyourcache'            => "'''შენიშვნა:''' შენახვის შემდეგ შესაძლოა დაგჭირდეთ ბრაუზერის ქეშის გაწმენდა ცვლილებების სანახავად. '''Mozilla / Firefox / Safari:''' დააჭირეთ ''Shift'' ''Reload''-ზე დაწკაპებისას, ან დააჭირეთ ''Ctrl-Shift-R'' (''Cmd-Shift-R'' Apple Mac-ზე); '''IE:''' დააჭირეთ ''Ctrl'' ''Refresh''-ზე დაწკაპებისას, ან დააჭირეთ ''Ctrl-F5''; '''Konqueror:''': მხოლოდ დააწკაპეთ ''Reload'' ღილაკს, ან დააჭირეთ ''F5''; '''Opera''' შესაძლოა საჭირო გახდეს ქეშის სრულიად გაწმენდა ''Tools→Preferences''-დან.",
 'usercssjsyoucanpreview'    => "<strong>რჩევა:</strong> შენახვამდე გამოიყენეთ 'წინასწარი გადახედვის' ღილაკი თქვენი ახალი CSS/JS ტესტირებისთვის.",
@@ -569,7 +577,6 @@ $1 საათში.',
 
 <strong>თუ ეს მიღებული რედაქტირების მცდელობა იყო, გთხოვთ ისევ სცადოთ. თუ იგი კვლავ არ მუშაობს, სცადეთ თავიდან დარეგისტრირება (შესვლა)</strong>",
 'editing'                   => 'რედაქტირება - $1',
-'editinguser'               => "მომხმარებლის '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]]) უფლებების შეცვლა",
 'editingsection'            => 'რედაქტირება - $1 (სექცია)',
 'editingcomment'            => 'რედაქტირება: $1 (კომენტარი)',
 'editconflict'              => 'რედაქტირების კონფლიქტი: $1',
@@ -619,7 +626,6 @@ $1 საათში.',
 'viewpagelogs'        => 'ამ გვერდისთვის სარეგისტრაციო ჟურნალების ჩვენება',
 'nohistory'           => 'ამ გვერდს განხილვის გვერდი ცარიელი აქვს.',
 'revnotfound'         => 'ცვლილება ვერ ვიპოვეთ',
-'loadhist'            => 'იტვირთება გვერდის ისტორია',
 'currentrev'          => 'მიმდინარე შესწორება',
 'revisionasof'        => '$1-ის ვერსია',
 'revision-info'       => '$1-ის ვერსია, შეტანილი $2-ის მიერ',
@@ -629,7 +635,6 @@ $1 საათში.',
 'cur'                 => 'მიმდ.',
 'next'                => 'შემდეგი',
 'last'                => 'ბოლო',
-'orig'                => 'ორიგ',
 'page_first'          => 'პირველი',
 'page_last'           => 'ბოლო',
 'histlegend'          => '<div style="font-size:95%">
@@ -662,6 +667,9 @@ $1 საათში.',
 'revdelete-hide-user'    => 'რედაქტორის მომხ. სახელის/IP-ს დამალვა',
 'revdelete-hide-image'   => 'ფაილის შინაარსის დამალვა',
 'revdelete-log'          => 'ჟურნალის კომენტარი:',
+'pagehist'               => 'გვერდის ისტორია',
+'deletedhist'            => 'წაშლილი ისტორია',
+'revdelete-content'      => 'შინაარსი',
 
 # History merging
 'mergehistory'                => 'გვერდების ისტორიის შერწყმა',
@@ -691,11 +699,12 @@ $1 საათში.',
 'prevn'                 => 'წინა $1',
 'nextn'                 => 'შემდეგი $1',
 'viewprevnext'          => 'იხილე  ($1) ($2) ($3).',
+'search-result-size'    => '$1 ($2 სიტყვა)',
+'searchall'             => 'ყველა',
 'showingresults'        => 'ქვემოთ იხილეთ <b>$1</b>-მდე შედეგი დაწყებული #<b>$2</b>-იდან.',
 'showingresultsnum'     => 'ქვემოთ იხილეთ <b>$3</b> შედეგი დაწყებული #<b>$2</b>-იდან.',
 'nonefound'             => "'''შენიშვნა''':წარუმატებელი ძებნა შეიძლება გამოწვეული იყო საერთო სიტყვების ცდით, რომლებიც ინდექსირებას არ ექვემდებარება.",
 'powersearch'           => 'ძიება',
-'powersearchtext'       => 'ძიება სახელთა სივრცეში:<br />$1<br />$2 გადამისამართების ჩვენება<br />ძიება $3 $9',
 'searchdisabled'        => '{{SITENAME}}ში ძებნა გაუქმებულია. თქვენ შეგიძლიათ დროის შუალედით Google-ით ძებნა. მიაქციეთ ყურადღება, რომ {{SITENAME}}ში შესაძლებელია მათი ინდექსები აქტუალური არ არის.',
 
 # Preferences page
@@ -703,7 +712,7 @@ $1 საათში.',
 'mypreferences'            => 'ჩემი კონფიგურაცია',
 'prefs-edits'              => 'რედაქციების რაოდენობა:',
 'prefsnologin'             => 'შესული არ ხართ',
-'prefsnologintext'         => 'თქვენ [[Special:UserLogin|რეგისტრირებული უნდა იყოთ]] მომხმარებლის კონფიგურაციის შესაცვლელად.',
+'prefsnologintext'         => 'თქვენ [[Special:Userlogin|რეგისტრირებული უნდა იყოთ]] მომხმარებლის კონფიგურაციის შესაცვლელად.',
 'qbsettings'               => 'სწრაფი ზოლი',
 'qbsettings-none'          => 'არაფერი',
 'qbsettings-fixedleft'     => 'ფიქსირებული მარცხნივ',
@@ -752,29 +761,29 @@ $1 საათში.',
 'files'                    => 'ფაილები',
 
 # User rights
+'userrights'                  => 'მომხმარებელთა უფლებების მართვა', # Not used as normal message but as header for the special page itself
 'userrights-lookup-user'      => 'მომხმარებელთა ჯგუფების მართვა',
 'userrights-user-editname'    => 'მომხმარებლის სახელის შეტანა:',
 'editusergroup'               => 'მომხმარებელთა ჯგუფების რედაქტირება',
+'editinguser'                 => "მომხმარებლის '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]]) უფლებების შეცვლა",
 'userrights-editusergroup'    => 'რედაქტირება გაუკეთეთ მომხმარებელთა ჯგუფებს',
 'saveusergroups'              => 'მომხმარებელთა ჯგუფების შენახვა',
 'userrights-groupsmember'     => 'ჯგუფის წევრი:',
-'userrights-groupsavailable'  => 'ხელმისაწვდომი ჯგუფები:',
-'userrights-groupshelp'       => 'მონიშნეთ მომხმარებელთა ჯგუფები, სადაც მომხმარებლის ამოღება ან დამატება გინდათ. 
-მოუნიშნავი ჯგუფები არ შეიცვლება. თქვენ შეგიძლიათ არჩევანიდან გააუქმოთ ჯგუფი CRTL + Left დაწკაპუნებით',
 'userrights-reason'           => 'შეცვლის საბაბი:',
-'userrights-available-none'   => 'თქვენ ვერ შეცვლით ჯგუფის წევრობას.',
-'userrights-available-add'    => 'შეგიძლიათ დაამატოთ მომხმარებლები ამ {{PLURAL:$2|ჯგუფს|ჯგუფებს}}: $1.',
-'userrights-available-remove' => 'შეგიძლიათ წაშალოთ მომხმარებლები ამ {{PLURAL:$2|ჯგუფიდან|ჯგუფებიდან}}: $1.',
 'userrights-no-interwiki'     => 'თქვენ არ გაქვთ მომხმარებლის უფლებების რედაქტირების უფლება სხვა ვიკი-ებში.',
+'userrights-changeable-col'   => 'ჯგუფები, რომლებიც შეგიძლიათ შეცვალოთ',
+'userrights-unchangeable-col' => 'ჯგუფები, რომლებიც არ შეგიძლიათ შეცვალოთ',
 
 # Groups
 'group'               => 'ჯგუფი:',
+'group-user'          => 'მომხმარებლები',
 'group-autoconfirmed' => 'ავტომატურად დადასტურებული მომხმარებლები',
 'group-bot'           => 'რობოტები',
 'group-sysop'         => 'ადმინისტრატორები',
 'group-bureaucrat'    => 'ბიუროკრატები',
 'group-all'           => '(ყველა)',
 
+'group-user-member'          => 'მომხმარებელი',
 'group-autoconfirmed-member' => 'ავტომატურად დადასტურებული მომხმარებელი',
 'group-bot-member'           => 'რობოტი',
 'group-sysop-member'         => 'ადმინისტრატორი',
@@ -783,6 +792,19 @@ $1 საათში.',
 'grouppage-bot'        => '{{ns:project}}:რობოტები',
 'grouppage-sysop'      => '{{ns:project}}:ადმინისტრატორები',
 'grouppage-bureaucrat' => '{{ns:project}}:ბიუროკრატები',
+
+# Rights
+'right-read'          => 'გვერდების წაკითხვა',
+'right-edit'          => 'გვერდების რედაქტირება',
+'right-createpage'    => 'გვერდების შექმნა (არა განხილვის გვერდებისა)',
+'right-createtalk'    => 'განხილვის გვერდების შექმნა',
+'right-minoredit'     => 'ცვლილებების მითითება, როგორც "მცირე რედაქტირება"',
+'right-move'          => 'გვერდების გადატანა',
+'right-upload'        => 'ფაილების ატვირთვა',
+'right-delete'        => 'გვერდების წაშლა',
+'right-browsearchive' => 'წაშლილი გვერდების ძიება',
+'right-undelete'      => 'გვერდის აღდგენა',
+'right-editprotected' => 'დაცული გვერდების რედაქტირება (იერარქიული დაცვის გარეშე)',
 
 # User rights log
 'rightslog'  => 'მომხმარებლის უფლებების ჟურნალი',
@@ -826,7 +848,7 @@ $1 საათში.',
 'reupload'                    => 'ხელმეორედ ატვირთვა',
 'reuploaddesc'                => 'გააუქმეთ ატვირთვა და დაუბრუნდით ატვირთვის ფორმას.',
 'uploadnologin'               => 'რეგისტრაცია არ გაქვთ გავლილი',
-'uploadnologintext'           => 'ფაილის ატვირთვისთვის თქვენ უნდა [[Special:UserLogin|შეხვიდეთ]].',
+'uploadnologintext'           => 'ფაილის ატვირთვისთვის თქვენ უნდა [[Special:Userlogin|შეხვიდეთ]].',
 'upload_directory_read_only'  => 'ვებსერვერი ვერ იწერს ატვირთვის დირექტორიაში ($1).',
 'uploaderror'                 => 'ატვირთვის შეცდომა',
 'uploadtext'                  => "<div style=\"border: 1px solid grey; background: #ddf; padding: 10px 30px; margin: 0 auto;\">
@@ -899,44 +921,42 @@ $1 საათში.',
 'nolicense'          => 'არაფერი არის მონიშნული',
 'upload_source_file' => ' (ფაილი შენს კომპიუტერზე)',
 
-# Image list
-'imagelist'                 => 'სურათების სია',
-'imagelisttext'             => "ქვემოთ მოცემულია '''$1''' ფაილის სია დახარისხებული მომხმარებლის $2 მიერ.",
-'getimagelist'              => 'ფაილთა სიის ჩამოტვირთვა',
-'ilsubmit'                  => 'ძიება',
-'showlast'                  => 'აჩვენეთ ბოლო $1 ფაილი $2-ით სორტირებული.',
-'byname'                    => 'სახელით',
-'bydate'                    => 'თარიღით',
-'bysize'                    => 'ზომით',
-'imgdelete'                 => 'წაშ.',
-'imgdesc'                   => 'აღწერა',
-'imgfile'                   => 'ფაილი',
-'filehist'                  => 'ფაილის ისტორია',
-'filehist-help'             => 'დააწკაპუნეთ თარიღზე/დროზე, რათა იხილოთ ფაილი, როგორც ის მაშინ გამოიყურებოდა.',
-'filehist-deleteall'        => 'წაშალე ყველა',
-'filehist-deleteone'        => 'ამის წაშლა',
-'filehist-revert'           => 'დააბრუნე',
-'filehist-current'          => 'მიმდინარე',
-'filehist-datetime'         => 'თარიღი/დრო',
-'filehist-user'             => 'მომხმარებელი',
-'filehist-dimensions'       => 'განზომილებები',
-'filehist-filesize'         => 'ფაილის ზომა',
-'filehist-comment'          => 'კომენტარი',
-'imagelinks'                => 'ბმულები',
-'linkstoimage'              => 'მომდევნო გვერდები ებმის ამ ფაილს:',
-'nolinkstoimage'            => 'არ არსებობს ამ ფაილთან დაკავშირებული გვერდები.',
-'sharedupload'              => 'ეს ფაილი ჩატვირთულია საერთო სარგებლობისათვის და შეიძლება გამოყენებულ იქნეს სხვა პროექტების მიერ.',
-'shareduploadwiki'          => 'გთხოვთ, იხილოთ $1 შემდგომი ინფორმაციის მისაღებად.',
-'shareduploadwiki-linktext' => 'ფაილის აღწერის გვერდი',
-'noimage'                   => 'ამ სახელის მქონე ფაილი არ არსებობს, თქვენ შეგიძლიათ $1.',
-'noimage-linktext'          => 'ფაილის ატვირთვა',
-'uploadnewversion-linktext' => 'ატვირთეთ ამ ფაილის ახალი ვერსია',
-'imagelist_date'            => 'თარიღი',
-'imagelist_name'            => 'სახელი',
-'imagelist_user'            => 'მომხმარებელი',
-'imagelist_size'            => 'ზომა (ბაიტები)',
-'imagelist_description'     => 'აღწერილობა',
-'imagelist_search_for'      => 'ძიება სურათის სახელის მიხედვით:',
+# Special:Imagelist
+'imagelist_search_for'  => 'ძიება სურათის სახელის მიხედვით:',
+'imgfile'               => 'ფაილი',
+'imagelist'             => 'სურათების სია',
+'imagelist_date'        => 'თარიღი',
+'imagelist_name'        => 'სახელი',
+'imagelist_user'        => 'მომხმარებელი',
+'imagelist_size'        => 'ზომა (ბაიტები)',
+'imagelist_description' => 'აღწერილობა',
+
+# Image description page
+'filehist'                       => 'ფაილის ისტორია',
+'filehist-help'                  => 'დააწკაპუნეთ თარიღზე/დროზე, რათა იხილოთ ფაილი, როგორც ის მაშინ გამოიყურებოდა.',
+'filehist-deleteall'             => 'წაშალე ყველა',
+'filehist-deleteone'             => 'ამის წაშლა',
+'filehist-revert'                => 'დააბრუნე',
+'filehist-current'               => 'მიმდინარე',
+'filehist-datetime'              => 'თარიღი/დრო',
+'filehist-user'                  => 'მომხმარებელი',
+'filehist-dimensions'            => 'განზომილებები',
+'filehist-filesize'              => 'ფაილის ზომა',
+'filehist-comment'               => 'კომენტარი',
+'imagelinks'                     => 'ბმულები',
+'linkstoimage'                   => 'მომდევნო {{PLURAL:$1|გვერდი|გვერდები}} ებმის ამ ფაილს:',
+'nolinkstoimage'                 => 'არ არსებობს ამ ფაილთან დაკავშირებული გვერდები.',
+'sharedupload'                   => 'ეს ფაილი ჩატვირთულია საერთო სარგებლობისათვის და შეიძლება გამოყენებულ იქნეს სხვა პროექტების მიერ.',
+'shareduploadwiki'               => 'გთხოვთ, იხილოთ $1 შემდგომი ინფორმაციის მისაღებად.',
+'shareduploadwiki-linktext'      => 'ფაილის აღწერის გვერდი',
+'shareduploadduplicate'          => 'ეს ფაილი წარმოადგენს $1 დუბლიკატს საერთო საცავიდან.',
+'shareduploadduplicate-linktext' => 'სხვა ფაილის',
+'shareduploadconflict'           => 'ამ იგივე სახელწოდება აქვს, რაც $1 საერთო საცავიდან.',
+'shareduploadconflict-linktext'  => 'სხვა ფაილს',
+'noimage'                        => 'ამ სახელის მქონე ფაილი არ არსებობს, თქვენ შეგიძლიათ $1.',
+'noimage-linktext'               => 'ფაილის ატვირთვა',
+'uploadnewversion-linktext'      => 'ატვირთეთ ამ ფაილის ახალი ვერსია',
+'imagepage-searchdupe'           => 'ფაილების დუბლიკატების ძიება',
 
 # File reversion
 'filerevert'         => 'დააბრუნე $1',
@@ -956,6 +976,7 @@ $1 საათში.',
 'filedelete-iscurrent'        => 'თქვენ ცდილობთ ამ ფაილის ყველაზე ახალი ვერსიის წაშლას. გთხოვთ, ის ჯერ წინა ვერსიაზე გადაიტანოთ.',
 'filedelete-otherreason'      => 'სხვა/დამატებითი მიზეზი:',
 'filedelete-reason-otherlist' => 'სხვა მიზეზი',
+'filedelete-edit-reasonlist'  => 'წაშლის მიზეზების რედაქტირება',
 
 # MIME search
 'mimesearch' => 'MIME ძიება',
@@ -1007,7 +1028,6 @@ $1 საათში.',
 'brokenredirects-delete' => '(წაშლა)',
 
 'withoutinterwiki'         => 'გვერდები ენის ბმულების გარეშე',
-'withoutinterwiki-header'  => 'შემდეგ გვერდებს სხვა ენების ვერსიებზე არ აქვთ ბმულები:',
 'withoutinterwiki-summary' => 'შემდეგ გვერდებს სხვა ენების ვერსიებზე არ აქვთ ბმულები:',
 'withoutinterwiki-submit'  => 'ჩვენება',
 
@@ -1038,7 +1058,6 @@ $1 საათში.',
 'mostcategories'          => 'ყველაზე მეტი კატეგორიის მქონე სტატიები',
 'mostimages'              => 'ყველაზე მეტი ბმულების მქონე სურათები',
 'mostrevisions'           => 'ყველაზე მეტად რედაქტირებული სტატიები',
-'allpages'                => 'ყველა გვერდი',
 'prefixindex'             => 'საძიებელი სიტყვის დასაწყისის მიხედვით',
 'shortpages'              => 'მოკლე გვერდები',
 'longpages'               => 'გრძელი გვერდები',
@@ -1047,13 +1066,9 @@ $1 საათში.',
 'protectedpages'          => 'დაცული გვერდები',
 'protectedtitles'         => 'დაცული სათაურები',
 'listusers'               => 'მომხმარებლების სია',
-'specialpages'            => 'სპეციალური გვერდები',
-'spheading'               => 'სპეციალური გვერდები ყველა მომხმარებლისათვის',
-'restrictedpheading'      => 'შეზღუდული სპეციალური გვერდები',
 'newpages'                => 'ახალი გვერდები',
 'newpages-username'       => 'მომხმარებლის სახელი:',
 'ancientpages'            => 'ხანდაზმული გვერდები',
-'intl'                    => 'ენათშორისი ბმულები',
 'move'                    => 'გადატანა',
 'movethispage'            => 'ამ გვერდის გადატანა',
 'unusedimagestext'        => '<p>გთხოვთ გაითვალისწინოთ, რომ შეიძლება სხვა Wiki ზოგიერთ ამ გამოსახულებას იყენებს.</p>',
@@ -1068,13 +1083,6 @@ $1 საათში.',
 'booksources-go'            => 'გადასვლა',
 'booksources-text'          => 'ქვემოთ არის ვებ გვერდების ბმულების სია სადაც იყიდება ახალი და ნახმარი წიგნები, და შესაძლოა შეიცავდნენ დამატებით ინფორმაციას წიგნების შესახებ, რომლებსაც ეძებთ:',
 
-'categoriespagetext' => 'ვიკიპედიაში შემდეგი კატეგორიებია.',
-'data'               => 'მონაცემები',
-'userrights'         => 'მომხმარებელთა უფლებების მართვა',
-'groups'             => 'მომხმარებელთა ჯგუფები',
-'alphaindexline'     => '$1-დან $2-მდე',
-'version'            => 'ვერსია',
-
 # Special:Log
 'specialloguserlabel'  => 'მომხმარებელი:',
 'speciallogtitlelabel' => 'სათაური:',
@@ -1085,6 +1093,8 @@ $1 საათში.',
 'logempty'             => 'რეზულტატები არ არის სიაში.',
 
 # Special:Allpages
+'allpages'          => 'ყველა გვერდი',
+'alphaindexline'    => '$1-დან $2-მდე',
 'nextpage'          => 'შემდეგი გვერდი ($1)',
 'prevpage'          => 'წინა გვერდი ($1)',
 'allpagesfrom'      => 'გვერდების ჩვენება დაწყებული:',
@@ -1098,9 +1108,20 @@ $1 საათში.',
 'allpagesbadtitle'  => 'მოცემული გვერდის სათაური არასწორია ან აქვს ინტერვიკი ან ნათშორისი პრეფიქსი. იგი შესაძლოა შეიცავდეს ერთ ან მეტ სიმბოლოს, რომელიც არ შეიძლება გამოყენებულ იქნას სათაურში.',
 'allpages-bad-ns'   => '{{SITENAME}} "$1" არ აქვს სახელთა სივრცე.',
 
+# Special:Categories
+'categories'                  => 'კატეგორიები',
+'categoriespagetext'          => 'ვიკიპედიაში შემდეგი კატეგორიებია.',
+'special-categories-sort-abc' => 'ანბანზე დალაგება',
+
 # Special:Listusers
 'listusers-submit'   => 'ჩვენება',
 'listusers-noresult' => 'მომხმარებელი ვერ ვიპოვეთ.',
+
+# Special:Listgrouprights
+'listgrouprights-group'    => 'ჯგუფი',
+'listgrouprights-rights'   => 'უფლებები',
+'listgrouprights-helppage' => 'Help:ჯგუფების უფლებები',
+'listgrouprights-members'  => '(წევრების სია)',
 
 # E-mail user
 'emailuser'       => 'გაუგზავნეთ იმეილი ამ მომხმარებელს',
@@ -1129,9 +1150,9 @@ $1 საათში.',
 
 იხილეთ ან რედაქტირება გაუკეთეთ თქვენი კონტროლის სიაში შეტანილ ერთეულებს.',
 'watchnologin'         => 'რეგისტრაცია ვერ შესრულდა',
-'watchnologintext'     => 'თქვენ უნდა მოახდინოთ [[Special:UserLogin|რეგისტრაცია]] თქვენი კონტროლის სიის მოდიფიცირებისათვის.',
+'watchnologintext'     => 'თქვენ უნდა მოახდინოთ [[Special:Userlogin|რეგისტრაცია]] თქვენი კონტროლის სიის მოდიფიცირებისათვის.',
 'addedwatch'           => 'შეტანილია კონტროლის სიაში',
-'addedwatchtext'       => "გვერდი \"[[:\$1]]\" დაემატა თქვენი [[Special:Watchlist|კონტროლის სიას]]. მომავალი ცვლილებები ამ გვერდსა და მის განხილვაზე მითითებული იქნება ამ სიაში, ხოლო ბმული ამ გვერდზე [[Special:RecentChanges|უკანასკნელი ცვლილებების სიაში]] გამოჩნდება '''სქლად''' თქვენთვის მათი შემჩნევის გასაადვილებლად.",
+'addedwatchtext'       => "გვერდი \"[[:\$1]]\" დაემატა თქვენი [[Special:Watchlist|კონტროლის სიას]]. მომავალი ცვლილებები ამ გვერდსა და მის განხილვაზე მითითებული იქნება ამ სიაში, ხოლო ბმული ამ გვერდზე [[Special:Recentchanges|უკანასკნელი ცვლილებების სიაში]] გამოჩნდება '''სქლად''' თქვენთვის მათი შემჩნევის გასაადვილებლად.",
 'removedwatch'         => 'ამოღებულია კონტროლის სიიდან',
 'removedwatchtext'     => 'გვერდი "[[:$1]]" ამოღებულია თქვენი კონტროლის სიიდან.',
 'watch'                => 'კონტროლი',
@@ -1156,7 +1177,7 @@ $1 საათში.',
 'watchlist-show-minor' => 'აჩვენე მცირე ცვლილებები',
 'watchlist-hide-minor' => 'მცირე რედაქტირებების დამალვა',
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'კონტროლებადი...',
 'unwatching' => 'არაკონტროლირებადი...',
 
@@ -1218,6 +1239,7 @@ $NEWPAGE
 ** ავტორის თხოვნით
 ** საავტორო უფლების დარღვევა
 ** ვანდალიზმი',
+'delete-edit-reasonlist'      => 'წაშლის მიზეზების რედაქტირება',
 'rollback'                    => 'რედაქტირების გაუქმება',
 'rollback_short'              => 'გაუქმება',
 'rollbacklink'                => 'გაუქმება',
@@ -1231,18 +1253,15 @@ $NEWPAGE
 'protectlogpage'              => 'დაცვის ისტორია',
 'protectedarticle'            => 'დაცულია "[[$1]]"',
 'unprotectedarticle'          => 'დაცვა მოხსნილია "[[$1]]"',
-'confirmprotect'              => 'დაცვის დადასტურება',
+'protect-legend'              => 'დაცვის დადასტურება',
 'protectcomment'              => 'კომენტარი:',
 'protectexpiry'               => 'ვადა',
 'protect_expiry_invalid'      => 'ვადის გასვლის დრო არასწორია.',
 'protect_expiry_old'          => 'ვადის გასვლის დრო წარსულშია.',
-'unprotectsub'                => '(დაცვის მოხსნა "$1")',
 'protect-unchain'             => 'გადატანის ნებართვებზე ბლოკის მოხსნა',
 'protect-text'                => 'თქვენ შეგიძლიათ აქ იხილოთ და შეცვალოთ დაცვის დონე გვერდისთვის <strong><nowiki>$1</nowiki></strong>.',
 'protect-locked-access'       => 'თქვენს ანგარიშს არ აქვს გვერდის დაცვის დონეების შეცვლის ნებართვა.
 იხილეთ ქვემოთ ამჟამინდელი პარამეტრები გვერდისთვის <strong>$1</strong>:',
-'protect-cascadeon'           => 'ეს გვერდი ამჟამად დაცულია, ვინაიდან იგი ნაწილია ამ {{PLURAL:$1|გვერდის, რომელსაც|გვერდების, რომელთაც}} კასკადური დაცვა აქვს ჩართული.
-თქვენ შეგიძლიათ ამ გვერდის დაცვის დონე შეცვალოთ, თუმცა ეს კასკადურ დაცვაზე გავლენას არ იქონიებს.',
 'protect-default'             => '(სტანდარტული)',
 'protect-fallback'            => 'საჭიროა "$1"-ის უფლება',
 'protect-level-autoconfirmed' => 'არარეგისტრირებული მომხმარებლების დაბლოკვა',
@@ -1261,6 +1280,7 @@ $NEWPAGE
 'restriction-edit'   => 'რედაქტირება',
 'restriction-move'   => 'გადატანა',
 'restriction-create' => 'შექმნა',
+'restriction-upload' => 'ატვირთვა',
 
 # Restriction levels
 'restriction-level-sysop'         => 'სრული დაცვა',
@@ -1304,8 +1324,6 @@ $NEWPAGE
 'mycontris'     => 'ჩემი წვლილი',
 'contribsub2'   => '$1 ($2) თვის',
 'nocontribs'    => 'ძებნისას მითითებული პარამეტრების შესაბამისი არც ერთი ცვლილება ნაპოვნი არ არის',
-'ucnote'        => 'ქვემოთ არის მოყვანილი  ამ მომხმარებლის უკანასკნელი <b>$1</b> ცვლილებები ბოლო <b>$2</b> დღის განმავლობაში.',
-'uclinks'       => 'იხილე ბოლო $1 ცვლილება; იხილე ბოლო $2 დღე.',
 'uctop'         => '(თავი)',
 'month'         => 'თვე:',
 'year'          => 'წელი:',
@@ -1317,20 +1335,21 @@ $NEWPAGE
 'sp-contributions-username'    => 'IP მისამართი ან მომხმარებლის სახელი:',
 'sp-contributions-submit'      => 'ძიება',
 
-'sp-newimages-showfrom' => 'ახალი ფაილების ჩვენება დაწყებული $2, $1-იდან',
-
 # What links here
-'whatlinkshere'       => 'სადაა მითითებული ეს გვერდი',
-'whatlinkshere-title' => 'გვერდები, რომლებიც შეიცავენ ბმულებს "$1"-ზე',
-'whatlinkshere-page'  => 'გვერდი:',
-'linklistsub'         => '(ბმულების სია)',
-'linkshere'           => "მომდევნო გვერდები შეიცავენ ბმულებს '''[[:$1]]'''-ზე:",
-'nolinkshere'         => "'''[[:$1]]'''-ზე ბმული არ არის.",
-'isredirect'          => 'გადამისამართების გვერდი',
-'istemplate'          => 'ჩართვა',
-'whatlinkshere-prev'  => '{{PLURAL:$1|წინა|წინა $1}}',
-'whatlinkshere-next'  => '{{PLURAL:$1|შემდეგი|შემდეგი $1}}',
-'whatlinkshere-links' => '← ბმულები',
+'whatlinkshere'            => 'სადაა მითითებული ეს გვერდი',
+'whatlinkshere-title'      => 'გვერდები, რომლებიც შეიცავენ ბმულებს $1-ზე',
+'whatlinkshere-page'       => 'გვერდი:',
+'linklistsub'              => '(ბმულების სია)',
+'linkshere'                => "მომდევნო გვერდები შეიცავენ ბმულებს '''[[:$1]]'''-ზე:",
+'nolinkshere'              => "'''[[:$1]]'''-ზე ბმული არ არის.",
+'isredirect'               => 'გადამისამართების გვერდი',
+'istemplate'               => 'ჩართვა',
+'whatlinkshere-prev'       => '{{PLURAL:$1|წინა|წინა $1}}',
+'whatlinkshere-next'       => '{{PLURAL:$1|შემდეგი|შემდეგი $1}}',
+'whatlinkshere-links'      => '← ბმულები',
+'whatlinkshere-hideredirs' => 'გადამისამართების $1',
+'whatlinkshere-hidelinks'  => 'ბმულების $1',
+'whatlinkshere-filters'    => 'ფილტრები',
 
 # Block/unblock
 'blockip'                  => 'მომხმარებლის ან IP მისამართის ბლოკირება',
@@ -1355,7 +1374,7 @@ $NEWPAGE
 'badipaddress'             => 'არასწორი IP მისამართი',
 'blockipsuccesssub'        => 'ბლოკირება შესრულებულია',
 'blockipsuccesstext'       => '[[Special:Contributions/$1|$1]] ბლოკირებულ იქნა.<br />
-იხილეთ [[Special:IPBlockList|ბლოკირებული IP მისამართების სია]].',
+იხილეთ [[Special:Ipblocklist|ბლოკირებული IP მისამართების სია]].',
 'ipb-edit-dropdown'        => 'დაბლოკვის მიზეზების რედაქტირება',
 'ipb-unblock-addr'         => 'ბლოკის მოხსნა $1',
 'ipb-unblock'              => 'მომხმარებლის სახელზე ან IP მისამართზე ბლოკის მოხსნა',
@@ -1381,7 +1400,7 @@ $NEWPAGE
 'autoblocker'              => 'თქვენ ავტომატურად ბლოკირებული ხართ, ვინაიდან თქვენი IP მისამართი ახლახან იქნა გამოყენებული "[[User:$1|$1]]"–ის მიერ. $1-ის ბლოკირების მიზეზი: "\'\'\'$2\'\'\'"',
 'blocklogpage'             => 'დაბლოკილთა აღრიცხვა',
 'blocklogentry'            => '"[[$1]]" ბლოკირების ვადის გასვლის თარიღი $2 $3.',
-'blocklogtext'             => 'ეს არის მომხმარებლების დაბლოკვის და განბლოკვის ჟურნალი. ავტომატურად დაბლოკილი IP მისამართები არაა ჩამოთვლილი. იხილეთ [[Special:IPBlockList|IP ბლოკირების სია]] მიმდინარე დაბლოკვებისთვის.',
+'blocklogtext'             => 'ეს არის მომხმარებლების დაბლოკვის და განბლოკვის ჟურნალი. ავტომატურად დაბლოკილი IP მისამართები არაა ჩამოთვლილი. იხილეთ [[Special:Ipblocklist|IP ბლოკირების სია]] მიმდინარე დაბლოკვებისთვის.',
 'unblocklogentry'          => 'ბლოკი მოხსნილია $1',
 'block-log-flags-anononly' => 'მხოლოდ ანონიმური მომხმარებლები',
 'block-log-flags-nocreate' => 'ანგარიშის შექმნა გამორთულია',
@@ -1407,17 +1426,12 @@ $NEWPAGE
 'databasenotlocked'   => 'მონაცემთა ბაზა არაა ჩაკეტილი.',
 
 # Move page
-'movepage'                => 'გვერდის გადატანა',
+'move-page-legend'        => 'გვერდის გადატანა',
 'movepagetext'            => 'ქვემოთ მოცემული ფორმა გვერდს სახელს გადაარქმევს, რაც გადაიტანს მასთან დაკავშირებულ ისტორიასაც ახალ სახელზე. ძველი სათაური გახდება გადამისამართების გვერდი ახალ სათაურზე. ბმულები ძველი გვერდის სათაურზე არ შეიცვლება; შეამოწმეთ ორმაგი ან გამწყდარი გადამისამართებები. თქვენ ხართ პასუხისმგებელი, რომ ბმულები მკითხველს დანიშნულებისამებრ მიიყვანს.
 
 გაითვალისწინეთ, რომ გვერდი არ გადავა, თუ ახალი სათაურით სტატია უკვე არსებობს, გარდა იმ შემთხვევისა, თუ ის ცარიელია ან გადამისამართებაა და არ აქვს გვერდის რედაქტირების ისტორია. ეს ნიშნავს, რომ თქვენ შეგიძლიათ დაუბრუნოთ ძველი სახელი გვერდს, თუ შეცდომა დაუშვით, მაგრამ არ შეგიძლიათ ზემოთ გადააწეროთ არსებულ გვერდს.
 
 <b>გაფრთხილებთ!</b> ამ მოქმედებამ შეიძლება მნიშვნელოვანი და მოულოდნელი ცვლილება გამოიწვის პოპულარულ გვერდზე; სანამ გააგრძელებდეთ, გთხოვთ დარწმუნდეთ, რომ თქვენ გესმით თქვენი ქმედების შედეგები.',
-'movepagetalktext'        => "დაკავშირებული განხილვის გვერდი ავტომატურად გადავა მასთან ერთად, '''გარდა იმ შემთხვევისა, თუ''':
-*განხილვის გვერდი ახალი სათაურით და გარკვეული შინაარსით უკვე არსებობს, ან
-*თქვენ მოხსნით ნიშნულს ქვევით დაფაზე.
-
-ამ შემთხვევებში, თქვენ თავად მოგიწევთ ამ გვერდის გადატანა, სურვილისამებრ.",
 'movearticle'             => 'გვერდის გადატანა',
 'movenologin'             => 'რეგისტრაცია ვერ გაიარა',
 'movenotallowed'          => 'თქვენ არ გაქვთ {{SITENAME}}-ში გვერდების გადატანის უფლება.',
@@ -1425,13 +1439,10 @@ $NEWPAGE
 'move-watch'              => 'ამ გვერდის კონტროლი',
 'movepagebtn'             => 'გვერდის გადატანა',
 'pagemovedsub'            => 'გადატანა შესრულებულია',
-'movepage-moved'          => '<big>\'\'\'"$1" გადატანილ იქნა "$2"-ზე\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'ამ დასახელების გვერდი უკვე არსებობს, ან თქვენს მიერ მითითებული დასახელება არასწორია. თუ შეიძლება, მიუთითეთ სხვა სახელი.',
 'talkexists'              => "'''თვით გვერდი წარმატებით გადავიდა, ხოლო განხილვის გვერდი ვერ გადავიდა, ვინაიდან ის უკვე არსებობს ახალი სათაურით. გთხოვთ მანუალურად განაცალკევოთ ისინი.'''",
 'movedto'                 => 'გადატანილია',
 'movetalk'                => 'დაკავშირებული განხილვის გადატანა',
-'talkpagemoved'           => 'შესაბამისი განხილვის გვერდი ასევე გადატანილია.',
-'talkpagenotmoved'        => 'შესაბამისი განხილვის გვერდი <strong>არ არის</strong> გადატანილი.',
 '1movedto2'               => '[[$1]] გადატანილია გვერდზე [[$2]]',
 '1movedto2_redir'         => '[[$1]] გადატანილია [[$2]]-ზე  გადამისამართებულ გვერდში',
 'movelogpage'             => 'გადატანის რეგისტრაცია',
@@ -1440,7 +1451,7 @@ $NEWPAGE
 'delete_and_move'         => 'წაშლა და გადატანა',
 'delete_and_move_text'    => '==საჭიროა წაშლა==
 
-სტატია დასახელებით "[[:$1]]" უკვე არსებობს. გსურთ მისი წაშლა გადატანისთვის ადგილის დასათმობად?',
+სტატია დასახელებით "[[$1]]" უკვე არსებობს. გსურთ მისი წაშლა გადატანისთვის ადგილის დასათმობად?',
 'delete_and_move_confirm' => 'დიახ, წაშალეთ ეს გვერდი',
 'delete_and_move_reason'  => 'წაშლილია გადატანისთვის ადგილის დასათმობად',
 'selfmove'                => 'წყარო და დანიშნულების სათაურები მსგავსია; შეუძლებელია გვერდის საკუთარ თავზე გადატანა.',
@@ -1514,7 +1525,6 @@ $NEWPAGE
 'tooltip-n-recentchanges'         => 'ვიკიში ბოლო ცვლილებების სია.',
 'tooltip-n-randompage'            => 'შემთხვევითი გვერდის ჩვენება',
 'tooltip-n-help'                  => 'გვერდი, სადაც იპოვით.',
-'tooltip-n-sitesupport'           => 'მხარდაჭერა',
 'tooltip-t-whatlinkshere'         => 'ყველა ვიკი გვერდის სია, რომლებშიც ეს გვერდია მითითებული',
 'tooltip-t-contributions'         => 'იხილეთ ამ მომხმარებლის წვლილის სია',
 'tooltip-t-emailuser'             => 'გაუგზავნე ელ. ფოსტა ამ მომხმარებელს',
@@ -1558,12 +1568,8 @@ $NEWPAGE
 'nocredits'        => 'აქ ამ გვერდისთვის ხელმისაწვდომი ინფორმაცია არ არსებობს.',
 
 # Spam protection
-'spamprotectionmatch'    => 'მომდევნო ტექსტი იყო სპამ-ფილტრის ჩართვის მიზეზი: $1',
-'subcategorycount'       => 'ამ კატეგორიაში $1 ქვეკატეგორიაა.',
-'categoryarticlecount'   => 'ამ კატეგორიაში $1 სტატიაა.',
-'category-media-count'   => 'ამ კატეგორიაში $1 ფაილია.',
-'listingcontinuesabbrev' => 'გაგრძ.',
-'spam_reverting'         => 'დაბრუნება ბოლო ვერსიასთან, რომელიც არ შეიცავს ბმულს $1-თან',
+'spamprotectionmatch' => 'მომდევნო ტექსტი იყო სპამ-ფილტრის ჩართვის მიზეზი: $1',
+'spam_reverting'      => 'დაბრუნება ბოლო ვერსიასთან, რომელიც არ შეიცავს ბმულს $1-თან',
 
 # Info page
 'infosubtitle' => 'გვერდის ინფორმაცია',
@@ -1607,9 +1613,13 @@ $NEWPAGE
 'show-big-image-thumb' => '<small>ზომა წინასწარი გადახედვისას: $1 × $2 პიქსელი</small>',
 
 # Special:Newimages
-'newimages'    => 'ახალი სურათები',
-'showhidebots' => '(რობოტების $1)',
-'noimages'     => 'გადასახედი არაფერია.',
+'newimages'             => 'ახალი სურათები',
+'imagelisttext'         => "ქვემოთ მოცემულია '''$1''' ფაილის სია დახარისხებული მომხმარებლის $2 მიერ.",
+'showhidebots'          => '(რობოტების $1)',
+'noimages'              => 'გადასახედი არაფერია.',
+'ilsubmit'              => 'ძიება',
+'bydate'                => 'თარიღით',
+'sp-newimages-showfrom' => 'ახალი ფაილების ჩვენება დაწყებული $2, $1-იდან',
 
 # Metadata
 'metadata'          => 'მეტამონაცემები',
@@ -1739,7 +1749,7 @@ $NEWPAGE
 
 # External editor support
 'edit-externally'      => 'ამ ფაილის რედაქტირებისას გამოიყენეთ გარე პროგრამა',
-'edit-externally-help' => 'დაწვრილებითი ინფორმაციისთვის იხილეთ [http://www.mediawiki.org/wiki/Manual:External_editors ჩადგმის ინსტრუქციები].',
+'edit-externally-help' => 'დაწვრილებითი ინფორმაციისთვის იხილეთ [http://meta.wikimedia.org/wiki/Help:External_editors ჩადგმის ინსტრუქციები].',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'ყველა',
@@ -1801,7 +1811,7 @@ $1
 'recreate'            => 'აღადგინე',
 
 # HTML dump
-'redirectingto' => 'გადამისამართდება [[:$1]]-ზე...',
+'redirectingto' => 'გადამისამართდება [[$1]]-ზე...',
 
 # action=purge
 'confirm_purge'        => 'გსურთ ამ გვერდის ქეშის წაშლა?
@@ -1818,7 +1828,6 @@ $1',
 # Multipage image navigation
 'imgmultipageprev' => '&larr; წინა გვერდი',
 'imgmultipagenext' => 'შემდეგი გვერდი &rarr;',
-'imgmultigotopre'  => 'გადადი გვერდზე',
 
 # Table pager
 'table_pager_next'         => 'შემდეგი გვერდი',
@@ -1862,6 +1871,7 @@ $1',
 'watchlisttools-raw'  => 'კონტროლის სიის რედაქტირება ტექსტის ფორმატში',
 
 # Special:Version
+'version'                  => 'ვერსია', # Not used as normal message but as header for the special page itself
 'version-specialpages'     => 'სპეციალური გვერდები',
 'version-other'            => 'სხვა',
 'version-version'          => 'ვერსია',
@@ -1871,5 +1881,14 @@ $1',
 
 # Special:Filepath
 'filepath-page' => 'ფაილი:',
+
+# Special:FileDuplicateSearch
+'fileduplicatesearch-submit' => 'ძიება',
+
+# Special:SpecialPages
+'specialpages'               => 'სპეციალური გვერდები',
+'specialpages-group-other'   => 'სხვა სპეციალური გვერდები',
+'specialpages-group-changes' => 'ბოლო ცვლილებები და ჟურნალები',
+'specialpages-group-users'   => 'მომხმარებლები და უფლებები',
 
 );
