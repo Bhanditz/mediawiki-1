@@ -1,13 +1,12 @@
 <?php
 /** Tagalog (Tagalog)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
- * @author Sky Harbor
- * @author Gangleri
- * @author Siebrand
- * @author לערי ריינהארט
  * @author Felipe Aira
+ * @author Sky Harbor
+ * @author לערי ריינהארט
  */
 
 $messages = array(
@@ -21,32 +20,32 @@ $messages = array(
 'tog-numberheadings'          => 'Automatikong bilangin ang mga pamagat',
 'tog-showtoolbar'             => "Ipakita ang ''toolbar'' ng pagbabago (JavaScript)",
 'tog-editondblclick'          => 'Magbago ng mga pahina sa dalawahang pagpindot (JavaScript)',
-'tog-editsection'             => 'Payagan mga pagbabagong panseksyon sa mga [baguhin] na kawing',
-'tog-editsectiononrightclick' => 'Payagan mga pagbabagong panseksyon sa pakanang pagpipindot ng mga pamagat ng mga seksyon (JavaScript)',
+'tog-editsection'             => 'Payagan ang mga pagbabagong panseksyon sa mga [baguhin] na kawing',
+'tog-editsectiononrightclick' => 'Payagan ang mga pagbabagong panseksyon sa pakanang pagpindot ng mga panseksyong pamagat (JavaScript)',
 'tog-showtoc'                 => 'Ipakita ang talaan ng mga nilalaman (sa mga pahinang may higit sa 3 punong pamagat)',
 'tog-rememberpassword'        => 'Tandaan ang paglagda ko sa kompyuter na ito',
 'tog-editwidth'               => 'May buong kalaparan ang kahon ng pagbabago',
-'tog-watchcreations'          => 'Iragdag mga pahinang ginawa ko sa bantayan ko',
-'tog-watchdefault'            => 'Iragdag mga pahinang binago ko sa bantayan ko',
-'tog-watchmoves'              => 'Iragdag mga pahinang inilipat ko sa bantayan ko',
-'tog-watchdeletion'           => 'Iragdag mga pahinang binura ko sa bantayan ko',
+'tog-watchcreations'          => 'Idagdag ang mga pahinang ginawa ko sa aking bantayan',
+'tog-watchdefault'            => 'Idagdag ang mga pahinang binago ko sa aking bantayan',
+'tog-watchmoves'              => 'Idagdag ang mga pahinang inilipat ko sa aking bantayan',
+'tog-watchdeletion'           => 'Idagdag mga pahinang binura ko sa aking bantayan',
 'tog-minordefault'            => 'Markahan ang lahat ng pagbabago bilang maliit nang nakatakda',
 'tog-previewontop'            => 'Ipakita ang pribyu bago ang kahon ng pagbabago',
-'tog-previewonfirst'          => 'Ipakita paunang tingin sa unang pagbabago',
+'tog-previewonfirst'          => 'Ipakita ang pribyu sa unang pagbabago',
 'tog-nocache'                 => 'Salantain ang pagbaon ng pahina',
-'tog-enotifwatchlistpages'    => 'Mag-e-liham sa akin kapag mayroong binagong pahinang binabantayan ko',
-'tog-enotifusertalkpages'     => 'Mag-e-liham sa akin kapag binago pahinang pang-usapan ko',
-'tog-enotifminoredits'        => 'Mag-e-liham din sa akin para sa mga pagbabagong maliliit ng mga pahina',
+'tog-enotifwatchlistpages'    => 'Mag-e-liham sa akin kapag binago ang isa sa mga pahinang binabantayan ko',
+'tog-enotifusertalkpages'     => 'Mag-e-liham sa akin kapag binago ang aking pahinang usapan',
+'tog-enotifminoredits'        => 'Mag-e-liham din sa akin para sa mga maliliit na pagbabago ng mga pahina',
 'tog-enotifrevealaddr'        => 'Ipakita ang direksyong e-liham ko sa mga liham ng pagpapahayag',
-'tog-shownumberswatching'     => 'Ipakita bilang ng mga nagbabantay na manggagamit',
+'tog-shownumberswatching'     => 'Ipakita ang bilang ng mga nagbabantay na manggagamit',
 'tog-fancysig'                => 'Hilaw na lagda (walang automatikong pagkawing)',
 'tog-externaleditor'          => 'Gumamit ng mambabagong panlabas nang nakatakda',
-'tog-showjumplinks'           => 'Payagan "tumalon sa" na pampagmit na kawing',
+'tog-showjumplinks'           => 'Payagan ang mga "tumalon sa" na kawing pampagamit',
 'tog-uselivepreview'          => 'Gamitin ang buhay na pribyu (JavaScript) (Eksperimental)',
 'tog-forceeditsummary'        => 'Pagsabihan ako kapag nagpapasok ng walang-lamang buod ng pagbabago',
-'tog-watchlisthideown'        => 'Itago mga binago ko sa bantayan',
-'tog-watchlisthidebots'       => 'Itago mga binago ng bot sa bantayan',
-'tog-watchlisthideminor'      => 'Itago mga pagbabagong maliliit sa bantayan',
+'tog-watchlisthideown'        => 'Itago ang aking mga pagbabago mula sa bantayan',
+'tog-watchlisthidebots'       => 'Itago ang mga pagbabago ng mga bot mula sa bantayan',
+'tog-watchlisthideminor'      => 'Itago ang mga maliliit na pagbabago mula sa bantayan',
 'tog-ccmeonemails'            => 'Padalahan ako ng mga kopya ng mga ipinadala kong e-liham sa ibang mga manggagamit',
 
 'underline-always'  => 'Palagi',
@@ -136,7 +135,7 @@ $messages = array(
 'moredotdotdot'  => 'Damihan pa...',
 'mypage'         => 'Pahina ko',
 'mytalk'         => 'Usapan ko',
-'anontalk'       => 'Usapan para sa IPng ito',
+'anontalk'       => 'Usapan para sa IP na ito',
 'navigation'     => 'Nabigasyon',
 
 # Metadata in edit box
@@ -152,7 +151,7 @@ $messages = array(
 'searcharticle'     => 'Puntahan',
 'history'           => 'Kasaysayan ng pahina',
 'history_short'     => 'Kasaysayan',
-'updatedmarker'     => 'dinagdagan mula noong huli kong pagpunta',
+'updatedmarker'     => 'dinagdagan mula noong huli kong pagdalaw',
 'info_short'        => 'Kaalaman',
 'printableversion'  => 'Bersyong maaaring ilimbag',
 'permalink'         => 'Palagiang kawing',
@@ -161,7 +160,7 @@ $messages = array(
 'editthispage'      => 'Baguhin itong pahina',
 'delete'            => 'Burahin',
 'deletethispage'    => 'Burahin itong pahina',
-'undelete_short'    => 'Alisin pagkabura ng {{PLURAL:$1|isang pagbabago|$1 mga pagbabago}}',
+'undelete_short'    => 'Baligtarin ang pagbura ng {{PLURAL:$1|isang pagbabago|$1 mga pagbabago}}',
 'protect'           => 'Ipagsanggalang',
 'protect_change'    => 'palitan ang pagsanggalang',
 'protectthispage'   => 'Ipagsanggalang itong pahina',
@@ -234,7 +233,7 @@ $messages = array(
 'youhavenewmessagesmulti' => 'Mayroon kang mga bagong mensahe sa $1',
 'editsection'             => 'baguhin',
 'editold'                 => 'baguhin',
-'editsectionhint'         => 'Baguhin seksyon: $1',
+'editsectionhint'         => 'Baguhin ang seksyon: $1',
 'toc'                     => 'Mga nilalaman',
 'showtoc'                 => 'ipakita',
 'hidetoc'                 => 'itago',
@@ -259,12 +258,12 @@ $messages = array(
 'nosuchactiontext'  => 'Hindi kinikilala ng wiki
 ang gawang itinakda ng URL',
 'nosuchspecialpage' => 'Walang ganoong natatanging pahina',
-'nospecialpagetext' => "<big>'''Humiling ka ng isang walang-kabuluhang natatanging pahina.'''</big>
+'nospecialpagetext' => "<big>'''Humiling ka ng isang natatanging pahina na walang saysay.'''</big>
 
-Isang tala ng mga may-kabuluhang natatanging pahina ay matatagpuan sa [[Special:Specialpages]].",
+Isang tala ng mga natatanging pahina na may saysay ay matatagpuan sa [[Special:SpecialPages|{{int:specialpages}}]].",
 
 # General errors
-'error'                => 'Pagkakamali',
+'error'                => 'Kamalian',
 'databaseerror'        => 'Kamalian sa kalipunan ng datos',
 'dberrortext'          => 'Naganap isang pagkakamali sa usisang palaugnayan sa kalipunan ng datos.
 Maaaring magpakita ito ng kakamaian sa \'\'software\'\'.
@@ -306,7 +305,7 @@ Nagbigay ng sumusunod na dahilan ang tagapangasiwang nangandado nito: $1',
 'viewsourcetext'       => 'Maaari mong tingnan at kopyahin ang pinagmulan ng pahinang ito:',
 'namespaceprotected'   => "Wala kang pahintulot na magbago ng mga pahinang nasa ngalan-espasyong '''$1'''.",
 'customcssjsprotected' => 'Wala kang pahintulot na baguhin ang pahinang ito, dahil naglalaman ito ng mga kagustuhang pansarili ng ibang manggagamit.',
-'ns-specialprotected'  => 'Hindi maaaring baguhin ang mga pahinang nasa ngalan-espasyong {{ns:special}}.',
+'ns-specialprotected'  => 'Hindi pwedeng baguhin ang mga natatanging pahina.',
 
 # Login and logout pages
 'welcomecreation'           => '== Maligayang pagdating, $1! ==
@@ -358,13 +357,12 @@ Nilikha na ang iyong kuwenta. Huwag kalimutang baguhin ang iyong mga kagustuhan 
 # Edit pages
 'summary'                => 'Buod',
 'subject'                => 'Paksa/punong pamagat',
-'minoredit'              => 'Ito ay isang maliit na pagbabago',
+'minoredit'              => 'Ito ay isang munting pagbabago',
 'watchthis'              => 'Bantayan itong pahina',
 'savearticle'            => 'Itala ang pahina',
 'preview'                => 'Pribyu',
 'blockedtitle'           => 'Nakaharang ang tagagamit',
-'blockedoriginalsource'  => "Ang pinagmulan ng '''$1''' ay 
-pinapakita sa ibaba:",
+'blockedoriginalsource'  => "Ang pinagmulan ng '''$1''' ay pinapakita sa ibaba:",
 'editing'                => 'Binabago ang $1',
 'editingsection'         => 'Binabago ang $1 (bahagi)',
 'editingcomment'         => 'Binabago ang $1 (komento)',
@@ -391,7 +389,7 @@ pinapakita sa ibaba:",
 'reupload'          => 'Magkarga muli',
 'reuploaddesc'      => 'Bumalik sa pormularyo ng pagkarga',
 'uploadnologin'     => 'Hindi nakalagda',
-'uploadnologintext' => 'Dapat ikaw ay [[Special:Userlogin|nakalagda]]
+'uploadnologintext' => 'Dapat ikaw ay [[Special:UserLogin|nakalagda]]
 upang makapagkarga ng talaksan.',
 'uploaderror'       => 'Kamalian sa pagkarga',
 'watchthisupload'   => 'Bantayan itong pahina',
@@ -442,22 +440,45 @@ upang makapagkarga ng talaksan.',
 'move'               => 'Ilipat',
 'movethispage'       => 'Ilipat itong pahina',
 
+'categoriespagetext' => 'Ang mga sumusunod na kategorya ay naglalaman ng mga pahina o midya.',
+'alphaindexline'     => '$1 hanggang $2',
+'version'            => 'Bersyon',
+
+# Special:Allpages
+'allpages-bad-ns' => 'Wala sa {{SITENAME}} ang ngalan-espasyong "$1".',
+
+# E-mail user
+'emailfrom'    => 'Mula',
+'emailto'      => 'Kay',
+'emailsubject' => 'Paksa',
+'emailmessage' => 'Mensahe',
+'emailsend'    => 'Ipadala',
+
 # Watchlist
 'watchlist'     => 'Bantayan Ko',
 'watch'         => 'Bantayan',
 'watchthispage' => 'Bantayan itong pahina',
 
 # Delete/protect/revert
-'protect-default'         => '(tinakda)',
-'protect-summary-cascade' => 'kaskada',
-'protect-expiring'        => 'magwawalang-bisa sa $1 (UTC)',
-'protect-cascade'         => 'Ipagsanggalang ang mga pahinang kasama sa pahinang ito (kaskadang pagsanggalang)',
-'restriction-type'        => 'Pahintulot:',
+'deletepage'                  => 'Burahin ang pahina',
+'protect-default'             => '(tinakda)',
+'protect-level-autoconfirmed' => "Harangin ang mga 'di-rehistradong manggagamit",
+'protect-summary-cascade'     => 'kaskada',
+'protect-expiring'            => 'magwawalang-bisa sa $1 (UTC)',
+'protect-cascade'             => 'Ipagsanggalang ang mga pahinang kasama sa pahinang ito (kaskadang pagsanggalang)',
+'restriction-type'            => 'Pahintulot:',
+'restriction-level'           => 'Antas ng kabawalan:',
 
 # Restriction levels
 'restriction-level-sysop'         => 'buong nakasanggalang',
 'restriction-level-autoconfirmed' => 'bahagyang nakasanggalang',
 'restriction-level-all'           => 'anumang antas',
+
+# Undelete
+'undelete-error-short' => 'Kamalian sa pagbaligtad ng pagbura ng talaksan: $1',
+'undelete-error-long'  => 'Nagkaroon ng mga kamalian habang binabaligtad ang pagbura ng talaksan:
+
+$1',
 
 # Namespace form on various pages
 'namespace'      => 'Ngalan-espasyo:',
@@ -510,7 +531,7 @@ upang makapagkarga ng talaksan.',
 
 # Move page
 'movenologin'             => 'Hindi nakalagda',
-'movenologintext'         => 'Kailangang ikaw ay isang naka-rehistrong manggagamit at ay [[Special:Userlogin|nakalagda]] upang makapaglipat ng pahina.',
+'movenologintext'         => 'Kailangang ikaw ay isang naka-rehistrong manggagamit at ay [[Special:UserLogin|nakalagda]] upang makapaglipat ng pahina.',
 'movenotallowed'          => 'Wala kang permisong maglipat ng pahina sa {{SITENAME}}.',
 'newtitle'                => 'Sa bagong pamagat:',
 'move-watch'              => 'Bantayan itong pahina',
@@ -543,7 +564,8 @@ Pumili muli ng ibang pangalan.',
 'allmessagesname'           => 'Pangalan',
 'allmessagesdefault'        => 'Tinakdang teksto',
 'allmessagescurrent'        => 'Kasalukuyang teksto',
-'allmessagestext'           => 'Ito ay isang tala ng mga mensaheng pansistema na matatagpuan sa ngalan-espasyong MediaWiki.',
+'allmessagestext'           => 'Ito ay isang tala ng mga mensaheng pansistema na matatagpuan sa ngalan-espasyong MediaWiki.
+Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation] and [http://translatewiki.net Betawiki] if you wish to contribute to the generic MediaWiki localisation.',
 'allmessagesnotsupportedDB' => "Hindi magamit ang '''{{ns:special}}:Allmessages''' dahil nakapatay ang '''\$wgUseDatabaseMessages'''.",
 
 # Thumbnails
@@ -596,7 +618,7 @@ Pumili muli ng ibang pangalan.',
 'recreate'            => 'Likhain muli',
 
 # HTML dump
-'redirectingto' => 'Nagkakarga sa [[$1]]...',
+'redirectingto' => 'Nagkakarga sa [[:$1]]...',
 
 # action=purge
 'confirm_purge' => 'Linisin ang baunan ng pahinang ito?
@@ -624,6 +646,7 @@ $1',
 'version-hook-subscribedby' => 'Sinuskribi ng/ni/nina',
 'version-version'           => 'Bersyon',
 'version-license'           => 'Lisensiya',
+'version-software'          => 'Inistalang software',
 'version-software-product'  => 'Produkto',
 'version-software-version'  => 'Bersyon',
 

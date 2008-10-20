@@ -1,9 +1,9 @@
 <?php
 /** Tahitian (Reo Mā`ohi)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
- * @author SPQRobin
  * @author Sab
  */
 

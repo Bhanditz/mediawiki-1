@@ -1,7 +1,8 @@
 <?php
 /** Bislama (Bislama)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Ushanka
  */
@@ -100,7 +101,7 @@ $messages = array(
 
 # E-mail user
 'emailfrom' => 'Kam long',
-'emailto'   => 'Go long',
+'emailto'   => 'Go long:',
 
 # Contributions
 'year' => 'Yia:',

@@ -641,7 +641,7 @@ abstract class File {
 	 * @param $end timestamp Only revisions newer than $end will be returned
 	 */
 	function getHistory($limit = null, $start = null, $end = null) {
-		return false;
+		return array();
 	}
 
 	/**
@@ -1027,7 +1027,7 @@ abstract class File {
 		if ( !file_exists( $path ) ) {
 			return false;
 		}
-		return wfTimestamp( filemtime( $path ) );
+		return wfTimestamp( TS_MW, filemtime( $path ) );
 	}
 
 	/**

@@ -1,7 +1,8 @@
 <?php
 /** Wu (吴语)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author O
  */
@@ -93,7 +94,7 @@ $messages = array(
 
 # Bits of text used by many pages
 'categories'            => '页面分类',
-'pagecategories'        => '$1个分类',
+'pagecategories'        => '个分类',
 'category_header'       => '“$1”分类中个页面',
 'subcategories'         => '亚类',
 'category-media-header' => '"$1"分类中个媒体',
@@ -141,7 +142,7 @@ $messages = array(
 'editthispage'      => '编辑此页',
 'delete'            => '删除',
 'deletethispage'    => '删除此页',
-'undelete_short'    => '反删除$1项修订',
+'undelete_short'    => '反删除项修订',
 'protect'           => '保护',
 'protect_change'    => '更改保护',
 'protectthispage'   => '保护此页',
@@ -204,10 +205,10 @@ $messages = array(
 'editsectionhint'         => '编辑段落: $1',
 'toc'                     => '目录',
 'showtoc'                 => '显示',
-'hidetoc'                 => '隐藏',
+'hidetoc'                 => '囥脱',
 'thisisdeleted'           => '查看或者恢复$1？',
 'viewdeleted'             => '望望$1看？',
-'restorelink'             => '$1个被删除个版本',
+'restorelink'             => '个被删除个版本',
 'site-rss-feed'           => '$1的RSS订阅',
 'site-atom-feed'          => '$1的Atom订阅',
 
@@ -439,9 +440,9 @@ $messages = array(
 'uploadbtn'         => '上载文件',
 'reupload'          => '重新上载',
 'uploadnologin'     => '朆登录',
-'uploadnologintext' => '倷板定要[[Special:Userlogin|登录]]仔再好上载文件。',
+'uploadnologintext' => '倷板定要[[Special:UserLogin|登录]]仔再好上载文件。',
 'uploaderror'       => '上载出错',
-'uploadtext'        => "拿下头只表格来上载文件。要查看或者搜寻之前上载个图片个说法，请到[[Special:Imagelist|已上载文件列表]]，上载搭仔删脱也记录勒拉[[Special:Log/upload|上载日志]]里向。
+'uploadtext'        => "拿下头只表格来上载文件。要查看或者搜寻之前上载个图片个说法，请到[[Special:ImageList|已上载文件列表]]，上载搭仔删脱也记录勒拉[[Special:Log/upload|上载日志]]里向。
 
 要勒拉页面里向摆进图片个说法，用下头该种形式个链接
 '''<nowiki>[[{{ns:image}}:文件.jpg]]</nowiki>'''，
@@ -453,16 +454,16 @@ $messages = array(
 'filename'          => '文件名',
 'filedesc'          => '小结',
 'fileuploadsummary' => '小结:',
-'filestatus'        => '版权状态',
-'filesource'        => '来源',
+'filestatus'        => '版权状态:',
+'filesource'        => '来源:',
 'uploadedfiles'     => '已经上载个文件',
 'ignorewarning'     => '弗管警告，随便哪亨要保存文件。',
 'successfulupload'  => '上载成功哉',
 'uploadwarning'     => '上载警告',
 'savefile'          => '保存文件',
 'uploadedimage'     => '上载 "[[$1]]"',
-'sourcefilename'    => '源文件',
-'destfilename'      => '目标文件名',
+'sourcefilename'    => '源文件:',
+'destfilename'      => '目标文件名:',
 'watchthisupload'   => '监控该只页面',
 
 # Image list
@@ -587,7 +588,7 @@ $messages = array(
 'watchnologin'         => '朆登录',
 'addedwatch'           => '加到监控列表哉',
 'addedwatchtext'       => "该个页面 \"[[:\$1]]\" 已经加到侬个[[Special:Watchlist|监控列表]]哉。
-将来对该页面个改动搭仔搭界个讲张页个改动会列表垃该面，并且页面会垃拉[[Special:Recentchanges|近段辰光个改变列表]]里向显示成功'''黑体'''，实梗好外加便当拿渠拣出来。假使侬歇仔两日又想拿箇个页面登侬个监控列表里向拿脱个说法，垃侧条里向点击“弗要监控。",
+将来对该页面个改动搭仔搭界个讲张页个改动会列表垃该面，并且页面会垃拉[[Special:RecentChanges|近段辰光个改变列表]]里向显示成功'''黑体'''，实梗好外加便当拿渠拣出来。假使侬歇仔两日又想拿箇个页面登侬个监控列表里向拿脱个说法，垃侧条里向点击“弗要监控。",
 'removedwatch'         => '登监控列表里向拿脱哉',
 'removedwatchtext'     => '"[[:$1]]"已经从侬个监控列表移除。',
 'watch'                => '监控',
@@ -624,7 +625,7 @@ $messages = array(
 'rollback_short'  => '恢复',
 'rollbacklink'    => '恢复',
 'rollbackfailed'  => '恢复失败',
-'revertpage'      => '恢复[[Special:Contributions/$2|$2]] ([[User_talk:$2|讲张]])个改动；恢复到[[User:$1|$1]]个上一版本', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'      => '恢复[[Special:Contributions/$2|$2]] ([[User talk:$2|讲张]])个改动；恢复到[[User:$1|$1]]个上一版本', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'protectlogpage'  => '保护日志',
 'confirmprotect'  => '确认保护',
 'protectcomment'  => '保护理由:',
@@ -670,7 +671,7 @@ $messages = array(
 'blocklink'          => '封禁',
 'contribslink'       => '贡献',
 'blocklogpage'       => '封禁日志',
-'blocklogtext'       => '该个是用户封禁搭仔解禁操作个记录。自动封禁个IP地址弗会列勒该答。到[[Special:Ipblocklist|IP 封禁列表]]去看当前生效个封禁列表。',
+'blocklogtext'       => '该个是用户封禁搭仔解禁操作个记录。自动封禁个IP地址弗会列勒该答。到[[Special:IPBlockList|IP 封禁列表]]去看当前生效个封禁列表。',
 'proxyblocksuccess'  => '好哉。',
 
 # Move page

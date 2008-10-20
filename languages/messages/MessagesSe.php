@@ -1,17 +1,13 @@
 <?php
 /** Northern Sami (Sámegiella)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Skuolfi
- * @author G - ג
- * @author Siebrand
  * @author Teak
  * @author לערי ריינהארט
- * @author SPQRobin
  */
-
-
 
 $messages = array(
 # User preference toggles
@@ -272,7 +268,8 @@ $messages = array(
 'logouttitle'                => 'Olggosčállin',
 'logouttext'                 => 'Leat dál čálligoahtán olggos {{GRAMMAR:elative|{{SITENAME}}}}. Sáhtat joatkit {{GRAMMAR:genitive|{{SITENAME}}}} geavaheami anonyman, dahje čálligoahtit ođđasit sisa.',
 'welcomecreation'            => '== Bures boahtin, $1! ==
-Du geavaheaddjidovddaldat lea dál anus. Ále vajáldahte rievdadit [[Special:Preferences|{{GRAMMAR:genitive|{{SITENAME}}}} iežat ásahusaid]].',
+Du geavaheaddjidovddaldat lea dál anus.
+Ále vajáldahte rievdadit {{GRAMMAR:genitive|{{SITENAME}}}} iežat ásahusaid.',
 'loginpagetitle'             => 'Sisačállin',
 'yourname'                   => 'Geavaheaddjidovddaldat',
 'yourpassword'               => 'Suollemassátni:',
@@ -352,7 +349,7 @@ Du geavaheaddjidovddaldat lea dál anus. Ále vajáldahte rievdadit [[Special:Pr
 'italic_tip'      => 'Vitnju teaksta',
 'link_sample'     => 'liŋka',
 'link_tip'        => 'Siskaldas liŋka',
-'extlink_sample'  => 'http://www.ovdamearka.com liŋkka bájilčála',
+'extlink_sample'  => 'http://www.example.com liŋkka bájilčála',
 'extlink_tip'     => 'Wiki olggobeal liŋka (muite http:// ovddas)',
 'headline_sample' => 'Bájilčálateaksta',
 'headline_tip'    => 'Bajilčála',
@@ -388,7 +385,7 @@ Du geavaheaddjidovddaldat lea dál anus. Ále vajáldahte rievdadit [[Special:Pr
 'whitelistedittitle'       => 'Fertet čálligoahtit sisa ovdalgo sáhtat rievdadit siiddu',
 'whitelistedittext'        => 'Don fertet $1, ovdalgo sáhtat rievdadit siidduid.',
 'whitelistreadtitle'       => 'Don fertet leat čálligoahtán sisa ovdalgo sáhtat lohkat dán siiddu.',
-'whitelistreadtext'        => 'Don fertet čálligoahtit [[Special:Userlogin|sisa]] ovdalgo sáhtat lohkat siidduid.',
+'whitelistreadtext'        => 'Don fertet čálligoahtit [[Special:UserLogin|sisa]] ovdalgo sáhtat lohkat siidduid.',
 'whitelistacctitle'        => 'Dus ii leat vuoigatvuohta ráhkadit dovddaldaga',
 'confirmedittitle'         => 'E-poastačujuhusa sihkarastin',
 'confirmedittext'          => 'It sáhte rievdadit siiddu ovdalgo leat sihkarastan iežat e-poastačujuhusa. Sáhtat sihkarastit [[Special:Preferences|ásahussiidduin]].',
@@ -402,10 +399,10 @@ Du geavaheaddjidovddaldat lea dál anus. Ále vajáldahte rievdadit [[Special:Pr
 'newarticle'               => '(ođđa)',
 'newarticletext'           => 'Leat boahtán muhtin liŋkka mielde siidui, mii ii vel dihtto. Sáhtat álggahit siiddu vuollái. Jus it hálit álggahit siiddu, geavat neahttabláđejeaddji máhccandoaimma.',
 'updated'                  => '(Beaividuvvon)',
-'note'                     => 'Cuigehus:',
+'note'                     => '<strong>Cuigehus:</strong>',
 'previewnote'              => '<strong>Dát lea siiddu ovdalgihtiigeahččan. Siidu ii leat vel vurkejuvvon!</strong>',
 'editing'                  => 'Rievdadit siiddu $1',
-'editinguser'              => 'Rievdadit siiddu $1',
+'editinguser'              => "Rievdadit siiddu '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'editingsection'           => 'Rievdadit oasi siiddus $1',
 'editingcomment'           => 'Rievdadit kommeanta siiddus $1',
 'yourtext'                 => 'Iežat teaksta',
@@ -464,7 +461,7 @@ Du geavaheaddjidovddaldat lea dál anus. Ále vajáldahte rievdadit [[Special:Pr
 'revdelete-text'          => 'Sihkojuvvon veršuvnnat oidnojit siiddu siidohistorjjás, muhto daid sisdoallu ii leat álmmolaš.
 
 Eará bajasdoallit sáhtet lohkat čihkojuvvon sisdoalu ja máhcahit dan.',
-'revdelete-legend'        => 'Veršuvnna rádjehusat:',
+'revdelete-legend'        => 'Veršuvnna rádjehusat',
 'revdelete-hide-text'     => 'Čiega veršuvnna sisdoalu',
 'revdelete-hide-name'     => 'Čiega doaibma ja mearri',
 'revdelete-hide-comment'  => 'Čiega čoahkkáigeasu',
@@ -504,7 +501,7 @@ $1 | $2',
 'mypreferences'            => 'Ásahusat',
 'prefs-edits'              => 'Rievdadusaid mearri:',
 'prefsnologin'             => 'It leat čálligoahtán sisa.',
-'prefsnologintext'         => 'Don fertet [[Special:Userlogin|čálligoahtit sisa]], ovdalgo sáhtat rievdadit du ásahusaid.',
+'prefsnologintext'         => 'Don fertet [[Special:UserLogin|čálligoahtit sisa]], ovdalgo sáhtat rievdadit du ásahusaid.',
 'prefsreset'               => 'Ásahusat leat máhcajuvvon vurkeduvvon ásahusain.',
 'qbsettings-none'          => 'Ii maidige',
 'qbsettings-fixedleft'     => 'Teaksta mielde, gurut',
@@ -587,7 +584,7 @@ $1 | $2',
 'recentchangestext'                 => 'Dán siiddus sáhtat čuovvut varas rievdadusaid {{GRAMMAR:illative|{{SITENAME}}}}.',
 'recentchanges-feed-description'    => 'Dán siiddus sáhtat čuovvut varas {{GRAMMAR:illative|{{SITENAME}}}} rievdadusaid.',
 'rcnote'                            => 'Vuollin {{PLURAL:$1|lea okta rievdadus|leat $1 varas rievdadusa}} {{PLURAL:$2|ovtta beaivvi|$2 maŋimus jándora}} áigge gitta $3 rádjái.',
-'rcnotefrom'                        => 'Vuolábealde leat rievdadusat <b>$2</b> rájes. Eanemusta <b>$1</b> mearkkastaga čájehuvvo.',
+'rcnotefrom'                        => "Vuolábealde leat rievdadusat '''$2''' rájes. Eanemusta '''$1''' mearkkastaga čájehuvvo.",
 'rclistfrom'                        => 'Čájet ođđa rievdadusat $1 rájes',
 'rcshowhideminor'                   => '$1 unna rievdádusat',
 'rcshowhidebots'                    => '$1 bohtat',
@@ -608,7 +605,7 @@ $1 | $2',
 
 # Recent changes linked
 'recentchangeslinked'       => 'Dán siiddu varas rievdadusat',
-'recentchangeslinked-title' => '$1 laktaseaddji rievdadusat',
+'recentchangeslinked-title' => '"$1" laktaseaddji rievdadusat',
 
 # Upload
 'upload'             => 'Lasit fiilla',
@@ -616,7 +613,7 @@ $1 | $2',
 'reupload'           => 'Sádde ođđasit',
 'reuploaddesc'       => 'Máhca sáddenskovvái.',
 'uploadnologin'      => 'It leat čálligoahtán sisa',
-'uploadnologintext'  => 'Don fertet leat [[Special:Userlogin|čálligoahtán sisa]], ovdalgo sáhtát vurket fiillaid.',
+'uploadnologintext'  => 'Don fertet leat [[Special:UserLogin|čálligoahtán sisa]], ovdalgo sáhtát vurket fiillaid.',
 'uploaderror'        => 'Vurkenfeaila',
 'uploadlog'          => 'Fiilalogga',
 'uploadlogpage'      => 'Fiilalogga',
@@ -625,7 +622,7 @@ $1 | $2',
 'fileuploadsummary'  => 'Čoahkkáigeassu',
 'filesource'         => 'Gáldu:',
 'uploadedfiles'      => 'Lasihuvvon fiillat',
-'ignorewarning'      => 'Vurke fuolatkeahttá varuhusas.',
+'ignorewarning'      => 'Vurke fuolatkeahttá varuhusas',
 'minlength1'         => 'Fiilla namas ferte leat unnimustá okta mearka.',
 'badfilename'        => 'Fiilla nama rievdaduvvui: $1.',
 'filetype-missing'   => 'Fiillas vailui fiilageažus – ovdamearkkan <tt>.jpg</tt>.',
@@ -661,7 +658,7 @@ $1 | $2',
 
 # Image list
 'imagelist'                 => 'Fiilalogahallan',
-'imagelisttext'             => 'Vuolábealde lea <strong>$1</strong> fiilla ordnejuvvon <strong>$2</strong>.',
+'imagelisttext'             => "Vuolábealde lea '''$1''' fiilla ordnejuvvon $2.",
 'getimagelist'              => 'fiilalogahallan viččojuvvo',
 'ilsubmit'                  => 'Oza',
 'showlast'                  => 'Čájet maŋimus $1 fiilla $2.',
@@ -701,18 +698,18 @@ $1 | $2',
 # File reversion
 'filerevert'                => 'Fiilla $1 máhcaheapmi',
 'filerevert-legend'         => 'Fiilla máhcaheapmi',
-'filerevert-intro'          => '<span class="plainlinks">Leat máhcaheami fiilla \'\'\'[[Media:$1|$1]]\'\'\' [$4 veršuvdnii, mii ráhdaduvvui $2 diibmu $3].</span>',
+'filerevert-intro'          => "Leat máhcaheami fiilla '''[[Media:$1|$1]]''' [$4 veršuvdnii, mii ráhdaduvvui $2 diibmu $3].",
 'filerevert-comment'        => 'Sivva',
 'filerevert-defaultcomment' => 'Máhcahuvvui veršuvdnii, mii ráhkaduvvui $1 diibmu $2',
 'filerevert-submit'         => 'Máhcat',
-'filerevert-success'        => '<span class="plainlinks">\'\'\'[[Media:$1|$1]]\'\'\' lea máhcahvvon [$4 veršuvdnii, mii ráhkaduvvui $2 diibmu $3].</span>',
+'filerevert-success'        => "'''[[Media:$1|$1]]''' lea máhcahvvon [$4 veršuvdnii, mii ráhkaduvvui $2 diibmu $3].",
 'filerevert-badversion'     => 'Fiillas ii leat ráhkaduvvon veršuvdna dalle.',
 
 # File deletion
 'filedelete'           => 'Sihko $1',
 'filedelete-legend'    => 'Sihko fiilla',
 'filedelete-intro'     => "Don leat sihkomin '''[[Media:$1|$1]]'''.",
-'filedelete-intro-old' => '<span class="plainlinks">Don leat sihkomin veršuvdna \'\'\'[[Media:$1|$1]]\'\'\'  [$4 $3, $2].</span>',
+'filedelete-intro-old' => "Don leat sihkomin veršuvdna '''[[Media:$1|$1]]'''  [$4 $3, $2].",
 'filedelete-comment'   => 'Kommeanta:',
 'filedelete-submit'    => 'Sihko',
 'filedelete-success'   => "'''$1''' lea sihkojuvvon.",
@@ -758,8 +755,9 @@ $1 | $2',
 'brokenredirects-edit'   => '(rievdat)',
 'brokenredirects-delete' => '(sihko)',
 
-'withoutinterwiki'        => 'Siiddut, main eai leat giellaliŋkkat',
-'withoutinterwiki-header' => 'Čuovvovaš siiddut eai čujut eará gielat veršuvnnaidda:',
+'withoutinterwiki'         => 'Siiddut, main eai leat giellaliŋkkat',
+'withoutinterwiki-header'  => 'Čuovvovaš siiddut eai čujut eará gielat veršuvnnaidda:',
+'withoutinterwiki-summary' => 'Čuovvovaš siiddut eai čujut eará gielat veršuvnnaidda:',
 
 'fewestrevisions' => 'Siiddut, mat leat rievdáduvvon hárvet',
 
@@ -850,7 +848,7 @@ $1 | $2',
 
 # E-mail user
 'mailnologin'     => 'Sáddejeaddji čujuhus váilo',
-'mailnologintext' => 'Don fertet leat [[Special:Userlogin|čálligoahtán sisa]] ja du [[Special:Preferences|ásahusain]] ferte leat gelbbolaš ja <strong>sihkarastojuvvon</strong> e-poastačujuhus, ovdalgo sáhtat sáddet e-poasta eará geavaheddjiide.',
+'mailnologintext' => 'Don fertet leat [[Special:UserLogin|čálligoahtán sisa]] ja du [[Special:Preferences|ásahusain]] ferte leat gelbbolaš ja <strong>sihkarastojuvvon</strong> e-poastačujuhus, ovdalgo sáhtat sáddet e-poasta eará geavaheddjiide.',
 'emailuser'       => 'Čále e-poastta geavaheaddjái',
 'emailpage'       => 'Sádde e-poastta geavaheaddjái',
 'emailpagetext'   => 'Jus dát geavaheaddji lea lasihin iežaset ásahusaide gelbbolaš e-poastačujuhusa, vuolábeale skoviin sáhtat sáddet sunnje ovtta sáni. Iežat ásahusaide lasihuvvon e-poastačujuhus oidno sáddejeaddji dieđuin, vai vuostáiváldi sáhttá vástidit.',
@@ -875,9 +873,9 @@ $1 | $2',
 'nowatchlist'          => 'Du čuovvunlisttus eai leat siiddut.',
 'watchlistanontext'    => 'Don fertet $1, jus hálidat geavahit čuovvunlisttu.',
 'watchnologin'         => 'It leat čálligoahtán sisa',
-'watchnologintext'     => 'Don fertet [[Special:Userlogin|čálligoahtit sisa]], jus hálidat geavahit du čuovvunlisttu.',
+'watchnologintext'     => 'Don fertet [[Special:UserLogin|čálligoahtit sisa]], jus hálidat geavahit du čuovvunlisttu.',
 'addedwatch'           => 'Lasihuvvon čuovvunlistui',
-'addedwatchtext'       => "Siidu '''<nowiki>$1</nowiki>''' lea lasihuvvon [[Special:Watchlist|čuovvunlisttui]]. Boahtevuođas siiddu ja siiddu ságastallansiiddu rievdadusat almmuhuvvo dáppe. Siidu lea '''buidon''' [[Special:Recentchanges|varas rievdadusat -listtus]], vai fuomašat dan álkit. Jus hálidat heaiti čuovvumis dan siiddu, deaddil liŋkka ''heaite čuovvumis'' siiddu ravddas.",
+'addedwatchtext'       => "Siidu '''<nowiki>$1</nowiki>''' lea lasihuvvon [[Special:Watchlist|čuovvunlisttui]]. Boahtevuođas siiddu ja siiddu ságastallansiiddu rievdadusat almmuhuvvo dáppe. Siidu lea '''buidon''' [[Special:RecentChanges|varas rievdadusat -listtus]], vai fuomašat dan álkit. Jus hálidat heaiti čuovvumis dan siiddu, deaddil liŋkka ''heaite čuovvumis'' siiddu ravddas.",
 'removedwatch'         => 'Sihkojuvvon čuovvunlisttus',
 'removedwatchtext'     => "Siidu '''<nowiki>$1</nowiki>''' lea sihkojuvvon du čuovvunlisttus.",
 'watch'                => 'Čuovo',
@@ -926,7 +924,8 @@ $1 | $2',
 'historywarning'              => 'Siiddu, man aiggot sihkut, lea rievdaduvvon dávjit go oktii:',
 'confirmdeletetext'           => 'Leat sihkumin siiddu dahje fiilla ja buot dan historjjá. Ádde dagu váikkuhsaid ja sihko {{GRAMMAR:genitive|{{SITENAME}}}} [[{{MediaWiki:Policy-url}}|geavahaid]] mielde.',
 'actioncomplete'              => 'Doaibma lea dahkkon',
-'deletedtext'                 => "'''[[Special:Undelete/$1|$1]]''' lea sihkojuvvon. Siiddus $2 lea listu maŋimus sihkomiin.",
+'deletedtext'                 => '"<nowiki>$1</nowiki>" lea sihkojuvvon.
+Siiddus $2 lea listu maŋimus sihkomiin.',
 'deletedarticle'              => 'sihkoi siiddu $1',
 'dellogpage'                  => 'Sihkkunlogga',
 'dellogpagetext'              => 'Vuolábealde lea logga maŋimus sihkkumiin.',
@@ -938,7 +937,7 @@ $1 | $2',
 'rollbacklink'                => 'máhcat',
 'rollbackfailed'              => 'Máhccan ii lihkosmuvvan',
 'cantrollback'                => 'Máhcaheapmi ovddit veršuvdnii ii leat vejolaš, daningo maŋimuš čálli lea siiddu aidna dahkki.',
-'alreadyrolled'               => 'Rievdadusat, maid geavaheaddji [[User:$2|$2]] ([[User_talk:$2|ságastallan]]) lea dahkan, siidui $1 ii sáhte sihkkut, daningo geavaheaddji [[User:$3|$3]] ([[User_talk:$3|ságastallan]]) lea dahkan ođđa rievdadusaid.',
+'alreadyrolled'               => 'Rievdadusat, maid geavaheaddji [[User:$2|$2]] ([[User talk:$2|ságastallan]]) lea dahkan, siidui $1 ii sáhte sihkkut, daningo geavaheaddji [[User:$3|$3]] ([[User talk:$3|ságastallan]]) lea dahkan ođđa rievdadusaid.',
 'editcomment'                 => 'Rievdadusa čoahkkáigeassu lei: <i>$1</i>.', # only shown if there is an edit comment
 'revertpage'                  => 'Geavaheaddji [[Special:Contributions/$2|$2]] ([[User_talk:$2|ságastallan]]) rievdadusat sihkkojuvvui ja siidu máhcahuvvui veršuvdnii, man geavaheaddji [[User:$1|$1]] lei dahkan.', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success'            => 'Rievdadusat, maid geavaheaddji ”$1” lei dahkan, sihkojuvvui ja artihkal máhcaduvvui veršuvdnii, man geavaheaddji $2 lei dahkan.',
@@ -963,7 +962,7 @@ $1 | $2',
 'restriction-type'            => 'Rádjehus',
 'restriction-level'           => 'Suodjálus',
 'minimum-size'                => 'Min. sturrodat',
-'maximum-size'                => 'Maks. sturrodat',
+'maximum-size'                => 'Maks. sturrodat:',
 'pagesize'                    => 'stávvala',
 
 # Restrictions (nouns)
@@ -1052,7 +1051,7 @@ $1 | $2',
 'ipbotherreason'       => 'Eará sivva',
 'badipaddress'         => 'IP-čujuhus lea boastut.',
 'blockipsuccesssub'    => 'Easttan lihkosmuvai',
-'blockipsuccesstext'   => "Geavaheaddji dahje IP-čujuhus '''$1''' lea eston.<br />Dálá easttut gávdnot [[Special:Ipblocklist|easttolisttus]].",
+'blockipsuccesstext'   => "Geavaheaddji dahje IP-čujuhus '''$1''' lea eston.<br />Dálá easttut gávdnot [[Special:IPBlockList|easttolisttus]].",
 'ipb-edit-dropdown'    => 'Rievdat siivaid',
 'ipb-unblock-addr'     => 'Sihko geavaheaddji $1 estema',
 'ipb-unblock'          => 'Sihko geavaheaddji dahje IP-čujuhusa rievdadaneasttu',
@@ -1288,7 +1287,7 @@ $1 | $2',
 'recreate' => 'Álggat ođđasit',
 
 # HTML dump
-'redirectingto' => 'Ođđasitstivrejuvvo siidui [[$1]]...',
+'redirectingto' => 'Ođđasitstivrejuvvo siidui [[:$1]]...',
 
 # action=purge
 'confirm_purge_button' => 'Sihko',

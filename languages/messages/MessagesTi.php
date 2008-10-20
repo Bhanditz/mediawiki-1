@@ -1,10 +1,12 @@
 <?php
 /** Tigrinya (ትግርኛ)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Blake
  * @author Niklas Laxström
+ * @author Node ue
  * @author Teak
  */
 
@@ -20,6 +22,13 @@ $messages = array(
 'thursday'  => 'ኃሙስ',
 'friday'    => 'ዓርቢ',
 'saturday'  => 'ቀዳም',
+'sun'       => 'ሰንበ',
+'mon'       => 'ሰኑይ',
+'tue'       => 'ሠሉስ',
+'wed'       => 'ረቡዕ',
+'thu'       => 'ኃሙስ',
+'fri'       => 'ዓርቢ',
+'sat'       => 'ቀዳም',
 'january'   => 'ትሪ',
 'february'  => 'ለካቲት',
 'march'     => 'መጋቢት',
@@ -32,6 +41,12 @@ $messages = array(
 'october'   => 'ጥቅምቲ',
 'november'  => 'ኅዳር',
 'december'  => 'ታኅሣሥ',
+'jan'       => 'ጃንዩ',
+'feb'       => 'ፌብሩ',
+'mar'       => 'ማርች',
+'apr'       => 'ኤፕረ',
+'may'       => 'ሜይ',
+'jun'       => 'ጁን',
 
 'about'         => 'ብዛዕባ ብጠቅላላ',
 'qbpageoptions' => 'ፅሑፍዚ',

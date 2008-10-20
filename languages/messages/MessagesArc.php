@@ -1,13 +1,12 @@
 <?php
 /** Aramaic (ܐܪܡܝܐ)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
+ * @author 334a
  * @author A2raya07
  * @author The Thadman
- * @author Siebrand
- * @author SPQRobin
- * @author 334a
  */
 
 $rtl = true;
@@ -146,7 +145,7 @@ $messages = array(
 # Preferences page
 'mypreferences' => 'ܦܪ̈ܝܫܘܬܝ',
 'math'          => 'ܡܬܡܐܛܝܩܘܬܐ',
-'prefs-rc'      => 'ܫܘ̈ܚ̈ܠܦܐ ܚܕ̈ܬܐ',
+'prefs-rc'      => 'ܫܘܚ̈ܠܦܐ ܚܕ̈ܬܐ',
 'saveprefs'     => 'ܚܡܝ',
 
 # Recent changes

@@ -1,11 +1,12 @@
 <?php
 /** Aromanian (Armãneashce)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
- * @author Niklas Laxström
- * @author Hakka (with the help of a native speaker Dumitrachi T. Fundu)
  * @author Hakka
+ * @author Hakka (with the help of a native speaker Dumitrachi T. Fundu)
+ * @author Niklas Laxström
  */
 
 $messages = array(

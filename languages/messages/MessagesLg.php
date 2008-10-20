@@ -1,13 +1,11 @@
 <?php
 /** Ganda (Luganda)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Kizito
- * @author Siebrand
  */
-
-
 
 $messages = array(
 # User preference toggles
@@ -124,15 +122,15 @@ $messages = array(
 'aboutpage'         => 'Project:Okutangaaza ku',
 'copyright'         => 'Ebiri kuno bifugibwa $1.',
 'copyrightpagename' => "bino biriko ekikuguzo eky'obwananyi ekya {{SITENAME}}",
-'copyrightpage'     => "Ebikugizo eby'obwa nannyini ku {{ns:project}}",
+'copyrightpage'     => "{{ns:project}}:Ebikugizo eby'obwa nannyini",
 'currentevents'     => 'Ebibindabinda',
 'currentevents-url' => 'Project:Ebibindabinda',
 'disclaimers'       => "Okutangaaza ku kkomo ery'obuvunaaniro bwaffe obw'omu mateeka",
-'disclaimerpage'    => "Okutangaaza ku kkomo ery'obuvunaaniro bwaffe obw'omu mateeka Project:",
+'disclaimerpage'    => "Project:Okutangaaza ku kkomo ery'obuvunaaniro bwaffe obw'omu mateeka",
 'edithelp'          => 'Funa obuyambi',
-'edithelppage'      => "Obuyambi ku by'okukyusakyusa",
+'edithelppage'      => "Help:Obuyambi ku by'okukyusakyusa",
 'faq'               => 'Ebitera okubuuzibwa',
-'faqpage'           => 'Ebitera okubuuzibwa ku:Project',
+'faqpage'           => 'Project:Ebitera okubuuzibwa ku',
 'helppage'          => 'Help:Endagiriro',
 'mainpage'          => 'Olupapula Olusooka',
 'portal'            => 'Embuga',
@@ -197,6 +195,7 @@ kalambula-neti yo.",
 'gotaccountlink'             => 'Yingira',
 'username'                   => "Ery'obwa memba:",
 'yourlanguage'               => 'Lulimi lwo:',
+'yournick'                   => 'Empaako yo (ssi ya tteeka):',
 'prefs-help-email'           => "* E-mail (ssi kya tteeka): Bw'ogiwayo, basobola okukutuukirira nga bayitira ku enfo yo ey'obwa memba oba olupapula lwo
 olwa 'yogera nange' nga ggwe tewetaaze kulaga bikufaako.",
 'loginsuccesstitle'          => 'Oyingidde',
@@ -213,7 +212,7 @@ olwa 'yogera nange' nga ggwe tewetaaze kulaga bikufaako.",
 'italic_tip'      => "Bw'onyiga ku kano, ennukuta z'oddako okuwandiika ziba za italiki (ez'esurise). Okuddamu okufuna ennukuta eza bulijjo, ddamu okukanyiga ko.",
 'link_sample'     => 'Enyunzi yo eno egguke wa?',
 'link_tip'        => "Nyiga wano ob'oyagala okukolawo enyunzi egguka ku kifo ekiri ku wiki eno",
-'extlink_sample'  => 'http://www.kyakulabirako.com linnya lya nyunzi',
+'extlink_sample'  => 'http://www.example.com linnya lya nyunzi',
 'extlink_tip'     => "Nyiga ku kano ob'oyagala okuteekawo enyunzi egguka ku kifo ekitali ku wiki eno. (genderera ne kutabulako ennukuta ezikulembedde, http:// )",
 'headline_sample' => 'Mutwe omukulu',
 'headline_tip'    => "Nyiga ku kano okuwandiika omutwe ogw'eddaala ery'okubiri",
@@ -258,7 +257,7 @@ erya '''ddayo'''.",
 'noarticletext'          => "Wano tewali kyawandiikidwawo, ky'obadde onoonya osobola [[Special:Search/{{PAGENAME}}| okukinoonyeza]] ku mpapula endala oba oyinza [{{fullurl:{{FULLPAGENAME}}|action=edit}} gwe okukiwandiikako] wano.",
 'previewnote'            => "<strong>Kuno kugezaamubugeza; by'okoze tebinnakazibwa!</strong>",
 'editing'                => 'Kati okyuusa $1',
-'editinguser'            => 'Kukyuusa ebya memba <b>$1</b>',
+'editinguser'            => "Kukyuusa ebya memba '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'editingsection'         => 'Okyuusa $1 (kitundu)',
 'editingcomment'         => 'Kukyuusa $1 (obubaka)',
 'yourtext'               => 'Ebigambo ebibyo',
@@ -272,7 +271,7 @@ Tukwesiga nti by'owandiika muno bibyo oba wabigya mu kya bonna oba awalala gye b
 'templatesused'          => 'Olupapula luno entiba ze lukozesa ze:',
 'template-protected'     => '(luno lusibidwa)',
 'template-semiprotected' => '(ebimu ku lupapula luno bisibidwa)',
-'nocreatetext'           => "Ku {{SITENAME}} tosobola okukolawo empapula mpya nga tokozesa buyinza obw'obwamemba. Kati oyinza kugenda n'okyusamu olupapula olulala olwakolebwa dda, oba oyinza [[Special:Userlogin|okufuna obuyinza obw'obwamemba]].",
+'nocreatetext'           => "Ku {{SITENAME}} tosobola okukolawo empapula mpya nga tokozesa buyinza obw'obwamemba. Kati oyinza kugenda n'okyusamu olupapula olulala olwakolebwa dda, oba oyinza [[Special:UserLogin|okufuna obuyinza obw'obwamemba]].",
 'recreate-deleted-warn'  => "'''Kulabula: Ogenda okuzzaawo olupapuka olwagyibwawo.'''
 
 Okakasa nti kisaanira okuluzzaawo?
@@ -309,9 +308,15 @@ oba ku gano agali ku lupapula luno.<br />
 
 # Preferences page
 'mypreferences'     => 'Enteekateeka yange',
+'prefs-personal'    => 'Ebikufaako',
+'saveprefs'         => 'Bino bikaze',
+'resetprefs'        => 'Gyawo enkyukakyuka ze sinnakaza',
 'oldpassword'       => 'Ekigambo ekikuumi ekikadde:',
 'newpassword'       => 'Ekigambo ekikuumi ekipya:',
+'retypenew'         => 'Ddamu ekikagambo ekikuumi ekipya ekyo:',
 'searchresultshead' => 'Noonya',
+'savedprefs'        => 'Enteekateeka yo ekazidwa.',
+'allowemail'        => 'Kkiriza bamemba abalala okukusindikira e-mail',
 
 # Recent changes
 'recentchanges'     => 'Ebyakakyuusibwa',
@@ -332,7 +337,7 @@ oba ku gano agali ku lupapula luno.<br />
 
 # Recent changes linked
 'recentchangeslinked'          => 'Ebikyusiddwa ebyekuusa ku lupapula luno',
-'recentchangeslinked-title'    => 'Enkyukakyuka ezikwatagana ne $1',
+'recentchangeslinked-title'    => 'Enkyukakyuka ezikwatagana ne "$1"',
 'recentchangeslinked-noresult' => 'Empapula eziriko enyunzi tewali lukyuse mu kiseera kino.',
 'recentchangeslinked-summary'  => "Olulpapula olw'enjawulo luno luliko olukalala lw'ebikyuse ku mpapula eziriko enyunzi ezigguka ku lw'obadde otunuulira. Ebiwandikidwa mu '''nukuta enziggumivu''' biri ku mpapula z'ogoberera.",
 
@@ -358,6 +363,7 @@ oba ku gano agali ku lupapula luno.<br />
 
 # Miscellaneous special pages
 'nbytes'            => '{{PLURAL:$1|bayiti|bayiti}} $1',
+'ncategories'       => '$1 {{PLURAL:$1|ttuluba|matuluba}}',
 'nmembers'          => '{{PLURAL:$1|memba|bamemba}} $1',
 'allpages'          => 'Empapula zonna',
 'specialpages'      => "Empapula ez'enjawulo",
@@ -390,7 +396,7 @@ oba ku gano agali ku lupapula luno.<br />
 'addedwatch'     => "Kigattiddwa ku by'ogoberera",
 'addedwatchtext' => 'Olupapula "[[:$1]]" kati luli mu [[Special:Watchlist|by\'ogoberera]].
 Buli olupapula olwo oba olw\'emboozi lwalwo lwe binaakyuusibwamu, enkyuukakyuka ezo
-zijjakulabika wano. Era erinnya lyalwo mu [[Special:Recentchanges|lukalala olw\'ebyakakyuuisbwa]]
+zijjakulabika wano. Era erinnya lyalwo mu [[Special:RecentChanges|lukalala olw\'ebyakakyuuisbwa]]
 lijja okuba mu nukuta enziggumivu oyanguyirwe okuliraba.
 
 Bw\'oba oyagala okulekerawo okulugoberera, nyiga ku kigambo "Suula" awo ku bbali.',
@@ -451,6 +457,7 @@ Bw\'oba oyagala okulekerawo okulugoberera, nyiga ku kigambo "Suula" awo ku bbali
 'move-watch'  => 'Goberera olupapula luno',
 'movepagebtn' => 'Lusimbulize',
 'movelogpage' => 'Ebikyusidwa manya',
+'movereason'  => 'Nsonga:',
 'revertmove'  => 'zaawo erinya ekkadde',
 
 # Export
@@ -544,7 +551,7 @@ Bw\'oba oyagala okulekerawo okulugoberera, nyiga ku kigambo "Suula" awo ku bbali
 
 # External editor support
 'edit-externally'      => 'Fayiro eno gikolereko mu pulogulamu endala',
-'edit-externally-help' => '[http://meta.wikimedia.org/wiki/Help:External_editors Nyiga wano] okuyiga ebisingawo ku kukozesa pulogulamu endala okukola enkyukakyuka.',
+'edit-externally-help' => '[http://www.mediawiki.org/wiki/Manual:External_editors Nyiga wano] okuyiga ebisingawo ku kukozesa pulogulamu endala okukola enkyukakyuka.',
 
 # 'all' in various places, this might be different for inflected languages
 'namespacesall' => 'Gonna',

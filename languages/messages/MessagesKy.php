@@ -1,10 +1,10 @@
 <?php
 /** Kirghiz (Кыргызча)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Aidabishkek
- * @author SPQRobin
  */
 
 $messages = array(
@@ -201,7 +201,7 @@ $messages = array(
 'uploadedfiles'     => 'Жүктөлгөн файлдар',
 'savefile'          => 'Файлды сактап кой',
 
-'license' => 'Лицензиялоо',
+'license' => 'Лицензиялоо:',
 
 # Image list
 'imagelist'  => 'Файлдар тизмеси',

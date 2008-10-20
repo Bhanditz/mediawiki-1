@@ -1,7 +1,8 @@
 <?php
 /** Waray (Winaray)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Harvzsf
  * @author לערי ריינהארט
@@ -9,17 +10,18 @@
 
 $messages = array(
 # User preference toggles
-'tog-underline'          => 'Bagisa ha ilarom an mga sumpay:',
-'tog-hideminor'          => 'Tago-a an mga gagmay nga pagliwat ha mga bag-o pa la nga mga kabag-ohan',
-'tog-extendwatchlist'    => 'Igpadako an angay timan-an nga makita an ngatanan nga mga nahanunungod nga mga kabag-ohan',
-'tog-watchcreations'     => 'Igdugang in mga pakli nga akon ginhimo ngadto han akon angay timan-an',
-'tog-watchdefault'       => 'Igdugang in mga pakli nga akon ginliwat ngadto han akon angay timan-an',
-'tog-watchmoves'         => 'Igdugang in mga pakli nga akon ginpamalhin ngadto han akon angay timan-an',
-'tog-watchdeletion'      => 'Igdugang in mga pakli nga akon ginpamara ngadto han akon angay timan-an',
-'tog-watchlisthideown'   => 'Tago-a an akon mga ginliwat tikang han angay timan-an',
-'tog-watchlisthidebots'  => 'Tago-a an ginliwat hin bot tikang han angay timan-an',
-'tog-watchlisthideminor' => 'Tago-a an mga gagmay nga pagliwat tikang han angay timan-an',
-'tog-ccmeonemails'       => 'Padad-i ak hin mga kopya hin mga email nga akon ginpapadara ha iba nga mga nágámit',
+'tog-underline'           => 'Bagisa ha ilarom an mga sumpay:',
+'tog-hideminor'           => 'Tago-a an mga gagmay nga pagliwat ha mga bag-o pa la nga mga kabag-ohan',
+'tog-extendwatchlist'     => 'Igpadako an angay timan-an nga makita an ngatanan nga mga nahanunungod nga mga kabag-ohan',
+'tog-watchcreations'      => 'Igdugang in mga pakli nga akon ginhimo ngadto han akon angay timan-an',
+'tog-watchdefault'        => 'Igdugang in mga pakli nga akon ginliwat ngadto han akon angay timan-an',
+'tog-watchmoves'          => 'Igdugang in mga pakli nga akon ginpamalhin ngadto han akon angay timan-an',
+'tog-watchdeletion'       => 'Igdugang in mga pakli nga akon ginpamara ngadto han akon angay timan-an',
+'tog-shownumberswatching' => 'Igpakita an ihap han mga nangingita nga mga nagamit',
+'tog-watchlisthideown'    => 'Tago-a an akon mga ginliwat tikang han angay timan-an',
+'tog-watchlisthidebots'   => 'Tago-a an ginliwat hin bot tikang han angay timan-an',
+'tog-watchlisthideminor'  => 'Tago-a an mga gagmay nga pagliwat tikang han angay timan-an',
+'tog-ccmeonemails'        => 'Padad-i ak hin mga kopya hin mga email nga akon ginpapadara ha iba nga mga nágámit',
 
 # Dates
 'sunday'        => 'Dominggo',
@@ -74,7 +76,7 @@ $messages = array(
 'dec'           => 'Dis',
 
 # Bits of text used by many pages
-'categories'            => '{{PLURAL:$1|Kategorya|Mga Kategorya}}',
+'categories'            => 'Mga Kategorya',
 'pagecategories'        => '{{PLURAL:$1|Kategorya|Mga Kategorya}}',
 'category_header'       => 'Mga pakli ha kategorya "$1"',
 'subcategories'         => 'Mga ilarom nga kategorya',
@@ -91,6 +93,7 @@ $messages = array(
 'mytalk'         => 'Akon paghingay',
 'anontalk'       => 'Paghingay para hini nga IP',
 'navigation'     => 'Paglayag',
+'and'            => 'ngan',
 
 'errorpagetitle'   => 'Sayop',
 'returnto'         => 'Balik ngadto ha $1.',
@@ -112,6 +115,7 @@ $messages = array(
 'newpage'          => 'Bag-o nga pakli',
 'talkpagelinktext' => 'Hiruhimangraw',
 'specialpage'      => 'Ispisyal nga Pakli',
+'personaltools'    => 'Kalugaringon nga mga garamiton',
 'talk'             => 'Hiruhimangraw',
 'views'            => 'Mga paglantaw',
 'toolbox'          => 'Garamiton',
@@ -127,10 +131,13 @@ $messages = array(
 'disclaimers'       => 'Mga Disclaimer',
 'helppage'          => 'Help:Sulod',
 'mainpage'          => 'Syahan nga Pakli',
+'policy-url'        => 'Project:Polisiya',
 'portal'            => 'Ganghaan han Komunidad',
 'portal-url'        => 'Project:Ganghaan han Komunidad',
 'sitesupport'       => 'Mga Donasyon',
 'sitesupport-url'   => 'Project:Mga Donasyon',
+
+'badaccess-group0' => 'Diri ka gintutugutan pagbuhat han buruhaton nga imo ginhangyo.',
 
 'versionrequired'     => 'Kinahanglan an Bersion $1 han MediaWiki',
 'versionrequiredtext' => 'Kinahanglan an Bersyon $1 han MediaWiki ha paggamit hini nga pakli.  Kitaa an [[Special:Version|bersyon nga pakli]].',
@@ -143,7 +150,12 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Artikulo',
+'nstab-special'   => 'Ispisyal',
+'nstab-project'   => 'Pakli han proyekto',
 'nstab-mediawiki' => 'Mensahe',
+'nstab-template'  => 'Plantilya',
+'nstab-help'      => 'Pakli hin bulig',
+'nstab-category'  => 'Kategorya',
 
 # Login and logout pages
 'login'              => 'Sakob',

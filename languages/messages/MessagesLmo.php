@@ -1,18 +1,19 @@
 <?php
 /** Lumbaart (Lumbaart)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
- * @author Kemmótar
- * @author Flavio05
- * @author Clamengh
- * @author Snowdog
  * @author Amgine
- * @author Remulazz
+ * @author Clamengh
+ * @author Dakrismeno
  * @author DracoRoboter
- * @author SPQRobin
- * @author SabineCretella
+ * @author Flavio05
+ * @author Kemmótar
  * @author Malafaya
+ * @author Remulazz
+ * @author SabineCretella
+ * @author Snowdog
  */
 
 $fallback = 'it';
@@ -35,6 +36,11 @@ süi titul dai sezziún (JavaScript)',
 'tog-fancysig'                => 'Firma semplificava (senza al ligamm utumatich)',
 'tog-externaleditor'          => 'Druvá sémpar un prugráma da redatazziún esternu',
 'tog-externaldiff'            => 'Druvá sempar un "diff" estèrnu',
+'tog-watchlisthideown'        => "Sconda i me mudifich dai pagin che a ten d'ögg",
+'tog-watchlisthidebots'       => "Sconda i mudifich di bot da i pagin che a ten d'ögg",
+
+'underline-always' => 'Semper',
+'underline-never'  => 'Mai',
 
 # Dates
 'sunday'    => 'dumeniga',
@@ -66,6 +72,7 @@ süi titul dai sezziún (JavaScript)',
 
 # Bits of text used by many pages
 'categories'      => 'Categurii',
+'pagecategories'  => '{{PLURAL:$1|Categuria|Categurij}}',
 'category_header' => 'Vus in de la categuria "$1"',
 'subcategories'   => 'Sót-categurii',
 
@@ -88,10 +95,12 @@ süi titul dai sezziún (JavaScript)',
 'printableversion' => 'Versiun də stampà',
 'permalink'        => 'Culegament permanent',
 'edit'             => 'Mudifica',
+'editthispage'     => 'Mudifica cula pagina chi',
 'delete'           => 'Scancela',
 'undelete_short'   => 'Rimett a post {{PLURAL:$1|1 mudifica|$1 mudifich}}',
 'protect'          => 'Bloca',
 'unprotect'        => 'sbloca',
+'newpage'          => 'Pagina növa',
 'specialpage'      => 'Pagina speciala',
 'talk'             => 'Discüssiun',
 'toolbox'          => 'Strüment',
@@ -116,16 +125,17 @@ süi titul dai sezziún (JavaScript)',
 'sitesupport'       => 'Dunazziun',
 'sitesupport-url'   => 'Project:Donazioni',
 
-'retrievedfrom'       => 'Utegnüü da "$1"',
-'youhavenewmessages'  => "Gh'hinn di $1 ($2).",
-'newmessageslink'     => 'messacc nööf',
-'newmessagesdifflink' => 'diferenza par rapòort a la versiun da prima',
-'editsection'         => 'Mudifica',
-'toc'                 => 'Cuntegnüü',
-'showtoc'             => 'varda',
-'hidetoc'             => 'scuunt',
-'thisisdeleted'       => 'Varda o rimett a pòst $1?',
-'restorelink'         => '{{PLURAL:$1|1 mudifica scancelada|$1 mudifich scancelaa}}',
+'retrievedfrom'           => 'Utegnüü da "$1"',
+'youhavenewmessages'      => "Gh'hinn di $1 ($2).",
+'newmessageslink'         => 'messacc nööf',
+'newmessagesdifflink'     => 'diferenza par rapòort a la versiun da prima',
+'youhavenewmessagesmulti' => "Te gh'è di messagg növ ins'el $1",
+'editsection'             => 'Mudifica',
+'toc'                     => 'Cuntegnüü',
+'showtoc'                 => 'varda',
+'hidetoc'                 => 'scuunt',
+'thisisdeleted'           => 'Varda o rimett a pòst $1?',
+'restorelink'             => '{{PLURAL:$1|1 mudifica scancelada|$1 mudifich scancelaa}}',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Vus',
@@ -137,10 +147,12 @@ süi titul dai sezziún (JavaScript)',
 'nstab-category'  => 'Categuría',
 
 # General errors
-'internalerror'    => 'Erur in del sistema',
-'badtitle'         => 'Títul mía bun',
-'viewsource'       => 'Còdas surgeent',
-'editinginterface' => "'''Attenzion''': el testo de quella pagina chì el fà part de l'interfacia utent del sitt. Tutt i modifigh che te fet se vedaran subit su i messagg visualizzaa per tutt i utent.",
+'internalerror'     => 'Erur in del sistema',
+'badtitle'          => 'Títul mía bun',
+'viewsource'        => 'Còdas surgeent',
+'protectedpagetext' => "Cula pagina chi l'è stata blucà per impedinn la mudifica.",
+'viewsourcetext'    => "L'è pussibil vèd e cupià el codes surgent de cula pagina chí:",
+'editinginterface'  => "'''Attenzion''': el testo de quella pagina chì el fà part de l'interfacia utent del sitt. Tutt i modifigh che te fet se vedaran subit su i messagg visualizzaa per tutt i utent.",
 
 # Login and logout pages
 'logouttext'            => '<strong>Adess a sii descuness.</strong><br />
@@ -186,8 +198,8 @@ Ul tò permèss d'entrava l è prunt. Dismentéga mia de mudifigá i prefereenz 
 'showdiff'             => 'Famm vedè i cambiament',
 'anoneditwarning'      => 'Tì te set minga entraa. In de la crunulugia de la pagina se vedarà el tò IP.',
 'accmailtext'          => 'La parola d\'urdin per "$1" l\'è stada mandada a $2.',
-'anontalkpagetext'     => "----''Questa chì l'è la pagina de discüssiun de un ütent che l'ha minga ammò registraa un cünt, upür che el vör minga duperàll; dunca, el pò vess identificaa dumà cunt el sò IP, ch'el pò vess spartii tra tanti ütent diferent. Se ti te set un ütent anonim e t'hee vist un quai messacc ch'el te par ch'el gh'entra nagott cun tì, pröva a [[Special:Userlogin|creà el tò cünt]] per fà pü casott.''",
-'noarticletext'        => "Gh'è minga del test in quella pagina chì. Te pòdet [[{{ns:special}}:Search/{{PAGENAME}}|cercà in d'on'altra pagina]] oppur [{{fullurl:{{NAMESPACE}}:{{PAGENAME}}|action=edit}} creàla tì].",
+'anontalkpagetext'     => "----''Questa chì l'è la pagina de discüssiun de un ütent che l'ha minga ammò registraa un cünt, upür che el vör minga duperàll; dunca, el pò vess identificaa dumà cunt el sò IP, ch'el pò vess spartii tra tanti ütent diferent. Se ti te set un ütent anonim e t'hee vist un quai messacc ch'el te par ch'el gh'entra nagott cun tì, pröva a [[Special:UserLogin|creà el tò cünt]] per fà pü casott.''",
+'noarticletext'        => "Gh'è minga del test in quella pagina chì. Te pòdet [[Special:Search/{{PAGENAME}}|cercà in d'on'altra pagina]] oppur [{{fullurl:{{FULLPAGENAME}}|action=edit}} creàla tì].",
 'clearyourcache'       => "'''Nòta:''' dòpu che avii salvaa, pudaría véss neçessari de scancelá la memòria \"cache\" dal vòst prugráma də navigazziún in reet par vidé i mudifich faa. '''Mozilla / Firefox / Safari:''' tegní schiscjaa al butún ''Shift'' intaant che sə clica ''Reload'', upüür schiscjá ''Ctrl-Shift-R'' (''Cmd-Shift-R'' sül Apple Mac); '''IE:''' schiscjá ''Ctrl'' intaant che sə clica ''Refresh'', upüür schiscjá ''Ctrl-F5''; '''Konqueror:''': semplicemeent clicá al butún ''Reload'', upüür schiscjá ''F5''; '''Opera''' i üteent pudarían vech büsögn da scancelá cumpletameent la memòria \"cache\" in ''Tools&rarr;Preferences''.",
 'previewnote'          => "<strong>'''Atenziun'''! Questa pagina la serviss dumà de vardà. I cambiament hinn minga staa salvaa.</strong>",
 'editing'              => 'Mudifica de $1',
@@ -208,10 +220,13 @@ Spiegazziún di símbui: (cur) = difərenza cun la versiún curénta, (ültima) 
 'compareselectedversions' => 'Cumpara i versiun selezziunaa',
 
 # Search results
-'prevn'        => 'preçedeent $1',
-'nextn'        => 'pròssim $1',
-'viewprevnext' => 'Vidé ($1) ($2) ($3).',
-'powersearch'  => 'Truvá',
+'noexactmatch'          => "'''La pagina \"\$1\" la esista no.''' L'è pussibil [[:\$1|creala adèss]].",
+'noexactmatch-nocreate' => "'''La pagina cun el titul \"\$1\" la esista no.'''",
+'toomanymatches'        => "Gh'è tropi curispundens. Mudifichè la richiesta.",
+'prevn'                 => 'preçedeent $1',
+'nextn'                 => 'pròssim $1',
+'viewprevnext'          => 'Vidé ($1) ($2) ($3).',
+'powersearch'           => 'Truvá',
 
 # Preferences page
 'preferences'        => 'Prefereenz',
@@ -265,7 +280,7 @@ Spiegazziún di símbui: (cur) = difərenza cun la versiún curénta, (ültima) 
 'userrights-available-remove' => 'È possibile rimuovere utenti {{PLURAL:$2|dal gruppo|dai gruppi}}: $1.',
 'userrights-no-interwiki'     => 'Non si dispone dei permessi necessari per modificare i diritti degli utenti su altri siti.',
 'userrights-nodatabase'       => 'Il database $1 non esiste o non è un database locale.',
-'userrights-nologin'          => "Per assegnare diritti agli utenti è necessario [[Special:Userlogin|effettuare l'accesso]] come amministratore.",
+'userrights-nologin'          => "Per assegnare diritti agli utenti è necessario [[Special:UserLogin|effettuare l'accesso]] come amministratore.",
 'userrights-notallowed'       => "L'utente non dispone dei permessi necessari per assegnare diritti agli utenti.",
 
 # Recent changes
@@ -293,8 +308,8 @@ Spiegazziún di símbui: (cur) = difərenza cun la versiún curénta, (ültima) 
 'fileuploadsummary' => 'Sumari:',
 'ignorewarnings'    => 'Ignora tücc i avertimeent',
 'largefileserver'   => 'Chel archivi-chí al è püssee graant che ul serviduur al sía cunfigüraa da permett.',
-'sourcefilename'    => "Nomm da l'archivi surgeent",
-'destfilename'      => "Nomm da l'archivi da destinazziun",
+'sourcefilename'    => "Nomm da l'archivi surgeent:",
+'destfilename'      => "Nomm da l'archivi da destinazziun:",
 
 # Image list
 'imagelist'  => 'Listá i imàgin',
@@ -377,7 +392,7 @@ Spiegazziún di símbui: (cur) = difərenza cun la versiún curénta, (ültima) 
 'addedwatchtext'   => "La pagina \"[[:\$1]]\" l'è staja gjüntava a la lista dii [[Special:Watchlist|paginn da tegn d'öcc]].
 I cambiameent che i vegnará fai a chesta pagina chi e a la sóa pagina dii cumünicazziún
 i vegnará segnalaa chichinscí e la pagina la sa vedará cun caráter '''spèss''' in la
-[[Special:Recentchanges|lista dii cambiameent reçeent]] gjüst par evidenziála.
+[[Special:RecentChanges|lista dii cambiameent reçeent]] gjüst par evidenziála.
 <p>Se ti vörat tirá via chesta pagina chi dala lista dai paginn da tegn d'öcc ti pòdat schiscjá
 al butún \"tegn piü d'öcc\".",
 'removedwatch'     => 'Scancelaa dala lista di usservazziún.',
@@ -387,6 +402,10 @@ al butún \"tegn piü d'öcc\".",
 'unwatch'          => "Tegn pü d'öcc",
 'watchnochange'    => "Nissün cambiameent l è stai faa süi articui/págin che ti tegnat d'öcc indal períut da teemp selezziunaa.",
 'wlshowlast'       => 'Fa vidé i ültim $1 uur $2 dí $3',
+
+# Displayed when you click the "watch" button and it's in the process of watching
+'watching'   => "Giuntà ai pagin da ten d'ögg...",
+'unwatching' => "Eliminà dai pagin da ten d'ögg...",
 
 'enotif_newpagetext' => "Chesta-chí l'è una pàgina növa.",
 'changed'            => 'cambiaa',
@@ -474,8 +493,9 @@ Cheest-chí al pöö vess un canbi dràstegh e inaspetaa par una pàgina pupüla
 'import' => 'Impurtá di pagin',
 
 # Tooltip help for the actions
-'tooltip-ca-addsection' => 'Taca un cument a questa discüssiun',
-'tooltip-ca-delete'     => 'Scancela questa pagina',
+'tooltip-ca-addsection'  => 'Taca un cument a questa discüssiun',
+'tooltip-ca-delete'      => 'Scancela questa pagina',
+'tooltip-t-specialpages' => 'Lista de tütt i pagin speciaal',
 
 # Attribution
 'siteuser' => '{{SITENAME}} ütent $1',
@@ -497,7 +517,7 @@ Cheest-chí al pöö vess un canbi dràstegh e inaspetaa par una pàgina pupüla
 
 # External editor support
 'edit-externally'      => 'Redatá chest archivi cunt un prugramari da fö',
-'edit-externally-help' => 'Vidé i [http://meta.wikimedia.org/wiki/Help:External_editors istrüzziún] pər vech püssè infurmazziún (in Inglees).',
+'edit-externally-help' => 'Vidé i [http://www.mediawiki.org/wiki/Manual:External_editors istrüzziún] pər vech püssè infurmazziún (in Inglees).',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'tücc',

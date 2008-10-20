@@ -1,8 +1,10 @@
 <?php
 /** Kongo (Kongo)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
+ * @author לערי ריינהארט
  */
 
 $messages = array(

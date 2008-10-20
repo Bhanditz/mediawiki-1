@@ -1,9 +1,9 @@
 <?php
 /** Sardinian (Sardu)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
- * @author Nike
  * @author לערי ריינהארט
  */
 
@@ -218,10 +218,10 @@ Se lo desideri, puoi contattare $1, o uno degli altri [[{{MediaWiki:Grouppage-sy
 'noarticletext'   => "(L'articolo è vuoto, potresti gentilmente iniziare l'articolo oppure richiedere la cancellazione di questa pagina)",
 'updated'         => '(Aggiornato)',
 'note'            => '<strong>Nota:</strong>',
-'previewnote'     => 'Tieni presente che questa è solo una ANTEPRIMA, e che la tua versione non è ancora stata salvata!',
+'previewnote'     => '<strong>Tieni presente che questa è solo una ANTEPRIMA, e che la tua versione non è ancora stata salvata!</strong>',
 'previewconflict' => "Questa anteprima rappresenta il testo nella casella di edizione di sopra, l'articolo apparirà n questa forma se sceglierai di salvare la pagina.",
 'editing'         => 'Modifica di $1',
-'editinguser'     => 'Modifica di $1',
+'editinguser'     => "Modifica di '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'editconflict'    => 'Conflitto di edizione: $1',
 'explainconflict' => 'Qualcun altro ha salvato una sua versione dell\'articolo nel tempo in cui tu stavi preparando la tua versione.<br />
 La casella di modifica di sopra contiene il testo dell\'articolo nella sua forma attuale (cioè il testo attualmente online). Le tue modifiche sono invece contenute nella casella di modifica inferiore.
@@ -274,7 +274,7 @@ $2 Elenca i redirects &nbsp; cerca per $3 $9',
 # Preferences page
 'preferences'              => 'Preferenze',
 'prefsnologin'             => 'Non hai eseguito il login',
-'prefsnologintext'         => 'Devi avere eseguito il [[Special:Userlogin|login]]
+'prefsnologintext'         => 'Devi avere eseguito il [[Special:UserLogin|login]]
 per poter personalizzare le tue preferenze.',
 'prefsreset'               => 'Le tue Preferenze sono state ripescate dalla memoria di sistema del potente server di {{SITENAME}}.',
 'qbsettings'               => 'Settaggio della barra menu',
@@ -308,7 +308,7 @@ per poter personalizzare le tue preferenze.',
 'rcnote'          => 'Qui di seguito sono elencate le ultime <strong>$1</strong> pagine modificate negli ultimi <strong>$2</strong> giorni.',
 'rcnotefrom'      => ' Qui di seguito sono elencate le modifiche da <b>$2</b> (fino a <b>$1</b>).',
 'rclistfrom'      => 'Mostra modifiche a partire da $1',
-'rclinks'         => ' Mostra le ultime $1 modifiche negli ultimi $2 giorni.',
+'rclinks'         => 'Mostra le ultime $1 modifiche negli ultimi $2 giorni.',
 'hist'            => 'cron',
 'hide'            => 'nascondi',
 'show'            => 'mostra',
@@ -321,15 +321,15 @@ per poter personalizzare le tue preferenze.',
 'reupload'          => 'Ri-upload',
 'reuploaddesc'      => 'Torna al modulo per lo upload.',
 'uploadnologin'     => 'Devi fare il login per eseguire questa operazione.',
-'uploadnologintext' => 'Devi eseguire [[Special:Userlogin|il login]]
+'uploadnologintext' => 'Devi eseguire [[Special:UserLogin|il login]]
 per fare lo upload di files.',
 'uploaderror'       => 'Errore di Upload',
 'uploadtext'        => "'''FERMA!''' Prima di effettuare un upload su {{SITENAME}}, accertati di avere ben letto e soprattutto compreso
-[[Project:Image_use_policy|le regole di {{SITENAME}} sull'uso delle immagini]].
+le regole di {{SITENAME}} sull'uso delle immagini.
 
-Per visualizzare o cercare immagini precedentemente caricate su {{SITENAME}}, vai alla [[Special:Imagelist|lista delle immagini già caricate]].
+Per visualizzare o cercare immagini precedentemente caricate su {{SITENAME}}, vai alla [[Special:ImageList|lista delle immagini già caricate]].
 Uploads e cancellazioni delle immagini sono registrati nello
-[[Project:Upload_log|upload log]].
+upload log.
 
 Usa il modulo sottostante per caricare nuovi files immagine da utilizzare per arricchire ed illustrare i tuoi articoli.
 Sulla maggior parte dei browsers, dovresti vedere un bottone con la scritta \"Browse...\" (oppure \"Sfoglia...\", che aprirà una comune finestra di dialogo.
@@ -418,7 +418,7 @@ Ogni riga contiene i link al primo ed al secondo redirect, oltre alla prima riga
 'notargettext'     => "Non hai specificato una pagina o un Utente in relazione al quale eseguire l'operazione richiesta.",
 
 # E-mail user
-'mailnologintext' => 'Devi fare il [[Special:Userlogin|login]]
+'mailnologintext' => 'Devi fare il [[Special:UserLogin|login]]
 ed aver registrato una valida casella e-mail nelle tue [[Special:Preferences|preferenze]] per mandare posta elettronica ad altri Utenti.',
 'emailuser'       => 'Manda una E-mail a questo Utente',
 'emailpagetext'   => 'Se questo Utente ha registrato una valida casella e-mail, il modulo qui sotto ti consentirà di scrivergli un solo messaggio.
@@ -434,11 +434,11 @@ oppure ha scelto di non ricevere  posta elettronica dagli altri Utenti.',
 'mywatchlist'      => 'Osservati Speciali',
 'nowatchlist'      => "Non hai indicato articoli da tenere d'occhio.",
 'watchnologin'     => 'Manca il login',
-'watchnologintext' => 'Devi prima fare il [[Special:Userlogin|login]]
+'watchnologintext' => 'Devi prima fare il [[Special:UserLogin|login]]
 per modificare la tua lista di osservati speciali.',
 'addedwatch'       => 'Aggiunto agli Osservati Speciali',
 'addedwatchtext'   => ' La pagina  "<nowiki>$1</nowiki>" è stata aggiunta alla tua [[Special:Watchlist|lista di osservati speciali]].
-Le future modifiche a questa pagina ed alla relativa pagina di discussione saranno elencate qui, e la pagina apparirà in <b>grassetto</b> nella pagina delle [[Special:Recentchanges|modifiche recenti]] per essere più facile da tener d\'occhio.
+Le future modifiche a questa pagina ed alla relativa pagina di discussione saranno elencate qui, e la pagina apparirà in <b>grassetto</b> nella pagina delle [[Special:RecentChanges|modifiche recenti]] per essere più facile da tener d\'occhio.
 
 Se in seguito vorrai togliere questo articolo dalla tua lista di osservati speciali, clicca " Smetti di seguire " nella barra dei menu.',
 'removedwatch'     => 'Rimosso dalla lista degli Osservati Speciali',
@@ -464,7 +464,7 @@ Tutti i tempi sono in ora del server (UTC).',
 'deletecomment'     => 'Motivazione della cancellazione',
 'rollback'          => 'Usa una revisione precdente',
 'cantrollback'      => "Impossibile tornare ad una versione precedente: l'ultima modifica è stata apportata dall'unico utente che abbia lavorato a questo articolo.",
-'revertpage'        => 'Riportata alla revisione precedente da $1', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'        => 'Riportata alla revisione precedente da [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 
 # Undelete
 'undelete'          => 'Recupera una pagina cancellata',
@@ -501,7 +501,7 @@ Scrivi un motivo specifico per il quale questo indirizzo IP dovrebbe a tuo avvis
 'badipaddress'       => "L'indirizzo IP indicato non è corretto.",
 'blockipsuccesssub'  => 'Blocco eseguito',
 'blockipsuccesstext' => ' L\'indirizzo IP "$1" è stato bloccato.
-<br />Vedi [[Special:Ipblocklist|lista IP bloccati]].',
+<br />Vedi [[Special:IPBlockList|lista IP bloccati]].',
 'unblockip'          => ' Sblocca indirizzo IP',
 'unblockiptext'      => 'Usa il modulo sottostante per restituire il diritto di scrittura ad un indirizzo IP precedentemente bloccato.',
 'ipusubmit'          => 'Sblocca questo indirizzo IP',
@@ -533,12 +533,14 @@ Per cortesia, conferma che questo è effettivamente quanto tu intendi ora effett
 'movepage'         => 'Spostamento di pagina',
 'movepagetext'     => "Con il modulo sottostante puoi rinominare una pagina, spostando anche tutta la sua cronologia al nuovo nome.
 Il vecchior titolo diverrà automaticamente un redirect che punta al nuovo titolo.
-I link alla vecchia pagina non saranno aggiornati (e punteranno quindi al redirect); accertati di [[Special:Manutenzioni|controllare con cura]] che non si creino doppi redirects o redirects interrotti.
+I link alla vecchia pagina non saranno aggiornati (e punteranno quindi al redirect);
+accertati di controllare con cura che non si creino doppi redirects o redirects interrotti.
 Resta nella tua responsabilità di accertarti che i link continuino a puntare verso dove devono dirigersi.
 
-Nota bene: la pagina '''non''' sarà spostata se vi fosse già un articolo con il nuovo nome, a meno che non sia una pagina vuota o un redirect e che non abbia cronologia. Questo significa che, se commetti un errore, puoi nuovamente rinominare una pagina col vecchio titolo, ma non puoi sovrascrivere una pagina già esistente.
+Nota bene: la pagina '''non''' sarà spostata se vi fosse già un articolo con il nuovo nome, a meno che non sia una pagina vuota o un redirect e che non abbia cronologia.
+Questo significa che, se commetti un errore, puoi nuovamente rinominare una pagina col vecchio titolo, ma non puoi sovrascrivere una pagina già esistente.
 
-<b>ATTENZIONE!</b>
+'''ATTENZIONE!'''
 Questo cambiamento drastico potrebbe creare inattesi contrattempi, specialmente se si tratta di una pagina molto visitata. Accertati di aver ben valutato le conseguenze dello spostamento, prima di procedere. Nel dubbio, contatta un Amministratore.",
 'movepagetalktext' => "La corrispondente pagina di discussione, se esiste, sarà spostata automaticamente insieme all'articolo, '''tranne che nei seguenti casi:'''
 *Spostamento della pagina fra i namespaces,

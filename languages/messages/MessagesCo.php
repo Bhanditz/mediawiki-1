@@ -1,9 +1,9 @@
 <?php
 /** Corsican (Corsu)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
- * @author SPQRobin
  */
 
 $messages = array(
@@ -127,6 +127,8 @@ $messages = array(
 'versionrequired' => 'A version $1 di MediaWiki hè necessaria',
 
 'newmessagesdifflink' => 'ultima mudifica',
+'editsection'         => 'mudificà',
+'editold'             => 'mudificà',
 'toc'                 => 'Cuntenutu',
 'showtoc'             => 'mustrà',
 'hidetoc'             => 'piattà',
@@ -163,6 +165,7 @@ $messages = array(
 'yourlanguage'               => "Lingua di l'interfaccia:",
 'yourvariant'                => 'Variante',
 'yournick'                   => 'Signatura pè e discussioni:',
+'loginsuccesstitle'          => 'Cunnessione fatta',
 'acct_creation_throttle_hit' => "Desulatu, ai digià fattu $1 registramenti. Ùn ne poi micca fà d'altri.",
 'accountcreated'             => 'Registramentu fattu',
 'accountcreatedtext'         => "U registramentu di l'utilizatore $1 hè statu fattu.",
@@ -172,14 +175,16 @@ $messages = array(
 'image_sample' => 'Esempiu.jpg',
 
 # Edit pages
+'minoredit'              => 'Mudifica minore',
 'savearticle'            => 'Arrighjistrà a pagina',
 'showdiff'               => 'Mustrà i cambiamenti',
-'anoneditwarning'        => "'''Attenzione''': ùn sè micca un utilizatore registratu, oppuru ùn ai fattu a [[Special:Userlogin|cunnessione]]. U to indirizzu IP serà registratu indu a cronolugia di ista pagina.",
+'anoneditwarning'        => "'''Attenzione''': ùn sè micca un utilizatore registratu, oppuru ùn ai fattu a cunnessione.
+U to indirizzu IP serà registratu indu a cronolugia di ista pagina.",
 'loginreqlink'           => 'cunnessione',
 'accmailtitle'           => 'Parulla secreta inviata.',
 'accmailtext'            => 'A parulla secreta per "$1" hè stata inviata à l\'indirizzu $2.',
 'editing'                => 'Mudifica di $1',
-'editinguser'            => 'Mudifica di $1',
+'editinguser'            => "Mudifica di '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'editingsection'         => 'Mudifica di $1 (sezzione)',
 'editingcomment'         => 'Mudifica di $1 (cummentu)',
 'editconflict'           => 'Cunflittu di mudificazione: $1',
@@ -197,6 +202,9 @@ $messages = array(
 'currentrev'  => 'Ultima revisione',
 'page_first'  => 'prima',
 'deletedrev'  => '[supprimatu]',
+'histfirst'   => 'Prima',
+'histlast'    => 'Ultima',
+'historysize' => '({{PLURAL:$1|1 ottettu|$1 ottetti}})',
 
 # Revision feed
 'history-feed-title' => 'Cronolugia di e revisione',
@@ -261,7 +269,7 @@ $messages = array(
 'upload'     => 'Incaricà un schedariu',
 'uploadbtn'  => 'Incaricà un schedariu',
 'filename'   => 'Nome di u schedariu',
-'filestatus' => "Statu di u dirittu d'autore",
+'filestatus' => "Statu di u dirittu d'autore:",
 
 'upload-file-error' => 'Errore internu',
 
@@ -271,10 +279,13 @@ $messages = array(
 'bydate'           => 'per data',
 'bysize'           => 'per taglia',
 'imgfile'          => 'schedariu',
+'filehist'         => "Cronolugia di l'imagine",
+'filehist-user'    => 'Utilizatore',
 'imagelinks'       => 'Ligami',
 'noimage-linktext' => 'incaricà lu',
 'imagelist_date'   => 'Data',
 'imagelist_name'   => 'Nome',
+'imagelist_user'   => 'Utilizatore',
 
 # Unused templates
 'unusedtemplateswlh' => 'altri ligami',
@@ -308,6 +319,7 @@ $messages = array(
 'version'        => 'Versione',
 
 # Special:Log
+'specialloguserlabel'  => 'Utilizatore:',
 'speciallogtitlelabel' => 'Titulu:',
 'all-logs-page'        => "Tutte l'azzioni",
 
@@ -358,6 +370,9 @@ $messages = array(
 'confirmprotect'              => 'Cunfirmà a prutezzione',
 'protect-level-autoconfirmed' => 'Bluccà i cuntributori micca arrighjistrati',
 
+# Restrictions (nouns)
+'restriction-create' => 'Creà',
+
 # Restriction levels
 'restriction-level-autoconfirmed' => 'mezu prutettu',
 
@@ -368,26 +383,30 @@ $messages = array(
 'undelete-search-submit' => 'Ricerca',
 
 # Namespace form on various pages
-'namespace' => 'Spaziu:',
+'namespace'      => 'Spaziu:',
+'blanknamespace' => '(Principale)',
 
 # Contributions
 'contributions' => "Cuntribuzioni di l'utilizatore",
 'mycontris'     => 'E mo cuntribuzioni',
 'contribsub2'   => 'Per $1 ($2)',
+'month'         => 'Da u mese (è nanzu):',
 
 # What links here
 'istemplate' => 'inclusione',
 
 # Block/unblock
-'ipaddress'          => 'Adrizzu IP',
-'ipadressorusername' => 'Adrizzu IP o nome di cuntributore',
-'ipblocklist-submit' => 'Ricerca',
-'blocklistline'      => '$1, $2 bluccati $3 ($4)',
-'anononlyblock'      => 'solu i cuntributori anonimi',
-'blocklink'          => 'bluccà',
-'unblocklink'        => 'sbluccà',
-'contribslink'       => 'cuntribuzioni',
-'proxyblocksuccess'  => 'Hè fattu.',
+'ipaddress'                => 'Adrizzu IP',
+'ipadressorusername'       => 'Adrizzu IP o nome di cuntributore',
+'ipblocklist-submit'       => 'Ricerca',
+'blocklistline'            => '$1, $2 bluccati $3 ($4)',
+'anononlyblock'            => 'solu i cuntributori anonimi',
+'blocklink'                => 'bluccà',
+'unblocklink'              => 'sbluccà',
+'contribslink'             => 'cuntribuzioni',
+'block-log-flags-anononly' => 'solu cuntributori anonimi',
+'block-log-flags-nocreate' => 'registramentu pruibitu',
+'proxyblocksuccess'        => 'Hè fattu.',
 
 # Move page
 'movepage'                => 'Move a pagina',
@@ -397,6 +416,7 @@ $messages = array(
 'movedto'                 => 'mossu à',
 '1movedto2'               => 'hà mossu [[$1]] à [[$2]]',
 '1movedto2_redir'         => 'hà reindirizzatu [[$1]] à [[$2]]',
+'movelogpagetext'         => 'Elencu di e pagine mosse.',
 'movereason'              => 'Mutivu',
 'delete_and_move_confirm' => 'Iè, supprimà issa pagina',
 
@@ -474,6 +494,7 @@ $messages = array(
 # 'all' in various places, this might be different for inflected languages
 'imagelistall'  => 'tutte',
 'watchlistall2' => 'tutti',
+'monthsall'     => 'tutti',
 
 # action=purge
 'confirm_purge_button' => "D'accordu",

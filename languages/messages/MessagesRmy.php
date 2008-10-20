@@ -1,13 +1,10 @@
 <?php
 /** Romani (Romani)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
- * @author Niklas Laxström
- * @author G - ג
  * @author Desiphral
- * @author Siebrand
- * @author Nike
  * @author לערי ריינהארט
  */
 
@@ -116,7 +113,7 @@ $messages = array(
 'viewtalkpage'     => 'Dikh i diskucia',
 'otherlanguages'   => 'Avre ćhibande',
 'lastmodifiedat'   => 'O palutno paruvipen $2, $1.', # $1 date, $2 time
-'viewcount'        => 'Kadaya patrin dikhlilyas {{plural:$1|one time|$1var}}.',
+'viewcount'        => 'Kadaya patrin dikhlilyas {{PLURAL:$1|one time|$1var}}.',
 'jumpto'           => 'Ja kai:',
 'jumptonavigation' => 'phiripen',
 'jumptosearch'     => 'rodipen',
@@ -160,7 +157,7 @@ $messages = array(
 'nstab-category'  => 'Shopni',
 
 # Main script and global functions
-'nospecialpagetext' => 'Manglyas ekh [[Special:Specialpages|uzalutni patrin]] so na arakhel pes kai {{SITENAME}}.',
+'nospecialpagetext' => 'Manglyas ekh [[Special:SpecialPages|uzalutni patrin]] so na arakhel pes kai {{SITENAME}}.',
 
 # General errors
 'wrong_wfQuery_params' => 'Doshalo gin le parametrengo ko wfQuery()<br />I function: $1<br />Query: $2',
@@ -229,10 +226,10 @@ Mishto si te jas kai {{SITENAME}} thai te paruves tiro lav sigo.',
 'showpreview'        => 'Dikh sar avelas i patrin',
 'showlivepreview'    => 'Jivutno angledikhipen',
 'showdiff'           => 'Dikh le paruvimata',
-'whitelistedittitle' => 'Trebul o [[Special:Userlogin|autentifikaripen]] kashte editisares',
-'whitelistedittext'  => 'Trebul te [[Special:Userlogin|autentifikisares]] kashte editisares artikolurya.',
+'whitelistedittitle' => 'Trebul o autentifikaripen kashte editisares',
+'whitelistedittext'  => 'Trebul te [[Special:UserLogin|autentifikisares]] kashte editisares artikolurya.',
 'whitelistreadtitle' => 'Trebul o autentifikaripen kashte drabares',
-'whitelistreadtext'  => 'Trebul te [[Special:Userlogin|autentifikisares]] kashte drabares artikolurya.',
+'whitelistreadtext'  => 'Trebul te [[Special:UserLogin|autentifikisares]] kashte drabares artikolurya.',
 'whitelistacctitle'  => 'Chi shai (nai tuke xakaya) te keres konturya',
 'accmailtitle'       => 'O nakhavipnasko lav bićhaldo.',
 'accmailtext'        => "O nakhavipnasko lav andar '$1' bićhaldo ko $2.",
@@ -243,7 +240,7 @@ Kana avilyan kathe doshatar, ja palpale.',
 'noarticletext'      => "Andi '''{{SITENAME}}''' nai ji akana ek lekh kadale anavesa.
 * Te shirdes (astares) te keres o lekh, ker klik  '''[{{fullurl:{{FULLPAGENAME}}|action=edit}} kathe]'''.",
 'editing'            => 'Editisaripen $1',
-'editinguser'        => 'Editisaripen $1',
+'editinguser'        => "Editisaripen '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'yourtext'           => 'Tiro teksto',
 'storedversion'      => 'Akanutni versiya',
 'yourdiff'           => 'Ververimata',
@@ -322,7 +319,7 @@ Kana avilyan kathe doshatar, ja palpale.',
 'recentchanges'                     => 'Neve paruvimata',
 'recentchangestext'                 => 'Andi kadaya patrin shai te dikhes le neve paruvimata andi romani {{SITENAME}}.',
 'rcnote'                            => 'Tele si le palutne <strong>$1</strong> paruvimata andar le palutne <strong>$2</strong> divesa.',
-'rcnotefrom'                        => 'Tele si le averutnimata katar <b>$2</b> (inklen <b>$1</b> averutnimata, shai te paruves o gin alosarindoi aver tele).',
+'rcnotefrom'                        => "Tele si le averutnimata katar '''$2''' (inklen '''$1''' averutnimata, shai te paruves o gin alosarindoi aver tele).",
 'rclistfrom'                        => 'Dikh le paruvimata ji kai $1',
 'rcshowhideminor'                   => '$1 tikne editisaripena',
 'rcshowhidebots'                    => '$1 (ro)boturya',
@@ -402,7 +399,7 @@ Mashkar lende <b>$2</b> si administratorurya (dikh $3).',
 'mywatchlist'      => 'Dikhipnaske lekha',
 'addedwatch'       => 'Thovdi ando patrinipen le patrinyange so arakhav len',
 'addedwatchtext'   => 'I patrin "[[:$1]]" sas thovdi andi tiri lista [[Special:Watchlist|le artikolengi so dikhes len]].
-Le neve paruvimata andar kadale patrya thai andar lenge vakyarimatenge patrya thona kathe, vi dikhena pen le <b>thule semnurenca</b> andi patrin le [[Special:Recentchanges|neve paruvimatenge]].
+Le neve paruvimata andar kadale patrya thai andar lenge vakyarimatenge patrya thona kathe, vi dikhena pen le <b>thule semnurenca</b> andi patrin le [[Special:RecentChanges|neve paruvimatenge]].
 
 Kana kamesa te khoses kadaya patrin andar tiri lista le patryange so arakhes len ker click kai "Na mai arakh" (opre, kana i patrin dikhel pes).',
 'removedwatchtext' => 'I patrin "[[:$1]]" sas khosli katar o patrinipen le dikhipnaske lekhenca (artikolurya).',

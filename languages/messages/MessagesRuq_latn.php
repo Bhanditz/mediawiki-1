@@ -1,11 +1,12 @@
 <?php
 /** Megleno-Romanian (Latin) (Vlăheşte (Latin))
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
- * @author Макѕе
  * @author Кумулај Маркус
- * @author Siebrand
+ * @author Макѕе
+ * @author Приетен тев
  */
 
 $fallback = 'ro';
@@ -86,6 +87,7 @@ $messages = array(
 'talk'             => 'Diskuţu',
 'views'            => 'Vi',
 'toolbox'          => 'alatunikul',
+'redirectedfrom'   => '(Redirecţionat de la $1)',
 'jumpto'           => 'Lia a:',
 'jumptonavigation' => 'navigacion',
 'jumptosearch'     => 'kaută',
@@ -152,26 +154,32 @@ $messages = array(
 'math_tip'        => "Formula s'matematiks (LaTeX)",
 'nowiki_sample'   => 'Intorduca no-Wiki isi',
 'nowiki_tip'      => 'No-Wiki klaşu',
-'image_tip'       => 'Santigul',
+'image_tip'       => 'Santigul inserat',
 'media_tip'       => 'Legătul fişirul de media',
 'sig_tip'         => 'Utilizatorunom et data et temp',
 'hr_tip'          => 'Linia orizontala (esnidivale)',
 
 # Edit pages
 'summary'                => 'Sumar',
+'subject'                => 'Subjekt / titlur',
+'minoredit'              => 'Aceasta este o editare minoră',
 'watchthis'              => 'klăaere ce pažu',
+'showpreview'            => 'Rată previzualizare',
 'showdiff'               => 'Arată şumbărae',
 'newarticle'             => '(Nova)',
 'editing'                => 'o $1 editaere',
 'editingsection'         => 'Editaere $1 (sekcion)',
+'copyrightwarning'       => '<!-- Gol deocamdată. Vertismentul se flă en MediaWiki:Summary -->
+Te rog notari la din kontribuţi al {{SITENAME}} sunt konsideraere relesavat supra $2 (suah $1 din detăs). Açteu nesav te se teksti sunt editaere denomerci det redistributaere din vent, hatae ici.<br /> Tu este nostre promisaere bonti us tu skrirste ce se, nega kopiaere din publik domen nega similari resorsua. <strong>NE SUBMITE KOPILEGRU SKRIE SAS PERMIŢION!</strong>',
 'template-protected'     => '(ažatmat)',
 'template-semiprotected' => '(semi-ažatmat)',
 
 # History pages
-'currentrev'   => 'Vercion kurentu',
-'revisionasof' => 'Vercion de data $1',
-'cur'          => 'aktualu',
-'last'         => 'precedente',
+'currentrev'       => 'Vercion kurentu',
+'revisionasof'     => 'Vercion de data $1',
+'previousrevision' => '←Versiunea nterioară',
+'cur'              => 'aktualu',
+'last'             => 'precedente',
 
 # Diffs
 'history-title'           => 'Editaerehistoria pentru "$1"',
@@ -182,17 +190,20 @@ $messages = array(
 # Search results
 'noexactmatch' => "'''N'pažu vec l'nom \"\$1\" n'ķsistst.''' Pute [[:\$1|kreare ce pažu]].",
 'viewprevnext' => 'Vu ($1) ($2) ($3)',
-'powersearch'  => 'kaută',
+'powersearch'  => 'kaută avansata',
 
 # Preferences page
 'mypreferences' => 'Maj prefirenţu',
 
 # Recent changes
 'recentchanges'   => 'şumbărae recentae',
+'rcshowhideminor' => '$1 modifikările minore',
 'rcshowhidebots'  => '$1 roboti',
 'rcshowhideliu'   => '$1 utilizatori prilasnaeri',
 'rcshowhideanons' => '$1 utilizatori anonimi',
 'rcshowhidemine'  => '$1 mes modifikacions',
+'rclinks'         => 'Rată ultimele $1 modifikări din ultimele $2 zile.<br />
+$3',
 'diff'            => 'diferenţu',
 'hist'            => 'historia',
 'hide'            => 'askunde',
@@ -200,6 +211,9 @@ $messages = array(
 'minoreditletter' => 'm',
 'newpageletter'   => 'N',
 'boteditletter'   => 'b',
+
+# Recent changes linked
+'recentchangeslinked' => 'Modifikări korelate',
 
 # Upload
 'upload' => 'trimiţe fişirul',
@@ -224,6 +238,9 @@ $messages = array(
 'specialpages' => 'Paži specalus',
 'newpages'     => 'Paži novi',
 
+# Book sources
+'booksources' => 'Surse de cărţi',
+
 'alphaindexline' => '$1 vo $2',
 
 # Special:Allpages
@@ -246,6 +263,7 @@ $messages = array(
 'rollbacklink'   => 'revenire',
 
 # Namespace form on various pages
+'namespace'      => 'lSpaţi:',
 'invert'         => 'Ķskluda spaţul',
 'blanknamespace' => '(Principu)',
 
@@ -281,24 +299,32 @@ $messages = array(
 'tooltip-pt-userpage'       => "Moj pažu d'utilizatoru",
 'tooltip-pt-mytalk'         => 'Maj pažu diskuţus',
 'tooltip-pt-preferences'    => 'Maj prefirenţu',
+'tooltip-pt-watchlist'      => 'Lista pažinilor pe care le monitorizez.',
 'tooltip-pt-mycontris'      => 'Lista de mes kontribucions',
 'tooltip-pt-login'          => "Pute prilasnaere, ne l'est doist.",
 'tooltip-pt-logout'         => 'otlastaere',
+'tooltip-ca-talk'           => 'Diskuţie despre artikol',
+'tooltip-ca-edit'           => 'Poţi edita această pažină. Te rugăm se previzualizezi konţinutul enainte de salvare.',
 'tooltip-ca-protect'        => 'Ažatme ce pažu',
 'tooltip-ca-delete'         => 'Delăre ce pažu',
 'tooltip-search'            => 'Kaută en {{SITENAME}}',
 'tooltip-n-mainpage'        => "Visita l'pažu principu",
 'tooltip-n-portal'          => "Dajpul l'projectu, quelques pote faraere, o truves sabi.",
+'tooltip-n-currentevents'   => 'Găseşte informaţii despre evenimentiķ kurente',
 'tooltip-n-recentchanges'   => "Lista des şumbǎrae recentae en l'wiki.",
+'tooltip-n-randompage'      => 'Donare npažu alaetoare',
 'tooltip-n-help'            => 'Ajutor truves isi.',
 'tooltip-n-sitesupport'     => 'Supora-nostre',
+'tooltip-t-whatlinkshere'   => 'Lista tuturor pažinilor wiki care konduc spre această pažină',
 'tooltip-t-contributions'   => "Vu lista de kontribuţi de c'utilizatoru",
+'tooltip-t-upload'          => 'Tremer fişirul',
 'tooltip-t-specialpages'    => 'Lista de toat paži specialus',
 'tooltip-ca-nstab-user'     => "Vu l'pažu d'utilizatoru",
 'tooltip-ca-nstab-project'  => "Vu l'pažu de projektu",
 'tooltip-ca-nstab-category' => "Vu l'pažu de kategoria",
 'tooltip-minoredit'         => "ce-est n'modifikacion minoru",
 'tooltip-save'              => 'Salvaere tes modifikacions',
+'tooltip-diff'              => 'Rată ce modifikări ai făcut tekstului.',
 
 # Spam protection
 'listingcontinuesabbrev' => 'kontinu',
@@ -306,6 +332,15 @@ $messages = array(
 # Media information
 'file-nohires'   => "<small>Ce-n-est n'resolucion mai mari.</small>",
 'show-big-image' => 'Mareşte resolucion',
+
+# Bad image list
+'bad_image_list' => 'Formatul este următorul:
+
+Numai elementîle unei liste sunt luate en consideraere. (Açestea sunt linii ce encep cu *)
+
+Prima legătură de pe linie trebuie se fie spre un fişier defectuos.
+
+Orice legături ce urmează pe acenaşi linie sunt consideraete excepţii, dică paži unde fişierul poate părea inclus direct.',
 
 # Metadata
 'metadata' => 'Metadata',

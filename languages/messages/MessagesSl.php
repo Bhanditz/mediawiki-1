@@ -1,7 +1,8 @@
 <?php
 /** Slovenian (Slovenščina)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author XJamRastafire
  * @author romanm
@@ -145,7 +146,7 @@ $messages = array(
 
 # Bits of text used by many pages
 'categories'      => 'Kategorije',
-'pagecategories'  => '{{plural:$1|Kategorija|Kategoriji|Kategorije|Kategorije|Kategorije}}',
+'pagecategories'  => '{{PLURAL:$1|Kategorija|Kategoriji|Kategorije|Kategorije|Kategorije}}',
 'category_header' => 'Strani v kategoriji »$1«',
 'subcategories'   => 'Podkategorije',
 
@@ -193,7 +194,7 @@ in [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Uporabniški priroč
 'editthispage'      => 'Uredi stran',
 'delete'            => 'Briši',
 'deletethispage'    => 'Briši stran',
-'undelete_short'    => 'Vrni $1 {{plural:$1|izbrisano urejanje|izbrisani urejanji|izbrisana urejanja|izbrisanih urejanj|izbrisanih urejanj}}',
+'undelete_short'    => 'Vrni $1 {{PLURAL:$1|izbrisano urejanje|izbrisani urejanji|izbrisana urejanja|izbrisanih urejanj|izbrisanih urejanj}}',
 'protect'           => 'Zaščiti',
 'protectthispage'   => 'Zaščiti stran',
 'unprotect'         => 'Odstrani zaščito',
@@ -210,7 +211,7 @@ in [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Uporabniški priroč
 'userpage'          => 'Prikaži uporabnikovo stran',
 'projectpage'       => 'Prikaži projektno stran',
 'imagepage'         => 'Prikaže stran z datoteko',
-'viewtalkpage'      => '&lt; Pogovor',
+'viewtalkpage'      => '< Pogovor',
 'otherlanguages'    => 'V drugih jezikih',
 'redirectedfrom'    => '(Preusmerjeno z $1)',
 'redirectpagesub'   => 'Preusmeritvena stran',
@@ -264,7 +265,7 @@ in [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Uporabniški priroč
 'hidetoc'                 => 'skrij',
 'thisisdeleted'           => 'Prikažem ali vrnem $1?',
 'viewdeleted'             => 'Prikažem $1?',
-'restorelink'             => '$1 {{plural:$1|izbrisana redakcija|izbrisani redakciji|izbrisane redakcije|izbrisanih redakcij|izbrisanih redakcij}}',
+'restorelink'             => '$1 {{PLURAL:$1|izbrisana redakcija|izbrisani redakciji|izbrisane redakcije|izbrisanih redakcij|izbrisanih redakcij}}',
 'feedlinks'               => 'Podajanje:',
 'feed-invalid'            => 'Neveljavna vrsta naročniškega dovoda.',
 
@@ -284,7 +285,7 @@ in [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Uporabniški priroč
 'nosuchaction'      => 'Tako dejanje ne obstaja',
 'nosuchactiontext'  => 'Dejanja, ki ga je označil spletni naslov, wiki ne prepozna.',
 'nosuchspecialpage' => 'Posebna stran, ki ste jo zahtevali, ne obstaja',
-'nospecialpagetext' => 'Posebne strani, ki ste jo zahtevali, programje {{GRAMMAR:rodilnik|{{SITENAME}}}} ne prepozna ali pa nimate dostopa do nje. Seznam vseh prepoznanih posebnih strani je na razpolago na strani [[Special:Specialpages]].',
+'nospecialpagetext' => 'Posebne strani, ki ste jo zahtevali, programje {{GRAMMAR:rodilnik|{{SITENAME}}}} ne prepozna ali pa nimate dostopa do nje. Seznam vseh prepoznanih posebnih strani je na razpolago na strani [[Special:SpecialPages]].',
 
 # General errors
 'error'                => 'Napaka',
@@ -318,8 +319,8 @@ Kadar to ni tako, ste morda odkrili hrošč v programju. Prosimo, obvestite kate
 'badarticleerror'      => 'Na tej strani dejanja ne morem izvesti. Morda je bila stran med predložitvijo vaše zahteve že izbrisana.',
 'cannotdelete'         => 'Navedene strani ali datoteke ni mogoče izbrisati. Morda jo je izbrisal že kdo drug.',
 'badtitle'             => 'Nepravilen naslov',
-'badtitletext'         => 'Navedeni naslov strani je neveljaven, prazen, napačno povezan k drugim jezikom oziroma wikiprojektom ali pa vsebuje [[Project:Dogovori o poimenovanjih#Previdno s posebnimi znaki|nepodprte znake]].',
-'perfdisabled'         => 'Naveden je shranjeni prepis $1:',
+'badtitletext'         => 'Navedeni naslov strani je neveljaven, prazen, napačno povezan k drugim jezikom oziroma wikiprojektom ali pa vsebuje nepodprte znake.',
+'perfdisabled'         => 'Naveden je shranjeni prepis.',
 'perfcached'           => 'Navedeni podatki morda niso popolnoma posodobljeni.',
 'perfcachedts'         => 'Prikazani podatki so shranjeni v predpomnilniku. Čas zadnje osvežitve: $1.',
 'wrong_wfQuery_params' => 'Nepravilni parametri za wfQuery()<br />
@@ -328,15 +329,17 @@ Iskanje: $2',
 'viewsource'           => 'Izvorno besedilo',
 'viewsourcefor'        => 'za $1',
 'protectedinterface'   => 'Prikazana stran vsebuje besedilo ali drug element uporabniškega vmesnika programja. Zaradi preprečevanja zlorabe je zaščitena.',
-'editinginterface'     => "'''Opozorilo:''' Urejate stran, ki vsebuje besedilo ali drug element uporabniškega vmesnika programja. Spremembe te strani bodo vplivale na podobo uporabniškega vmesnika. To stran lahko urejajo le [[{{MediaWiki:Grouppage-sysop}}|administratorji]]. Prosimo, da pri spremembah upoštevate soglasje občestva.",
+'editinginterface'     => "'''Opozorilo:''' Urejate stran, ki vsebuje besedilo ali drug element uporabniškega vmesnika programja.
+Spremembe te strani bodo vplivale na podobo uporabniškega vmesnika.
+For translations, please consider using [http://translatewiki.net/wiki/Main_Page?setlang=en Betawiki], the MediaWiki localisation project.",
 'sqlhidden'            => '(SQL-poizvedovanje je skrito)',
 
 # Login and logout pages
 'logouttitle'                => 'Odjava uporabnika',
 'logouttext'                 => 'Odjavili ste se. {{GRAMMAR:tožilnik|{{SITENAME}}}} lahko zdaj uporabljate neprijavljeni ali pa se ponovno prijavite. Morda bodo nekatere strani še naprej prikazane, kot da ste prijavljeni. To lahko popravite z izpraznitvijo predpomnilnika.',
 'welcomecreation'            => '== Dobrodošli, $1! ==
-
-Ustvarili ste račun. Če želite, si lahko prilagodite [[Special:Preferences|nastavitve]] za delo v {{GRAMMAR:dajalnik|{{SITENAME}}}}. Želimo vam uspešno sodelovanje!',
+Ustvarili ste račun.
+Če želite, si lahko prilagodite nastavitve za delo v {{GRAMMAR:dajalnik|{{SITENAME}}}}.',
 'loginpagetitle'             => 'Prijava uporabnika',
 'yourname'                   => 'Uporabniško ime',
 'yourpassword'               => 'Geslo',
@@ -365,7 +368,7 @@ Ustvarili ste račun. Če želite, si lahko prilagodite [[Special:Preferences|na
 'yourrealname'               => 'Vaše pravo ime*',
 'yourlanguage'               => 'Jezik vmesnika:',
 'yourvariant'                => 'Jezikovna različica',
-'yournick'                   => 'Podpis (uporabite ~~~~):',
+'yournick'                   => 'Podpis',
 'badsig'                     => 'Neveljaven surovi podpis; preverite oznake HTML.',
 'email'                      => 'E-pošta',
 'prefs-help-realname'        => '<!-- ¹ Pravo ime (neobvezno): če se odločite, da ga boste navedli, bo uporabljeno za priznavanje vašega dela. -->',
@@ -395,7 +398,7 @@ Z njim se lahko prijavite in ga spremenite.
 'passwordsent'               => 'Na naslov elektronske pošte, vpisane za "$1", smo poslali novo geslo. Ko ga boste prejeli, se lahko ponovno prijavite.',
 'eauthentsent'               => 'E-sporočilo je poslano na navedeni e-naslov. Če želite tja poslati še katero, po v omenjenem sporočilu navedenih navodilih potrdite lastništvo naslova.',
 'mailerror'                  => 'Napaka pri pošiljanju pošte: $1',
-'acct_creation_throttle_hit' => 'Obiskovalci {{GRAMMAR:rodilnik|{{SITENAME}}}} so s tem [[IP-naslov]]om v zadnjih 24 urah ustvarili že $1 {{plural:$1|uporabniški račun|uporabniška računa|uporabniške račune|uporabniških računov|uporabniških računov}} in s tem dosegli največje dopustno število v omenjenem časovnem obdobju. Novih računov zato s tem IP-naslovom trenutno žal ne morete več ustvariti.
+'acct_creation_throttle_hit' => 'Obiskovalci {{GRAMMAR:rodilnik|{{SITENAME}}}} so s tem [[IP-naslov]]om v zadnjih 24 urah ustvarili že $1 {{PLURAL:$1|uporabniški račun|uporabniška računa|uporabniške račune|uporabniških računov|uporabniških računov}} in s tem dosegli največje dopustno število v omenjenem časovnem obdobju. Novih računov zato s tem IP-naslovom trenutno žal ne morete več ustvariti.
 
 == Urejate prek posredniškega strežnika? ==
 
@@ -416,7 +419,7 @@ možnosti se e-pošte ne bo pošiljalo.',
 'italic_tip'      => 'Ležeče besedilo',
 'link_sample'     => 'Naslov povezave',
 'link_tip'        => 'Notranja povezava',
-'extlink_sample'  => 'http://www.zgled.com naslov povezave',
+'extlink_sample'  => 'http://www.example.com naslov povezave',
 'extlink_tip'     => 'Zunanja povezava (ne pozabite na predpono http://)',
 'headline_sample' => 'Besedilo naslovne vrstice',
 'headline_tip'    => 'Naslovna vrstica druge ravni',
@@ -472,7 +475,7 @@ Vaš IP-naslov je $3. Prosimo, vključite ga v vse morebitne poizvedbe.",
 Da bi stran ustvarili, vnesite v spodnji obrazec besedilo
 (za več informacij glej [[{{MediaWiki:Helppage}}|pomoč]]).
 Če ste sem prišli po pomoti, v svojem brskalniku kliknite gumb ''Nazaj''.",
-'anontalkpagetext'          => "---- ''To je pogovorna stran za nepodpisanega uporabnika, ki še ni ustvaril računa ali, ki ga ne uporablja. Zaradi tega moramo uporabiti števčen IP address za njegovo/njeno ugotavljanje istovetnosti. Takšen IP naslov si lahko deli več uporabnikov. Če ste nepodpisan uporabnik in če menite, da so nepomembne pripombe namenjene vam, prosimo [[Special:Userlogin|ustvarite račun ali pa se vpišite]], da preprečite naslednje zmede z drugimi nepodpisanimi uporabniki.''",
+'anontalkpagetext'          => "---- ''To je pogovorna stran za nepodpisanega uporabnika, ki še ni ustvaril računa ali, ki ga ne uporablja. Zaradi tega moramo uporabiti števčen IP address za njegovo/njeno ugotavljanje istovetnosti. Takšen IP naslov si lahko deli več uporabnikov. Če ste nepodpisan uporabnik in če menite, da so nepomembne pripombe namenjene vam, prosimo [[Special:UserLogin|ustvarite račun ali pa se vpišite]], da preprečite naslednje zmede z drugimi nepodpisanimi uporabniki.''",
 'noarticletext'             => 'Na tej strani ni trenutno nobenega besedila. Naslov strani lahko poskusite [[Special:Search/{{PAGENAME}}|poiskati]] na drugih straneh ali pa [{{fullurl:{{FULLPAGENAME}}|action=edit}} stran uredite].',
 'clearyourcache'            => "'''Opomba:''' Da bodo spremembe prišle do veljave, po shranitvi izpraznite predpomnilnik svojega brskalnika: '''Mozilla/Safari:''' držite ''Shift'' in kliknite ''Reload'' (ali pritisnite ''Ctrl-Shift-R''), '''Internet Explorer:''' ''Ctrl-F5'', '''Opera/Konqueror:''' ''F5''.",
 'usercssjsyoucanpreview'    => "<strong>Nasvet:</strong> Za preizkušanje svojega novega CSS/JS pred shranjevanjem uporabite gumb ''Prikaži predogled''.",
@@ -490,7 +493,7 @@ Da bi stran ustvarili, vnesite v spodnji obrazec besedilo
 
 <strong>Če gre za dobronameren poskus urejanja, vas prosimo, da poskusite znova. Če bo spet prišlo do napake, se odjavite in ponovno prijavite. Za nevšečnosti se opravičujemo.</strong>",
 'editing'                   => 'Urejanje $1',
-'editinguser'               => 'Urejanje $1',
+'editinguser'               => "Urejanje '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'editingsection'            => 'Urejanje $1 (razdelek)',
 'editingcomment'            => 'Urejanje $1 (pripomba)',
 'editconflict'              => 'Navzkrižje urejanj: $1',
@@ -498,7 +501,8 @@ Da bi stran ustvarili, vnesite v spodnji obrazec besedilo
 'yourtext'                  => 'Vaše besedilo',
 'storedversion'             => 'Shranjena različica',
 'nonunicodebrowser'         => '<strong>OPOMBA</strong>: Vaš brskalnik ne podpira Unicode, zato boste pri urejanju strani z nelatiničnimi znaki morda imeli težave. Za obhod te težave se bodo <strong>ne-ASCII-znaki v urejevalnem polju spodaj pojavili kot šestnajstiške kode</strong>.',
-'editingold'                => 'Urejate staro redakcijo strani. Če jo boste shranili, bodo vse poznejše spremembe [[Help:Vračanje|razveljavljene]].',
+'editingold'                => '<strong>Urejate staro redakcijo strani.
+Če jo boste shranili, bodo vse poznejše spremembe razveljavljene.</strong>',
 'yourdiff'                  => 'Primerjava',
 'copyrightwarning'          => 'Vsi prispevki k {{GRAMMAR:dajalnik|{{SITENAME}}}} se obravnavajo kot objave pod pogoji $2 (za podrobnosti glej $1). Če niste pripravljeni na neusmiljeno urejanje in prosto razširjanje vašega gradiva, ga ne prispevajte.
 
@@ -508,15 +512,15 @@ Poleg tega zagotavljate, da ste prispevke napisali oziroma ustvarili sami ali pa
 
 Poleg tega zagotavljate, da ste prispevke napisali oziroma ustvarili sami ali pa prepisali iz javno dostopnega ali podobnega prostega vira oziroma da pri tem ne kršite avtorskih pravic ($1).
 <strong>NE DODAJAJTE AVTORSKO ZAŠČITENEGA DELA BREZ DOVOLJENJA !</strong>',
-'longpagewarning'           => 'Stran je dolga $1 {{plural:$1|kilobajt|kilobajta|kilobajte|kilobajtov|kilobajtov}}. To je morda več, kot bi želeli, zato premislite o razdelitvi na podstrani oziroma arhiviranju.',
-'longpageerror'             => '<strong>NAPAKA: Predloženo besedilo je dolgo $1 {{plural:$1|kilobajt|kilobajta|kilobajte|kilobajtov|kilobajtov}}, s čimer presega največjo dovoljeno dolžino $2 {{plural:$2|kilobajta|kilobajtov|kilobajtov|kilobajtov|kilobajtov}}. Zato ga žal ni mogoče shraniti.</strong>',
+'longpagewarning'           => 'Stran je dolga $1 {{PLURAL:$1|kilobajt|kilobajta|kilobajte|kilobajtov|kilobajtov}}. To je morda več, kot bi želeli, zato premislite o razdelitvi na podstrani oziroma arhiviranju.',
+'longpageerror'             => '<strong>NAPAKA: Predloženo besedilo je dolgo $1 {{PLURAL:$1|kilobajt|kilobajta|kilobajte|kilobajtov|kilobajtov}}, s čimer presega največjo dovoljeno dolžino $2 {{PLURAL:$2|kilobajta|kilobajtov|kilobajtov|kilobajtov|kilobajtov}}. Zato ga žal ni mogoče shraniti.</strong>',
 'readonlywarning'           => '<strong>OPOZORILO: Zbirka podatkov je zaradi vzdrževanja začasno  zaklenjena, kar pomeni, da sprememb ne morete shraniti. Prosimo, prenesite besedilo v urejevalnik in ga dodajte pozneje.</strong>',
 'protectedpagewarning'      => '<strong>OPOMBA:</strong> Stran je zaklenjena in jo lahko urejajo le sodelavci z vzdrževalnimi pravicami. Pri urejanju sledite [[Project:Smernice_zaščitenih_strani|smernicam zaščitenih strani]].',
 'semiprotectedpagewarning'  => "'''Opomba:''' Stran je [[Project:Delna zaščita|zaščitena]] in jo lahko urejajo le uveljavljeni uporabniki.",
 'templatesused'             => 'Na strani uporabljene predloge:',
 'edittools'                 => '<!-- To besedilo bo prikazano pod urejevalnim poljem in poljem za nalaganje. -->',
 'nocreatetitle'             => 'Članka nisem našel',
-'nocreatetext'              => "Članka s tem naslovom - '''{{PAGENAME}}''' - še nimamo, lahko pa ga [[Special:Search/{{PAGENAME}}|poskusite poiskati]] ali pa se [[Special:Userlogin|prijavite]] in ga ustvarite.",
+'nocreatetext'              => "Članka s tem naslovom - '''{{PAGENAME}}''' - še nimamo, lahko pa ga [[Special:Search/{{PAGENAME}}|poskusite poiskati]] ali pa se [[Special:UserLogin|prijavite]] in ga ustvarite.",
 
 # History pages
 'nohistory'           => 'Stran nima zgodovine urejanja.',
@@ -585,11 +589,11 @@ Do skrite vsebine bodo še vedno lahko dostopali drugi administratorji in jo z u
 'notitlematches'        => 'Iskanih besed ne vsebuje noben naslov članka',
 'textmatches'           => 'Ujemanje z besedilom članka',
 'notextmatches'         => 'Iskanih besed ne vsebuje nobeno besedilo članka',
-'prevn'                 => '{{plural:$1|prejšnja|prejšnji|prejšnje|prejšnjih|prejšnjih}} $1',
-'nextn'                 => '{{plural:$1|naslednja|naslednji|naslednjih|naslednjih|naslednjih}} $1',
+'prevn'                 => '{{PLURAL:$1|prejšnja|prejšnji|prejšnje|prejšnjih|prejšnjih}} $1',
+'nextn'                 => '{{PLURAL:$1|naslednja|naslednji|naslednjih|naslednjih|naslednjih}} $1',
 'viewprevnext'          => 'Prikazujem ($1) ($2) ($3).',
-'showingresults'        => 'Prikazujem <strong>$1</strong> {{plural:$1|zadetek|zadetka|zadetke|zadetkov|zadetkov}}, začenši s št. <strong>$2</strong>.',
-'showingresultsnum'     => "Prikazujem '''$3''' {{plural:$1|zadetek|zadetka|zadetke|zadetkov|zadetkov}}, začenši s št. '''$2'''.",
+'showingresults'        => 'Prikazujem <strong>$1</strong> {{PLURAL:$1|zadetek|zadetka|zadetke|zadetkov|zadetkov}}, začenši s št. <strong>$2</strong>.',
+'showingresultsnum'     => "Prikazujem '''$3''' {{PLURAL:$1|zadetek|zadetka|zadetke|zadetkov|zadetkov}}, začenši s št. '''$2'''.",
 'nonefound'             => "'''Opomba''': neuspešna poizvedovanja so pogosta ob iskanju vsakdanjih besed, na primer ''imeti'' in ''iz'', ki jih ni na seznamu. Ker gre za zelo pogoste besede, boste skoraj zagotovo iskali uspešneje z zožitvijo tematskega področja.",
 'powersearch'           => 'Iskanje',
 'powersearchtext'       => '
@@ -601,7 +605,7 @@ $2 Seznam se preusmerja   Iskanje za $3 $9',
 # Preferences page
 'preferences'              => 'Nastavitve',
 'prefsnologin'             => 'Niste prijavljeni',
-'prefsnologintext'         => 'Za spreminjanje uporabniških nastavitev se [[Special:Userlogin|prijavite]].',
+'prefsnologintext'         => 'Za spreminjanje uporabniških nastavitev se [[Special:UserLogin|prijavite]].',
 'prefsreset'               => 'Nastavitve so ponastavljene.',
 'qbsettings'               => 'Nastavitve hitre vrstice',
 'qbsettings-none'          => 'Brez',
@@ -698,12 +702,12 @@ Neoznačene skupine ne bodo spremenjene. Skupino lahko odznačite z levim klikom
 'rcshowhideanons'                   => '$1 brezimne uporabnike',
 'rcshowhidepatr'                    => '$1 pregledana urejanja',
 'rcshowhidemine'                    => '$1 moja urejanja',
-'rclinks'                           => 'Prikaži {{plural:$1|zadnjo|zadnji|zadnje|zadnjih|zadnjih}} $1 {{plural:$1|spremembo|spremembi|spremembe|sprememb|sprememb}} v {{plural:$2|zadnjem $2 dnevu|zadnjih $2 dneh|zadnjih $2 dneh|zadnjih $2 dneh|zadnjih $2 dneh}};<br />$3',
+'rclinks'                           => 'Prikaži {{PLURAL:$1|zadnjo|zadnji|zadnje|zadnjih|zadnjih}} $1 {{PLURAL:$1|spremembo|spremembi|spremembe|sprememb|sprememb}} v {{PLURAL:$2|zadnjem $2 dnevu|zadnjih $2 dneh|zadnjih $2 dneh|zadnjih $2 dneh|zadnjih $2 dneh}};<br />$3',
 'diff'                              => 'prim',
 'hist'                              => 'zgod',
 'hide'                              => 'skrij',
 'show'                              => 'prikaži',
-'number_of_watching_users_pageview' => '[temo {{plural:$1|spremlja|spremljata|spremljajo|spremlja|spremlja}} $1 {{plural:$1|uporabnik|uporabnika|uporabniki|uporabnikov|uporabnikov}}]',
+'number_of_watching_users_pageview' => '[temo {{PLURAL:$1|spremlja|spremljata|spremljajo|spremlja|spremlja}} $1 {{PLURAL:$1|uporabnik|uporabnika|uporabniki|uporabnikov|uporabnikov}}]',
 'rc_categories'                     => 'Omejitev na kategorije (ločite jih z »|«)',
 'rc_categories_any'                 => 'Katero koli',
 
@@ -716,25 +720,26 @@ Neoznačene skupine ne bodo spremenjene. Skupino lahko odznačite z levim klikom
 'reupload'                    => 'Naloži drugo',
 'reuploaddesc'                => 'Vrnitev na obrazec za nalaganje.',
 'uploadnologin'               => 'Niste prijavljeni',
-'uploadnologintext'           => 'Za nalaganje datotek se [[Special:Userlogin|prijavite]].',
+'uploadnologintext'           => 'Za nalaganje datotek se [[Special:UserLogin|prijavite]].',
 'upload_directory_read_only'  => 'V mapo za nalaganje datotek ($1) spletni strežnik ne more pisati.',
 'uploaderror'                 => 'Napaka',
-'uploadtext'                  => "Spodnji obrazec lahko uporabite za nalaganje datotek; za ogled ali iskanje že naloženih pojdite na [[Special:Imagelist|seznam naloženih datotek]]. Naložitve in izbrisi so zapisani tudi v [[Special:Log/upload|dnevniku nalaganja]].
+'uploadtext'                  => "Spodnji obrazec lahko uporabite za nalaganje datotek;
+za ogled ali iskanje že naloženih pojdite na [[Special:ImageList|seznam naloženih datotek]].
+Naložitve in izbrisi so zapisani tudi v [[Special:Log/upload|dnevniku nalaganja]].
 
 Datoteko lahko na želeno stran vključite z naslednjo skladnjo
-
-* '''<nowiki>[[Image:File.jpg]]</nowiki>'''
-* '''<nowiki>[[Image:File.png|alt text]]</nowiki>'''
+* '''<nowiki>[[</nowiki>Image:File.jpg<nowiki>]]</nowiki>'''
+* '''<nowiki>[[</nowiki>Image:File.png|alt text<nowiki>]]</nowiki>'''
 ali za neposredno povezavo z datoteko
-* '''<nowiki>[[Media:File.ogg]]</nowiki>'''",
+* '''<nowiki>[[</nowiki>Media:File.ogg<nowiki>]]</nowiki>'''",
 'uploadlog'                   => 'dnevnik nalaganja',
 'uploadlogpage'               => 'Dnevnik nalaganja datotek',
 'uploadlogpagetext'           => 'Prikazan je seznam nedavno naloženih predstavnostnih datotek. Vsi navedeni časi so strežniški čas (UTC). Vedite, da polje »Uporabnik« razlikuje med malimi in velikimi črkami.',
 'filename'                    => 'Ime datoteke',
 'filedesc'                    => 'Povzetek',
 'fileuploadsummary'           => 'Povzetek (avtor, spletni naslov vira ipd.):',
-'filestatus'                  => 'Položaj avtorskih pravic',
-'filesource'                  => 'Vir',
+'filestatus'                  => 'Položaj avtorskih pravic:',
+'filesource'                  => 'Vir:',
 'uploadedfiles'               => 'Naložene datoteke',
 'ignorewarning'               => 'Naloži kljub opozorilu',
 'ignorewarnings'              => 'Prezri vsa opozorila',
@@ -742,7 +747,7 @@ ali za neposredno povezavo z datoteko
 'badfilename'                 => 'Ime datoteke se je samodejno popravilo v »$1«.',
 'largefileserver'             => 'Velikost datoteke presega strežnikove nastavitve.',
 'emptyfile'                   => 'Naložena datoteka je morda prazna. Do tega bi lahko prišlo zaradi slovnične napake v imenu. Ali datoteko resnično želite naložiti?',
-'fileexists'                  => 'Datoteka s tem imenom že obstaja. Preden jo povozite, preverite stran $1. Da preprečite navzkrižja z že obstoječimi datotekami, uporabljajte za datoteke opisna imena (npr. »Eifflov stolp, Pariz, ponoči.jpg«).',
+'fileexists'                  => 'Datoteka s tem imenom že obstaja. Preden jo povozite, preverite stran <strong><tt>$1</tt></strong>. Da preprečite navzkrižja z že obstoječimi datotekami, uporabljajte za datoteke opisna imena (npr. »Eifflov stolp, Pariz, ponoči.jpg«).',
 'fileexists-forbidden'        => 'Datoteka s tem imenom že obstaja in je ni mogoče prepisati. Poskusite svojo datoteko naložiti pod drugim imenom. [[Image:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Datoteka s tem imenom že obstaja v skupnem repozitoriju datotek. Prosimo, vrnite se in naložite svojo datoteko pod drugim imenom. 
 [[Image:$1|thumb|center|$1]]',
@@ -755,16 +760,16 @@ ali za neposredno povezavo z datoteko
 'uploadscripted'              => 'Datoteka vsebuje HTML- ali skriptno kodo, ki bi jo lahko brskalnik razlagal napačno.',
 'uploadcorrupt'               => 'Datoteka je poškodovana ali pa ima napačno končnico. Prosimo, preverite jo in znova naložite.',
 'uploadvirus'                 => 'Datoteka morda vsebuje virus! Podrobnosti: $1',
-'sourcefilename'              => 'Ime izvorne datoteke',
-'destfilename'                => 'Ime ciljne datoteke',
+'sourcefilename'              => 'Ime izvorne datoteke:',
+'destfilename'                => 'Ime ciljne datoteke:',
 'filewasdeleted'              => 'Datoteka s tem imenom je bila nekoč že naložena in potem izbrisana. Preden jo znova naložite, preverite $1.',
 
-'license'   => 'Dovoljenje',
+'license'   => 'Dovoljenje:',
 'nolicense' => 'Nobeno (opomba: datoteka bo morda izbrisana)',
 
 # Image list
 'imagelist'                 => 'Seznam datotek',
-'imagelisttext'             => 'Prikazujem $1 $2 {{plural:$1|razvrščeno datoteko|razvrščeni datoteki|razvrščene datoteke|razvrščenih datotek|razvrščenih datotek}}.',
+'imagelisttext'             => 'Prikazujem $1 $2 {{PLURAL:$1|razvrščeno datoteko|razvrščeni datoteki|razvrščene datoteke|razvrščenih datotek|razvrščenih datotek}}.',
 'getimagelist'              => 'pridobivam seznam datotek',
 'ilsubmit'                  => 'Išči',
 'showlast'                  => 'Prikaži {{plural:$1|zadnjo|zadnji|zadnje|zadnjih|zadnjih}} $1 $2 {{plural:$1|razvrščeno|razvrščeni|razvrščene|razvrščenih|razvrščenih}} {{plural:$1|datoteko|datoteki|datoteke|datotek|datotek}}.',
@@ -812,12 +817,12 @@ ali za neposredno povezavo z datoteko
 'sitestatstext' => "V podatkovni zbirki je skupno '''$1''' strani.
 Med te so vštete tudi ''pogovorne'' strani, strani o {{GRAMMAR:mestnik|{{SITENAME}}}}, najmanjše ''škrbinske'' strani, preusmeritve in še druge, ki niso članki. Če izključimo te zadnje, obstaja '''$2''' strani; ki so po vsej verjetnosti prave strani z vsebino.
 
-Naloženih je '''$8''' {{plural:{{NUMBEROFFILES}}|datoteka|datoteki|datoteke|datotek|datotek}}.
+Naloženih je '''$8''' {{PLURAL:{{NUMBEROFFILES}}|datoteka|datoteki|datoteke|datotek|datotek}}.
 
 Od postavitve wikija je bilo opravljenih '''$3''' pregledov in '''$4''' urejanj strani.
 To da skupaj povprečno '''$5''' urejanj na stran in '''$6''' pogledov na urejanje.
 
-Dolžina [http://meta.wikimedia.org/wiki/Help:Job_queue čakalne vrste delovnih nalog]: '''$7'''.",
+Dolžina [http://www.mediawiki.org/wiki/Manual:Job_queue čakalne vrste delovnih nalog]: '''$7'''.",
 'userstatstext' => "Registriralo se je '''$1''' uporabnikov. Med temi je '''$2''' (oz. '''$4%''') administratorjev (glej $3).",
 
 'disambiguations'     => 'Razločitvene strani',
@@ -831,11 +836,11 @@ Vsaka vrstica vsebuje povezave k prvi in drugi preusmeritvi ter prvo vrstico bes
 'brokenredirectstext' => 'Naslednje preusmeritve kažejo na neobstoječe strani.',
 
 # Miscellaneous special pages
-'nbytes'                  => '$1 {{plural:$1|zlog|zloga|zlogi|zlogov|zlogov}}',
+'nbytes'                  => '$1 {{PLURAL:$1|zlog|zloga|zlogi|zlogov|zlogov}}',
 'ncategories'             => '$1 {{PLURAL:$1|category|kategorij}}',
-'nlinks'                  => '$1 {{plural:$1|povezava|povezavi|povezave|povezav|povezav}}',
-'nmembers'                => '$1 {{plural:$1|element|elementa|elementi|elementov|elementov}}',
-'nrevisions'              => '$1 {{plural:$1|redakcija|redakciji|redakcije|redakcij|redakcij}}',
+'nlinks'                  => '$1 {{PLURAL:$1|povezava|povezavi|povezave|povezav|povezav}}',
+'nmembers'                => '$1 {{PLURAL:$1|element|elementa|elementi|elementov|elementov}}',
+'nrevisions'              => '$1 {{PLURAL:$1|redakcija|redakciji|redakcije|redakcij|redakcij}}',
 'nviews'                  => '$1-krat pregledano',
 'lonelypages'             => 'Osirotele strani',
 'uncategorizedpages'      => 'Nekategorizirane strani',
@@ -900,10 +905,11 @@ Vsaka vrstica vsebuje povezave k prvi in drugi preusmeritvi ter prvo vrstico bes
 
 # E-mail user
 'mailnologin'     => 'Manjka naslov pošiljatelja',
-'mailnologintext' => "Za pošiljanje pošte se [[Special:Userlogin|prijavite]] in v [[Special:Preferences|nastavitvah]] vpišite veljaven '''overjen''' e-poštni naslov.",
+'mailnologintext' => "Za pošiljanje pošte se [[Special:UserLogin|prijavite]] in v [[Special:Preferences|nastavitvah]] vpišite veljaven '''overjen''' e-poštni naslov.",
 'emailuser'       => 'Pošlji uporabniku e-pismo',
 'emailpage'       => 'Pošlji uporabniku e-pismo',
-'emailpagetext'   => "S spodnjim obrazcem lahko uporabniku pošljete e-poštno sporočilo. Da bo prejemnik lahko odgovoril neposredno vam, bo v glavi sporočila zapisan '''vaš e-poštni naslov''' (kot ste ga vpisali v [[Special:Preferences|uporabniških nastavitvah]]).",
+'emailpagetext'   => "S spodnjim obrazcem lahko uporabniku pošljete e-poštno sporočilo.
+Da bo prejemnik lahko odgovoril neposredno vam, bo v glavi sporočila zapisan '''vaš e-poštni naslov''' (kot ste ga vpisali v uporabniških nastavitvah).",
 'usermailererror' => 'Predmet e-pošte je vrnil napako:',
 'defemailsubject' => 'Elektronska pošta {{GRAMMAR:rodilnik|{{SITENAME}}}}',
 'noemailtitle'    => 'Ni e-poštnega naslova.',
@@ -921,9 +927,9 @@ Vsaka vrstica vsebuje povezave k prvi in drugi preusmeritvi ter prvo vrstico bes
 'mywatchlist'          => 'Spisek nadzorov',
 'nowatchlist'          => 'Vaš spisek nadzorov je prazen.',
 'watchnologin'         => 'Niste prijavljeni',
-'watchnologintext'     => 'Za urejanje spiska nadzorov se [[Special:Userlogin|prijavite]].',
+'watchnologintext'     => 'Za urejanje spiska nadzorov se [[Special:UserLogin|prijavite]].',
 'addedwatch'           => 'Dodano na spisek nadzorov',
-'addedwatchtext'       => "Stran »'''<nowiki>$1</nowiki>'''« je bila dodana na vaš [[Special:Watchlist|spisek nadzorov]], kjer bodo odslej navedene njene morebitne spremembe in spremembe pripadajoče pogovorne strani. Za lažjo izbiro bodo tudi v [[Special:Recentchanges|seznamu zadnjih sprememb]] prikazane <b>krepko</b>. Če jo želite odstraniti s spiska, kliknite zavihek »Prenehaj opazovati«.",
+'addedwatchtext'       => "Stran »'''<nowiki>$1</nowiki>'''« je bila dodana na vaš [[Special:Watchlist|spisek nadzorov]], kjer bodo odslej navedene njene morebitne spremembe in spremembe pripadajoče pogovorne strani. Za lažjo izbiro bodo tudi v [[Special:RecentChanges|seznamu zadnjih sprememb]] prikazane <b>krepko</b>. Če jo želite odstraniti s spiska, kliknite zavihek »Prenehaj opazovati«.",
 'removedwatch'         => 'Odstranjena s spiska nadzorov',
 'removedwatchtext'     => 'Stran »<nowiki>$1</nowiki>« je odstranjena z vašega spiska nadzorov.',
 'watch'                => 'Opazuj',
@@ -937,9 +943,9 @@ Vsaka vrstica vsebuje povezave k prvi in drugi preusmeritvi ter prvo vrstico bes
 'wlheader-showupdated' => "* Od vašega zadnjega ogleda spremenjene strani so prikazanje '''krepko'''.",
 'watchmethod-recent'   => 'med nedavnimi urejanji iščem spremljane strani',
 'watchmethod-list'     => 'med spremljanimi stranmi iščem nedavna urejanja',
-'watchlistcontains'    => 'Spremljate $1 {{plural:$1|stran|strani|strani|strani|strani}}.',
+'watchlistcontains'    => 'Spremljate $1 {{PLURAL:$1|stran|strani|strani|strani|strani}}.',
 'iteminvalidname'      => "Težava z izbiro '$1', neveljavno ime ...",
-'wlnote'               => 'Navedenih je {{plural:$1|zadnja|zadnji|zadnje|zadnjih|zadnjih}} $1 {{plural:$1|sprememba|spremembi|spremembe|sprememb}} v {{plural:$2|zadnji|zadnjih|zadnjih|zadnjih|zadnjih}} <b>$2</b> {{plural:$2|uri|urah|urah|urah|urah}}.',
+'wlnote'               => 'Navedenih je {{PLURAL:$1|zadnja|zadnji|zadnje|zadnjih|zadnjih}} $1 {{PLURAL:$1|sprememba|spremembi|spremembe|sprememb}} v {{PLURAL:$2|zadnji|zadnjih|zadnjih|zadnjih|zadnjih}} <b>$2</b> {{PLURAL:$2|uri|urah|urah|urah|urah}}.',
 'wlshowlast'           => 'Prikaži zadnjih $1 ur; $2 dni; $3;',
 
 'enotif_mailer'      => '{{SITENAME}} - obvestilni poštar',
@@ -998,7 +1004,7 @@ Za zapise nedavnih brisanj glej $2.",
 'rollbackfailed'              => 'Vrnitev ni uspela.',
 'cantrollback'                => 'Urejanja ne morem vrniti; zadnji urejevalec je hkrati edini.',
 'alreadyrolled'               => 'Ne morem vrniti zadnje spremembe [[:$1]]
-od uporabnika [[User:$2|$2]] ([[User_talk:$2|Pogovor]]); nekdo drug je že spremenil ali vrnil članek.
+od uporabnika [[User:$2|$2]] ([[User talk:$2|Pogovor]]); nekdo drug je že spremenil ali vrnil članek.
 
 Zadnja sprememba od uporabnika [[User:$3|$3]] ([[User talk:$3|Pogovor]]).',
 'editcomment'                 => "Pripomba k spremembi: »''$1''«.", # only shown if there is an edit comment
@@ -1027,10 +1033,10 @@ Zadnja sprememba od uporabnika [[User:$3|$3]] ([[User talk:$3|Pogovor]]).',
 'undeletepage'           => 'Prikaži izbrisane strani in jih obnovi',
 'viewdeletedpage'        => 'Pregled izbrisanih strani',
 'undeletepagetext'       => 'Naslednje strani so izbrisane, vendar so še vedno v arhivu in jih lahko obnovite. Arhiv je treba občasno počistiti.',
-'undeleteextrahelp'      => "Da bi obnovili celotno stran z vso njeno zgodovino, pustite vsa potrditvena polja prazna in kliknite '''''Obnovi'''''. Če želite obnoviti le določene redakcije strani, pred klikom gumba '''''Obnovi''''' označite ustrezna potrditvena polja. Klik gumba '''''Ponastavi''''' bo izpraznil polje za vnos razloga in vsa potrditvena polja.
-
-Prosimo, ravnajte se po [[{{MediaWiki:Policy-url}}|pravilih obnove strani]] in navedite ustrezen razlog.",
-'undeleterevisions'      => '{{plural:$1|Arhivirana je|Arhivirani sta|Arhivirane so|Arhiviranih je|Arhiviranih ni}} $1 {{plural:$1|redakcija|redakciji|redakcije|redakcij|redakcij}}',
+'undeleteextrahelp'      => "Da bi obnovili celotno stran z vso njeno zgodovino, pustite vsa potrditvena polja prazna in kliknite '''''Obnovi'''''.
+Če želite obnoviti le določene redakcije strani, pred klikom gumba '''''Obnovi''''' označite ustrezna potrditvena polja.
+Klik gumba '''''Ponastavi''''' bo izpraznil polje za vnos razloga in vsa potrditvena polja.",
+'undeleterevisions'      => '{{PLURAL:$1|Arhivirana je|Arhivirani sta|Arhivirane so|Arhiviranih je|Arhiviranih ni}} $1 {{PLURAL:$1|redakcija|redakciji|redakcije|redakcij|redakcij}}',
 'undeletehistory'        => 'Z obnovo strani se bodo po privzetem obnovile tudi vse pripadajoče redakcije. Če se želite temu izogniti, označite le želene.
 
 Kjer je bila po brisanju ustvarjena nova stran s tem imenom, se trenutna redakcija obstoječe strani ne bo samodejno zamenjala, temveč se bodo obnovljene redakcije pojavile v prejšnji zgodovini. Pazite, da se temu izognete, razen seveda, kadar resnično nameravate združiti zgodovini obeh strani.',
@@ -1039,7 +1045,7 @@ Kjer je bila po brisanju ustvarjena nova stran s tem imenom, se trenutna redakci
 'undeletereset'          => 'Ponastavi',
 'undeletecomment'        => 'Razlog:',
 'undeletedarticle'       => 'je obnovil(-a) »$1«',
-'undeletedrevisions'     => 'obnovljeno: $1 {{plural:$1|redakcija|redakciji|redakcije|redakcij|redakcij}}',
+'undeletedrevisions'     => 'obnovljeno: $1 {{PLURAL:$1|redakcija|redakciji|redakcije|redakcij|redakcij}}',
 'undeletedfiles'         => 'Obnovili ste $1 {{PLURAL:datoteka|datoteki|datoteke|datotek|datotek}}',
 'cannotundelete'         => 'Obnova ni uspela. Morda je stran obnovil že kdo drug.',
 'undeletedpage'          => "<big>'''Obnovili ste stran '$1'.'''</big>
@@ -1085,13 +1091,8 @@ Nedavna brisanja in obnove so zapisani v [[Special:Log/delete|dnevniku brisanja]
 'ipbotheroption'              => 'drugo',
 'badipaddress'                => 'Neveljaven IP-naslov ali uporabniško ime.',
 'blockipsuccesssub'           => 'Blokiranje je uspelo',
-'blockipsuccesstext'          => 'IP-naslov ali uporabniški račun »[[User:$1|$1]]« ([[User talk:$1|pogovor]]) je blokiran.
-
-*Preglejte [[Special:Contributions/$1|prispevke s tega naslova/uporabniškega računa]].
-*Preglejte [[Special:Ipblocklist|seznam blokiranih IP-naslovov]].
-*Preglejte [[Special:Log/block|dnevnik blokiranja]], kjer so navedeni ukrepi drugih administratorjev v zvezi s tem uporabnikom.
-
-Ne pozabite blokiranemu uporabniku na njegovi [[User talk:$1|pogovorni strani]] razložiti, zakaj ste ga blokirali.',
+'blockipsuccesstext'          => 'IP-naslov ali uporabniški račun »[[Special:Contributions/$1|$1]]« je blokiran.<br />
+Preglejte [[Special:IPBlockList|seznam blokiranih IP-naslovov]].',
 'unblockip'                   => 'Omogočite urejanje IP-naslovu',
 'unblockiptext'               => 'Z naslednjim obrazcem lahko obnovite možnost urejanja z blokiranega IP-naslova ali uporabniškega računa.',
 'ipusubmit'                   => 'Deblokiraj naslov',
@@ -1105,7 +1106,7 @@ Ne pozabite blokiranemu uporabniku na njegovi [[User talk:$1|pogovorni strani]] 
 'autoblocker'                 => 'Ker si delite IP-naslov z »$1«, vam je urejanje samodejno onemogočeno. Razlog: »$2«.',
 'blocklogpage'                => 'Dnevnik blokiranja',
 'blocklogentry'               => 'uporabnika »$1« sem blokiral(-a) za $2',
-'blocklogtext'                => 'Prikazan je dnevnik blokiranja in deblokiranja uporabnikov. Samodejno blokirani IP-naslovi niso navedeni. Trenutno veljavna blokiranja so navedena na [[Special:Ipblocklist|seznamu blokiranih IP-naslovov]].',
+'blocklogtext'                => 'Prikazan je dnevnik blokiranja in deblokiranja uporabnikov. Samodejno blokirani IP-naslovi niso navedeni. Trenutno veljavna blokiranja so navedena na [[Special:IPBlockList|seznamu blokiranih IP-naslovov]].',
 'unblocklogentry'             => 'je deblokiral(-a) »$1«',
 'range_block_disabled'        => 'Možnost administratorjev za blokiranje urejanja IP-razponom je onemogočena.',
 'ipb_expiry_invalid'          => 'Neveljaven čas preteka',
@@ -1154,8 +1155,8 @@ Prestavitev strani je lahko za priljubljeno stran velika in nepričakovana sprem
 'newtitle'                => 'Na naslov',
 'movepagebtn'             => 'Prestavi stran',
 'pagemovedsub'            => 'Uspešno prestavljeno',
-'articleexists'           => "'''Stran ni bilo mogoče prestaviti!''' Izbrano ime je že zasedeno ali pa ni veljavno. Prosimo, izberite drugo ime ali za pomoč prosite katerega izmed [[{{MediaWiki:Grouppage-sysop}}|administratorjev]].",
-'talkexists'              => 'Sama stran je bila uspešno prestavljena, pripadajoča pogovorna stran pa ne, ker že obstaja na novem naslovu. Prosimo, združite ju ročno. Če tega ne morete storiti, prosite za pomoč katerega izmed [[{{MediaWiki:Grouppage-sysop}}|administratorjev]], nikakor pa tega NE počnite z izrezanjem in prilepljenjem vsebine.',
+'articleexists'           => "'''Stran ni bilo mogoče prestaviti!''' Izbrano ime je že zasedeno ali pa ni veljavno.",
+'talkexists'              => 'Sama stran je bila uspešno prestavljena, pripadajoča pogovorna stran pa ne, ker že obstaja na novem naslovu. Prosimo, združite ju ročno. Če tega ne morete storiti, prosite za pomoč katerega izmed administratorjev, nikakor pa tega NE počnite z izrezanjem in prilepljenjem vsebine.',
 'movedto'                 => 'prestavljeno na',
 'movetalk'                => 'Če je mogoče, prestavi tudi pogovorno stran.',
 'talkpagemoved'           => 'Prestavljena je tudi pripadajoča pogovorna stran.',
@@ -1163,13 +1164,13 @@ Prestavitev strani je lahko za priljubljeno stran velika in nepričakovana sprem
 '1movedto2'               => '- prestavitev [[$1]] na [[$2]]',
 '1movedto2_redir'         => '- prestavitev [[$1]] na [[$2]] čez preusmeritev',
 'movelogpage'             => 'Dnevnik prestavljanja strani',
-'movelogpagetext'         => 'Prikazujem seznam [[Help:Prestavljanje strani|prestavljenih strani]]. Vedite, da polje »Uporabnik« razlikuje med malimi in velikimi črkami.',
+'movelogpagetext'         => 'Prikazujem seznam prestavljenih strani. Vedite, da polje »Uporabnik« razlikuje med malimi in velikimi črkami.',
 'movereason'              => 'Razlog',
 'revertmove'              => 'vrni',
 'delete_and_move'         => 'Briši in prestavi',
 'delete_and_move_text'    => '==Treba bi bilo brisati==
 
-Ciljna stran »[[$1]]« že obstaja. Ali jo želite, da bi pripravili prostor za prestavitev, izbrisati?',
+Ciljna stran »[[:$1]]« že obstaja. Ali jo želite, da bi pripravili prostor za prestavitev, izbrisati?',
 'delete_and_move_confirm' => 'Da, izbriši stran',
 'delete_and_move_reason'  => 'Izbrisano z namenom pripraviti prostor za prestavitev.',
 'selfmove'                => "'''Naslova vira in cilja sta enaka; stran ni mogoče prestaviti samo vase.''' Prosimo, preverite, ali niste naslova cilja namesto v polje »Na naslov« vpisali v polje »Razlog«.",
@@ -1181,8 +1182,8 @@ Ciljna stran »[[$1]]« že obstaja. Ali jo želite, da bi pripravili prostor za
 
 Če želite izvoziti članke, v spodnje polje vpišite njihove naslove (enega v vsako vrstico) in označite, ali želite le trenutno različico s podatki o trenutnem urejanju ali tudi vse prejšnje z vrsticami o zgodovini strani.
 
-Če gre za slednje, lahko uporabite tudi povezavo, npr. [[Special:Export/{{MediaWiki:Mainpage}}]] za 
-članek {{MediaWiki:Mainpage}}.",
+Če gre za slednje, lahko uporabite tudi povezavo, npr. [[{{ns:special}}:Export/{{MediaWiki:Mainpage}}]] za 
+članek \"[[{{MediaWiki:Mainpage}}]]\".",
 'exportcuronly' => 'Vključi le trenutno redakcijo, ne pa celotne zgodovine.',
 'export-submit' => 'Izvozi',
 
@@ -1191,8 +1192,9 @@ Ciljna stran »[[$1]]« že obstaja. Ali jo želite, da bi pripravili prostor za
 'allmessagesname'           => 'Ime',
 'allmessagesdefault'        => 'Prednastavljeno besedilo',
 'allmessagescurrent'        => 'Trenutno besedilo',
-'allmessagestext'           => 'Navedena so v imenskem prostoru MediaWiki dostopna sistemska sporočila. Urejajo jih lahko [[{{MediaWiki:Grouppage-sysop}}|administratorji]] in drugi sodelavci z vzdrževalnimi pravicami.',
-'allmessagesnotsupportedDB' => 'Ker je wgUseDatabaseMessages izključeno, {{ns:special}}:Allmessages ni podprto.',
+'allmessagestext'           => 'Navedena so v imenskem prostoru MediaWiki dostopna sistemska sporočila.
+Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation] and [http://translatewiki.net Betawiki] if you wish to contribute to the generic MediaWiki localisation.',
+'allmessagesnotsupportedDB' => "Ker je '''\$wgUseDatabaseMessages''' izključeno, '''{{ns:special}}:Allmessages''' ni podprto.",
 'allmessagesfilter'         => 'Filter pogostih izrazov:',
 'allmessagesmodified'       => 'Prikaži le spremenjeno',
 
@@ -1286,11 +1288,7 @@ Ciljna stran »[[$1]]« že obstaja. Ali jo želite, da bi pripravili prostor za
 
 # Spam protection
 'spamprotectiontitle'    => 'Zaščita pred neželenimi sporočili',
-'spamprotectiontext'     => "Stran, ki ste jo želeli shraniti, je zaščita pred spamom blokirala, saj je vsebovala povezavo na zunanjo stran, navedeno na [[m:spam blacklist|črni listi spama]]. Če povezave (glejte spodaj) niste dodali vi, je verjetno obstajala že v prejšnji redakciji ali pa jo je dodalo vohunsko programje (''spyware'') na vašem računalniku.
-
-Da boste stran lahko shranili, boste morali odstraniti vse na črni listi navedene spletne naslove.
-
-Če mislite, da zaščita preprečuje urejanje neustrezno, vas prosimo, da na [[m:talk:spam blacklist|pogovorni strani črne liste]] predlagate njen popravek. Sledi odlomek strani, ki je sprožila zaščito.",
+'spamprotectiontext'     => "Stran, ki ste jo želeli shraniti, je zaščita pred spamom blokirala, saj je vsebovala povezavo na zunanjo stran, navedeno na črni listi spama. Če povezave (glejte spodaj) niste dodali vi, je verjetno obstajala že v prejšnji redakciji ali pa jo je dodalo vohunsko programje (''spyware'') na vašem računalniku.",
 'spamprotectionmatch'    => 'Naslednje besedilo je sprožilo naš filter neželenih sporočil: $1',
 'subcategorycount'       => 'Kategorija {{plural:$1|ima|ima|ima|ima|nima}} $1 {{plural:$1|podkategorijo|podkategoriji|podkategorije|podkategorij|podkategorij}}.',
 'categoryarticlecount'   => 'V tem delu kategorije {{plural:$1|je|sta|so|je|ni}} $1 {{plural:$1|stran|strani|strani|strani|strani}}.',
@@ -1496,7 +1494,7 @@ Da boste stran lahko shranili, boste morali odstraniti vse na črni listi navede
 'exif-exposureprogram-7' => 'Portretna nastavitev (fotografije od blizu, ozadje ni ostro)',
 'exif-exposureprogram-8' => 'Pokrajinska nastavitev (fotografije pokrajine, ostro ozadje)',
 
-'exif-subjectdistance-value' => '$1 {{plural:$1|meter|metra|metre|metrov|metrov}}',
+'exif-subjectdistance-value' => '$1 {{PLURAL:$1|meter|metra|metre|metrov|metrov}}',
 
 'exif-meteringmode-0'   => 'Neznan',
 'exif-meteringmode-1'   => 'Povprečno',
@@ -1600,7 +1598,7 @@ Da boste stran lahko shranili, boste morali odstraniti vse na črni listi navede
 
 # External editor support
 'edit-externally'      => 'Uredite datoteko z uporabo zunanjega orodja',
-'edit-externally-help' => 'Za več informacij glej [http://meta.wikimedia.org/wiki/Help:External_editors navodila za namestitev].',
+'edit-externally-help' => 'Za več informacij glej [http://www.mediawiki.org/wiki/Manual:External_editors navodila za namestitev].',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'vse',
@@ -1610,7 +1608,9 @@ Da boste stran lahko shranili, boste morali odstraniti vse na črni listi navede
 
 # E-mail address confirmation
 'confirmemail'            => 'Potrditev naslova elektronske pošte',
-'confirmemail_text'       => 'Za uporabo e-poštnih možnosti {{GRAMMAR:rodilnik|{{SITENAME}}}} morate najprej potrditi svoj e-poštni naslov. S klikom spodnjega gumba pošljite nanj potrditveno sporočilo in sledite prejetim navodilom. Ali ste svoj e-poštni naslov že potrdili, lahko preverite v [[Special:Preferences|nastavitvah]].',
+'confirmemail_text'       => 'Za uporabo e-poštnih možnosti {{GRAMMAR:rodilnik|{{SITENAME}}}} morate najprej potrditi svoj e-poštni naslov.
+S klikom spodnjega gumba pošljite nanj potrditveno sporočilo in sledite prejetim navodilom.
+Ali ste svoj e-poštni naslov že potrdili, lahko preverite v nastavitvah.',
 'confirmemail_send'       => 'Pošlji mi potrditveno sporočilo',
 'confirmemail_sent'       => 'Potrditveno e-sporočilo je bilo poslano.',
 'confirmemail_sendfailed' => 'Potrditvenega sporočila ni bilo mogoče poslati. Prosimo, preverite, če niste naslova vnesli napačno.',
@@ -1641,7 +1641,7 @@ $1
 'trackbackdeleteok' => 'Sledilnik je uspešno izbrisan.',
 
 # Delete conflict
-'deletedwhileediting' => "''Opozorilo:'' Med vašim urejanjem je eden izmed administratorjev stran izbrisal. Razloge za to si lahko pogledate v [[Special:Log/delete|dnevniku brisanja]].",
+'deletedwhileediting' => 'Opozorilo: Med vašim urejanjem je eden izmed administratorjev stran izbrisal.',
 'confirmrecreate'     => "Medtem ko ste stran urejali, jo je uporabnik [[User:$1|$1]] ([[User talk:$1|pogovor]]) izbrisal z razlogom: 
 :''$2'' 
 Prosimo, potrdite, da jo resnično želite znova ustvariti.",
@@ -1650,7 +1650,7 @@ Prosimo, potrdite, da jo resnično želite znova ustvariti.",
 'unit-pixel' => ' točk',
 
 # HTML dump
-'redirectingto' => 'Preusmerjam na »[[$1]]« ...',
+'redirectingto' => 'Preusmerjam na »[[:$1]]« ...',
 
 # action=purge
 'confirm_purge'        => 'Osvežim predpomnjenje strani? 

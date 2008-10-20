@@ -1,9 +1,9 @@
 <?php
 /** Лакку (Лакку)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
- * @author M.M.S.
  */
 
 $fallback = 'ru';

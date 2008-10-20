@@ -1,10 +1,10 @@
 <?php
 /** Gagauz (Gagauz)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Cuman
- * @author Nike
  */
 
 $fallback = 'tr';
@@ -109,7 +109,7 @@ $messages = array(
 'dec'           => 'Dek',
 
 # Bits of text used by many pages
-'categories'            => '{{PLURAL:$1|Kategoriya|Kategoriyalar}}',
+'categories'            => 'Kategoriyalar',
 'pagecategories'        => 'Sayfa {{PLURAL:$1|kategoriyası|kategoriyaları}}',
 'category_header'       => '"$1" kategoriyasındaki sayfalar',
 'subcategories'         => 'Alt kategoriyalar',
@@ -271,7 +271,7 @@ $messages = array(
 'nosuchaction'      => 'Bölä bir işlem yok',
 'nosuchactiontext'  => 'URL tarafınnan tanınan işlem Viki tarafınnan kabledilmedi.',
 'nosuchspecialpage' => 'Bu adda bir maasus sayfa yok',
-'nospecialpagetext' => 'Bir maasus sayfaya girdiniz angısı bulunmêêr. Var olan hepsi maasus sayfaları yakışêr sizä görmää [[Special:Specialpages]] sayfasında.',
+'nospecialpagetext' => 'Bir maasus sayfaya girdiniz angısı bulunmêêr. Var olan hepsi maasus sayfaları yakışêr sizä görmää [[Special:SpecialPages|{{int:specialpages}}]] sayfasında.',
 
 # General errors
 'error'              => 'Kusurluk',
@@ -372,7 +372,7 @@ O zamana kadar ani e-maildaki instrukțiyalar yapılmaycêk hem doorulanmaycêk 
 'italic_tip'      => 'İtalik tekst',
 'link_sample'     => 'Sayfanın adı',
 'link_tip'        => 'İç baalantı',
-'extlink_sample'  => '{{SERVER}} adres adı',
+'extlink_sample'  => 'http://www.example.com adres adı',
 'extlink_tip'     => 'Dış baalantı (Unutmayın adresin önüne http:// koymaa)',
 'headline_sample' => 'Başlık teksti',
 'headline_tip'    => '2. düzey başlık',
@@ -422,9 +422,9 @@ Herliim girmediniz [[Special:Preferences|seçimner]] bölümünde geçerli bir e
 'newarticletext'         => "Henez var olmayan bir sayfaya konulmuş baalantıya tuşladınız. Bu sayfayı yaratmaa deyni aşaadaki tekst kutusunu kullanınız. Bilgi için [[{{MediaWiki:Helppage}}|yardım sayfasına]] bakınız. Herliim buraya yannış geldiniz, läazım tuşlamaa programınızın '''Geeri''' tuşuna.",
 'noarticletext'          => 'Bu sayfa boş. Bu başlıı [[Special:Search/{{PAGENAME}}|var nicä aramaa]] übür sayfalarda yaki bu sayfayı siz  [{{fullurl:{{FULLPAGENAME}}|action=edit}} var nicä yazmaa].',
 'updated'                => '(Enilendi)',
-'previewnote'            => 'Bu saadä bir ön siir, hem diişmäkler henez korunmadı!',
+'previewnote'            => '<strong>Bu saadä bir ön siir, hem diişmäkler henez korunmadı!</strong>',
 'editing'                => '"$1" sayfasın diiştirersiniz',
-'editinguser'            => '"$1" sayfasını diiştirersiniz',
+'editinguser'            => '"$1" sayfasını diiştirersiniz ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])',
 'editingsection'         => '"$1" sayfasında bölüm diiştirersiniz',
 'editingcomment'         => '$1 sayfasına yorum ekleersiniz.',
 'editconflict'           => 'Diişmäk konflikti: $1',
@@ -443,7 +443,7 @@ Hem siz garantiyada bulunêrsiniz ani eklemäklerin avtorusunuz, yaki onnarı ko
 'template-protected'     => '(korumaa)',
 'template-semiprotected' => '(yarı-korunmaa)',
 'nocreatetext'           => '{{SITENAME}} eni yazılar yaratmaa yasaklandı.
-Sizä yakışêr geeri dönmää hem düzmää var olan yapraa, yaki [[Special:Userlogin|sessiya açmaa yaki esap yaratmaa]].',
+Sizä yakışêr geeri dönmää hem düzmää var olan yapraa, yaki [[Special:UserLogin|sessiya açmaa yaki esap yaratmaa]].',
 'permissionserrors'      => 'İzin yannışları',
 'recreate-deleted-warn'  => "'''Bak: Siz yarattınız o sayfayı angısı ilerdän silindi.'''
 
@@ -521,7 +521,7 @@ Nışannar: (bitki) = şindiki versiyalan aradaki fark,
 'recentchanges'                  => 'Bitki diişikmäklär',
 'recentchanges-feed-description' => 'Bu lentalan en bitki diişmäkleri vikiyä yaz.',
 'rcnote'                         => '$3 (UTC) datasında bitki <strong>$2</strong> gündä yapılan <strong>$1</strong> diişmäk:',
-'rcnotefrom'                     => '<b>$2</b> datasınnan büüne kadar yapılan diişmäkler aşaada (en çok <b>$1</b> yazı gösteriler).',
+'rcnotefrom'                     => "'''$2''' datasınnan büüne kadar yapılan diişmäkler aşaada (en çok '''$1''' yazı gösteriler).",
 'rclistfrom'                     => 'Göster diişmäkleri ani $1 datasından beeri yapıldı',
 'rcshowhideminor'                => 'küçük diişilmäkläri $1',
 'rcshowhidebots'                 => 'botları $1',
@@ -540,7 +540,7 @@ Nışannar: (bitki) = şindiki versiyalan aradaki fark,
 
 # Recent changes linked
 'recentchangeslinked'          => 'İlgili diişilmäklär',
-'recentchangeslinked-title'    => '$1 ilgili diişmäklär',
+'recentchangeslinked-title'    => '"$1" ilgili diişmäklär',
 'recentchangeslinked-noresult' => 'Baalantılı sayfalarda verilmiş devirde diişmäk olmadı.',
 'recentchangeslinked-summary'  => "Bu maasus sayfa baalantılı sayfalardaki diişmäkleri sayêr. Sizin bakmaa listasındaki sayfalar verildi '''kalın''' bukvalarnan.",
 
@@ -660,7 +660,7 @@ Nışannar: (bitki) = şindiki versiyalan aradaki fark,
 
 Gelecektä, bu sayfaya hem ilgili konuşmaa sayfasına yapılacêk diişmäkler burada yazılacêk.
 
-[[Special:Recentchanges|Bitki diişmäkler listası]] başlıı altında yazılacêk kalın bukvalarnan neçin ki kolayca seçilsin.
+[[Special:RecentChanges|Bitki diişmäkler listası]] başlıı altında yazılacêk kalın bukvalarnan neçin ki kolayca seçilsin.
 
 Ne zaman neetlendiniz sayfayı bakmaa listasınnan çıkarmaa tuşlayın "sayfaya bakmaa durgun" baalantısına.',
 'removedwatch'         => 'Bakmaa listanızdan silindi',
@@ -757,12 +757,18 @@ Burada bitki seçimner <strong>$1</strong> yazı diiştirmää deyni:',
 
 # Move page
 'movepage'         => 'Ad diişmäklii',
-'movepagetext'     => "Aşaadaki formayı kullanılarak var nicä sayfanın adın diiştirin, onnan bilä hepsi diiştirmää jurnalı eni ada aktarılacêk. Eski ad eni ada yönnendirmäk olacêk. Eski başlaa baalantılar diişmeycek; [[Special:Maintenance|kontrol ediniz.]] [[{{ns:special}}:DoubleRedirects|çift]] yaki [[{{ns:special}}:BrokenRedirects|yannış]] yönnendirmäkleri. Läazım inanmaa ani baalantılar genä dä gösterer orayı nerä läazım göstersin.
+'movepagetext'     => "Aşaadaki formayı kullanılarak var nicä sayfanın adın diiştirin, onnan bilä hepsi diiştirmää jurnalı eni ada aktarılacêk.
+Eski ad eni ada yönnendirmäk olacêk.
+Eski başlaa baalantılar diişmeycek;
+çift yaki yannış yönnendirmäkleri.
+Läazım inanmaa ani baalantılar genä dä gösterer orayı nerä läazım göstersin.
 
-Herliim ilerdän eni adda sayfa vardı, ad diişmää '''yapılmaycêk'''. Bu o maana verer ani eer yannış olarak adını diiştirdiniz siz var nicä döndürün sayfayı eski adına.
+Herliim ilerdän eni adda sayfa vardı, ad diişmää '''yapılmaycêk'''.
+Bu o maana verer ani eer yannış olarak adını diiştirdiniz siz var nicä döndürün sayfayı eski adına.
  
-<b>BAK!</b>
-Bu ad diişmää var nicä duursun masştablı hem beklenmeyän rezultatlar ''populyar'' sayfalar için ; onuştan devam etmedän ileri läazım inanmaa ani annêêrsiniz hepsi olacêk rezultatları.",
+'''BAK!'''
+Bu ad diişmää var nicä duursun masştablı hem beklenmeyän rezultatlar ''populyar'' sayfalar için ;
+onuştan devam etmedän ileri läazım inanmaa ani annêêrsiniz hepsi olacêk rezultatları.",
 'movepagetalktext' => "Birleştirilmiş konuşmaa sayfasın, herliim varsa,
 avtomatik adı diiştirilecek, '''o haller dışında, ne zaman:'''
 
@@ -885,7 +891,7 @@ Sadä listadaki êlementlarä (* nışannan çekedän liniyalar) bakılacêk. Li
 
 # External editor support
 'edit-externally'      => 'Kompyuterinizdäki uygulamaklarlan faylı düz',
-'edit-externally-help' => 'Taa çok bilgi için var nicä bakmaa metadaki [http://meta.wikimedia.org/wiki/Help:External_editors dış uygulama instrumentläri] (angliyça) sayfasına.',
+'edit-externally-help' => 'Taa çok bilgi için var nicä bakmaa metadaki [http://www.mediawiki.org/wiki/Manual:External_editors dış uygulama instrumentläri] (angliyça) sayfasına.',
 
 # 'all' in various places, this might be different for inflected languages
 'watchlistall2' => 'Hepsini göster',

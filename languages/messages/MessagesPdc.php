@@ -1,9 +1,9 @@
 <?php
 /** Deitsch (Deitsch)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
- * @author SPQRobin
  * @author לערי ריינהארט
  */
 

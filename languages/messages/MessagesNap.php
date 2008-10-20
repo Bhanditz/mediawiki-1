@@ -1,15 +1,15 @@
 <?php
 /** Neapolitan (Nnapulitano)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Carmine Colacino
- * @author E. abu Filumena
- * @author SabineCretella
  * @author Cryptex
- * @author SPQRobin
+ * @author E. abu Filumena
  * @author G - ג
- * @author Nike
+ * @author SabineCretella
+ * @author לערי ריינהארט
  */
 
 $fallback = 'it';
@@ -68,7 +68,7 @@ $messages = array(
 'dec'       => 'dic',
 
 # Bits of text used by many pages
-'categories'      => '{{PLURAL:$1|Categurìa|Categurìe}}',
+'categories'      => 'Categurìe',
 'category_header' => 'Paggene rìnt\'a categurìa "$1"',
 'subcategories'   => 'Categurìe secunnarie',
 
@@ -113,7 +113,7 @@ $messages = array(
 'otherlanguages'    => 'Ate léngue',
 'redirectedfrom'    => "(Redirect 'a $1)",
 'lastmodifiedat'    => "Urdema cagnamiénto pe' a paggena: $2, $1.", # $1 date, $2 time
-'viewcount'         => 'Chesta paggena è stata lètta {{plural:$1|una vòta|$1 vòte}}.',
+'viewcount'         => 'Chesta paggena è stata lètta {{PLURAL:$1|una vòta|$1 vòte}}.',
 'jumpto'            => 'Vaje a:',
 'jumptonavigation'  => 'navigazione',
 'jumptosearch'      => 'truova',
@@ -203,7 +203,7 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'loginreqpagetext'  => "Pe' veré ate ppaggene abbesognate $1.",
 'accmailtitle'      => "'O password è stato mannato.",
 'accmailtext'       => '\'A password pe ll\'utente "$1" fuje mannata ô nnerizzo $2.',
-'previewnote'       => "Chesta è sola n'anteprimma; 'e cagnamiénte â paggena NUN songo ancora sarvate!",
+'previewnote'       => "<strong>Chesta è sola n'anteprimma; 'e cagnamiénte â paggena NUN songo ancora sarvate!</strong>",
 'editing'           => "Cagnamiento 'e $1",
 'templatesused'     => "Template ausate 'a chesta paggena:",
 
@@ -342,7 +342,7 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'blocklink'          => 'ferma',
 'blocklogpage'       => 'Blocche',
 'blocklogentry'      => 'ha fermato "[[$1]]" pe\' nu mumento \'e $2 $3',
-'blocklogtext'       => "Chesta è 'a lista d&#39;&#39;e azzione 'e blocco e sblocco utente.  'E nnerizze IP bloccate automaticamente nun nce so'. Addumannà 'a [[Special:Ipblocklist|lista IP bloccate]] pp' 'a lista d&#39;&#39;e nnerizze e nomme utente 'o ca blocco nce sta.",
+'blocklogtext'       => "Chesta è 'a lista d&#39;&#39;e azzione 'e blocco e sblocco utente.  'E nnerizze IP bloccate automaticamente nun nce so'. Addumannà 'a [[Special:IPBlockList|lista IP bloccate]] pp' 'a lista d&#39;&#39;e nnerizze e nomme utente 'o ca blocco nce sta.",
 
 # Move page
 'movearticle'             => "Spusta 'a paggena",
@@ -374,6 +374,7 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'import-logentry-upload' => 'ha mpurtato [[$1]] trammeto upload',
 
 # Tooltip help for the actions
+'tooltip-pt-logout' => 'Jésce (logout)',
 'tooltip-minoredit' => 'Rénne chìsto cagnamiénto cchiù ppiccirìllo.',
 'tooltip-save'      => "Sàrva 'e cagnamiénte.",
 'tooltip-preview'   => "Primma 'e sarvà, vìre primma chille ca hê cagnàte!",
@@ -406,7 +407,7 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'exif-subjectdistancerange-0' => 'Scanusciuta',
 
 # External editor support
-'edit-externally-help' => "Pe piglià cchiù nfromma veré 'e [http://meta.wikimedia.org/wiki/Help:External_editors struzione] ('n ngrese)",
+'edit-externally-help' => "Pe piglià cchiù nfromma veré 'e [http://www.mediawiki.org/wiki/Manual:External_editors struzione] ('n ngrese)",
 
 # 'all' in various places, this might be different for inflected languages
 'namespacesall' => 'Tutte',

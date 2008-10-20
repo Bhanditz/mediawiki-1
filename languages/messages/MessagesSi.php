@@ -1,58 +1,75 @@
 <?php
-/** Sinhalese (සිංහල)
+/** Sinhala (සිංහල)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Asiri wiki
- * @author Nike
+ * @author Chandana
  */
 
-
-
 $messages = array(
+# User preference toggles
+'tog-underline'       => 'පුරුක යටින් ඉරි අඳිනවා',
+'tog-highlightbroken' => ' කැඩුණු සන්ධිය ආකෘතිය <a href="" වර්ගය="අලුත">මේ සමාන ලෙස </a> (විකල්ප: මේ සමාන ලෙස<a href="" වර්ගය="අභ්‍යනතර">?</a>).',
+'tog-justify'         => 'ඡේදය පේළි ගසන්න',
+'tog-hideminor'       => 'අලුත් වෙනසහි සුළු සංස්කරණය හැංගිම',
+
 'skinpreview' => '(පෙරදසුන)',
 
 # Dates
-'sunday'      => 'ඉරිදා',
-'monday'      => 'සඳුදා',
-'tuesday'     => 'අඟහරුවාදා',
-'wednesday'   => 'බදාදා',
-'thursday'    => 'බ්‍රහස්පතින්දා',
-'friday'      => 'සිකුරාදා',
-'saturday'    => 'සෙනසුරාදා',
-'sun'         => 'ඉරිදා',
-'mon'         => 'සඳු',
-'tue'         => 'අඟ',
-'wed'         => 'බදා',
-'thu'         => 'බ්‍රහස්',
-'fri'         => 'සිකු',
-'sat'         => 'සෙන',
-'january'     => 'ජනවාරි',
-'february'    => 'පෙබරවාරි',
-'march'       => 'මාර්තු',
-'april'       => 'අප්‍රේල්',
-'may_long'    => 'මැයි',
-'june'        => 'ජූනි',
-'july'        => 'ජූලි',
-'august'      => 'අගෝස්තු',
-'september'   => 'සැප්තැම්බර්',
-'october'     => 'ඔක්තෝබර්',
-'november'    => 'නොවැම්බර්',
-'december'    => 'දෙසැම්බර්',
-'january-gen' => 'ජනවාරි',
-'jan'         => 'ජන',
-'feb'         => 'පෙබ',
-'mar'         => 'මාර්',
-'apr'         => 'අප්‍රේ',
-'may'         => 'මැයි',
-'jun'         => 'ජූනි',
-'jul'         => 'ජූලි',
-'aug'         => 'අගෝ',
-'sep'         => 'සැප්',
-'oct'         => 'ඔක්',
-'nov'         => 'නොවැ',
-'dec'         => 'දෙසැ',
+'sunday'        => 'ඉරිදා',
+'monday'        => 'සඳුදා',
+'tuesday'       => 'අඟහරුවාදා',
+'wednesday'     => 'බදාදා',
+'thursday'      => 'බ්‍රහස්පතින්දා',
+'friday'        => 'සිකුරාදා',
+'saturday'      => 'සෙනසුරාදා',
+'sun'           => 'ඉරිදා',
+'mon'           => 'සඳු',
+'tue'           => 'අඟ',
+'wed'           => 'බදා',
+'thu'           => 'බ්‍රහස්',
+'fri'           => 'සිකු',
+'sat'           => 'සෙන',
+'january'       => 'ජනවාරි',
+'february'      => 'පෙබරවාරි',
+'march'         => 'මාර්තු',
+'april'         => 'අප්‍රේල්',
+'may_long'      => 'මැයි',
+'june'          => 'ජූනි',
+'july'          => 'ජූලි',
+'august'        => 'අගෝස්තු',
+'september'     => 'සැප්තැම්බර්',
+'october'       => 'ඔක්තෝබර්',
+'november'      => 'නොවැම්බර්',
+'december'      => 'දෙසැම්බර්',
+'january-gen'   => 'ජනවාරි',
+'february-gen'  => 'පෙබරවාරි',
+'march-gen'     => 'මාර්තු',
+'april-gen'     => 'අප්‍රේල්',
+'may-gen'       => 'මැයි',
+'june-gen'      => 'ජූනි',
+'july-gen'      => 'ජූලි',
+'august-gen'    => 'අගෝස්තු',
+'september-gen' => 'සැප්තැම්බර්',
+'october-gen'   => 'ඔක්තෝබර්',
+'november-gen'  => 'නොවැම්බර්',
+'december-gen'  => 'දෙසැම්බර්',
+'jan'           => 'ජන',
+'feb'           => 'පෙබ',
+'mar'           => 'මාර්',
+'apr'           => 'අප්‍රේ',
+'may'           => 'මැයි',
+'jun'           => 'ජූනි',
+'jul'           => 'ජූලි',
+'aug'           => 'අගෝ',
+'sep'           => 'සැප්',
+'oct'           => 'ඔක්',
+'nov'           => 'නොවැ',
+'dec'           => 'දෙසැ',
 
+'about'          => 'ගැන',
 'article'        => 'අන්තර්ගත පිටුව',
 'cancel'         => 'අවලංගු කරන්න',
 'qbfind'         => 'සොයන්න',
@@ -88,10 +105,16 @@ $messages = array(
 'talk'             => 'සාකච්ඡා පිටුව',
 'toolbox'          => 'මෙවලම්',
 'otherlanguages'   => 'වෙනත් භාෂා වලින්',
+'protectedpage'    => 'ආරක්ෂිත පිටුව',
 'jumptosearch'     => 'සොයන්න',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+'aboutsite'     => '{{SITENAME}}ගැන
+<!--{{SITENAME}}About-->',
 'currentevents' => 'කාලීන සිදුවීම්',
+'edithelp'      => 'සංස්කරණ උදව්',
+'edithelppage'  => 'Help:සංස්කරණ',
+'helppage'      => 'Help:පටුන',
 'mainpage'      => 'මුල් පිටුව',
 'portal'        => 'ප්‍රජා ද්වාරය',
 'portal-url'    => 'Project:ප්‍රජා ද්වාරය',
@@ -117,10 +140,15 @@ $messages = array(
 'badtitle' => 'නුසුදුසු මාතෘකාවක්',
 
 # Login and logout pages
+'welcomecreation'            => "== ආයුබෝවන්, $1! ==
+
+<!--Your account has been created. Don't forget to change your {{SITENAME}} preferences.-->
+ඔබ‍ගේ ගිණුම තැනී ඇත.ඔබ‍ගේ {{SITENAME}} අභිරුචි වෙනස් කර ගන්න අමතක කරන්න එපා.",
 'yourname'                   => 'පරිශීලක නාමය:',
 'yourpassword'               => 'මුරපදය:',
 'yourpasswordagain'          => 'මුරපදය නැවත ලියන්න:',
 'yourdomainname'             => 'ඔබගේ වසම:',
+'userlogin'                  => 'Log in / ගිණුමක් තනන්න',
 'logout'                     => 'පිටවන්න',
 'nologinlink'                => 'ගිණුමක් තනන්න',
 'createaccount'              => 'ගිණුමක් තනන්න',
@@ -145,8 +173,10 @@ $messages = array(
 'bold_sample'   => 'තදකුරු',
 'bold_tip'      => 'තදකුරු',
 'italic_sample' => 'ඇලකුරු',
+'italic_tip'    => 'ඇලකුරු',
 'link_tip'      => 'අභ්‍යන්තර සබැඳිය',
 'math_tip'      => 'ගණිත සුත්‍ර(LaTeX)',
+'media_tip'     => 'ගොනු සබැඳිය',
 
 # Edit pages
 'summary'           => 'සාරාංශය',
@@ -166,17 +196,27 @@ $messages = array(
 # Revision deletion
 'rev-delundel' => 'පෙන්වන්න/සඟවන්න',
 
+# Search results
+'viewprevnext' => '($1) ($2) ($3) බලන්න',
+'powersearch'  => 'ගැඹුරින් සොයන්න',
+
 # Preferences page
 'mypreferences'  => 'මගේ අභිරුචි',
 'changepassword' => 'මුරපදය වෙනස් කරන්න',
 'datetime'       => 'දිනය සහ වේලාව',
 'prefs-rc'       => 'නව වෙනස්වීම්',
 'prefs-misc'     => 'විවිධ',
+'saveprefs'      => 'Save',
+'resetprefs'     => 'යළි පිහිටුවන්න',
 'files'          => 'ගොනු',
 
 # Recent changes
-'recentchanges' => '‍නව වෙනස්වීම්',
-'show'          => 'පෙන්වන්න',
+'recentchanges'   => '‍නව වෙනස්වීම්',
+'rcshowhideminor' => 'සුළු සංස්කරණ $1',
+'rcshowhideanons' => 'නිර්නාමික පරිශීලකයෝ $1',
+'diff'            => 'වෙනස',
+'hide'            => 'සඟවන්න',
+'show'            => 'පෙන්වන්න',
 
 # Recent changes linked
 'recentchangeslinked' => 'සබැඳි වෙනස්වීම්',
@@ -186,23 +226,30 @@ $messages = array(
 
 # Image list
 'ilsubmit'          => 'සොයන්න',
+'filehist'          => 'ගොනු ඉතිහාසය',
 'filehist-datetime' => 'දිනය/කාලය',
+'filehist-user'     => 'පරිශීලක',
 
 # Random page
 'randompage' => 'අහඹු පිටුව',
 
 # Miscellaneous special pages
+'allpages'     => 'සියලු පිටු',
 'specialpages' => 'විශේෂ පිටු',
+'newpages'     => 'අලුත් පිටු',
 'move'         => 'ගෙනයන්න',
 
 # Book sources
 'booksources-go' => 'යන්න',
 
+'alphaindexline' => '$1 සි‍ට $2',
+
 # Special:Log
-'log'               => 'ලඝු',
+'log'               => 'Logs',
 'log-search-submit' => 'යන්න',
 
 # Special:Allpages
+'allarticles'    => 'සියලු පිටු',
 'allpagessubmit' => 'යන්න',
 
 # Special:Listusers
@@ -216,6 +263,9 @@ $messages = array(
 # Undelete
 'undelete-search-submit' => 'සොයන්න',
 
+# Namespace form on various pages
+'namespace' => 'නාමඅවකාශය:',
+
 # Contributions
 'contributions' => 'මේ පරිශීලකයාගේ දායකත්වය',
 'mycontris'     => 'මගේ දායකත්වය',
@@ -226,9 +276,21 @@ $messages = array(
 # Block/unblock
 'ipaddress' => 'IP යොමුව:',
 
+# Namespace 8 related
+'allmessagesname' => 'නම',
+
 # Tooltip help for the actions
-'tooltip-ca-delete'  => 'මේ පිටුව මකන්න',
-'tooltip-n-mainpage' => 'මුල් පිටුව‍ට යන්න',
+'tooltip-pt-preferences'   => 'මගේ අභිරුචි',
+'tooltip-ca-edit'          => 'ඔබ‍ට මෙම පිටුව සංස්කරණය කල හැක. කරුණාකර සුරැකීමට පෙර පෙරදසුන බොත්තම භාවිතා කරන්න.',
+'tooltip-ca-delete'        => 'මේ පිටුව මකන්න',
+'tooltip-search'           => 'සොයන්න {{SITENAME}}',
+'tooltip-n-mainpage'       => 'මුල් පිටුව‍ට යන්න',
+'tooltip-t-specialpages'   => 'සියලු විශේෂ පිටු ලැයිස්තුව',
+'tooltip-ca-nstab-project' => 'ව්‍යාපෘති පිටුව පෙන්වන්න',
+'tooltip-save'             => 'ඔබගේ වෙනස් කිරීම් සුරකින්න',
+
+# Metadata
+'metadata' => 'පාරදත්ත',
 
 # EXIF tags
 'exif-imagewidth'   => 'පළල',
@@ -240,6 +302,9 @@ $messages = array(
 'exif-subjectdistance-value' => 'මීටර $1',
 
 'exif-focalplaneresolutionunit-2' => 'අඟල්',
+
+# 'all' in various places, this might be different for inflected languages
+'namespacesall' => 'සියල්ල',
 
 # action=purge
 'confirm_purge_button' => 'හරි',

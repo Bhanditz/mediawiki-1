@@ -1,14 +1,14 @@
 <?php
 /** Scottish Gaelic (Gàidhlig)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
- * @author SPQRobin
- * @author לערי ריינהארט
+ * @author Alison
  * @author Helix84
- * @author Nike
- * @author Sionnach
  * @author Raymond
+ * @author Sionnach
+ * @author לערי ריינהארט
  */
 
 $messages = array(
@@ -147,7 +147,7 @@ $1",
 'newarticle'        => '(Ùr)',
 'noarticletext'     => '(Chan eil teacsa anns an duilleig seo a-nis)',
 'updated'           => '(Nua-dheasaichte)',
-'previewnote'       => 'Cuimhnichibh nach e ach roi-shealladh a tha seo, agus chan eil e air a shàbhaladh fhathast!',
+'previewnote'       => '<strong>Cuimhnichibh nach e ach roi-shealladh a tha seo, agus chan eil e air a shàbhaladh fhathast!</strong>',
 'editing'           => "A'deasaicheadh $1",
 'editconflict'      => 'Mì-chòrdadh deasachaidh: $1',
 'explainconflict'   => "Tha cuideigin eile air an duilleig seo a mhùthadh o'n thòisich sibh fhèin a dheasaicheadh. Tha am bocsa teacsa shuas a'nochdadh na duilleig mar a tha e an dràsda. Tha na mùthaidhean agaibhse anns a'bhocsa shios. Feumaidh sibh na mùthaidhean agaibh a choimeasgachadh leis an teacsa làithreach. Cha tèid <b>ach an teacsa shuas</b> a shàbhaladh an uair a bhriogas sibh \"Sàbhail duilleag\".<p>",
@@ -175,8 +175,8 @@ $1",
 'prevn'             => '$1 mu dheireadh',
 'nextn'             => 'an ath $1',
 'viewprevnext'      => 'Seall ($1) ($2) ($3).',
-'showingresults'    => "A'nochdadh <b>$1</b> toraidhean gu h-ìosal a'tòiseachadh le #<b>$2</b>.",
-'showingresultsnum' => "A'nochdadh <b>$3</b> toraidhean gu h-ìosal a'tòiseachadh le #<b>$2</b>.",
+'showingresults'    => "A'nochdadh {{PLURAL:$1|'''1''' toradh|'''$1''' toraidhean}} gu h-ìosal a'tòiseachadh le #'''$2'''.",
+'showingresultsnum' => "A'nochdadh {{PLURAL:$3|'''1''' toradh|'''$3''' toraidhean}} gu h-ìosal a'tòiseachadh le #'''$2'''.",
 'powersearch'       => 'Rannsaich',
 
 # Preferences page
@@ -218,7 +218,7 @@ $1",
 'upload'        => 'Cuir ri fhaidhle',
 'filename'      => 'Ainm-faidhle',
 'filedesc'      => 'Geàrr-chùnntas',
-'filestatus'    => 'Cor dlighe-sgrìobhaidh',
+'filestatus'    => 'Cor dlighe-sgrìobhaidh:',
 'ignorewarning' => 'Leig an rabhadh seachad agus sàbhail am faidhle codhiù.',
 'badfilename'   => 'Ainm ìomhaigh air atharrachadh ri "$1".',
 'fileexists'    => 'Tha faidhle leis an ainm seo ann cheana; nach faigh sibh cinnt air <strong><tt>$1</tt></strong> gu bheil sibh ag iarraidh atharrachadh.',
@@ -236,13 +236,14 @@ $1",
 'randompage' => 'Duilleag thuairmeach',
 
 # Statistics
-'sitestatstext' => "Tha '''\$1''' duilleagan gu lèir anns an stor-dàta, a'cur san àireamh duilleagan-làbhairt, duilleagan mu dheidhinn a'{{SITENAME}} fhèin, duilleagan \"bun\", ath-stiùireidhean, agus feadhainn eile nach eil nan duilleag brìgheil. As aonais sin, tha '''\$2''' duilleagan ann le brìgh.
+'sitestatstext' => "Tha {{PLURAL:\$1|'''1''' duilleag|'''\$1''' duilleagan gu lèir}} anns an stor-dàta, a'cur san àireamh duilleagan-làbhairt, duilleagan mu dheidhinn a'{{SITENAME}} fhèin, duilleagan \"bun\", ath-stiùireidhean, agus feadhainn eile nach eil nan duilleag brìgheil. As aonais sin, tha '''\$2''' duilleagan ann le brìgh.
 
-'''\$8''' files have been uploaded.
+'''\$8''' {{PLURAL:\$8|fhaidhl|fhaidhle}} a cuir ri.
 
-Tha na duilleagan air an sealladh '''\$3''' uairean, agus air an deasaicheadh '''\$4''' uairean o'n deach an wiki a shuidheachadh. Thig sin ri '''\$5''' deasaicheidhean anns a'mheadhan gach duilleag, agus '''\$6''' seallaidhean gach duilleag.
+Tha na duilleagan air an sealladh '''\$3''' {{PLURAL:\$3|uair|uairean}}, agus air an deasaicheadh '''\$4''' {{PLURAL:\$4|uair|uairean}} o'n deach an wiki a shuidheachadh.
+Thig sin ri '''\$5''' deasaicheidhean anns a'mheadhan gach duilleag, agus '''\$6''' seallaidhean gach duilleag.
 
-The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7'''.",
+Tha feadh an [http://www.mediawiki.org/wiki/Manual:Job_queue queue tùrn] na '''\$7'''.",
 
 'doubleredirects' => 'Ath-stiùreidhean dùbailte',
 
@@ -281,7 +282,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'watchlist'          => 'Mo fhaire',
 'nowatchlist'        => 'Chan eil altan air ur faire.',
 'addedwatch'         => 'Cuirte ri coimheadlìosta',
-'addedwatchtext'     => "Tha an duilleag \"[[:\$1]]\" cuirte ri [[Special:Watchlist|ur faire]] agaibh.  Ri teachd, bith chuir an àireamh an-sin mùthadhan na duilleag sin agus a'dhuilleag \"Talk\", agus bith a'dhuilleag '''tromte''' anns an [[Special:Recentchanges|lìosta nan mùthadhan ùra]] a dh'fhurasdaich i a sheall.
+'addedwatchtext'     => "Tha an duilleag \"[[:\$1]]\" cuirte ri [[Special:Watchlist|ur faire]] agaibh.  Ri teachd, bith chuir an àireamh an-sin mùthadhan na duilleag sin agus a'dhuilleag \"Talk\", agus bith a'dhuilleag '''tromte''' anns an [[Special:RecentChanges|lìosta nan mùthadhan ùra]] a dh'fhurasdaich i a sheall.
 
 Ma bu toil leibh a dhubh a'dhuilleag as ur faire agaibh nas fadalache, cnap air \"Caisg a' coimhead\" air an taobh-colbh.",
 'watchthispage'      => 'Cùm sùil air an dhuilleag seo',
@@ -329,7 +330,7 @@ Ma bu toil leibh a dhubh a'dhuilleag as ur faire agaibh nas fadalache, cnap air 
 'badipaddress'       => "Chan eil an seòladh IP aig a'cleachdair seo iomchaidh",
 'blockipsuccesssub'  => 'Shoirbhich bacadh',
 'blockipsuccesstext' => "Tha [[Special:Contributions/$1|$1]] air a bhacadh.
-<br />Faic [[Special:Ipblocklist|Liosta nan IP baicte]] na bacaidhean a dh'ath-sgrùdadh.",
+<br />Faic [[Special:IPBlockList|Liosta nan IP baicte]] na bacaidhean a dh'ath-sgrùdadh.",
 'unblockip'          => 'Neo-bhac cleachdair',
 'ipusubmit'          => 'Neo-bhac an seòladh seo',
 'ipblocklist'        => 'Liosta seòlaidhean IP agus ainmean-cleachdair air am bacadh',

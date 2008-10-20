@@ -1,12 +1,12 @@
 <?php
 /** Divehi (ދިވެހިބަސް)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
+ * @author Glacious
  * @author MF-Warburg
  * @author לערי ריינהארט
- * @author Siebrand
- * @author Glacious
  */
 
 $rtl = true;
@@ -100,14 +100,14 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'ވިކިޕީޑިއާ ގެ ތާރަފު',
-'aboutpage'         => 'މަޝްރޫ:ތާރަފު',
+'aboutpage'         => 'Project:ތާރަފު',
 'copyright'         => 'ހުރިހާ މާއްދާއެއް $1 ގެ ދަށުން ލިބެން އެބަހުއްޓެވެ.',
 'copyrightpagename' => 'ވިކިޕީޑިއާ:ނަކަލުކުރުމުގެ ހައްގު',
-'copyrightpage'     => 'މަޝްރޫ:ނަކަލުކުރުމުގެހައްގު',
+'copyrightpage'     => '{{ns:project}}:ނަކަލުކުރުމުގެހައްގު',
 'currentevents'     => 'ހިނގަމުންދާ ހާދިސާތައް',
 'disclaimers'       => 'އިއުލާނުތައް',
 'edithelp'          => 'ބަދަލުތައް ގެނައުމަށް އެހީ އެއް',
-'helppage'          => 'އެހީ:ފިހުރިސްތު',
+'helppage'          => 'Help:ފިހުރިސްތު',
 'mainpage'          => 'މައި ޞަފްޙާ',
 'portal'            => 'އާންމު ހޮޅުއަށި',
 'privacy'           => 'އަމިއްލަވަންތަ ސިޔާސަތު',
@@ -241,8 +241,8 @@ $messages = array(
 'uploadbtn'         => 'ފައިލު ފޮނުވާ',
 'filedesc'          => 'ހުލާސާ',
 'fileuploadsummary' => 'ހުލާސާ:',
-'filestatus'        => 'ނަކަލުކުރުމުގެހައްގުގެ ހާލަތު',
-'filesource'        => 'މަސްދަރު',
+'filestatus'        => 'ނަކަލުކުރުމުގެހައްގުގެ ހާލަތު:',
+'filesource'        => 'މަސްދަރު:',
 'uploadedfiles'     => 'ފޮނުވިފައިވާ ފައިލުތައް',
 'uploadwarning'     => 'ފައިލުފޮނުއްވުމުގެ ކުރިން ދެވޭ އިންޒާރު',
 
@@ -390,7 +390,7 @@ $messages = array(
 'confirmemail' => 'އީމޭލު އެޑްރެސް ޔަގީންކުރައްވާ',
 
 # HTML dump
-'redirectingto' => 'މިސްރާބު ކުރެވެނީ [[$1]] އަށް...',
+'redirectingto' => 'މިސްރާބު ކުރެވެނީ [[:$1]] އަށް...',
 
 # action=purge
 'confirm_purge_button' => 'ރަނގަޅު',

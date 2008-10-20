@@ -1,9 +1,10 @@
 <?php
 /** Kalmyk (Хальмг)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
- * @author M.M.S.
+ * @author ОйЛ
  * @author לערי ריינהארט
  */
 
@@ -39,6 +40,7 @@ $messages = array(
 'edit'             => 'Чиклх',
 'talkpage'         => 'Ухалвр',
 'talkpagelinktext' => 'Ухалвр',
+'talk'             => 'Ухалвр',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'mainpage' => 'Эклц',

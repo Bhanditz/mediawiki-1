@@ -1,8 +1,10 @@
 <?php
 /** Azerbaijani (Azərbaycan)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
+ * @author לערי ריינהארט
  */
 
 $namespaceNames = array(
@@ -206,6 +208,7 @@ $messages = array(
 'noemail'                    => '"$1" adlı istifadəçi e-məktub ünvanı qeyd edmemişdir.',
 'acct_creation_throttle_hit' => 'Siz artıq $1 hesab açmısınız. Daha çox hesab açabilmərsiniz.',
 'emailauthenticated'         => 'E-məktub ünvanınız $1 tarixində təsdiq edilib.',
+'emailnotauthenticated'      => 'Your e-mail address is not yet authenticated. No e-mail will be sent for any of the following features.',
 'emailconfirmlink'           => 'E-məktubunu təsdiq et',
 'invalidemailaddress'        => 'E-məktub ünvanını qeyri düzgün formatda olduğu üçün qəbul edə bilmirik. Xahiş edirik düzgün formatlı ünvan daxil edin və ya bu sahəni boş qoyun.',
 
@@ -216,7 +219,7 @@ $messages = array(
 'italic_tip'      => 'Kursiv mətn',
 'link_sample'     => 'Bağlantı başlığı',
 'link_tip'        => 'Daxili bağlantı',
-'extlink_sample'  => 'http://www.misal.com başlıq',
+'extlink_sample'  => 'http://www.example.com başlıq',
 'extlink_tip'     => 'Xarici səhifə (http:// ekini unutma)',
 'headline_sample' => 'Başlıq metni',
 'headline_tip'    => '2. səviyyə başlıq',
@@ -243,7 +246,7 @@ $messages = array(
 'noarticletext'      => "Hal-hazırda bu səhifə boşdur. Başqa səhifələrdə [[Special:Search/{{PAGENAME}}|bu səhifənin adını axtara]] bilər və ya '''[{{fullurl:{{NAMESPACE}}:{{PAGENAME}}|action=edit}} səhifəni siz redaktə edəbilərsiniz]'''.",
 'previewnote'        => '<strong>Bu yalnız sınaq göstərişidir; dəyişikliklər hal-hazırda qeyd edilmemişdir!</strong>',
 'editing'            => 'Redaktə $1',
-'editinguser'        => 'Redaktə $1',
+'editinguser'        => "Redaktə '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'yourtext'           => 'Metniniz',
 'yourdiff'           => 'Fərqlər',
 'templatesused'      => 'Bu səhifədə istifadə edilmiş şablonlar:',
@@ -285,6 +288,7 @@ Açıqlama: (hh) = hal-hazırkı versiya ilə olan fərqlər,
 'prefs-rc'           => 'Son dəyişikliklər',
 'prefs-misc'         => 'Digər tərcihlər',
 'saveprefs'          => 'Qeyd et',
+'resetprefs'         => 'Reset',
 'oldpassword'        => 'Köhne parol:',
 'newpassword'        => 'Yeni parol:',
 'retypenew'          => 'Yeni parolu təkrar yazın:',
@@ -324,12 +328,13 @@ Açıqlama: (hh) = hal-hazırkı versiya ilə olan fərqlər,
 'upload'            => 'Qarşıya yüklə',
 'uploadbtn'         => 'Sənəd yüklə',
 'reupload'          => 'Təkrar yüklə',
+'reuploaddesc'      => 'Return to the upload form.',
 'uploaderror'       => 'Yükləyiş xətası',
 'uploadlog'         => 'yükleme kaydı',
 'filename'          => 'Fayl adı',
 'fileuploadsummary' => 'İzahat:',
-'filestatus'        => 'Müəllif statusu',
-'filesource'        => 'Mənbə',
+'filestatus'        => 'Müəllif statusu:',
+'filesource'        => 'Mənbə:',
 'uploadwarning'     => 'Yükləyiş xəbərdarlıqı',
 'savefile'          => 'Faylı qeyd et',
 
@@ -361,7 +366,7 @@ There have been a total of '''$3''' page views, and '''$4''' page edits
 since the wiki was setup.
 That comes to '''$5''' average edits per page, and '''$6''' views per edit.
 
-Hal-hazırda [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] sayı: '''$7'''.",
+Hal-hazırda [http://www.mediawiki.org/wiki/Manual:Job_queue job queue] sayı: '''$7'''.",
 'userstatstext' => "Hal-hazırda '''$1''' istifadəçi, '''2''' (və ya '''4%''') tanesi idarəçi. (baxınız $3).",
 
 'doubleredirects' => 'İkiqat istiqamətləndirmələr',
@@ -427,7 +432,7 @@ Hal-hazırda [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] sayı: ''
 'mywatchlist'          => 'İzlədiyim səhifələr',
 'watchnologin'         => 'Daxil olmamısınız',
 'addedwatch'           => 'İzləmə siyahısına əlavə edildi.',
-'addedwatchtext'       => '"$1" səhifəsi [[Special:Watchlist|izlədiyiniz səhifələrə]] əlavə edildi. Bu səhifədə və əlaqəli müzakirə səhifəsində olacaq dəyişikliklər orada göstəriləcək və səhifə asanlıqla seçiləbilmək üçün [[Special:Recentchanges|son dəyişikliklər]]-də qalın şriftlərlə görsənəcəkdir.
+'addedwatchtext'       => '"$1" səhifəsi [[Special:Watchlist|izlədiyiniz səhifələrə]] əlavə edildi. Bu səhifədə və əlaqəli müzakirə səhifəsində olacaq dəyişikliklər orada göstəriləcək və səhifə asanlıqla seçiləbilmək üçün [[Special:RecentChanges|son dəyişikliklər]]-də qalın şriftlərlə görsənəcəkdir.
 
 Səhifəni izləmə sıyahınızdan çıxarmaq üçün yan lovhədəki "izləmə" düyməsinə vurun.',
 'removedwatch'         => 'İzləmə siyahısından çıxardılıb',
@@ -442,7 +447,7 @@ Səhifəni izləmə sıyahınızdan çıxarmaq üçün yan lovhədəki "izləmə
 'watchmethod-recent'   => 'yeni dəyişikliklər izlənilən səhifələr üçün yoxlanılır',
 'watchmethod-list'     => 'izlənilən səhifələr yeni dəyişikliklər üçün yoxlanılır',
 'watchlistcontains'    => 'İzləmə siyahınızda $1 səhifə var.',
-'wlnote'               => 'Aşağıdakılar son <b>$2</b> saatdakı son $1 dəyişiklikdir.',
+'wlnote'               => "Aşağıdakılar son '''$2''' saatdakı son $1 dəyişiklikdir.",
 'wlshowlast'           => 'Bunları göstər: son $1 saatı $2 günü $3',
 
 # Delete/protect/revert
@@ -479,7 +484,7 @@ Səhifəni izləmə sıyahınızdan çıxarmaq üçün yan lovhədəki "izləmə
 'ipbsubmit'          => 'Bu istifadəçiyi əngəllə',
 'badipaddress'       => 'Yanlış IP',
 'blockipsuccesssub'  => 'bloklandi',
-'blockipsuccesstext' => '[[Special:Contributions/$1| $1]]bloklanıb. <br />See[[Special:Ipblocklist|IP blok siyahisi]] bloklanmış IP lər.',
+'blockipsuccesstext' => '[[Special:Contributions/$1| $1]]bloklanıb. <br />See[[Special:IPBlockList|IP blok siyahisi]] bloklanmış IP lər.',
 'ipblocklist'        => 'Əngəllənmiş istifadəçilər siyahı',
 'blocklink'          => 'blokla',
 'contribslink'       => 'Köməklər',

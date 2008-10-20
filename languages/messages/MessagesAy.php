@@ -1,10 +1,10 @@
 <?php
 /** Aymara (Aymar)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Kanon6917
- * @author Siebrand
  */
 
 $fallback = 'es';
@@ -79,7 +79,7 @@ $messages = array(
 # Upload
 'fileuploadsummary' => 'Uñt’ayawi:',
 
-'license' => 'Iyawsawi',
+'license' => 'Iyawsawi:',
 
 # Image list
 'filehist-user'         => 'Apnaqiri',

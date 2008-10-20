@@ -1,14 +1,13 @@
 <?php
 /** Tuvinian (Тыва дыл)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Krice from Tyvanet.com
  * @author Sborsody
  * @author friends at tyvawiki.org
- * @author Nike
  * @author לערי ריינהארט
- * @author Siebrand
  */
 
 $namespaceNames = array(
@@ -283,7 +282,7 @@ $1',
 'italic_sample'   => 'Ийлендирер',
 'link_sample'     => 'Холбаа ады',
 'link_tip'        => 'Иштики холбаа',
-'extlink_sample'  => 'http://www.чижек.com холбаа ады',
+'extlink_sample'  => 'http://www.example.com холбаа ады',
 'extlink_tip'     => 'Даштыкы холбаа ("http://" чүве сактып алыр)',
 'headline_sample' => 'Кол сөс сөзүглел',
 'nowiki_sample'   => 'Форматтаваан сөзүглелини бээр салыр',
@@ -310,7 +309,7 @@ $1',
 'accmailtext'        => '"{{grammar:genitive|$1}}" чажыт сөстү {{grammar:directive1|$2}} чоргузуптувус.',
 'newarticle'         => '(Чаа)',
 'editing'            => '$1 деп арынны өскертип турар',
-'editinguser'        => '<b>$1</b> деп ажыглакчыны өскертип турар',
+'editinguser'        => '<b>$1</b> деп ажыглакчыны өскертип турар ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])',
 'editingsection'     => '$1 деп арынның бөлгүмүн өскертип турар',
 'editingcomment'     => '$1 (комментарий) өскертип турар',
 'yourtext'           => 'Силерниң сөзүглелиңер',

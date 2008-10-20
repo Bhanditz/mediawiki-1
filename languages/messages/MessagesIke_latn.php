@@ -1,9 +1,9 @@
 <?php
-/** Eastern Canadian (Latin) (inuktitut)
+/**  ()
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
- * @author SPQRobin
  */
 
 $messages = array(
@@ -102,6 +102,10 @@ $messages = array(
 'editsection'         => 'suqusiqpaa',
 'editold'             => 'suqusiqpaa',
 'editsectionhint'     => 'suqusiqpaa ilangiutititsiguti: $1',
+'site-rss-feed'       => '$1 ᕐᔅᔅ ᒥᐊᓂᕆᕚ',
+'site-atom-feed'      => '$1 ᐊᑐᒻ ᒥᐊᓂᕆᕚ',
+'page-rss-feed'       => '"$1" ᕐᔅᔅ ᒥᐊᓂᕆᕚ',
+'page-atom-feed'      => '"$1" ᐊᑐᒻ ᒥᐊᓂᕆᕚ',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'mappitaq',
@@ -153,7 +157,7 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 'blockedtitle'    => 'aaqqiksuiji uminngasisijuq',
 'loginreqlink'    => 'akunnapuq',
 'newarticle'      => '(pigivuk)',
-'editinguser'     => 'suqusiqpaa qatannguti <b>$1</b>',
+'editinguser'     => "suqusiqpaa qatannguti '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'editingsection'  => 'suqusiqpaa $1 (ilangiutititsiguti)',
 'editingcomment'  => 'suqusiqpaa $1 (ujjirijaq)',
 'editconflict'    => 'suqusiqpaa akaunngiliurutiniq: $1',
@@ -348,7 +352,7 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 'monthsall' => 'sunamittuq',
 
 # HTML dump
-'redirectingto' => 'qaningani kamagijaq aasit nakit [[$1]]...',
+'redirectingto' => 'qaningani kamagijaq aasit nakit [[:$1]]...',
 
 # action=purge
 'confirm_purge_button' => 'akaujuq',

@@ -1,7 +1,8 @@
 <?php
-/** Kurdish (Arab) (كوردي (عەرەبی))
+/** ‫كوردي (عەرەبی)‬ (‫كوردي (عەرەبی)‬)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author Aras Noori
  */
@@ -127,7 +128,7 @@ $messages = array(
 'dec'           => 'كا١',
 
 # Bits of text used by many pages
-'categories'            => '{{PLURAL:$1|هاوپۆل|هاوپۆله‌كان}}',
+'categories'            => 'هاوپۆله‌كان',
 'pagecategories'        => '$1 هاوپۆله‌كان',
 'category_header'       => 'په‌ڕه‌ی هاوپۆلی "$1" de',
 'subcategories'         => 'به‌شه‌هاوپۆله‌كان',
@@ -221,7 +222,8 @@ $messages = array(
 'mainpage' => 'ده‌ستپێك',
 
 'versionrequired'     => 'پێویستیت به‌ وه‌شانی $1 ـی‌ ویكیمیدیایه‌',
-'versionrequiredtext' => 'پێویستیت به‌ وه‌شانی $1 ـێ ویكیمیدیا هه‌یه‌ بۆ به‌كاربردنی ئه‌م په‌ڕه‌یه‌. ته‌ماشای [[Special:version|وه‌شانی]] بكه‌.',
+'versionrequiredtext' => 'پێویستیت به‌ وه‌شانی $1 ـێ ویكیمیدیا هه‌یه‌ بۆ به‌كاربردنی ئه‌م په‌ڕه‌یه‌
+. ته‌ماشای [[Special:Version|وه‌شانی]] بكه‌.',
 
 'ok'                      => 'باشه‌',
 'retrievedfrom'           => 'له‌ لایه‌ن "$1" گه‌ڕاوه‌ته‌وه‌.',
@@ -255,7 +257,7 @@ $messages = array(
 'nosuchspecialpage' => 'په‌ڕه‌ی تایبه‌تی له‌و شێوه‌یه‌ نییه‌',
 'nospecialpagetext' => "<big>''په‌ڕه‌یكی تایبه‌ت ده‌خوازیت كه‌ بوونی نییه‌'''</big>
 
-لیستی په‌ڕه‌ تایبه‌تییه‌كان له‌ [[{{ns:special}}:Specialpages|لیسته‌ی په‌ڕه‌ تایبه‌ته‌كان]] ده‌توانرێت ببینرێت.",
+لیستی په‌ڕه‌ تایبه‌تییه‌كان له‌ [[Special:SpecialPages|لیسته‌ی په‌ڕه‌ تایبه‌ته‌كان]] ده‌توانرێت ببینرێت.",
 
 # General errors
 'error'              => 'هه‌ڵه‌',
@@ -334,8 +336,8 @@ $messages = array(
 'tooltip-pt-userpage' => 'په‌ڕه‌ی تایبه‌تی خۆم',
 
 # Separators for various lists
-'semicolon-separator' => '؛',
-'comma-separator'     => '،',
+'semicolon-separator' => '؛&#32;',
+'comma-separator'     => '،&#32;',
 
 # Live preview
 'livepreview-loading' => 'له‌باركردنایه‌ ...',

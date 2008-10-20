@@ -1,11 +1,10 @@
 <?php
 /** Nepali (नेपाली)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
  * @author ne.wikipedia.org sysops
- * @author SPQRobin
- * @author Nike
  */
 
 $digitTransformTable = array(
@@ -303,8 +302,8 @@ $messages = array(
 'filename'          => 'फाइलनाम',
 'filedesc'          => 'सारांश',
 'fileuploadsummary' => 'सारांश:',
-'filestatus'        => 'लेखाधिकार स्थिति',
-'filesource'        => 'स्रोत',
+'filestatus'        => 'लेखाधिकार स्थिति:',
+'filesource'        => 'स्रोत:',
 'watchthisupload'   => 'यो पृष्ठ अवलोकन गर्नुहोस्',
 
 'nolicense' => 'केहिपनि छानिएन',
@@ -332,7 +331,8 @@ $messages = array(
 'brokenredirects'     => 'टुटेका रिडाइरेक्टहरू',
 'brokenredirectstext' => 'तलका लिङ्कहरु ले हुदै नभएका पृष्ठहरुलाइ जोड्न खोज्छन्:',
 
-'withoutinterwiki-header' => 'यी पानाहरूले अन्य भाषाका संस्करणहरूमा संबन्ध राखेका छैनन्:',
+'withoutinterwiki-header'  => 'यी पानाहरूले अन्य भाषाका संस्करणहरूमा संबन्ध राखेका छैनन्:',
+'withoutinterwiki-summary' => 'यी पानाहरूले अन्य भाषाका संस्करणहरूमा संबन्ध राखेका छैनन्:',
 
 # Miscellaneous special pages
 'specialpage-empty' => 'यो पृष्ठ खाली छ।',
@@ -378,9 +378,8 @@ $messages = array(
 'listusers-submit' => 'देखाउनुहोस्',
 
 # E-mail user
-'mailnologin'     => 'ईमेल पठाउने ठेगाना नै भएन । 
-<br>No send address',
-'mailnologintext' => 'तपाईले अरु प्रयोगकर्ताहरुलाई ईमेल पठाउनको लागी आफु पहिले [[Special:Userlogin|प्रवेश(लगइन)गरेको]] हुनुपर्छ र [[Special:Preferences|आफ्नो रोजाइहरुमा]] यौटा वैध ईमेल ठेगाना भएको हुनुपर्छ।',
+'mailnologin'     => 'ईमेल पठाउने ठेगाना नै भएन ।',
+'mailnologintext' => 'तपाईले अरु प्रयोगकर्ताहरुलाई ईमेल पठाउनको लागी आफु पहिले [[Special:UserLogin|प्रवेश(लगइन)गरेको]] हुनुपर्छ र [[Special:Preferences|आफ्नो रोजाइहरुमा]] यौटा वैध ईमेल ठेगाना भएको हुनुपर्छ।',
 'emailuser'       => 'यो प्रयोगकर्तालाई ई-मेल पठाउनुहोस्',
 'emailpage'       => 'प्रयोगकर्तालाई इमेल गर्नुहोस्',
 'noemailtitle'    => 'ईमेल ठेगाना नभएको',
@@ -394,7 +393,7 @@ $messages = array(
 'mywatchlist'          => 'मेरो अवलोकनसूची',
 'nowatchlist'          => 'तपाईको अवलोकन(वाचलिस्ट)मा कुनैपनि चिज छैन।',
 'watchnologin'         => 'प्रवेश (लग ईन) नगरिएको',
-'watchnologintext'     => 'आफ्नो अवलोकनलाइ परिवर्तन गर्नको लागि त तपाइ यसमा [[Special:Userlogin|प्रवेश(लगइन)]] गर्नुपर्छ।',
+'watchnologintext'     => 'आफ्नो अवलोकनलाइ परिवर्तन गर्नको लागि त तपाइ यसमा [[Special:UserLogin|प्रवेश(लगइन)]] गर्नुपर्छ।',
 'addedwatch'           => 'अवलोकनसूची मा थपियो',
 'watch'                => 'अवलोकन',
 'watchthispage'        => 'यो पृष्ठ अवलोकन गर्नुहोस्',

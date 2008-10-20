@@ -1,15 +1,11 @@
 <?php
 /** Eastern Canadian (Unified Canadian Aboriginal Syllabics) (ᐃᓄᒃᑎᑐᑦ)
  *
- * @addtogroup Language
+ * @ingroup Language
+ * @file
  *
- * @author SPQRobin
- * @author Siebrand
  * @author Max sonnelid
- * @author M.M.S.
  */
-
-
 
 $messages = array(
 # User preference toggles
@@ -22,7 +18,11 @@ $messages = array(
 'friday'        => 'ᐸᒐᐃᑖᒃ',
 'sun'           => 'ᓴᓇ',
 'mon'           => 'ᓇᒡ',
+'tue'           => 'ᐱᖃ',
 'wed'           => 'ᐱᖓ',
+'thu'           => 'ᕿᑎ',
+'fri'           => 'ᐅᓪᓗ',
+'sat'           => 'ᓯᕙᑕ',
 'january'       => 'ᔭᓐᓄᐊᓕ',
 'february'      => 'ᕕᐳᐊᕆ',
 'march'         => 'ᒫᕐᓯ',
@@ -122,6 +122,10 @@ $messages = array(
 'editsectionhint'     => 'ᓱᖁᓯᖅᐹ ᐃᓚᖏᐅᑎᑎᑦᓯᒍᑎ: $1',
 'showtoc'             => 'ᐊᓚᒃᑲᑎᖅᐹ',
 'hidetoc'             => 'ᐃᔨᖅᐳᖅ',
+'site-rss-feed'       => '$1 ᕐᔅᔅ ᒥᐊᓂᕆᕚ',
+'site-atom-feed'      => '$1 ᐊᑐᒻ ᒥᐊᓂᕆᕚ',
+'page-rss-feed'       => '"$1" ᕐᔅᔅ ᒥᐊᓂᕆᕚ',
+'page-atom-feed'      => '"$1" ᐊᑐᒻ ᒥᐊᓂᕆᕚ',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'ᒪᑉᐱᑕᖅ',
@@ -176,7 +180,7 @@ $messages = array(
 'loginreqlink'    => 'ᐊᑯᓐᓇᐳᖅ',
 'newarticle'      => '(ᐱᒋᕗᖅ)',
 'editing'         => 'ᐊᓯᐊᙳᑐᖅ $1',
-'editinguser'     => 'ᓱᖁᓯᖅᐹ ᖃᑕᙳᑎ <b>$1</b>',
+'editinguser'     => "ᓱᖁᓯᖅᐹ ᖃᑕᙳᑎ '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'editingsection'  => 'ᓱᖁᓯᖅᐹ ᐃᓚ $1 (ᖏᐅᑎᑎᑦᓯᒍᑎ)',
 'editingcomment'  => 'ᓱᖁᓯᖅᐹ $1 (ᐅᔾᔨᕆᔭᖅ)',
 'editconflict'    => 'ᓱᖁᓯᖅᐹ ᐊᑲᐅᙱᓕᐅᕈᑎᓂᖅ: $1',
@@ -202,7 +206,7 @@ $messages = array(
 
 # Search results
 'nextn'       => 'ᑕᒡᒐ $1',
-'powersearch' => 'ᐃᕚᖅᐳᖅ',
+'powersearch' => 'ᕿᓐᓇᕆᒃᓴᕐᓂᖅ',
 
 # Preferences page
 'mypreferences'         => 'ᐊᒥ ᐱᒃᑯᒪᓂᖅᐹᖅ',
@@ -217,6 +221,7 @@ $messages = array(
 'show'            => 'ᐊᓚᒃᑲᑎᖅᐹ',
 'minoreditletter' => 'ᐅ',
 'newpageletter'   => 'ᐱ',
+'boteditletter'   => 'ᑉ',
 
 # Recent changes linked
 'recentchangeslinked'          => 'ᐊᓯᐊᙳᑐᖅ ᒥᑦᓵᓯᔪᖅ',
@@ -381,7 +386,7 @@ $messages = array(
 'monthsall' => 'ᓱᓇᒥᑦᑐᖅ',
 
 # HTML dump
-'redirectingto' => 'ᖃᓂᖓᓂ ᑲᒪᒋᔭᖅ ᐋᓯᑦ ᓇᑭᑦ [[$1]]...',
+'redirectingto' => 'ᖃᓂᖓᓂ ᑲᒪᒋᔭᖅ ᐋᓯᑦ ᓇᑭᑦ [[:$1]]...',
 
 # action=purge
 'confirm_purge_button' => 'ᐊᑲᐅᔪᖅ',
