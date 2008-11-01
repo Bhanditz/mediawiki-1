@@ -15,8 +15,6 @@ $messages = array(
 'tog-justify'          => 'Tadlongon ang mga parapo',
 'tog-rememberpassword' => 'Dumdumon ang akon pagsulod sa sini nga kompyuter',
 
-'skinpreview' => '(Ipakita subong)',
-
 # Dates
 'sunday'        => 'Domingo',
 'monday'        => 'Lunes',
@@ -103,17 +101,16 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Nahanungod sa {{SITENAME}}',
-'aboutpage'            => 'Proyekto:Nahanungod',
+'aboutpage'            => 'Project:Nahanungod',
 'currentevents'        => 'Mga Hitabo Subong',
 'disclaimers'          => 'Diskleymer',
-'disclaimerpage'       => 'Proyekto:Kabilogan nga diskleymer',
+'disclaimerpage'       => 'Project:Kabilogan nga diskleymer',
 'edithelp'             => 'Bulig sa pag Ilis',
 'mainpage'             => 'Mayor nga Panid',
 'mainpage-description' => 'Mayor nga Panid',
 'portal'               => 'Portal sang Banwa',
 'privacy'              => 'Polisa sa Pribisidad',
-'privacypage'          => 'Proyekto:Polisa sa Pribisidad',
-'sitesupport'          => 'Donasyon',
+'privacypage'          => 'Project:Polisa sa Pribisidad',
 
 'retrievedfrom'           => 'Ginkuha halin sa "$1"',
 'youhavenewmessages'      => 'Ikaw may $1 ($2).',
@@ -179,6 +176,7 @@ Indi pagkalimti ang pag ilis sang imo mga pagpasulabi sa {{SITENAME}}.',
 # Preferences page
 'mypreferences'     => 'Akon pagpalabi',
 'prefsnologin'      => 'Wala naka-sulod',
+'skin-preview'      => 'Ipakita subong',
 'prefs-rc'          => 'Mga Bag-o nga Inislan',
 'searchresultshead' => 'Pangita-a',
 
@@ -214,12 +212,12 @@ Indi pagkalimti ang pag ilis sang imo mga pagpasulabi sa {{SITENAME}}.',
 # Book sources
 'booksources-go' => 'Lakat',
 
-# Special:Log
-'log-search-submit' => 'Lakat',
-
-# Special:Allpages
+# Special:AllPages
 'alphaindexline' => '$1 sa $2',
 'allpagessubmit' => 'Sige',
+
+# Special:LinkSearch
+'linksearch-ok' => 'Pangita-a',
 
 # Watchlist
 'watchlist'     => 'Akon Ginabantayan',
@@ -228,8 +226,11 @@ Indi pagkalimti ang pag ilis sang imo mga pagpasulabi sa {{SITENAME}}.',
 'watch'         => 'Bantayan',
 'watchthispage' => 'Bantayan ining panid',
 
-# Delete/protect/revert
+# Delete
 'delete-legend' => 'Panason',
+
+# Protect
+'prot_1movedto2' => '[[$1]] gin saylo na sa [[$2]]',
 
 # Restrictions (nouns)
 'restriction-edit' => 'Ilisan',
@@ -280,7 +281,6 @@ Indi pagkalimti ang pag ilis sang imo mga pagpasulabi sa {{SITENAME}}.',
 'tooltip-n-recentchanges' => 'Ang listahan sang mga bag-o inislan sa wiki.',
 'tooltip-n-randompage'    => 'Magbasa sang isa ka panid paagi sa lagpat',
 'tooltip-n-help'          => 'Ang lugar para maka tukib.',
-'tooltip-n-sitesupport'   => 'Sakdaga kami',
 'tooltip-t-whatlinkshere' => 'Listahan sang tanan nga panid sang wiki nga naga tabid diri',
 'tooltip-t-upload'        => 'Mag karga mga files',
 'tooltip-t-specialpages'  => 'Lista sang tanan nga espesyal nga panid',
@@ -289,7 +289,7 @@ Indi pagkalimti ang pag ilis sang imo mga pagpasulabi sa {{SITENAME}}.',
 # Media information
 'show-big-image' => 'Kabilogan nga resolusyon',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'Pangita-a',
 
 # 'all' in various places, this might be different for inflected languages

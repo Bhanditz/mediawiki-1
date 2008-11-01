@@ -264,7 +264,14 @@ abstract class File {
 	 * Overridden by LocalFile, UnregisteredLocalFile
 	 * STUB
 	 */
-	function getMetadata() { return false; }
+	public function getMetadata() { return false; }
+
+	/**
+	 * Return the bit depth of the file
+	 * Overridden by LocalFile
+	 * STUB
+	 */
+	public function getBitDepth() { return 0; }
 
 	/**
 	 * Return the size of the image file, in bytes
@@ -499,8 +506,7 @@ abstract class File {
 	 *
 	 * @param integer $width	maximum width of the generated thumbnail
 	 * @param integer $height	maximum height of the image (optional)
-	 * @param boolean $render	True to render the thumbnail if it doesn't exist,
-	 *                       	false to just return the URL
+	 * @param boolean $render	Deprecated
 	 *
 	 * @return ThumbnailImage or null on failure
 	 *
@@ -511,8 +517,7 @@ abstract class File {
 		if ( $height != -1 ) {
 			$params['height'] = $height;
 		}
-		$flags = $render ? self::RENDER_NOW : 0;
-		return $this->transform( $params, $flags );
+		return $this->transform( $params, 0 );
 	}
 
 	/**
@@ -575,7 +580,7 @@ abstract class File {
 			// Purge. Useful in the event of Core -> Squid connection failure or squid 
 			// purge collisions from elsewhere during failure. Don't keep triggering for 
 			// "thumbs" which have the main image URL though (bug 13776)
-			if ( $wgUseSquid && ($thumb->isError() || $thumb->getUrl() != $this->getURL()) ) {
+			if ( $wgUseSquid && ( !$thumb || $thumb->isError() || $thumb->getUrl() != $this->getURL()) ) {
 				SquidUpdate::purge( array( $thumbUrl ) );
 			}
 		} while (false);
@@ -1062,13 +1067,26 @@ abstract class File {
 	 * Get the HTML text of the description page, if available
 	 */
 	function getDescriptionText() {
+		global $wgMemc;
 		if ( !$this->repo->fetchDescription ) {
 			return false;
 		}
 		$renderUrl = $this->repo->getDescriptionRenderUrl( $this->getName() );
 		if ( $renderUrl ) {
+			if ( $this->repo->descriptionCacheExpiry > 0 ) {
+				wfDebug("Attempting to get the description from cache...");
+				$key = wfMemcKey( 'RemoteFileDescription', 'url', md5($renderUrl) );
+				$obj = $wgMemc->get($key);
+				if ($obj) {
+					wfDebug("success!\n");
+					return $obj;
+				}
+				wfDebug("miss\n");
+			}
 			wfDebug( "Fetching shared description from $renderUrl\n" );
-			return Http::get( $renderUrl );
+			$res = Http::get( $renderUrl );
+			if ( $res && $this->repo->descriptionCacheExpiry > 0 ) $wgMemc->set( $key, $res, $this->repo->descriptionCacheExpiry );
+			return $res;
 		} else {
 			return false;
 		}

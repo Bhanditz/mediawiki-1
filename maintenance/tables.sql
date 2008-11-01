@@ -596,6 +596,9 @@ CREATE TABLE /*$wgDBprefix*/site_stats (
 
   -- Number of users, theoretically equal to SELECT COUNT(*) FROM user;
   ss_users bigint default '-1',
+  
+  -- Number of users that still edit
+  ss_active_users bigint default '-1',
 
   -- Deprecated, no longer updated as of 1.5
   ss_admins int default '-1',
@@ -616,7 +619,7 @@ CREATE TABLE /*$wgDBprefix*/site_stats (
 --
 CREATE TABLE /*$wgDBprefix*/hitcounter (
   hc_id int unsigned NOT NULL
-) TYPE=HEAP MAX_ROWS=25000;
+) ENGINE=HEAP MAX_ROWS=25000;
 
 
 --
@@ -674,6 +677,9 @@ CREATE TABLE /*$wgDBprefix*/ipblocks (
 
   -- Block prevents user from accessing Special:Emailuser
   ipb_block_email bool NOT NULL default 0,
+  
+  -- Block allows user to edit their own talk page
+  ipb_allow_usertalk bool NOT NULL default 0,
   
   PRIMARY KEY ipb_id (ipb_id),
 
@@ -745,8 +751,7 @@ CREATE TABLE /*$wgDBprefix*/image (
   INDEX img_size (img_size),
   -- Used by Special:Newimages and Special:Imagelist
   INDEX img_timestamp (img_timestamp),
-
-  -- For future use
+  -- Used in API and duplicate search
   INDEX img_sha1 (img_sha1)
 
 
@@ -905,7 +910,7 @@ CREATE TABLE /*$wgDBprefix*/recentchanges (
   rc_old_len int,
   rc_new_len int,
 
-  -- Visibility of deleted revisions, bitfield
+  -- Visibility of recent changes items, bitfield
   rc_deleted tinyint unsigned NOT NULL default '0',
 
   -- Value corresonding to log_id, specific log entries
@@ -995,7 +1000,7 @@ CREATE TABLE /*$wgDBprefix*/searchindex (
   FULLTEXT si_title (si_title),
   FULLTEXT si_text (si_text)
 
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 --
 -- Recognized interwiki link prefixes
@@ -1045,7 +1050,7 @@ CREATE TABLE /*$wgDBprefix*/objectcache (
   keyname varbinary(255) NOT NULL default '',
   value mediumblob,
   exptime datetime,
-  UNIQUE KEY (keyname),
+  PRIMARY KEY (keyname),
   KEY (exptime)
 
 ) /*$wgDBTableOptions*/;

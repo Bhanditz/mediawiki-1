@@ -26,7 +26,19 @@ include('commandLine.inc');
 # GLOBALS
 
 $doc = $IP . '/docs/hooks.txt';
-$pathinc = array( $IP.'/includes/', $IP.'/includes/api/', $IP.'/includes/filerepo/', $IP.'/languages/', $IP.'/maintenance/', $IP.'/skins/' );
+$pathinc = array(
+	$IP.'/',
+	$IP.'/includes/',
+	$IP.'/includes/api/',
+	$IP.'/includes/db/',
+	$IP.'/includes/diff/',
+	$IP.'/includes/filerepo/',
+	$IP.'/includes/parser/',
+	$IP.'/includes/specials/',
+	$IP.'/languages/',
+	$IP.'/maintenance/',
+	$IP.'/skins/',
+);
 
 # FUNCTIONS
 
@@ -43,7 +55,7 @@ function getHooksFromDoc() {
 		$content = file_get_contents( $doc );
 		preg_match_all( "/\n'(.*?)'/", $content, $m );
 	}
-	return $m[1];
+	return array_unique( $m[1] );
 }
 
 /**

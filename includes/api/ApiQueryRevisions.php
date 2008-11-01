@@ -44,6 +44,35 @@ class ApiQueryRevisions extends ApiQueryBase {
 	private $fld_ids = false, $fld_flags = false, $fld_timestamp = false, $fld_size = false,
 			$fld_comment = false, $fld_user = false, $fld_content = false;
 
+	protected function getTokenFunctions() {
+		// tokenname => function
+		// function prototype is func($pageid, $title, $rev)
+		// should return token or false
+
+		// Don't call the hooks twice
+		if(isset($this->tokenFunctions))
+			return $this->tokenFunctions;
+
+		// If we're in JSON callback mode, no tokens can be obtained
+		if(!is_null($this->getMain()->getRequest()->getVal('callback')))
+			return array();
+
+		$this->tokenFunctions = array(
+			'rollback' => array( 'ApiQueryRevisions', 'getRollbackToken' )
+		);
+		wfRunHooks('APIQueryRevisionsTokens', array(&$this->tokenFunctions));
+		return $this->tokenFunctions;
+	}
+
+	public static function getRollbackToken($pageid, $title, $rev)
+	{
+		global $wgUser;
+		if(!$wgUser->isAllowed('rollback'))
+			return false;
+		return $wgUser->editToken(array($title->getPrefixedText(),
+						$rev->getUserText()));
+	}
+
 	public function execute() {
 		$limit = $startid = $endid = $start = $end = $dir = $prop = $user = $excludeuser = $expandtemplates = $section = $token = null;
 		extract($this->extractRequestParams(false));
@@ -71,6 +100,8 @@ class ApiQueryRevisions extends ApiQueryBase {
 
 		$this->addTables('revision');
 		$this->addFields( Revision::selectFields() );
+		$this->addTables( 'page' );
+		$this->addWhere('page_id = rev_page');
 
 		$prop = array_flip($prop);
 
@@ -81,14 +112,10 @@ class ApiQueryRevisions extends ApiQueryBase {
 		$this->fld_timestamp = isset ($prop['timestamp']);
 		$this->fld_comment = isset ($prop['comment']);
 		$this->fld_size = isset ($prop['size']);
-		$this->tok_rollback = false; // Prevent PHP undefined property notice
-		if(!is_null($token))
-			$this->tok_rollback = $this->getTokenFlag($token, 'rollback');
 		$this->fld_user = isset ($prop['user']);
+		$this->token = $token;
 
-		if ( $this->tok_rollback || ( $this->fld_content && $this->expandTemplates ) || $pageCount > 0) {
-			$this->addTables( 'page' );
-			$this->addWhere('page_id=rev_page');
+		if ( !is_null($this->token) || ( $this->fld_content && $this->expandTemplates ) || $pageCount > 0) {
 			$this->addFields( Revision::selectPageFields() );
 		}
 
@@ -162,23 +189,30 @@ class ApiQueryRevisions extends ApiQueryBase {
 			}
 		}
 		elseif ($revCount > 0) {
-			$this->validateLimit('rev_count', $revCount, 1, $userMax, $botMax);
+			$max = $this->getMain()->canApiHighLimits() ? $botMax : $userMax;
+			$revs = $pageSet->getRevisionIDs();
+			if(self::truncateArray($revs, $max))
+				$this->setWarning("Too many values supplied for parameter 'revids': the limit is $max"); 
 
 			// Get all revision IDs
-			$this->addWhereFld('rev_id', array_keys($pageSet->getRevisionIDs()));
+			$this->addWhereFld('rev_id', array_keys($revs));
 
 			// assumption testing -- we should never get more then $revCount rows.
 			$limit = $revCount;
 		}
 		elseif ($pageCount > 0) {
+			$max = $this->getMain()->canApiHighLimits() ? $botMax : $userMax;
+			$titles = $pageSet->getGoodTitles();
+			if(self::truncateArray($titles, $max))
+				$this->setWarning("Too many values supplied for parameter 'titles': the limit is $max");
+			
 			// When working in multi-page non-enumeration mode,
 			// limit to the latest revision only
 			$this->addWhere('page_id=rev_page');
 			$this->addWhere('page_latest=rev_id');
-			$this->validateLimit('page_count', $pageCount, 1, $userMax, $botMax);
-
+			
 			// Get all page IDs
-			$this->addWhereFld('page_id', array_keys($pageSet->getGoodTitles()));
+			$this->addWhereFld('page_id', array_keys($titles));
 
 			// assumption testing -- we should never get more then $pageCount rows.
 			$limit = $pageCount;
@@ -254,21 +288,25 @@ class ApiQueryRevisions extends ApiQueryBase {
 
 		if ($this->fld_comment) {
 			$comment = $revision->getComment();
-			if (!empty($comment))		
+			if (strval($comment) !== '')
 				$vals['comment'] = $comment;
 		}
 
-		if($this->tok_rollback || ($this->fld_content && $this->expandTemplates))
+		if(!is_null($this->token) || ($this->fld_content && $this->expandTemplates))
 			$title = $revision->getTitle();
 
-		if($this->tok_rollback) {
-			global $wgUser;
-			$vals['rollbacktoken'] = $wgUser->editToken( array(
-					$title->getPrefixedText(), 
-					$revision->getUserText(),
-			) );
+		if(!is_null($this->token))
+		{
+			$tokenFunctions = $this->getTokenFunctions();
+			foreach($this->token as $t)
+			{
+				$val = call_user_func($tokenFunctions[$t], $title->getArticleID(), $title, $revision);
+				if($val === false)
+					$this->setWarning("Action '$t' is not allowed for the current user");
+				else
+					$vals[$t . 'token'] = $val;
+			}
 		}
-
 
 		if ($this->fld_content) {
 			global $wgParser;
@@ -341,9 +379,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 				ApiBase :: PARAM_TYPE => 'integer'
 			),
 			'token' => array(
-				ApiBase :: PARAM_TYPE => array(
-					'rollback'
-				),
+				ApiBase :: PARAM_TYPE => array_keys($this->getTokenFunctions()),
 				ApiBase :: PARAM_ISMULTI => true
 			),
 		);

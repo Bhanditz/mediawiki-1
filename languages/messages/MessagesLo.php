@@ -6,9 +6,6 @@
  *
  * @author Passawuth
  * @author Tuinui
- * @author Jon Harald Søby
- * @author Nike
- * @author Siebrand
  */
 
 $namespaceNames = array(
@@ -30,6 +27,53 @@ $namespaceNames = array(
 	NS_HELP_TALK      => 'ສົນທະນາກ່ຽວກັບຊ່ວຍເຫຼືອ',
 	NS_CATEGORY       => 'ໝວດ',
 	NS_CATEGORY_TALK  => 'ສົນທະນາກ່ຽວກັບໝວດ',
+);
+
+$specialPageAliases = array(
+	'DoubleRedirects'           => array( 'ໂອນຊ້ອນ' ),
+	'BrokenRedirects'           => array( 'ໂອນເສຍ' ),
+	'Disambiguations'           => array( 'ແກ້ຄວາມກຳກວມ' ),
+	'Userlogin'                 => array( 'ເຊັນເຂົ້າ' ),
+	'Userlogout'                => array( 'ເຊັນອອກ' ),
+	'CreateAccount'             => array( 'ສ້າງບັນຊີ' ),
+	'Preferences'               => array( 'ຕັ້ງຄ່າ' ),
+	'Watchlist'                 => array( 'ຕິດຕາມ' ),
+	'Recentchanges'             => array( 'ການດັດແກ້ຫຼ້າສຸດ' ),
+	'Upload'                    => array( 'ອັປໂຫຼດໄຟລ໌' ),
+	'Imagelist'                 => array( 'ລາຍຊື່ຮູບ' ),
+	'Newimages'                 => array( 'ຮູບໃໝ່' ),
+	'Listusers'                 => array( 'ລາຍຊື່ຜູ້ໃຊ້' ),
+	'Statistics'                => array( 'ສະຖິຕິ' ),
+	'Randompage'                => array( 'ບົດຄວາມໃດໜຶ່ງ' ),
+	'Uncategorizedpages'        => array( 'ໜ້າທີ່ບໍ່ມີໝວດ' ),
+	'Uncategorizedcategories'   => array( 'ໝວດທີ່ບໍ່ມີໝວດ' ),
+	'Uncategorizedimages'       => array( 'ຮູບທີ່ບໍ່ມີໝວດ' ),
+	'Uncategorizedtemplates'    => array( 'ແມ່ແບບທີ່ບໍ່ມີໝວດ' ),
+	'Unusedcategories'          => array( 'ໝວດທີ່ບໍ່ໄດ້ໃຊ້' ),
+	'Unusedimages'              => array( 'ຮູບທີ່ບໍ່ໄດ້ໃຊ້' ),
+	'Wantedpages'               => array( 'ໜ້າທີ່ຕ້ອງການ', 'ລິງກ໌ທີ່້ເສຍ' ),
+	'Wantedcategories'          => array( 'ໝວດທີ່ຕ້ອງການ' ),
+	'Shortpages'                => array( 'ໜ້າທີ່ສັ້ນ' ),
+	'Longpages'                 => array( 'ໜ້າຍາວ' ),
+	'Newpages'                  => array( 'ໜ້າໃໝ່' ),
+	'Deadendpages'              => array( 'ໜ້າທີ່ບໍ່ມີໜ້າໃດໂຍງມາ' ),
+	'Protectedpages'            => array( 'ໜ້າທີ່ຖຶກປົກປ້ອງ' ),
+	'Protectedtitles'           => array( 'ຊື່ທີ່ຖຶກປົກປ້ອງ' ),
+	'Allpages'                  => array( 'ໜ້າທັງໝົດ' ),
+	'Specialpages'              => array( 'ໜ້າພິເສດ' ),
+	'Contributions'             => array( 'ການປະກອບສ່ວນ' ),
+	'Whatlinkshere'             => array( 'ໜ້າທີ່ເຊື່ອມຕໍ່ມາ' ),
+	'Movepage'                  => array( 'ຍ້າຍ' ),
+	'Categories'                => array( 'ໝວດ' ),
+	'Unusedtemplates'           => array( 'ແມ່ແບບທີ່ບໍ່ໄດ້ໃຊ້' ),
+	'Randomredirect'            => array( 'ໜ້າໂອນໃດໜຶ່ງ' ),
+	'Mypage'                    => array( 'ໜ້າຂອງຂ້ອຍ' ),
+	'Mytalk'                    => array( 'ສົນທະນາຂອງຂ້ອຍ' ),
+	'Mycontributions'           => array( 'ປະກອບສ່ວນຂອງຂ້ອຍ' ),
+	'Listadmins'                => array( 'ລາຍຊື່ຜູ້ບໍລິຫານລະບົບ' ),
+	'Listbots'                  => array( 'ລາຍຊື່ບອຕ' ),
+	'Search'                    => array( 'ຊອກຫາ' ),
+	'Resetpass'                 => array( 'ປ່ຽນລະຫັດຜ່ານ' ),
 );
 
 $digitTransformTable = array(
@@ -78,8 +122,6 @@ $messages = array(
 
 'underline-always' => 'ທຸກຄັ້ງ',
 'underline-never'  => 'ບໍ່ຂີດ',
-
-'skinpreview' => '(ລອງເບິ່ງ)',
 
 # Dates
 'sun'           => 'ອາທິດ',
@@ -214,8 +256,6 @@ $messages = array(
 'portal-url'           => 'Project:ປະຕູສູ່ຊຸມຊົນ',
 'privacy'              => 'ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ',
 'privacypage'          => 'Project:ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ',
-'sitesupport'          => 'ບໍລິຈາກ',
-'sitesupport-url'      => 'Project:ສະໜັບສະໜຸນ',
 
 'badaccess'        => 'ການອະນຸມັດບໍ່ຖືກຕ້ອງ',
 'badaccess-group0' => 'ທ່ານ ບໍ່ໄດ້ຮັບອະນຸຍາດ ໃຫ້ປະຕິບັດການ ທີ່ ທ່ານ ສັ່ງ.',
@@ -342,15 +382,13 @@ $messages = array(
 'blockededitsource'        => "ເນື້ອໃນ ຂອງ '''ການດັດແປງໂດຍທ່ານ '''ຕໍ່ກັບ '''$1''' ມີດັ່ງລຸ່ມນີ້:",
 'whitelistedittitle'       => 'ຕ້ອງເຊັນເຂົ້າ ຈຶ່ງຈະສາມາດດັດແກ້ໄດ້',
 'whitelistedittext'        => 'ທ່ານ ຈະຕ້ອງ  $1 ເພື່ອ ຈະດັດແກ້.',
-'whitelistreadtitle'       => 'ຈະຕ້ອງ ເຊັນເຂົ້າ ເພື່ອອ່ານໜ້ານີ້',
-'whitelistacctitle'        => 'ທ່ານຖືກຫ້າມສ້າງບັນຊີ',
 'confirmedittitle'         => 'ຕ້ອງຢືນຢັນ ທີ່ຢູ່ ອີເມລ ຈຶ່ງຈະສາມາດ ດັດແກ້',
 'loginreqtitle'            => 'ຈຳເປັນຕ້ອງ ເຊັນເຂົ້າ',
 'loginreqlink'             => 'ເຊັນເຂົ້າ',
 'accmailtitle'             => 'ໄດ້ສົ່ງ ລະຫັດຜ່ານ ໄປແລ້ວ.',
 'accmailtext'              => 'ລະຫັດຜ່ານ ຂອງ "$1" ໄດ້ຖືກສົ່ງໄປ  $2 ແລ້ວ.',
 'newarticle'               => '(ໃໝ່)',
-'newarticletext'           => "ທ່ານ ໄດ້ມາຮອດ ໜ້າທີ່ຍັງບໍ່ໄດ້ຖືກສ້າງຂຶ້ນເທື່ອ. ທ່ານ ສາມາດເລີ່ມ ສ້າງໜ້າ ໂດຍ ພິມໃສ່ ກັບ ຂ້າງລຸ່ມ.(ເບິ່ງລາຍລະອຽດຕື່ມ ທີ່ [[{{MediaWiki:helppage}}|ໜ້າຊ່ວຍເຫຼືອ]]).
+'newarticletext'           => "ທ່ານ ໄດ້ມາຮອດ ໜ້າທີ່ຍັງບໍ່ໄດ້ຖືກສ້າງຂຶ້ນເທື່ອ. ທ່ານ ສາມາດເລີ່ມ ສ້າງໜ້າ ໂດຍ ພິມໃສ່ ກັບ ຂ້າງລຸ່ມ.(ເບິ່ງລາຍລະອຽດຕື່ມ ທີ່ [[{{MediaWiki:Helppage}}|ໜ້າຊ່ວຍເຫຼືອ]]).
 ຖ້າ ທ່ານ ມາຮອດນີ້ ໂດຍຄວາມຜິດພາດ, ກະລຸນາ ກົດ ປຸ່ມ '''ກັບຄືນ''', ຢູ່ ໂປຣແກຣມ ທ່ອງເວັບ ຂອງທ່ານ.",
 'noarticletext'            => 'ຍັງບໍ່ມີເນື້ອໃນ ຢູ່ ໜ້ານີ້, ທ່ານສາມາດ [[Special:Search/{{PAGENAME}}|ຄົ້ນຫາໜ້າຫົວຂໍ້ນີ້]] ຫຼື [{{fullurl:{{FULLPAGENAME}}|action=edit}} ດັດແກ້ໜ້ານີ້].',
 'previewnote'              => '<strong>ນີ້ ແມ່ນ ການລອງເບິ່ງຜົນເທົ່ານັ້ນ; ການດັດແກ້ຍັງບໍ່ທັນຖືກບັນທຶກ!</strong>',
@@ -372,7 +410,7 @@ $messages = array(
 'template-protected'       => '(ປົກປ້ອງ)',
 'template-semiprotected'   => '(ເຄິ່ງປົກປ້ອງ)',
 'nocreatetext'             => '{{SITENAME}} ໄດ້ຈຳກັດການສ້າງໜ້າໃໝ່.
-ທ່ານສາມາດກັບໄປ ດັດແກ້ ໜ້າທີ່ມີແລ້ວ ຫຼື [[Special:Userlogin|ເຊັນເຂົ້າ ຫຼື ສ້າງບັນຊີ]].',
+ທ່ານສາມາດກັບໄປ ດັດແກ້ ໜ້າທີ່ມີແລ້ວ ຫຼື [[Special:UserLogin|ເຊັນເຂົ້າ ຫຼື ສ້າງບັນຊີ]].',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'ບໍ່ສາມາດສ້າງ ບັນຊີ ໄດ້',
@@ -424,6 +462,7 @@ $messages = array(
 'prefs-edits'           => 'ຈຳນວນການດັດແກ້:',
 'changepassword'        => 'ປ່ຽນລະຫັດຜ່ານ',
 'skin'                  => 'ລວດລາຍ',
+'skin-preview'          => 'ລອງເບິ່ງ',
 'math'                  => 'ຄະນິດສາດ',
 'dateformat'            => 'ແບບວັນເດືອນປີ',
 'datedefault'           => 'ແນວໃດກໍ່ໄດ້',
@@ -498,7 +537,7 @@ $messages = array(
 'savefile'          => 'ບັນທຶກໄຟລ໌',
 'watchthisupload'   => 'ຕິດຕາມໜ້ານີ້',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist' => 'ລາຍຊື່ໄຟລ໌',
 
 # Image description page
@@ -532,8 +571,9 @@ $messages = array(
 'statistics' => 'ສະຖິຕິ',
 
 'disambiguations'      => 'ໜ້າແກ້ຄວາມກຳກວມ',
-'disambiguations-text' => "ໜ້າຕໍ່ໄປນີ້ເຊື່ອມໂຍງໄປຍັງ '''ໜ້າແກ້ຄວາມກຳກວມ'''&nbsp;ຊຶ່ງຄວນດັດແກ້ລິງຄ໌ໃຫ້ເຊື່ອມໂຍງໄປທີ່ໜ້າອື່ນທີ່ເໝາະສົມ<br />
-ໜ້າໃດທີ່ຮຽກໃຊ້ແມ່ແບບ [[{{ns:mediawiki}}:Disambiguationspage|ແກ້ກຳກວມ]] ໜ້າເຫຼ່ານັ້ນຖຶກເປັນໜ້າແກ້ຄວາມກຳກວມ",
+'disambiguations-text' => "ໜ້າຕໍ່ໄປນີ້ເຊື່ອມໂຍງໄປຍັງ '''ໜ້າແກ້ຄວາມກຳກວມ'''&nbsp;
+ຊຶ່ງຄວນດັດແກ້ລິງຄ໌ໃຫ້ເຊື່ອມໂຍງໄປທີ່ໜ້າອື່ນທີ່ເໝາະສົມ<br />
+ໜ້າໃດທີ່ຮຽກໃຊ້ແມ່ແບບ [[MediaWiki:Disambiguationspage|ແກ້ກຳກວມ]] ໜ້າເຫຼ່ານັ້ນຖຶກເປັນໜ້າແກ້ຄວາມກຳກວມ",
 
 'doubleredirects' => 'ໂອນໜ້າ 2 ຄັ້ງ',
 
@@ -580,13 +620,11 @@ $messages = array(
 'booksources-go' => 'ໄປ',
 
 # Special:Log
-'log'               => 'ບັນທຶກ',
-'all-logs-page'     => 'ທຸກໆຂໍ້ມູນບັນທຶກການນຳໃຊ້',
-'log-search-legend' => 'ຊອກຫາ ໃນ ບັນທຶກການນຳໃຊ້',
-'log-search-submit' => 'ໄປ',
-'logempty'          => 'ຍັງບໍ່ພົບເນື້ອໃນບັນທຶກ.',
+'log'           => 'ບັນທຶກ',
+'all-logs-page' => 'ທຸກໆຂໍ້ມູນບັນທຶກການນຳໃຊ້',
+'logempty'      => 'ຍັງບໍ່ພົບເນື້ອໃນບັນທຶກ.',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'ທຸກໆໜ້າ',
 'alphaindexline' => '$1 ຫາ $2',
 'nextpage'       => 'ໜ້າຕໍ່ໄປ ($1)',
@@ -602,8 +640,17 @@ $messages = array(
 'categories'         => 'ໝວດ',
 'categoriespagetext' => 'ມີ ບັນດາ ໝວດ ຕໍ່ໄປນີ້ ຢູ່ ວິກີ.',
 
-# Special:Listusers
+# Special:LinkSearch
+'linksearch' => 'ຄົ້ນຫາການເຊື່ອມຕໍ່ຫາເວັບ',
+
+# Special:ListUsers
 'listusers-submit' => 'ສະແດງ',
+
+# Special:Log/newusers
+'newuserlogpage'           => 'ບັນທຶກການສ້າງບັນຊີຜູ້ໃຊ້',
+'newuserlogpagetext'       => 'ນີ້ແມ່ນ ບັນທຶກການສ້າງ ບັນຊີຜູ້ໃຊ້ໃໝ່',
+'newuserlog-create-entry'  => 'ຜູ້ໃຊ້ໃໝ່',
+'newuserlog-create2-entry' => 'ໄດ້ສ້າງບັນຊີ ໃຫ້ $1',
 
 # E-mail user
 'emailuser'      => 'ສົ່ງອີເມລ ຫາ ຜູ້ໃຊ້ນີ້',
@@ -653,20 +700,25 @@ $messages = array(
 'created'            => 'ສ້າງແລ້ວ',
 'enotif_lastvisited' => 'ເບິ່ງ $1 ເພື່ອ ທຸກໆການປ່ຽນແປງ ຕັ້ງແຕ່ເທື່ອສຸດທ້າຍ ທີ່ ທ່ານເຂົ້າຫາ.',
 
-# Delete/protect/revert
-'confirm'                     => 'ຢືນຢັນ',
-'actioncomplete'              => 'ສຳເລັດ',
-'deletedarticle'              => 'ໄດ້ລຶບ "[[$1]]"',
-'dellogpage'                  => 'ບັນທຶກ ການລຶບ',
-'dellogpagetext'              => 'ຂ້າງລຸ່ມ ແມ່ນ ລາຍການ ການລຶບຫຼ້າສຸດ.',
-'deletionlog'                 => 'ບັນທຶກ ການລຶບ',
-'deletecomment'               => 'ເຫດຜົນໃນການລຶບ',
-'rollbacklink'                => 'ກັບຄືນ',
-'cantrollback'                => 'ບໍ່ສາມາດ ປ່ຽນການດັດແກ້ກັບຄືນໄດ້; ຜູ້ປະກອບສ່ວນຫຼ້າສຸດ ແມ່ນ ຜູ້ຂຽນພຽງຜູ້ດຽວ ຂອງ ໜ້ານີ້.',
+# Delete
+'confirm'        => 'ຢືນຢັນ',
+'actioncomplete' => 'ສຳເລັດ',
+'deletedarticle' => 'ໄດ້ລຶບ "[[$1]]"',
+'dellogpage'     => 'ບັນທຶກ ການລຶບ',
+'dellogpagetext' => 'ຂ້າງລຸ່ມ ແມ່ນ ລາຍການ ການລຶບຫຼ້າສຸດ.',
+'deletionlog'    => 'ບັນທຶກ ການລຶບ',
+'deletecomment'  => 'ເຫດຜົນໃນການລຶບ',
+
+# Rollback
+'rollbacklink' => 'ກັບຄືນ',
+'cantrollback' => 'ບໍ່ສາມາດ ປ່ຽນການດັດແກ້ກັບຄືນໄດ້; ຜູ້ປະກອບສ່ວນຫຼ້າສຸດ ແມ່ນ ຜູ້ຂຽນພຽງຜູ້ດຽວ ຂອງ ໜ້ານີ້.',
+
+# Protect
 'protectlogpage'              => 'ບັນທຶກການປົກປ້ອງ',
 'protectedarticle'            => 'ໄດ້ປົກປ້ອງ "[[$1]]"',
 'unprotectedarticle'          => 'ໄດ້ເຊົາປົກປ້ອງ "[[$1]]"',
 'protect-title'               => 'ກຳລັງປົກປ້ອງໜ້າ "$1"',
+'prot_1movedto2'              => '[[$1]] ຍ້າຍໄປ [[$2]]',
 'protect-legend'              => 'ຢືນຢັນ ການປົກປ້ອງ',
 'protectexpiry'               => 'ໝົດກຳນົດ:',
 'protect-text'                => 'ທ່ານສາມາດເບິ່ງ ແລະ ປ່ຽນແປງ ລະດັບການປົກປ້ອງ ສຳຫຼັບ ໜ້າ  <strong><nowiki>$1</nowiki> ຢູ່ນີ້</strong>.',
@@ -710,7 +762,6 @@ $messages = array(
 # What links here
 'whatlinkshere'       => 'ໜ້າທີ່ເຊື່ອມຕໍ່ມາ',
 'whatlinkshere-title' => 'ໜ້າທີ່ເຊື່ອມຕໍ່ຫາ $1',
-'linklistsub'         => '(ລາຍການລິ້ງຄ໌)',
 'linkshere'           => "ບັນດາໜ້າຕໍ່ໄປ ລິ້ງຄ໌ ຫາ ''[[:$1]]''':",
 'nolinkshere'         => "ບໍ່ມີໜ້າລິ້ງຄ໌ ຫາ '''[[:$1]]'''.",
 'nolinkshere-ns'      => "ບໍ່ມີໜ້າລິ້ງຄ໌ ຫາ '''[[:$1]]''' ໃນ ຂອບເຂດຊື່ ທີ່ ທ່ານເລືອກ.",
@@ -742,7 +793,6 @@ $messages = array(
 'newtitle'                => 'ຫາ ຫົວຂໍ້ໃໝ່',
 'move-watch'              => 'ຕິດຕາມໜ້ານີ້',
 'movepagebtn'             => 'ຍ້າຍໜ້າ',
-'movepage-moved'          => '<big>\'\'\'"$1" ໄດ້ຖືກຍ້າຍໄປ "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'ມີໜ້າຊື່ນີ້ແລ້ວ ຫຼື ຊື່ບໍ່ຖືກ. 
 ກະລຸນາເລືອກຊື່ອື່ນ.',
 'movedto'                 => 'ໄດ້ຖືກຍ້າຍໄປ',
@@ -789,7 +839,6 @@ $messages = array(
 'tooltip-n-currentevents'         => 'ຊອກຂໍ້ມູນກ່ຽວກັບກິດຈະກຳພວມດຳເນີນ',
 'tooltip-n-randompage'            => 'ໂຫຼດໜ້າໃດໜຶ່ງ',
 'tooltip-n-help'                  => 'ບ່ອນຊອກ.',
-'tooltip-n-sitesupport'           => 'ສະໜັບສະໜຸນພວກເຮົາ',
 'tooltip-t-whatlinkshere'         => 'ລາຍການຂອງທຸກໆໜ້າວິກິ ທີ່ເຊື່ອມຕໍ່ມາ',
 'tooltip-t-contributions'         => 'ເບິ່ງລາຍການປະກອບສ່ວນໂດຍຜູ້ໃຊ້ນີ້',
 'tooltip-t-emailuser'             => 'ສົ່ງອີເມລຫາຜູ້ໃຊ້ນີ້',
@@ -825,7 +874,7 @@ $messages = array(
 'show-big-image'       => 'ເຕັມຂະໜາດ',
 'show-big-image-thumb' => '<small>ຂະໜາດລອງເບິ່ງ: $1 × $2 ປິກເຊລ</small>',
 
-# Special:Newimages
+# Special:NewImages
 'newimages'         => 'ໄຟລ໌ຮູບໃໝ່',
 'newimages-summary' => 'ໜ້າພິເສດນີ້ສະແດງໄຟລ໌ທີ່ຖຶກອັປໂຫຼດຫຼ້າສຸດ',
 'noimages'          => 'ບໍ່ມີຫຍັງເບິ່ງ.',
@@ -844,7 +893,7 @@ $messages = array(
 
 # External editor support
 'edit-externally'      => 'ດັດແກ້ໄຟລ໌ນີ້ໂດຍໂປແກຣມພາຍນອກ',
-'edit-externally-help' => 'ເບິ່ງ ຂໍ້ມູນເພີ່ມຕື່ມ ຢູ່ [http://meta.wikimedia.org/wiki/Help:External_editors setup instructions]',
+'edit-externally-help' => 'ເບິ່ງ ຂໍ້ມູນເພີ່ມຕື່ມ ຢູ່ [http://www.mediawiki.org/wiki/Manual:External_editors setup instructions]',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'ທັງໝົດ',
@@ -878,16 +927,8 @@ $messages = array(
 # Delete conflict
 'recreate' => 'ສ້າງຄືນ',
 
-# HTML dump
-'redirectingto' => 'ພວມໂອນໄປ ຫາ [[$1]]...',
-
 # action=purge
 'confirm_purge_button' => 'ຕົກລົງ',
-
-# AJAX search
-'searchcontaining' => "ຊອກຫາ ບົດຄວາມ ທີ່ປະກອບມີ  ''$1''.",
-'searchnamed'      => "ຊອກຫາ ບົດຄວາມ ຊື່ ''$1''.",
-'articletitles'    => "ບົດຄວາມ ເລີ່ມດ້ວຍ ''$1''",
 
 # Multipage image navigation
 'imgmultigo' => 'ໄປ!',
@@ -908,7 +949,7 @@ $messages = array(
 # Special:Version
 'version' => 'ສະບັບ', # Not used as normal message but as header for the special page itself
 
-# Special:Filepath
+# Special:FilePath
 'filepath' => 'ທາງໄປຫາໄຟລ໌',
 
 # Special:SpecialPages

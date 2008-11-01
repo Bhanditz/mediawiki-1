@@ -117,26 +117,6 @@ table.rimage {
     text-align:center;
 }
 
-div.townBox {
-    position:relative;
-    float:right;
-    margin-left:1em;
-    padding:0.3em;
-    width: 200px;
-    overflow: hidden;
-    clear: right;
-}
-div.townBox dl {
-    padding: 0;
-    margin: 0 0 0.3em 0;
-}
-div.townBox dl dt {
-    background: none;
-    margin: 0.4em 0 0 0;
-}
-div.townBox dl dd {
-    margin: 0.1em 0 0 1.1em;
-}
 .portlet {
     border: none;
     float: none;
@@ -358,25 +338,11 @@ div.printfooter {
   display: none;
 }
 
-
-#ca-addsection a:before {
-  content: "Add section";
-  font-size: 10pt;
-}
-
-#ca-addsection a {
-  font-size: 0px;
-}
-
 #n-portal,
 #n-currentevents,
 #n-help,
 #n-sitesupport {
   display: none;
-}
-
-span.searchmatch {
-  font-weight: bold;
 }
 
 #preftoc {
@@ -423,12 +389,3 @@ table.collapsed tr.collapsable {
 
 .templatesUsed { margin-top: 1.5em; }
 
-/* Recreating-deleted-page/reupload file warning and log entries */
-div#mw-upload-deleted-warn ul li,
-div#mw-recreate-deleted-warn ul li {
-	font-size: 95%;
-}
-div.mw-recreate-deleted-control {
-	float: right;
-	font-size: 90%;
-}

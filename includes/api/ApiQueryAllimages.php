@@ -61,10 +61,11 @@ class ApiQueryAllimages extends ApiQueryGeneratorBase {
 		$params = $this->extractRequestParams();
 
 		// Image filters
-		if (!is_null($params['from']))
-			$this->addWhere('img_name>=' . $db->addQuotes(ApiQueryBase :: titleToKey($params['from'])));
+		$dir = ($params['dir'] == 'descending' ? 'older' : 'newer');
+		$from = (is_null($params['from']) ? null : $this->titlePartToKey($params['from']));
+		$this->addWhereRange('img_name', $dir, $from, null);
 		if (isset ($params['prefix']))
-			$this->addWhere("img_name LIKE '" . $db->escapeLike(ApiQueryBase :: titleToKey($params['prefix'])) . "%'");
+			$this->addWhere("img_name LIKE '" . $db->escapeLike($this->titlePartToKey($params['prefix'])) . "%'");
 
 		if (isset ($params['minsize'])) {
 			$this->addWhere('img_size>=' . intval($params['minsize']));
@@ -103,16 +104,16 @@ class ApiQueryAllimages extends ApiQueryGeneratorBase {
 			if (++ $count > $limit) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
 				// TODO: Security issue - if the user has no right to view next title, it will still be shown
-				$this->setContinueEnumParameter('from', ApiQueryBase :: keyToTitle($row->img_name));
+				$this->setContinueEnumParameter('from', $this->keyToTitle($row->img_name));
 				break;
 			}
 
 			if (is_null($resultPageSet)) {
 				$file = $repo->newFileFromRow( $row );
-
-				$data[] = ApiQueryImageInfo::getInfo( $file, $prop, $result );
+				$data[] = array_merge(array('name' => $row->img_name),
+					ApiQueryImageInfo::getInfo($file, $prop, $result));
 			} else {
-				$data[] = Title::makeTitle( NS_IMAGE, $row->img_name );
+				$data[] = Title::makeTitle(NS_IMAGE, $row->img_name);
 			}
 		}
 		$db->freeResult($res);
@@ -162,7 +163,8 @@ class ApiQueryAllimages extends ApiQueryGeneratorBase {
 					'dimensions', // Obsolete
 					'mime',
 					'sha1',
-					'metadata'
+					'metadata',
+					'bitdepth',
 				),
 				ApiBase :: PARAM_DFLT => 'timestamp|url',
 				ApiBase :: PARAM_ISMULTI => true
@@ -177,7 +179,7 @@ class ApiQueryAllimages extends ApiQueryGeneratorBase {
 			'dir' => 'The direction in which to list',
 			'minsize' => 'Limit to images with at least this many bytes',
 			'maxsize' => 'Limit to images with at most this many bytes',
-			'limit' => 'How many total pages to return.',
+			'limit' => 'How many total images to return.',
 			'sha1' => 'SHA1 hash of image',
 			'sha1base36' => 'SHA1 hash of image in base 36 (used in MediaWiki)',
 			'prop' => 'Which properties to get',

@@ -4,9 +4,9 @@
  * @ingroup Language
  * @file
  *
- * @author nov.wikipedia.org sysops
+ * @author MF-Warburg
  * @author Malafaya
- * @author SPQRobin
+ * @author nov.wikipedia.org sysops
  */
 
 $messages = array(
@@ -110,7 +110,6 @@ $messages = array(
 'mainpage-description' => 'Chefi pagine',
 'portal'               => 'Li komun chambre',
 'portal-url'           => 'Project:Li komun chambre',
-'sitesupport'          => 'Donationes',
 
 'badaccess' => 'Permisione erore',
 
@@ -213,7 +212,7 @@ Proba [[Special:Search|sercho sur li wiki]] por relatet pagines.',
 'preferences'       => 'Preferos',
 'mypreferences'     => 'Men preferos',
 'prefsnologin'      => 'Non ensignatat',
-'prefsnologintext'  => 'Vu mus es [[Special:Userlogin|ensignatat]] por determina useren preferos.',
+'prefsnologintext'  => 'Vu mus es [[Special:UserLogin|ensignatat]] por determina useren preferos.',
 'prefs-rc'          => 'Resenti chanjos',
 'searchresultshead' => 'Sercha',
 
@@ -238,7 +237,7 @@ Proba [[Special:Search|sercho sur li wiki]] por relatet pagines.',
 'fileuploadsummary' => 'Resume:',
 'watchthisupload'   => 'Observa disi pagine',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist_search_for'  => 'Sercha imaje nome:',
 'imagelist_name'        => 'Nome',
 'imagelist_user'        => 'Usere',
@@ -284,7 +283,7 @@ Proba [[Special:Search|sercho sur li wiki]] por relatet pagines.',
 # Special:Log
 'specialloguserlabel' => 'Usere:',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'          => 'Omni pagines',
 'alphaindexline'    => '$1 a $2',
 'allarticles'       => 'Omni artikles',
@@ -298,6 +297,9 @@ Proba [[Special:Search|sercho sur li wiki]] por relatet pagines.',
 'categories'         => 'Kategories',
 'categoriespagetext' => 'Li sekuenti kategories exista in li wiki.',
 
+# Special:LinkSearch
+'linksearch-ok' => 'Sercha',
+
 # Watchlist
 'watchlist'       => 'Men liste de observos',
 'mywatchlist'     => 'Men liste de observos',
@@ -305,7 +307,7 @@ Proba [[Special:Search|sercho sur li wiki]] por relatet pagines.',
 'watchnologin'    => 'Non ensignatat',
 'addedwatch'      => 'Adit a observa-liste',
 'addedwatchtext'  => "Li pagine \"[[:\$1]]\" ha bli adi a vun [[Special:Watchlist|observa-liste]].
-Futuri chanjos a disi pagine e lun asosiati Parla-pagine sal bli lista tilok, e li pagine sal apari '''diki''' in li [[Special:Recentchanges|liste de resenti chanjos]] por ke on trova lu plu fasilim.
+Futuri chanjos a disi pagine e lun asosiati Parla-pagine sal bli lista tilok, e li pagine sal apari '''diki''' in li [[Special:RecentChanges|liste de resenti chanjos]] por ke on trova lu plu fasilim.
 
 Si vu voli plu tardim ekarta li pagine fro vun observa-liste, klikta \"Desobserva\" in li lateral kolumne.",
 'watch'           => 'Observa',
@@ -316,18 +318,23 @@ Si vu voli plu tardim ekarta li pagine fro vun observa-liste, klikta \"Desobserv
 'changed'            => 'chanjati',
 'enotif_lastvisited' => 'Regarda $1 por vida omni chanjes depos vun lasti visite.',
 
-# Delete/protect/revert
-'confirm'             => 'Konfirma',
-'excontent'           => "kontenaje esed: '$1'",
-'excontentauthor'     => "kontenaje esed: '$1' (e li soli kontribuere esed '[[Special:Contributions/$2|$2]]')",
-'exblank'             => 'pagine esed vakui',
-'actioncomplete'      => 'Akto kompleti',
-'deletedarticle'      => 'ekartad "[[$1]]"',
-'dellogpage'          => 'Loge de ekartos',
-'dellogpagetext'      => 'Subu es liste del maxim resenti ekartos.',
-'deletionlog'         => 'registre de ekartos',
-'deletecomment'       => 'Resone de ekarto',
-'revertpage'          => 'Riverted modifikos da [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]); restaurad lasti versione da [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+# Delete
+'confirm'         => 'Konfirma',
+'excontent'       => "kontenaje esed: '$1'",
+'excontentauthor' => "kontenaje esed: '$1' (e li soli kontribuere esed '[[Special:Contributions/$2|$2]]')",
+'exblank'         => 'pagine esed vakui',
+'actioncomplete'  => 'Akto kompleti',
+'deletedarticle'  => 'ekartad "[[$1]]"',
+'dellogpage'      => 'Loge de ekartos',
+'dellogpagetext'  => 'Subu es liste del maxim resenti ekartos.',
+'deletionlog'     => 'registre de ekartos',
+'deletecomment'   => 'Resone de ekarto',
+
+# Rollback
+'revertpage' => 'Riverted modifikos da [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]); restaurad lasti versione da [[User:$1|$1]]', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+
+# Protect
+'prot_1movedto2'      => '[[$1]] movat a [[$2]]',
 'protect-legend'      => 'Konfirma protektione',
 'protect-level-sysop' => 'Sisopes nur',
 
@@ -378,7 +385,7 @@ Si vu voli plu tardim ekarta li pagine fro vun observa-liste, klikta \"Desobserv
 # Info page
 'infosubtitle' => 'Informatione pri pagine',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'Sercha',
 'bydate'   => 'segun date',
 
@@ -390,11 +397,6 @@ Si vu voli plu tardim ekarta li pagine fro vun observa-liste, klikta \"Desobserv
 
 # 'all' in various places, this might be different for inflected languages
 'imagelistall' => 'omnes',
-
-# AJAX search
-'searchcontaining' => "Sercha artikles kel kontena ''$1''.",
-'searchnamed'      => "Sercha artikles nomat ''$1''.",
-'articletitles'    => "Artikles kel starta kun ''$1''",
 
 # Auto-summaries
 'autosumm-replace' => "Remplasant pagine kun '$1'",

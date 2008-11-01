@@ -20,11 +20,9 @@ class DatabaseSqlite extends Database {
 	 * Constructor
 	 */
 	function __construct($server = false, $user = false, $password = false, $dbName = false, $failFunction = false, $flags = 0) {
-		global $wgOut,$wgSQLiteDataDir;
+		global $wgOut,$wgSQLiteDataDir, $wgSQLiteDataDirMode;
 		if ("$wgSQLiteDataDir" == '') $wgSQLiteDataDir = dirname($_SERVER['DOCUMENT_ROOT']).'/data';
-		if (!is_dir($wgSQLiteDataDir)) mkdir($wgSQLiteDataDir,0700);
-		if (!isset($wgOut)) $wgOut = NULL; # Can't get a reference if it hasn't been set yet
-		$this->mOut =& $wgOut;
+		if (!is_dir($wgSQLiteDataDir)) wfMkdirParents( $wgSQLiteDataDir, $wgSQLiteDataDirMode );
 		$this->mFailFunction = $failFunction;
 		$this->mFlags = $flags;
 		$this->mDatabaseFile = "$wgSQLiteDataDir/$dbName.sqlite";
@@ -48,11 +46,28 @@ class DatabaseSqlite extends Database {
 		$this->mConn = false;
 		if ($dbName) {
 			$file = $this->mDatabaseFile;
-			if ($this->mFlags & DBO_PERSISTENT) $this->mConn = new PDO("sqlite:$file",$user,$pass,array(PDO::ATTR_PERSISTENT => true));
-			else $this->mConn = new PDO("sqlite:$file",$user,$pass);
-			if ($this->mConn === false) wfDebug("DB connection error: $err\n");;
+			try {
+				if ( $this->mFlags & DBO_PERSISTENT ) {
+					$this->mConn = new PDO( "sqlite:$file", $user, $pass, 
+						array( PDO::ATTR_PERSISTENT => true ) );
+				} else {
+					$this->mConn = new PDO( "sqlite:$file", $user, $pass );
+				}
+			} catch ( PDOException $e ) {
+				$err = $e->getMessage();
+			}
+			if ( $this->mConn === false ) {
+				wfDebug( "DB connection error: $err\n" );
+				if ( !$this->mFailFunction ) {
+					throw new DBConnectionError( $this, $err );
+				} else {
+					return false;
+				}
+
+			}
 			$this->mOpened = $this->mConn;
-			$this->mConn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_SILENT); # set error codes only, dont raise exceptions
+			# set error codes only, don't raise exceptions
+			$this->mConn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT ); 
 		}
 		return $this->mConn;
 	}
@@ -289,15 +304,22 @@ class DatabaseSqlite extends Database {
 	}
 
 	function encodeBlob($b) {
-		return $this->strencode($b);
+		return new Blob( $b );
 	}
 
 	function decodeBlob($b) {
+		if ($b instanceof Blob) {
+			$b = $b->fetch();
+		}
 		return $b;
 	}
 
 	function addQuotes($s) {
-		return $this->mConn->quote($s);
+		if ( $s instanceof Blob ) {
+			return "x'" . bin2hex( $s->fetch() ) . "'";
+		} else {
+			return $this->mConn->quote($s);
+		}
 	}
 
 	function quote_ident($s) { return $s; }
@@ -372,6 +394,20 @@ class DatabaseSqlite extends Database {
 			if (!preg_match('/^\s*(\(.+?),(\d)\)/', $line, $matches)) continue;
 			$this->query("$sql $matches[1],$matches[2])");
 		}
+	}
+	
+	/** 
+	 * No-op lock functions
+	 */
+	public function lock( $lockName, $method ) {
+		return true;
+	}
+	public function unlock( $lockName, $method ) {
+		return true;
+	}
+	
+	public function getSearchEngine() {
+		return "SearchEngineDummy";
 	}
 
 }

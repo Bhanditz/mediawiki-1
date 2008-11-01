@@ -49,28 +49,139 @@ class ApiQueryInfo extends ApiQueryBase {
 		$pageSet->requestField('page_len');
 	}
 
+	protected function getTokenFunctions() {
+		// tokenname => function
+		// function prototype is func($pageid, $title)
+		// should return token or false
+		
+		// Don't call the hooks twice
+		if(isset($this->tokenFunctions))
+			return $this->tokenFunctions;
+
+		// If we're in JSON callback mode, no tokens can be obtained
+		if(!is_null($this->getMain()->getRequest()->getVal('callback')))
+			return array();
+
+		$this->tokenFunctions = array(
+			'edit' => array( 'ApiQueryInfo', 'getEditToken' ),
+			'delete' => array( 'ApiQueryInfo', 'getDeleteToken' ),
+			'protect' => array( 'ApiQueryInfo', 'getProtectToken' ),
+			'move' => array( 'ApiQueryInfo', 'getMoveToken' ),
+			'block' => array( 'ApiQueryInfo', 'getBlockToken' ),
+			'unblock' => array( 'ApiQueryInfo', 'getUnblockToken' ),
+			'email' => array( 'ApiQueryInfo', 'getEmailToken' ),
+		);
+		wfRunHooks('APIQueryInfoTokens', array(&$this->tokenFunctions));
+		return $this->tokenFunctions;
+	}
+
+	public static function getEditToken($pageid, $title)
+	{
+		// We could check for $title->userCan('edit') here,
+		// but that's too expensive for this purpose
+		global $wgUser;
+		if(!$wgUser->isAllowed('edit'))
+			return false;
+		
+		// The edit token is always the same, let's exploit that
+		static $cachedEditToken = null;
+		if(!is_null($cachedEditToken))
+			return $cachedEditToken;
+
+		$cachedEditToken = $wgUser->editToken();
+		return $cachedEditToken;
+	}
+	
+	public static function getDeleteToken($pageid, $title)
+	{
+		global $wgUser;
+		if(!$wgUser->isAllowed('delete'))
+			return false;			
+
+		static $cachedDeleteToken = null;
+		if(!is_null($cachedDeleteToken))
+			return $cachedDeleteToken;
+
+		$cachedDeleteToken = $wgUser->editToken();
+		return $cachedDeleteToken;
+	}
+
+	public static function getProtectToken($pageid, $title)
+	{
+		global $wgUser;
+		if(!$wgUser->isAllowed('protect'))
+			return false;
+
+		static $cachedProtectToken = null;
+		if(!is_null($cachedProtectToken))
+			return $cachedProtectToken;
+
+		$cachedProtectToken = $wgUser->editToken();
+		return $cachedProtectToken;
+	}
+
+	public static function getMoveToken($pageid, $title)
+	{
+		global $wgUser;
+		if(!$wgUser->isAllowed('move'))
+			return false;
+
+		static $cachedMoveToken = null;
+		if(!is_null($cachedMoveToken))
+			return $cachedMoveToken;
+
+		$cachedMoveToken = $wgUser->editToken();
+		return $cachedMoveToken;
+	}
+
+	public static function getBlockToken($pageid, $title)
+	{
+		global $wgUser;
+		if(!$wgUser->isAllowed('block'))
+			return false;
+
+		static $cachedBlockToken = null;
+		if(!is_null($cachedBlockToken))
+			return $cachedBlockToken;
+
+		$cachedBlockToken = $wgUser->editToken();
+		return $cachedBlockToken;
+	}
+
+	public static function getUnblockToken($pageid, $title)
+	{
+		// Currently, this is exactly the same as the block token
+		return self::getBlockToken($pageid, $title);
+	}
+
+	public static function getEmailToken($pageid, $title)
+	{
+		global $wgUser;
+		if(!$wgUser->canSendEmail() || $wgUser->isBlockedFromEmailUser())
+			return false;
+
+		static $cachedEmailToken = null;
+		if(!is_null($cachedEmailToken))
+			return $cachedEmailToken;
+
+		$cachedEmailToken = $wgUser->editToken();
+		return $cachedEmailToken;
+	}
+
 	public function execute() {
 
 		global $wgUser;
 
 		$params = $this->extractRequestParams();
-		$fld_protection = $fld_talkid = $fld_subjectid = false;
+		$fld_protection = $fld_talkid = $fld_subjectid = $fld_url = $fld_readable = false;
 		if(!is_null($params['prop'])) {
 			$prop = array_flip($params['prop']);
 			$fld_protection = isset($prop['protection']);
 			$fld_talkid = isset($prop['talkid']);
 			$fld_subjectid = isset($prop['subjectid']);
+			$fld_url = isset($prop['url']);
+			$fld_readable = isset($prop['readable']);
 		}
-		if(!is_null($params['token'])) {
-			$token = $params['token'];
-			$tok_edit = $this->getTokenFlag($token, 'edit');
-			$tok_delete = $this->getTokenFlag($token, 'delete');
-			$tok_protect = $this->getTokenFlag($token, 'protect');
-			$tok_move = $this->getTokenFlag($token, 'move');
-		}
-		else
-			// Fix E_NOTICEs about unset variables
-			$token = $tok_edit = $tok_delete = $tok_protect = $tok_move = null;
 
 		$pageSet = $this->getPageSet();
 		$titles = $pageSet->getGoodTitles();
@@ -86,7 +197,7 @@ class ApiQueryInfo extends ApiQueryBase {
 		$pageLength = $pageSet->getCustomField('page_len');
 
 		$db = $this->getDB();
-		if ($fld_protection && !empty($titles)) {
+		if ($fld_protection && count($titles)) {
 			$this->addTables('page_restrictions');
 			$this->addFields(array('pr_page', 'pr_type', 'pr_level', 'pr_expiry', 'pr_cascade'));
 			$this->addWhereFld('pr_page', array_keys($titles));
@@ -162,7 +273,7 @@ class ApiQueryInfo extends ApiQueryBase {
 		}
 
 		// We don't need to check for pt stuff if there are no nonexistent titles
-		if($fld_protection && !empty($missing))
+		if($fld_protection && count($missing))
 		{
 			$this->resetQueryParams();
 			// Construct a custom WHERE clause that matches all titles in $missing
@@ -256,7 +367,7 @@ class ApiQueryInfo extends ApiQueryBase {
 				else if($fld_talkid)
 					$talktitles[] = $t->getTalkPage();
 			}
-			if(!empty($talktitles) || !empty($subjecttitles))
+			if(count($talktitles) || count($subjecttitles))
 			{
 				// Construct a custom WHERE clause that matches
 				// all titles in $talktitles and $subjecttitles
@@ -290,59 +401,65 @@ class ApiQueryInfo extends ApiQueryBase {
 			if ($pageIsNew[$pageid])
 				$pageInfo['new'] = '';
 
-			if (!is_null($token)) {
-				// Currently all tokens are generated the same way, but it might change
-				if ($tok_edit)
-					$pageInfo['edittoken'] = $wgUser->editToken();
-				if ($tok_delete)
-					$pageInfo['deletetoken'] = $wgUser->editToken();
-				if ($tok_protect)
-					$pageInfo['protecttoken'] = $wgUser->editToken();
-				if ($tok_move)
-					$pageInfo['movetoken'] = $wgUser->editToken();
+			if (!is_null($params['token'])) {
+				$tokenFunctions = $this->getTokenFunctions();
+				$pageInfo['starttimestamp'] = wfTimestamp(TS_ISO_8601, time());
+				foreach($params['token'] as $t)
+				{
+					$val = call_user_func($tokenFunctions[$t], $pageid, $title);
+					if($val === false)
+						$this->setWarning("Action '$t' is not allowed for the current user");
+					else
+						$pageInfo[$t . 'token'] = $val;
+				}
 			}
 
 			if($fld_protection) {
+				$pageInfo['protection'] = array();
 				if (isset($protections[$pageid])) {
 					$pageInfo['protection'] = $protections[$pageid];
 					$result->setIndexedTagName($pageInfo['protection'], 'pr');
-				} else {
-					# Also check old restrictions
-					if( $pageRestrictions[$pageid] ) {
-						foreach( explode( ':', trim( $pageRestrictions[$pageid] ) ) as $restrict ) {
-							$temp = explode( '=', trim( $restrict ) );
-							if(count($temp) == 1) {
-								// old old format should be treated as edit/move restriction
-								$restriction = trim( $temp[0] );
-								$pageInfo['protection'][] = array(
-									'type' => 'edit',
-									'level' => $restriction,
-									'expiry' => 'infinity',
-								);
-								$pageInfo['protection'][] = array(
-									'type' => 'move',
-									'level' => $restriction,
-									'expiry' => 'infinity',
-								);
-							} else {
-								$restriction = trim( $temp[1] );
-								$pageInfo['protection'][] = array(
-									'type' => $temp[0],
-									'level' => $restriction,
-									'expiry' => 'infinity',
-								);
-							}
+				}
+				# Also check old restrictions
+				if( $pageRestrictions[$pageid] ) {
+					foreach( explode( ':', trim( $pageRestrictions[$pageid] ) ) as $restrict ) {
+						$temp = explode( '=', trim( $restrict ) );
+						if(count($temp) == 1) {
+							// old old format should be treated as edit/move restriction
+							$restriction = trim( $temp[0] );
+							$pageInfo['protection'][] = array(
+								'type' => 'edit',
+								'level' => $restriction,
+								'expiry' => 'infinity',
+							);
+							$pageInfo['protection'][] = array(
+								'type' => 'move',
+								'level' => $restriction,
+								'expiry' => 'infinity',
+							);
+						} else {
+							$restriction = trim( $temp[1] );
+							$pageInfo['protection'][] = array(
+								'type' => $temp[0],
+								'level' => $restriction,
+								'expiry' => 'infinity',
+							);
 						}
-						$result->setIndexedTagName($pageInfo['protection'], 'pr');
-					} else {
-						$pageInfo['protection'] = array();
 					}
+					$result->setIndexedTagName($pageInfo['protection'], 'pr');
 				}
 			}
 			if($fld_talkid && isset($talkids[$title->getNamespace()][$title->getDbKey()]))
 				$pageInfo['talkid'] = $talkids[$title->getNamespace()][$title->getDbKey()];
 			if($fld_subjectid && isset($subjectids[$title->getNamespace()][$title->getDbKey()]))
 				$pageInfo['subjectid'] = $subjectids[$title->getNamespace()][$title->getDbKey()];
+			if($fld_url) {
+				$pageInfo['fullurl'] = $title->getFullURL();
+				$pageInfo['editurl'] = $title->getFullURL('action=edit');
+			}
+			if($fld_readable)
+				if($title->userCanRead())
+					$pageInfo['readable'] = '';
 
 			$result->addValue(array (
 				'query',
@@ -350,16 +467,25 @@ class ApiQueryInfo extends ApiQueryBase {
 			), $pageid, $pageInfo);
 		}
 
-		// Get edit/protect tokens and protection data for missing titles if requested
-		// Delete and move tokens are N/A for missing titles anyway
-		if($tok_edit || $tok_protect || $fld_protection || $fld_talkid || $fld_subjectid)
+		// Get properties for missing titles if requested
+		if(!is_null($params['token']) || $fld_protection || $fld_talkid || $fld_subjectid ||
+		  					$fld_url || $fld_readable)
 		{
 			$res = &$result->getData();
 			foreach($missing as $pageid => $title) {
-				if($tok_edit)
-					$res['query']['pages'][$pageid]['edittoken'] = $wgUser->editToken();
-				if($tok_protect)
-					$res['query']['pages'][$pageid]['protecttoken'] = $wgUser->editToken();
+				if(!is_null($params['token'])) 
+				{
+					$tokenFunctions = $this->getTokenFunctions();
+					$res['query']['pages'][$pageid]['starttimestamp'] = wfTimestamp(TS_ISO_8601, time());
+					foreach($params['token'] as $t)
+					{
+						$val = call_user_func($tokenFunctions[$t], $pageid, $title);
+						if($val === false)
+							$this->setWarning("Action '$t' is not allowed for the current user");
+						else
+							$res['query']['pages'][$pageid][$t . 'token'] = $val;
+					}
+				}
 				if($fld_protection)
 				{
 					// Apparently the XML formatting code doesn't like array(null)
@@ -374,6 +500,13 @@ class ApiQueryInfo extends ApiQueryBase {
 					$res['query']['pages'][$pageid]['talkid'] = $talkids[$title->getNamespace()][$title->getDbKey()];
 				if($fld_subjectid && isset($subjectids[$title->getNamespace()][$title->getDbKey()]))
 					$res['query']['pages'][$pageid]['subjectid'] = $subjectids[$title->getNamespace()][$title->getDbKey()];
+				if($fld_url) {
+					$res['query']['pages'][$pageid]['fullurl'] = $title->getFullURL();
+					$res['query']['pages'][$pageid]['editurl'] = $title->getFullURL('action=edit');
+				}
+				if($fld_readable)
+					if($title->userCanRead())
+						$res['query']['pages'][$pageid]['readable'] = '';
 			}
 		}
 	}
@@ -386,17 +519,15 @@ class ApiQueryInfo extends ApiQueryBase {
 				ApiBase :: PARAM_TYPE => array (
 					'protection',
 					'talkid',
-					'subjectid'
+					'subjectid',
+					'url',
+					'readable',
 				)),
 			'token' => array (
 				ApiBase :: PARAM_DFLT => NULL,
 				ApiBase :: PARAM_ISMULTI => true,
-				ApiBase :: PARAM_TYPE => array (
-					'edit',
-					'delete',
-					'protect',
-					'move',
-				)),
+				ApiBase :: PARAM_TYPE => array_keys($this->getTokenFunctions())
+			)
 		);
 	}
 

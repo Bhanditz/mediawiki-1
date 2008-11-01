@@ -38,7 +38,7 @@ class LogEventsList {
 	private function preCacheMessages() {
 		// Precache various messages
 		if( !isset( $this->message ) ) {
-			$messages = 'revertmerge protect_change unblocklink revertmove undeletelink revdel-restore rev-delundel';
+			$messages = 'revertmerge protect_change unblocklink revertmove undeletelink revdel-restore rev-delundel hist';
 			foreach( explode(' ', $messages ) as $msg ) {
 				$this->message[$msg] = wfMsgExt( $msg, array( 'escape') );
 			}
@@ -62,10 +62,11 @@ class LogEventsList {
 	 * @param string $user,
 	 * @param string $page,
 	 * @param string $pattern
-	 * @param int $year
-	 * @parm int $month
+	 * @param int $y year
+	 * @param int $y month
+	 * @param bool $filter
 	 */
-	public function showOptions( $type='', $user='', $page='', $pattern='', $year='', $month='' ) {
+	public function showOptions( $type='', $user='', $page='', $pattern='', $y='', $m='', $filter=null ) {
 		global $wgScript, $wgMiserMode;
 		$action = htmlspecialchars( $wgScript );
 		$title = SpecialPage::getTitleFor( 'Log' );
@@ -78,9 +79,42 @@ class LogEventsList {
 			$this->getUserInput( $user ) . "\n" .
 			$this->getTitleInput( $page ) . "\n" .
 			( !$wgMiserMode ? ($this->getTitlePattern( $pattern )."\n") : "" ) .
-			"<p>" . $this->getDateMenu( $year, $month ) . "\n" .
+			"<p>" . $this->getDateMenu( $y, $m ) . "\n" .
+			( !empty($filter) ? "</p><p>".$this->getFilterLinks( $type, $filter )."\n" : "" ) .
 			Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . "</p>\n" .
-			"</fieldset></form>" );
+			"</fieldset></form>"
+		);
+	}
+	
+	private function getFilterLinks( $logtype, $filter ) {
+		global $wgTitle;
+		// show/hide links
+		$showhide = array( wfMsgHtml( 'show' ), wfMsgHtml( 'hide' ) );
+		// Option value -> message mapping
+		$links = array();
+		foreach( $filter as $type => $val ) {
+			$onoff = 1 - intval($val);
+			$link = $this->skin->makeKnownLinkObj( $wgTitle, $showhide[$onoff],
+				wfArrayToCGI( array( "hide{$type}log" => $onoff ), $this->getDefaultQuery() )
+			);
+			$links[$type] = wfMsgHtml( "logshowhide-{$type}", $link );
+		}
+		// Build links
+		return implode( ' | ', $links );
+	}
+	
+	private function getDefaultQuery() {
+		if ( !isset( $this->mDefaultQuery ) ) {
+			$this->mDefaultQuery = $_GET;
+			unset( $this->mDefaultQuery['title'] );
+			unset( $this->mDefaultQuery['dir'] );
+			unset( $this->mDefaultQuery['offset'] );
+			unset( $this->mDefaultQuery['limit'] );
+			unset( $this->mDefaultQuery['order'] );
+			unset( $this->mDefaultQuery['month'] );
+			unset( $this->mDefaultQuery['year'] );
+		}
+		return $this->mDefaultQuery;
 	}
 
 	/**
@@ -216,69 +250,85 @@ class LogEventsList {
 			$del = $this->showhideLinks( $row ) . ' ';
 		}
 		// Add review links and such...
-		if( !($this->flags & self::NO_ACTION_LINK) && !($row->log_deleted & LogPage::DELETED_ACTION) ) {
-			if( self::typeAction($row,'move','move') && isset( $paramArray[0] ) && $wgUser->isAllowed( 'move' ) ) {
-				$destTitle = Title::newFromText( $paramArray[0] );
-				if( $destTitle ) {
-					$revert = '(' . $this->skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Movepage' ),
-						$this->message['revertmove'],
-						'wpOldTitle=' . urlencode( $destTitle->getPrefixedDBkey() ) .
-						'&wpNewTitle=' . urlencode( $title->getPrefixedDBkey() ) .
-						'&wpReason=' . urlencode( wfMsgForContent( 'revertmove' ) ) .
-						'&wpMovetalk=0' ) . ')';
-				}
-			// Show undelete link
-			} else if( self::typeAction($row,array('delete','suppress'),'delete') && $wgUser->isAllowed( 'delete' ) ) {
-				$revert = '(' . $this->skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Undelete' ),
-					$this->message['undeletelink'], 'target='. urlencode( $title->getPrefixedDBkey() ) ) . ')';
-			// Show unblock link
-			} else if( self::typeAction($row,array('block','suppress'),'block') && $wgUser->isAllowed( 'block' ) ) {
-				$revert = '(' .  $this->skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Ipblocklist' ),
-					$this->message['unblocklink'],
-					'action=unblock&ip=' . urlencode( $row->log_title ) ) . ')';
-			// Show change protection link
-			} else if( self::typeAction($row,'protect','modify') && $wgUser->isAllowed( 'protect' ) ) {
-				$revert = '(' .  $this->skin->makeKnownLinkObj( $title, $this->message['protect_change'], 'action=unprotect' ) . ')';
-			// Show unmerge link
-			} else if ( self::typeAction($row,'merge','merge') ) {
-				$merge = SpecialPage::getTitleFor( 'Mergehistory' );
-				$revert = '(' .  $this->skin->makeKnownLinkObj( $merge, $this->message['revertmerge'],
-					wfArrayToCGI( array('target' => $paramArray[0], 'dest' => $title->getPrefixedDBkey(), 
-						'mergepoint' => $paramArray[1] ) ) ) . ')';
-			// If an edit was hidden from a page give a review link to the history
-			} else if( self::typeAction($row,array('delete','suppress'),'revision') && $wgUser->isAllowed( 'deleterevision' ) ) {
-				if( count($paramArray) == 2 ) {
-					$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
-					// Different revision types use different URL params...
-					$key = $paramArray[0];
-					// Link to each hidden object ID, $paramArray[1] is the url param
-					$Ids = explode( ',', $paramArray[1] );
-					$revParams = '';
-					foreach( $Ids as $n => $id ) {
-						$revParams .= '&' . urlencode($key) . '[]=' . urlencode($id);
-					}
-					$revert = '(' . $this->skin->makeKnownLinkObj( $revdel, $this->message['revdel-restore'], 
-						'target=' . $title->getPrefixedUrl() . $revParams ) . ')';
-				}
-			// Hidden log items, give review link
-			} else if( self::typeAction($row,array('delete','suppress'),'event') && $wgUser->isAllowed( 'deleterevision' ) ) {
-				if( count($paramArray) == 1 ) {
-					$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
-					$Ids = explode( ',', $paramArray[0] );
-					// Link to each hidden object ID, $paramArray[1] is the url param
-					$logParams = '';
-					foreach( $Ids as $n => $id ) {
-						$logParams .= '&logid[]=' . intval($id);
-					}
-					$revert = '(' . $this->skin->makeKnownLinkObj( $revdel, $this->message['revdel-restore'], 
-						'target=' . $title->getPrefixedUrl() . $logParams ) . ')';
-				}
-			} else {
-				wfRunHooks( 'LogLine', array( $row->log_type, $row->log_action, $title, $paramArray,
-					&$comment, &$revert, $row->log_timestamp ) );
-				// wfDebug( "Invoked LogLine hook for " $row->log_type . ", " . $row->log_action . "\n" );
-				// Do nothing. The implementation is handled by the hook modifiying the passed-by-ref parameters.
+		if( ($this->flags & self::NO_ACTION_LINK) || ($row->log_deleted & LogPage::DELETED_ACTION) ) {
+			// Action text is suppressed...
+		} else if( self::typeAction($row,'move','move') && !empty($paramArray[0]) && $wgUser->isAllowed( 'move' ) ) {
+			$destTitle = Title::newFromText( $paramArray[0] );
+			if( $destTitle ) {
+				$revert = '(' . $this->skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Movepage' ),
+					$this->message['revertmove'],
+					'wpOldTitle=' . urlencode( $destTitle->getPrefixedDBkey() ) .
+					'&wpNewTitle=' . urlencode( $title->getPrefixedDBkey() ) .
+					'&wpReason=' . urlencode( wfMsgForContent( 'revertmove' ) ) .
+					'&wpMovetalk=0' ) . ')';
 			}
+		// Show undelete link
+		} else if( self::typeAction($row,array('delete','suppress'),'delete') && $wgUser->isAllowed( 'delete' ) ) {
+			$revert = '(' . $this->skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Undelete' ),
+				$this->message['undeletelink'], 'target='. urlencode( $title->getPrefixedDBkey() ) ) . ')';
+		// Show unblock link
+		} else if( self::typeAction($row,array('block','suppress'),'block') && $wgUser->isAllowed( 'block' ) ) {
+			$revert = '(' .  $this->skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Ipblocklist' ),
+				$this->message['unblocklink'],
+				'action=unblock&ip=' . urlencode( $row->log_title ) ) . ')';
+		// Show change protection link
+		} else if( self::typeAction($row,'protect',array('modify','protect','unprotect')) ) {
+			$revert .= ' (' .  $this->skin->makeKnownLinkObj( $title, $this->message['hist'], 
+				'action=history&offset=' . urlencode($row->log_timestamp) ) . ')';
+			if( $wgUser->isAllowed('protect') && $row->log_action != 'unprotect' ) {
+				$revert .= ' (' .  $this->skin->makeKnownLinkObj( $title, $this->message['protect_change'], 
+					'action=unprotect' ) . ')';
+			}
+		// Show unmerge link
+		} else if ( self::typeAction($row,'merge','merge') ) {
+			$merge = SpecialPage::getTitleFor( 'Mergehistory' );
+			$revert = '(' .  $this->skin->makeKnownLinkObj( $merge, $this->message['revertmerge'],
+				wfArrayToCGI( array('target' => $paramArray[0], 'dest' => $title->getPrefixedDBkey(), 
+					'mergepoint' => $paramArray[1] ) ) ) . ')';
+		// If an edit was hidden from a page give a review link to the history
+		} else if( self::typeAction($row,array('delete','suppress'),'revision') && $wgUser->isAllowed( 'deleterevision' ) ) {
+			if( count($paramArray) == 2 ) {
+				$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
+				// Different revision types use different URL params...
+				$key = $paramArray[0];
+				// Link to each hidden object ID, $paramArray[1] is the url param
+				$Ids = explode( ',', $paramArray[1] );
+				$revParams = '';
+				foreach( $Ids as $n => $id ) {
+					$revParams .= '&' . urlencode($key) . '[]=' . urlencode($id);
+				}
+				$revert = '(' . $this->skin->makeKnownLinkObj( $revdel, $this->message['revdel-restore'], 
+					'target=' . $title->getPrefixedUrl() . $revParams ) . ')';
+			}
+		// Hidden log items, give review link
+		} else if( self::typeAction($row,array('delete','suppress'),'event') && $wgUser->isAllowed( 'deleterevision' ) ) {
+			if( count($paramArray) == 1 ) {
+				$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
+				$Ids = explode( ',', $paramArray[0] );
+				// Link to each hidden object ID, $paramArray[1] is the url param
+				$logParams = '';
+				foreach( $Ids as $n => $id ) {
+					$logParams .= '&logid[]=' . intval($id);
+				}
+				$revert = '(' . $this->skin->makeKnownLinkObj( $revdel, $this->message['revdel-restore'], 
+					'target=' . $title->getPrefixedUrl() . $logParams ) . ')';
+			}
+		// Self-created users
+		} else if( self::typeAction($row,'newusers','create2') ) {
+			if( isset( $paramArray[0] ) ) {
+				$revert = $this->skin->userToolLinks( $paramArray[0], $title->getDBkey(), true );
+			} else {
+				# Fall back to a blue contributions link
+				$revert = $this->skin->userToolLinks( 1, $title->getDBkey() );
+			}
+			if( $time < '20080129000000' ) {
+				# Suppress $comment from old entries (before 2008-01-29), not needed and can contain incorrect links
+				$comment = '';
+			}
+		// Do nothing. The implementation is handled by the hook modifiying the passed-by-ref parameters.
+		} else {
+			wfRunHooks( 'LogLine', array( $row->log_type, $row->log_action, $title, $paramArray,
+				&$comment, &$revert, $row->log_timestamp ) );
 		}
 		// Event description
 		if( self::isDeleted($row,LogPage::DELETED_ACTION) ) {
@@ -316,15 +366,15 @@ class LogEventsList {
 	/**
 	 * @param Row $row
 	 * @param mixed $type (string/array)
-	 * @param string $action
+	 * @param mixed $action (string/array)
 	 * @return bool
 	 */
 	public static function typeAction( $row, $type, $action ) {
-		if( is_array($type) ) {
-			return ( in_array($row->log_type,$type) && $row->log_action == $action );
-		} else {
-			return ( $row->log_type == $type && $row->log_action == $action );
+		$match = is_array($type) ? in_array($row->log_type,$type) : $row->log_type == $type;
+		if( $match ) {
+			$match = is_array($action) ? in_array($row->log_action,$action) : $row->log_action == $action;
 		}
+		return $match;
 	}
 
 	/**
@@ -362,12 +412,15 @@ class LogEventsList {
 	 * @param string $type
 	 * @param string $page
 	 * @param string $user
+	 * @param int $lim
+	 * @param array $conds
 	 */
-	 public static function showLogExtract( $out, $type='', $page='', $user='' ) {
+	public static function showLogExtract( $out, $type='', $page='', $user='', $lim=0, $conds=array() ) {
 		global $wgUser;
 		# Insert list of top 50 or so items
 		$loglist = new LogEventsList( $wgUser->getSkin(), $out, 0 );
-		$pager = new LogPager( $loglist, $type, $user, $page, '' );
+		$pager = new LogPager( $loglist, $type, $user, $page, '', $conds );
+		if( $lim > 0 ) $pager->mLimit = $lim;
 		$logBody = $pager->getBody();
 		if( $logBody ) {
 			$out->addHTML(
@@ -378,7 +431,8 @@ class LogEventsList {
 		} else {
 			$out->addWikiMsg( 'logempty' );
 		}
-	 }
+		return $pager->getNumRows();
+	}
 
 	 /**
 	 * SQL clause to skip forbidden log types for this user
@@ -409,7 +463,7 @@ class LogEventsList {
  * @ingroup Pager
  */
 class LogPager extends ReverseChronologicalPager {
-	private $type = '', $user = '', $title = '', $pattern = '', $year = '', $month = '';
+	private $type = '', $user = '', $title = '', $pattern = '';
 	public $mLogEventsList;
 	/**
 	* constructor
@@ -429,15 +483,33 @@ class LogPager extends ReverseChronologicalPager {
 		$this->limitType( $type );
 		$this->limitUser( $user );
 		$this->limitTitle( $title, $pattern );
-		$this->limitDate( $y, $m );
+		$this->getDateCond( $y, $m );
 	}
 
-	function getDefaultQuery() {
+	public function getDefaultQuery() {
 		$query = parent::getDefaultQuery();
 		$query['type'] = $this->type;
-		$query['month'] = $this->month;
-		$query['year'] = $this->year;
+		$query['month'] = $this->mMonth;
+		$query['year'] = $this->mYear;
 		return $query;
+	}
+
+	public function getFilterParams() {
+		global $wgFilterLogTypes, $wgUser, $wgRequest;
+		$filters = array();
+		if( $this->type ) {
+			return $filters;
+		}
+		foreach( $wgFilterLogTypes as $type => $default ) {
+			// Avoid silly filtering
+			if( $type !== 'patrol' || $wgUser->useNPPatrol() ) {
+				$hide = $wgRequest->getInt( "hide{$type}log", $default );
+				$filters[$type] = $hide;
+				if( $hide )
+					$this->mConds[] = 'log_type != '.$this->mDb->addQuotes( $this->mDb->strencode($type) );
+			}
+		}
+		return $filters;
 	}
 
 	/**
@@ -469,7 +541,7 @@ class LogPager extends ReverseChronologicalPager {
 	 * @param string $name (In)valid user name
 	 * @private
 	 */
-	function limitUser( $name ) {
+	private function limitUser( $name ) {
 		if( $name == '' ) {
 			return false;
 		}
@@ -495,7 +567,7 @@ class LogPager extends ReverseChronologicalPager {
 	 * @param string $page Title name as text
 	 * @private
 	 */
-	function limitTitle( $page, $pattern ) {
+	private function limitTitle( $page, $pattern ) {
 		global $wgMiserMode;
 
 		$title = Title::newFromText( $page );
@@ -504,6 +576,17 @@ class LogPager extends ReverseChronologicalPager {
 
 		$this->title = $title->getPrefixedText();
 		$ns = $title->getNamespace();
+		# Using the (log_namespace, log_title, log_timestamp) index with a
+		# range scan (LIKE) on the first two parts, instead of simple equality,
+		# makes it unusable for sorting.  Sorted retrieval using another index
+		# would be possible, but then we might have to scan arbitrarily many
+		# nodes of that index. Therefore, we need to avoid this if $wgMiserMode
+		# is on.
+		#
+		# This is not a problem with simple title matches, because then we can
+		# use the page_time index.  That should have no more than a few hundred
+		# log entries for even the busiest pages, so it can be safely scanned
+		# in full to satisfy an impossible condition on user or similar.
 		if( $pattern && !$wgMiserMode ) {
 			# use escapeLike to avoid expensive search patterns like 't%st%'
 			$safetitle = $this->mDb->escapeLike( $title->getDBkey() );
@@ -516,46 +599,7 @@ class LogPager extends ReverseChronologicalPager {
 		}
 	}
 
-	/**
-	 * Set the log reader to return only entries from given date.
-	 * @param int $year
-	 * @param int $month
-	 * @private
-	 */
-	function limitDate( $year, $month ) {
-		$year = intval($year);
-		$month = intval($month);
-
-		$this->year = ($year > 0 && $year < 10000) ? $year : '';
-		$this->month = ($month > 0 && $month < 13) ? $month : '';
-
-		if( $this->year || $this->month ) {
-			// Assume this year if only a month is given
-			if( $this->year ) {
-				$year_start = $this->year;
-			} else {
-				$year_start = substr( wfTimestampNow(), 0, 4 );
-				$thisMonth = gmdate( 'n' );
-				if( $this->month > $thisMonth ) {
-					// Future contributions aren't supposed to happen. :)
-					$year_start--;
-				}
-			}
-
-			if( $this->month ) {
-				$month_end = str_pad($this->month + 1, 2, '0', STR_PAD_LEFT);
-				$year_end = $year_start;
-			} else {
-				$month_end = 0;
-				$year_end = $year_start + 1;
-			}
-			$ts_end = str_pad($year_end . $month_end, 14, '0' );
-
-			$this->mOffset = $ts_end;
-		}
-	}
-
-	function getQueryInfo() {
+	public function getQueryInfo() {
 		$this->mConds[] = 'user_id = log_user';
 		# Don't use the wrong logging index
 		if( $this->title || $this->pattern || $this->user ) {
@@ -578,7 +622,7 @@ class LogPager extends ReverseChronologicalPager {
 		return 'log_timestamp';
 	}
 
-	function getStartBody() {
+	public function getStartBody() {
 		wfProfileIn( __METHOD__ );
 		# Do a link batch query
 		if( $this->getNumRows() > 0 ) {
@@ -595,7 +639,7 @@ class LogPager extends ReverseChronologicalPager {
 		return '';
 	}
 
-	function formatRow( $row ) {
+	public function formatRow( $row ) {
 		return $this->mLogEventsList->logLine( $row );
 	}
 
@@ -616,11 +660,11 @@ class LogPager extends ReverseChronologicalPager {
 	}
 
 	public function getYear() {
-		return $this->year;
+		return $this->mYear;
 	}
 
 	public function getMonth() {
-		return $this->month;
+		return $this->mMonth;
 	}
 }
 

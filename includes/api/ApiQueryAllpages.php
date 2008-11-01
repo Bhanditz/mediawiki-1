@@ -62,10 +62,10 @@ class ApiQueryAllpages extends ApiQueryGeneratorBase {
 			$this->addWhereIf('page_is_redirect = 0', $params['filterredir'] === 'nonredirects');
 		$this->addWhereFld('page_namespace', $params['namespace']);
 		$dir = ($params['dir'] == 'descending' ? 'older' : 'newer');
-		$from = (is_null($params['from']) ? null : ApiQueryBase::titleToKey($params['from']));
+		$from = (is_null($params['from']) ? null : $this->titlePartToKey($params['from']));
 		$this->addWhereRange('page_title', $dir, $from, null);
 		if (isset ($params['prefix']))
-			$this->addWhere("page_title LIKE '" . $db->escapeLike(ApiQueryBase :: titleToKey($params['prefix'])) . "%'");
+			$this->addWhere("page_title LIKE '" . $db->escapeLike($this->titlePartToKey($params['prefix'])) . "%'");
 
 		$forceNameTitleIndex = true;
 		if (isset ($params['minsize'])) {
@@ -79,14 +79,15 @@ class ApiQueryAllpages extends ApiQueryGeneratorBase {
 		}
 
 		// Page protection filtering
-		if (isset ($params['prtype'])) {
+		if (!empty ($params['prtype'])) {
 			$this->addTables('page_restrictions');
 			$this->addWhere('page_id=pr_page');
 			$this->addWhere('pr_expiry>' . $db->addQuotes($db->timestamp()));
 			$this->addWhereFld('pr_type', $params['prtype']);
 
-			$prlevel = $params['prlevel'];
-			if (!is_null($prlevel) && $prlevel != '' && $prlevel != '*')
+			// Remove the empty string and '*' from the prlevel array
+			$prlevel = array_diff($params['prlevel'], array('', '*'));
+			if (!empty($prlevel))
 				$this->addWhereFld('pr_level', $prlevel);
 
 			$this->addOption('DISTINCT');
@@ -105,6 +106,7 @@ class ApiQueryAllpages extends ApiQueryGeneratorBase {
 		} else if($params['filterlanglinks'] == 'withlanglinks') {
 			$this->addTables('langlinks');
 			$this->addWhere('page_id=ll_from');
+			$this->addOption('DISTINCT');
 			$forceNameTitleIndex = false;
 		}
 		if ($forceNameTitleIndex)
@@ -130,7 +132,7 @@ class ApiQueryAllpages extends ApiQueryGeneratorBase {
 			if (++ $count > $limit) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
 				// TODO: Security issue - if the user has no right to view next title, it will still be shown
-				$this->setContinueEnumParameter('from', ApiQueryBase :: keyToTitle($row->page_title));
+				$this->setContinueEnumParameter('from', $this->keyToTitle($row->page_title));
 				break;
 			}
 

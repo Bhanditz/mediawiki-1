@@ -349,30 +349,6 @@ table.rimage {
     padding:5px;
     font-size: 95%;
 }
-div.townBox {
-    position:relative;
-    float:right;
-    background:White;
-    margin-left:1em;
-    border: 1px solid gray;
-    padding:0.3em;
-    width: 200px;
-    overflow: hidden;
-    clear: right;
-}
-div.townBox dl {
-    padding: 0;
-    margin: 0 0 0.3em 0;
-    font-size: 96%;
-}
-div.townBox dl dt {
-    background: none;
-    margin: 0.4em 0 0 0;
-}
-div.townBox dl dd {
-    margin: 0.1em 0 0 1.1em;
-    background-color: #f3f3f3;
-}
 
 /*
 ** edit views etc
@@ -443,14 +419,25 @@ div.gallerytext {
         padding: 2px 4px;
 }       
 
-#jump-to-nav {
+#xjump-to-nav {
   display: none;
 }
 
 .templatesUsed { margin-top: 1.5em; }
 
-/* Recreating-deleted-page/reupload file warning and log entries */
-div#mw-upload-deleted-warn ul li,
-div#mw-recreate-deleted-warn ul li {
-	font-size: 95%;
+.printfooter {
+	display: none;
+}
+
+#footer {
+	background-color: white;
+	border-top: 1px solid #fabd23;
+	border-bottom: 1px solid #fabd23;
+	margin: .6em 0 1em 0;
+	padding: .4em 0 1.2em 0;
+	text-align: center;
+	font-size: 90%;
+}
+#f-poweredbyico, #f-copyrightico {
+	display: inline;
 }

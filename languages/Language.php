@@ -39,7 +39,7 @@ class FakeConverter {
 	function parserConvert($t, $p) {return $t;}
 	function getVariants() { return array( $this->mLang->getCode() ); }
 	function getPreferredVariant() {return $this->mLang->getCode(); }
-	function findVariantLink(&$l, &$n) {}
+	function findVariantLink(&$l, &$n, $forTemplate = false) {}
 	function getExtraHashOptions() {return '';}
 	function getParsedTitle() {return '';}
 	function markNoConversion($text, $noParse=false) {return $text;}
@@ -57,15 +57,17 @@ class Language {
 	var $mMagicExtensions = array(), $mMagicHookDone = false;
 
 	static public $mLocalisationKeys = array( 'fallback', 'namespaceNames',
-		'skinNames', 'mathNames', 
-		'bookstoreList', 'magicWords', 'messages', 'rtl', 'digitTransformTable', 
+		'skinNames', 'mathNames',
+		'bookstoreList', 'magicWords', 'messages', 'rtl', 'digitTransformTable',
 		'separatorTransformTable', 'fallback8bitEncoding', 'linkPrefixExtension',
-		'defaultUserOptionOverrides', 'linkTrail', 'namespaceAliases', 
-		'dateFormats', 'datePreferences', 'datePreferenceMigrationMap', 
-		'defaultDateFormat', 'extraUserToggles', 'specialPageAliases' );
+		'defaultUserOptionOverrides', 'linkTrail', 'namespaceAliases',
+		'dateFormats', 'datePreferences', 'datePreferenceMigrationMap',
+		'defaultDateFormat', 'extraUserToggles', 'specialPageAliases',
+		'imageFiles'
+	);
 
-	static public $mMergeableMapKeys = array( 'messages', 'namespaceNames', 'mathNames', 
-		'dateFormats', 'defaultUserOptionOverrides', 'magicWords' );
+	static public $mMergeableMapKeys = array( 'messages', 'namespaceNames', 'mathNames',
+		'dateFormats', 'defaultUserOptionOverrides', 'magicWords', 'imageFiles' );
 
 	static public $mMergeableListKeys = array( 'extraUserToggles' );
 
@@ -119,6 +121,13 @@ class Language {
 		'hebrew-calendar-m10-gen', 'hebrew-calendar-m11-gen', 'hebrew-calendar-m12-gen',
 		'hebrew-calendar-m6a-gen', 'hebrew-calendar-m6b-gen'
 	);
+	
+	static public $mHijriCalendarMonthMsgs = array(
+		'hijri-calendar-m1', 'hijri-calendar-m2', 'hijri-calendar-m3',
+		'hijri-calendar-m4', 'hijri-calendar-m5', 'hijri-calendar-m6',
+		'hijri-calendar-m7', 'hijri-calendar-m8', 'hijri-calendar-m9',
+		'hijri-calendar-m10', 'hijri-calendar-m11', 'hijri-calendar-m12'
+	);
 
 	/**
 	 * Create a language object for a given language code
@@ -164,6 +173,15 @@ class Language {
 			$this->mCode = 'en';
 		} else {
 			$this->mCode = str_replace( '_', '-', strtolower( substr( get_class( $this ), 8 ) ) );
+		}
+	}
+
+	/**
+	 * Reduce memory usage
+	 */
+	function __destruct() {
+		foreach ( $this as $name => $value ) {
+			unset( $this->$name );
 		}
 	}
 
@@ -332,6 +350,11 @@ class Language {
 		return $this->datePreferenceMigrationMap;
 	}
 
+	function getImageFile( $image ) {
+		$this->load();
+		return $this->imageFiles[$image];
+	}
+
 	function getDefaultUserOptionOverrides() {
 		$this->load();
 		# XXX - apparently some languageas get empty arrays, didn't get to it yet -- midom
@@ -379,21 +402,13 @@ class Language {
 	}
 
 	/**
-	 * Ugly hack to get a message maybe from the MediaWiki namespace, if this
-	 * language object is the content or user language.
+	 * Get a message from the MediaWiki namespace.
+	 *
+	 * @param $msg String: message name
+	 * @return string
 	 */
 	function getMessageFromDB( $msg ) {
-		global $wgContLang, $wgLang;
-		if ( $wgContLang->getCode() == $this->getCode() ) {
-			# Content language
-			return wfMsgForContent( $msg );
-		} elseif ( $wgLang->getCode() == $this->getCode() ) {
-			# User language
-			return wfMsg( $msg );
-		} else {
-			# Neither, get from localisation
-			return $this->getMessage( $msg );
-		}
+		return wfMsgExt( $msg, array( 'parsemag', 'language' => $this ) );
 	}
 
 	function getLanguageName( $code ) {
@@ -435,8 +450,11 @@ class Language {
 	function getHebrewCalendarMonthNameGen( $key ) {
 		return $this->getMessageFromDB( self::$mHebrewCalendarMonthGenMsgs[$key-1] );
 	}
-
-
+	
+	function getHijriCalendarMonthName( $key ) {
+		return $this->getMessageFromDB( self::$mHijriCalendarMonthMsgs[$key-1] );
+	}
+	
 	/**
 	 * Used by date() and time() to adjust the time output.
 	 *
@@ -521,6 +539,11 @@ class Language {
 	 *    xjn  n (month number) in Hebrew calendar
 	 *    xjY  Y (full year) in Hebrew calendar
 	 *
+	 *   xmj  j (day number) in Hijri calendar
+	 *   xmF  F (month name) in Hijri calendar
+	 *   xmn  n (month number) in Hijri calendar
+	 *   xmY  Y (full year) in Hijri calendar
+	 *
 	 *    xkY  Y (full year) in Thai solar calendar. Months and days are
 	 *                       identical to the Gregorian calendar
 	 *
@@ -550,6 +573,7 @@ class Language {
 		$rawToggle = false;
 		$iranian = false;
 		$hebrew = false;
+		$hijri = false;
 		$thai = false;
 		for ( $p = 0; $p < strlen( $format ); $p++ ) {
 			$num = false;
@@ -558,7 +582,7 @@ class Language {
 				$code .= $format[++$p];
 			}
 
-			if ( ( $code === 'xi' || $code == 'xj' || $code == 'xk' ) && $p < strlen( $format ) - 1 ) {
+			if ( ( $code === 'xi' || $code == 'xj' || $code == 'xk' || $code == 'xm' ) && $p < strlen( $format ) - 1 ) {
 				$code .= $format[++$p];
 			}
 
@@ -599,6 +623,10 @@ class Language {
 					if ( !$iranian ) $iranian = self::tsToIranian( $ts );
 					$num = $iranian[2];
 					break;
+				case 'xmj':
+					if ( !$hijri ) $hijri = self::tsToHijri( $ts );
+					$num = $hijri[2];
+					break;
 				case 'xjj':
 					if ( !$hebrew ) $hebrew = self::tsToHebrew( $ts );
 					$num = $hebrew[2];
@@ -631,6 +659,10 @@ class Language {
 					if ( !$iranian ) $iranian = self::tsToIranian( $ts );
 					$s .= $this->getIranianCalendarMonthName( $iranian[1] );
 					break;
+				case 'xmF':
+					if ( !$hijri ) $hijri = self::tsToHijri( $ts );
+					$s .= $this->getHijriCalendarMonthName( $hijri[1] );
+					break;
 				case 'xjF':
 					if ( !$hebrew ) $hebrew = self::tsToHebrew( $ts );
 					$s .= $this->getHebrewCalendarMonthName( $hebrew[1] );
@@ -647,6 +679,10 @@ class Language {
 				case 'xin':
 					if ( !$iranian ) $iranian = self::tsToIranian( $ts );
 					$num = $iranian[1];
+					break;
+				case 'xmn':
+					if ( !$hijri ) $hijri = self::tsToHijri ( $ts );
+					$num = $hijri[1];
 					break;
 				case 'xjn':
 					if ( !$hebrew ) $hebrew = self::tsToHebrew( $ts );
@@ -670,6 +706,10 @@ class Language {
 				case 'xiY':
 					if ( !$iranian ) $iranian = self::tsToIranian( $ts );
 					$num = $iranian[0];
+					break;
+				case 'xmY':
+					if ( !$hijri ) $hijri = self::tsToHijri( $ts );
+					$num = $hijri[0];
 					break;
 				case 'xjY':
 					if ( !$hebrew ) $hebrew = self::tsToHebrew( $ts );
@@ -823,6 +863,47 @@ class Language {
 
 		return array($jy, $jm, $jd);
 	}
+	/**
+	 * Converting Gregorian dates to Hijri dates.
+	 *
+	 * Based on a PHP-Nuke block by Sharjeel which is released under GNU/GPL license
+	 *
+	 * @link http://phpnuke.org/modules.php?name=News&file=article&sid=8234&mode=thread&order=0&thold=0
+	 */
+	private static function tsToHijri ( $ts ) {
+		$year = substr( $ts, 0, 4 );
+		$month = substr( $ts, 4, 2 );
+		$day = substr( $ts, 6, 2 );
+		
+		$zyr = $year;
+		$zd=$day;
+		$zm=$month;
+		$zy=$zyr;
+
+
+
+		if (($zy>1582)||(($zy==1582)&&($zm>10))||(($zy==1582)&&($zm==10)&&($zd>14)))
+			{
+	
+	
+				    $zjd=(int)((1461*($zy + 4800 + (int)( ($zm-14) /12) ))/4) + (int)((367*($zm-2-12*((int)(($zm-14)/12))))/12)-(int)((3*(int)(( ($zy+4900+(int)(($zm-14)/12))/100)))/4)+$zd-32075;
+				    }
+		 else
+			{
+				    $zjd = 367*$zy-(int)((7*($zy+5001+(int)(($zm-9)/7)))/4)+(int)((275*$zm)/9)+$zd+1729777;
+			}
+		
+		$zl=$zjd-1948440+10632;
+		$zn=(int)(($zl-1)/10631);
+		$zl=$zl-10631*$zn+354;
+		$zj=((int)((10985-$zl)/5316))*((int)((50*$zl)/17719))+((int)($zl/5670))*((int)((43*$zl)/15238));
+		$zl=$zl-((int)((30-$zj)/15))*((int)((17719*$zj)/50))-((int)($zj/16))*((int)((15238*$zj)/43))+29;
+		$zm=(int)((24*$zl)/709);
+		$zd=$zl-(int)((709*$zm)/24);
+		$zy=30*$zn+$zj-30;
+
+		return array ($zy, $zm, $zd);
+	}
 
 	/**
 	 * Converting Gregorian dates to Hebrew dates.
@@ -831,6 +912,9 @@ class Language {
 	 * (abu-mami@kaluach.net, http://www.kaluach.net), who permitted
 	 * to translate the relevant functions into PHP and release them under
 	 * GNU GPL.
+	 *
+	 * The months are counted from Tishrei = 1. In a leap year, Adar I is 13
+	 * and Adar II is 14. In a non-leap year, Adar is 6.
 	 */
 	private static function tsToHebrew( $ts ) {
 		# Parse date
@@ -1606,7 +1690,9 @@ class Language {
 			} else {
 				# Fall back to English if local list is incomplete
 				$magicWords =& Language::getMagicWords();
-				if ( !isset($magicWords[$mw->mId]) ) { throw new MWException("Magic word not found" ); }
+				if ( !isset($magicWords[$mw->mId]) ) {
+					throw new MWException("Magic word '{$mw->mId}' not found" ); 
+				}
 				$rawEntry = $magicWords[$mw->mId];
 			}
 		}
@@ -1646,12 +1732,61 @@ class Language {
 	 */
 	function getSpecialPageAliases() {
 		$this->load();
+
+		// Cache aliases because it may be slow to load them
 		if ( !isset( $this->mExtendedSpecialPageAliases ) ) {
+
+			// Initialise array
 			$this->mExtendedSpecialPageAliases = $this->specialPageAliases;
-			wfRunHooks( 'LanguageGetSpecialPageAliases', 
+
+			global $wgExtensionAliasesFiles;
+			foreach ( $wgExtensionAliasesFiles as $file ) {
+
+				// Fail fast
+				if ( !file_exists($file) )
+					throw new MWException( "Aliases file does not exist: $file" );
+
+				$aliases = array();
+				require($file);
+
+				// Check the availability of aliases
+				if ( !isset($aliases['en']) )
+					throw new MWException( "Malformed aliases file: $file" );
+
+				// Merge all aliases in fallback chain
+				$code = $this->getCode();
+				do {
+					if ( !isset($aliases[$code]) ) continue;
+
+					$aliases[$code] = $this->fixSpecialPageAliases( $aliases[$code] );
+					/* Merge the aliases, THIS will break if there is special page name
+					* which looks like a numerical key, thanks to PHP...
+					* See the comments for wfArrayMerge in GlobalSettings.php. */
+					$this->mExtendedSpecialPageAliases = array_merge_recursive(
+						$this->mExtendedSpecialPageAliases, $aliases[$code] );
+
+				} while ( $code = self::getFallbackFor( $code ) );
+			}
+
+			wfRunHooks( 'LanguageGetSpecialPageAliases',
 				array( &$this->mExtendedSpecialPageAliases, $this->getCode() ) );
 		}
+
 		return $this->mExtendedSpecialPageAliases;
+	}
+
+	/**
+	 * Function to fix special page aliases. Will convert the first letter to
+	 * upper case and spaces to underscores. Can be given a full aliases array,
+	 * in which case it will recursively fix all aliases.
+	 */
+	public function fixSpecialPageAliases( $mixed ) {
+		// Work recursively until in string level
+		if ( is_array($mixed) ) {
+			$callback = array( $this, 'fixSpecialPageAliases' );
+			return array_map( $callback, $mixed );
+		}
+		return str_replace( ' ', '_', $this->ucfirst( $mixed ) );
 	}
 
 	/**
@@ -1678,10 +1813,11 @@ class Language {
 	  * </code>
 	  *
 	  * See LanguageGu.php for the Gujarati implementation and
-	  * LanguageIs.php for the , => . and . => , implementation.
+	  * $separatorTransformTable on MessageIs.php for
+	  * the , => . and . => , implementation.
 	  *
 	  * @todo check if it's viable to use localeconv() for the decimal
-	  *       seperator thing.
+	  *       separator thing.
 	  * @param $number Mixed: the string to be formatted, should be an integer
 	  *        or a floating point number.
 	  * @param $nocommafy Bool: set to true for special numbers like dates
@@ -1754,6 +1890,29 @@ class Language {
 			}
 		}
 		return $s;
+	}
+	
+	/**
+	 * Take a list of strings and build a locale-friendly comma-separated
+	 * list, using the local comma-separator message.
+	 * @param $list array of strings to put in a comma list
+	 * @return string
+	 */
+	function commaList( $list, $forContent = false ) {
+		return implode(
+			$list,
+			wfMsgExt( 'comma-separator', array( 'escapenoentities', 'language' => $this ) ) );
+	}
+	
+	/**
+	 * Same as commaList, but separate it with the pipe instead.
+	 * @param $list array of strings to put in a pipe list
+	 * @return string
+	 */
+	function pipeList( $list ) {
+		return implode(
+			$list,
+			wfMsgExt( 'pipe-separator', array( 'escapenoentities', 'language' => $this ) ) );
 	}
 
 	/**
@@ -1838,7 +1997,7 @@ class Language {
 		if ( !count($forms) ) { return ''; }
 		$forms = $this->preConvertPlural( $forms, 2 );
 
-		return ( abs($count) == 1 ) ? $forms[0] : $forms[1];
+		return ( $count == 1 ) ? $forms[0] : $forms[1];
 	}
 
 	/**
@@ -1964,8 +2123,8 @@ class Language {
 	 * @param $nt Mixed: the title object of the link
 	 * @return null the input parameters may be modified upon return
 	 */
-	function findVariantLink( &$link, &$nt ) {
-		$this->mConverter->findVariantLink($link, $nt);
+	function findVariantLink( &$link, &$nt, $forTemplate = false ) {
+		$this->mConverter->findVariantLink($link, $nt, $forTemplate );
 	}
 
 	/**

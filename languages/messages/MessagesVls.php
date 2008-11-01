@@ -4,10 +4,8 @@
  * @ingroup Language
  * @file
  *
- * @author SPQRobin
- * @author Siebrand
- * @author לערי ריינהארט
  * @author Tbc
+ * @author לערי ריינהארט
  */
 
 $fallback = 'nl';
@@ -71,6 +69,10 @@ $messages = array(
 'newpages'          => 'Nieuwe bloadn',
 'newpages-username' => 'Gebrukersnoame:',
 
+# Special:Log/newusers
+'newuserlogpage'          => 'Logboek nieuwe gebrukers',
+'newuserlog-create-entry' => 'Nieuwe gebruker',
+
 # Watchlist
 'mywatchlist' => 'Myn volglyste',
 'watch'       => 'Volgn',
@@ -97,7 +99,7 @@ $messages = array(
 # Tooltip help for the actions
 'tooltip-n-mainpage' => "Noar 't voorblad goane",
 
-# Special:Newimages
+# Special:NewImages
 'newimages' => 'Nieuwe ofbeeldiengn',
 
 );

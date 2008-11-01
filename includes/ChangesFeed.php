@@ -12,7 +12,8 @@ class ChangesFeed {
 	public function getFeedObject( $title, $description ) {
 		global $wgSitename, $wgContLanguageCode, $wgFeedClasses, $wgTitle;
 		$feedTitle = "$wgSitename  - {$title} [$wgContLanguageCode]";
-
+		if( !isset($wgFeedClasses[$this->format] ) )
+			return false;
 		return new $wgFeedClasses[$this->format](
 			$feedTitle, htmlspecialchars( $description ), $wgTitle->getFullUrl() );
 	}
@@ -85,7 +86,7 @@ class ChangesFeed {
 	}
 
 	/**
-	* @todo document
+	* Generate the feed items given a row from the database.
 	* @param $rows Database resource with recentchanges rows
 	* @param $feed Feed object
 	*/

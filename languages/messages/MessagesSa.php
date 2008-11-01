@@ -98,14 +98,14 @@ $messages = array(
 # Book sources
 'booksources-go' => 'प्रस्थानम्',
 
-# Special:Allpages
+# Special:AllPages
 'allarticles' => 'सर्व लेखा',
 
 # E-mail user
 'emailsubject' => 'विषयः',
 'emailmessage' => 'सन्देशः',
 
-# Delete/protect/revert
+# Delete
 'actioncomplete' => 'कार्य समापनम्',
 
 # Block/unblock

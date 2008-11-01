@@ -4,14 +4,81 @@
  * @ingroup Language
  * @file
  *
- * @author SPQRobin
- * @author Siebrand
  * @author Aursani
- * @author Jon Harald Søby
- * @author Nike
  */
 
 $rtl = true;
+
+$specialPageAliases = array(
+	'DoubleRedirects'           => array( 'ٻٽا چورڻا' ),
+	'BrokenRedirects'           => array( 'ٽٽل چورڻا' ),
+	'Disambiguations'           => array( 'سلجھائپ' ),
+	'Userlogin'                 => array( 'يوزر لاگ اِن' ),
+	'Userlogout'                => array( 'يوزر لاگ آئوٽ' ),
+	'CreateAccount'             => array( 'کاتو کوليو' ),
+	'Preferences'               => array( 'ترجيحات' ),
+	'Watchlist'                 => array( 'ٽيٽ فهرست' ),
+	'Recentchanges'             => array( 'تازيون تبديليون' ),
+	'Upload'                    => array( 'چاڙهيو' ),
+	'Imagelist'                 => array( 'عڪس فهرست' ),
+	'Newimages'                 => array( 'نوان عڪس' ),
+	'Listusers'                 => array( 'يوزر فهرست' ),
+	'Statistics'                => array( 'انگ اکر' ),
+	'Randompage'                => array( 'بلا ترتيب' ),
+	'Lonelypages'               => array( 'يتيم صفحا' ),
+	'Uncategorizedpages'        => array( 'اڻزمرايل صفحا' ),
+	'Uncategorizedcategories'   => array( 'اڻ زمرايل زمرا' ),
+	'Uncategorizedimages'       => array( 'اڻ زمرايل عڪس' ),
+	'Uncategorizedtemplates'    => array( 'اڻ زمرايل سانچا' ),
+	'Unusedcategories'          => array( 'اڻ استعماليل زمرا' ),
+	'Unusedimages'              => array( 'اڻ استعماليل عڪس' ),
+	'Wantedpages'               => array( 'گھربل صفحا' ),
+	'Wantedcategories'          => array( 'گھربل زمرا' ),
+	'Shortpages'                => array( 'مختصر صفحا' ),
+	'Longpages'                 => array( 'طويل صفحا' ),
+	'Newpages'                  => array( 'نوان صفحا' ),
+	'Ancientpages'              => array( 'قديم صفحا' ),
+	'Protectedpages'            => array( 'تحفظيل صفحا' ),
+	'Protectedtitles'           => array( 'تحفظيل عنوان' ),
+	'Allpages'                  => array( 'سڀ صفحا' ),
+	'Prefixindex'               => array( 'اڳياڙي ڏسڻي' ),
+	'Ipblocklist'               => array( 'آءِ پي بندش فهرست' ),
+	'Specialpages'              => array( 'خاص صفحا' ),
+	'Contributions'             => array( 'ڀاڱيداريون' ),
+	'Emailuser'                 => array( 'برقٽپال يوزر' ),
+	'Confirmemail'              => array( 'برقٽپال تصديقيو' ),
+	'Whatlinkshere'             => array( 'هتان ڳنڍيل صفحا' ),
+	'Movepage'                  => array( 'صفحو چوريو' ),
+	'Blockme'                   => array( 'مونکي بندشيو' ),
+	'Categories'                => array( 'زمرا' ),
+	'Export'                    => array( 'برآمد' ),
+	'Version'                   => array( 'ورزن' ),
+	'Allmessages'               => array( 'سڀ نياپا' ),
+	'Log'                       => array( 'لاگس' ),
+	'Blockip'                   => array( 'آءِ پي بندش' ),
+	'Undelete'                  => array( 'اڻ ڊاهيو' ),
+	'Import'                    => array( 'درآمد' ),
+	'Lockdb'                    => array( 'اعدادخانو بند' ),
+	'Unlockdb'                  => array( 'اعدادخانو کول' ),
+	'Userrights'                => array( 'يوزر حق' ),
+	'MIMEsearch'                => array( 'مائيم ڳولا' ),
+	'FileDuplicateSearch'       => array( 'ساڳيا فائيل ڳولا' ),
+	'Unwatchedpages'            => array( 'اڻٽيٽيل صفحا' ),
+	'Listredirects'             => array( 'چورڻا فهرست' ),
+	'Unusedtemplates'           => array( 'اڻ استعماليل سانچا' ),
+	'Randomredirect'            => array( 'بلا ترتيب چورڻو' ),
+	'Mypage'                    => array( 'منهنجو صفحو' ),
+	'Mytalk'                    => array( 'مون سان ڳالهه' ),
+	'Mycontributions'           => array( 'منهنجون ڀاڱيداريون' ),
+	'Listadmins'                => array( 'منتظمين فهرست' ),
+	'Listbots'                  => array( 'بوٽس فهرست' ),
+	'Popularpages'              => array( 'مقبول صفحا' ),
+	'Search'                    => array( 'ڳولا' ),
+	'Withoutinterwiki'          => array( 'ري بين الوڪي' ),
+	'MergeHistory'              => array( 'سوانح ضماءُ' ),
+	'Filepath'                  => array( 'فائيل ڏس' ),
+	'Invalidateemail'           => array( 'ناقابلڪار برقٽپال' ),
+);
 
 $messages = array(
 # User preference toggles
@@ -30,8 +97,6 @@ $messages = array(
 
 'underline-always' => 'هميشه',
 'underline-never'  => 'ڪڏهن به نه',
-
-'skinpreview' => '(پيش نگاهه)',
 
 # Dates
 'sunday'        => 'آچر',
@@ -137,6 +202,7 @@ $messages = array(
 'talkpage'          => 'هن صفحي تي بحث ڪريو',
 'talkpagelinktext'  => 'بحث',
 'specialpage'       => 'خاص صفحو',
+'personaltools'     => 'ذاتي اوزار',
 'postcomment'       => 'تاثرات درج ڪريو',
 'articlepage'       => 'مسودو ڏسو',
 'talk'              => 'بحث',
@@ -182,10 +248,9 @@ $messages = array(
 'portal-url'           => 'Project:نياتي باب',
 'privacy'              => 'ذاتيات پاليسي',
 'privacypage'          => 'Project:ذاتيات پاليسي',
-'sitesupport'          => 'مالي امداد',
-'sitesupport-url'      => 'Project:مالي امداد',
 
 'ok'                  => 'ٺيڪ',
+'retrievedfrom'       => '"$1" تان ورتل',
 'youhavenewmessages'  => 'توهان لاءِ $1 ($2) آهن.',
 'newmessageslink'     => 'نوان نياپا',
 'newmessagesdifflink' => 'آخري تبديلي',
@@ -196,8 +261,9 @@ $messages = array(
 'showtoc'             => 'ڏيکاريو',
 'hidetoc'             => 'لڪايو',
 'viewdeleted'         => '$1 ڏسندا؟',
-'site-rss-feed'       => '$1 آر ايس ايس برق مواد',
-'site-atom-feed'      => '$1 اڻو برق مواد',
+'feedlinks'           => 'روان رسد:',
+'site-rss-feed'       => '$1 آر ايس ايس روان رسد',
+'site-atom-feed'      => '$1 اڻو روان رسد',
 'page-rss-feed'       => '"$1" RSS برق مواد',
 'red-link-title'      => '$1 (اڃا لکيل ناهي)',
 
@@ -261,7 +327,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'loginsuccesstitle'          => 'لاگ اِن ڪامياب',
 'loginsuccess'               => "'''هاڻي توهان {{SITENAME}} تي بطور \"\$1\" لاگ اِن ٿيل آهيو.'''",
 'nosuchuser'                 => '"$1" نالي سان ڪو به يوزر نه آهي. هِجي چڪاسيو، يا نئون کاتو کوليو.',
-'nosuchusershort'            => '"<nowiki>$1</nowiki>" نالي ڪو به يُوزر ناهي. 
+'nosuchusershort'            => '"<nowiki>$1</nowiki>" نالي ڪو به يُوزر ناهي.
 هِجي جي پڪ ڪندا.',
 'nouserspecified'            => 'توهان کي ڪو يوزرنانءُ ڄاڻائڻو پوندو.',
 'wrongpassword'              => 'ڏنل ڳجھو لفظ غير درست آهي. مهرباني ڪري ٻيهر ڪوشش ڪندا.',
@@ -326,11 +392,11 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'blockednoreason'        => 'سبب اڻڄاڻايل',
 'accmailtitle'           => 'ڳجھو لفظ اماڻجي چڪو.',
 'newarticle'             => '(نئون)',
-'newarticletext'         => "توهان اهڙي صفحي جو ڳنڍڻو وٺي هتي پهتا آهيو، جيڪو اڃا وجود نه ٿو رکي. اهڙو صفحو جوڙڻ لاءِ هيٺين باڪس ۾ ٽائيپ ڪرڻ شروع ڪريو (وڌيڪ ڄاڻڻ لاءِ [[{{ns:help}}:Contents|امدادي صفحو]] ڏسندا). جي توهان هتي غلطيءَ ۾ اچي ويا آهيو ته رڳو پنهنجي جهانگُوءَ جو '''back''' بٽڻ ڪلڪ ڪندا.",
+'newarticletext'         => "توهان اهڙي صفحي جو ڳنڍڻو وٺي هتي پهتا آهيو، جيڪو اڃا وجود نه ٿو رکي. اهڙو صفحو جوڙڻ لاءِ هيٺين باڪس ۾ ٽائيپ ڪرڻ شروع ڪريو (وڌيڪ ڄاڻڻ لاءِ [[{{MediaWiki:Helppage}}|امدادي صفحو]] ڏسندا). جي توهان هتي غلطيءَ ۾ اچي ويا آهيو ته رڳو پنهنجي جهانگُوءَ جو '''back''' بٽڻ ڪلڪ ڪندا.",
 'previewnote'            => '<strong>هيءَ محظ پيش نگاهه آهي، ترميمون اڃا سانڍجون ناهن!</strong>',
 'editing'                => 'زير ترميم $1',
 'editingsection'         => 'زير ترميم $1 (سيڪشن)',
-'copyrightwarning'       => 'ياد رکندا ته {{SITENAME}} لاءِ سموريون ڀاڱيداريون $2 تحت پڌريون ڪجن ٿيون (تفصيلن لاءِ $1 ڏسندا). اوهان جي تحرير کي {{SITENAME}} جي قائدن تحت ترميمي سگهجي ٿو. جيڪڏهن اوهان نه چاهيو ٿا ته اوهان جي لکڻين کي بي رحميءَ سان ترميميو وڃي يا ورهائي عام ڪيو وڃي ته پوءِ پنهنجي لکڻي هتي جمع نه ڪرايو. پنهنجو مواد هتي جمع ڪرڻ جو مطلب هوندو ته توهان کي جمع ڪرايل مواد جي مفت فراهمي ۽ کُليل تبديليءَ تي ڪو به اعتراز ناهي.<br> 
+'copyrightwarning'       => 'ياد رکندا ته {{SITENAME}} لاءِ سموريون ڀاڱيداريون $2 تحت پڌريون ڪجن ٿيون (تفصيلن لاءِ $1 ڏسندا). اوهان جي تحرير کي {{SITENAME}} جي قائدن تحت ترميمي سگهجي ٿو. جيڪڏهن اوهان نه ٿا چاهيو ته اوهان جي لکڻين کي بي رحميءَ سان ترميميو وڃي يا ورهائي عام ڪيو وڃي ته پوءِ پنهنجي لکڻي هتي جمع نه ڪرايو. پنهنجو مواد هتي جمع ڪرڻ جو مطلب هوندو ته توهان کي جمع ڪرايل مواد جي مفت فراهمي ۽ کُليل تبديليءَ تي ڪو به اعتراز ناهي.<br />
 توهان اهڙي پڪ ڏيڻ جا پابند پڻ آهيو ته توهان جو جمع ڪرايل مواد توهان جو پنهنجو لکيل آهي يا وري توهان ڪنهن مفت وسيلي تان ڪاپي ڪيو آهي.
 </strong>تحفظيل حق ۽ واسطا رکندڙ مواد واسطيدار مالڪ کان اڳواٽ اجازت وٺڻ کان سواءِ هتي جمع نه ڪريو.<strong>',
 'longpagewarning'        => '<strong>خبردار: هيءُ صفحو $1 ڪلوٻاٽڻيون وڏو آهي؛ 32 ڪلوٻاٽڻين کان وڏا صفحا سنواريندي ڪن جھانگوئن سان مسئلا ٿين ٿا. مهرباني ڪري هن صفحي کي ننڍن سيڪشنز ۾ ٽوڙڻ تي ويچاريندا.</strong>',
@@ -339,7 +405,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'template-protected'     => '(تحفظيل)',
 'template-semiprotected' => '(نيم تحفظيل)',
 'nocreatetext'           => '{{SITENAME}} نوان صفحا سرجڻ جي روڪَ ڪئي آهي.
-توهان اڳي ئي موجود صفحن کي سنواري سگھو ٿا، يا [[Special:Userlogin|لاگ اِن ٿي يا نئون کاتو کولي سگھو ٿا]].',
+توهان اڳي ئي موجود صفحن کي سنواري سگھو ٿا، يا [[Special:UserLogin|لاگ اِن ٿي يا نئون کاتو کولي سگھو ٿا]].',
 'recreate-deleted-warn'  => "'''خبردار: توهان اهڙو صفحو نئين سر سرجي رهيا آهيو جيڪو اڳي ڊاٺو ويو آهي.'''
 
 بهتر ٿيندو ته توهان سوچي وٺو ته ڇا ان صفحي کي سنوارڻ بهتر ٿيندو.
@@ -349,7 +415,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'viewpagelogs'        => 'هن صفحي جا لاگ ڏسو',
 'currentrev'          => 'هاڻوڪو مسودو',
 'revisionasof'        => '$1 وارو پرت',
-'revision-info'       => '$1 تي $2 جي ترميم بعد مسودو',
+'revision-info'       => '$1 تي $2 جي ترميم بعد مسودو', # Additionally available: $3: revision id
 'previousrevision'    => '←اڃا پراڻو پرت',
 'nextrevision'        => 'اڃا نئون پرت→',
 'currentrevisionlink' => 'هاڻوڪو پرت',
@@ -388,6 +454,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'preferences'    => 'ترجيحات',
 'mypreferences'  => 'منهنجون ترجيحات',
 'changepassword' => 'ڳجھو لفظ تبديل ڪريو',
+'skin-preview'   => 'پيش نگاهه',
 'datedefault'    => 'بلا ترجيحا',
 'datetime'       => 'تاريخ ۽ وقت',
 'retypenew'      => 'نئون ڳجھو لفظ ٻيهر ٽائيپ ڪندا:',
@@ -409,25 +476,26 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'rightslog' => 'يُوزر حق لاگ',
 
 # Recent changes
-'nchanges'        => '$1 {{PLURAL:$1|تبديلي|تبديليون}}',
-'recentchanges'   => 'تازيون تبديليون',
-'rcnote'          => "پوين {{PLURAL:$2|ڏينهن|'''$2''' ڏينهن}} ۾، يعني $3 تائين آيل {{PLURAL:$1| '''1''' تبديلي|'''$1''' تبديليون}} هيٺ پيش ڪجن ٿيون.",
-'rcnotefrom'      => "هيٺ '''$2''' کان ٿيندڙ تبديليون پيش ڪجن ٿيون ('''$1''' تائين ڏيکارجن ٿيون).",
-'rclistfrom'      => '$1 کان شروع ٿيندڙ نيون تبديليون',
-'rcshowhideminor' => '$1 معمولي ترميمون',
-'rcshowhidebots'  => '$1 بوٽس',
-'rcshowhideliu'   => '$1 لاگ اِن ٿيل يوزرس',
-'rcshowhideanons' => '$1 نامعلوم يُوزرس',
-'rcshowhidepatr'  => '$1 تاڻيل ترميمون',
-'rcshowhidemine'  => 'منهنجون ترميمون $1',
-'rclinks'         => 'پوين $2 ڏينهن ۾ آيل پويون $1 تبديليون ڏيکاريو <br />$3',
-'diff'            => 'تفاوت',
-'hist'            => 'سوانح',
-'hide'            => 'لڪايو',
-'show'            => 'ڏيکاريو',
-'minoreditletter' => 'م',
-'newpageletter'   => 'ن',
-'boteditletter'   => 'گ',
+'nchanges'                       => '$1 {{PLURAL:$1|تبديلي|تبديليون}}',
+'recentchanges'                  => 'تازيون تبديليون',
+'recentchanges-feed-description' => 'ۡهن روان رسد ۾ آيل تازيون تبديليون لهو',
+'rcnote'                         => "پوين {{PLURAL:$2|ڏينهن|'''$2''' ڏينهن}} ۾، يعني $3 تائين آيل {{PLURAL:$1| '''1''' تبديلي|'''$1''' تبديليون}} هيٺ پيش ڪجن ٿيون.",
+'rcnotefrom'                     => "هيٺ '''$2''' کان ٿيندڙ تبديليون پيش ڪجن ٿيون ('''$1''' تائين ڏيکارجن ٿيون).",
+'rclistfrom'                     => '$1 کان شروع ٿيندڙ نيون تبديليون',
+'rcshowhideminor'                => '$1 معمولي ترميمون',
+'rcshowhidebots'                 => '$1 بوٽس',
+'rcshowhideliu'                  => '$1 لاگ اِن ٿيل يوزرس',
+'rcshowhideanons'                => '$1 نامعلوم يُوزرس',
+'rcshowhidepatr'                 => '$1 تاڻيل ترميمون',
+'rcshowhidemine'                 => 'منهنجون ترميمون $1',
+'rclinks'                        => 'پوين $2 ڏينهن ۾ آيل پويون $1 تبديليون ڏيکاريو <br />$3',
+'diff'                           => 'تفاوت',
+'hist'                           => 'سوانح',
+'hide'                           => 'لڪايو',
+'show'                           => 'ڏيکاريو',
+'minoreditletter'                => 'م',
+'newpageletter'                  => 'ن',
+'boteditletter'                  => 'گ',
 
 # Recent changes linked
 'recentchangeslinked'          => 'لاڳاپيل تبديليون',
@@ -440,7 +508,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'uploadlogpage' => 'چاڙهه لاگ',
 'uploadedimage' => '"[[$1]]" چاڙهيو ويو',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist' => 'فائيل فهرست',
 
 # Image description page
@@ -489,6 +557,8 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 
 'withoutinterwiki' => 'ڪنهن به ٻي ٻوليءَ سان نه ڳنڍيل صفحا',
 
+'fewestrevisions' => 'گھٽانگھٽ ترميميل صفحا',
+
 # Miscellaneous special pages
 'nbytes'                  => '$1 {{PLURAL:$1|ٻاٽڻ|ٻاٽڻيون}}',
 'nlinks'                  => '$1 {{PLURAL:$1|ڳنڍڻو|ڳنڍڻا}}',
@@ -507,6 +577,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'mostlinkedtemplates'     => 'گھڻي کان گھڻا سانچا رکندڙ',
 'mostcategories'          => 'گھڻي کان گھڻا زمرا رکندڙ صفحا',
 'mostimages'              => 'وڌانوڌ ڳنڍيندڙ فائيل',
+'mostrevisions'           => 'وڌانوڌ ترميميل صفحا',
 'prefixindex'             => 'اڳياڙي ڏسڻي',
 'shortpages'              => 'مختصر صفحا',
 'longpages'               => 'طويل صفحا',
@@ -527,7 +598,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'log'                  => 'لاگس',
 'all-logs-page'        => 'سڀئي لاگس',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'سڀ صفحا',
 'alphaindexline' => '$1 کان $2',
 'nextpage'       => 'اڳيون صفحو ($1)',
@@ -549,7 +620,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'mywatchlist'          => 'منهنجي ٽيٽ فهرست',
 'watchlistfor'         => "(براءِ '''$1''')",
 'addedwatch'           => 'ٽيٽ فھرست ۾ شامل ڪيو ويو.',
-'addedwatchtext'       => "صفحو بعنوان \"[[:\$1]]\" اوهان جي [[Special:Watchlist|ٽيٽ فهرست]] ۾ شامل ٿي ويو. استقبالي تبديليون هتي درج ٿينديون وينديون. اهو صفحو [[Special:Recentchanges|تازين تبديلين]] واري صفحي تي '''گهرن''' اکرن ۾ نمايان ڪري ڏيکاريو ويندو. جيڪڏهن اوهان اهو سڀ نه ٿا چاهيو ته '''اڻ ٽيٽيو''' تي ڪلڪ ڪريو.",
+'addedwatchtext'       => "صفحو بعنوان \"[[:\$1]]\" اوهان جي [[Special:Watchlist|ٽيٽ فهرست]] ۾ شامل ٿي ويو. استقبالي تبديليون هتي درج ٿينديون وينديون. اهو صفحو [[Special:RecentChanges|تازين تبديلين]] واري صفحي تي '''گهرن''' اکرن ۾ نمايان ڪري ڏيکاريو ويندو. جيڪڏهن اوهان اهو سڀ نه ٿا چاهيو ته '''اڻ ٽيٽيو''' تي ڪلڪ ڪريو.",
 'removedwatch'         => 'ٽيٽ فهرست مان هٽايو ويو',
 'removedwatchtext'     => 'صفحو بعنوان "[[:$1]]" توهان جي ٽيٽ فهرست مان هٽي چڪو آهي.',
 'watch'                => 'ٽيٽيو',
@@ -570,23 +641,29 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'changed'            => 'تبديل ٿي ويو',
 'created'            => 'ٺهي چڪو',
 
-# Delete/protect/revert
-'deletepage'                  => 'صفحو ڊاهيو',
-'confirm'                     => 'پڪ ڪريو',
-'historywarning'              => 'خبردار: جيڪو صفحو توهان ڊاهڻ وارا آهيو، تنهن جي هڪ سوانح آهي:',
-'confirmdeletetext'           => 'توهان هڪ صفحي کي ان جي سموري سوانح سميت ڊاهڻ وارا آهيو. مهرباني ڪري پڪ ڪندا ته توهان اهو ئي ڪرڻ گھرو ٿا، ۽ اهو ته توهان ان جي نتيجن کان واقف آهيو، ۽ اهو پڻ ته توهان اهو ڪم [[{{MediaWiki:Policy-url}}|پاليسي]]ءَ مطابق ڪري رهيا آهيو.',
-'actioncomplete'              => 'ڪم پُورو',
-'deletedtext'                 => '"<nowiki>$1</nowiki>" ڊهي چڪو آهي.
+# Delete
+'deletepage'            => 'صفحو ڊاهيو',
+'confirm'               => 'پڪ ڪريو',
+'historywarning'        => 'خبردار: جيڪو صفحو توهان ڊاهڻ وارا آهيو، تنهن جي هڪ سوانح آهي:',
+'confirmdeletetext'     => 'توهان هڪ صفحي کي ان جي سموري سوانح سميت ڊاهڻ وارا آهيو. مهرباني ڪري پڪ ڪندا ته توهان اهو ئي ڪرڻ گھرو ٿا، ۽ اهو ته توهان ان جي نتيجن کان واقف آهيو، ۽ اهو پڻ ته توهان اهو ڪم [[{{MediaWiki:Policy-url}}|پاليسي]]ءَ مطابق ڪري رهيا آهيو.',
+'actioncomplete'        => 'ڪم پُورو',
+'deletedtext'           => '"<nowiki>$1</nowiki>" ڊهي چڪو آهي.
 تازو ڊاٺل صفحن جي فهرست لاءِ $2 ڏسندا.',
-'deletedarticle'              => '"[[$1]]" ڊهي چڪو',
-'dellogpage'                  => 'ڊاٺ لاگ',
-'deletecomment'               => 'ڊاهڻ جو سبب:',
-'deleteotherreason'           => 'اڃا ڪو ٻيو سبب:',
-'deletereasonotherlist'       => 'ٻيو سبب',
-'rollbacklink'                => 'واپس ورايو',
+'deletedarticle'        => '"[[$1]]" ڊهي چڪو',
+'dellogpage'            => 'ڊاٺ لاگ',
+'deletecomment'         => 'ڊاهڻ جو سبب:',
+'deleteotherreason'     => 'اڃا ڪو ٻيو سبب:',
+'deletereasonotherlist' => 'ٻيو سبب',
+
+# Rollback
+'rollbacklink' => 'واپس ورايو',
+
+# Protect
 'protectlogpage'              => 'تحفظ لاگ',
+'prot_1movedto2'              => '[[$1]] کي چوري [[$2]] تي رکيو ويو',
 'protect-legend'              => 'تحفظڻ جي پڪ ڪريو',
 'protectcomment'              => 'تاثرات:',
+'protectexpiry'               => 'اختتام:',
 'protect_expiry_invalid'      => 'انجامي مدو ناقابلڪار آهي.',
 'protect_expiry_old'          => 'انجامي مدو ماضيءَ ۾ آهي.',
 'protect-unchain'             => 'چورڻ جي روڪ ختم ڪريو',
@@ -599,6 +676,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'protect-summary-cascade'     => 'تحفظ در تحفظ',
 'protect-cascade'             => 'هن صفحي ۾ شامل صفحن کي تحفظيو (تحفظ در تحفظ)',
 'protect-cantedit'            => 'توهان هن صفحي جي تحفظاتي سطح نٿا بدلائي سگھو، ڇاڪاڻ ته توهان ان کي سنوارڻ جي اجازت نٿا رکو.',
+'protect-expiry-options'      => '2 ڪلاڪ:2 hours،1 ڏينهن:1 day،3 ڏينهن:3 days،1 هفتو:1 week،2 هفتا:2 weeks،1 مهينو:1 month،3 مهينا:3 months،6 مهينا:6 months،1 سال:1 year،لامحدود:infinite', # display1:time1,display2:time2,...
 'restriction-type'            => 'اجازتنامو:',
 'restriction-level'           => 'روڪ سطح:',
 'pagesize'                    => '(ٻاٽڻيون)',
@@ -626,7 +704,6 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 # What links here
 'whatlinkshere'       => 'هتان ڇا ڳنڍيل آهي',
 'whatlinkshere-title' => '$1 سان ڳنڍيل صفحا',
-'linklistsub'         => '(ڳنڍڻي جي فهرست)',
 'linkshere'           => "هيٺيان صفحا '''[[:$1]]''' سان ڳنڍيل آهن:",
 'nolinkshere'         => "'''[[:$1]]''' سان ڪو به صفحو ڳنڍيل ناهي.",
 'isredirect'          => 'چورڻو صفحو',
@@ -658,11 +735,11 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 
 '''خبردار!'''
 اها هڪ مقبول صفحي لاءِ ڪا غير متوقه ۽ انتهائي اڻوڻندڙ تبديلي ثابت ٿي سگھي ٿي؛ براءِ مهرباني اڳتي وڌڻ کان اڳ پڪ ڪندا ته توهان اها تبديلي آڻڻ جي نتيجن کان چڱيءَ ريت واقف آهيو.",
-'movepagetalktext'        => 'واسطيدار مباحثي صفحو پاڻهي ئي چوريو ويندو ماهسوا: 
+'movepagetalktext'        => 'واسطيدار مباحثي صفحو پاڻهي ئي چوريو ويندو ماهسوا:
 
 *نئين عنوان سان هڪ اڻ پورو يعني غير خالي مباحثي صفحو اڳي ئي وجود رکندو هجي، يا
 *توهان هيٺين باڪس کي اڻ ٽِڪ ڪريو
- 
+
 انهن صورتن ۾، جيڪڏهن توهان چاهيو ته صفحي کي پاڻ چوري يا ضمائي سگھو ٿا.',
 'movearticle'             => 'صفحو چوريو:',
 'newtitle'                => 'نئين عنوان ڏانهن:',
@@ -722,7 +799,6 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'tooltip-n-recentchanges'         => 'هن وڪيءَ ۾ تازين تبديلين جي فهرست.',
 'tooltip-n-randompage'            => 'بلاترتيب ڪو به صفحو اتاريو',
 'tooltip-n-help'                  => 'ڳولي لهڻ جي جاءِ.',
-'tooltip-n-sitesupport'           => 'اسان جي مدد ڪريو',
 'tooltip-t-whatlinkshere'         => 'هتان ڳنڍيل سمورا وڪي صفحا',
 'tooltip-t-contributions'         => 'هن يُوزر جون ڀاڱيداريون ڏسو',
 'tooltip-t-emailuser'             => 'هن يُوزر کي برق ٽپال اماڻيو',
@@ -756,7 +832,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'show-big-image'       => 'سنهو ترين تحلل',
 'show-big-image-thumb' => '<small>هن پيش نگاهه جي ماپ: $1 × $2 عڪسلون</small>',
 
-# Special:Newimages
+# Special:NewImages
 'newimages' => 'نون فائيلن جي گيلري',
 'noimages'  => 'ڏسڻ لاءِ ڪجھه ناهي.',
 'bydate'    => 'تاريخوار',
@@ -813,7 +889,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 
 # External editor support
 'edit-externally'      => 'هيءُ فائيل ڪنهن خارجي منتقڪريءَ سان سنواريو',
-'edit-externally-help' => 'وڌيڪ معلومات لاءِ [http://meta.wikimedia.org/wiki/Help:External_editors هدايتون براءِ تنصيبڪاري] ڏسندا.',
+'edit-externally-help' => 'وڌيڪ معلومات لاءِ [http://www.mediawiki.org/wiki/Manual:External_editors هدايتون براءِ تنصيبڪاري] ڏسندا.',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'سڀ',
@@ -827,9 +903,6 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 
 # Delete conflict
 'recreate' => 'ورسجيو',
-
-# AJAX search
-'articletitles' => "''$1'' سان شروع ٿيندڙ مضمون",
 
 # Watchlist editing tools
 'watchlisttools-view' => 'لاڳاپيل تبديليون ڏسو',

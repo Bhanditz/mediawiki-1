@@ -5,7 +5,6 @@
  * @file
  *
  * @author Arikasikis
- * @author SPQRobin
  */
 
 $messages = array(
@@ -71,7 +70,6 @@ $messages = array(
 'mainpage-description' => 'Arapan ya Bolong',
 'portal'               => 'Pwerta na komyunidad',
 'portal-url'           => 'Project:Pwerta na Komyunidad',
-'sitesupport'          => 'Donasyon',
 
 'badaccess-group0' => 'Agmo sarag ya gaween so action ya kekerewen mo.',
 
@@ -123,7 +121,6 @@ $messages = array(
 'blockededitsource'     => "Wadyad leksab so text na '''saray binalom''' anggag '''$1''':",
 'whitelistedittitle'    => 'Nakaukulan ya onloob umpian makapanbalo',
 'whitelistedittext'     => 'Nakaukulan mo ya $1 umpian nabalo o nadagdagan ray bolobolong.',
-'whitelistreadtext'     => 'Nakaukulan mon [[Special:Userlogin|onloob]] umpian basaen ramay bolong.',
 'confirmedittitle'      => 'Nakaukulan na e-mail confirmation para makapan-edit',
 'loginreqtitle'         => 'Nakaukulan kan Onloob',
 'loginreqlink'          => 'onloob',
@@ -183,7 +180,7 @@ $messages = array(
 'sourcefilename'  => 'Filename na pinanlapuan:',
 'watchthisupload' => 'Bantayan yan bolong',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist_name' => 'Ngaran',
 
 # Image description page
@@ -218,10 +215,9 @@ $messages = array(
 'booksources-go'            => 'Ula',
 
 # Special:Log
-'all-logs-page'     => 'Amin ran log',
-'log-search-submit' => 'Ula',
+'all-logs-page' => 'Amin ran log',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'          => 'Amin ya bolobolong',
 'alphaindexline'    => '$1 anggad $2',
 'nextpage'          => 'Ontombok ya page ($1)',
@@ -233,6 +229,14 @@ $messages = array(
 'allpagesnext'      => 'Ontombok',
 'allpagessubmit'    => 'Ula',
 'allpagesprefix'    => 'Ipanengneng so saray bolobolong ya walay prefix:',
+
+# Special:LinkSearch
+'linksearch'     => 'Anapen ramay gawing ed web',
+'linksearch-pat' => 'Anapen so pattern:',
+'linksearch-ok'  => 'Anapen',
+
+# Special:Log/newusers
+'newuserlog-create-entry' => 'Balon user',
 
 # E-mail user
 'emailuser'     => 'E-mail so ayan user',
@@ -247,7 +251,7 @@ $messages = array(
 'mywatchlist'    => 'Listaan na babantayan ko',
 'watchnologin'   => 'Agka ni akaloob',
 'addedwatch'     => 'Enyarom ed listaan na bantayan',
-'addedwatchtext' => "Impila so bolong ya \"[[:\$1]]\" diad [[Special:Watchlist|listaan na babantayan]] mo. Isulat diman so saray ontombok ran idagdag o panagbalo ed sayan bolong san diad bolong na tongtongan. San akasulat ran '''mapatnag''' (bolded) ed [[Special:Recentchanges|listaan na saray sampot ran binalo]] umpian mas maganom ya nanengneng.
+'addedwatchtext' => "Impila so bolong ya \"[[:\$1]]\" diad [[Special:Watchlist|listaan na babantayan]] mo. Isulat diman so saray ontombok ran idagdag o panagbalo ed sayan bolong san diad bolong na tongtongan. San akasulat ran '''mapatnag''' (bolded) ed [[Special:RecentChanges|listaan na saray sampot ran binalo]] umpian mas maganom ya nanengneng.
 
 No labay mon ekalen may bolong diad listaan na babantayan, tapik mo labat so \"ekalen ed babantayan\" (unwatch) diad gilig ya bar.",
 'watch'          => 'bantayan',
@@ -260,15 +264,18 @@ No labay mon ekalen may bolong diad listaan na babantayan, tapik mo labat so \"e
 'changed'            => 'asalatan',
 'created'            => 'agawa',
 
-# Delete/protect/revert
-'deletepage'          => 'Buralen so bolong',
-'confirm'             => 'Paletan',
-'exblank'             => 'Anggapoy laman na bolong',
-'actioncomplete'      => 'Asumpal lan agawa',
-'deletedtext'         => 'Abural lay "<nowiki>$1</nowiki>".
+# Delete
+'deletepage'     => 'Buralen so bolong',
+'confirm'        => 'Paletan',
+'exblank'        => 'Anggapoy laman na bolong',
+'actioncomplete' => 'Asumpal lan agawa',
+'deletedtext'    => 'Abural lay "<nowiki>$1</nowiki>".
 Pinengneng so $2 para ed listaan na saray abural ran balo.',
-'deletedarticle'      => 'binural so "[[$1]]"',
-'deletecomment'       => 'Aken buralen',
+'deletedarticle' => 'binural so "[[$1]]"',
+'deletecomment'  => 'Aken buralen',
+
+# Protect
+'prot_1movedto2'      => 'say [[$1]] enyales paula ed [[$2]]',
 'protect-legend'      => 'Palitaen so pangiyagel',
 'protect-level-sysop' => 'Sysops labat',
 
@@ -339,7 +346,6 @@ Pinengneng so $2 para ed listaan na saray abural ran balo.',
 'tooltip-ca-move'            => 'Iyales so ayan bolong',
 'tooltip-search'             => 'Anapen {{SITENAME}}',
 'tooltip-p-logo'             => 'Arapan ya Bolong',
-'tooltip-n-sitesupport'      => 'Itdan na tolong kami',
 'tooltip-t-specialpages'     => 'Listaan na amin ran niduman bolobolong',
 'tooltip-ca-nstab-user'      => 'Nengnengen so bolong na manag-usar',
 'tooltip-ca-nstab-mediawiki' => 'Nengnengen so pakabat na oksoy',
@@ -347,7 +353,7 @@ Pinengneng so $2 para ed listaan na saray abural ran balo.',
 # Attribution
 'lastmodifiedatby' => 'Sampot ya binalo yan bolong nen agew ya $2, $1 nen $3.', # $1 date, $2 time, $3 user
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'Anapen',
 
 # EXIF tags
@@ -370,13 +376,7 @@ Pinengneng so $2 para ed listaan na saray abural ran balo.',
 'deletedwhileediting' => 'Pasakbay: Abural yan bolong nen ginapuan mon baloen!',
 
 # action=purge
-'confirm_purge' => 'Ekalen so cache na sayan bolong?
-
-$1',
-
-# AJAX search
-'articletitles' => "Saray article na manggagapo ed ''$1''",
-'hideresults'   => 'Iyamot so saray result',
+'confirm-purge-top' => 'Ekalen so cache na sayan bolong?',
 
 # Multipage image navigation
 'imgmultipagenext' => 'ontombok ya bolong →',

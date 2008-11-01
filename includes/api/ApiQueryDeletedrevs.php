@@ -107,9 +107,11 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 			$lb = new LinkBatch($titles);
 			$where = $lb->constructSet('ar', $db);
 			$this->addWhere($where);
+		} else {
+			$this->dieUsage('You have to specify a page title or titles');
 		}
 
-		$this->addOption('LIMIT', $params['limit'] + 1);
+		$this->addOption('LIMIT', $limit + 1);
 		$this->addWhereRange('ar_timestamp', $params['dir'], $params['start'], $params['end']);
 		$res = $this->select(__METHOD__);
 		$pages = array();
@@ -117,7 +119,7 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 		// First populate the $pages array
 		while($row = $db->fetchObject($res))
 		{
-			if($count++ == $params['limit'])
+			if(++$count > $limit)
 			{
 				// We've had enough
 				$this->setContinueEnumParameter('start', wfTimestamp(TS_ISO_8601, $row->ar_timestamp));

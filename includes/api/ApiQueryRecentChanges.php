@@ -43,13 +43,48 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 	private $fld_comment = false, $fld_user = false, $fld_flags = false,
 			$fld_timestamp = false, $fld_title = false, $fld_ids = false,
 			$fld_sizes = false;
+	
+	protected function getTokenFunctions() {
+		// tokenname => function
+		// function prototype is func($pageid, $title, $rev)
+		// should return token or false
+
+		// Don't call the hooks twice
+		if(isset($this->tokenFunctions))
+			return $this->tokenFunctions;
+
+		// If we're in JSON callback mode, no tokens can be obtained
+		if(!is_null($this->getMain()->getRequest()->getVal('callback')))
+			return array();
+
+		$this->tokenFunctions = array(
+			'patrol' => array( 'ApiQueryRecentChanges', 'getPatrolToken' )
+		);
+		wfRunHooks('APIQueryRecentChangesTokens', array(&$this->tokenFunctions));
+		return $this->tokenFunctions;
+	}
+	
+	public static function getPatrolToken($pageid, $title, $rc)
+	{
+		global $wgUser;
+		if(!$wgUser->useRCPatrol() && !$wgUser->useNPPatrol())
+			return false;
+		
+		// The patrol token is always the same, let's exploit that
+		static $cachedPatrolToken = null;
+		if(!is_null($cachedPatrolToken))
+			return $cachedPatrolToken;
+
+		$cachedPatrolToken = $wgUser->editToken();
+		return $cachedPatrolToken;
+	}
 
 	/**
 	 * Generates and outputs the result of this query based upon the provided parameters.
 	 */
 	public function execute() {
 		/* Initialize vars */
-		$limit = $prop = $namespace = $titles = $show = $type = $dir = $start = $end = null;
+		$limit = $prop = $namespace = $titles = $show = $type = $dir = $start = $end = $token = null;
 
 		/* Get the parameters of the request. */
 		extract($this->extractRequestParams());
@@ -65,7 +100,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 		$this->addWhereRange('rc_timestamp', $dir, $start, $end);
 		$this->addWhereFld('rc_namespace', $namespace);
 		$this->addWhereFld('rc_deleted', 0);
-		if(!empty($titles))
+		if($titles)
 		{
 			$lb = new LinkBatch;
 			foreach($titles as $t)
@@ -103,7 +138,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			
 			// Check permissions
 			global $wgUser;
-			if((isset($show['patrolled']) || isset($show['!patrolled'])) && !$wgUser->isAllowed('patrol'))
+			if((isset($show['patrolled']) || isset($show['!patrolled'])) && !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol())
 				$this->dieUsage("You need the patrol right to request the patrolled flag", 'permissiondenied');
 
 			/* Add additional conditions to query depending upon parameters. */
@@ -125,6 +160,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			'rc_timestamp',
 			'rc_namespace',
 			'rc_title',
+			'rc_cur_id',
 			'rc_type',
 			'rc_moved_to_ns',
 			'rc_moved_to_title'
@@ -144,14 +180,14 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			$this->fld_sizes = isset ($prop['sizes']);
 			$this->fld_redirect = isset($prop['redirect']);
 			$this->fld_patrolled = isset($prop['patrolled']);
+			$this->fld_loginfo = isset($prop['loginfo']);
 
 			global $wgUser;
-			if($this->fld_patrolled && !$wgUser->isAllowed('patrol'))
+			if($this->fld_patrolled && !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol())
 				$this->dieUsage("You need the patrol right to request the patrolled flag", 'permissiondenied');
 
 			/* Add fields to our query if they are specified as a needed parameter. */
 			$this->addFieldsIf('rc_id', $this->fld_ids);
-			$this->addFieldsIf('rc_cur_id', $this->fld_ids);
 			$this->addFieldsIf('rc_this_oldid', $this->fld_ids);
 			$this->addFieldsIf('rc_last_oldid', $this->fld_ids);
 			$this->addFieldsIf('rc_comment', $this->fld_comment);
@@ -163,6 +199,10 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			$this->addFieldsIf('rc_old_len', $this->fld_sizes);
 			$this->addFieldsIf('rc_new_len', $this->fld_sizes);
 			$this->addFieldsIf('rc_patrolled', $this->fld_patrolled);
+			$this->addFieldsIf('rc_logid', $this->fld_loginfo);
+			$this->addFieldsIf('rc_log_type', $this->fld_loginfo);
+			$this->addFieldsIf('rc_log_action', $this->fld_loginfo);
+			$this->addFieldsIf('rc_params', $this->fld_loginfo);
 			if($this->fld_redirect || isset($show['redirect']) || isset($show['!redirect']))
 			{
 				$this->addTables('page');
@@ -170,6 +210,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 				$this->addFields('page_is_redirect');
 			}
 		}
+		$this->token = $token;
 		/* Specify the limit for our query. It's $limit+1 because we (possibly) need to
 		 * generate a "continue" parameter, to allow paging. */
 		$this->addOption('LIMIT', $limit +1);
@@ -215,7 +256,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 	private function extractRowInfo($row) {
 		/* If page was moved somewhere, get the title of the move target. */
 		$movedToTitle = false;
-		if (!empty($row->rc_moved_to_title))
+		if (isset($row->rc_moved_to_title) && $row->rc_moved_to_title !== '')
 			$movedToTitle = Title :: makeTitle($row->rc_moved_to_ns, $row->rc_moved_to_title);
 
 		/* Determine the title of the page that has been changed. */
@@ -228,11 +269,11 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 
 		/* Determine what kind of change this was. */
 		switch ( $type ) {
-		case RC_EDIT:  $vals['type'] = 'edit'; break;
-		case RC_NEW:   $vals['type'] = 'new'; break;
-		case RC_MOVE:  $vals['type'] = 'move'; break;
-		case RC_LOG:   $vals['type'] = 'log'; break;
-		case RC_MOVE_OVER_REDIRECT: $vals['type'] = 'move over redirect'; break;
+			case RC_EDIT:  $vals['type'] = 'edit'; break;
+			case RC_NEW:   $vals['type'] = 'new'; break;
+			case RC_MOVE:  $vals['type'] = 'move'; break;
+			case RC_LOG:   $vals['type'] = 'log'; break;
+			case RC_MOVE_OVER_REDIRECT: $vals['type'] = 'move over redirect'; break;
 		default: $vals['type'] = $type;
 		}
 
@@ -279,7 +320,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			$vals['timestamp'] = wfTimestamp(TS_ISO_8601, $row->rc_timestamp);
 
 		/* Add edit summary / log summary. */
-		if ($this->fld_comment && !empty ($row->rc_comment)) {
+		if ($this->fld_comment && isset($row->rc_comment)) {
 			$vals['comment'] = $row->rc_comment;
 		}
 
@@ -290,6 +331,29 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 		/* Add the patrolled flag */
 		if ($this->fld_patrolled && $row->rc_patrolled == 1)
 			$vals['patrolled'] = '';
+			
+		if ($this->fld_loginfo && $row->rc_type == RC_LOG) {
+			$vals['logid'] = $row->rc_logid;
+			$vals['logtype'] = $row->rc_log_type;
+			$vals['logaction'] = $row->rc_log_action;
+			ApiQueryLogEvents::addLogParams($this->getResult(),
+				$vals, $row->rc_params,
+				$row->rc_log_type);
+		}
+		
+		if(!is_null($this->token))
+		{
+			$tokenFunctions = $this->getTokenFunctions();
+			foreach($this->token as $t)
+			{
+				$val = call_user_func($tokenFunctions[$t], $row->rc_cur_id,
+					$title, RecentChange::newFromRow($row));
+				if($val === false)
+					$this->setWarning("Action '$t' is not allowed for the current user");
+				else
+					$vals[$t . 'token'] = $val;
+			}
+		}
 
 		return $vals;
 	}
@@ -345,8 +409,13 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 					'ids',
 					'sizes',
 					'redirect',
-					'patrolled'
+					'patrolled',
+					'loginfo',
 				)
+			),
+			'token' => array(
+				ApiBase :: PARAM_TYPE => array_keys($this->getTokenFunctions()),
+				ApiBase :: PARAM_ISMULTI => true
 			),
 			'show' => array (
 				ApiBase :: PARAM_ISMULTI => true,
@@ -389,12 +458,13 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			'namespace' => 'Filter log entries to only this namespace(s)',
 			'titles' => 'Filter log entries to only these page titles',
 			'prop' => 'Include additional pieces of information',
+			'token' => 'Which tokens to obtain for each change',
 			'show' => array (
 				'Show only items that meet this criteria.',
 				'For example, to see only minor edits done by logged-in users, set show=minor|!anon'
 			),
 			'type' => 'Which types of changes to show.',
-			'limit' => 'How many total pages to return.'
+			'limit' => 'How many total changes to return.'
 		);
 	}
 

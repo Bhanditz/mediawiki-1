@@ -36,6 +36,8 @@
  *
  *     masterTemplateOverrides     An override array for all master servers.
  *
+ *     readOnlyBySection           A map of section name to read-only message. Missing or false for read/write.
+ *
  * @ingroup Database
  */
 class LBFactory_Multi extends LBFactory {
@@ -44,10 +46,10 @@ class LBFactory_Multi extends LBFactory {
 	// Optional settings
 	var $groupLoadsBySection = array(), $groupLoadsByDB = array(), $hostsByName = array();
 	var $externalLoads = array(), $externalTemplateOverrides, $templateOverridesByServer;
-	var $templateOverridesByCluster, $masterTemplateOverrides;
+	var $templateOverridesByCluster, $masterTemplateOverrides, $readOnlyBySection = array();
 	// Other stuff
 	var $conf, $mainLBs = array(), $extLBs = array();
-	var $localSection = null;
+	var $lastWiki, $lastSection;
 
 	function __construct( $conf ) {
 		$this->chronProt = new ChronologyProtector;
@@ -55,7 +57,8 @@ class LBFactory_Multi extends LBFactory {
 		$required = array( 'sectionsByDB', 'sectionLoads', 'serverTemplate' );
 		$optional = array( 'groupLoadsBySection', 'groupLoadsByDB', 'hostsByName',
 			'externalLoads', 'externalTemplateOverrides', 'templateOverridesByServer',
-			'templateOverridesByCluster', 'masterTemplateOverrides' );
+			'templateOverridesByCluster', 'masterTemplateOverrides', 
+			'readOnlyBySection' );
 
 		foreach ( $required as $key ) {
 			if ( !isset( $conf[$key] ) ) {
@@ -69,58 +72,72 @@ class LBFactory_Multi extends LBFactory {
 				$this->$key = $conf[$key];
 			}
 		}
+
+		// Check for read-only mode
+		$section = $this->getSectionForWiki();
+		if ( !empty( $this->readOnlyBySection[$section] ) ) {
+			global $wgReadOnly;
+			$wgReadOnly = $this->readOnlyBySection[$section];
+		}
 	}
 
-	function getSectionForWiki( $wiki ) {
+	function getSectionForWiki( $wiki = false ) {
+		if ( $this->lastWiki === $wiki ) {
+			return $this->lastSection;
+		}
 		list( $dbName, $prefix ) = $this->getDBNameAndPrefix( $wiki );
 		if ( isset( $this->sectionsByDB[$dbName] ) ) {
-			return $this->sectionsByDB[$dbName];
+			$section = $this->sectionsByDB[$dbName];
 		} else {
-			return 'DEFAULT';
+			$section = 'DEFAULT';
 		}
+		$this->lastSection = $section;
+		$this->lastWiki = $wiki;
+		return $section;
+	}
+
+	function newMainLB( $wiki = false ) {
+		list( $dbName, $prefix ) = $this->getDBNameAndPrefix( $wiki );
+		$section = $this->getSectionForWiki( $wiki );
+		$groupLoads = array();
+		if ( isset( $this->groupLoadsByDB[$dbName] ) ) {
+			$groupLoads = $this->groupLoadsByDB[$dbName];
+		}
+		if ( isset( $this->groupLoadsBySection[$section] ) ) {
+			$groupLoads = array_merge_recursive( $groupLoads, $this->groupLoadsBySection[$section] );
+		}
+		return $this->newLoadBalancer( $this->serverTemplate, $this->sectionLoads[$section], $groupLoads );
 	}
 
 	function getMainLB( $wiki = false ) {
-		// Determine section
-		if ( $wiki === false ) {
-			if ( $this->localSection === null ) {
-				$this->localSection = $this->getSectionForWiki( $wiki );
-			}
-			$section = $this->localSection;
-		} else {
-			$section = $this->getSectionForWiki( $wiki );
-		}
-
+		$section = $this->getSectionForWiki( $wiki );
 		if ( !isset( $this->mainLBs[$section] ) ) {
-			list( $dbName, $prefix ) = $this->getDBNameAndPrefix( $wiki );
-			$groupLoads = array();
-			if ( isset( $this->groupLoadsByDB[$dbName] ) ) {
-				$groupLoads = $this->groupLoadsByDB[$dbName];
-			}
-			if ( isset( $this->groupLoadsBySection[$section] ) ) {
-				$groupLoads = array_merge_recursive( $groupLoads, $this->groupLoadsBySection[$section] );
-			}
-			$this->mainLBs[$section] = $this->newLoadBalancer( $this->serverTemplate,
-				$this->sectionLoads[$section], $groupLoads, "main-$section" );
-			$this->chronProt->initLB( $this->mainLBs[$section] );
+			$lb = $this->newMainLB( $wiki, $section );
+			$this->chronProt->initLB( $lb );
+			$lb->parentInfo( array( 'id' => "main-$section" ) );
+			$this->mainLBs[$section] = $lb;
 		}
 		return $this->mainLBs[$section];
 	}
 
+	function newExternalLB( $cluster, $wiki = false ) {
+		if ( !isset( $this->externalLoads[$cluster] ) ) {
+			throw new MWException( __METHOD__.": Unknown cluster \"$cluster\"" );
+		}
+		$template = $this->serverTemplate;
+		if ( isset( $this->externalTemplateOverrides ) ) {
+			$template = $this->externalTemplateOverrides + $template;
+		}
+		if ( isset( $this->templateOverridesByCluster[$cluster] ) ) {
+			$template = $this->templateOverridesByCluster[$cluster] + $template;
+		}
+		return $this->newLoadBalancer( $template, $this->externalLoads[$cluster], array() );
+	}
+
 	function &getExternalLB( $cluster, $wiki = false ) {
 		if ( !isset( $this->extLBs[$cluster] ) ) {
-			if ( !isset( $this->externalLoads[$cluster] ) ) {
-				throw new MWException( __METHOD__.": Unknown cluster \"$cluster\"" );
-			}
-			$template = $this->serverTemplate;
-			if ( isset( $this->externalTemplateOverrides ) ) {
-				$template = $this->externalTemplateOverrides + $template;
-			}
-			if ( isset( $this->templateOverridesByCluster[$cluster] ) ) {
-				$template = $this->templateOverridesByCluster[$cluster] + $template;
-			}
-			$this->extLBs[$cluster] = $this->newLoadBalancer( $template,
-				$this->externalLoads[$cluster], array(), "ext-$cluster" );
+			$this->extLBs[$cluster] = $this->newExternalLB( $cluster, $wiki );
+			$this->extLBs[$cluster]->parentInfo( array( 'id' => "ext-$cluster" ) );
 		}
 		return $this->extLBs[$cluster];
 	}
@@ -128,11 +145,13 @@ class LBFactory_Multi extends LBFactory {
 	/**
 	 * Make a new load balancer object based on template and load array
 	 */
-	function newLoadBalancer( $template, $loads, $groupLoads, $id ) {
+	function newLoadBalancer( $template, $loads, $groupLoads ) {
 		global $wgMasterWaitTimeout;
 		$servers = $this->makeServerArray( $template, $loads, $groupLoads );
-		$lb = new LoadBalancer( $servers, false, $wgMasterWaitTimeout );
-		$lb->parentInfo( array( 'id' => $id ) );
+		$lb = new LoadBalancer( array(
+			'servers' => $servers,
+			'masterWaitTimeout' => $wgMasterWaitTimeout 
+		));
 		return $lb;
 	}
 

@@ -40,10 +40,31 @@ function wfThumbMain() {
 	}
 	unset( $params['r'] );
 
+	// Is this a thumb of an archived file?
+	$isOld = (isset( $params['archived'] ) && $params['archived']);
+	unset( $params['archived'] );
+
 	// Some basic input validation
 	$fileName = strtr( $fileName, '\\/', '__' );
 
-	$img = wfLocalFile( $fileName );
+	// Actually fetch the image. Method depends on whether it is archived or not.
+	if( $isOld ) {
+		// Format is <timestamp>!<name>
+		$bits = explode( '!', $fileName, 2 );
+		if( !isset($bits[1]) ) {
+			wfThumbError( 404, wfMsg( 'badtitletext' ) );
+			return;
+		}
+		$title = Title::makeTitleSafe( NS_IMAGE, $bits[1] );
+		if( is_null($title) ) {
+			wfThumbError( 404, wfMsg( 'badtitletext' ) );
+			return;
+		}
+		$img = RepoGroup::singleton()->getLocalRepo()->newFromArchiveName( $title, $fileName );
+	} else {
+		$img = wfLocalFile( $fileName );
+	}
+
 	if ( !$img ) {
 		wfThumbError( 404, wfMsg( 'badtitletext' ) );
 		return;
@@ -117,12 +138,20 @@ function wfThumbMain() {
 }
 
 function wfThumbError( $status, $msg ) {
+	global $wgShowHostnames;
 	header( 'Cache-Control: no-cache' );
 	header( 'Content-Type: text/html; charset=utf-8' );
 	if ( $status == 404 ) {
 		header( 'HTTP/1.1 404 Not found' );
 	} else {
 		header( 'HTTP/1.1 500 Internal server error' );
+	}
+	if( $wgShowHostnames ) {
+		$url = htmlspecialchars( @$_SERVER['REQUEST_URI'] );
+		$hostname = htmlspecialchars( wfHostname() );
+		$debug = "<!-- $url -->\n<!-- $hostname -->\n";
+	} else {
+		$debug = "";
 	}
 	echo <<<EOT
 <html><head><title>Error generating thumbnail</title></head>
@@ -131,6 +160,7 @@ function wfThumbError( $status, $msg ) {
 <p>
 $msg
 </p>
+$debug
 </body>
 </html>
 

@@ -83,7 +83,7 @@ class MWException extends Exception {
 	function getHTML() {
 		global $wgShowExceptionDetails;
 		if( $wgShowExceptionDetails ) {
-			return '<p>' . htmlspecialchars( $this->getMessage() ) .
+			return '<p>' . nl2br( htmlspecialchars( $this->getMessage() ) ) .
 				'</p><p>Backtrace:</p><p>' . nl2br( htmlspecialchars( $this->getTraceAsString() ) ) .
 				"</p>\n";
 		} else {
@@ -129,7 +129,16 @@ class MWException extends Exception {
 		$file = $this->getFile();
 		$line = $this->getLine();
 		$message = $this->getMessage();
-		return $wgRequest->getRequestURL() . " Exception from line $line of $file: $message";
+		if ( isset( $wgRequest ) ) {
+			$url = $wgRequest->getRequestURL();
+			if ( !$url ) {
+				$url = '[no URL]';
+			}
+		} else {
+			$url = '[no req]';
+		}
+
+		return "$url   Exception from line $line of $file: $message";
 	}
 
 	/** Output the exception report using HTML */
@@ -137,7 +146,7 @@ class MWException extends Exception {
 		global $wgOut;
 		if ( $this->useOutputPage() ) {
 			$wgOut->setPageTitle( $this->getPageTitle() );
-			$wgOut->setRobotpolicy( "noindex,nofollow" );
+			$wgOut->setRobotPolicy( "noindex,nofollow" );
 			$wgOut->setArticleRelated( false );
 			$wgOut->enableClientCache( false );
 			$wgOut->redirect( '' );
@@ -164,13 +173,13 @@ class MWException extends Exception {
 	 */
 	function report() {
 		global $wgCommandLineMode;
+		$log = $this->getLogMessage();
+		if ( $log ) {
+			wfDebugLog( 'exception', $log );
+		}
 		if ( $wgCommandLineMode ) {
-			fwrite( STDERR, $this->getText() );
+			wfPrintError( $this->getText() );
 		} else {
-			$log = $this->getLogMessage();
-			if ( $log ) {
-				wfDebugLog( 'exception', $log );
-			}
 			$this->reportHTML();
 		}
 	}
@@ -268,7 +277,7 @@ function wfReportException( Exception $e ) {
 			 $e2->__toString() . "\n";
 
 			 if ( !empty( $GLOBALS['wgCommandLineMode'] ) ) {
-				 fwrite( STDERR, $message );
+				 wfPrintError( $message );
 			 } else {
 				 echo nl2br( htmlspecialchars( $message ) ). "\n";
 			 }
@@ -276,6 +285,21 @@ function wfReportException( Exception $e ) {
 	 } else {
 		 echo $e->__toString();
 	 }
+}
+
+/**
+ * Print a message, if possible to STDERR.
+ * Use this in command line mode only (see wgCommandLineMode)
+ */
+function wfPrintError( $message ) {
+	#NOTE: STDERR may not be available, especially if php-cgi is used from the command line (bug #15602).
+	#      Try to produce meaningful output anyway. Using echo may corrupt output to STDOUT though.
+	if ( defined( 'STDERR' ) ) {
+		fwrite( STDERR, $message );
+	}
+	else {
+		echo( $message );
+	}
 }
 
 /**

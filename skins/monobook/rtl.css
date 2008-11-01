@@ -68,7 +68,6 @@ div div.thumbcaption {
 }
 
 div.magnify,
-#div.townBox,
 #p-logo {
 	left: auto;
 	right: 0;
@@ -133,14 +132,6 @@ div.tright, div.floatright, table.floatright {
 }
 div.tleft, div.floatleft, table.floatleft {
 	clear: left;
-}
-div.townBox {
-	margin-left: 0;
-	margin-right: 1em;
-}
-div.townBox dl dd {
-	margin-left: 0;
-	margin-right: 1.1em;
 }
 #p-personal li {
 	margin-left: 0;
@@ -214,8 +205,9 @@ input#wpSave, input#wpDiff {
 	float: right;
 	margin: 0 0 1em 3em;
 }
-/* Convenience links to edit block and delete reasons */
-p.mw-ipb-conveniencelinks, p.mw-filedelete-editreasons, p.mw-delete-editreasons {
+/* Convenience links to edit block, delete and protect reasons */
+p.mw-ipb-conveniencelinks, p.mw-protect-editreasons,
+p.mw-filedelete-editreasons, p.mw-delete-editreasons {
 	float: left;
 }
 
@@ -234,9 +226,6 @@ table.filehistory th {
  * left-floated objects in an RTL layout.
  */
 html > body div#bodyContent ul {
-	display: table;
-}
-html > body div#bodyContent ol {
 	display: table;
 }
 html > body div#bodyContent ul#filetoc {

@@ -4,11 +4,34 @@
  * @ingroup Language
  * @file
  *
+ * @author Felipe Aira
  * @author Sky Harbor
  * @author לערי ריינהארט
- * @author Felipe Aira
- * @author Siebrand
  */
+
+$namespaceNames = array(
+	NS_MEDIA            => 'Midya',
+	NS_SPECIAL          => 'Natatangi',
+	NS_TALK             => 'Usapan',
+	NS_USER             => 'Tagagamit',
+	NS_USER_TALK        => 'Usapang tagagamit',
+	NS_PROJECT_TALK     => 'Usapang $1',
+	NS_IMAGE            => 'Larawan',
+	NS_IMAGE_TALK       => 'Usapang larawan',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'Usapang MediaWiki',
+	NS_TEMPLATE         => 'Suleras',
+	NS_TEMPLATE_TALK    => 'Usapang suleras',
+	NS_HELP             => 'Tulong',
+	NS_HELP_TALK        => 'Usapang tulong',
+	NS_CATEGORY         => 'Kaurian',
+	NS_CATEGORY_TALK    => 'Usapang kaurian',
+);
+
+$namespaceAliases = array(
+	'Kategorya'         => NS_CATEGORY,
+	'Usapang kategorya' => NS_CATEGORY_TALK,
+);
 
 $messages = array(
 # User preference toggles
@@ -53,8 +76,6 @@ $messages = array(
 'underline-always'  => 'Palagi',
 'underline-never'   => 'Hindi magpakailanman',
 'underline-default' => 'Tinakda ng pambasa-basa',
-
-'skinpreview' => '(Pribyu)',
 
 # Dates
 'sunday'        => 'Linggo',
@@ -123,7 +144,7 @@ $messages = array(
 
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
 
 'about'          => 'Patungkol',
 'article'        => 'Pahina ng nilalaman',
@@ -219,13 +240,9 @@ $messages = array(
 'portal-url'           => 'Project:Puntahan ng pamayanan',
 'privacy'              => 'Patakaran sa paglilihim',
 'privacypage'          => 'Project:Patakaran sa paglilihim',
-'sitesupport'          => 'Donasyon',
-'sitesupport-url'      => 'Project:Donasyon',
 
 'badaccess'        => 'Kamalian sa pahintulot',
 'badaccess-group0' => 'Hindi ka pinahintulutang isagawa hiniling mo.',
-'badaccess-group1' => 'Nakatakda lamang sa mga manggagamit sa pangkat $1 hinihiling mo.',
-'badaccess-group2' => 'Nakatakda lamang sa mga manggagamit sa isa sa mga pangkat $1 hinihiling mo.',
 'badaccess-groups' => 'Nakatakda lamang sa mga manggamit ng isa sa mga pangkat $1 hinihiling mo.',
 
 'versionrequired'     => 'Kinakailangan ang bersyong $1 ng MediaWiki',
@@ -239,7 +256,7 @@ $messages = array(
 'youhavenewmessagesmulti' => 'Mayroon kang mga bagong mensahe sa $1',
 'editsection'             => 'baguhin',
 'editold'                 => 'baguhin',
-'editsectionhint'         => 'Baguhin seksyon: $1',
+'editsectionhint'         => 'Baguhin ang seksyon: $1',
 'toc'                     => 'Mga nilalaman',
 'showtoc'                 => 'ipakita',
 'hidetoc'                 => 'itago',
@@ -266,7 +283,7 @@ ang gawang itinakda ng URL',
 'nosuchspecialpage' => 'Walang ganoong natatanging pahina',
 'nospecialpagetext' => "<big>'''Humiling ka ng isang natatanging pahina na walang saysay.'''</big>
 
-Isang tala ng mga natatanging pahina na may saysay ay matatagpuan sa [[Special:Specialpages|{{int:specialpages}}]].",
+Isang tala ng mga natatanging pahina na may saysay ay matatagpuan sa [[Special:SpecialPages|{{int:specialpages}}]].",
 
 # General errors
 'error'                => 'Kamalian',
@@ -323,7 +340,6 @@ Nilikha na ang iyong kuwenta. Huwag kalimutang baguhin ang iyong mga kagustuhan 
 'yourpasswordagain'         => 'Iyong hudyat muli:',
 'remembermypassword'        => 'Tandaan ang hudyat sa kompyuter na ito',
 'yourdomainname'            => 'Iyong dominyo:',
-'loginproblem'              => '<b>Nagkaroon ng problema sa iyong paglagda.</b><br />Subukan po muli!',
 'login'                     => 'Lumagda',
 'loginprompt'               => 'Dapat pinapahintulot ang mga kuki upang makapaglagda sa {{SITENAME}}.',
 'userlogin'                 => 'Lumagda / lumikha ng kuwenta',
@@ -363,7 +379,7 @@ Nilikha na ang iyong kuwenta. Huwag kalimutang baguhin ang iyong mga kagustuhan 
 # Edit pages
 'summary'                => 'Buod',
 'subject'                => 'Paksa/punong pamagat',
-'minoredit'              => 'Ito ay isang maliit na pagbabago',
+'minoredit'              => 'Ito ay isang munting pagbabago',
 'watchthis'              => 'Bantayan itong pahina',
 'savearticle'            => 'Itala ang pahina',
 'preview'                => 'Pribyu',
@@ -381,13 +397,15 @@ Nilikha na ang iyong kuwenta. Huwag kalimutang baguhin ang iyong mga kagustuhan 
 # Preferences page
 'preferences'   => 'Mga kagustuhan',
 'mypreferences' => 'Aking mga kagustuhan',
+'skin-preview'  => 'Pribyu',
 
 # Recent changes
 'recentchanges'     => 'Mga huling binago',
 'recentchangestext' => 'Subaybayan ang mga pinakahuling pagbabago sa wiki sa pahinang ito.',
 
 # Recent changes linked
-'recentchangeslinked' => 'Mga kaugnay na binago',
+'recentchangeslinked'       => 'Mga kaugnay na binago',
+'recentchangeslinked-title' => 'Mga pagbabagong magkaugnay sa "$1"',
 
 # Upload
 'upload'            => 'Magkarga ng talaksan',
@@ -395,13 +413,17 @@ Nilikha na ang iyong kuwenta. Huwag kalimutang baguhin ang iyong mga kagustuhan 
 'reupload'          => 'Magkarga muli',
 'reuploaddesc'      => 'Bumalik sa pormularyo ng pagkarga',
 'uploadnologin'     => 'Hindi nakalagda',
-'uploadnologintext' => 'Dapat ikaw ay [[Special:Userlogin|nakalagda]]
+'uploadnologintext' => 'Dapat ikaw ay [[Special:UserLogin|nakalagda]]
 upang makapagkarga ng talaksan.',
 'uploaderror'       => 'Kamalian sa pagkarga',
 'watchthisupload'   => 'Bantayan itong pahina',
 
 # Image description page
+'filehist'          => 'Kasaysayan ng talaksan',
+'filehist-datetime' => 'Petsa/Oras',
+'filehist-user'     => 'Tagagamit',
 'filehist-filesize' => 'Laki ng talaksan',
+'filehist-comment'  => 'Komento',
 'nolinkstoimage'    => 'Walang pahing tumuturo sa talaksang ito.',
 
 # File reversion
@@ -411,10 +433,10 @@ upang makapagkarga ng talaksan.',
 'filedelete'         => 'Burahin ang $1',
 'filedelete-legend'  => 'Burahin ang talaksan',
 'filedelete-intro'   => "Binubura mo ang '''[[Media:$1|$1]]'''.",
-'filedelete-comment' => 'Komento:',
+'filedelete-comment' => 'Dahilan sa pagkabura:',
 'filedelete-submit'  => 'Burahin',
 'filedelete-success' => "Binura na ang '''$1'''.",
-'filedelete-nofile'  => "Hindi umiiral ang '''$1''' sa {{SITENAME}}.",
+'filedelete-nofile'  => "Hindi umiiral ang '''$1'''.",
 
 # Random page
 'randompage'         => 'Pahinang walang-pili',
@@ -424,9 +446,8 @@ upang makapagkarga ng talaksan.',
 'randomredirect' => 'Pagkargang walang-pili',
 
 # Statistics
-'statistics' => 'Mga estadistika',
-'sitestats'  => 'Mga estadistika ng {{SITENAME}}',
-'userstats'  => 'Mga estadistika sa mga manggagamit',
+'statistics'              => 'Mga estadistika',
+'statistics-header-users' => 'Mga estadistika sa mga manggagamit',
 
 'disambiguations' => 'Mga pahina ng paglilinaw',
 
@@ -442,8 +463,9 @@ upang makapagkarga ng talaksan.',
 'move'              => 'Ilipat',
 'movethispage'      => 'Ilipat itong pahina',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'        => 'Lahat ng pahina',
+'alphaindexline'  => '$1 hanggang $2',
 'allpages-bad-ns' => 'Wala sa {{SITENAME}} ang ngalan-espasyong "$1".',
 
 # Special:Categories
@@ -462,12 +484,19 @@ upang makapagkarga ng talaksan.',
 'watch'         => 'Bantayan',
 'watchthispage' => 'Bantayan itong pahina',
 
-# Delete/protect/revert
+# Delete
+'deletepage'     => 'Burahin ang pahina',
+'deletedarticle' => 'ibinura ang "[[$1]]"',
+'deletecomment'  => 'Dahilan sa pagkabura:',
+
+# Protect
+'prot_1movedto2'              => 'Ang [[$1]] ay inilipat sa [[$2]]',
 'protect-default'             => '(tinakda)',
 'protect-level-autoconfirmed' => "Harangin ang mga 'di-rehistradong manggagamit",
 'protect-summary-cascade'     => 'kaskada',
 'protect-expiring'            => 'magwawalang-bisa sa $1 (UTC)',
 'protect-cascade'             => 'Ipagsanggalang ang mga pahinang kasama sa pahinang ito (kaskadang pagsanggalang)',
+'protect-expiry-options'      => '2 oras:2 hours,1 araw:1 day,3 araw:3 days,1 linggo:1 week,2 linggo:2 weeks,1 buwan:1 month,3 buwan:3 months,6 buwan:6 months,1 taon:1 year,walang hanggan:infinite', # display1:time1,display2:time2,...
 'restriction-type'            => 'Pahintulot:',
 'restriction-level'           => 'Antas ng kabawalan:',
 
@@ -532,14 +561,15 @@ $1',
 'unlockdb' => 'Buksan ang kalipunan ng datos',
 
 # Move page
+'movearticle'             => 'Ilipat ang pahina:',
 'movenologin'             => 'Hindi nakalagda',
-'movenologintext'         => 'Kailangang ikaw ay isang naka-rehistrong manggagamit at ay [[Special:Userlogin|nakalagda]] upang makapaglipat ng pahina.',
-'movenotallowed'          => 'Wala kang permisong maglipat ng pahina sa {{SITENAME}}.',
+'movenologintext'         => 'Kailangang ikaw ay isang naka-rehistrong manggagamit at ay [[Special:UserLogin|nakalagda]] upang makapaglipat ng pahina.',
+'movenotallowed'          => 'Wala kang permisong maglipat ng pahina.',
 'newtitle'                => 'Sa bagong pamagat:',
 'move-watch'              => 'Bantayan itong pahina',
 'movepagebtn'             => 'Ilipat ang pahina',
 'pagemovedsub'            => 'Matagumpay ang paglipat',
-'movepage-moved'          => '<big>\'\'\'Ang "$1" ay inilipat sa "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'          => '<big>\'\'\'Inilipat ang "$1" sa "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'May umiiral nang pahinang may ganitong pangalan, o ang
 pangalang pinili mo ay hindi mabisa.
 Pumili muli ng ibang pangalan.',
@@ -603,7 +633,7 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'show-big-image'       => 'Buong resolusyon',
 'show-big-image-thumb' => '<small>Laki ng itong pribyu: $1 × $2 piksel</small>',
 
-# Special:Newimages
+# Special:NewImages
 'newimages' => 'Galeriya ng mga bagong talaksan',
 
 # External editor support
@@ -613,13 +643,8 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'deletedwhileediting' => 'Babala: Nabura na ang pahinang ito pagkatapos mong magsimulang magbago!',
 'recreate'            => 'Likhain muli',
 
-# HTML dump
-'redirectingto' => 'Nagkakarga sa [[$1]]...',
-
 # action=purge
-'confirm_purge' => 'Linisin ang baunan ng pahinang ito?
-
-$1',
+'confirm-purge-top' => 'Linisin ang baunan ng pahinang ito?',
 
 # Table pager
 'table_pager_first' => 'Unang pahina',
@@ -638,6 +663,9 @@ $1',
 # Friendlier slave lag warnings
 'lag-warn-normal' => 'Maaaring hindi mapakita sa talang ito ang mga pagbabagong mas bago sa $1 segundo.',
 
+# Watchlist editing tools
+'watchlisttools-view' => 'Tingnan ang mga magkaugnay na pagbabago',
+
 # Special:Version
 'version'                   => 'Bersyon', # Not used as normal message but as header for the special page itself
 'version-hook-subscribedby' => 'Sinuskribi ng/ni/nina',
@@ -647,7 +675,7 @@ $1',
 'version-software-product'  => 'Produkto',
 'version-software-version'  => 'Bersyon',
 
-# Special:Filepath
+# Special:FilePath
 'filepath-page' => 'Talaksan:',
 
 # Special:SpecialPages

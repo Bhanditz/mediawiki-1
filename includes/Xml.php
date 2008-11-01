@@ -14,9 +14,10 @@ class Xml {
 	 * @param $element String: element name
 	 * @param $attribs Array: Name=>value pairs. Values will be escaped.
 	 * @param $contents String: NULL to make an open tag only; '' for a contentless closed tag (default)
+	 * @param $allowShortTag Bool: whether '' in $contents will result in a contentless closed tag
 	 * @return string
 	 */
-	public static function element( $element, $attribs = null, $contents = '') {
+	public static function element( $element, $attribs = null, $contents = '', $allowShortTag = true ) {
 		$out = '<' . $element;
 		if( !is_null( $attribs ) ) {
 			$out .=  self::expandAttributes( $attribs );
@@ -24,7 +25,7 @@ class Xml {
 		if( is_null( $contents ) ) {
 			$out .= '>';
 		} else {
-			if( $contents === '' ) {
+			if( $allowShortTag && $contents === '' ) {
 				$out .= ' />';
 			} else {
 				$out .= '>' . htmlspecialchars( $contents ) . "</$element>";
@@ -40,7 +41,7 @@ class Xml {
 	 * Return null if no attributes given.
 	 * @param $attribs Array of attributes for an XML element
 	 */
-	private static function expandAttributes( $attribs ) {
+	public static function expandAttributes( $attribs ) {
 		$out = '';
 		if( is_null( $attribs ) ) {
 			return null;
@@ -111,11 +112,11 @@ class Xml {
 	 *
 	 * @param $selected Mixed: Namespace which should be pre-selected
 	 * @param $all Mixed: Value of an item denoting all namespaces, or null to omit
-	 * @param $hidden Mixed: Include hidden namespaces? [WTF? --RC]
 	 * @param $element_name String: value of the "name" attribute of the select tag
+	 * @param $label String: optional label to add to the field
 	 * @return string
 	 */
-	public static function namespaceSelector( $selected = '', $all = null, $hidden = false, $element_name = 'namespace' ) {
+	public static function namespaceSelector( $selected = '', $all = null, $element_name = 'namespace', $label = null ) {
 		global $wgContLang;
 		$namespaces = $wgContLang->getFormattedNamespaces();
 		$options = array();
@@ -138,12 +139,16 @@ class Xml {
 			$options[] = self::option( $name, $index, $index === $selected );
 		}
 
-		return Xml::openElement( 'select', array( 'id' => 'namespace', 'name' => $element_name,
+		$ret = Xml::openElement( 'select', array( 'id' => 'namespace', 'name' => $element_name,
 			'class' => 'namespaceselector' ) )
 			. "\n"
 			. implode( "\n", $options )
 			. "\n"
 			. Xml::closeElement( 'select' );
+		if ( !is_null( $label ) ) {
+			$ret = Xml::label( $label, $element_name ) . '&nbsp;' . $ret;
+		}
+		return $ret;
 	}
 
 	/**
@@ -472,6 +477,25 @@ class Xml {
 
 		return $s;
 	}
+	
+	/**
+	 * Shortcut for creating textareas.
+	 *
+	 * @param $name The 'name' for the textarea
+	 * @param $content Content for the textarea
+	 * @param $cols The number of columns for the textarea
+	 * @param $rows The number of rows for the textarea
+	 * @param $attribs Any other attributes for the textarea
+	 */
+	public static function textarea( $name, $content, $cols = 40, $rows = 5, $attribs = array() ) {
+		return self::element( 'textarea',
+					array(	'name' => $name,
+						'id' => $name,
+						'cols' => $cols,
+						'rows' => $rows
+					) + $attribs,
+					$content, false );
+	}
 
 	/**
 	 * Returns an escaped string suitable for inclusion in a string literal
@@ -606,29 +630,33 @@ class Xml {
 	
 	/**
 	* Generate a form (without the opening form element).
-	* Output DOES include a submit button.
+	* Output optionally includes a submit button.
 	* @param $fields Associative array, key is message corresponding to a description for the field (colon is in the message), value is appropriate input.
 	* @param $submitLabel A message containing a label for the submit button.
 	* @return string HTML form.
 	*/
-	public static function buildForm( $fields, $submitLabel ) {
+	public static function buildForm( $fields, $submitLabel = null ) {
 		$form = '';
 		$form .= "<table><tbody>";
 	
 		foreach( $fields as $labelmsg => $input ) {
 			$id = "mw-$labelmsg";
+			
 			$form .= Xml::openElement( 'tr', array( 'id' => $id ) );
-	
-			$form .= Xml::element( 'td', array('valign' => 'top'), wfMsg( $labelmsg ) );
-	
-			$form .= Xml::openElement( 'td' ) . $input . Xml::closeElement( 'td' );
-	
+			$form .= Xml::tags( 'td', array('class' => 'mw-label'), wfMsgExt( $labelmsg, array('parseinline') ) );
+			$form .= Xml::openElement( 'td', array( 'class' => 'mw-input' ) ) . $input . Xml::closeElement( 'td' );
+			$form .= Xml::closeElement( 'tr' );
+		}
+
+		if( $submitLabel ) {
+			$form .= Xml::openElement( 'tr', array( 'id' => $id ) );
+			$form .= Xml::tags( 'td', array(), '' );
+			$form .= Xml::openElement( 'td', array( 'class' => 'mw-submit' ) ) . Xml::submitButton( wfMsg( $submitLabel ) ) . Xml::closeElement( 'td' );
 			$form .= Xml::closeElement( 'tr' );
 		}
 	
 		$form .= "</tbody></table>";
-	
-		$form .= Xml::submitButton( wfMsg($submitLabel) );
+
 	
 		return $form;
 	}
@@ -654,7 +682,8 @@ class XmlSelect {
 	}
 
 	public function addOption( $name, $value = false ) {
-		$value = $value ? $value : $name;
+		// Stab stab stab
+		$value = ($value !== false) ? $value : $name;
 		$this->options[] = Xml::option( $name, $value, $value === $this->default );
 	}
 

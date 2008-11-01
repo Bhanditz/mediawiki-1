@@ -3,8 +3,9 @@
  *
  * @ingroup Language
  * @file
- * @author Niklas Laxström
- * @author Hakka (with the help of a native speaker Dumitrachi T. Fundu)
+ *
+ * @author Dumitrachi T. Fundu
+ * @author Hakka
  */
 
 $messages = array(
@@ -72,7 +73,6 @@ $messages = array(
 'mainpage'             => 'Prota frãndzã',
 'mainpage-description' => 'Prota frãndzã',
 'portal'               => 'Portal-a comunitatiljei',
-'sitesupport'          => 'Donatsiur',
 
 'newmessageslink'         => 'dimãndare nao',
 'youhavenewmessagesmulti' => 'Avets nãi dimãndãri pi $1',
@@ -151,10 +151,7 @@ Isape a vostrã ira adratã. Nu agãrshits s-le alãxits alidzerle-a vostre ti {
 # Book sources
 'booksources-go' => 'Du-vã',
 
-# Special:Log
-'log-search-submit' => 'Du-vã',
-
-# Special:Allpages
+# Special:AllPages
 'allpagessubmit' => 'Du-vã',
 
 # Watchlist
@@ -164,6 +161,9 @@ Isape a vostrã ira adratã. Nu agãrshits s-le alãxits alidzerle-a vostre ti {
 'watch'         => 'Videts',
 'watchthispage' => 'Mutrits-u frãndzã aistã',
 'unwatch'       => 'Azãptãsits videare',
+
+# Protect
+'prot_1movedto2' => '[[$1]] s-trãdzi tu [[$2]]',
 
 # Restrictions (nouns)
 'restriction-edit' => 'Alãxiri',
@@ -202,7 +202,7 @@ Isape a vostrã ira adratã. Nu agãrshits s-le alãxits alidzerle-a vostre ti {
 'tooltip-pt-logout'      => 'Disligats-vã',
 'tooltip-p-logo'         => 'Prota frãndzã',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'Caftã',
 
 # Multipage image navigation

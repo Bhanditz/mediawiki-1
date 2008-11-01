@@ -6,8 +6,7 @@
  *
  * @author MCruz
  * @author Malafaya
- * @author Nike
- * @author Siebrand
+ * @author Urhixidur
  */
 
 $fallback = 'pt';
@@ -129,8 +128,6 @@ $messages = array(
 'portal-url'           => 'Project:Portal da quemunidade',
 'privacy'              => 'Política de privacidade',
 'privacypage'          => 'Project:Política de privacidade',
-'sitesupport'          => 'Donativos',
-'sitesupport-url'      => 'Proyecto:Apoio',
 
 'retrievedfrom'       => 'Obtido an "$1"',
 'youhavenewmessages'  => 'Você tem $1 ($2).',
@@ -199,7 +196,7 @@ Por fabor, bolte a efectuar la autenticaçon al recebê-la.',
 'italic_tip'      => 'Testo an itálico',
 'link_sample'     => 'Título da ligação',
 'link_tip'        => 'Ligação interna',
-'extlink_sample'  => 'http://www.exemplo.pt títalu de ligaçon externa',
+'extlink_sample'  => 'http://www.example.com títalu de ligaçon externa',
 'extlink_tip'     => 'Ligaçon externa (lembre-se do prefixo http://)',
 'headline_sample' => 'Testo de cabeçalho',
 'headline_tip'    => 'Secção de nível 2',
@@ -233,7 +230,7 @@ O bloqueio foi realizado por $1. O motivo apresentado foi \'\'$2\'\'.
 
 Você pode contactar $1 ou outro [[{{MediaWiki:Grouppage-sysop}}|administrador]] para discutir sobre o bloqueio.
 
-Note que não poderá utilizar a funcionalidade "Contactar utilizador" se não possuir uma conta neste wiki ({{SITENAME}}) com um endereço de email válido indicado nas suas [[{{ns:special}}:Preferences|preferências de utilizador]] e se tiver sido bloqueado de utilizar tal recurso.
+Note que não poderá utilizar a funcionalidade "Contactar utilizador" se não possuir uma conta neste wiki ({{SITENAME}}) com um endereço de email válido indicado nas suas [[Special:Preferences|preferências de utilizador]] e se tiver sido bloqueado de utilizar tal recurso.
 
 O seu endereço de IP atual é $3 e a ID de bloqueio é $5. Por favor, inclua um desses (ou ambos) dados em quaisquer tentativas de esclarecimentos.',
 'newarticle'             => '(Nuoba)',
@@ -249,14 +246,14 @@ Se você chegou até aqui por angano, clique ne l boton '''boltar''' (o ''back''
 Você está, al mesmo tempo, a garantir-nos que isto ye algo escrito por si, o algo copiado de unha fonte de testos an domínio público o similarmente de teor libre.
 <strong>NUM ENBIE TRABALHO PROTEGIDO POR DREITOS DE AUTOR SAN A DEBIDA PERMISSON!</strong>',
 'longpagewarning'        => '<strong>AVISO: Esta página possui $1 kilobytes; alguns
-navegadores possuem problemas em editar páginas maiores que 32kb.
+navegadores possuem problemas em editar páginas maiores que 32 kb.
 Por favor, considere seccionar a página em secções de menor dimensão.</strong>',
 'templatesused'          => 'Predefiniçons utilizadas nesta página:',
 'templatesusedpreview'   => 'Templates usados nesta previsão:',
 'template-protected'     => '(protegida)',
 'template-semiprotected' => '(semi-protegida)',
 'nocreatetext'           => '{{SITENAME}} tem restringida la possibilidade de criar nuobas páginas.
-Pode boltar atrás i editar unha página yá eisistente, o [[{{ns:special}}:Userlogin|autenticar-se o criar unha cuonta]].',
+Pode boltar atrás i editar unha página yá eisistente, o [[Special:UserLogin|autenticar-se o criar unha cuonta]].',
 'recreate-deleted-warn'  => "'''Atenção: Você está a criar uma página já anteriormente eliminada.'''
 
 Certifique-se de que é adequado prosseguir a edição de esta página.
@@ -266,7 +263,7 @@ O registo de eliminação desta página é exibido a seguir, para sua comodidade
 'viewpagelogs'        => 'Ber registos para yesta página',
 'currentrev'          => 'Revison actual',
 'revisionasof'        => 'Revisão de $1',
-'revision-info'       => 'Revison de $1; $2',
+'revision-info'       => 'Revison de $1; $2', # Additionally available: $3: revision id
 'previousrevision'    => '← Versão anterior',
 'nextrevision'        => 'Verson posterior →',
 'currentrevisionlink' => 'Ber berson actual',
@@ -341,7 +338,7 @@ Legenda: (actu) = diferenças da versão actual,
 'uploadlogpage' => 'Registo de carregamento',
 'uploadedimage' => 'carregou "[[$1]]"',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist' => 'Lista de ficheiros',
 
 # Image description page
@@ -426,7 +423,7 @@ Legenda: (actu) = diferenças da versão actual,
 'log'                  => 'Registos',
 'all-logs-page'        => 'Todos os registos',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Todas las páginas',
 'alphaindexline' => '$1 a $2',
 'nextpage'       => 'Próxima página ($1)',
@@ -461,20 +458,25 @@ Legenda: (actu) = diferenças da versão actual,
 'watching'   => 'Vigiando...',
 'unwatching' => 'Deixando de vigiar...',
 
-# Delete/protect/revert
-'deletepage'                  => 'Apagar página',
-'confirmdeletetext'           => 'Encontra-se prestes a eliminar permanentemente uma página ou uma imagem e todo o seu histórico.
+# Delete
+'deletepage'            => 'Apagar página',
+'confirmdeletetext'     => 'Encontra-se prestes a eliminar permanentemente uma página ou uma imagem e todo o seu histórico.
 Por favor, confirme que possui a intenção de fazer isto, que compreende as consequências e que faz isto de acordo com as [[{{MediaWiki:Policy-url}}|políticas]] do projecto.',
-'actioncomplete'              => 'Acção terminada',
-'deletedtext'                 => '"<nowiki>$1</nowiki>" fue elhiminada.
+'actioncomplete'        => 'Acção terminada',
+'deletedtext'           => '"<nowiki>$1</nowiki>" fue elhiminada.
 Consulte $2 para um registo de eliminações recentes.',
-'deletedarticle'              => 'apagado "[[$1]]"',
-'dellogpage'                  => 'Registo de eliminação',
-'deletecomment'               => 'Razon de eliminaçon',
-'deleteotherreason'           => 'Razon adicional:',
-'deletereasonotherlist'       => 'Outro motivo',
-'rollbacklink'                => 'voltar',
+'deletedarticle'        => 'apagado "[[$1]]"',
+'dellogpage'            => 'Registo de eliminação',
+'deletecomment'         => 'Razon de eliminaçon',
+'deleteotherreason'     => 'Razon adicional:',
+'deletereasonotherlist' => 'Outro motivo',
+
+# Rollback
+'rollbacklink' => 'voltar',
+
+# Protect
 'protectlogpage'              => 'Registo de protecção',
+'prot_1movedto2'              => '[[$1]] foi movido para [[$2]]',
 'protect-legend'              => 'Confirmar protecçon',
 'protectcomment'              => 'Razon de protecçon',
 'protectexpiry'               => 'Expiraçon',
@@ -485,6 +487,7 @@ Consulte $2 para um registo de eliminações recentes.',
 'protect-summary-cascade'     => 'p. progressiva',
 'protect-expiring'            => 'expira an $1 (UTC)',
 'protect-cascade'             => '"Protecçon progressiva" - proteya quaisquer páginas que estejam ancluídas nesta.',
+'protect-expiry-options'      => '2 horas:2 hours,1 dia:1 day,3 dias:3 days,1 semana:1 week,2 semanas:2 weeks,1 mês:1 month,3 meses:3 months,6 meses:6 months,1 anho:1 year,indefinido:infinite', # display1:time1,display2:time2,...
 'restriction-type'            => 'Permisson:',
 'restriction-level'           => 'Níble de restriçon:',
 
@@ -510,7 +513,6 @@ Consulte $2 para um registo de eliminações recentes.',
 # What links here
 'whatlinkshere'       => 'Páginas afluentes',
 'whatlinkshere-title' => 'Páginas que apontam para $1',
-'linklistsub'         => '(Lista de ligações)',
 'linkshere'           => "As seguintes páginas possuem ligações para '''[[:$1]]''':",
 'nolinkshere'         => "Num eisistem ligaçons para '''[[:$1]]'''.",
 'isredirect'          => 'página de redireccionamento',
@@ -522,7 +524,7 @@ Consulte $2 para um registo de eliminações recentes.',
 # Block/unblock
 'blockip'       => 'Bloquear outelizador',
 'ipboptions'    => '2 horas:2 hours,1 dia:1 day,3 dias:3 days,1 semana:1 week,2 semanas:2 weeks,1 mês:1 month,3 meses:3 months,6 meses:6 months,1 anho:1 year,indefinido:infinite', # display1:time1,display2:time2,...
-'ipblocklist'   => 'Lhista de IPs i outelizadores bloqueados',
+'ipblocklist'   => 'IPs i outelizadores bloqueados',
 'blocklink'     => 'bloquear',
 'unblocklink'   => 'desbloquear',
 'contribslink'  => 'contribs',
@@ -589,7 +591,6 @@ Isto puode ser unha mudança drástica i inesperada para unha página popular; p
 'tooltip-n-recentchanges'         => 'Lhista de mudanças recentes nesta wiki.',
 'tooltip-n-randompage'            => 'Carregar página aleatória',
 'tooltip-n-help'                  => 'Local com informação auxiliar.',
-'tooltip-n-sitesupport'           => 'Ayude-nos',
 'tooltip-t-whatlinkshere'         => 'Lista de todas las páginas que se lhigam a yesta',
 'tooltip-t-contributions'         => 'Ber las contribuiçons de yeste outelizador',
 'tooltip-t-emailuser'             => 'Enbiar um e-mail a yeste outelizador',
@@ -619,7 +620,7 @@ Isto puode ser unha mudança drástica i inesperada para unha página popular; p
 'show-big-image'       => 'Resoluçon completa',
 'show-big-image-thumb' => '<small>Tamanho desta previsão: $1 × $2 pixels</small>',
 
-# Special:Newimages
+# Special:NewImages
 'newimages' => 'Galeria de nuobos ficheiros',
 
 # Bad image list
@@ -644,7 +645,7 @@ Caso l ficheiro tenha sido modificado a partir de l sue stado original, alguns d
 
 # External editor support
 'edit-externally'      => 'Editar yeste ficheiro outelizando ua aplicaçon externa',
-'edit-externally-help' => 'Consulte as [http://meta.wikimedia.org/wiki/Help:External_editors instruções de instalação] para mais informação.',
+'edit-externally-help' => 'Consulte as [http://www.mediawiki.org/wiki/Manual:External_editors instruções de instalação] para mais informação.',
 
 # 'all' in various places, this might be different for inflected languages
 'watchlistall2' => 'todas',

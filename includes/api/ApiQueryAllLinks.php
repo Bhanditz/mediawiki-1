@@ -80,25 +80,24 @@ class ApiQueryAllLinks extends ApiQueryGeneratorBase {
 		}		
 
 		if (!is_null($params['from']))
-			$this->addWhere('pl_title>=' . $db->addQuotes(ApiQueryBase :: titleToKey($params['from'])));
+			$this->addWhere('pl_title>=' . $db->addQuotes($this->titlePartToKey($params['from'])));
 		if (isset ($params['prefix']))
-			$this->addWhere("pl_title LIKE '" . $db->escapeLike(ApiQueryBase :: titleToKey($params['prefix'])) . "%'");
+			$this->addWhere("pl_title LIKE '" . $db->escapeLike($this->titlePartToKey($params['prefix'])) . "%'");
 
-		if (is_null($resultPageSet)) {
-			$this->addFields(array (
-				'pl_namespace',
-				'pl_title',
-				'pl_from'
-			));
-		} else {
-			$this->addFields('pl_from');
-			$pageids = array();
-		}
+		$this->addFields(array (
+			'pl_namespace',
+			'pl_title',
+			'pl_from'
+		));
 
 		$this->addOption('USE INDEX', 'pl_namespace');
 		$limit = $params['limit'];
 		$this->addOption('LIMIT', $limit+1);
-		$this->addOption('ORDER BY', 'pl_title');
+		# Only order by pl_namespace if it isn't constant in the WHERE clause
+		if(count($params['namespace']) != 1)
+			$this->addOption('ORDER BY', 'pl_namespace, pl_title');
+		else
+			$this->addOption('ORDER BY', 'pl_title');
 
 		$res = $this->select(__METHOD__);
 
@@ -108,7 +107,7 @@ class ApiQueryAllLinks extends ApiQueryGeneratorBase {
 			if (++ $count > $limit) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
 				// TODO: Security issue - if the user has no right to view next title, it will still be shown
-				$this->setContinueEnumParameter('continue', ApiQueryBase :: keyToTitle($row->pl_title) . "|" . $row->pl_from);
+				$this->setContinueEnumParameter('continue', $this->keyToTitle($row->pl_title) . "|" . $row->pl_from);
 				break;
 			}
 
@@ -172,7 +171,8 @@ class ApiQueryAllLinks extends ApiQueryGeneratorBase {
 			'unique' => 'Only show unique links. Cannot be used with generator or prop=ids',
 			'prop' => 'What pieces of information to include',
 			'namespace' => 'The namespace to enumerate.',
-			'limit' => 'How many total links to return.'
+			'limit' => 'How many total links to return.',
+			'continue' => 'When more results are available, use this to continue.',
 		);
 	}
 

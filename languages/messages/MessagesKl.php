@@ -5,8 +5,6 @@
  * @file
  *
  * @author לערי ריינהארט
- * @author SPQRobin
- * @author M.M.S.
  */
 
 $fallback = 'da';
@@ -142,18 +140,21 @@ $messages = array(
 # Special:Log
 'specialloguserlabel' => 'Pineqartoq:',
 
-# Special:Allpages
+# Special:AllPages
 'allpagessubmit' => 'Pisuppoq',
 
 # Watchlist
 'addedwatch'     => 'Nakkutilliinermi allattorsimaffimmut ilanngunneqarsimavoq',
-'addedwatchtext' => "Qupperneq \"<nowiki>\$1</nowiki>\" ilanngunneqarsimavoq [[Special:Watchlist|nakkutilliinermut allattorsimaffimmut]] ilanngunneqarsimavoq. Matumani quppernermi siunissami allannguutit, aammalu oqallinnermi qupperneq, maani saqqummersinneqassapput, quppernerlu '''erseqqissagaasoq''' inisseqqassalluni [[Special:Recentchanges|allattorsimaffik kingullermi allannguutinik imalik]] ajornannginnerussammat nassaariniarnissaanut.
+'addedwatchtext' => "Qupperneq \"[[:\$1]]\" ilanngunneqarsimavoq [[Special:Watchlist|nakkutilliinermut allattorsimaffimmut]] ilanngunneqarsimavoq. Matumani quppernermi siunissami allannguutit, aammalu oqallinnermi qupperneq, maani saqqummersinneqassapput, quppernerlu '''erseqqissagaasoq''' inisseqqassalluni [[Special:RecentChanges|allattorsimaffik kingullermi allannguutinik imalik]] ajornannginnerussammat nassaariniarnissaanut.
 
 Qupperneq nakkutilliinermi allattorsimaffik kingusinnerusukkut piissagukku, taava quppernerup sinaatungaani \"Nakkutilliinermi allattorsimaffik peeruk\" tooruk.",
 'watch'          => 'Piggassineq',
 
-# Delete/protect/revert
+# Delete
 'actioncomplete' => 'Naammassineqareersimavoq',
+
+# Protect
+'prot_1movedto2' => '[[$1]]-i nuunneqarsimavoq [[$2]]-mut',
 
 # Contributions
 'uctop' => '(kaarfa)',

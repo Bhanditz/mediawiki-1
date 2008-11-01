@@ -1,16 +1,13 @@
 <?php
-/** Nauru (Ekakairũ Naoero)
+/** Nauru (Dorerin Naoero)
  *
  * @ingroup Language
  * @file
  *
- * @author CdaMVvWgS
  * @author Belgian man
+ * @author CdaMVvWgS
  * @author Node ue
- * @author SPQRobin
  */
-
-
 
 $messages = array(
 # Dates
@@ -44,7 +41,6 @@ $messages = array(
 'helppage'             => 'Help:Oangan',
 'mainpage'             => 'Bwiema peij',
 'mainpage-description' => 'Bwiema peij',
-'sitesupport'          => 'Eadu a me',
 
 'editsection' => 'Kiwiwid',
 'showtoc'     => 'oduwen',
@@ -92,7 +88,7 @@ $messages = array(
 # Miscellaneous special pages
 'move' => 'Memori',
 
-# Special:Allpages
+# Special:AllPages
 'allpagessubmit' => 'nuwa ko',
 
 # E-mail user
@@ -105,14 +101,14 @@ $messages = array(
 'watch'   => 'Aea',
 'unwatch' => 'Eab krak',
 
-# Delete/protect/revert
+# Delete
 'confirm'        => 'Oebwigaga',
 'deletedarticle' => 'iyababa "[[$1]]"',
 
 # Contributions
 'contributions' => 'Mana engame totow inne',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'Anani ko',
 
 );

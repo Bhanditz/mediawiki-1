@@ -105,16 +105,17 @@ class FileDeleteForm {
 		} else {
 			$status = $file->delete( $reason, $suppress );
 			if( $status->ok ) {
+				$id = $title->getArticleID( GAID_FOR_UPDATE );
 				// Need to delete the associated article
 				$article = new Article( $title );
 				if( wfRunHooks('ArticleDelete', array(&$article, &$wgUser, &$reason)) ) {
-					if( $article->doDeleteArticle( $reason, $suppress ) )
-						wfRunHooks('ArticleDeleteComplete', array(&$article, &$wgUser, $reason));
+					if( $article->doDeleteArticle( $reason, $suppress, $id ) )
+						wfRunHooks('ArticleDeleteComplete', array(&$article, &$wgUser, $reason, $id));
 				}
 			}
 		}
-		if( $status->isGood() ) wfRunHooks('FileDeleteComplete', array(
-			&$file, &$oldimage, &$article, &$wgUser, &$reason));
+		if( $status->isGood() ) 
+			wfRunHooks('FileDeleteComplete', array( &$file, &$oldimage, &$article, &$wgUser, &$reason));
 
 		return $status;
 	}
@@ -123,46 +124,51 @@ class FileDeleteForm {
 	 * Show the confirmation form
 	 */
 	private function showForm() {
-		global $wgOut, $wgUser, $wgRequest, $wgContLang;
-		$align = $wgContLang->isRtl() ? 'left' : 'right';
+		global $wgOut, $wgUser, $wgRequest;
 
 		if( $wgUser->isAllowed( 'suppressrevision' ) ) {
-			$suppress = "<tr id=\"wpDeleteSuppressRow\" name=\"wpDeleteSuppressRow\"><td></td><td>";
-			$suppress .= Xml::checkLabel( wfMsg( 'revdelete-suppress' ), 'wpSuppress', 'wpSuppress', false, array( 'tabindex' => '2' ) );
-			$suppress .= "</td></tr>";
+			$suppress = "<tr id=\"wpDeleteSuppressRow\" name=\"wpDeleteSuppressRow\">
+					<td></td>
+					<td class='mw-input'>" .
+						Xml::checkLabel( wfMsg( 'revdelete-suppress' ),
+							'wpSuppress', 'wpSuppress', false, array( 'tabindex' => '3' ) ) .
+					"</td>
+				</tr>";
 		} else {
 			$suppress = '';
 		}
 
-		$form = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $this->getAction() ) ) .
+		$form = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $this->getAction(), 'id' => 'mw-img-deleteconfirm' ) ) .
 			Xml::openElement( 'fieldset' ) .
 			Xml::element( 'legend', null, wfMsg( 'filedelete-legend' ) ) .
 			Xml::hidden( 'wpEditToken', $wgUser->editToken( $this->oldimage ) ) .
 			$this->prepareMessage( 'filedelete-intro' ) .
-			Xml::openElement( 'table' ) .
+			Xml::openElement( 'table', array( 'id' => 'mw-img-deleteconfirm-table' ) ) .
 			"<tr>
-				<td align='$align'>" .
+				<td class='mw-label'>" .
 					Xml::label( wfMsg( 'filedelete-comment' ), 'wpDeleteReasonList' ) .
 				"</td>
-				<td>" .
+				<td class='mw-input'>" .
 					Xml::listDropDown( 'wpDeleteReasonList',
 						wfMsgForContent( 'filedelete-reason-dropdown' ),
 						wfMsgForContent( 'filedelete-reason-otherlist' ), '', 'wpReasonDropDown', 1 ) .
 				"</td>
 			</tr>
 			<tr>
-				<td align='$align'>" .
+				<td class='mw-label'>" .
 					Xml::label( wfMsg( 'filedelete-otherreason' ), 'wpReason' ) .
 				"</td>
-				<td>" .
-					Xml::input( 'wpReason', 60, $wgRequest->getText( 'wpReason' ), array( 'type' => 'text', 'maxlength' => '255', 'tabindex' => '2', 'id' => 'wpReason' ) ) .
+				<td class='mw-input'>" .
+					Xml::input( 'wpReason', 60, $wgRequest->getText( 'wpReason' ),
+						array( 'type' => 'text', 'maxlength' => '255', 'tabindex' => '2', 'id' => 'wpReason' ) ) .
 				"</td>
 			</tr>
 			{$suppress}
 			<tr>
 				<td></td>
-				<td>" .
-					Xml::submitButton( wfMsg( 'filedelete-submit' ), array( 'name' => 'mw-filedelete-submit', 'id' => 'mw-filedelete-submit', 'tabindex' => '3' ) ) .
+				<td class='mw-submit'>" .
+					Xml::submitButton( wfMsg( 'filedelete-submit' ),
+						array( 'name' => 'mw-filedelete-submit', 'id' => 'mw-filedelete-submit', 'tabindex' => '4' ) ) .
 				"</td>
 			</tr>" .
 			Xml::closeElement( 'table' ) .

@@ -29,7 +29,7 @@ if (!defined('MEDIAWIKI')) {
 }
 
 /**
- * This query adds <images> subelement to all pages with the list of images embedded into those pages.
+ * This query adds <categories> subelement to all pages with the list of images embedded into those pages.
  *
  * @ingroup API
  */
@@ -41,9 +41,10 @@ class ApiQueryCategoryInfo extends ApiQueryBase {
 
 	public function execute() {			
 		$alltitles = $this->getPageSet()->getAllTitlesByNamespace();
-		$categories = $alltitles[NS_CATEGORY];
-		if(empty($categories))
+		if ( empty( $alltitles[NS_CATEGORY] ) ) {
 			return;
+		}
+		$categories = $alltitles[NS_CATEGORY];
 
 		$titles = $this->getPageSet()->getGoodTitles() +
 					$this->getPageSet()->getMissingTitles();

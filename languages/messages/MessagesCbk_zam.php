@@ -1,10 +1,9 @@
 <?php
-/** Zamboangueño (Zamboangueño)
+/** Chavacano de Zamboanga (Chavacano de Zamboanga)
  *
  * @ingroup Language
  * @file
  *
- * @author SPQRobin
  */
 
 $fallback = "es";
@@ -42,7 +41,7 @@ $messages = array(
 # Random page
 'randompage' => 'Pagina Escujido Automatico',
 
-# Special:Allpages
+# Special:AllPages
 'allarticles' => 'Todo maga articulo',
 
 # Watchlist
@@ -51,14 +50,11 @@ $messages = array(
 'changed' => 'cambiao',
 'created' => 'creao',
 
-# Delete/protect/revert
+# Delete
 'actioncomplete' => 'Accion completo',
 
 # Block/unblock
 'blockip'           => 'Prohibi con el usario',
 'blockipsuccesssub' => 'El prohibicion es confirmado',
-
-# AJAX search
-'articletitles' => "Maga articulo que ta prinsipa con ''$1''",
 
 );

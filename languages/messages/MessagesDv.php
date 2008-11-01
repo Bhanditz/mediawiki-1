@@ -4,10 +4,9 @@
  * @ingroup Language
  * @file
  *
+ * @author Glacious
  * @author MF-Warburg
  * @author לערי ריינהארט
- * @author Siebrand
- * @author Glacious
  */
 
 $rtl = true;
@@ -112,7 +111,6 @@ $messages = array(
 'mainpage-description' => 'މައި ޞަފްޙާ',
 'portal'               => 'އާންމު ހޮޅުއަށި',
 'privacy'              => 'އަމިއްލަވަންތަ ސިޔާސަތު',
-'sitesupport'          => 'ޚައިރާތުތައް',
 
 'badaccess' => 'ހުއްދައިގެ ކުށެއް',
 
@@ -248,7 +246,7 @@ $messages = array(
 'uploadedfiles'     => 'ފޮނުވިފައިވާ ފައިލުތައް',
 'uploadwarning'     => 'ފައިލުފޮނުއްވުމުގެ ކުރިން ދެވޭ އިންޒާރު',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist' => 'ފައިލުތަކުގެ ފިހުރިސްތު',
 
 # Image description page
@@ -258,9 +256,8 @@ $messages = array(
 'randompage' => 'ކޮންމެވެސް ޞަފްޙާއެއް',
 
 # Statistics
-'statistics' => 'ތަފާސްހިސާބުތައް',
-'sitestats'  => 'ވިކިޕީޑިއާ ގެ ތަފާސްހިސާބު',
-'userstats'  => 'މެންބަރުގެ ތަފާސްހިސާބު',
+'statistics'              => 'ތަފާސްހިސާބުތައް',
+'statistics-header-users' => 'މެންބަރުގެ ތަފާސްހިސާބު',
 
 'brokenredirects' => 'އޮޅިފައިވާ މިސްރާބުތައް',
 
@@ -277,7 +274,7 @@ $messages = array(
 # Book sources
 'booksources' => 'ފޮތްތަކުގެ މަސްދަރުތައް',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'ހުރިހާ ޞަފްޙާތައް',
 'allarticles'    => 'ހުރިހާ މަޒުމޫނުތައް',
 'allinnamespace' => 'ހުރިހާ ޞަފްޙާތައް (ނުތުގު $1 ގައިވާ)',
@@ -304,14 +301,19 @@ $messages = array(
 
 'changed' => 'ބަދަލުކުރެވިއްޖެ',
 
-# Delete/protect/revert
-'deletepage'         => 'ޞަފްޙާ ފޮހެލައްވާ',
-'confirm'            => 'ޔަގީން',
-'confirmdeletetext'  => 'ތިޔަބޭފުޅާ ތިޔަ އުޅުއްވަނީ ޞަފްޙާއެއް ނުވަތަ ތަޞްވީރެއް އެއާ ގުޅިފައިވާ ހުރިހާ ތާރީހަކާއެކު ކޮށާރުން ފޮހެލައްވާށެވެ. މިކަން މިގޮތަށް ކުރައްވަން ބޭނުންފުޅުކަން ޔަގީން ކުރައްވާށެވެ. އަދި މިކަމުން ނުކުމެދާނެ ނަތީޖާއެއް ވެސް ތިޔަ ބޭފުޅާއަށް ރަނގަޅަށް އެނގިވަޑައިގަންނަވަންވާނެއެވެ. އަދި ތިޔަކަން ތިކުރެއްވެނީ [[{{MediaWiki:Policy-url}}|ވިކިޕީޑިއާ ގެ ސިޔާސަތާ]] އެއްގޮތަށްތޯ ވެސް ބައްލަވައި ޔަގީން ކުރައްވާށެވެ!',
-'actioncomplete'     => 'އަމަލު ފުރިހަމަވެއްޖެ',
-'deletecomment'      => 'ފޮހެލައްވާ ސަބަބު',
-'cantrollback'       => 'އުނިއިތުރު އިއާދައެއް ނުކުރެވޭނެ؛ އެހެނީ އެންމެ ފަހު އުނިއިތުރުގައި ހިއްސާވި ފަރާތަކީ މިޞަފްޙާގެ ހަމައެކަނި މުއައްލިފެވެ.',
+# Delete
+'deletepage'        => 'ޞަފްޙާ ފޮހެލައްވާ',
+'confirm'           => 'ޔަގީން',
+'confirmdeletetext' => 'ތިޔަބޭފުޅާ ތިޔަ އުޅުއްވަނީ ޞަފްޙާއެއް ނުވަތަ ތަޞްވީރެއް އެއާ ގުޅިފައިވާ ހުރިހާ ތާރީހަކާއެކު ކޮށާރުން ފޮހެލައްވާށެވެ. މިކަން މިގޮތަށް ކުރައްވަން ބޭނުންފުޅުކަން ޔަގީން ކުރައްވާށެވެ. އަދި މިކަމުން ނުކުމެދާނެ ނަތީޖާއެއް ވެސް ތިޔަ ބޭފުޅާއަށް ރަނގަޅަށް އެނގިވަޑައިގަންނަވަންވާނެއެވެ. އަދި ތިޔަކަން ތިކުރެއްވެނީ [[{{MediaWiki:Policy-url}}|ވިކިޕީޑިއާ ގެ ސިޔާސަތާ]] އެއްގޮތަށްތޯ ވެސް ބައްލަވައި ޔަގީން ކުރައްވާށެވެ!',
+'actioncomplete'    => 'އަމަލު ފުރިހަމަވެއްޖެ',
+'deletecomment'     => 'ފޮހެލައްވާ ސަބަބު',
+
+# Rollback
+'cantrollback' => 'އުނިއިތުރު އިއާދައެއް ނުކުރެވޭނެ؛ އެހެނީ އެންމެ ފަހު އުނިއިތުރުގައި ހިއްސާވި ފަރާތަކީ މިޞަފްޙާގެ ހަމައެކަނި މުއައްލިފެވެ.',
+
+# Protect
 'unprotectedarticle' => '"[[$1]]" ދިފާއުކުރުން ހުއްޓާލެވިއްޖެ',
+'prot_1movedto2'     => '[[$1]] އަށް ނަގުލުކުރެވިފައި [[$2]]',
 
 # Restrictions (nouns)
 'restriction-edit' => 'އުނިއިތުރު ގެންނަވާ',
@@ -366,7 +368,7 @@ $messages = array(
 'allmessagesdefault' => 'ކުރީގެ މަތަން',
 'allmessagescurrent' => 'މިހާރުގެ މަތަން',
 
-# Special:Newimages
+# Special:NewImages
 'showhidebots' => '($1 ސެއްޓި)',
 'ilsubmit'     => 'ހޯއްދަވާ',
 
@@ -385,9 +387,6 @@ $messages = array(
 
 # E-mail address confirmation
 'confirmemail' => 'އީމޭލު އެޑްރެސް ޔަގީންކުރައްވާ',
-
-# HTML dump
-'redirectingto' => 'މިސްރާބު ކުރެވެނީ [[$1]] އަށް...',
 
 # action=purge
 'confirm_purge_button' => 'ރަނގަޅު',

@@ -5,10 +5,8 @@
  * @file
  *
  * @author Krice from Tyvanet.com
- * @author friends at tyvawiki.org
- * @author Nike
  * @author Sborsody
- * @author Siebrand
+ * @author friends at tyvawiki.org
  * @author לערי ריינהארט
  */
 
@@ -65,8 +63,6 @@ $messages = array(
 'underline-always'  => 'Кезээде',
 'underline-never'   => 'Кажан-даа',
 'underline-default' => 'Веб-браузерниң ниити үнези',
-
-'skinpreview' => '(Чижеглей көөр)',
 
 # Dates
 'sunday'        => 'Улуг хүн',
@@ -196,7 +192,6 @@ $messages = array(
 'policy-url'           => 'Project:Политика',
 'portal'               => 'Ниитилелдиң хаалгазы',
 'portal-url'           => 'Project:Ниитилелдиң хаалгазы',
-'sitesupport'          => 'Белектер',
 
 'retrievedfrom'       => '"$1" деп арынында парлаттынган',
 'newmessageslink'     => 'чаа чагаалар',
@@ -284,7 +279,7 @@ $1',
 'italic_sample'   => 'Ийлендирер',
 'link_sample'     => 'Холбаа ады',
 'link_tip'        => 'Иштики холбаа',
-'extlink_sample'  => 'http://www.чижек.com холбаа ады',
+'extlink_sample'  => 'http://www.example.com холбаа ады',
 'extlink_tip'     => 'Даштыкы холбаа ("http://" чүве сактып алыр)',
 'headline_sample' => 'Кол сөс сөзүглел',
 'nowiki_sample'   => 'Форматтаваан сөзүглелини бээр салыр',
@@ -362,6 +357,7 @@ $1',
 'preferences'        => 'Дээре деп санаарылар',
 'changepassword'     => 'Чажыт сөстү өскертир',
 'skin'               => 'Кеш',
+'skin-preview'       => 'Чижеглей көөр',
 'math_unknown_error' => 'билбес алдаг',
 'prefs-personal'     => 'Ажыглакчының медээлери',
 'prefs-rc'           => 'Дээм чаагы өскерлиишкиннер',
@@ -420,7 +416,7 @@ $1',
 'upload-file-error' => 'Иштики алдаг',
 'upload-misc-error' => 'Билбес кииреринге алдаг',
 
-# Special:Imagelist
+# Special:ImageList
 'imgfile'               => 'файл',
 'imagelist'             => 'Файл даңзызы',
 'imagelist_name'        => 'Ат',
@@ -508,9 +504,8 @@ $1',
 # Special:Log
 'specialloguserlabel'  => 'Ажыглакчы:',
 'speciallogtitlelabel' => 'Ат:',
-'log-search-submit'    => 'Чоруур',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Шупту арыннар',
 'nextpage'       => 'Соонда арын ($1)',
 'prevpage'       => 'Бүрүнгү арын ($1)',
@@ -522,7 +517,7 @@ $1',
 # Special:Categories
 'categories' => 'Бөлүктер',
 
-# Special:Listusers
+# Special:ListUsers
 'listusers-submit' => 'Көргүзер',
 
 # E-mail user
@@ -558,11 +553,13 @@ $1',
 'enotif_impersonal_salutation' => '{{grammar:genitive|{{SITENAME}}}} ажыглакчызы',
 'enotif_anon_editor'           => 'ат эвес ажыглакчы $1',
 
-# Delete/protect/revert
-'deletepage'          => 'Арынны ап каар',
-'exblank'             => 'Арын куруг турган',
-'actioncomplete'      => 'Ажыл доосту',
-'deletedarticle'      => '"[[$1]]" деп арынны ап каан',
+# Delete
+'deletepage'     => 'Арынны ап каар',
+'exblank'        => 'Арын куруг турган',
+'actioncomplete' => 'Ажыл доосту',
+'deletedarticle' => '"[[$1]]" деп арынны ап каан',
+
+# Protect
 'protectcomment'      => 'Комментарий:',
 'protect-default'     => '(ниити)',
 'protect-level-sysop' => 'Чүгле сисоплар',
@@ -591,7 +588,6 @@ $1',
 
 # What links here
 'whatlinkshere'       => 'Pages that link here',
-'linklistsub'         => '(Холбаалар даңзызы)',
 'whatlinkshere-links' => '← холбаалар',
 
 # Block/unblock
@@ -670,7 +666,7 @@ $1',
 'previousdiff' => '← Бүрүнгү ылгал',
 'nextdiff'     => 'Соонда ылгал →',
 
-# Special:Newimages
+# Special:NewImages
 'showhidebots' => '(боцду $1)',
 'noimages'     => 'Чуруклар чок.',
 'ilsubmit'     => 'Дилээр',
@@ -691,9 +687,6 @@ $1',
 'watchlistall2'    => 'шупту',
 'namespacesall'    => 'шупту',
 'monthsall'        => 'шупту',
-
-# AJAX search
-'hideresults' => 'Түңнелдерни чажырар',
 
 # Multipage image navigation
 'imgmultipageprev' => '← бүрүнгү арын',

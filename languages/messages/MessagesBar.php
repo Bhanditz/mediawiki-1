@@ -4,9 +4,8 @@
  * @ingroup Language
  * @file
  *
- * @author SPQRobin
- * @author Siebrand
  * @author Malafaya
+ * @author Metalhead64
  */
 
 $fallback = 'de';
@@ -42,7 +41,7 @@ $messages = array(
 'yourlanguage'               => 'Sprache vo da Benutzeroberfläche:',
 'wrongpassword'              => "Des Passwort is falsch (oda fehlt). Bitte probier's no amoi.",
 'wrongpasswordempty'         => 'Des eigemne Passwort is laar gwen. Bitte no amoi probiern.',
-'acct_creation_throttle_hit' => 'Du hosst scho $1 Benutzakonten und kinnan iatzat koane mehr oleng.',
+'acct_creation_throttle_hit' => 'Du hosst scho $1 {{PLURAL:$1|Benutzakonto|Benutzakonten}} und konnst iatzat koane mehr oleng.',
 'accountcreated'             => 'Benutzerkonto is erstellt worn',
 'accountcreatedtext'         => "'s Benutzerkonto $1 is eigricht worn.",
 
@@ -50,9 +49,6 @@ $messages = array(
 'watchthis'          => 'De Seitn beobachtn',
 'whitelistedittitle' => 'Zum Bearbatn miaßn Sie si oomeidn',
 'whitelistedittext'  => 'Sie miaßn si $1, um Seiten bearbatn zum kinna.',
-'whitelistreadtitle' => 'Zum Lesn is erforderlich, ogmeldt zum sei',
-'whitelistreadtext'  => 'Sie miaßn si [[Special:Userlogin|da oomeidn]], um de Seitn lesen zum kinna.',
-'whitelistacctitle'  => 'Sie san net berechtigt, a Benutzerkonto ozumlegn.',
 'accmailtitle'       => 'Passwort is vaschickt worn',
 'newarticle'         => '(Nei)',
 'yourtext'           => 'Eana Text',
@@ -74,7 +70,7 @@ $messages = array(
 # Special:Log
 'all-logs-page' => 'Alle Logbiacha',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'          => 'Alle Seitn',
 'allarticles'       => 'Alle Seitn',
 'allinnamespace'    => 'Alle Seitn (Namensraum: $1)',
@@ -89,6 +85,9 @@ $messages = array(
 'watchnologin'      => 'Sie san net ogmeidt',
 'watchthispage'     => 'Seitn beobachtn',
 'unwatch'           => 'nimma beobachten',
+
+# Protect
+'prot_1movedto2' => 'håt [[$1]] nåch [[$2]] verschom',
 
 # Contributions
 'contributions' => 'Benutzerbeiträg',
@@ -110,7 +109,7 @@ $messages = array(
 Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation] and [http://translatewiki.net Betawiki] if you wish to contribute to the generic MediaWiki localisation.',
 'allmessagesmodified' => 'Nur geänderte zoagn',
 
-# Special:Newimages
+# Special:NewImages
 'newimages' => 'Neie Dateien',
 
 );

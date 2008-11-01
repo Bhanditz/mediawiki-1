@@ -3,6 +3,8 @@
  *
  * @ingroup Language
  * @file
+ *
+ * @author Hakka
  */
 
 $messages = array(
@@ -68,7 +70,6 @@ $messages = array(
 'mainpage'             => 'Peji Rekutanga',
 'mainpage-description' => 'Peji Rekutanga',
 'portal'               => 'Mukova wegutse',
-'sitesupport'          => 'Zvipo',
 
 'newmessageslink'         => 'mashoko matsva',
 'youhavenewmessagesmulti' => 'Une mashoko matsva pa$1',
@@ -139,6 +140,9 @@ Akaunzi yako yagadzirwa. Usakanganwe kuchinga mapreferences ako eWikipedia.',
 'mywatchlist'   => 'Zvandakarinda',
 'watch'         => 'Rinda',
 'watchthispage' => 'Ringa peji rino',
+
+# Protect
+'prot_1movedto2' => '[[$1]] rachichinurwa ku [[$2]]',
 
 # Restrictions (nouns)
 'restriction-edit' => 'Chinja',

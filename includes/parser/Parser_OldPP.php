@@ -121,6 +121,7 @@ class Parser_OldPP
 		$this->setFunctionHook( 'numberoffiles',    array( 'CoreParserFunctions', 'numberoffiles'    ), SFH_NO_HASH );
 		$this->setFunctionHook( 'numberofadmins',   array( 'CoreParserFunctions', 'numberofadmins'   ), SFH_NO_HASH );
 		$this->setFunctionHook( 'numberofedits',    array( 'CoreParserFunctions', 'numberofedits'    ), SFH_NO_HASH );
+		$this->setFunctionHook( 'numberofviews',    array( 'CoreParserFunctions', 'numberofviews'    ), SFH_NO_HASH );
 		$this->setFunctionHook( 'language',         array( 'CoreParserFunctions', 'language'         ), SFH_NO_HASH );
 		$this->setFunctionHook( 'padleft',          array( 'CoreParserFunctions', 'padleft'          ), SFH_NO_HASH );
 		$this->setFunctionHook( 'padright',         array( 'CoreParserFunctions', 'padright'         ), SFH_NO_HASH );
@@ -578,6 +579,10 @@ class Parser_OldPP
 					break;
 				default:
 					if( isset( $this->mTagHooks[$tagName] ) ) {
+						# Workaround for PHP bug 35229 and similar
+						if ( !is_callable( $this->mTagHooks[$tagName] ) ) {
+							throw new MWException( "Tag hook for $tagName is not callable\n" );
+						}
 						$output = call_user_func_array( $this->mTagHooks[$tagName],
 							array( $content, $params, $this ) );
 					} else {
@@ -1353,7 +1358,7 @@ class Parser_OldPP
 			# This means that users can paste URLs directly into the text
 			# Funny characters like &ouml; aren't valid in URLs anyway
 			# This was changed in August 2004
-			$s .= $sk->makeExternalLink( $url, $text, false, $linktype, $this->mTitle->getNamespace() ) . $dtrail . $trail;
+			$s .= $sk->makeExternalLink( $url, $text, false, $linktype, $this->getExternalLinkAttribs() ) . $dtrail . $trail;
 
 			# Register link in the output object.
 			# Replace unnecessary URL escape codes with the referenced character
@@ -1364,6 +1369,19 @@ class Parser_OldPP
 
 		wfProfileOut( $fname );
 		return $s;
+	}
+
+	function getExternalLinkAttribs() {
+		$attribs = array();
+		global $wgNoFollowLinks, $wgNoFollowNsExceptions;
+		$ns = $this->mTitle->getNamespace();
+		if( $wgNoFollowLinks && !in_array($ns, $wgNoFollowNsExceptions) ) {
+			$attribs['rel'] = 'nofollow';
+		}
+		if ( $this->mOptions->getExternalLinkTarget() ) {
+			$attribs['target'] = $this->mOptions->getExternalLinkTarget();
+		}
+		return $attribs;
 	}
 
 	/**
@@ -1432,7 +1450,8 @@ class Parser_OldPP
 				$text = $this->maybeMakeExternalImage( $url );
 				if ( $text === false ) {
 					# Not an image, make a link
-					$text = $sk->makeExternalLink( $url, $wgContLang->markNoConversion($url), true, 'free', $this->mTitle->getNamespace() );
+					$text = $sk->makeExternalLink( $url, $wgContLang->markNoConversion($url), true, 'free',
+						$this->getExternalLinkAttribs() );
 					# Register it in the output object...
 					# Replace unnecessary URL escape codes with their equivalent characters
 					$pasteurized = self::replaceUnusualEscapes( $url );
@@ -1495,7 +1514,7 @@ class Parser_OldPP
 		     || ( $imagesexception && strpos( $url, $imagesfrom ) === 0 ) ) {
 			if ( preg_match( self::EXT_IMAGE_REGEX, $url ) ) {
 				# Image found
-				$text = $sk->makeExternalImage( htmlspecialchars( $url ) );
+				$text = $sk->makeExternalImage( $url );
 			}
 		}
 		return $text;
@@ -2544,9 +2563,11 @@ class Parser_OldPP
 			case 'numberofpages':
 				return $varCache[$index] = $wgContLang->formatNum( SiteStats::pages() );
 			case 'numberofadmins':
-				return $varCache[$index]  = $wgContLang->formatNum( SiteStats::admins() );
+				return $varCache[$index]  = $wgContLang->formatNum( SiteStats::numberingroup('sysop') );
 			case 'numberofedits':
 				return $varCache[$index]  = $wgContLang->formatNum( SiteStats::edits() );
+			case 'numberofviews':
+				return $varCache[$index]  = $wgContLang->formatNum( SiteStats::views() );
 			case 'currenttimestamp':
 				return $varCache[$index] = wfTimestampNow();
 			case 'localtimestamp':
@@ -2999,6 +3020,11 @@ class Parser_OldPP
 				if ( $function ) {
 					$funcArgs = array_map( 'trim', $args );
 					$funcArgs = array_merge( array( &$this, trim( substr( $part1, $colonPos + 1 ) ) ), $funcArgs );
+
+					# Workaround for PHP bug 35229 and similar
+					if ( !is_callable( $this->mFunctionHooks[$function] ) ) {
+						throw new MWException( "Function hook for $function is not callable\n" );
+					}
 					$result = call_user_func_array( $this->mFunctionHooks[$function], $funcArgs );
 					$found = true;
 
@@ -3076,7 +3102,7 @@ class Parser_OldPP
 				$titleText = $title->getPrefixedText();
 				# Check for language variants if the template is not found
 				if($wgContLang->hasVariants() && $title->getArticleID() == 0){
-					$wgContLang->findVariantLink($part1, $title);
+					$wgContLang->findVariantLink( $part1, $title, true );
 				}
 
 				if ( !$title->isExternal() ) {
@@ -3887,7 +3913,7 @@ class Parser_OldPP
 	 * @return mixed An expanded string, or false if invalid.
 	 */
 	function validateSig( $text ) {
-		return( wfIsWellFormedXmlFragment( $text ) ? $text : false );
+		return( Xml::isWellFormedXmlFragment( $text ) ? $text : false );
 	}
 
 	/**

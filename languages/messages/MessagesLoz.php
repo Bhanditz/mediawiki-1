@@ -4,11 +4,9 @@
  * @ingroup Language
  * @file
  *
- * @author SF-Language
  * @author Litingatinga Silozi
  * @author Ooswesthoesbes
- * @author Siebrand
- * @author Jon Harald Søby
+ * @author SF-Language
  */
 
 $messages = array(
@@ -48,8 +46,6 @@ $messages = array(
 'underline-always'  => 'Xet',
 'underline-never'   => 'Yexet',
 'underline-default' => 'Pokuhe',
-
-'skinpreview' => '(PendiBe)',
 
 # Dates
 'sunday'        => 'La Pumulo',
@@ -209,13 +205,9 @@ $messages = array(
 'portal-url'           => 'Project:Petulo Bulili',
 'privacy'              => 'Busize likunutu',
 'privacypage'          => 'Project:Busize likunutu',
-'sitesupport'          => 'Adonetarina',
-'sitesupport-url'      => 'Project:Adonetarina',
 
 'badaccess'        => 'Bufosi pemiko',
 'badaccess-group0' => 'Zwa eksyon ni sa di sebelu kwa zwa kattegorina. Kyon ni sa vanu.',
-'badaccess-group1' => 'Zwa eksyon sa di sebelu kwa kattegori $1.',
-'badaccess-group2' => 'Zwa eksyon sa di sebelu kwa 1 di kattegorina $1.',
 'badaccess-groups' => 'Zwa eksyon sa di sebelu kwa 1 di kattegorina $1.',
 
 'versionrequired'     => 'Pane $1 di MediaWiki sa nidyisize',
@@ -402,7 +394,6 @@ A IP sa $3, e ID di bolok sa #$5. Bulelezi IP e ID kwa bukizisize.",
 'blockedoriginalsource'  => "Olige di '''$1''' sa kamukile:",
 'blockededitsource'      => "Selt di '''zwa hloli ye ng'i''' di '''$1''' sa kamukile:",
 'whitelistedittext'      => "A sa $1 di hloli ye ng'i petulo.",
-'whitelistacctitle'      => 'A ni sa di usa di hloli sebelu',
 'nosuchsectiontitle'     => 'Ni di lyangutukezi',
 'loginreqlink'           => 'menuhile',
 'loginreqpagetext'       => 'A sa $1 di kamukile xeti di petulo.',
@@ -430,7 +421,7 @@ Konsidisize takubikinalisize.</strong>",
 'template-protected'     => '(sa bukelezi)',
 'template-semiprotected' => '(bukelezi di pagafi)',
 'nocreatetext'           => '{{SITENAME}} sa simplekile petulo.
-A afi e kenki/[[Special:Userlogin|menuhile]].',
+A afi e kenki/[[Special:UserLogin|menuhile]].',
 'recreate-deleted-warn'  => "'''!: A sa hloli petulo dy sa afi kulobala.'''
 
 A sa luku a kenki dyangitubilinisize petulo.
@@ -443,7 +434,7 @@ Desu dafi kulobala di petulo sa gi di informasi:",
 'viewpagelogs'        => 'Kamukile desu di petulo',
 'currentrev'          => 'Selt nca',
 'revisionasof'        => 'Selt di $1',
-'revision-info'       => 'Selt di $1 di $2',
+'revision-info'       => 'Selt di $1 di $2', # Additionally available: $3: revision id
 'previousrevision'    => '←Kona selt',
 'nextrevision'        => 'Lila selt→',
 'currentrevisionlink' => 'Selt nca',
@@ -504,6 +495,7 @@ Informasi: (bye) = petuho a nca selt,
 'prefsnologin'      => 'Ni menuhile',
 'qbsettings-none'   => 'Ni',
 'skin'              => 'PendiBe',
+'skin-preview'      => 'PendiBe',
 'math'              => 'Mat',
 'dateformat'        => 'Data apukisize',
 'datedefault'       => 'Ni di petohoni di sebelu',
@@ -567,7 +559,7 @@ Informasi: (bye) = petuho a nca selt,
 'uploadbtn'         => 'Imegi uplodezi',
 'reupload'          => 'Uplodezi nca',
 'uploadnologin'     => 'Ni menuhile',
-'uploadnologintext' => 'A sa [[Special:Userlogin|menuhile]]
+'uploadnologintext' => 'A sa [[Special:UserLogin|menuhile]]
 di uplodezi media.',
 'uploaderror'       => 'Bufosi duplodezi',
 'uploadlogpage'     => 'Desu di uplodezi',
@@ -586,7 +578,7 @@ di uplodezi media.',
 
 'license-nopreview' => '(PendiBe di nupdeti)',
 
-# Special:Imagelist
+# Special:ImageList
 'imgfile'        => 'imegi',
 'imagelist'      => 'Mukoloko di imegina',
 'imagelist_user' => 'Sebelu',
@@ -636,9 +628,8 @@ di uplodezi media.',
 'randomredirect' => 'Petulo abezi fona',
 
 # Statistics
-'statistics' => 'Mukoloko di kamukile',
-'sitestats'  => 'Mukoloko di kamukile di {{SITENAME}}',
-'userstats'  => 'Mukoloko di kamukile di sebelu',
+'statistics'              => 'Mukoloko di kamukile',
+'statistics-header-users' => 'Mukoloko di kamukile di sebelu',
 
 'disambiguations' => 'Disamebigasina',
 
@@ -699,9 +690,8 @@ di uplodezi media.',
 'speciallogtitlelabel' => 'Sebu:',
 'log'                  => 'Desuni',
 'all-logs-page'        => 'Xete desu',
-'log-search-submit'    => 'Afi',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Mukoloko di petulo',
 'alphaindexline' => '$1 di $2',
 'nextpage'       => 'Lila petulo ($1)',
@@ -716,7 +706,10 @@ di uplodezi media.',
 # Special:Categories
 'categories' => 'Kattegori',
 
-# Special:Listusers
+# Special:DeletedContributions
+'deletedcontributions' => 'Afina di sebelu bye sa afi kulobala',
+
+# Special:ListUsers
 'listusersfrom'      => 'Kamukile sebelu di:',
 'listusers-submit'   => 'Kamukile',
 'listusers-noresult' => 'Ni-di sebelu.',
@@ -741,10 +734,10 @@ dicon sa sosize ni sa meli di kupo sebelu.',
 'mywatchlist'          => 'Zwa mukoloko di kentezi',
 'watchlistfor'         => "(di '''$1''')",
 'watchnologin'         => 'A ni sa menuhile',
-'watchnologintext'     => "A sa [[Special:Userlogin|menuhile]] di hloli ye ng'i zwa mukoloko di kentezi.",
+'watchnologintext'     => "A sa [[Special:UserLogin|menuhile]] di hloli ye ng'i zwa mukoloko di kentezi.",
 'addedwatch'           => 'Tumbelize a mukoloko di kentezi',
 'addedwatchtext'       => "Petulo \"[[:\$1]]\" sa vugisize di zwa [[Special:Watchlist|mukoloko di kentezi]].
-Petuhoni di bye petulo e sa bulelezi sa mukolokosize ta, e '''ombelu''' kwa [[Special:Recentchanges|petuho nca]] di kwazidisize akusize.
+Petuhoni di bye petulo e sa bulelezi sa mukolokosize ta, e '''ombelu''' kwa [[Special:RecentChanges|petuho nca]] di kwazidisize akusize.
 
 A sa afi kulobala di zwa mukoloko di kentezi, tampi \"ngambu kentezi\".",
 'removedwatch'         => 'Sa afi kulobala di zwa mukoloko di kentezi',
@@ -769,29 +762,34 @@ A sa afi kulobala di zwa mukoloko di kentezi, tampi \"ngambu kentezi\".",
 'changed'                      => 'petuhoni',
 'created'                      => 'hlolini',
 
-# Delete/protect/revert
-'deletepage'                  => 'Afi kulobala petulo',
-'confirm'                     => 'Afi pe',
-'excontent'                   => "Petulo sa ng'i: '$1'",
-'excontentauthor'             => "Petulo sa ng'i: '$1' (sebelu sa ng'i '[[Special:Contributions/$2|$2]]')",
-'exbeforeblank'               => "Petulo sa ng'i blanco: '$1'",
-'exblank'                     => 'petulo sa blanco',
-'historywarning'              => 'Petulo, sa afi kulobala, sa bundau di sebelu:',
-'confirmdeletetext'           => 'A sa afi kulobala petulo e bundau. A sa ukisize a sa ni bufosi e a sa iki di  [[{{MediaWiki:Policy-url}}|polisi]].',
-'actioncomplete'              => 'Sa afi',
-'deletedtext'                 => '"<nowiki>$1</nowiki>" sa afi kulobala. Fatukile $2 di desu di afi kulobala nca.',
-'deletedarticle'              => 'sa afi kulobala "[[$1]]"',
-'dellogpage'                  => 'Desu di afi kulobala',
-'deletecomment'               => 'Lyangutukezi:',
-'deleteotherreason'           => 'Xetewi/ewi lyangutukezi:',
-'deletereasonotherlist'       => 'Xetewi lyangutukezi',
-'rollback'                    => "Afi hlolina ye ng'i lila",
-'rollback_short'              => "Afi hloli ye ng'i lila",
-'rollbacklink'                => "afi hloli ye ng'i lila",
-'rollbackfailed'              => "Bufosi dafi hloli ye ng'i lila",
+# Delete
+'deletepage'            => 'Afi kulobala petulo',
+'confirm'               => 'Afi pe',
+'excontent'             => "Petulo sa ng'i: '$1'",
+'excontentauthor'       => "Petulo sa ng'i: '$1' (sebelu sa ng'i '[[Special:Contributions/$2|$2]]')",
+'exbeforeblank'         => "Petulo sa ng'i blanco: '$1'",
+'exblank'               => 'petulo sa blanco',
+'historywarning'        => 'Petulo, sa afi kulobala, sa bundau di sebelu:',
+'confirmdeletetext'     => 'A sa afi kulobala petulo e bundau. A sa ukisize a sa ni bufosi e a sa iki di  [[{{MediaWiki:Policy-url}}|polisi]].',
+'actioncomplete'        => 'Sa afi',
+'deletedtext'           => '"<nowiki>$1</nowiki>" sa afi kulobala. Fatukile $2 di desu di afi kulobala nca.',
+'deletedarticle'        => 'sa afi kulobala "[[$1]]"',
+'dellogpage'            => 'Desu di afi kulobala',
+'deletecomment'         => 'Lyangutukezi:',
+'deleteotherreason'     => 'Xetewi/ewi lyangutukezi:',
+'deletereasonotherlist' => 'Xetewi lyangutukezi',
+
+# Rollback
+'rollback'       => "Afi hlolina ye ng'i lila",
+'rollback_short' => "Afi hloli ye ng'i lila",
+'rollbacklink'   => "afi hloli ye ng'i lila",
+'rollbackfailed' => "Bufosi dafi hloli ye ng'i lila",
+
+# Protect
 'protectlogpage'              => 'Desu di bukelize',
 'protectedarticle'            => 'sa bukelelize "[[$1]]"',
 'unprotectedarticle'          => 'sa ati-bukelelize "[[$1]]"',
+'prot_1movedto2'              => '[[$1]] nyanganyisize di [[$2]]',
 'protect-legend'              => 'Bukelezi',
 'protectcomment'              => 'Lyangutukezi:',
 'protectexpiry'               => 'Simpekile:',
@@ -810,6 +808,7 @@ Petohoni di petulo <strong>$1</strong> sa:',
 'protect-expiring'            => 'simpekile $1 (UTC)',
 'protect-cascade'             => 'Bukelezi petulo kwa bye petulo (kaskedi)',
 'protect-cantedit'            => "A ni ku hloli a bukelezi di bye petulo, a ni sa tumelelo di hloli ye ng'i.",
+'protect-expiry-options'      => '2 ora:2 hours,1 dia:1 day,3 dia:3 days,1 wiki:1 week,2 wiki:2 weeks,1 muna:1 month,3 muna:3 months,6 muna:6 months,1 anu:1 year,di simuluzi:infinite', # display1:time1,display2:time2,...
 'restriction-type'            => 'Tumelelo:',
 'restriction-level'           => 'Bolok tumelelo:',
 
@@ -856,7 +855,6 @@ Petohoni di petulo <strong>$1</strong> sa:',
 'whatlinkshere'       => "Ling'ki di bye petulo",
 'whatlinkshere-title' => "Petulo bye ling'ki di $1",
 'whatlinkshere-page'  => 'Petulo:',
-'linklistsub'         => "(Mukoloko di ling'kina)",
 'linkshere'           => "Bye petulo ling'ki di '''[[:$1]]''':",
 'nolinkshere'         => "0 petulo ling'ki di '''[[:$1]]'''.",
 'nolinkshere-ns'      => "0 petulo ling'ki di '''[[:$1]]''' bye sa di bye fatukile efro.",
@@ -904,7 +902,6 @@ Teri yaki, a nyanganyisize.",
 'move-watch'       => 'Kentezi bye petulo',
 'movepagebtn'      => 'Nyanganyisize petulo',
 'pagemovedsub'     => 'Nyanganyisize sa afi.',
-'movepage-moved'   => '<big>\'\'\'"$1" sa nyanganyisize di "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'    => 'Petulo zwa nyanganyisize afi sa, e nom sa bufosi. Xete nom sa kulikawi.',
 'talkexists'       => "'''No bufosi di nyanganyisize petulo, bufosi di nyanganyisize bulelezi, tubi hani.'''",
 'movedto'          => 'nyanganyisize di',
@@ -969,7 +966,6 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'tooltip-n-recentchanges'         => 'Mukoloko di petuho nca di wiki.',
 'tooltip-n-randompage'            => 'Apuzi petulo fona',
 'tooltip-n-help'                  => 'Yembani di fatukile.',
-'tooltip-n-sitesupport'           => 'Sepotisize',
 'tooltip-t-whatlinkshere'         => "Mukoloko di xete petulo di wiki bye sa ling'ki",
 'tooltip-t-recentchangeslinked'   => "Petuho nca di petulo sa ling'ki di bye petulo",
 'tooltip-feed-rss'                => 'RSS feed bye petulo',
@@ -1025,7 +1021,7 @@ $1',
 'show-big-image'       => 'Risolusi bakisize',
 'show-big-image-thumb' => '<small>PendiBe: $1 × $2 pixel</small>',
 
-# Special:Newimages
+# Special:NewImages
 'newimages'             => 'Imegina nca',
 'ilsubmit'              => 'Fatukile',
 'sp-newimages-showfrom' => 'Kamukile nca imegi di $1',
@@ -1054,7 +1050,7 @@ Xete ling'ki kwa lina sa konsidisize desepo. Petulo dimedi inlinenikusize.",
 
 # External editor support
 'edit-externally'      => 'Kenki imegi sebilize pagini lakusi',
-'edit-externally-help' => 'Boniselelize [http://meta.wikimedia.org/wiki/Help:External_editors instruksi setup] kwa informasi.',
+'edit-externally-help' => 'Boniselelize [http://www.mediawiki.org/wiki/Manual:External_editors instruksi setup] kwa informasi.',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'xeti',
@@ -1066,16 +1062,8 @@ Xete ling'ki kwa lina sa konsidisize desepo. Petulo dimedi inlinenikusize.",
 # Trackbacks
 'trackbackremove' => ' ([$1 afi kulobala])',
 
-# HTML dump
-'redirectingto' => 'Abezi di [[$1]]...',
-
 # action=purge
 'confirm_purge_button' => 'Afi',
-
-# AJAX search
-'searchcontaining' => "Fatukile di petulo con selt ''$1''.",
-'searchnamed'      => "Fatukile di petulo di sebu ''$1''.",
-'articletitles'    => "Petulo di ''$1''",
 
 # Multipage image navigation
 'imgmultipageprev' => '← kona petulo',

@@ -8,6 +8,7 @@
 /* private */ $wgLanguageNames = array(
 	'aa' => 'Afar',			# Afar
 	'ab' => 'Аҧсуа',	# Abkhaz, should possibly add ' бысжѡа'
+	'ace' => 'Achèh',	# Aceh
 	'af' => 'Afrikaans',	# Afrikaans
 	'ak' => 'Akan',		# Akan
 	'aln' => 'Gegë',	# Gheg Albanian
@@ -23,7 +24,7 @@
 	'ast' => 'Asturianu',	# Asturian
 	'av' => 'Авар',	# Avar
 	'avk' => 'Kotava', # Kotava
-	'ay' => 'Aymar',		# Aymara, should possibly be Aymará
+	'ay' => 'Aymar aru',	# Aymara
 	'az' => 'Azərbaycan',	# Azerbaijani
 	'ba' => 'Башҡорт',	# Bashkir
 	'bar' => 'Boarisch',	# Bavarian (Austro-Bavarian and South Tyrolean)
@@ -40,6 +41,7 @@
 	'bn' => 'বাংলা',	# Bengali
 	'bo' => 'བོད་ཡིག',	# Tibetan
 	'bpy' => 'ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী',	# Bishnupriya Manipuri
+	'bqi' => 'بختياري',	# Bakthiari
 	'br' => 'Brezhoneg',	# Breton
 	'bs' => 'Bosanski',		# Bosnian
 	'bto' => 'Iriga Bicolano',		# Iriga Bicolano/Rinconada Bikol
@@ -61,7 +63,7 @@
 	'crh-cyrl' => "\xE2\x80\xAAКъырымтатарджа (Кирилл)\xE2\x80\xAC",       # Crimean Tatar (Cyrillic)
 	'cs' => 'Česky',	# Czech
 	'csb' => 'Kaszëbsczi',	# Cassubian
-	'cu' => 'Словѣньскъ', 	# Old Church Slavonic (ancient language)
+	'cu' => 'Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ', 	# Old Church Slavonic (ancient language)
 	'cv' => 'Чăвашла',	# Chuvash
 	'cy' => 'Cymraeg',		# Welsh
 	'da' => 'Dansk',		# Danish
@@ -189,6 +191,7 @@
 	'mdf' => 'Мокшень',		# Moksha
 	'mg' => 'Malagasy',		# Malagasy
 	'mh' => 'Ebon',			# Marshallese
+	'mhr' => 'Олык Марий',	# Eastern Mari
 	'mi' => 'Māori',	# Maori
 	'mk' => 'Македонски',	# Macedonian
 	'ml' => 'മലയാളം',	# Malayalam
@@ -202,8 +205,8 @@
 	'my' => 'Myanmasa',		# Burmese
 	'myv' => 'Эрзянь',         # Erzya
 	'mzn' => 'مَزِروني',		# Mazanderani
-	'na' => 'Ekakairũ Naoero',		# Nauruan
-	'nah' => 'Nahuatl',		# Nahuatl, en:Wikipedia writes Nahuatlahtolli, while another form is Náhuatl
+	'na' => 'Dorerin Naoero',		# Nauruan
+	'nah' => 'Nāhuatl',		# Nahuatl, en:Wikipedia writes Nahuatlahtolli, while another form is Náhuatl
 	'nan' => 'Bân-lâm-gú', # Min-nan -- (bug 8217) nan instead of zh-min-nan, http://www.sil.org/iso639-3/codes.asp?order=639_3&letter=n
 	'nap' => 'Nnapulitano',	# Neapolitan
 	'nb' => "\xE2\x80\xAANorsk (bokmål)\xE2\x80\xAC",		# Norwegian (Bokmal)
@@ -225,7 +228,7 @@
 	'om' => 'Oromoo', 		# Oromo
 	'or' => 'ଓଡ଼ିଆ',		# Oriya
 	'os' => 'Иронау', # Ossetic
-	'pa' => 'ਪੰਜਾਬੀ', # Punjabi
+	'pa' => 'ਪੰਜਾਬੀ', # Eastern Punjabi (pan)
 	'pag' => 'Pangasinan',	# Pangasinan
 	'pam' => 'Kapampangan',   # Pampanga
 	'pap' => 'Papiamentu',	# Papiamentu
@@ -242,6 +245,7 @@
 	'pt' => 'Português',	# Portuguese
 	'pt-br' => 'Português do Brasil',	# Brazilian Portuguese
 	'qu' => 'Runa Simi',	# Quechua
+	'rif' => 'Tarifit',	# Tarifit
 	'rm' => 'Rumantsch',	# Raeto-Romance
 	'rmy' => 'Romani',	# Vlax Romany
 	'rn' => 'Kirundi',		# Rundi/Kirundi/Urundi
@@ -271,7 +275,7 @@
 	'sk' => 'Slovenčina',	# Slovak
 	'sl' => 'Slovenščina',	# Slovenian
 	'sm' => 'Gagana Samoa',	# Samoan
-	'sma' => 'Åarjelsaemien gïele',	# Southern Sami
+	'sma' => 'Åarjelsaemien',	# Southern Sami
 	'sn' => 'chiShona',		# Shona
 	'so' => 'Soomaaliga',	# Somali
 	'sq' => 'Shqip',		# Albanian
@@ -287,15 +291,16 @@
 	'sw' => 'Kiswahili',	# Swahili
 	'szl' => 'Ślůnski',	# Silesian
 	'ta' => 'தமிழ்',	# Tamil
+	'tcy' => 'ತುಳು', # Tulu
 	'te' => 'తెలుగు',	# Telugu
 	'tet' => 'Tetun',	# Tetun
-	'tg' => 'Тоҷикӣ/tojikī',	# Tajiki (falls back to tg-cyrl)
+	'tg' => 'Тоҷикӣ',	# Tajiki (falls back to tg-cyrl)
 	'tg-cyrl' => 'Тоҷикӣ',	# Tajiki (Cyrllic script) (default)
 	'tg-latn' => 'tojikī',	# Tajiki (Latin script)
 	'th' => 'ไทย',	# Thai
 	'ti' => 'ትግርኛ',		# Tigrinya
 	'tk' => 'Türkmen',	# Turkmen
-	'tl' => 'Tagalog',		# Tagalog (Filipino)
+	'tl' => 'Tagalog',		# Tagalog
 	#'tlh' => 'tlhIngan-Hol',	# Klingon - no interlanguage links allowed
 	'tn' => 'Setswana',		# Setswana
 	'to' => 'faka-Tonga',		# Tonga (Tonga Islands)
@@ -336,14 +341,16 @@
 	'za' => '(Cuengh)',		# Zhuang
 	'zea' => 'Zeêuws',	# Zeeuws/Zeaws
 	'zh' => '中文',						# (Zhōng Wén) - Chinese
-	'zh-classical' => '古文 / 文言文',			# Classical Chinese/Literary Chinese
+	'zh-classical' => '文言',			# Classical Chinese/Literary Chinese
 	'zh-cn' => "\xE2\x80\xAA中文(中国大陆)\xE2\x80\xAC",	# Chinese (PRC)
 	'zh-hans' => "\xE2\x80\xAA中文(简体)\xE2\x80\xAC",	# Chinese written using the Simplified Chinese script
 	'zh-hant' => "\xE2\x80\xAA中文(繁體)\xE2\x80\xAC",	# Chinese written using the Traditional Chinese script
-	'zh-hk' => "\xE2\x80\xAA中文(香港)\xE2\x80\xAC",		# Chinese (Hong Kong)
+	'zh-hk' => "\xE2\x80\xAA中文(香港)\xE2\x80\xAC",	# Chinese (Hong Kong)
 	'zh-min-nan' => 'Bân-lâm-gú', 				# Min-nan -- (see bug 8217)
+	'zh-mo' => "\xE2\x80\xAA中文(澳門)\xE2\x80\xAC",	# Chinese (Macau)
+	'zh-my' => "\xE2\x80\xAA中文(马来西亚)\xE2\x80\xAC",	# Chinese (Malaysia)
 	'zh-sg' => "\xE2\x80\xAA中文(新加坡)\xE2\x80\xAC", 	# Chinese (Singapore)
-	'zh-tw' => "\xE2\x80\xAA中文(台灣)\xE2\x80\xAC",		# Chinese (Taiwan)
+	'zh-tw' => "\xE2\x80\xAA中文(台灣)\xE2\x80\xAC",	# Chinese (Taiwan)
 	'zh-yue' => '粵語',					# Cantonese -- (see bug 8217)
 	'zu' => 'isiZulu'		# Zulu
 );

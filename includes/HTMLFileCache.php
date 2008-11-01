@@ -114,13 +114,17 @@ class HTMLFileCache {
 		$mydir2=substr($filename,0,strrpos($filename,'/')); # subdirectory level 2
 		$mydir1=substr($mydir2,0,strrpos($mydir2,'/')); # subdirectory level 1
 
-		if(!file_exists($mydir1)) { mkdir($mydir1,0775); } # create if necessary
-		if(!file_exists($mydir2)) { mkdir($mydir2,0775); }
+		wfMkdirParents( $mydir1 );
+		wfMkdirParents( $mydir2 );
 	}
 
 	function saveToFileCache( $origtext ) {
+		global $wgUseFileCache;
+		if( !$wgUseFileCache ) {
+			return $origtext; // return to output
+		}
 		$text = $origtext;
-		if(strcmp($text,'') == 0) return '';
+		if( strcmp($text,'') == 0 ) return '';
 
 		wfDebug(" saveToFileCache()\n", false);
 

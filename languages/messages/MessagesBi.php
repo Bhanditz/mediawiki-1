@@ -1,8 +1,9 @@
 <?php
-/** Bislama
+/** Bislama (Bislama)
  *
  * @ingroup Language
  * @file
+ *
  * @author Ushanka
  */
 
@@ -88,7 +89,7 @@ $messages = array(
 # Preferences page
 'servertime' => 'Taem blong server',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist_name' => 'Nem',
 
 # Miscellaneous special pages
@@ -96,12 +97,12 @@ $messages = array(
 'longpages'  => 'Ol big pej',
 'newpages'   => 'Ol niu pej',
 
-# Special:Allpages
+# Special:AllPages
 'allarticles' => 'Olgeta atikel',
 
 # E-mail user
 'emailfrom' => 'Kam long',
-'emailto'   => 'Go long',
+'emailto'   => 'Go long:',
 
 # Contributions
 'year' => 'Yia:',
@@ -122,7 +123,7 @@ $messages = array(
 'tooltip-n-mainpage' => 'Go long Nambawan Pej',
 'tooltip-minoredit'  => 'Em i stap wan smol jenis',
 
-# Special:Newimages
+# Special:NewImages
 'showhidebots' => '($1 bot)',
 
 # EXIF tags

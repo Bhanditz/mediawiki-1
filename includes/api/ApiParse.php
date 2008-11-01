@@ -53,6 +53,7 @@ class ApiParse extends ApiBase {
 		$popts = new ParserOptions();
 		$popts->setTidy(true);
 		$popts->enableLimitReport();
+		$redirValues = null;
 		if(!is_null($oldid) || !is_null($page))
 		{
 			if(!is_null($oldid))
@@ -63,23 +64,41 @@ class ApiParse extends ApiBase {
 					$this->dieUsage("There is no revision ID $oldid", 'missingrev');
 				if(!$rev->userCan(Revision::DELETED_TEXT))
 					$this->dieUsage("You don't have permission to view deleted revisions", 'permissiondenied');
-				$text = $rev->getRawText();
+				$text = $rev->getText( Revision::FOR_THIS_USER );
 				$titleObj = $rev->getTitle();
 				$p_result = $wgParser->parse($text, $titleObj, $popts);
 			}
 			else
 			{
-				$titleObj = Title::newFromText($page);
+				if($params['redirects'])
+				{
+					$req = new FauxRequest(array(
+						'action' => 'query',
+						'redirects' => '',
+						'titles' => $page
+					));
+					$main = new ApiMain($req);
+					$main->execute();
+					$data = $main->getResultData();
+					$redirValues = @$data['query']['redirects'];
+					$to = $page;
+					foreach((array)$redirValues as $r)
+						$to = $r['to'];
+				}
+				else
+					$to = $page; 
+				$titleObj = Title::newFromText($to);
 				if(!$titleObj)
 					$this->dieUsage("The page you specified doesn't exist", 'missingtitle');
 
-				// Try the parser cache first
 				$articleObj = new Article($titleObj);
 				if(isset($prop['revid']))
 					$oldid = $articleObj->getRevIdFetched();
+				// Try the parser cache first
 				$pcache = ParserCache::singleton();
 				$p_result = $pcache->get($articleObj, $wgUser);
-				if(!$p_result) {
+				if(!$p_result)
+				{
 					$p_result = $wgParser->parse($articleObj->getContent(), $titleObj, $popts);
 					global $wgUseParserCache;
 					if($wgUseParserCache)
@@ -98,6 +117,8 @@ class ApiParse extends ApiBase {
 		// Return result
 		$result = $this->getResult();
 		$result_array = array();
+		if($params['redirects'] && !is_null($redirValues))
+			$result_array['redirects'] = $redirValues;
 		if(isset($prop['text'])) {
 			$result_array['text'] = array();
 			$result->setContent($result_array['text'], $p_result->getText());
@@ -116,10 +137,11 @@ class ApiParse extends ApiBase {
 			$result_array['externallinks'] = array_keys($p_result->getExternalLinks());
 		if(isset($prop['sections']))
 			$result_array['sections'] = $p_result->getSections();
-		if($oldid !== false)
+		if(!is_null($oldid))
 			$result_array['revid'] = $oldid;
 
 		$result_mapping = array(
+			'redirects' => 'r',
 			'langlinks' => 'll',
 			'categories' => 'cl',
 			'links' => 'pl',
@@ -184,6 +206,7 @@ class ApiParse extends ApiBase {
 			),
 			'text' => null,
 			'page' => null,
+			'redirects' => false,
 			'oldid' => null,
 			'prop' => array(
 				ApiBase :: PARAM_DFLT => 'text|langlinks|categories|links|templates|images|externallinks|sections|revid',
@@ -206,6 +229,7 @@ class ApiParse extends ApiBase {
 	public function getParamDescription() {
 		return array (
 			'text' => 'Wikitext to parse',
+			'redirects' => 'If the page parameter is set to a redirect, resolve it',
 			'title' => 'Title of page the text belongs to',
 			'page' => 'Parse the content of this page. Cannot be used together with text and title',
 			'oldid' => 'Parse the content of this revision. Overrides page',

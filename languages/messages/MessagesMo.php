@@ -10,6 +10,12 @@
 
 $fallback = 'ro';
 
+$specialPageAliases = array(
+	'CreateAccount'             => array( 'КреареКонт' ),
+	'Preferences'               => array( 'Преферинце' ),
+	'Recentchanges'             => array( 'Модификэрьреченте' ),
+);
+
 $messages = array(
 # Dates
 'sun'       => 'Дум',
@@ -120,7 +126,7 @@ $messages = array(
 # Miscellaneous special pages
 'nbytes' => '{{PLURAL:$1|ун октет|$1 октець}}',
 
-# Special:Allpages
+# Special:AllPages
 'alphaindexline' => '$1 пынэ ла $2',
 
 # Watchlist
@@ -154,7 +160,6 @@ $messages = array(
 'tooltip-n-recentchanges' => 'Листа ултимелор скимбэрь реализате ын ачест вики.',
 'tooltip-n-randompage'    => 'Мерӂе спре о паӂинэ алятоаре',
 'tooltip-n-help'          => 'Локул ын каре гэсешть ажутор.',
-'tooltip-n-sitesupport'   => 'Сприжиниць-не',
 'tooltip-t-whatlinkshere' => 'Листа тутурор паӂинилор вики каре кондук спре ачастэ паӂинэ',
 'tooltip-t-upload'        => 'Тримите имаӂинь сау фишиере медия',
 'tooltip-t-specialpages'  => 'Листа тутурор паӂинилор де сервичиу',

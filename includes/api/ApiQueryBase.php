@@ -126,13 +126,19 @@ abstract class ApiQueryBase extends ApiBase {
 	 * Clauses can be formatted as 'foo=bar' or array('foo' => 'bar'),
 	 * the latter only works if the value is a constant (i.e. not another field)
 	 *
+	 * If $value is an empty array, this function does nothing.
+	 *
 	 * For example, array('foo=bar', 'baz' => 3, 'bla' => 'foo') translates
 	 * to "foo=bar AND baz='3' AND bla='foo'"
 	 * @param mixed $value String or array
 	 */
 	protected function addWhere($value) {
-		if (is_array($value))
-			$this->where = array_merge($this->where, $value);
+		if (is_array($value)) {
+			// Sanity check: don't insert empty arrays,
+			// Database::makeList() chokes on them
+			if ( count( $value ) )
+				$this->where = array_merge($this->where, $value);
+		}
 		else
 			$this->where[] = $value;
 	}
@@ -154,10 +160,12 @@ abstract class ApiQueryBase extends ApiBase {
 	/**
 	 * Equivalent to addWhere(array($field => $value))
 	 * @param string $field Field name
-	 * @param string $value Value; ignored if nul;
+	 * @param string $value Value; ignored if null or empty array;
 	 */
 	protected function addWhereFld($field, $value) {
-		if (!is_null($value))
+		// Use count() to its full documented capabilities to simultaneously 
+		// test for null, empty array or empty countable object
+		if ( count( $value ) )
 			$this->where[$field] = $value;
 	}
 
@@ -319,14 +327,18 @@ abstract class ApiQueryBase extends ApiBase {
 	}
 
 	/**
-	 * This is a very simplistic utility function
-	 * to convert a non-namespaced title string to a db key.
-	 * It will replace all ' ' with '_'
+	 * Convert a title to a DB key
 	 * @param string $title Page title with spaces
 	 * @return string Page title with underscores
 	 */
-	public static function titleToKey($title) {
-		return str_replace(' ', '_', $title);
+	public function titleToKey($title) {
+		# Don't throw an error if we got an empty string
+		if(trim($title) == '')
+			return '';
+		$t = Title::newFromText($title);
+		if(!$t)
+			$this->dieUsageMsg(array('invalidtitle', $title));
+		return $t->getDbKey();
 	}
 
 	/**
@@ -334,33 +346,33 @@ abstract class ApiQueryBase extends ApiBase {
 	 * @param string $key Page title with underscores
 	 * @return string Page title with spaces
 	 */
-	public static function keyToTitle($key) {
-		return str_replace('_', ' ', $key);
+	public function keyToTitle($key) {
+		# Don't throw an error if we got an empty string
+		if(trim($key) == '')
+			return '';
+		$t = Title::newFromDbKey($key);
+		# This really shouldn't happen but we gotta check anyway
+		if(!$t)
+			$this->dieUsageMsg(array('invalidtitle', $key));
+		return $t->getPrefixedText();
 	}
-
+	
 	/**
-	 * Check whether the current user requested a certain token and 
-	 * is actually allowed to request it.
-	 * @param array $tokenArr Array of tokens the user requested
-	 * @param string $action Action to check for
-	 * @return bool true if the user requested the token and is allowed to, false otherwise
+	 * An alternative to titleToKey() that doesn't trim trailing spaces
+	 * @param string $titlePart Title part with spaces
+	 * @return string Title part with underscores
 	 */
-	public function getTokenFlag($tokenArr, $action) {
-		if ($this->getMain()->getRequest()->getVal('callback') !== null) {
-			// Don't do any session-specific data.
-			return false;
-		}
-		if (in_array($action, $tokenArr)) {
-			global $wgUser;
-			if ($wgUser->isAllowed($action))
-				return true;
-			else
-			{
-				$this->setWarning("Action '$action' is not allowed for the current user");
-				return false;
-			}
-		}
-		return false;
+	public function titlePartToKey($titlePart) {
+		return substr($this->titleToKey($titlePart . 'x'), 0, -1);
+	}
+	
+	/**
+	 * An alternative to keyToTitle() that doesn't trim trailing spaces
+	 * @param string $keyPart Key part with spaces
+	 * @return string Key part with underscores
+	 */
+	public function keyPartToTitle($keyPart) {
+		return substr($this->keyToTitle($keyPart . 'x'), 0, -1);
 	}
 
 	/**

@@ -5,7 +5,6 @@
  * @file
  *
  * @author Рустам Нурыев
- * @author Siebrand
  */
 
 $fallback = 'ru';
@@ -149,8 +148,6 @@ $messages = array(
 'portal'               => 'Берләшмә',
 'portal-url'           => 'Project:Берләшмә ҡоро',
 'privacy'              => 'Сер һаҡлау сәйәсәте',
-'sitesupport'          => 'Ярҙам итеү',
-'sitesupport-url'      => 'Project:Эскерһеҙ ярҙам',
 
 'editsection' => 'үҙгәртергә',
 'toc'         => 'Эстәлеге',
@@ -228,7 +225,7 @@ $messages = array(
 # Recent changes linked
 'recentchangeslinked' => 'Бәйле үҙгәртеүҙәр',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist_user' => 'Ҡатнашыусы',
 
 # MIME search
@@ -240,9 +237,6 @@ $messages = array(
 # Random page
 'randompage' => 'Осраҡлы мәҡәлә',
 
-# Statistics
-'userstatstext' => "Бөтәһе '''$1''' ҡатнашыусы теркәлгән, шуларҙан '''$2''' ($4 %) хәким бурыстарын үтәй.",
-
 # Miscellaneous special pages
 'listusers'         => 'Ҡатнашыусылар исемлеге',
 'newpages-username' => 'Ҡатнашыусы:',
@@ -252,7 +246,7 @@ $messages = array(
 # Special:Log
 'specialloguserlabel' => 'Ҡатнашыусы:',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'          => 'Бөтә биттәр',
 'alphaindexline'    => '$1 алып $2 тиклем',
 'allpagesfrom'      => 'Ошондай хәрефтәрҙән башланған биттәрҙе күрһәтергә:',
@@ -263,10 +257,13 @@ $messages = array(
 'allpagesnext'      => 'Киләһе',
 'allpagessubmit'    => 'Үтәргә',
 
+# Special:DeletedContributions
+'deletedcontributions' => 'Ҡулланыусыларҙың юйылған өлөшө',
+
 # E-mail user
 'emailuser'    => 'Ҡатнашыусыға хат',
 'emailfrom'    => 'Кемдән',
-'emailto'      => 'Кемгә',
+'emailto'      => 'Кемгә:',
 'emailmessage' => 'Хәбәр',
 
 # Watchlist
@@ -281,7 +278,7 @@ $messages = array(
 'enotif_newpagetext' => 'Был яңы бит.',
 'changed'            => 'үҙгәртелгән',
 
-# Delete/protect/revert
+# Delete
 'actioncomplete' => 'Ғәмәл үтәлде',
 
 # Namespace form on various pages

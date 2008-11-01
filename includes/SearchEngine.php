@@ -98,19 +98,6 @@ class SearchEngine {
 				return $title;
 			}
 
-			global $wgCapitalLinks, $wgContLang;
-			if( !$wgCapitalLinks ) {
-				// Catch differs-by-first-letter-case-only
-				$title = Title::newFromText( $wgContLang->ucfirst( $term ) );
-				if ( $title && $title->exists() ) {
-					return $title;
-				}
-				$title = Title::newFromText( $wgContLang->lcfirst( $term ) );
-				if ( $title && $title->exists() ) {
-					return $title;
-				}
-			}
-
 			// Give hooks a chance at better match variants
 			$title = null;
 			if( !wfRunHooks( 'SearchGetNearMatch', array( $term, &$title ) ) ) {
@@ -293,19 +280,14 @@ class SearchEngine {
 	 * @return SearchEngine
 	 */
 	public static function create() {
-		global $wgDBtype, $wgSearchType;
+		global $wgSearchType;
+		$dbr = wfGetDB( DB_SLAVE );
 		if( $wgSearchType ) {
 			$class = $wgSearchType;
-		} elseif( $wgDBtype == 'mysql' ) {
-			$class = 'SearchMySQL';
-		} else if ( $wgDBtype == 'postgres' ) {
-			$class = 'SearchPostgres';
-		} else if ( $wgDBtype == 'oracle' ) {
-			$class = 'SearchOracle';
 		} else {
-			$class = 'SearchEngineDummy';
+			$class = $dbr->getSearchEngine();
 		}
-		$search = new $class( wfGetDB( DB_SLAVE ) );
+		$search = new $class( $dbr );
 		$search->setLimitOffset(0,0);
 		return $search;
 	}
@@ -494,6 +476,9 @@ class SearchResultTooMany {
 
 
 /**
+ * @fixme This class is horribly factored. It would probably be better to have
+ * a useful base class to which you pass some standard information, then let
+ * the fancy self-highlighters extend that.
  * @ingroup Search
  */
 class SearchResult {
@@ -756,13 +741,12 @@ class SearchHighlighter {
 		
 		// prepare regexps
 		foreach( $terms as $index => $term ) {
-			$terms[$index] = preg_quote( $term, '/' );			
 			// manually do upper/lowercase stuff for utf-8 since PHP won't do it
 			if(preg_match('/[\x80-\xff]/', $term) ){
 				$terms[$index] = preg_replace_callback('/./us',array($this,'caseCallback'),$terms[$index]);
+			} else {
+				$terms[$index] = $term;
 			}
-			
-			
 		}
 		$anyterm = implode( '|', $terms );
 		$phrase = implode("$wgSearchHighlightBoundaries+", $terms );
@@ -1092,11 +1076,10 @@ class SearchHighlighter {
     public function highlightSimple( $text, $terms, $contextlines, $contextchars ) {
         global $wgLang, $wgContLang;
         $fname = __METHOD__;
-    
+
         $lines = explode( "\n", $text );
         
         $terms = implode( '|', $terms );
-        $terms = str_replace( '/', "\\/", $terms);
         $max = intval( $contextchars ) + 1;
         $pat1 = "/(.*)($terms)(.{0,$max})/i";
 
@@ -1139,16 +1122,11 @@ class SearchHighlighter {
 }
 
 /**
+ * Dummy class to be used when non-supported Database engine is present.
+ * @fixme Dummy class should probably try something at least mildly useful,
+ * such as a LIKE search through titles.
  * @ingroup Search
  */
-class SearchEngineDummy {
-	function search( $term ) {
-		return null;
-	}
-	function setLimitOffset($l, $o) {}
-	function legalSearchChars() {}
-	function update() {}
-	function setnamespaces() {}
-	function searchtitle() {}
-	function searchtext() {}
+class SearchEngineDummy extends SearchEngine {
+	// no-op
 }

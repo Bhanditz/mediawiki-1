@@ -52,9 +52,6 @@ class FeedItem {
 		$this->Comments = $Comments;
 	}
 
-	/**
-	 * @static
-	 */
 	function xmlEncode( $string ) {
 		$string = str_replace( "\r\n", "\n", $string );
 		$string = preg_replace( '/[\x00-\x08\x0b\x0c\x0e-\x1f]/', '', $string );
@@ -149,7 +146,7 @@ class ChannelFeed extends FeedItem {
 		global $wgStylePath, $wgStyleVersion;
 
 		$this->httpHeaders();
-		echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
+		echo '<?xml version="1.0"?>' . "\n";
 		echo '<?xml-stylesheet type="text/css" href="' .
 			htmlspecialchars( wfExpandUrl( "$wgStylePath/common/feed.css?$wgStyleVersion" ) ) .
 			'"?' . ">\n";

@@ -143,6 +143,11 @@ $wgMysqlUpdates = array(
 	array( 'maybe_do_profiling_memory_update' ),
 	array( 'do_filearchive_indices_update' ),
 	array( 'update_password_format' ),
+	
+	// 1.14
+	array( 'add_field', 'site_stats',     'ss_active_users',  'patch-ss_active_users.sql' ),
+	array( 'do_active_users_init' ),
+	array( 'add_field', 'ipblocks',     'ipb_allow_usertalk',  'patch-ipb_allow_usertalk.sql' )
 );
 
 
@@ -555,7 +560,7 @@ function do_schema_restructuring() {
   			UNIQUE INDEX name_title (page_namespace,page_title),
   			INDEX (page_random),
   			INDEX (page_len)
-			) TYPE=InnoDB", $fname );
+			) ENGINE=InnoDB", $fname );
 		$wgDatabase->query("CREATE TABLE $revision (
   			rev_id int(8) unsigned NOT NULL auto_increment,
   			rev_page int(8) unsigned NOT NULL,
@@ -573,7 +578,7 @@ function do_schema_restructuring() {
   			INDEX page_timestamp (rev_page,rev_timestamp),
   			INDEX user_timestamp (rev_user,rev_timestamp),
   			INDEX usertext_timestamp (rev_user_text,rev_timestamp)
-			) TYPE=InnoDB", $fname );
+			) ENGINE=InnoDB", $fname );
 
 		echo wfTimestamp( TS_DB );
 		echo "......Locking tables.\n";
@@ -1015,13 +1020,32 @@ function do_stats_init() {
 	$row = $wgDatabase->selectRow( 'site_stats', '*', array( 'ss_row_id' => 1 ), __METHOD__ );
 	if( $row === false ) {
 		echo "data is missing! rebuilding...\n";
-		
-		global $IP;
-		require_once "$IP/maintenance/initStats.inc";
-		wfInitStats();
+	} elseif ( isset( $row->site_stats ) && $row->ss_total_pages == -1 ) {
+		echo "missing ss_total_pages, rebuilding...\n";
 	} else {
 		echo "ok.\n";
+		return;
 	}
+
+	global $IP;
+	require_once "$IP/maintenance/initStats.inc";
+	wfInitStats();
+}
+
+function do_active_users_init() {
+	global $wgDatabase;
+	$activeUsers = $wgDatabase->selectField( 'site_stats', 'ss_active_users', false, __METHOD__ );
+	if( $activeUsers == -1 ) {
+		$activeUsers = $wgDatabase->selectField( 'recentchanges', 
+			'COUNT( DISTINCT rc_user_text )',
+			array( 'rc_user != 0', 'rc_bot' => 0, "rc_log_type != 'newusers'" ), __METHOD__ 
+		);
+		$wgDatabase->update( 'site_stats', 
+			array( 'ss_active_users' => intval($activeUsers) ),
+			array( 'ss_row_id' => 1 ), __METHOD__, array( 'LIMIT' => 1 )
+		);
+	}
+	echo( "...ss_active_users user count set...\n" );
 }
 
 function purge_cache() {
@@ -1034,11 +1058,11 @@ function purge_cache() {
 }
 
 function do_all_updates( $shared = false, $purge = true ) {
-	global $wgNewTables, $wgNewFields, $wgRenamedTables, $wgSharedDB, $wgDatabase, $wgDBtype, $IP;
+	global $wgNewTables, $wgNewFields, $wgRenamedTables, $wgSharedDB, $wgSharedTables, $wgDatabase, $wgDBtype, $IP;
 
 	wfRunHooks('LoadExtensionSchemaUpdates');
 
-	$doUser = !$wgSharedDB || $shared;
+	$doUser = $shared ? $wgSharedDB && in_array('user', $wgSharedTables) : !$wgSharedDB || !in_array('user', $wgSharedTables);
 
 	if ($wgDBtype === 'postgres') {
 		do_postgres_updates();
@@ -1433,12 +1457,13 @@ function do_postgres_updates() {
 		array("archive",       "ar_page_id",           "INTEGER"),
 		array("archive",       "ar_parent_id",         "INTEGER"),
 		array("image",         "img_sha1",             "TEXT NOT NULL DEFAULT ''"),
-		array("ipblocks",      "ipb_anon_only",        "CHAR NOT NULL DEFAULT '0'"),
+		array("ipblocks",      "ipb_anon_only",        "SMALLINT NOT NULL DEFAULT 0"),
 		array("ipblocks",      "ipb_by_text",          "TEXT NOT NULL DEFAULT ''"),
-		array("ipblocks",      "ipb_block_email",      "CHAR NOT NULL DEFAULT '0'"),
-		array("ipblocks",      "ipb_create_account",   "CHAR NOT NULL DEFAULT '1'"),
+		array("ipblocks",      "ipb_block_email",      "SMALLINT NOT NULL DEFAULT 0"),
+		array("ipblocks",      "ipb_create_account",   "SMALLINT NOT NULL DEFAULT 1"),
 		array("ipblocks",      "ipb_deleted",          "SMALLINT NOT NULL DEFAULT 0"),
-		array("ipblocks",      "ipb_enable_autoblock", "CHAR NOT NULL DEFAULT '1'"),
+		array("ipblocks",      "ipb_enable_autoblock", "SMALLINT NOT NULL DEFAULT 1"),
+		array("ipblocks",      "ipb_allow_usertalk",   "SMALLINT NOT NULL DEFAULT 0"),
 		array("filearchive",   "fa_deleted",           "SMALLINT NOT NULL DEFAULT 0"),
 		array("logging",       "log_deleted",          "SMALLINT NOT NULL DEFAULT 0"),
 		array("logging",       "log_id",               "INTEGER NOT NULL PRIMARY KEY DEFAULT nextval('log_log_id_seq')"),
@@ -1463,6 +1488,8 @@ function do_postgres_updates() {
 		array("revision",      "rev_len",              "INTEGER"),
 		array("revision",      "rev_deleted",          "SMALLINT NOT NULL DEFAULT 0"),
 		array("user_newtalk",  "user_last_timestamp",  "TIMESTAMPTZ"),
+		array("site_stats",    "ss_active_users",      "INTEGER DEFAULT '-1'"),
+		array("revision",      "rev_parent_id",        "INTEGER DEFAULT NULL"),
 	);
 
 
@@ -1496,6 +1523,7 @@ function do_postgres_updates() {
 		array("mwuser",       "user_email_token","text",     ""),
 		array("objectcache",  "keyname",         "text",     ""),
 		array("oldimage",     "oi_height",       "integer",  ""),
+		array("oldimage",     "oi_metadata",     "bytea",    "decode(img_metadata,'escape')"),
 		array("oldimage",     "oi_size",         "integer",  ""),
 		array("oldimage",     "oi_width",        "integer",  ""),
 		array("page",         "page_is_redirect","smallint", "page_is_redirect::smallint DEFAULT 0"),
@@ -1515,10 +1543,13 @@ function do_postgres_updates() {
 	);
 
 	$newindexes = array(
-		array("archive",       "archive_user_text", "(ar_user_text)"),
-		array("image",         "img_sha1",          "(img_sha1)"),
-		array("oldimage",      "oi_sha1",           "(oi_sha1)"),
-		array("revision",      "rev_text_id_idx",   "(rev_text_id)"),
+		array("archive",       "archive_user_text",  "(ar_user_text)"),
+		array("image",         "img_sha1",           "(img_sha1)"),
+		array("oldimage",      "oi_sha1",            "(oi_sha1)"),
+		array("revision",      "rev_text_id_idx",    "(rev_text_id)"),
+		array("recentchanges", "rc_timestamp_nobot", "(rc_timestamp) WHERE rc_bot = 0"),
+		array("templatelinks", "templatelinks_from", "(tl_from)"),
+		array("watchlist",     "wl_user",            "(wl_user)"),
 	);
 
 	$newrules = array(
@@ -1663,7 +1694,7 @@ function do_postgres_updates() {
 		$wgDatabase->query("CREATE UNIQUE INDEX pagelink_unique ON pagelinks (pl_from,pl_namespace,pl_title)");
 	}
 	else
-		echo "... index \"pagelink_unique_index\" aready exists\n";
+		echo "... index \"pagelink_unique_index\" already exists\n";
 
 	if (pg_fkey_deltype("revision_rev_user_fkey") == 'r') {
 		echo "... constraint \"revision_rev_user_fkey\" is ON DELETE RESTRICT\n";
@@ -1671,6 +1702,19 @@ function do_postgres_updates() {
 	else {
 		echo "Changing constraint \"revision_rev_user_fkey\" to ON DELETE RESTRICT\n";
 		dbsource(archive('patch-revision_rev_user_fkey.sql'));
+	}
+
+	# Fix ipb_address index
+	if (pg_index_exists('ipblocks', 'ipb_address' )) {
+		echo "Removing deprecated index 'ipb_address'...\n";
+		$wgDatabase->query('DROP INDEX ipb_address');
+	}
+	if (pg_index_exists('ipblocks', 'ipb_address_unique' )) {
+		echo "... have ipb_address_unique\n";
+	}
+	else {
+		echo "Adding ipb_address_unique index\n";
+		dbsource(archive('patch-ipb_address_unique.sql'));
 	}
 
 	global $wgExtNewTables, $wgExtPGNewFields, $wgExtNewIndexes;
@@ -1707,11 +1751,20 @@ function do_postgres_updates() {
 	# This is create or replace, so harmless to call if not needed
 	dbsource(archive('patch-ts2pagetitle.sql'));
 
-	## If the server is 8.3 or higher, rewrite teh tsearch2 triggers
+	## If the server is 8.3 or higher, rewrite the tsearch2 triggers
 	## in case they have the old 'default' versions
 	if ( $numver >= 8.3 )
 		dbsource(archive('patch-tsearch2funcs.sql'));
 
+	## Put a new row in the mediawiki_version table
+	$wgDatabase->insert( 'mediawiki_version',
+		array(
+			'type' => 'Update',
+			'ctype' => 'U',
+			'mw_version' => $wgVersion,
+			'pg_version' => $version,
+			'sql_version' => '$LastChangedRevision$',
+			'sql_date' => '$LastChangedDate$',
+		) );
 	return;
 }
-

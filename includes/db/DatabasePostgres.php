@@ -2,16 +2,8 @@
 /**
  * @ingroup Database
  * @file
- */
-
-/**
  * This is the Postgres database abstraction layer.
  *
- * As it includes more generic version for DB functions,
- * than MySQL ones, some of them should be moved to parent
- * Database class.
- *
- * @ingroup Database
  */
 class PostgresField {
 	private $name, $tablename, $type, $nullable, $max_length;
@@ -80,17 +72,12 @@ class DatabasePostgres extends Database {
 	var $mInsertId = NULL;
 	var $mLastResult = NULL;
 	var $numeric_version = NULL;
+	var $mAffectedRows = NULL;
 
 	function DatabasePostgres($server = false, $user = false, $password = false, $dbName = false,
 		$failFunction = false, $flags = 0 )
 	{
 
-		global $wgOut;
-		# Can't get a reference if it hasn't been set yet
-		if ( !isset( $wgOut ) ) {
-			$wgOut = NULL;
-		}
-		$this->mOut =& $wgOut;
 		$this->mFailFunction = $failFunction;
 		$this->mFlags = $flags;
 		$this->open( $server, $user, $password, $dbName);
@@ -145,10 +132,6 @@ class DatabasePostgres extends Database {
 
 		global $wgDBport;
 
-		if (!strlen($user)) { ## e.g. the class is being loaded
-			return;
-		}
-
 		$this->close();
 		$this->mServer = $server;
 		$this->mPort = $port = $wgDBport;
@@ -156,22 +139,31 @@ class DatabasePostgres extends Database {
 		$this->mPassword = $password;
 		$this->mDBname = $dbName;
 
-		$hstring="";
+		$connectVars = array(
+			'dbname' => $dbName,
+			'user' => $user,
+			'password' => $password );
 		if ($server!=false && $server!="") {
-			$hstring="host=$server ";
+			$connectVars['host'] = $server;
 		}
 		if ($port!=false && $port!="") {
-			$hstring .= "port=$port ";
+			$connectVars['port'] = $port;
 		}
+		$connectString = $this->makeConnectionString( $connectVars );
 
-		error_reporting( E_ALL );
-		@$this->mConn = pg_connect("$hstring dbname=$dbName user=$user password=$password");
+		$this->installErrorHandler();
+		$this->mConn = pg_connect( $connectString );
+		$phpError = $this->restoreErrorHandler();
 
 		if ( $this->mConn == false ) {
 			wfDebug( "DB connection error\n" );
 			wfDebug( "Server: $server, Database: $dbName, User: $user, Password: " . substr( $password, 0, 3 ) . "...\n" );
 			wfDebug( $this->lastError()."\n" );
-			return false;
+			if ( !$this->mFailFunction ) {
+				throw new DBConnectionError( $this, $phpError );
+			} else {
+				return false;
+			}
 		}
 
 		$this->mOpened = true;
@@ -196,6 +188,14 @@ class DatabasePostgres extends Database {
 		return $this->mConn;
 	}
 
+	function makeConnectionString( $vars ) {
+		$s = '';
+		foreach ( $vars as $name => $value ) {
+			$s .= "$name='" . str_replace( "'", "\\'", $value ) . "' ";
+		}
+		return $s;
+	}
+
 
 	function initial_setup($password, $dbName) {
 		// If this is the initial connection, setup the schema stuff and possibly create the user
@@ -204,8 +204,8 @@ class DatabasePostgres extends Database {
 		print "<li>Checking the version of Postgres...";
 		$version = $this->getServerVersion();
 		$PGMINVER = '8.1';
-		if ($this->numeric_version < $PGMINVER) {
-			print "<b>FAILED</b>. Required version is $PGMINVER. You have $this->numeric_version ($version)</li>\n";
+		if ($version < $PGMINVER) {
+			print "<b>FAILED</b>. Required version is $PGMINVER. You have $version</li>\n";
 			dieout("</ul>");
 		}
 		print "version $this->numeric_version is OK.</li>\n";
@@ -554,9 +554,11 @@ class DatabasePostgres extends Database {
 
 	function doQuery( $sql ) {
 		if (function_exists('mb_convert_encoding')) {
-			return $this->mLastResult=pg_query( $this->mConn , mb_convert_encoding($sql,'UTF-8') );
+			$sql = mb_convert_encoding($sql,'UTF-8');
 		}
-		return $this->mLastResult=pg_query( $this->mConn , $sql);
+		$this->mLastResult = pg_query( $this->mConn, $sql);
+		$this->mAffectedRows = NULL; // use pg_affected_rows(mLastResult)
+		return $this->mLastResult;
 	}
 
 	function queryIgnore( $sql, $fname = '' ) {
@@ -649,9 +651,12 @@ class DatabasePostgres extends Database {
 	}
 
 	function affectedRows() {
-		if( !isset( $this->mLastResult ) or ! $this->mLastResult )
+		if ( !is_null( $this->mAffectedRows ) ) {
+			// Forced result for simulated queries
+			return $this->mAffectedRows;
+		}
+		if( empty( $this->mLastResult ) )
 			return 0;
-
 		return pg_affected_rows( $this->mLastResult );
 	}
 
@@ -731,8 +736,7 @@ class DatabasePostgres extends Database {
 
 		$table = $this->tableName( $table );
 		if (! isset( $wgDBversion ) ) {
-			$this->getServerVersion();
-			$wgDBversion = $this->numeric_version;
+			$wgDBversion = $this->getServerVersion();
 		}
 
 		if ( !is_array( $options ) )
@@ -747,14 +751,26 @@ class DatabasePostgres extends Database {
 			$keys = array_keys( $args );
 		}
 
-		$ignore = in_array( 'IGNORE', $options ) ? 1 : 0;
-		if ( $ignore )
+		// If IGNORE is set, we use savepoints to emulate mysql's behavior
+		$ignore = in_array( 'IGNORE', $options ) ? 'mw' : '';
+
+		// If we are not in a transaction, we need to be for savepoint trickery
+		$didbegin = 0;
+		if ( $ignore ) {
+			if (! $this->mTrxLevel) {
+				$this->begin();
+				$didbegin = 1;
+			}
 			$olde = error_reporting( 0 );
+			// For future use, we may want to track the number of actual inserts
+			// Right now, insert (all writes) simply return true/false
+			$numrowsinserted = 0;
+		}
 
 		$sql = "INSERT INTO $table (" . implode( ',', $keys ) . ') VALUES ';
 
 		if ( $multi ) {
-			if ( $wgDBversion >= 8.2 ) {
+			if ( $wgDBversion >= 8.2 && !$ignore ) {
 				$first = true;
 				foreach ( $args as $row ) {
 					if ( $first ) {
@@ -772,21 +788,63 @@ class DatabasePostgres extends Database {
 				foreach ( $args as $row ) {
 					$tempsql = $origsql;
 					$tempsql .= '(' . $this->makeList( $row ) . ')';
+
+					if ( $ignore ) {
+						pg_query($this->mConn, "SAVEPOINT $ignore");
+					}
+
 					$tempres = (bool)$this->query( $tempsql, $fname, $ignore );
+
+					if ( $ignore ) {
+						$bar = pg_last_error();
+						if ($bar != false) {
+							pg_query( $this->mConn, "ROLLBACK TO $ignore" );
+						}
+						else {
+							pg_query( $this->mConn, "RELEASE $ignore" );
+							$numrowsinserted++;
+						}
+					}
+
+					// If any of them fail, we fail overall for this function call
+					// Note that this will be ignored if IGNORE is set
 					if (! $tempres)
 						$res = false;
 				}
 			}
 		}
 		else {
+			// Not multi, just a lone insert
+			if ( $ignore ) {
+				pg_query($this->mConn, "SAVEPOINT $ignore");
+			}
+
 			$sql .= '(' . $this->makeList( $args ) . ')';
 			$res = (bool)$this->query( $sql, $fname, $ignore );
+			if ( $ignore ) {
+				$bar = pg_last_error();
+				if ($bar != false) {
+					pg_query( $this->mConn, "ROLLBACK TO $ignore" );
+				}
+				else {
+					pg_query( $this->mConn, "RELEASE $ignore" );
+					$numrowsinserted++;
+				}
+			}
 		}
-
 		if ( $ignore ) {
 			$olde = error_reporting( $olde );
+			if ($didbegin) {
+				$this->commit();
+			}
+
+			// Set the affected row count for the whole operation
+			$this->mAffectedRows = $numrowsinserted;
+
+			// IGNORE always returns true
 			return true;
 		}
+
 
 		return $res;
 
@@ -986,7 +1044,7 @@ class DatabasePostgres extends Database {
 	/**
 	 * @return string wikitext of a link to the server software's web site
 	 */
-		function getSoftwareLink() {
+	function getSoftwareLink() {
 		return "[http://www.postgresql.org/ PostgreSQL]";
 	}
 
@@ -994,15 +1052,9 @@ class DatabasePostgres extends Database {
 	 * @return string Version information from the database
 	 */
 	function getServerVersion() {
-		$version = pg_fetch_result($this->doQuery("SELECT version()"),0,0);
-		$thisver = array();
-		if (!preg_match('/PostgreSQL (\d+\.\d+)(\S+)/', $version, $thisver)) {
-			die("Could not determine the numeric version from $version!");
-		}
-		$this->numeric_version = $thisver[1];
-		return $version;
+		$versionInfo = pg_version( $this->mConn );
+		return $versionInfo['server'];
 	}
-
 
 	/**
 	 * Query whether a given relation exists (in the given schema, or the
@@ -1122,6 +1174,16 @@ END;
 	function fieldInfo( $table, $field ) {
 		return PostgresField::fromText($this, $table, $field);
 	}
+	
+	/**
+	 * pg_field_type() wrapper
+	 */
+	function fieldType( $res, $index ) {
+		if ( $res instanceof ResultWrapper ) {
+			$res = $res->result;
+		}
+		return pg_field_type( $res, $index );
+	}
 
 	function begin( $fname = 'DatabasePostgres::begin' ) {
 		$this->query( 'BEGIN', $fname );
@@ -1216,6 +1278,8 @@ END;
 	function addQuotes( $s ) {
 		if ( is_null( $s ) ) {
 			return 'NULL';
+		} else if ( is_bool( $s ) ) {
+			return intval( $s );
 		} else if ($s instanceof Blob) {
 			return "'".$s->fetch($s)."'";
 		}
@@ -1312,8 +1376,8 @@ END;
 		return false;
 	}
 
-	function setFakeSlaveLag() {}
-	function setFakeMaster() {}
+	function setFakeSlaveLag( $lag ) {}
+	function setFakeMaster( $enabled = true ) {}
 
 	function getDBname() {
 		return $this->mDBname;
@@ -1325,6 +1389,19 @@ END;
 
 	function buildConcat( $stringList ) {
 		return implode( ' || ', $stringList );
+	}
+
+	/* These are not used yet, but we know we don't want the default version */
+
+	public function lock( $lockName, $method ) {
+		return true;
+	}
+	public function unlock( $lockName, $method ) {
+		return true;
+	}
+	
+	public function getSearchEngine() {
+		return "SearchPostgres";
 	}
 
 } // end DatabasePostgres class

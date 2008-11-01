@@ -5,8 +5,8 @@
  * @file
  *
  * @author Jmb
- * @author SPQRobin
  * @author Malafaya
+ * @author Remember the dot
  * @author לערי ריינהארט
  */
 
@@ -133,19 +133,19 @@ $messages = array(
 'mainpage-description' => 'Principal págine',
 'portal'               => 'Págine del comunité',
 'portal-url'           => 'Project:Págine del comunité',
-'sitesupport'          => 'Donationes',
 
 'youhavenewmessages' => 'Vu have $1 ($2).',
 'newmessageslink'    => 'nov missages',
 'editsection'        => 'modificar',
 'editold'            => 'redacter',
+'editsectionhint'    => 'Modification de section: $1',
 'toc'                => 'Tabelle de contenetes',
 'showtoc'            => 'monstrar',
 'hidetoc'            => 'celar',
 'viewdeleted'        => 'Vider $1?',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
-'nstab-main'      => 'Articul',
+'nstab-main'      => 'Págine',
 'nstab-user'      => 'Usator',
 'nstab-project'   => 'Págine de projecte',
 'nstab-mediawiki' => 'Missage',
@@ -166,7 +166,6 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'yourpassword'               => 'Vor passa-parol:',
 'yourpasswordagain'          => 'Tippa denov vor passa-parol',
 'remembermypassword'         => 'Memorar mi passa-parol (per cookie)',
-'loginproblem'               => '<b>Hay un problema pri vor intrada.</b><br />Pena far it denov!',
 'login'                      => 'Aperter session',
 'nav-login-createaccount'    => 'Crear un conto o intrar',
 'loginprompt'                => 'Cookies deve esser permisset por intrar in {{SITENAME}}.',
@@ -198,7 +197,7 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'accmailtitle'     => 'Li passa-parol es inviat.',
 'accmailtext'      => "Li passa-parol por '$1' ha esset inviat a $2.",
 'newarticle'       => '(Nov)',
-'editing'          => 'modification de $1',
+'editing'          => 'Modification de $1',
 'editingsection'   => 'modification de $1 (section)',
 'editingcomment'   => 'modification de $1 (comenta)',
 'copyrightwarning' => 'Omni contributiones a {{SITENAME}} es considerat quam publicat sub li termines del $2 (ples vider $1 por plu mult detallies). Si vu ne vole que vor ovres mey esser modificat e distribuet secun arbitrie, ples ne inviar les. Adplu, ples contribuer solmen vor propri ovres o ovres ex un fonte quel es líber de jures. <strong>NE UTILISA OVRES SUB JURE EDITORIAL SIN DEFINITIV AUTORISATION!</strong>',
@@ -250,7 +249,7 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'filedesc'  => 'Descrition',
 'savefile'  => 'Conservar file',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist' => 'Liste de images',
 
 # Image description page
@@ -284,8 +283,9 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'specialloguserlabel'  => 'Usator:',
 'speciallogtitlelabel' => 'Titul:',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Omni págines',
+'alphaindexline' => '$1 a $2',
 'allarticles'    => 'Omni págines',
 'allpagessubmit' => 'Vade',
 
@@ -295,21 +295,24 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 # Watchlist
 'watchlist'            => 'Liste de sequet págines',
 'addedwatch'           => 'Adjuntet al liste',
-'addedwatchtext'       => "Li págine ''[[$1]]'' ha esset adjuntet a vor [[Special:Watchlist|liste de sequet págines]]. Li proxim modificationes de ti ci págine e del associat págine de discussion va esser listat ci, e li págine va aperir '''aspessat''' in li [[Special:Recentchanges|liste de recent modificationes]] por esser trovat plu facilmen. Por supresser ti ci págine ex vor liste, ples claccar sur « Ne plu sequer » in li cadre de navigation.",
+'addedwatchtext'       => "Li págine ''[[$1]]'' ha esset adjuntet a vor [[Special:Watchlist|liste de sequet págines]]. Li proxim modificationes de ti ci págine e del associat págine de discussion va esser listat ci, e li págine va aperir '''aspessat''' in li [[Special:RecentChanges|liste de recent modificationes]] por esser trovat plu facilmen. Por supresser ti ci págine ex vor liste, ples claccar sur « Ne plu sequer » in li cadre de navigation.",
 'watch'                => 'Sequer',
 'watchthispage'        => 'Sequer ti págine',
 'watchlist-hide-bots'  => 'Celar modificationes de bot',
 'watchlist-hide-own'   => 'Celar mi modificationes',
 'watchlist-hide-minor' => 'Celar modificationes minori',
 
-# Delete/protect/revert
+# Delete
 'deletepage'            => 'Deleter págine',
 'actioncomplete'        => 'Supression efectuat',
 'deletecomment'         => 'Motive de deletion:',
 'deleteotherreason'     => 'Altri/suplementari motive:',
 'deletereasonotherlist' => 'Altri motive',
-'protectcomment'        => 'Comenta:',
-'restriction-type'      => 'Permission:',
+
+# Protect
+'prot_1movedto2'   => '[[$1]] moet a [[$2]]',
+'protectcomment'   => 'Comenta:',
+'restriction-type' => 'Permission:',
 
 # Namespace form on various pages
 'blanknamespace' => '(Principal)',
@@ -321,7 +324,7 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'whatlinkshere' => 'Ligat págines',
 
 # Block/unblock
-'ipblocklist'  => 'Liste de blocat adresses e usatores',
+'ipblocklist'  => 'Blocat adresses e usatores',
 'contribslink' => 'contribs',
 
 # Move page
@@ -346,7 +349,7 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'tooltip-n-mainpage'     => 'Visita li Principal págine',
 'tooltip-t-specialpages' => 'Liste de omni special págines',
 
-# Special:Newimages
+# Special:NewImages
 'newimages' => 'Galerie de nov images',
 
 # 'all' in various places, this might be different for inflected languages

@@ -6,12 +6,14 @@
  *
  * @author Cradel
  * @author Dardan
- * @author Nike
- * @author M.M.S.
- * @author Siebrand
  */
 
 $fallback = 'sq';
+
+$specialPageAliases = array(
+	'Popularpages'              => array( 'Faqe të famshme' ),
+	'Search'                    => array( 'Kërko' ),
+);
 
 $messages = array(
 # User preference toggles
@@ -58,8 +60,6 @@ $messages = array(
 'underline-always'  => 'gjithmonë',
 'underline-never'   => 'kurrë',
 'underline-default' => 'sipas shfletuesit',
-
-'skinpreview' => '(Parapamje)',
 
 # Dates
 'sunday'        => 'E diel',
@@ -231,13 +231,9 @@ $messages = array(
 'portal-url'           => 'Project:Wikiportal',
 'privacy'              => 'Rreth të dhanave vetjake',
 'privacypage'          => 'Project:Politika vetjake',
-'sitesupport'          => 'Dhurime',
-'sitesupport-url'      => 'Project:Dhurime',
 
 'badaccess'        => 'Gabim leje',
 'badaccess-group0' => 'Nuk jeni lejue me e bá kët veprim.',
-'badaccess-group1' => 'Ky veprim asht i limituem për përdoruesit e grupit $1',
-'badaccess-group2' => 'Veprimi i kërkuem asht i limituem për përdoruesit e grupit $1.',
 'badaccess-groups' => 'Ky veprim asht i limituem për përdoruesit e grupit $1.',
 
 'versionrequired'     => 'Nevojitet versioni $1 i MediaWiki-it',
@@ -326,7 +322,6 @@ Mirëmbajtësi i cili e ka bllokue dha këtë arsye: $1",
 'cannotdelete'         => 'Nuk mujta me gris këtë faqe ose figurë të dhënë. (Munet qi asht e grisur nga dikush tjeter.)',
 'badtitle'             => 'Titull i gabuem',
 'badtitletext'         => 'Titulli i faqes qi kërkuet nuk ishte i saktë, ishte bosh, ose ishte një lidhje gabim me një titull wiki internacional.',
-'perfdisabled'         => "Ju kërkoj të falme! Ky veprim asht bllokue përkohsisht se e ngadalëson regjistrin aq shumë sa s'munet me përdor kërrkush tjetër.",
 'perfcached'           => 'Informacioni i mëposhtëm asht kopje e ruajtme dhe munet mos me kán e freskët:',
 'perfcachedts'         => 'Informacioni i mëposhtëm asht një kopje e rifreskueme me $1.',
 'wrong_wfQuery_params' => 'Parametra gabim te wfQuery()<br />
@@ -381,7 +376,7 @@ Llogaria juej asht hap. Mos harroni me ndryshu parapëlqimet e {{SITENAME}}-s.',
 'italic_tip'      => 'Tekst i pjerrët',
 'link_sample'     => 'Titulli i lidhjes',
 'link_tip'        => 'Lidhje e brendshme',
-'extlink_sample'  => 'http://www.shembull.com Titulli i lidhjes',
+'extlink_sample'  => 'http://www.example.com Titulli i lidhjes',
 'extlink_tip'     => 'Lidhje e jashtme (mos e harro prefiksin http://)',
 'headline_sample' => 'Titull shembull',
 'headline_tip'    => 'Titull i nivelit 2',
@@ -411,7 +406,7 @@ Llogaria juej asht hap. Mos harroni me ndryshu parapëlqimet e {{SITENAME}}-s.',
 
 # History pages
 'revisionasof'     => 'Versioni i $1',
-'revision-info'    => 'Versioni me $1 nga $2',
+'revision-info'    => 'Versioni me $1 nga $2', # Additionally available: $3: revision id
 'previousrevision' => '← Verzion ma i vjetër',
 'cur'              => 'tash',
 'last'             => 'fund',
@@ -422,18 +417,17 @@ Llogaria juej asht hap. Mos harroni me ndryshu parapëlqimet e {{SITENAME}}-s.',
 'editundo'                => 'ktheje',
 
 # Search results
-'noexactmatch' => '<span style="font-size: 135%; font-weight: bold; margin-left: .6em">Faqja me atë titull nuk asht krijue </span>
+'noexactmatch' => 'Faqja me atë titull nuk asht krijue
 
-<span style="display: block; margin: 1.5em 2em">
 Muneni me [[$1|fillu një artikull]] me kët titull.
 
-<span style="display:block; font-size: 89%; margin-left:.2em">Ju lutem kërkoni {{SITENAME}}-n para se me krijue një artikull të ri se munet me kánë nën një titull tjetër.</span>
-</span>',
+Ju lutem kërkoni {{SITENAME}}-n para se me krijue një artikull të ri se munet me kánë nën një titull tjetër.',
 'viewprevnext' => 'Shikoni ($1) ($2) ($3).',
 'powersearch'  => 'Kërko',
 
 # Preferences page
 'mypreferences' => 'Parapëlqimet',
+'skin-preview'  => 'Parapamje',
 
 # Recent changes
 'recentchanges'   => 'Ndryshimet e fundit',
@@ -487,7 +481,7 @@ Muneni me [[$1|fillu një artikull]] me kët titull.
 'nmembers' => '$1 anëtarë',
 'move'     => 'Zhvendose',
 
-# Special:Allpages
+# Special:AllPages
 'alphaindexline' => '$1 deri në $2',
 'allpagessubmit' => 'Shko',
 
@@ -508,8 +502,10 @@ Muneni me [[$1|fillu një artikull]] me kët titull.
 'watching'   => 'Tuj mbikqyrë...',
 'unwatching' => 'Tuj çmbikqyrë...',
 
-# Delete/protect/revert
-'deletedarticle'              => 'grisi "$1"',
+# Delete
+'deletedarticle' => 'grisi "$1"',
+
+# Protect
 'protect-legend'              => 'Konfirmoni',
 'protectcomment'              => 'Arsyja:',
 'protectexpiry'               => 'Afáti',
@@ -538,7 +534,6 @@ Muneni me [[$1|fillu një artikull]] me kët titull.
 # What links here
 'whatlinkshere'       => "Lidhjet k'tu",
 'whatlinkshere-title' => 'Faqe qi lidhen me $1',
-'linklistsub'         => '(Listë e lidhjeve)',
 'linkshere'           => "Faqet e mëposhtme lidhen k'tu '''[[:$1]]''':",
 'isredirect'          => 'faqe përcjellëse',
 'istemplate'          => 'përfshirë',
@@ -581,7 +576,6 @@ Muneni me [[$1|fillu një artikull]] me kët titull.
 'tooltip-n-recentchanges'         => 'Lista e ndryshimeve të fundme në projekt',
 'tooltip-n-randompage'            => 'Shikoni një artikull të rastit.',
 'tooltip-n-help'                  => 'Vendi ku muneni me gjetë ndihmë.',
-'tooltip-n-sitesupport'           => 'Përkraheni projektin',
 'tooltip-t-whatlinkshere'         => 'Lista e faqeve qi lidhen te kjo faqe',
 'tooltip-t-upload'                => 'Ngarkoni figura ose skeda tjera',
 'tooltip-t-specialpages'          => 'Lista e krejt faqeve speciale.',
@@ -606,7 +600,7 @@ Muneni me [[$1|fillu një artikull]] me kët titull.
 
 # External editor support
 'edit-externally'      => 'Ndryshoni kët figurë/skedë me një mjet të jashtëm',
-'edit-externally-help' => 'Shikoni [http://meta.wikimedia.org/wiki/Help:External_editors udhëzimet e instalimit] për ma shumë informacion.',
+'edit-externally-help' => 'Shikoni [http://www.mediawiki.org/wiki/Manual:External_editors udhëzimet e instalimit] për ma shumë informacion.',
 
 # 'all' in various places, this might be different for inflected languages
 'watchlistall2' => 'krejt',

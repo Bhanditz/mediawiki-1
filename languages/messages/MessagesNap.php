@@ -5,16 +5,49 @@
  * @file
  *
  * @author Carmine Colacino
- * @author SabineCretella
  * @author Cryptex
  * @author E. abu Filumena
- * @author SPQRobin
- * @author Siebrand
+ * @author SabineCretella
  * @author לערי ריינהארט
- * @author Nike
  */
 
 $fallback = 'it';
+
+$namespaceNames = array(
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Speciàle',
+	NS_TALK             => 'Chiàcchiera',
+	NS_USER             => 'Utente',
+	NS_USER_TALK        => 'Utente_chiàcchiera',
+	NS_PROJECT_TALK     => '$1_chiàcchiera',
+	NS_IMAGE            => 'Fiùra',
+	NS_IMAGE_TALK       => 'Fiùra_chiàcchiera',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_chiàcchiera',
+	NS_TEMPLATE         => 'Modello',
+	NS_TEMPLATE_TALK    => 'Modello_chiàcchiera',
+	NS_HELP             => 'Ajùto',
+	NS_HELP_TALK        => 'Ajùto_chiàcchiera',
+	NS_CATEGORY         => 'Categurìa',
+	NS_CATEGORY_TALK    => 'Categurìa_chiàcchiera',
+);
+
+$namespaceAliases = array(
+	'Speciale' => NS_SPECIAL,
+	'Discussione' => NS_TALK,
+	'Utente' => NS_USER,
+	'Discussioni_utente' => NS_USER_TALK,
+	'Discussioni_$1' => NS_PROJECT_TALK,
+	'Immagine' => NS_IMAGE,
+	'Discussioni_immagine' => NS_IMAGE_TALK,
+	'MediaWiki' => NS_MEDIAWIKI,
+	'Discussioni_MediaWiki' => NS_MEDIAWIKI_TALK,
+	'Discussioni_template' => NS_TEMPLATE_TALK,
+	'Aiuto' => NS_HELP,
+	'Discussioni_aiuto' => NS_HELP_TALK,
+	'Categoria' => NS_CATEGORY,
+	'Discussioni_categoria' => NS_CATEGORY_TALK,
+);
 
 $messages = array(
 # User preference toggles
@@ -37,37 +70,49 @@ $messages = array(
 'underline-never'  => 'Màje',
 
 # Dates
-'sunday'    => 'dumméneca',
-'monday'    => 'lunnerì',
-'tuesday'   => 'marterì',
-'wednesday' => 'miercurì',
-'thursday'  => 'gioverì',
-'friday'    => 'viernarì',
-'saturday'  => 'sàbbato',
-'january'   => 'jennaro',
-'february'  => 'frevàro',
-'march'     => 'màrzo',
-'april'     => 'abbrile',
-'may_long'  => 'màjo',
-'june'      => 'giùgno',
-'july'      => 'luglio',
-'august'    => 'aústo',
-'september' => 'settembre',
-'october'   => 'ottobbre',
-'november'  => 'nuvembre',
-'december'  => 'dicèmbre',
-'jan'       => 'jen',
-'feb'       => 'fre',
-'mar'       => 'mar',
-'apr'       => 'abb',
-'may'       => 'maj',
-'jun'       => 'giu',
-'jul'       => 'lug',
-'aug'       => 'aus',
-'sep'       => 'set',
-'oct'       => 'ott',
-'nov'       => 'nuv',
-'dec'       => 'dic',
+'sunday'        => 'dumméneca',
+'monday'        => 'lunnerì',
+'tuesday'       => 'marterì',
+'wednesday'     => 'miercurì',
+'thursday'      => 'gioverì',
+'friday'        => 'viernarì',
+'saturday'      => 'sàbbato',
+'january'       => 'jennaro',
+'february'      => 'frevàro',
+'march'         => 'màrzo',
+'april'         => 'abbrile',
+'may_long'      => 'màjo',
+'june'          => 'giùgno',
+'july'          => 'luglio',
+'august'        => 'aústo',
+'september'     => 'settembre',
+'october'       => 'ottobbre',
+'november'      => 'nuvembre',
+'december'      => 'dicèmbre',
+'january-gen'   => 'jennaro',
+'february-gen'  => 'frevaro',
+'march-gen'     => 'màrzo',
+'april-gen'     => 'abbrile',
+'may-gen'       => 'maggio',
+'june-gen'      => 'giùgno',
+'july-gen'      => 'luglio',
+'august-gen'    => 'aùsto',
+'september-gen' => 'settembre',
+'october-gen'   => 'ottovre',
+'november-gen'  => 'nuvembre',
+'december-gen'  => 'dicembre',
+'jan'           => 'jen',
+'feb'           => 'fre',
+'mar'           => 'mar',
+'apr'           => 'abb',
+'may'           => 'maj',
+'jun'           => 'giu',
+'jul'           => 'lug',
+'aug'           => 'aus',
+'sep'           => 'set',
+'oct'           => 'ott',
+'nov'           => 'nuv',
+'dec'           => 'dic',
 
 # Categories related messages
 'category_header' => 'Paggene rìnt\'a categurìa "$1"',
@@ -130,8 +175,6 @@ $messages = array(
 'mainpage-description' => 'Paggena prencepale',
 'portal'               => "Porta d''a cummunetà",
 'portal-url'           => "Project:Porta d''a cummunetà",
-'sitesupport'          => 'Donazzione',
-'sitesupport-url'      => 'Project:Donazzione',
 
 'badaccess' => "Nun haje 'e premmesse abbastante.",
 
@@ -167,7 +210,6 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'O cunto è stato criato currettamente.  Nun scurdà 'e perzonalizzà 'e ppreferenze 'e {{SITENAME}}.",
 'remembermypassword'         => 'Allicuordate d"a password',
 'yourdomainname'             => "Spiecà 'o dumminio",
-'loginproblem'               => "<b>È capetato nu sbaglio a ll'acciesso.</b><br />Pruvate n'ata vota.",
 'login'                      => 'Tràse',
 'userlogin'                  => "Tràse o cria n'acciesso nuovo",
 'logout'                     => 'Jèsce',
@@ -260,7 +302,7 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'fileexists-thumb' => "<center>'''Immagine esistente'''</center>",
 'uploadedimage'    => 'ha carecato "[[$1]]"',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist_name' => 'Nomme',
 
 # Image description page
@@ -288,14 +330,17 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'move'         => 'Spusta',
 'movethispage' => 'Spusta chesta paggena',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => "Tutte 'e ppaggene",
 'allarticles'    => "Tutt' 'e vvoce",
 'allinnamespace' => "Tutt' 'e ppaggene d&#39;&#39;o namespace $1",
 
 # Special:Categories
-'categories'         => '{{PLURAL:$1|Categurìa|Categurìe}}',
+'categories'         => 'Categurìe',
 'categoriespagetext' => "Lista cumpleta d\"e categurie presente ncopp' 'o sito.",
+
+# Special:LinkSearch
+'linksearch-ok' => 'Truova',
 
 # Watchlist
 'addedwatch'   => 'Aggiunto ai Osservate Speciale tue',
@@ -305,7 +350,7 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'enotif_newpagetext' => 'Chesta è na paggena nòva.',
 'changed'            => 'cagnata',
 
-# Delete/protect/revert
+# Delete
 'deletepage'      => 'Scancella paggena',
 'excontent'       => "'o cuntenuto era: '$1'",
 'excontentauthor' => "'o cuntenuto era: '$1' (e ll'unneco cuntribbutore era '[[Special:Contributions/$2|$2]]')",
@@ -317,8 +362,14 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'dellogpage'      => 'Scancellazione',
 'deletionlog'     => 'Log d"e scancellazione',
 'deletecomment'   => 'Mutivo d"a scancellazione',
-'rollback'        => "Ausa na revizione 'e primma",
-'revertpage'      => "Cangiaje 'e cagnamiénte 'e [[Special:Contributions/$2|$2]] ([[User talk:$2|discussione]]), cu â verzione 'e pprimma 'e  [[User:$1|$1]]", # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+
+# Rollback
+'rollback'   => "Ausa na revizione 'e primma",
+'revertpage' => "Cangiaje 'e cagnamiénte 'e [[Special:Contributions/$2|$2]] ([[User talk:$2|discussione]]), cu â verzione 'e pprimma 'e  [[User:$1|$1]]", # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+
+# Protect
+'prot_1movedto2'         => 'ha spustato [[$1]] a [[$2]]',
+'protect-expiry-options' => '2 ore:2 hours,1 juorno:1 day,3 juorne:3 days,1 semmana:1 week,2 semmane:2 weeks,1 mise:1 month,3 mese:3 months,6 mese:6 months,1 anno:1 year,infinito:infinite', # display1:time1,display2:time2,...
 
 # Undelete
 'viewdeletedpage' => "Vìre 'e ppàggine scancellate",
@@ -344,7 +395,7 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'blocklink'          => 'ferma',
 'blocklogpage'       => 'Blocche',
 'blocklogentry'      => 'ha fermato "[[$1]]" pe\' nu mumento \'e $2 $3',
-'blocklogtext'       => "Chesta è 'a lista d&#39;&#39;e azzione 'e blocco e sblocco utente.  'E nnerizze IP bloccate automaticamente nun nce so'. Addumannà 'a [[Special:Ipblocklist|lista IP bloccate]] pp' 'a lista d&#39;&#39;e nnerizze e nomme utente 'o ca blocco nce sta.",
+'blocklogtext'       => "Chesta è 'a lista d&#39;&#39;e azzione 'e blocco e sblocco utente.  'E nnerizze IP bloccate automaticamente nun nce so'. Addumannà 'a [[Special:IPBlockList|lista IP bloccate]] pp' 'a lista d&#39;&#39;e nnerizze e nomme utente 'o ca blocco nce sta.",
 
 # Move page
 'movearticle'             => "Spusta 'a paggena",
@@ -388,7 +439,7 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'numedits'    => "Nummero 'e cagnamiente (articulo): $1",
 'numwatchers' => "Nummero 'e asservature: $1",
 
-# Special:Newimages
+# Special:NewImages
 'noimages' => "Nun nc'è nind' 'a veré.",
 'ilsubmit' => 'Truova',
 
@@ -406,7 +457,7 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'exif-subjectdistancerange-0' => 'Scanusciuta',
 
 # External editor support
-'edit-externally-help' => "Pe piglià cchiù nfromma veré 'e [http://meta.wikimedia.org/wiki/Help:External_editors struzione] ('n ngrese)",
+'edit-externally-help' => "Pe piglià cchiù nfromma veré 'e [http://www.mediawiki.org/wiki/Manual:External_editors struzione] ('n ngrese)",
 
 # 'all' in various places, this might be different for inflected languages
 'namespacesall' => 'Tutte',
@@ -420,9 +471,6 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 
 # Delete conflict
 'deletedwhileediting' => 'Attenziòne: quaccherùno have scancellàto chesta pàggena prìmma ca tu accuminciàste â scrìvere!',
-
-# AJAX search
-'hideresults' => "Annasconne 'e risultate",
 
 # Auto-summaries
 'autoredircomment' => 'Redirect â paggena [[$1]]',

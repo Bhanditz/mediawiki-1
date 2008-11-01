@@ -27,7 +27,6 @@ class HTMLCacheUpdate
 {
 	public $mTitle, $mTable, $mPrefix;
 	public $mRowsPerJob, $mRowsPerQuery;
-	public $mResult;
 
 	function __construct( $titleTo, $table ) {
 		global $wgUpdateRowsPerJob, $wgUpdateRowsPerQuery;
@@ -38,12 +37,12 @@ class HTMLCacheUpdate
 		$this->mRowsPerQuery = $wgUpdateRowsPerQuery;
 	}
 
-	function doUpdate() {
+	public function doUpdate() {
 		# Fetch the IDs
 		$cond = $this->getToCondition();
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( $this->mTable, $this->getFromField(), $cond, __METHOD__ );
-		$this->mResult = $res;
+
 		if ( $dbr->numRows( $res ) != 0 ) {
 			if ( $dbr->numRows( $res ) > $this->mRowsPerJob ) {
 				$this->insertJobs( $res );
@@ -51,16 +50,17 @@ class HTMLCacheUpdate
 				$this->invalidateIDs( $res );
 			}
 		}
+		wfRunHooks( 'HTMLCacheUpdate::doUpdate', array($this->mTitle) );
 	}
 
-	function insertJobs( ResultWrapper $res ) {
+	protected function insertJobs( ResultWrapper $res ) {
 		$numRows = $res->numRows();
 		$numBatches = ceil( $numRows / $this->mRowsPerJob );
 		$realBatchSize = $numRows / $numBatches;
 		$start = false;
 		$jobs = array();
 		do {
-			for ( $i = 0; $i < $realBatchSize - 1; $i++ ) {
+			for ( $i = 0; $i <= $realBatchSize - 1; $i++ ) {
 				$row = $res->fetchRow();
 				if ( $row ) {
 					$id = $row[0];
@@ -83,17 +83,13 @@ class HTMLCacheUpdate
 		Job::batchInsert( $jobs );
 	}
 
-	function getPrefix() {
+	protected function getPrefix() {
 		static $prefixes = array(
 			'pagelinks' => 'pl',
 			'imagelinks' => 'il',
 			'categorylinks' => 'cl',
 			'templatelinks' => 'tl',
 			'redirect' => 'rd',
-
-			# Not needed
-			# 'externallinks' => 'el',
-			# 'langlinks' => 'll'
 		);
 
 		if ( is_null( $this->mPrefix ) ) {
@@ -105,11 +101,11 @@ class HTMLCacheUpdate
 		return $this->mPrefix;
 	}
 
-	function getFromField() {
+	public function getFromField() {
 		return $this->getPrefix() . '_from';
 	}
 
-	function getToCondition() {
+	public function getToCondition() {
 		$prefix = $this->getPrefix();
 		switch ( $this->mTable ) {
 			case 'pagelinks':
@@ -130,7 +126,7 @@ class HTMLCacheUpdate
 	/**
 	 * Invalidate a set of IDs, right now
 	 */
-	function invalidateIDs( ResultWrapper $res ) {
+	public function invalidateIDs( ResultWrapper $res ) {
 		global $wgUseFileCache, $wgUseSquid;
 
 		if ( $res->numRows() == 0 ) {
@@ -186,7 +182,9 @@ class HTMLCacheUpdate
 }
 
 /**
- * @todo document (e.g. one-sentence top-level class description).
+ * Job wrapper for HTMLCacheUpdate. Gets run whenever a related
+ * job gets called from the queue.
+ * 
  * @ingroup JobQueue
  */
 class HTMLCacheUpdateJob extends Job {
@@ -205,7 +203,7 @@ class HTMLCacheUpdateJob extends Job {
 		$this->end = $params['end'];
 	}
 
-	function run() {
+	public function run() {
 		$update = new HTMLCacheUpdate( $this->title, $this->table );
 
 		$fromField = $update->getFromField();
@@ -219,7 +217,7 @@ class HTMLCacheUpdateJob extends Job {
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( $this->table, $fromField, $conds, __METHOD__ );
-		$update->invalidateIDs( new ResultWrapper( $dbr, $res ) );
+		$update->invalidateIDs( $res );
 
 		return true;
 	}

@@ -123,12 +123,12 @@ class ApiQueryImageInfo extends ApiQueryBase {
 		}
 		if( isset( $prop['url'] ) ) {
 			if( !is_null( $scale ) && !$file->isOld() ) {
-				$thumb = $file->getThumbnail( $scale['width'], $scale['height'] );
-				if( $thumb )
+				$mto = $file->transform( array( 'width' => $scale['width'], 'height' => $scale['height'] ) );
+				if( $mto && !$mto->isError() )
 				{
-					$vals['thumburl'] = wfExpandUrl( $thumb->getURL() );
-					$vals['thumbwidth'] = $thumb->getWidth();
-					$vals['thumbheight'] = $thumb->getHeight();
+					$vals['thumburl'] = $mto->getUrl();
+					$vals['thumbwidth'] = $mto->getWidth();
+					$vals['thumbheight'] = $mto->getHeight();
 				}
 			}
 			$vals['url'] = $file->getFullURL();
@@ -148,6 +148,9 @@ class ApiQueryImageInfo extends ApiQueryBase {
 		
 		if( isset( $prop['archivename'] ) && $file->isOld() )
 			$vals['archivename'] = $file->getArchiveName();
+			
+		if( isset( $prop['bitdepth'] ) )
+			$vals['bitdepth'] = $file->getBitDepth();
 
 		return $vals;
 	}
@@ -166,7 +169,8 @@ class ApiQueryImageInfo extends ApiQueryBase {
 					'sha1',
 					'mime',
 					'metadata',
-					'archivename'
+					'archivename',
+					'bitdepth',
 				)
 			),
 			'limit' => array(
@@ -199,7 +203,8 @@ class ApiQueryImageInfo extends ApiQueryBase {
 			'limit' => 'How many image revisions to return',
 			'start' => 'Timestamp to start listing from',
 			'end' => 'Timestamp to stop listing at',
-			'urlwidth' => 'If iiprop=url is set, a URL to an image scaled to this width will be returned. Only the current version of the image can be scaled.',
+			'urlwidth' => array('If iiprop=url is set, a URL to an image scaled to this width will be returned.',
+					    'Only the current version of the image can be scaled.'),
 			'urlheight' => 'Similar to iiurlwidth. Cannot be used without iiurlwidth',
 		);
 	}

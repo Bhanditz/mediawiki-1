@@ -47,7 +47,7 @@ class MathRenderer {
 		if( !$this->_recall() ) {
 			# Ensure that the temp and output directories are available before continuing...
 			if( !file_exists( $wgTmpDirectory ) ) {
-				if( !@mkdir( $wgTmpDirectory ) ) {
+				if( !wfMkdirParents( $wgTmpDirectory ) ) {
 					return $this->_error( 'math_bad_tmpdir' );
 				}
 			} elseif( !is_dir( $wgTmpDirectory ) || !is_writable( $wgTmpDirectory ) ) {
@@ -172,7 +172,7 @@ class MathRenderer {
 					'math_html_conservativeness' => $this->conservativeness,
 					'math_html' => $this->html,
 					'math_mathml' => $this->mathml,
-				  ), $fname, array( 'IGNORE' )
+				  ), $fname
 				);
 			}
 

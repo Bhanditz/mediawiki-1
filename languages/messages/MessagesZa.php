@@ -1,8 +1,10 @@
 <?php
-/** Zhuang (壮语)
+/** Zhuang ((Cuengh))
  *
  * @ingroup Language
  * @file
+ *
+ * @author Hakka
  */
 
 $fallback = 'zh-hans';
@@ -102,15 +104,15 @@ $messages = array(
 'move'              => 'Caen',
 'movethispage'      => 'Caen mae nej',
 
-# Special:Log
-'log-search-submit' => 'Bei',
-
 # Watchlist
 'watchlist'     => 'Gaeq gou demq',
 'mywatchlist'   => 'Gaeq gou demq',
 'watchnologin'  => 'Maengx laezhaej',
 'watch'         => 'Demq',
 'watchthispage' => 'Demq mae-nej',
+
+# Protect
+'prot_1movedto2' => '[[$1]] caen bei [[$2]]',
 
 # Restrictions (nouns)
 'restriction-move' => 'Caen',
@@ -141,7 +143,7 @@ $messages = array(
 'tooltip-pt-preferences' => 'Doenghgaeq gou hae',
 'tooltip-p-logo'         => 'Mae meh',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'Cwmh',
 
 # Multipage image navigation

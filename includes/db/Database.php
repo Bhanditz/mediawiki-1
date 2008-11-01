@@ -29,7 +29,7 @@ class Database {
 	protected $mPHPError = false;
 
 	protected $mServer, $mUser, $mPassword, $mConn = null, $mDBname;
-	protected $mOut, $mOpened = false;
+	protected $mOpened = false;
 
 	protected $mFailFunction;
 	protected $mTablePrefix;
@@ -57,7 +57,7 @@ class Database {
 	 * FALSE means discard output
 	 */
 	function setOutputPage( $out ) {
-		$this->mOut = $out;
+		wfDeprecated( __METHOD__ );
 	}
 
 	/**
@@ -205,12 +205,17 @@ class Database {
 		return false;
 	}
 
-	/**#@+
-	 * Get function
+	/**
+	 * Return the last query that went through Database::query()
+	 * @return string
 	 */
 	function lastQuery() { return $this->mLastQuery; }
+	
+	/**
+	 * Is a connection to the database open?
+	 * @return bool
+	 */
 	function isOpen() { return $this->mOpened; }
-	/**#@-*/
 
 	function setFlag( $flag ) {
 		$this->mFlags |= $flag;
@@ -261,7 +266,6 @@ class Database {
 		if ( !isset( $wgOut ) ) {
 			$wgOut = NULL;
 		}
-		$this->mOut =& $wgOut;
 
 		$this->mFailFunction = $failFunction;
 		$this->mFlags = $flags;
@@ -308,7 +312,7 @@ class Database {
 	 * If the failFunction is set to a non-zero integer, returns success
 	 */
 	function open( $server, $user, $password, $dbName ) {
-		global $wguname, $wgAllDBsAreLocalhost;
+		global $wgAllDBsAreLocalhost;
 		wfProfileIn( __METHOD__ );
 
 		# Test for missing mysql.so
@@ -339,13 +343,17 @@ class Database {
 
 		wfProfileIn("dbconnect-$server");
 
-		# Try to connect up to three times
 		# The kernel's default SYN retransmission period is far too slow for us,
-		# so we use a short timeout plus a manual retry.
+		# so we use a short timeout plus a manual retry. Retrying means that a small
+		# but finite rate of SYN packet loss won't cause user-visible errors.
 		$this->mConn = false;
-		$max = 3;
+		if ( ini_get( 'mysql.connect_timeout' ) <= 3 ) {
+			$numAttempts = 2;
+		} else {
+			$numAttempts = 1;
+		}
 		$this->installErrorHandler();
-		for ( $i = 0; $i < $max && !$this->mConn; $i++ ) {
+		for ( $i = 0; $i < $numAttempts && !$this->mConn; $i++ ) {
 			if ( $i > 1 ) {
 				usleep( 1000 );
 			}
@@ -361,23 +369,28 @@ class Database {
 			}
 		}
 		$phpError = $this->restoreErrorHandler();
+		# Always log connection errors
+		if ( !$this->mConn ) {
+			$error = $this->lastError();
+			if ( !$error ) {
+				$error = $phpError;
+			}
+			wfLogDBError( "Error connecting to {$this->mServer}: $error\n" );
+			wfDebug( "DB connection error\n" );
+			wfDebug( "Server: $server, User: $user, Password: " .
+				substr( $password, 0, 3 ) . "..., error: " . mysql_error() . "\n" );
+			$success = false;
+		}
 		
 		wfProfileOut("dbconnect-$server");
 
-		if ( $dbName != '' ) {
-			if ( $this->mConn !== false ) {
-				$success = @/**/mysql_select_db( $dbName, $this->mConn );
-				if ( !$success ) {
-					$error = "Error selecting database $dbName on server {$this->mServer} " .
-						"from client host {$wguname['nodename']}\n";
-					wfLogDBError(" Error selecting database $dbName on server {$this->mServer} \n");
-					wfDebug( $error );
-				}
-			} else {
-				wfDebug( "DB connection error\n" );
-				wfDebug( "Server: $server, User: $user, Password: " .
-					substr( $password, 0, 3 ) . "..., error: " . mysql_error() . "\n" );
-				$success = false;
+		if ( $dbName != '' && $this->mConn !== false ) {
+			$success = @/**/mysql_select_db( $dbName, $this->mConn );
+			if ( !$success ) {
+				$error = "Error selecting database $dbName on server {$this->mServer} " .
+					"from client host " . wfHostname() . "\n";
+				wfLogDBError(" Error selecting database $dbName on server {$this->mServer} \n");
+				wfDebug( $error );
 			}
 		} else {
 			# Delay USE query
@@ -410,12 +423,22 @@ class Database {
 
 	protected function installErrorHandler() {
 		$this->mPHPError = false;
+		$this->htmlErrors = ini_set( 'html_errors', '0' );
 		set_error_handler( array( $this, 'connectionErrorHandler' ) );
 	}
 
 	protected function restoreErrorHandler() {
 		restore_error_handler();
-		return $this->mPHPError;
+		if ( $this->htmlErrors !== false ) {
+			ini_set( 'html_errors', $this->htmlErrors );
+		}
+		if ( $this->mPHPError ) {
+			$error = preg_replace( '!\[<a.*</a>\]!', '', $this->mPHPError );
+			$error = preg_replace( '!^.*?:(.*)$!', '$1', $error );
+			return $error;
+		} else {
+			return false;
+		}
 	}
 
 	protected function connectionErrorHandler( $errno,  $errstr ) {
@@ -458,7 +481,6 @@ class Database {
 			}
 		} else {
 			# New method
-			wfLogDBError( "Connection error: $error\n" );
 			throw new DBConnectionError( $this, $error );
 		}
 	}
@@ -1452,7 +1474,7 @@ class Database {
 		 && is_array( $wgSharedTables )
 		 && in_array( $table, $wgSharedTables ) ) { # A shared table is selected
 			$database = $wgSharedDB;
-			$prefix   = isset( $wgSharedprefix ) ? $wgSharedprefix : $prefix;
+			$prefix   = isset( $wgSharedPrefix ) ? $wgSharedPrefix : $prefix;
 		}
 		
 		# Quote the $database and $table and apply the prefix if not quoted.
@@ -1897,7 +1919,7 @@ class Database {
 		$res = $this->query( 'SHOW SLAVE STATUS', 'Database::getSlavePos' );
 		$row = $this->fetchObject( $res );
 		if ( $row ) {
-			return new MySQLMasterPos( $row->Master_Log_File, $row->Read_Master_Log_Pos );
+			return new MySQLMasterPos( $row->Relay_Master_Log_File, $row->Exec_master_log_pos );
 		} else {
 			return false;
 		}
@@ -2178,7 +2200,7 @@ class Database {
 				$cmd = $this->replaceVars( $cmd );
 				$res = $this->query( $cmd, __METHOD__ );
 				if ( $resultCallback ) {
-					call_user_func( $resultCallback, $res );
+					call_user_func( $resultCallback, $res, $this );
 				}
 
 				if ( false === $res ) {
@@ -2271,6 +2293,16 @@ class Database {
 		$lockName = $this->addQuotes( $lockName );
 		$result = $this->query( "SELECT RELEASE_LOCK($lockName)", $method );
 		$this->freeResult( $result );
+	}
+	
+	/**
+	 * Get search engine class. All subclasses of this
+	 * need to implement this if they wish to use searching.
+	 * 
+	 * @return string
+	 */
+	public function getSearchEngine() {
+		return "SearchMySQL";
 	}
 }
 
@@ -2484,7 +2516,13 @@ border=\"0\" ALT=\"Google\"></A>
 		}
 
 		$text = str_replace( '$1', $this->error, $noconnect );
-		$text .= wfGetSiteNotice();
+
+		/*
+		if ( $GLOBALS['wgShowExceptionDetails'] ) {
+			$text .= '</p><p>Backtrace:</p><p>' . 
+				nl2br( htmlspecialchars( $this->getTraceAsString() ) ) . 
+				"</p>\n";
+		}*/
 
 		if($wgUseFileCache) {
 			if($wgTitle) {
@@ -2505,13 +2543,13 @@ border=\"0\" ALT=\"Google\"></A>
 			$cache = new HTMLFileCache( $t );
 			if( $cache->isFileCached() ) {
 				// @todo, FIXME: $msg is not defined on the next line.
-				$msg = '<p style="color: red"><b>'.$msg."<br />\n" .
+				$msg = '<p style="color: red"><b>'.$text."<br />\n" .
 					$cachederror . "</b></p>\n";
 
 				$tag = '<div id="article">';
 				$text = str_replace(
 					$tag,
-					$tag . $msg,
+					$tag . $text,
 					$cache->fetchPageText() );
 			}
 		}

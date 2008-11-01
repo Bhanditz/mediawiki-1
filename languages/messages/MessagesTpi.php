@@ -5,17 +5,25 @@
  * @file
  *
  * @author Wantok
- * @author Niklas Laxström
- * @author לערי ריינהארט
- * @author Siebrand
  * @author Wytukaze
- * @author Wantok
  * @author לערי ריינהארט
- * @author Siebrand
- * @author Wytukaze
  */
 
-
+$specialPageAliases = array(
+	'Userlogin'                 => array( 'Yusa login' ),
+	'Userlogout'                => array( 'Yusa logaut' ),
+	'CreateAccount'             => array( 'Mekim nupela login' ),
+	'Preferences'               => array( 'Ol laik bilong mi' ),
+	'Watchlist'                 => array( 'Lukautbuk' ),
+	'Recentchanges'             => array( 'Nupela senis' ),
+	'Upload'                    => array( 'Salim media fail' ),
+	'Randompage'                => array( 'Soim wanpela pes' ),
+	'Specialpages'              => array( 'Sipesol pes' ),
+	'Contributions'             => array( 'Ol senis bilong yusa' ),
+	'Emailuser'                 => array( 'Imel yusa' ),
+	'Confirmemail'              => array( 'Orait long imel' ),
+	'Whatlinkshere'             => array( 'Ol link ikam long hia' ),
+);
 
 $messages = array(
 # User preference toggles
@@ -46,8 +54,6 @@ $messages = array(
 'tog-watchlisthideown'        => 'Haitim ol senis mi wokim long lukautbuk bilong mi',
 'tog-watchlisthidebots'       => 'Haitim ol senis ol bot i wokim long lukautbuk bilong mi',
 'tog-watchlisthideminor'      => 'Haitim ol liklik senis long lukautbuk bilong mi',
-
-'skinpreview' => '(pes mi senisim, pastaim long raitim)',
 
 # Dates
 'sunday'    => 'Sande',
@@ -103,8 +109,6 @@ $messages = array(
 'mainpage-description' => 'Fran Pes',
 'portal'               => 'Bung ples',
 'portal-url'           => 'Project:Bung ples',
-'sitesupport'          => 'Givim moni',
-'sitesupport-url'      => 'Project:Givim moni',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Stori',
@@ -141,6 +145,7 @@ Na tu yu tok tru nau olsem yu raitim dispela yu yet, o yu kisim long wanpela hap
 # Preferences page
 'mypreferences'   => 'Ol laik bilong mi',
 'prefs-edits'     => 'Hamas senis:',
+'skin-preview'    => 'pes mi senisim, pastaim long raitim',
 'prefs-rc'        => 'Nupela senis',
 'prefs-watchlist' => 'Lukautbuk',
 
@@ -178,7 +183,7 @@ Na tu yu tok tru nau olsem yu raitim dispela yu yet, o yu kisim long wanpela hap
 'movethispage'            => 'Surikim dispela pes',
 'unusedcategoriestext'    => 'Ol dispela grup istap yet, tasol i no gat wanpela pes o grup i stap insait long ol.',
 
-# Special:Allpages
+# Special:AllPages
 'allpages' => 'Olgeta pes',
 
 # Special:Categories
@@ -191,11 +196,11 @@ Na tu yu tok tru nau olsem yu raitim dispela yu yet, o yu kisim long wanpela hap
 'watchlistfor'         => "(bilong '''$1''')",
 'nowatchlist'          => 'Nogat wanpela samting istap long lukautbuk bilong yu.',
 'watchlistanontext'    => 'Yu mas $1 long lukim o senisim ol samting long lukautbuk bilong yu.',
-'watchnologintext'     => 'Yu mas [[Special:Userlogin|login]] long senisim lukautbuk bilong yu.',
+'watchnologintext'     => 'Yu mas [[Special:UserLogin|login]] long senisim lukautbuk bilong yu.',
 'addedwatch'           => 'Igo insait long lukautbuk',
 'addedwatchtext'       => "Pes \"[[:\$1]]\" igo insait long [[Special:Watchlist|lukautbuk]] bilong yu nau.
 Bai yu lukim ol nupela senis long dispela pes, na pes toktok bilong en, long lukautbuk, 
-na dispela pes bai kamap '''strongpela''' long [[Special:Recentchanges|pes bilong ol nupela senis]]
+na dispela pes bai kamap '''strongpela''' long [[Special:RecentChanges|pes bilong ol nupela senis]]
 na olsem bai isi long lukim em.
 
 Sapos yu laik rausim dispela pes long lukautbuk bilong yu bihain, paitim \"Pinis long lukautim\" taim yu lukim pes.",
@@ -210,6 +215,9 @@ Sapos yu laik rausim dispela pes long lukautbuk bilong yu bihain, paitim \"Pinis
 
 'enotif_reset' => 'Makim olgeta pes olsem mi lukim pinis',
 
+# Protect
+'prot_1movedto2' => '[[$1]] i surik i go long [[$2]] pinis',
+
 # Contributions
 'contributions' => 'Ol senis yusa i wokim',
 'mycontris'     => 'Ol senis mi wokim',
@@ -220,7 +228,6 @@ Sapos yu laik rausim dispela pes long lukautbuk bilong yu bihain, paitim \"Pinis
 # Move page
 'movepagebtn'     => 'Surikim',
 'pagemovedsub'    => 'Pes i surik pinis',
-'movepage-moved'  => '<big>\'\'\'"$1" i surik i go long "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'   => 'Wanpela pes wantaim dispela nem i stap pinis, o dispela nem i no stret.
 Yu mas painim narapela nem.',
 'talkexists'      => "'''Pes bilong buk i surik pinis, tasol pes bilong toktok i no inap surik, bilong wanem wanpela pes bilong toktok istap pinis wantaim dispela nam.  Yu mas pasim wantaim tupela pes bilong toktok yu yet.'''",

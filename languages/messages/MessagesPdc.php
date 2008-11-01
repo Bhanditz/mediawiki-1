@@ -4,8 +4,7 @@
  * @ingroup Language
  * @file
  *
- * @author G - ג
- * @author SPQRobin
+ * @author לערי ריינהארט
  */
 
 $fallback = 'de';
@@ -96,7 +95,7 @@ $messages = array(
 # Tooltip help for the actions
 'tooltip-p-logo' => 'Haaptblatt',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'Guuck uff',
 
 );

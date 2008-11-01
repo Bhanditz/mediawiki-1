@@ -185,30 +185,6 @@ fieldset.operaprefsection { margin-left: 15em }
 .small, .small * { font-size: 94%; }
 table.small { font-size: 100% }
 
-div.townBox {
-    position:relative;
-    float:right;
-    background:White;
-    margin-left:1em;
-    border: 1px solid gray;
-    padding:0.3em;
-    width: 200px;
-    overflow: hidden;
-    clear: right;
-}
-div.townBox dl {
-    padding: 0;
-    margin: 0 0 0.3em 0;
-    font-size: 96%;
-}
-div.townBox dl dt {
-    background: none;
-    margin: 0.4em 0 0 0;
-}
-div.townBox dl dd {
-    margin: 0.1em 0 0 1.1em;
-    background-color: #f3f3f3;
-}
 /* use this instead of #toc for page content */
 .toccolours {
     border:1px solid #aaaaaa;
@@ -224,10 +200,6 @@ div.townBox dl dd {
 .redirectText {
 	font-size:150%;
 	margin:5px;
-}
-.searchmatch {
-	color: red;
-	font-weight: bold;
 }
 .sharedUploadNotice {
 	font-style: italic;
@@ -430,13 +402,6 @@ table.multipageimage td {
 
 .templatesUsed { margin-top: 1em; }
 
-/* Recreating-deleted-page/reupload file warning and log entries */
-div#mw-upload-deleted-warn ul li,
-div#mw-recreate-deleted-warn ul li {
-	font-size: 95%;
-}
-
-
 .MediaTransformError {
 	border: thin solid #777;
 	background-color: #ccc;
@@ -446,4 +411,8 @@ div#mw-recreate-deleted-warn ul li {
 	text-align: center;
 	vertical-align: middle;
 	font-size: 90%;
+}
+
+form#specialpages {
+	display: inline;
 }

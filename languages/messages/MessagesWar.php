@@ -6,9 +6,27 @@
  *
  * @author Harvzsf
  * @author לערי ריינהארט
- * @author Siebrand
- * @author Jon Harald Søby
  */
+
+$specialPageAliases = array(
+	'Watchlist'                 => array( 'Angay Timan-an' ),
+	'Upload'                    => array( 'Pagkarga' ),
+	'Statistics'                => array( 'Mga Estadistika' ),
+	'Randompage'                => array( 'Bisan Ano', 'BisanAnongaPakli' ),
+	'Mostlinked'                => array( 'Gidamo-iHinSumpay' ),
+	'Shortpages'                => array( 'HaglipotngamgaPakli' ),
+	'Longpages'                 => array( 'HaglabangamgaPakli' ),
+	'Newpages'                  => array( 'Bag-ongamgaPakli' ),
+	'Allpages'                  => array( 'NgatananngaPakli' ),
+	'Specialpages'              => array( 'MgaIspisyalngaPakli' ),
+	'Contributions'             => array( 'Mga Ámot' ),
+	'Movepage'                  => array( 'BalhinaAnPakli' ),
+	'Categories'                => array( 'Mga Kategorya' ),
+	'Version'                   => array( 'Bersyon' ),
+	'Mypage'                    => array( 'AkonPakli' ),
+	'Mytalk'                    => array( 'AkonHiruhimangraw' ),
+	'Search'                    => array( 'Bilnga' ),
+);
 
 $messages = array(
 # User preference toggles
@@ -139,8 +157,6 @@ $messages = array(
 'policy-url'           => 'Project:Polisiya',
 'portal'               => 'Ganghaan han Komunidad',
 'portal-url'           => 'Project:Ganghaan han Komunidad',
-'sitesupport'          => 'Mga Donasyon',
-'sitesupport-url'      => 'Project:Mga Donasyon',
 
 'badaccess-group0' => 'Diri ka gintutugutan pagbuhat han buruhaton nga imo ginhangyo.',
 
@@ -203,7 +219,7 @@ $messages = array(
 'upload'    => 'Pagkarga hin file',
 'uploadbtn' => 'Igkarga an file',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist_date' => 'Pitsa',
 'imagelist_name' => 'Ngaran',
 
@@ -223,7 +239,6 @@ $messages = array(
 
 # Statistics
 'statistics' => 'Mga estadistika',
-'sitestats'  => '{{SITENAME}} nga mga estadistika',
 
 # Miscellaneous special pages
 'longpages' => 'Haglaba nga mga pakli',
@@ -232,10 +247,7 @@ $messages = array(
 # Book sources
 'booksources-go' => 'Kadto-a',
 
-# Special:Log
-'log-search-submit' => 'Kadto-a',
-
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Ngatanan nga mga pakli',
 'allarticles'    => 'Ngatanan nga mga artikulo',
 'allpagesprev'   => 'Naha-una',
@@ -243,7 +255,7 @@ $messages = array(
 'allpagessubmit' => 'Kadto-a',
 
 # Special:Categories
-'categories' => '{{PLURAL:$1|Kategorya|Mga Kategorya}}',
+'categories' => 'Mga Kategorya',
 
 # Watchlist
 'watchlist'     => 'Akon barantayan',
@@ -251,7 +263,7 @@ $messages = array(
 'watch'         => 'Bantayi',
 'watchthispage' => 'Bantayi ini nga pakli',
 
-# Delete/protect/revert
+# Delete
 'deletedtext' => 'Ginpara an "<nowiki>$1</nowiki>".
 Kitaa an $2 para hin talaan han mga gibag-ohi nga mga ginpamara.',
 
@@ -264,7 +276,7 @@ Kitaa an $2 para hin talaan han mga gibag-ohi nga mga ginpamara.',
 # Block/unblock
 'ipblocklist-submit' => 'Bilnga',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'Bilnga',
 
 # Multipage image navigation

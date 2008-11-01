@@ -5,11 +5,9 @@
  * @file
  *
  * @author Agurzil
- * @author Siebrand
- * @author SPQRobin
- * @author Nike
- * @author Jon Harald Søby
+ * @author Agzennay
  * @author Teak
+ * @author Urhixidur
  */
 
 $namespaceNames = array(
@@ -83,8 +81,6 @@ $messages = array(
 'underline-always'  => 'Daymen',
 'underline-never'   => 'Abaden',
 'underline-default' => 'Browser/Explorateur ameslugen',
-
-'skinpreview' => '(Pre-timeẓriwt)',
 
 # Dates
 'sunday'        => 'Lḥedd',
@@ -238,13 +234,9 @@ $messages = array(
 'portal-url'           => 'Project:Awwur n timetti',
 'privacy'              => 'Tudert tusligt',
 'privacypage'          => 'Project:Tudert tusligt',
-'sitesupport'          => 'Efk-aɣ idrimen',
-'sitesupport-url'      => 'Project:Efk-aɣ idrimen',
 
 'badaccess'        => 'Agul n turagt',
 'badaccess-group0' => 'Ur tettalaseḍ ara ad texedmeḍ tigawt i tseqsiḍ.',
-'badaccess-group1' => 'Tigawt i steqsiḍ, llan ala imseqdacen n adrum n $1 i zemren a t-xedmen.',
-'badaccess-group2' => 'Tigawt i steqsiḍ, llan ala imseqdacen seg yiwen n yiderman n $1 i zemren a t-xedmen.',
 'badaccess-groups' => 'Tigawt i steqsiḍ, llan ala imseqdacen seg yiwen n yiderman n $1 i zemren a t-xedmen.',
 
 'versionrequired'     => 'Yessefk ad tesɛiḍ tasiwelt $1 n MediaWiki',
@@ -283,7 +275,7 @@ $messages = array(
 'nosuchaction'      => 'Tigawt ulac-itt',
 'nosuchactiontext'  => 'Wiki ur teɛqil ara tigawt-nni n URL',
 'nosuchspecialpage' => 'Asebter uslig am wagi ulac-it.',
-'nospecialpagetext' => 'Tseqsiḍ ɣef usebter uslig ulac-it, tzemreḍ ad tafeḍ isebtar usligen n ṣṣeḥ deg [[Special:Specialpages|wumuɣ n isebtar usligen]].',
+'nospecialpagetext' => 'Tseqsiḍ ɣef usebter uslig ulac-it, tzemreḍ ad tafeḍ isebtar usligen n ṣṣeḥ deg [[Special:SpecialPages|wumuɣ n isebtar usligen]].',
 
 # General errors
 'error'                => 'Agul',
@@ -321,7 +313,6 @@ Win (anedbal) isekker-itt yenna-d: $1',
 'cannotdelete'         => 'Ur yezmir ara ad yemḥu asebter neɣ afaylu i tebɣiḍ. (Ahat amdan wayeḍ yemḥa-t.)',
 'badtitle'             => 'Azwel ur yelhi',
 'badtitletext'         => 'Asebter i testeqsiḍ fell-as mačči ṣaḥiḥ, d ilem, neɣ yella ugul deg wezday seg wikipedia s tutlayt tayeḍ neɣ deg wezday n wiki nniḍen. Ahat tesɛa asekkil ur yezmir ara ad yettuseqdac deg wezwel.',
-'perfdisabled'         => 'Suref-aɣ! aḍaɣar-agi ur yettuseqdac ara tura axaṭer iɛeṭṭel aṭas database.',
 'perfcached'           => 'Talɣut deg ukessar seg lkac u waqila mačči d tasiwelt taneggarut.',
 'perfcachedts'         => 'Talɣut deg ukessar seg lkac, tasiwelt taneggarut n wass $1.',
 'querypage-no-updates' => 'Ibeddlen n usebter-agi ur ttbanen ara tura. Tilɣa ines qrib a d-banen.',
@@ -351,7 +342,6 @@ Isem n wemseqdac inek yettwaxleq. Ur tettuḍ ara ad tbeddleḍ Isemyifiyen n {{
 'remembermypassword'         => 'Cfu ɣef wawal n tbaḍnit inu di uselkim-agi.',
 'yourdomainname'             => 'Taɣult inek',
 'externaldberror'            => 'Yella ugul aberrani n database neɣ ur tettalaseḍ ara ad tbeddleḍ isem an wemseqdac aberrani inek.',
-'loginproblem'               => '<b>Yella ugur akk d ukcam inek.</b><br />Ɛreḍ daɣen!',
 'login'                      => 'Kcem',
 'nav-login-createaccount'    => 'Kcem / Xleq isem n wemseqdac',
 'loginprompt'                => 'Yessefk ad teǧǧiḍ ikukiyen (cookies) iwakken ad tkecmeḍ ar {{SITENAME}}.',
@@ -435,13 +425,13 @@ iwakken ad tbeyyneḍ belli tansa n email inek.',
 'italic_tip'      => 'Aḍris aṭalyani',
 'link_sample'     => 'Azwel n uzday',
 'link_tip'        => 'Azday zdaxel',
-'extlink_sample'  => 'http://www.amedya.com azwel n uzday',
+'extlink_sample'  => 'http://www.example.com azwel n uzday',
 'extlink_tip'     => 'Azday aberrani (cfu belli yessefk at tebduḍ s http://)',
 'headline_sample' => 'Aḍris n uzwel azellum',
 'headline_tip'    => 'Aswir 2 n uzwel azellum',
 'math_sample'     => 'Ssekcem tasemselt dagi',
 'math_tip'        => 'Tasemselt tusnakt (LaTeX)',
-'nowiki_sample'   => 'Ssekcem aḍris mebla taseddast n wiki dagi',
+'nowiki_sample'   => 'Sideff da tirra bla taseddast(formatting) n wiki',
 'nowiki_tip'      => 'Ttu taseddast n wiki',
 'image_sample'    => 'Amedya.jpg',
 'image_tip'       => 'Tugna yettussekcmen',
@@ -477,10 +467,6 @@ Lukan ur tefkiḍ ara email saḥih deg [[Special:Preferences|isemyifiyen n wems
 'blockededitsource'         => "Aḍris n '''ubeddel inek''' i '''$1''' hat deg ukessar:",
 'whitelistedittitle'        => 'Yessefk ad tkecmeḍ iwakken ad tbeddleḍ',
 'whitelistedittext'         => 'Yessefk ad $1 iwakken ad tbeddleḍ isebtar.',
-'whitelistreadtitle'        => 'Yessefk ad tkecmeḍ iwakken ad teqqareḍ',
-'whitelistreadtext'         => 'Yessefk ad [[Special:Userlogin|tkecmeḍ]] iwakken ad teɣriḍ isebtar.',
-'whitelistacctitle'         => 'Ur tettalaseḍ ara ad txelqeḍ isem n wemseqdac',
-'whitelistacctext'          => 'Akken ad txelqeḍ isem n wemseqdac deg wiki-yagi yessefk ad [[Special:Userlogin|tkecmeḍ]] u tesɛa izerfan usligen.',
 'confirmedittitle'          => 'Yessef ad tsentmeḍ e-mail inek iwakken ad tbeddleḍ',
 'confirmedittext'           => 'Yessefk ad tsentmeḍ tansa e-mail inek uqbel abeddel. Xtar tansa e-mail di [[Special:Preferences|isemyifiyen n wemseqdac]].',
 'nosuchsectiontitle'        => 'Amur ulac-it',
@@ -495,7 +481,7 @@ Lukan ur tefkiḍ ara email saḥih deg [[Special:Preferences|isemyifiyen n wems
 Akken ad txelqeḍ asebter-nni, aru deg tenkult i tella deg ukessar
 (ẓer [[{{MediaWiki:Helppage}}|asebter n tallat]] akken ad tessneḍ kter).
 Ma tɣelṭeḍ, wekki kan ɣef tqeffalt "Back/Précédent" n browser/explorateur inek.',
-'anontalkpagetext'          => "----''Wagi d asebter n umyennan n wemseqdac adrig. Ihi, yessef ad as nefk ID, nesseqdac tansa IP ines akken a t-neɛqel. Tansa IP nni ahat tettuseqdac sɣur aṭṭas n yimdanen. Lukan ula d kečč aqla-k amseqdac adrig u ur tebɣiḍ ara ad tettwabcreḍ izen am wigini, ihi [[Special:Userlogin|xleq isem n wemseqdac neɣ kcem]].''",
+'anontalkpagetext'          => "----''Wagi d asebter n umyennan n wemseqdac adrig. Ihi, yessef ad as nefk ID, nesseqdac tansa IP ines akken a t-neɛqel. Tansa IP nni ahat tettuseqdac sɣur aṭṭas n yimdanen. Lukan ula d kečč aqla-k amseqdac adrig u ur tebɣiḍ ara ad tettwabcreḍ izen am wigini, ihi [[Special:UserLogin|xleq isem n wemseqdac neɣ kcem]].''",
 'noarticletext'             => 'Ulac aḍris deg usebter-agi, tzemreḍ ad [[Special:Search/{{PAGENAME}}|tnadiḍ ɣef wezwel n usebter-agi]] deg isebtar wiyaḍ neɣ [{{fullurl:{{FULLPAGENAME}}|action=edit}} tettbeddileḍ asebter-agi].',
 'clearyourcache'            => "'''Tamawt:''' Beɛd asmekti, ahat yessefk ad temḥuḍ lkac n browser/explorateur inek akken teẓriḍ ibeddlen. '''Mozilla / Firefox / Safari:''' qqim twekkiḍ ''Shift'' u wekki ɣef ''Reload/Recharger'', neɣ wekki ɣef ''Ctrl-Shift-R'' (''Cmd-Shift-R'' deg Apple Mac); '''IE:''' qqim twekkiḍ ɣef ''Ctrl'' u wekki ɣef ''Refresh/Actualiser'', neɣ wekki ɣef ''Ctrl-F5''; '''Konqueror:''': wekki kan ɣef taqeffalt ''Reload'', neɣ wekki ɣef ''F5''; '''Opera''' yessefk ad tesseqdceḍ ''Tools→Preferences/Outils→Préférences'' akken ad temḥud akk lkac.",
 'usercssjsyoucanpreview'    => "<strong>Tixidest:</strong> Sseqdec taqeffalt 'Ssken pre-timeẓriwt' iwakken ad tɛerḍeḍ CSS/JS amynut inek uqbel ad tesmektiḍ.",
@@ -534,7 +520,7 @@ Aqlak teggaleḍ belli tureḍ wagi d kečč, neɣ teddmiḍ-t seg taɣult azaye
 'copyrightwarning2'         => 'Ssen belli akk tikkin deg {{SITENAME}} zemren ad ttubeddlen neɣ ttumḥan sɣur imdanen wiyaḍ. Lukan ur tebɣiḍ ara aru inek yettubeddel neɣ yettwazen u yettwaru deg imkanen nniḍen, ihi ur t-tazneḍ ara dagi.<br />
 Aqlak teggaleḍ belli tureḍ wagi d kečč, neɣ teddmiḍ-t seg taɣult azayez neɣ iɣbula tilelliyin (ẓer $1 akken ad tessneḍ kter).
 <strong>UR TEFKIḌ ARA AXDAM S COPYRIGHT MEBLA TURAGT!</strong>',
-'longpagewarning'           => '<strong>AƔTAL: Asebter-agi yesɛa $1 kilobytes/kilooctets; kra n browsers/explorateur ur zemren ara ad beddlen isebtar i yesɛan 32kB/ko neɣ kter.
+'longpagewarning'           => '<strong>AƔTAL: Asebter-agi yesɛa $1 kilobytes/kilooctets; kra n browsers/explorateur ur zemren ara ad beddlen isebtar i yesɛan 32 kB/ko neɣ kter.
 G leɛnayek frec asebter-nni.</strong>',
 'longpageerror'             => '<strong>AGUL: Aḍris i tefkiḍ yesɛa $1 kB/ko, tiddi-yagi kter n $2 kB/ko, ur yezmir ara ad yesmekti.</strong>',
 'readonlywarning'           => '<strong>AƔTAL: Database d tamsekker akken ad teddwaxdem,
@@ -551,7 +537,7 @@ deg afaylu nniḍen akken tesseqdceḍ-it umbeɛd.</strong>',
 'edittools'                 => '<!-- Aḍris yettbanen-d seddaw talɣa n ubeddil d uzen. -->',
 'nocreatetitle'             => 'Axleq n isebtar meḥdud',
 'nocreatetext'              => 'Adeg n internet agi iḥedded axleq n isebtar imaynuten.
-Tzemreḍ a d-uɣaleḍ u tbeddleḍ asebter i yellan, neɣ ad [[Special:Userlogin|tkecmeḍ neɣ ad txelqeḍ isem n wemseqdac]].',
+Tzemreḍ a d-uɣaleḍ u tbeddleḍ asebter i yellan, neɣ ad [[Special:UserLogin|tkecmeḍ neɣ ad txelqeḍ isem n wemseqdac]].',
 
 # "Undo" feature
 'undo-success' => 'Tzemreḍ ad tessefsuḍ abeddil. Ssenqed asidmer akken ad tessneḍ ayen tebɣiḍ ad txdmeḍ d ṣṣeḥ, umbeɛd smekti ibeddlen u tkemmleḍ ad tessefsuḍ abeddil.',
@@ -564,12 +550,9 @@ Tzemreḍ a d-uɣaleḍ u tbeddleḍ asebter i yellan, neɣ ad [[Special:Userlog
 # History pages
 'viewpagelogs'        => 'Ẓer aɣmis n usebter-agi',
 'nohistory'           => 'Ulac amezruy n yibeddlen i usebter-agi.',
-'revnotfound'         => 'Ur yezmir ara ad yaf tasiwelt',
-'revnotfoundtext'     => 'Tasiwelt taqdimt n usebter-agi i testeqsiḍ ulac-it.
-Ssenqed URL i tesseqdac.',
 'currentrev'          => 'Tasiwelt n tura',
 'revisionasof'        => 'Tasiwelt n wass $1',
-'revision-info'       => 'Tasiwelt n wass $1 sɣur $2',
+'revision-info'       => 'Tasiwelt n wass $1 sɣur $2', # Additionally available: $3: revision id
 'previousrevision'    => '←Tasiwelt taqdimt',
 'nextrevision'        => 'Tasiwelt tamaynut→',
 'currentrevisionlink' => 'Tasiwelt n tura',
@@ -612,12 +595,12 @@ Waqila yella kter n talɣut [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}
 'revisiondelete'              => 'Mḥu/kkes amḥay tisiwal',
 'revdelete-nooldid-title'     => 'Ulac nnican i tasiwelt',
 'revdelete-nooldid-text'      => 'Ur textareḍ ara tasiwelt nnican akken ad txedmeḍ tawuri fell-as.',
-'revdelete-selected'          => "{{PLURAL:$2|Tasiwelt tettwafren|Tisiwal ttwafernen}} n '''$1:'''",
-'logdelete-selected'          => "{{PLURAL:$2|Tamirt n uɣmis tettwafren|Isallen n uɣmis ttwafernen}} n '''$1:'''",
-'revdelete-text'              => 'Tisiwal i yettumḥan ad baben deg umezruy n usebter d weɣmis,
-meɛna imuren seg-sen zemren imdanen a ten-ẓren.
+'revdelete-selected'          => "'''{{PLURAL:$2|Tasiwelt tettwafren|Tisiwal ttwafernen}} n '''$1:''''''",
+'logdelete-selected'          => "'''{{PLURAL:$1|Tamirt n uɣmis tettwafren|Isallen n uɣmis ttwafernen}}:'''",
+'revdelete-text'              => "'''Tisiwal i yettumḥan ad baben deg umezruy n usebter d weɣmis,
+meɛna imuren seg-sen zemren imdanen a ten-ẓren.'''
 
-Inedbalen wiyaḍ deg wiki-yagi zemren ad ẓren imuren i yettwafren u zemren a ten-mḥan, ḥaca ma llan icekkilen.',
+Inedbalen wiyaḍ deg wiki-yagi zemren ad ẓren imuren i yettwafren u zemren a ten-mḥan, ḥaca ma llan icekkilen.",
 'revdelete-legend'            => 'Eg icekkilen',
 'revdelete-hide-text'         => 'Ffer aḍris n tsiwelt',
 'revdelete-hide-name'         => 'Ffer tigawt d nnican',
@@ -667,7 +650,7 @@ i yesɛan akk awalen i banen-d).",
 'preferences'              => 'Isemyifiyen',
 'mypreferences'            => 'Isemyifiyen inu',
 'prefsnologin'             => 'Ur tekcimeḍ ara',
-'prefsnologintext'         => 'Yessefk ad [[Special:Userlogin|tkecmeḍ]] iwakken textareḍ isemyifiyen inek.',
+'prefsnologintext'         => 'Yessefk ad [[Special:UserLogin|tkecmeḍ]] iwakken textareḍ isemyifiyen inek.',
 'prefsreset'               => 'Iɛawed ad yexdem isemyifiyen inek.',
 'qbsettings'               => 'Tanuga taǧiḥbuṭ',
 'qbsettings-none'          => 'Ulaḥedd',
@@ -677,6 +660,7 @@ i yesɛan akk awalen i banen-d).",
 'qbsettings-floatingright' => 'Tufeg ayeffus',
 'changepassword'           => 'Beddel awal n tbaḍnit',
 'skin'                     => 'Aglim',
+'skin-preview'             => 'Pre-timeẓriwt',
 'math'                     => 'Tusnakt',
 'dateformat'               => 'talɣa n uzemz',
 'datedefault'              => 'Ur sɛiɣ ara asemyifi',
@@ -722,18 +706,15 @@ i yesɛan akk awalen i banen-d).",
 'files'                    => 'Ifayluwen',
 
 # User rights
-'userrights'                  => 'Laɛej iserfan n wemseqdac', # Not used as normal message but as header for the special page itself
-'userrights-lookup-user'      => 'Laɛej iderman n yimseqdacen',
-'userrights-user-editname'    => 'Ssekcem isem n wemseqdac:',
-'editusergroup'               => 'Beddel iderman n yimseqdacen',
-'editinguser'                 => "Abeddel n wemseqdac '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup'    => 'Beddel iderman n wemseqdac',
-'saveusergroups'              => 'Smekti iderman n yimseqdacen',
-'userrights-groupsmember'     => 'Amaslad deg:',
-'userrights-groupsavailable'  => 'Iderman i yellan:',
-'userrights-reason'           => 'Ayɣer yettubeddel:',
-'userrights-available-add'    => 'Tzemreḍ ad ternuḍ imseqdacen i $1.',
-'userrights-available-remove' => 'Tzemreḍ ad tekkseḍ imseqdacen seg $1.',
+'userrights'               => 'Laɛej iserfan n wemseqdac', # Not used as normal message but as header for the special page itself
+'userrights-lookup-user'   => 'Laɛej iderman n yimseqdacen',
+'userrights-user-editname' => 'Ssekcem isem n wemseqdac:',
+'editusergroup'            => 'Beddel iderman n yimseqdacen',
+'editinguser'              => "Abeddel n wemseqdac '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup' => 'Beddel iderman n wemseqdac',
+'saveusergroups'           => 'Smekti iderman n yimseqdacen',
+'userrights-groupsmember'  => 'Amaslad deg:',
+'userrights-reason'        => 'Ayɣer yettubeddel:',
 
 # Groups
 'group'       => 'Adrum:',
@@ -782,11 +763,11 @@ i yesɛan akk awalen i banen-d).",
 'reupload'                    => 'Ɛiwed azen',
 'reuploaddesc'                => 'Uɣal-d ar talɣa n tuznin.',
 'uploadnologin'               => 'Ur tekcimeḍ ara',
-'uploadnologintext'           => 'Yessefk [[Special:Userlogin|ad tkecmeḍ]]
+'uploadnologintext'           => 'Yessefk [[Special:UserLogin|ad tkecmeḍ]]
 iwakken ad tazneḍ afaylu.',
 'upload_directory_read_only'  => 'Weserver/serveur Web ur yezmir ara ad yaru deg ($1).',
 'uploaderror'                 => 'Agul deg usekcam',
-'uploadtext'                  => "Sseqdec talɣa deg ukessar akken ad tazeneḍ tugnawin, akken ad teẓred neɣ ad tnadiḍ tugnawin yettwaznen, ruḥ ɣer [[Special:Imagelist|umuɣ n usekcam n tugnawin]], Amezruy n usekcam d umḥay hatent daɣen deg [[Special:Log/upload|amezruy n usekcam]].
+'uploadtext'                  => "Sseqdec talɣa deg ukessar akken ad tazeneḍ tugnawin, akken ad teẓred neɣ ad tnadiḍ tugnawin yettwaznen, ruḥ ɣer [[Special:ImageList|umuɣ n usekcam n tugnawin]], Amezruy n usekcam d umḥay hatent daɣen deg [[Special:Log/upload|amezruy n usekcam]].
 
 Akken ad tessekcmeḍ tugna deg usebter, seqdec azay am wagi
 '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Afaylu.jpg]]</nowiki>''',
@@ -854,7 +835,7 @@ Ma tesɛiḍ tugna-nni s resolution tameqqrant, azen-it, ma ulac beddel isem-is.
 'upload_source_url'  => ' (URL saḥiḥ)',
 'upload_source_file' => ' (afaylu deg uselkim inek)',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist_search_for'  => 'Nadi ɣef yisem n tugna:',
 'imgfile'               => 'afaylu',
 'imagelist'             => 'Umuɣ n tugniwin',
@@ -865,6 +846,7 @@ Ma tesɛiḍ tugna-nni s resolution tameqqrant, azen-it, ma ulac beddel isem-is.
 'imagelist_description' => 'Aglam',
 
 # Image description page
+'filehist-current'          => 'Lux a',
 'filehist-user'             => 'Amseqdac',
 'imagelinks'                => 'Izdayen',
 'linkstoimage'              => 'isebtar-agi sɛan azday ar afaylu-agi',
@@ -901,22 +883,9 @@ Ma tesɛiḍ tugna-nni s resolution tameqqrant, azen-it, ma ulac beddel isem-is.
 'randomredirect' => 'Asemmimeḍ menwala',
 
 # Statistics
-'statistics'             => 'Tisnaddanin',
-'sitestats'              => 'Tisnaddanin n {{SITENAME}}',
-'userstats'              => 'Tisnaddanin n wemseqdac',
-'sitestatstext'          => "{{PLURAL:\$1|Yella '''yiwen''' usebter|Llan '''\$1''' n isebtar}} deg database.
-Azwil-agi yesɛa daɣen akk isebtar \"amyannan\", d isebtar ɣef {{SITENAME}}, d isebtar \"imecṭuḥen\", isebtar ismimḍen, d wiyaḍ.
-Asmi ttwakksen wigini, {{PLURAL:\$2|yella '''yiwen''' usebter|llan '''\$2''' n isebtar}} d {{PLURAL:\$2|amliḥ|imliḥen}} . 
-
-'''\$8''' {{PLURAL:\$8|afaylu|ifayluwen}} ttwaznen.
-
-{{PLURAL:\$3|tella|llant}} '''\$3''' n {{PLURAL:\$3|timeẓriwt|timeẓriwin}}, '''\$4''' n {{PLURAL:\$4|ubeddel|yibeddlen}} n usebtar segmi {{SITENAME}} yettwaxleq.
-Ihi, {{PLURAL:\$5|yella|llan}} '''\$5''' n {{PLURAL:\$5|ubeddel|ibeddlen}} i mkul asebter, d '''\$6''' timeẓriwin i mkul abeddel.
-
-Ṭul n [http://www.mediawiki.org/wiki/Manual:Job_queue umuti n wexdam] '''\$7'''.",
-'userstatstext'          => "{{PLURAL:$1|Yella '''yiwen''' wemseqdac|Llan '''$1''' n yimseqdacen}}, seg-sen
-'''$2''' (neɣ '''$4%''') {{PLURAL:$2|yesɛa|sɛan}} izerfan n $5.",
-'statistics-mostpopular' => 'isebtar mmeẓren aṭṭas',
+'statistics'              => 'Tisnaddanin',
+'statistics-header-users' => 'Tisnaddanin n wemseqdac',
+'statistics-mostpopular'  => 'isebtar mmeẓren aṭṭas',
 
 'disambiguations'      => 'isebtar n usefham',
 'disambiguationspage'  => 'Template:Asefham',
@@ -987,14 +956,12 @@ Ihi, {{PLURAL:\$5|yella|llan}} '''\$5''' n {{PLURAL:\$5|ubeddel|ibeddlen}} i mku
 'speciallogtitlelabel' => 'Azwel:',
 'log'                  => 'Aɣmis',
 'all-logs-page'        => 'Akk iɣmisen',
-'log-search-legend'    => 'Nadi ɣef yiɣmisen',
-'log-search-submit'    => 'OK',
 'alllogstext'          => 'Ssken akk iɣmisen n {{SITENAME}}.
 Tzemreḍ ad textareḍ cwiṭ seg-sen ma tebɣiḍ.',
 'logempty'             => 'Ur yufi ara deg uɣmis.',
 'log-title-wildcard'   => 'Nadi ɣef izwal i yebdan s uḍris-agi',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'          => 'Akk isebtar',
 'alphaindexline'    => '$1 ar $2',
 'nextpage'          => 'Asebter ameḍfir ($1)',
@@ -1014,14 +981,14 @@ Tzemreḍ ad textareḍ cwiṭ seg-sen ma tebɣiḍ.',
 'categories'         => 'Taggayin',
 'categoriespagetext' => 'Llant taggayin-agi deg wiki-yagi.',
 
-# Special:Listusers
+# Special:ListUsers
 'listusersfrom'      => 'Ssken imseqdacen seg:',
 'listusers-submit'   => 'Ssken',
 'listusers-noresult' => 'Ur yufi ḥedd (amseqdac).',
 
 # E-mail user
 'mailnologin'     => 'Ur yufi ḥedd (tansa)',
-'mailnologintext' => 'Yessefk ad [[Special:Userlogin|tkecmeḍ]] u tesɛiḍ tansa e-mail ṭaṣhiḥt deg [[Special:Preferences|isemyifiyen]] inek
+'mailnologintext' => 'Yessefk ad [[Special:UserLogin|tkecmeḍ]] u tesɛiḍ tansa e-mail ṭaṣhiḥt deg [[Special:Preferences|isemyifiyen]] inek
 iwakken ad tazneḍ email i imseqdacen wiyaḍ.',
 'emailuser'       => 'Azen e-mail i wemseqdac-agi',
 'emailpage'       => 'Azen e-mail i wemseqdac',
@@ -1050,11 +1017,11 @@ deg « Expéditeur» n izen inek iwakken amseqdac-nni yezmer a k-yerr.',
 'nowatchlist'          => 'Umuɣ n uɛessi inek d ilem.',
 'watchlistanontext'    => 'G leɛnaya-k $1 iwakken ad twalaḍ neɣ tbeddleḍ iferdas deg wumuɣ n uɛessi inek.',
 'watchnologin'         => 'Ur tekcimeḍ ara',
-'watchnologintext'     => 'Yessefk ad [[Special:Userlogin|tkecmeḍ]] iwakken ad tbeddleḍ umuɣ n uɛessi inek.',
+'watchnologintext'     => 'Yessefk ad [[Special:UserLogin|tkecmeḍ]] iwakken ad tbeddleḍ umuɣ n uɛessi inek.',
 'addedwatch'           => 'Yerna ɣer wumuɣ n uɛessi',
 'addedwatchtext'       => "Asebter \"[[:\$1]]\" yettwarnu deg [[Special:Watchlist|wumuɣ n uɛessi]] inek.
 Ma llan ibeddlen deg usebter-nni neɣ deg usbtar umyennan ines, ad banen dagi,
-Deg [[Special:Recentchanges|wumuɣ n yibeddlen imaynuten]] ad banen s '''yisekkilen ibberbuzen''' (akken ad teẓriḍ).
+Deg [[Special:RecentChanges|wumuɣ n yibeddlen imaynuten]] ad banen s '''yisekkilen ibberbuzen''' (akken ad teẓriḍ).
 
 Ma tebɣiḍ ad tekkseḍ asebter seg wumuɣ n uɛessi inek, wekki ɣef \"Fakk aɛessi\".",
 'removedwatch'         => 'Yettwakkes seg wumuɣ n uɛessi',
@@ -1117,32 +1084,37 @@ Akken ad tbeddleḍ n wumuɣ n uɛessi inek settings, ruḥ ɣer
 Tadhelt:
 {{fullurl:{{MediaWiki:Helppage}}}}',
 
-# Delete/protect/revert
-'deletepage'              => 'Mḥu asebter',
-'confirm'                 => 'Sentem',
-'excontent'               => "Ayen yella: '$1'",
-'excontentauthor'         => "Ayen yella: '$1' ('[[Special:Contributions/$2|$2]]' kan i yekken deg-s)",
-'exbeforeblank'           => "Ayen yella uqbal ma yettumḥa: '$1'",
-'exblank'                 => 'asebter yella d ilem',
-'historywarning'          => 'Aɣtal: Asebter i ara temḥuḍ yesɛa amezruy:',
-'actioncomplete'          => 'Axdam yekfa',
-'deletedtext'             => '"<nowiki>$1</nowiki>" yettumḥa.
+# Delete
+'deletepage'      => 'Mḥu asebter',
+'confirm'         => 'Sentem',
+'excontent'       => "Ayen yella: '$1'",
+'excontentauthor' => "Ayen yella: '$1' ('[[Special:Contributions/$2|$2]]' kan i yekken deg-s)",
+'exbeforeblank'   => "Ayen yella uqbal ma yettumḥa: '$1'",
+'exblank'         => 'asebter yella d ilem',
+'historywarning'  => 'Aɣtal: Asebter i ara temḥuḍ yesɛa amezruy:',
+'actioncomplete'  => 'Axdam yekfa',
+'deletedtext'     => '"<nowiki>$1</nowiki>" yettumḥa.
 Ẓer $2 i aɣmis n yimḥayin imaynuten.',
-'deletedarticle'          => '"[[$1]]" yettumḥa',
-'dellogpage'              => 'Aɣmis n umḥay',
-'dellogpagetext'          => 'Deg ukessar, yella wumuɣ n yimḥayin imaynuten.',
-'deletionlog'             => 'Aɣmis n umḥay',
-'reverted'                => 'Asuɣal i tasiwel taqdimt',
-'deletecomment'           => 'Ayɣer tebɣiḍ ad temḥuḍ',
-'cantrollback'            => 'Ur yezmir ara ad yessuɣal; yella yiwen kan amseqdac iwumi ibeddel/yexleq asebter-agi.',
-'editcomment'             => 'Agzul n ubeddel yella: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'              => 'Yessuɣal ibeddlen n [[Special:Contributions/$2|$2]] ([[User talk:$2|Meslay]]); yettubeddel ɣer tasiwelt taneggarut n [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
-'sessionfailure'          => 'Yella ugul akk d takmect inek;
+'deletedarticle'  => '"[[$1]]" yettumḥa',
+'dellogpage'      => 'Aɣmis n umḥay',
+'dellogpagetext'  => 'Deg ukessar, yella wumuɣ n yimḥayin imaynuten.',
+'deletionlog'     => 'Aɣmis n umḥay',
+'reverted'        => 'Asuɣal i tasiwel taqdimt',
+'deletecomment'   => 'Ayɣer tebɣiḍ ad temḥuḍ',
+
+# Rollback
+'cantrollback'   => 'Ur yezmir ara ad yessuɣal; yella yiwen kan amseqdac iwumi ibeddel/yexleq asebter-agi.',
+'editcomment'    => 'Agzul n ubeddel yella: "<i>$1</i>".', # only shown if there is an edit comment
+'revertpage'     => 'Yessuɣal ibeddlen n [[Special:Contributions/$2|$2]] ([[User talk:$2|Meslay]]); yettubeddel ɣer tasiwelt taneggarut n [[User:$1|$1]]', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'sessionfailure' => 'Yella ugul akk d takmect inek;
 Axdam-agi yebṭel axaṭer waqila yella wemdan nniḍen i yeddem isem n wemseqdac inek.
 G leɛnayek wekki ɣef taqeffalt "Back/Précédent" n browser/explorateur inek, umbeɛd wekki ɣef "Actualiser/reload" akk ad tɛerḍeḍ tikelt nniḍen.',
+
+# Protect
 'protectlogpage'          => 'Aɣmis n wemḥay',
 'protectedarticle'        => '"[[$1]]" yettwaḥrez',
 'protect-title'           => 'Ad yeḥrez "$1"',
+'prot_1movedto2'          => '[[$1]] yettusmimeḍ ar [[$2]]',
 'protect-legend'          => 'Sentem tiḥḥerzi',
 'protect-default'         => '(ameslugen)',
 'protect-level-sysop'     => 'Inedbalen kan',
@@ -1185,7 +1157,6 @@ G leɛnayek wekki ɣef taqeffalt "Back/Précédent" n browser/explorateur inek, 
 
 # What links here
 'whatlinkshere'       => 'Ayen i d-yettawi ɣer da',
-'linklistsub'         => '(Umuɣ n yizdayen)',
 'linkshere'           => "Isebtar-agi sɛan azday ɣer '''[[:$1]]''':",
 'nolinkshere'         => "Ulac asebter i yesɛan azday ɣer '''[[:$1]]'''.",
 'nolinkshere-ns'      => "Ulac asebter i yesɛan azday ɣer '''[[:$1]]''' deg yisem n taɣult i textareḍ.",
@@ -1232,7 +1203,7 @@ Yernu, tzemreḍ ad tesmimeḍ asebter ɣer isem-is aqdim ma tɣelṭeḍ.",
 Lukan akka, yessefk a t-tedmeḍ weḥdek.",
 'movearticle'             => 'Smimeḍ asebter',
 'movenologin'             => 'Ur tekcimeḍ ara',
-'movenologintext'         => 'Yessefk ad tesɛuḍ isem n wemseqdac u [[Special:Userlogin|tkecmeḍ]]
+'movenologintext'         => 'Yessefk ad tesɛuḍ isem n wemseqdac u [[Special:UserLogin|tkecmeḍ]]
 iwakken ad tesmimḍeḍ asebter.',
 'newtitle'                => 'Ar azwel amaynut',
 'move-watch'              => 'Ɛass asebter-agi',
@@ -1253,11 +1224,10 @@ Xtar yiwen nniḍen.',
 'delete_and_move'         => 'Mḥu u smimeḍ',
 'delete_and_move_text'    => '==Amḥay i tebɣiḍ==
 
-Anda tebɣiḍ tesmimeḍ "[[$1]]" yella yagi. tebɣiḍ ad temḥuḍ iwakken yeqqim-d wemkan i usmimeḍ?',
+Anda tebɣiḍ tesmimeḍ "[[:$1]]" yella yagi. tebɣiḍ ad temḥuḍ iwakken yeqqim-d wemkan i usmimeḍ?',
 'delete_and_move_confirm' => 'Ih, mḥu asebter',
 'delete_and_move_reason'  => 'Mḥu iwakken yeqqim-d wemkan i usmimeḍ',
 'selfmove'                => 'Izwal amezwaru d uneggaru kif-kif; ur yezmir ara ad yesmimeḍ asebter ɣur iman-is.',
-'immobile_namespace'      => 'Azwel n uɣbalu neɣ anda tebɣiḍ tesmimeḍ d anaw aslig; ur yezmir ara ad yesmimeḍ isebtar seg/ɣer isem n taɣult-agi.',
 
 # Export
 'export'            => 'Ssufeɣ isebtar',
@@ -1339,7 +1309,6 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'tooltip-n-recentchanges'         => 'Umuɣ n yibeddlen imaynuten deg wiki.',
 'tooltip-n-randompage'            => 'Ẓer asebter menwala',
 'tooltip-n-help'                  => 'Amkan ideg tafeḍ.',
-'tooltip-n-sitesupport'           => 'Ellil-aɣ',
 'tooltip-t-whatlinkshere'         => 'Umuɣ n akk isebtar i yesɛan azday ar dagi',
 'tooltip-t-recentchangeslinked'   => 'Ibeddlen imaynuten deg isebtar myezdin seg usebter-agi',
 'tooltip-feed-rss'                => 'RSS feed n usebter-agi',
@@ -1432,7 +1401,7 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'show-big-image'       => 'Resolution tameqqrant',
 'show-big-image-thumb' => '<small>Tiddi n pre-timeẓriwt-agi: $1 × $2 pixels</small>',
 
-# Special:Newimages
+# Special:NewImages
 'newimages'             => 'Umuɣ n ifayluwen imaynuten',
 'imagelisttext'         => "Deg ukessar yella wumuɣ n '''$1''' {{PLURAL:$1|ufaylu|yifayluwen}} $2.",
 'noimages'              => 'Tugna ulac-itt.',
@@ -1450,7 +1419,7 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 
 # External editor support
 'edit-externally'      => 'Beddel afaylu-yagi s usnas aberrani.',
-'edit-externally-help' => 'Ẓer [http://meta.wikimedia.org/wiki/Help:External_editors taknut] iwakken ad tessneḍ kter.',
+'edit-externally-help' => 'Ẓer [http://www.mediawiki.org/wiki/Manual:External_editors taknut] iwakken ad tessneḍ kter.',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'akk',
@@ -1515,19 +1484,8 @@ $1
 G leɛnaya-k sentem belli ṣaḥḥ tebɣiḍ ad tɛiwedeḍ axlaq n usebter-agi.",
 'recreate'            => 'Ɛiwed xleq',
 
-# HTML dump
-'redirectingto' => 'Asemmimeḍ ar [[$1]]...',
-
 # action=purge
-'confirm_purge' => 'Mḥu lkac n usebter-agi?
-
-$1',
-
-# AJAX search
-'searchcontaining' => "Inadi isebtar i yesɛan ''$1''.",
-'searchnamed'      => "Nadi ɣef imagraden ttusemman ''$1''.",
-'articletitles'    => "Imagraden i yebdan s ''$1''",
-'hideresults'      => 'Ffer igmad',
+'confirm-purge-top' => 'Mḥu lkac n usebter-agi?',
 
 # Multipage image navigation
 'imgmultipageprev' => '← asebter ssabeq',

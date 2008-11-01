@@ -62,7 +62,6 @@ $messages = array(
 'edithelp'             => 'Uncedo ngoTshintsho',
 'mainpage'             => 'Iphepha Elingundoqo',
 'mainpage-description' => 'Iphepha Elingundoqo',
-'sitesupport'          => 'Amalizo',
 
 'newmessageslink'         => 'imiyalezo emitsha',
 'youhavenewmessagesmulti' => 'Unemiyalezo emitsha ku $1',
@@ -117,7 +116,7 @@ I Account yakhgo ivuliwe, ungalibali ukutshitsha izinto ozithandayo ngo {{SITENA
 'move'         => 'Dlulisa',
 'movethispage' => 'Dlulisa eliphepha',
 
-# Special:Allpages
+# Special:AllPages
 'allinnamespace' => 'Amanqaku onke ($1 namespace)',
 
 # Watchlist
@@ -125,6 +124,9 @@ I Account yakhgo ivuliwe, ungalibali ukutshitsha izinto ozithandayo ngo {{SITENA
 'mywatchlist'   => 'Endizibukeleyo',
 'watch'         => 'Bukela',
 'watchthispage' => 'Bukela le Page',
+
+# Protect
+'prot_1movedto2' => '[[$1]] lidluliselwe [[$2]]',
 
 # Contributions
 'contributions' => 'Imisebenzi ye lungu',
@@ -142,7 +144,7 @@ I Account yakhgo ivuliwe, ungalibali ukutshitsha izinto ozithandayo ngo {{SITENA
 '1movedto2'        => '[[$1]] lidluliselwe [[$2]]',
 'movereason'       => 'Isizathu',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'Khangela',
 
 # Special:SpecialPages

@@ -1,11 +1,9 @@
 <?php
-/** Eastern Canadian (Latin) (inuktitut)
+/**  ()
  *
  * @ingroup Language
  * @file
  *
- * @author SPQRobin
- * @author M.M.S.
  */
 
 $messages = array(
@@ -94,7 +92,6 @@ $messages = array(
 'portal-url'           => 'Project:qaggiq',
 'privacy'              => 'namminiq pilirivviqauqtunut aulataujut atuagaq, pinasuarniq',
 'privacypage'          => 'Project:namminiq pilirivviqauqtunut aulataujut atuagaq, pinasuarniq',
-'sitesupport'          => 'tunniqkusiat kiinaujait',
 
 'youhavenewmessages'  => 'ilissu pigivaa $1 ($2).',
 'newmessageslink'     => 'pigivuk kiggapaa',
@@ -217,8 +214,8 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 'randomredirect' => 'nakituinnaq qaujisarniq qaningani kamagijaq aasit nakit',
 
 # Statistics
-'statistics' => 'kisitsisillgurlugitpasissitissat',
-'userstats'  => 'qatannguti kisitsisillgurlugitpasissitissat',
+'statistics'              => 'kisitsisillgurlugitpasissitissat',
+'statistics-header-users' => 'qatannguti kisitsisillgurlugitpasissitissat',
 
 'doubleredirects' => 'tapirqilik qaningani kamagijaq aasit nakit',
 
@@ -235,10 +232,7 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 # Book sources
 'booksources-go' => 'aivuq',
 
-# Special:Log
-'log-search-submit' => 'aivuk',
-
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'sunamittuq mappitaq',
 'nextpage'       => 'tagga mappitaq ($1)',
 'allpagesprev'   => 'tunullipaaq',
@@ -263,9 +257,12 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 'enotif_impersonal_salutation' => '{{SITENAME}} qatannguti',
 'created'                      => 'mappitaq anivuq',
 
-# Delete/protect/revert
-'dellogpage'          => 'nipaq nipi',
-'deletionlog'         => 'nipaq nipi',
+# Delete
+'dellogpage'  => 'nipaq nipi',
+'deletionlog' => 'nipaq nipi',
+
+# Protect
+'prot_1movedto2'      => '[[$1]] surramajuq [[$2]]',
 'protect-legend'      => 'patimmivaa sapummivaa',
 'protect-level-sysop' => 'sirlak titiraqsimajunik tuqquqtiriji',
 
@@ -334,7 +331,7 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 'previousdiff' => '← tunullipaaq asiaNngutuq',
 'nextdiff'     => 'tagga asiaNngutuq mappitaq →',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'ivaaqpuq',
 'bydate'   => 'pitaaruttuq inuulirvik',
 
@@ -349,9 +346,6 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 
 # 'all' in various places, this might be different for inflected languages
 'monthsall' => 'sunamittuq',
-
-# HTML dump
-'redirectingto' => 'qaningani kamagijaq aasit nakit [[$1]]...',
 
 # action=purge
 'confirm_purge_button' => 'akaujuq',

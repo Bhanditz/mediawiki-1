@@ -86,14 +86,14 @@ function appendCSS(text) {
 	return s;
 }
 
-// document.write special stylesheet links
+// special stylesheet links
 if (typeof stylepath != 'undefined' && typeof skin != 'undefined') {
 	if (is_opera_preseven) {
-		document.write('<link rel="stylesheet" type="text/css" href="'+stylepath+'/'+skin+'/Opera6Fixes.css">');
+		importStylesheetURI(stylepath+'/'+skin+'/Opera6Fixes.css');
 	} else if (is_opera_seven && !is_opera_95) {
-		document.write('<link rel="stylesheet" type="text/css" href="'+stylepath+'/'+skin+'/Opera7Fixes.css">');
+		importStylesheetURI(stylepath+'/'+skin+'/Opera7Fixes.css');
 	} else if (is_khtml) {
-		document.write('<link rel="stylesheet" type="text/css" href="'+stylepath+'/'+skin+'/KHTMLFixes.css">');
+		importStylesheetURI(stylepath+'/'+skin+'/KHTMLFixes.css');
 	}
 }
 
@@ -101,22 +101,6 @@ if (wgBreakFrames) {
 	// Un-trap us from framesets
 	if (window.top != window) {
 		window.top.location = window.location;
-	}
-}
-
-// for enhanced RecentChanges
-function toggleVisibility(_levelId, _otherId, _linkId) {
-	var thisLevel = document.getElementById(_levelId);
-	var otherLevel = document.getElementById(_otherId);
-	var linkLevel = document.getElementById(_linkId);
-	if (thisLevel.style.display == 'none') {
-		thisLevel.style.display = 'block';
-		otherLevel.style.display = 'none';
-		linkLevel.style.display = 'inline';
-	} else {
-		thisLevel.style.display = 'none';
-		otherLevel.style.display = 'inline';
-		linkLevel.style.display = 'none';
 	}
 }
 
@@ -215,7 +199,7 @@ if (is_opera) {
 } else if (is_ff2) {
 	tooltipAccessKeyPrefix = 'alt-shift-';
 }
-var tooltipAccessKeyRegexp = /\[(ctrl-)?(alt-)?(shift-)?(esc-)?.\]$/;
+var tooltipAccessKeyRegexp = /\[(ctrl-)?(alt-)?(shift-)?(esc-)?(.)\]$/;
 
 /**
  * Add the appropriate prefix to the accesskey shown in the tooltip.
@@ -240,10 +224,9 @@ function updateTooltipAccessKeys( nodeList ) {
 	for ( var i = 0; i < nodeList.length; i++ ) {
 		var element = nodeList[i];
 		var tip = element.getAttribute("title");
-		var key = element.getAttribute("accesskey");
-		if ( key && tooltipAccessKeyRegexp.exec(tip) ) {
+		if ( tip && tooltipAccessKeyRegexp.exec(tip) ) {
 			tip = tip.replace(tooltipAccessKeyRegexp,
-					  "["+tooltipAccessKeyPrefix+key+"]");
+					  "["+tooltipAccessKeyPrefix+"$5]");
 			element.setAttribute("title", tip );
 		}
 	}
@@ -504,11 +487,10 @@ function redirectToFragment(fragment) {
 }
 
 /*
- * Table sorting script  by Joost de Valk, check it out at http://www.joostdevalk.nl/code/sortable-table/.
- * Based on a script from http://www.kryogenix.org/code/browser/sorttable/.
- * Distributed under the MIT license: http://www.kryogenix.org/code/browser/licence.html .
- *
- * Copyright (c) 1997-2006 Stuart Langridge, Joost de Valk.
+ * Table sorting script based on one (c) 1997-2006 Stuart Langridge and Joost
+ * de Valk:
+ * http://www.joostdevalk.nl/code/sortable-table/
+ * http://www.kryogenix.org/code/browser/sorttable/
  *
  * @todo don't break on colspans/rowspans (bug 8028)
  * @todo language-specific digit grouping/decimals (bug 8063)
@@ -520,8 +502,9 @@ var ts_image_up = "sort_up.gif";
 var ts_image_down = "sort_down.gif";
 var ts_image_none = "sort_none.gif";
 var ts_europeandate = wgContentLanguage != "en"; // The non-American-inclined can change to "true"
-var ts_alternate_row_colors = true;
-var SORT_COLUMN_INDEX;
+var ts_alternate_row_colors = false;
+var ts_number_transform_table = null;
+var ts_number_regex = null;
 
 function sortables_init() {
 	var idnum = 0;
@@ -594,9 +577,14 @@ function ts_resortTable(lnk) {
 		table = table.parentNode;
 	if (!table) return;
 
-	// Work out a type for the column
 	if (table.rows.length <= 1) return;
 
+	// Generate the number transform table if it's not done already
+	if (ts_number_transform_table == null) {
+		ts_initTransformTable();
+	}
+
+	// Work out a type for the column
 	// Skip the first row if that's where the headings are
 	var rowStart = (table.tHead && table.tHead.rows.length > 0 ? 0 : 1);
 
@@ -609,17 +597,21 @@ function ts_resortTable(lnk) {
 		}
 	}
 
-	sortfn = ts_sort_caseinsensitive;
-	if (itm.match(/^\d\d[\/. -][a-zA-Z]{3}[\/. -]\d\d\d\d$/))
-		sortfn = ts_sort_date;
-	if (itm.match(/^\d\d[\/.-]\d\d[\/.-]\d\d\d\d$/))
-		sortfn = ts_sort_date;
-	if (itm.match(/^\d\d[\/.-]\d\d[\/.-]\d\d$/))
-		sortfn = ts_sort_date;
-	if (itm.match(/^[\u00a3$\u20ac]/)) // pound dollar euro
-		sortfn = ts_sort_currency;
-	if (itm.match(/^[\d.,]+\%?$/))
-		sortfn = ts_sort_numeric;
+	// TODO: bug 8226, localised date formats
+	var sortfn = ts_sort_generic;
+	var preprocessor = ts_toLowerCase;
+	if (/^\d\d[\/. -][a-zA-Z]{3}[\/. -]\d\d\d\d$/.test(itm)) {
+		preprocessor = ts_dateToSortKey;
+	} else if (/^\d\d[\/.-]\d\d[\/.-]\d\d\d\d$/.test(itm)) {
+		preprocessor = ts_dateToSortKey;
+	} else if (/^\d\d[\/.-]\d\d[\/.-]\d\d$/.test(itm)) {
+		preprocessor = ts_dateToSortKey;
+	// pound dollar euro yen currency cents
+	} else if (/(^[\u00a3$\u20ac\u00a4\u00a5]|\u00a2$)/.test(itm)) {
+		preprocessor = ts_currencyToSortKey;
+	} else if (ts_number_regex.test(itm)) {
+		preprocessor = ts_parseFloat;
+	}
 
 	var reverse = (span.getAttribute("sortdir") == 'down');
 
@@ -628,20 +620,21 @@ function ts_resortTable(lnk) {
 		var row = table.rows[j];
 		var keyText = ts_getInnerText(row.cells[column]);
 		var oldIndex = (reverse ? -j : j);
+		var preprocessed = preprocessor( keyText );
 
-		newRows[newRows.length] = new Array(row, keyText, oldIndex);
+		newRows[newRows.length] = new Array(row, preprocessed, oldIndex);
 	}
 
 	newRows.sort(sortfn);
 
 	var arrowHTML;
 	if (reverse) {
-			arrowHTML = '<img src="'+ ts_image_path + ts_image_down + '" alt="&darr;"/>';
-			newRows.reverse();
-			span.setAttribute('sortdir','up');
+		arrowHTML = '<img src="'+ ts_image_path + ts_image_down + '" alt="&darr;"/>';
+		newRows.reverse();
+		span.setAttribute('sortdir','up');
 	} else {
-			arrowHTML = '<img src="'+ ts_image_path + ts_image_up + '" alt="&uarr;"/>';
-			span.setAttribute('sortdir','down');
+		arrowHTML = '<img src="'+ ts_image_path + ts_image_up + '" alt="&uarr;"/>';
+		span.setAttribute('sortdir','down');
 	}
 
 	// We appendChild rows that already exist to the tbody, so it moves them rather than creating new ones
@@ -663,7 +656,66 @@ function ts_resortTable(lnk) {
 	}
 	span.innerHTML = arrowHTML;
 
-	ts_alternate(table);		
+	if (ts_alternate_row_colors) {
+		ts_alternate(table);
+	}
+}
+
+function ts_initTransformTable() {
+	if ( typeof wgSeparatorTransformTable == "undefined"
+			|| ( wgSeparatorTransformTable[0] == '' && wgDigitTransformTable[2] == '' ) )
+	{
+		digitClass = "[0-9,.]";
+		ts_number_transform_table = false;
+	} else {
+		ts_number_transform_table = {};
+		// Unpack the transform table
+		// Separators
+		ascii = wgSeparatorTransformTable[0].split("\t");
+		localised = wgSeparatorTransformTable[1].split("\t");
+		for ( var i = 0; i < ascii.length; i++ ) { 
+			ts_number_transform_table[localised[i]] = ascii[i];
+		}
+		// Digits
+		ascii = wgDigitTransformTable[0].split("\t");
+		localised = wgDigitTransformTable[1].split("\t");
+		for ( var i = 0; i < ascii.length; i++ ) { 
+			ts_number_transform_table[localised[i]] = ascii[i];
+		}
+
+		// Construct regex for number identification
+		digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '\\.'];
+		maxDigitLength = 1;
+		for ( var digit in ts_number_transform_table ) {
+			// Escape regex metacharacters
+			digits.push( 
+				digit.replace( /[\\\\$\*\+\?\.\(\)\|\{\}\[\]\-]/,
+					function( s ) { return '\\' + s; } )
+			);
+			if (digit.length > maxDigitLength) {
+				maxDigitLength = digit.length;
+			}
+		}
+		if ( maxDigitLength > 1 ) {
+			digitClass = '[' + digits.join( '', digits ) + ']';
+		} else {
+			digitClass = '(' + digits.join( '|', digits ) + ')';
+		}
+	}
+
+	// We allow a trailing percent sign, which we just strip.  This works fine
+	// if percents and regular numbers aren't being mixed.
+	ts_number_regex = new RegExp(
+		"^(" +
+			"[+-]?[0-9][0-9,]*(\\.[0-9,]*)?(E[+-]?[0-9][0-9,]*)?" + // Fortran-style scientific
+			"|" +
+			"[+-]?" + digitClass + "+%?" + // Generic localised
+		")$", "i"
+	);
+}
+
+function ts_toLowerCase( s ) {
+	return s.toLowerCase();
 }
 
 function ts_dateToSortKey(date) {	
@@ -707,38 +759,34 @@ function ts_dateToSortKey(date) {
 	return "00000000";
 }
 
-function ts_parseFloat(num) {
-	if (!num) return 0;
-	num = parseFloat(num.replace(/,/g, ""));
-	return (isNaN(num) ? 0 : num);
+function ts_parseFloat( s ) {
+	if ( !s ) {
+		return 0;
+	}
+	if (ts_number_transform_table != false) {
+		var newNum = '', c;
+		
+		for ( var p = 0; p < s.length; p++ ) {
+			c = s.charAt( p );
+			if (c in ts_number_transform_table) {
+				newNum += ts_number_transform_table[c];
+			} else {
+				newNum += c;
+			}
+		}
+		s = newNum;
+	}
+
+	num = parseFloat(s.replace(/,/g, ""));
+	return (isNaN(num) ? s : num);
 }
 
-function ts_sort_date(a,b) {
-	var aa = ts_dateToSortKey(a[1]);
-	var bb = ts_dateToSortKey(b[1]);
-	return (aa < bb ? -1 : aa > bb ? 1 : a[2] - b[2]);
+function ts_currencyToSortKey( s ) {
+	return ts_parseFloat(s.replace(/[^0-9.,]/g,''));
 }
 
-function ts_sort_currency(a,b) {
-	var aa = ts_parseFloat(a[1].replace(/[^0-9.]/g,''));
-	var bb = ts_parseFloat(b[1].replace(/[^0-9.]/g,''));
-	return (aa != bb ? aa - bb : a[2] - b[2]);
-}
-
-function ts_sort_numeric(a,b) {
-	var aa = ts_parseFloat(a[1]);
-	var bb = ts_parseFloat(b[1]);
-	return (aa != bb ? aa - bb : a[2] - b[2]);
-}
-
-function ts_sort_caseinsensitive(a,b) {
-	var aa = a[1].toLowerCase();
-	var bb = b[1].toLowerCase();
-	return (aa < bb ? -1 : aa > bb ? 1 : a[2] - b[2]);
-}
-
-function ts_sort_default(a,b) {
-	return (a[1] < b[1] ? -1 : a[1] > b[1] ? 1 : a[2] - b[2]);
+function ts_sort_generic(a, b) {
+	return a[1] < b[1] ? -1 : a[1] > b[1] ? 1 : a[2] - b[2];
 }
 
 function ts_alternate(table) {

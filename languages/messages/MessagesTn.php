@@ -4,11 +4,9 @@
  * @ingroup Language
  * @file
  *
- * @author Hakka
  * @author Cbrown1023
+ * @author Hakka
  */
-
-
 
 $messages = array(
 # Dates
@@ -72,7 +70,6 @@ $messages = array(
 'portal'               => 'Patlelo ya setšhaba',
 'portal-url'           => 'Project:Patlelo ya setšhaba',
 'privacy'              => 'Melawana ya sephiri',
-'sitesupport'          => 'Dimpho',
 
 'youhavenewmessages'      => 'O na le $1 ($2).',
 'newmessageslink'         => 'molaetsa o moša',
@@ -143,6 +140,9 @@ O ipuletse akhaonte. O seka wa lebala go fetola tse o di dikgatlhegelo tsa gago 
 'watchnologin'  => 'Ga o a ikwadisa',
 'watch'         => 'Lebelela',
 'watchthispage' => 'Lebelela tsebe e',
+
+# Protect
+'prot_1movedto2' => '[[$1]] o sutisediwa kwa go [[$2]]',
 
 # Undelete
 'undelete-search-submit' => 'Senka',
