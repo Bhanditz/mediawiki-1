@@ -3492,4 +3492,7 @@ Enter the filename without the "{{ns:image}}:" prefix.',
 'blankpage'              => 'Blank page',
 'intentionallyblankpage' => 'This page is intentionally left blank',
 
+#Acawiki
+'summarytitles'         => 'Summary Titles:',
+
 );
