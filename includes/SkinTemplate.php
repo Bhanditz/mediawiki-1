@@ -170,7 +170,7 @@ class SkinTemplate extends Skin {
 		$this->username = $wgUser->getName();
 
 		if ( $wgUser->isLoggedIn() || $this->showIPinHeader() ) {
-			$this->userpageUrlDetails = self::makeUrlDetails( $this->userpage );
+			$this->userpageUrlDetails = self::makeUrlDetails( $this->userpage, 'action=formedit' );
 		} else {
 			# This won't be used in the standard skins, but we define it to preserve the interface
 			# To save time, we check for existence
