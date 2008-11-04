@@ -26,6 +26,7 @@
 }
 #content {
 	color: black;
+	background-color: #fafafa;
 	border-left: 4px double #aaa;
 	border-bottom: 1px solid #aaa;
 	line-height: 1.5em;
@@ -40,7 +41,7 @@
 
 body {
 	font: x-small sans-serif;
-	background-color: #F2F2F2;
+	background-color: #F4F4F4;
 	color: black;
 	margin: 0;
 	padding: 1em;
@@ -49,7 +50,7 @@ body {
 /* scale back up to a sane default */
 #globalWrapper {
 	font-size: 127%;
-	width: 80%;
+	width: 90%;
 	padding: 0;
 }
 .visualClear {
@@ -747,7 +748,7 @@ input.searchButton {
 	position: absolute;
 	left: 0;
 	top: 0;
-	z-index: 0;
+	z-index: 10;
 }
 #p-personal {
 	width: 100%;
@@ -755,7 +756,6 @@ input.searchButton {
 	padding: 1em 0 0 0;
 	margin: 0;
 	border: none;
-    background-color: #c6c5c5;
 	overflow: visible;
 	line-height: 1.2em;
 }
@@ -769,6 +769,7 @@ input.searchButton {
 	margin: 0;
 	border: none;
 	overflow: visible;
+	border-bottom: 1px solid #c6c5c5;
 }
 /* this is the ul contained in the portlet */
 #p-personal ul {
@@ -835,7 +836,7 @@ li#pt-login {
 	width: auto;
 	line-height: 1em;
 	overflow: visible;
-	background: none;
+	background-color #fafafa;;
 	border-collapse: collapse;
 	border: 1px solid #bbb;
 	padding-left: 1em;
