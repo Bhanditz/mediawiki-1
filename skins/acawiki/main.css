@@ -16,8 +16,8 @@
 	padding: 0;
 }
 #content {
-	margin: 10em 0 0 13.2em;
-	padding: 0 3em 1.5em 3em;
+	margin: 14em 0 0 13.2em;
+	padding: 1em 3em 1.5em 3em;
 	position: relative;
 	z-index: 2;
 }
@@ -25,9 +25,9 @@
 	padding-top: 160px;
 }
 #content {
-	background: #E6E6E6;
 	color: black;
-	border: 1px solid #aaa;
+	border-left: 4px double #aaa;
+	border-bottom: 1px solid #aaa;
 	line-height: 1.5em;
 }
 /* the left column width is specified in class .portlet */
@@ -109,7 +109,7 @@ hr {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	color: #00008B;
+	color: #6b2d00;
 	background: none;
 	font-weight: normal;
 	margin: 0;
@@ -389,6 +389,10 @@ table.small {
 	margin-left: 50px;
 	margin-right: 50px;
 	text-align: center;
+}
+
+.portlet .mw-headline {
+	padding-left: 0.5em;
 }
 
 /* images */
@@ -689,8 +693,8 @@ special external link styling */
 */
 
 #p-logo {
-	top: 0;
-	left: 0;
+	top: 1em;
+	left: 1em;
 	position: absolute; /*needed to use z-index */
 	z-index: 3;
 	height: 100px;
@@ -748,7 +752,7 @@ input.searchButton {
 #p-personal {
 	width: 100%;
 	white-space: nowrap;
-	padding: 0;
+	padding: 1em 0 0 0;
 	margin: 0;
 	border: none;
     background-color: #c6c5c5;
@@ -824,15 +828,16 @@ li#pt-login {
 */
 #p-cactions {
 	position: absolute;
-	top: 9.7em;
-	left: 12.5em;
+	top: 13.5em;
+	left: 14.75em;
 	margin: 0;
 	white-space: nowrap;
-	width: 76%;
+	width: auto;
 	line-height: 1em;
 	overflow: visible;
 	background: none;
 	border-collapse: collapse;
+	border: 1px solid #bbb;
 	padding-left: 1em;
 	list-style: none;
 	font-size: 95%;
@@ -842,12 +847,10 @@ li#pt-login {
 }
 #p-cactions li {
 	display: inline;
-	border: 1px solid #aaa;
 	border-bottom: none;
 	padding: 0 0 .1em 0;
 	margin: 0 .3em 0 0;
 	overflow: visible;
-	background-color: #c6c5c5;
 }
 #p-cactions li.selected {
 	border-color: #fabd23;
@@ -855,8 +858,8 @@ li#pt-login {
 	font-weight: bold;
 }
 #p-cactions li a {
-	background-color: #c6c5c5;
-	color: #002bb8;
+/*	background-color: #c6c5c5;
+*/	color: #002bb8;
 	border: none;
 	padding: 0 .8em .3em;
 	position: relative;
@@ -867,8 +870,8 @@ li#pt-login {
 #p-cactions li.selected a {
 	z-index: 3;
 	padding: 0 1em .2em!important;
-	background-color: #e8e8e8;
-}
+/*	background-color: #e8e8e8;
+*/}
 #p-cactions .new a {
 	color: #ba0000;
 }
