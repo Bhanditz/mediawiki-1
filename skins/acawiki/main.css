@@ -94,7 +94,7 @@ img {
 	vertical-align: middle;
 }
 p {
-	margin: .4em 0 .5em 0;
+	margin: .4em 0 1.5em 0;
 	line-height: 1.5em;
 }
 p img {
@@ -114,9 +114,8 @@ h1, h2, h3, h4, h5, h6 {
 	background: none;
 	font-weight: normal;
 	margin: 0;
-	padding-top: .5em;
+	padding-top: 1em;
 	padding-bottom: .17em;
-	border-bottom: 1px solid #aaa;
 }
 h1 { font-size: 188%; }
 h1 .editsection { font-size: 53%; }
