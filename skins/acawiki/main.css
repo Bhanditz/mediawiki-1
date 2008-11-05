@@ -16,8 +16,9 @@
 	padding: 0;
 }
 #content {
-	margin: 14em 0 0 13.2em;
+	margin: 16em 0 0 13.2em;
 	padding: 1em 3em 1.5em 3em;
+	min-width: 620px;
 	position: relative;
 	z-index: 2;
 }
@@ -27,8 +28,7 @@
 #content {
 	color: black;
 	background-color: #fafafa;
-	border-left: 4px double #aaa;
-	border-bottom: 1px solid #aaa;
+	border: 1px solid #ccc;
 	line-height: 1.5em;
 }
 /* the left column width is specified in class .portlet */
@@ -701,8 +701,8 @@ special external link styling */
 */
 
 #p-logo {
-	top: 0.5em;
-	left: 1em;
+	top: 4.5em;
+	left: 13.9em;
 	position: absolute; /*needed to use z-index */
 	z-index: 3;
 	height: 116px;
@@ -753,7 +753,7 @@ input.searchButton {
 */
 #p-personal {
 	position: absolute;
-	left: 240px;
+	left: 14em; 
 	right: 5%;
 	top: 0;
 	z-index: 10;
@@ -761,7 +761,7 @@ input.searchButton {
 #p-personal {
 	width: auto;
 	min-width: 700px;
-	max-width: 723px;
+	max-width: 775px;
 	white-space: nowrap;
 	padding: 1em 0 0 0;
 	margin: 0;
@@ -840,7 +840,7 @@ li#pt-login {
 */
 #p-cactions {
 	position: absolute;
-	top: 13.5em;
+	top: 15.66em;
 	left: 14.75em;
 	margin: 0;
 	white-space: nowrap;
