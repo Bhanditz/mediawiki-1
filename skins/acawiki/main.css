@@ -125,6 +125,7 @@ h2 .editsection { font-size: 67%; }
 h3, h4, h5, h6 {
 	border-bottom: none;
 	font-weight: bold;
+    color: #222;
 }
 h3 { font-size: 132%; }
 h3 .editsection { font-size: 76%; font-weight: normal; }
