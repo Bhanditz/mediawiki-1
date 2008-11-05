@@ -629,6 +629,12 @@ special external link styling */
 ** Structural Elements
 */
 
+/* Main Table styles */
+#bodyContent th, #bodyContent td {
+	text-align: left;
+}
+
+
 /*
 ** general portlet styles (elements in the quickbar)
 */
