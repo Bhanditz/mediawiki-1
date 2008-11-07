@@ -374,4 +374,7 @@ require_once($IP.'/extensions/inputbox/inputbox.php');
 #ImageLink
 require_once( "$IP/extensions/ImageLink/ImageLink.php" );
 
+#NoTitle Extension - http://www.mediawiki.org/wiki/Extension:NoTitle
+require_once( "$IP/extensions/NoTitle.php" );
+
 
