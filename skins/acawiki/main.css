@@ -95,7 +95,7 @@ img {
 	vertical-align: middle;
 }
 p {
-	margin: .4em 0 1.5em 0;
+	margin: .4em 0 .5em 0;
 	line-height: 1.5em;
 }
 p img {
@@ -1572,4 +1572,20 @@ div#mw-recreate-deleted-warn ul li {
 	text-align: center;
 	vertical-align: middle;
 	font-size: 90%;
+}
+
+.acawiki-footer {
+    background-color:#e2e2e2;
+    border:1px solid #BBBBBB;
+    padding: 2em;
+}
+
+.acawiki-footer-page-info {
+    float:right;
+    text-align:right;
+    font-size:0.8em;
+}
+
+.acawiki-footer-comments {
+    float:left;
 }
