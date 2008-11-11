@@ -1573,3 +1573,19 @@ div#mw-recreate-deleted-warn ul li {
 	vertical-align: middle;
 	font-size: 90%;
 }
+
+.acawiki-footer {
+    background-color:#e2e2e2;
+    border:1px solid #BBBBBB;
+    padding: 2em;
+}
+
+.acawiki-footer-page-info {
+    float:right;
+    text-align:right;
+    font-size:0.8em;
+}
+
+.acawiki-footer-comments {
+    float:left;
+}
