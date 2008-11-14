@@ -110,7 +110,7 @@ class AcawikiTemplate extends QuickTemplate {
 			<?php if($this->data['catlinks']) { ?><div id="catlinks"><?php       $this->html('catlinks') ?></div><?php } ?>
 
 <!-- acawiki user footer -->
-<div class="acawiki-content-user-footer">
+<div class="acawiki-footer">
 <ul class="acawiki-user-footer">
 <?php
 		foreach( array('contributions', 'log', 'blockip', 'emailuser') as $special ) {
