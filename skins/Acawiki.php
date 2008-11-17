@@ -173,6 +173,7 @@ logo
 			echo $skin->tooltipAndAccesskey('n-mainpage') ?>></a>
 	</div>
 	<script type="<?php $this->text('jsmimetype') ?>"> if (window.isMSIE55) fixalpha(); </script>
+<div id="p-mainNav" class="portlet">
 <!---
 
 New Sidebar (see Mediawiki:Sidebar)
@@ -237,6 +238,7 @@ Toolbox
 <?php			} ?>
 			</ul>
 		</div>
+</div>
 </div>
 <!--
 
