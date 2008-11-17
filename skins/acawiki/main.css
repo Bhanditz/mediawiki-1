@@ -41,7 +41,7 @@
 
 body {
 	font: x-small sans-serif;
-	background-color: #e2e2e2;
+	background-color: #e5dcca; /*#e2e2e2;*/
 	color: black;
 	margin: 0;
 	padding: 1em;
@@ -730,8 +730,10 @@ special external link styling */
  */
 #p-mainNav {
 	font-size:90%;
-	margin-top: 3em;
-	width: 13em;
+	margin-top: 0.5em;
+	width: 11em;
+	padding: 1em 1.7em 1em 0.5em;
+	background-color: #ece4d4;
 }
 
 
