@@ -110,6 +110,9 @@ class AcawikiTemplate extends QuickTemplate {
 			<?php if($this->data['catlinks']) { ?><div id="catlinks"><?php       $this->html('catlinks') ?></div><?php } ?>
 
 <!-- acawiki user footer -->
+<?php 
+    if($this->data['nav_urls']['contributions']) {
+?>
 <div class="acawiki-footer">
 <ul class="acawiki-user-footer">
 <?php
@@ -122,6 +125,8 @@ class AcawikiTemplate extends QuickTemplate {
 		} ?>
 </ul>
 </div>
+<?php
+    } ?>
 
 <!-- end of acawiki user footer -->
 
