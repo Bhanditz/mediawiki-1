@@ -340,7 +340,7 @@ class QueryPage {
 		if( $shownavigation ) {
 			$wgOut->addHtml( $this->getPageHeader() );
 			if( $num > 0 ) {
-                $wgOut->addHtml( '<p>' . wfMsg('summarytitles') . '</p>' );
+                $wgOut->addHtml( '<p><h1>' . wfMsg('summarytitles') . '</h1></p>' );
 				//$wgOut->addHtml( '<p>' . wfShowingResults( $offset, $num ) . '</p>' );
 				# Disable the "next" link when we reach the end
 				$paging = wfViewPrevNext( $offset, $limit, $wgContLang->specialPage( $sname ),
