@@ -232,6 +232,7 @@ Toolbox
 ?>
 			</ul>
 
+<hr />
 			<ul>
 <?php 			foreach($this->data['personal_urls'] as $key => $item) { ?>
 				<li id="pt-<?php echo Sanitizer::escapeId($key) ?>"<?php
@@ -304,6 +305,7 @@ Search box
 <?php 		}
 		}
 ?>
+				<li id="terms_of_use"><?php echo $skin->makeKnownLink('Terms of use') ?></li>
 			</ul>
 		</div>
 		
