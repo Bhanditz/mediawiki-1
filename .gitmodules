@@ -13,3 +13,6 @@
 [submodule "extensions/ImageMap"]
 	path = extensions/ImageMap
 	url = git@code.creativecommons.org:mw-ext/imagemap.git
+[submodule "extensions/OpenID"]
+	path = extensions/OpenID
+	url = git@code.creativecommons.org:mw-ext/openid.git
