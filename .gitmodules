@@ -7,3 +7,6 @@
 [submodule "extensions/Cite"]
 	path = extensions/Cite
 	url = git@code.creativecommons.org:mw-ext/cite.git
+[submodule "extensions/ConfirmEdit"]
+	path = extensions/ConfirmEdit
+	url = git@code.creativecommons.org:mw-ext/confirmedit.git
