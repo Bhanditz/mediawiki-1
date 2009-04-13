@@ -19,3 +19,6 @@
 [submodule "extensions/ParserFunctions"]
 	path = extensions/ParserFunctions
 	url = git@code.creativecommons.org:mw-ext/parserfunctions.git
+[submodule "extensions/Preloader"]
+	path = extensions/Preloader
+	url = git@code.creativecommons.org:mw-ext/preloader.git
