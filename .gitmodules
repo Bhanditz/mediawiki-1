@@ -1,0 +1,3 @@
+[submodule "extensions/CategoryTree"]
+	path = extensions/CategoryTree
+	url = git@code.creativecommons.org:mw-ext/categorytree.git
