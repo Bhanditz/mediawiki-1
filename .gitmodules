@@ -10,3 +10,6 @@
 [submodule "extensions/ConfirmEdit"]
 	path = extensions/ConfirmEdit
 	url = git@code.creativecommons.org:mw-ext/confirmedit.git
+[submodule "extensions/ImageMap"]
+	path = extensions/ImageMap
+	url = git@code.creativecommons.org:mw-ext/imagemap.git
