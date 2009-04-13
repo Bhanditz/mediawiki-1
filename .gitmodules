@@ -31,3 +31,6 @@
 [submodule "extensions/SemanticDrilldown"]
 	path = extensions/SemanticDrilldown
 	url = git@code.creativecommons.org:mw-ext/semanticdrilldown.git
+[submodule "extensions/SemanticForms"]
+	path = extensions/SemanticForms
+	url = git@code.creativecommons.org:mw-ext/semanticforms.git
