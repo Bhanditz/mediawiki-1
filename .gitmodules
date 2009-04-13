@@ -16,3 +16,6 @@
 [submodule "extensions/OpenID"]
 	path = extensions/OpenID
 	url = git@code.creativecommons.org:mw-ext/openid.git
+[submodule "extensions/ParserFunctions"]
+	path = extensions/ParserFunctions
+	url = git@code.creativecommons.org:mw-ext/parserfunctions.git
