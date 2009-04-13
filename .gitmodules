@@ -22,3 +22,6 @@
 [submodule "extensions/Preloader"]
 	path = extensions/Preloader
 	url = git@code.creativecommons.org:mw-ext/preloader.git
+[submodule "extensions/recaptcha"]
+	path = extensions/recaptcha
+	url = git@code.creativecommons.org:mw-ext/recaptcha.git
