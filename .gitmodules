@@ -28,3 +28,6 @@
 [submodule "extensions/Renameuser"]
 	path = extensions/Renameuser
 	url = git@code.creativecommons.org:mw-ext/renameuser.git
+[submodule "extensions/SemanticDrilldown"]
+	path = extensions/SemanticDrilldown
+	url = git@code.creativecommons.org:mw-ext/semanticdrilldown.git
