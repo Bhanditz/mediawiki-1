@@ -1,3 +1,6 @@
 [submodule "extensions/CategoryTree"]
 	path = extensions/CategoryTree
 	url = git@code.creativecommons.org:mw-ext/categorytree.git
+[submodule "extensions/CC_Semantic_Extensions"]
+	path = extensions/CC_Semantic_Extensions
+	url = git@code.creativecommons.org:mw-ext/cc-semantic-extensions.git
