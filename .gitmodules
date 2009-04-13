@@ -40,3 +40,6 @@
 [submodule "extensions/SpamBlacklist"]
 	path = extensions/SpamBlacklist
 	url = git@code.creativecommons.org:mw-ext/spamblacklist.git
+[submodule "extensions/SyntaxHighlight_GeSHi"]
+	path = extensions/SyntaxHighlight_GeSHi
+	url = git@code.creativecommons.org:mw-ext/syntaxhighlight_geshi.git
