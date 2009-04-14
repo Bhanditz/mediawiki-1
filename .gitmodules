@@ -46,3 +46,6 @@
 [submodule "extensions/SemanticEditTime"]
 	path = extensions/SemanticEditTime
 	url = git@code.creativecommons.org:SemanticEditTime.git
+[submodule "extensions/SemanticTasks"]
+	path = extensions/SemanticTasks
+	url = git@code.creativecommons.org:SemanticTasks.git
