@@ -43,3 +43,6 @@
 [submodule "extensions/SyntaxHighlight_GeSHi"]
 	path = extensions/SyntaxHighlight_GeSHi
 	url = git@code.creativecommons.org:mw-ext/syntaxhighlight_geshi.git
+[submodule "extensions/SemanticEditTime"]
+	path = extensions/SemanticEditTime
+	url = git@code.creativecommons.org:SemanticEditTime.git
