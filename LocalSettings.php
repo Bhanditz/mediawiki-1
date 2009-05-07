@@ -224,6 +224,7 @@ $wgAllowExternalImages = true;
 #------- http://ontoworld.org/wiki/Help:Installation -------------------
 include_once('extensions/SemanticMediaWiki/includes/SMW_Settings.php');
 enableSemantics('http://wiki-staging.creativecommons.org');
+$smwgLinksInValues = true;
 
 #---- ParserFucntions
 require_once( "$IP/extensions/ParserFunctions/ParserFunctions.php" );
