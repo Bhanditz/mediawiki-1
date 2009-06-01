@@ -4,3 +4,6 @@
 [submodule "extensions/SemanticForms"]
 	path = extensions/SemanticForms
 	url = git@code.creativecommons.org:mw-ext/semanticforms.git
+[submodule "extensions/SemanticMediawiki"]
+	path = extensions/SemanticMediawiki
+	url = git@code.creativecommons.org:mw-ext/semanticmediawiki.git
