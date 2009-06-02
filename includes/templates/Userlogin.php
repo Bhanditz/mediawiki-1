@@ -89,6 +89,10 @@ class UserloginTemplate extends QuickTemplate {
 <?php if( @$this->haveData( 'uselang' ) ) { ?><input type="hidden" name="uselang" value="<?php $this->text( 'uselang' ); ?>" /><?php } ?>
 </form>
 </div>
+<div>
+	<a href="/wiki/Special:OpenIDLogin">Login with your OpenID</a><br />
+	You can sign up for an Open ID at <a href="http://myopenid.com">myopenid.com</a>
+</div>
 <div id="loginend"><?php $this->msgWiki( 'loginend' ); ?></div>
 <?php
 
