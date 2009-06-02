@@ -865,7 +865,12 @@ $1',
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'About {{SITENAME}}',
 'aboutpage'            => 'Project:About',
-'copyright'            => 'Content is available under $1.',
+#'copyright'            => 'Content is available under $1.',
+# Changing the above to the below because this is Public Domain and
+# we don't really want the text "available under" in this context.
+# (nkinkade 2009-03-16)
+'copyright'         => '$1.',
+'copyrightpagename'    => '{{SITENAME}} copyright',
 'copyrightpage'        => '{{ns:project}}:Copyrights',
 'currentevents'        => 'Current events',
 'currentevents-url'    => 'Project:Current events',
