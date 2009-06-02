@@ -1,12 +1,6 @@
-[submodule "SemanticMediawiki"]
-	path = SemanticMediawiki
-	url = git@code.creativecommons.org:mw-ext/semanticmediawiki.git
 [submodule "extensions/SemanticForms"]
 	path = extensions/SemanticForms
 	url = git@code.creativecommons.org:mw-ext/semanticforms.git
-[submodule "extensions/SemanticMediawiki"]
-	path = extensions/SemanticMediawiki
-	url = git@code.creativecommons.org:mw-ext/semanticmediawiki.git
 [submodule "extensions/OpenID"]
 	path = extensions/OpenID
 	url = git@code.creativecommons.org:mw-ext/openid.git
@@ -16,3 +10,6 @@
 [submodule "extensions/CheckUser"]
 	path = extensions/CheckUser
 	url = git@code.creativecommons.org:mw-ext/checkuser.git
+[submodule "extensions/SemanticMediaWiki"]
+	path = extensions/SemanticMediaWiki
+	url = git@code.creativecommons.org:mw-ext/semanticmediawiki.git
