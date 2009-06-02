@@ -40,7 +40,7 @@ define( 'MW_CHAR_REFS_REGEX',
  * Allows some... latitude.
  * Used in Sanitizer::fixTagAttributes and Sanitizer::decodeTagAttributes
  */
-$attrib = '[A-Za-z0-9]';
+$attrib = '(xmlns:)?[A-Za-z0-9]';
 $space = '[\x09\x0a\x0d\x20]';
 define( 'MW_ATTRIBS_REGEX',
 	"/(?:^|$space)($attrib+)
@@ -600,7 +600,12 @@ class Sanitizer {
 		$whitelist = array_flip( $whitelist );
 		$out = array();
 		foreach( $attribs as $attribute => $value ) {
-			if( !isset( $whitelist[$attribute] ) ) {
+
+			if ( isset($whitelist['xmlns']) 
+			&&   strtolower(substr($attribute, 0, 6))=='xmlns:' ) {
+				$xyz = 1;
+			}
+			elseif( !isset( $whitelist[$attribute] ) ) {
 				continue;
 			}
 			# Strip javascript "expression" from stylesheets.
@@ -1154,7 +1159,8 @@ class Sanitizer {
 	 * @return array
 	 */
 	static function setupAttributeWhitelist() {
-		$common = array( 'id', 'class', 'lang', 'dir', 'title', 'style' );
+		$common = array( 'id', 'class', 'lang', 'dir', 'title', 'style'
+			, 'about' , 'rel', 'rev', 'property', 'typeof', 'content' , 'datatype' , 'resource' , 'xmlns' );
 		$block = array_merge( $common, array( 'align' ) );
 		$tablealign = array( 'align', 'char', 'charoff', 'valign' );
 		$tablecell = array( 'abbr',
