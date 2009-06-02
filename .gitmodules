@@ -13,3 +13,6 @@
 [submodule "extensions/recaptcha"]
 	path = extensions/recaptcha
 	url = git@code.creativecommons.org:mw-ext/recaptcha.git
+[submodule "extensions/CheckUser"]
+	path = extensions/CheckUser
+	url = git@code.creativecommons.org:mw-ext/checkuser.git
