@@ -1343,7 +1343,9 @@ END;
 			$icon = htmlspecialchars( $wgRightsIcon );
 			if ( $wgRightsUrl ) {
 				$url = htmlspecialchars( $wgRightsUrl );
-				$out .= '<a href="'.$url.'">';
+				# Added rel="license" to the output link
+				# (nkinkade 2008-03-12)
+				$out .= '<a href="'.$url.'" rel="license">';
 			}
 			$text = htmlspecialchars( $wgRightsText );
 			$out .= "<img src=\"$icon\" alt='$text' />";
