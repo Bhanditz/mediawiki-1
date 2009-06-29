@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<countrydata>
+<!-- Adding info flash file to jurisdictions with data -->
+<state id="state_info_icon">
+		<src>http://monitor.creativecommons.org/images/b/b8/Info.swf</src>
+</state>
+
+<!-- Lightest Blue -->
+<state id="range">
+        <data>1 - 59159</data>
+        <color>97FFFF</color>
+</state>
+<!-- Light Blue -->
+<state id="range">
+        <data>59159 - 167617</data>
+        <color>00EEEE</color>
+</state>
+<!-- Blue -->
+<state id="range">
+        <data>167617 - 361404</data>
+        <color>00B2EE</color>
+</state>
+<!-- Dark Blue -->
+<state id="range">
+        <data>361404 - 1217567</data>
+        <color>0000FF</color>
+</state>
+<!-- Darkest Blue -->
+<state id="range">
+        <data>1217567 - 99999999999999999999999</data>
+        <color>000080</color>
+</state>
+
+<!--Default grayed out-->
+<state id="default_color">
+        <color>cccccc</color>
+</state>
+<state id="background_color">
+        <color>ddffff</color>
+</state>
+<state id="outline_color">
+        <color>333333</color>
+</state>
+
+<state id="">
+        <name>UK: England & Wales</name>
+        <data>1740568</data>
+        <hover>Total number: 1,740,568 </hover>
+       	<url>http://monitor.creativecommons.org/UK: England & Wales</url>
+		<target>_new</target>
+</state>
+<state id="BE">
+        <name>Belgium</name>
+        <data>361404</data>
+        <hover>Total number: 361,404 </hover>
+       	<url>http://monitor.creativecommons.org/Belgium</url>
+		<target>_new</target>
+</state>
+<state id="FR">
+        <name>France</name>
+        <data>3499751</data>
+        <hover>Total number: 3,499,751 </hover>
+       	<url>http://monitor.creativecommons.org/France</url>
+		<target>_new</target>
+</state>
+<state id="HR">
+        <name>Croatia</name>
+        <data>356733</data>
+        <hover>Total number: 356,733 </hover>
+       	<url>http://monitor.creativecommons.org/Croatia</url>
+		<target>_new</target>
+</state>
+<state id="IN">
+        <name>India</name>
+        <data>283449</data>
+        <hover>Total number: 283,449 </hover>
+       	<url>http://monitor.creativecommons.org/India</url>
+		<target>_new</target>
+</state>
+<state id="DA">
+        <name>Denmark</name>
+        <data>59159</data>
+        <hover>Total number: 59,159 </hover>
+       	<url>http://monitor.creativecommons.org/Denmark</url>
+		<target>_new</target>
+</state>
+<state id="BU">
+        <name>Bulgaria</name>
+        <data>347317</data>
+        <hover>Total number: 347,317 </hover>
+       	<url>http://monitor.creativecommons.org/Bulgaria</url>
+		<target>_new</target>
+</state>
+<state id="GT">
+        <name>Guatemala</name>
+        <data>14983</data>
+        <hover>Total number: 14,983 </hover>
+       	<url>http://monitor.creativecommons.org/Guatemala</url>
+		<target>_new</target>
+</state>
+<state id="US">
+        <name>United States</name>
+        <data>6711149</data>
+        <hover>Total number: 6,711,149 </hover>
+       	<url>http://monitor.creativecommons.org/United States</url>
+		<target>_new</target>
+</state>
+<state id="BR">
+        <name>Brazil</name>
+        <data>1449293</data>
+        <hover>Total number: 1,449,293 </hover>
+       	<url>http://monitor.creativecommons.org/Brazil</url>
+		<target>_new</target>
+</state>
+<state id="FI">
+        <name>Finland</name>
+        <data>276887</data>
+        <hover>Total number: 276,887 </hover>
+       	<url>http://monitor.creativecommons.org/Finland</url>
+		<target>_new</target>
+</state>
+<state id="JA">
+        <name>Japan</name>
+        <data>2853035</data>
+        <hover>Total number: 2,853,035 </hover>
+       	<url>http://monitor.creativecommons.org/Japan</url>
+		<target>_new</target>
+</state>
+<state id="SF">
+        <name>South Africa</name>
+        <data>147874</data>
+        <hover>Total number: 147,874 </hover>
+       	<url>http://monitor.creativecommons.org/South Africa</url>
+		<target>_new</target>
+</state>
+<state id="NL">
+        <name>Netherlands</name>
+        <data>1073056</data>
+        <hover>Total number: 1,073,056 </hover>
+       	<url>http://monitor.creativecommons.org/Netherlands</url>
+		<target>_new</target>
+</state>
+<state id="RQ">
+        <name>Puerto Rico</name>
+        <data>21791</data>
+        <hover>Total number: 21,791 </hover>
+       	<url>http://monitor.creativecommons.org/Puerto Rico</url>
+		<target>_new</target>
+</state>
+<state id="NO">
+        <name>Norway</name>
+        <data>36043</data>
+        <hover>Total number: 36,043 </hover>
+       	<url>http://monitor.creativecommons.org/Norway</url>
+		<target>_new</target>
+</state>
+<state id="TW">
+        <name>Taiwan</name>
+        <data>4097850</data>
+        <hover>Total number: 4,097,850 </hover>
+       	<url>http://monitor.creativecommons.org/Taiwan</url>
+		<target>_new</target>
+</state>
+<state id="NZ">
+        <name>New Zealand</name>
+        <data>72338</data>
+        <hover>Total number: 72,338 </hover>
+       	<url>http://monitor.creativecommons.org/New Zealand</url>
+		<target>_new</target>
+</state>
+<state id="LU">
+        <name>Luxembourg</name>
+        <data>4489</data>
+        <hover>Total number: 4,489 </hover>
+       	<url>http://monitor.creativecommons.org/Luxembourg</url>
+		<target>_new</target>
+</state>
+<state id="TH">
+        <name>Thailand</name>
+        <data>168082</data>
+        <hover>Total number: 168,082 </hover>
+       	<url>http://monitor.creativecommons.org/Thailand</url>
+		<target>_new</target>
+</state>
+<state id="PE">
+        <name>Peru</name>
+        <data>193091</data>
+        <hover>Total number: 193,091 </hover>
+       	<url>http://monitor.creativecommons.org/Peru</url>
+		<target>_new</target>
+</state>
+<state id="RO">
+        <name>Romania</name>
+        <data>114868</data>
+        <hover>Total number: 114,868 </hover>
+       	<url>http://monitor.creativecommons.org/Romania</url>
+		<target>_new</target>
+</state>
+<state id="IS">
+        <name>Israel</name>
+        <data>85889</data>
+        <hover>Total number: 85,889 </hover>
+       	<url>http://monitor.creativecommons.org/Israel</url>
+		<target>_new</target>
+</state>
+<state id="PL">
+        <name>Poland</name>
+        <data>478344</data>
+        <hover>Total number: 478,344 </hover>
+       	<url>http://monitor.creativecommons.org/Poland</url>
+		<target>_new</target>
+</state>
+<state id="CI">
+        <name>Chile</name>
+        <data>580597</data>
+        <hover>Total number: 580,597 </hover>
+       	<url>http://monitor.creativecommons.org/Chile</url>
+		<target>_new</target>
+</state>
+<state id="CH">
+        <name>China Mainland</name>
+        <data>739257</data>
+        <hover>Total number: 739,257 </hover>
+       	<url>http://monitor.creativecommons.org/China Mainland</url>
+		<target>_new</target>
+</state>
+<state id="CO">
+        <name>Colombia</name>
+        <data>134343</data>
+        <hover>Total number: 134,343 </hover>
+       	<url>http://monitor.creativecommons.org/Colombia</url>
+		<target>_new</target>
+</state>
+<state id="GR">
+        <name>Greece</name>
+        <data>167617</data>
+        <hover>Total number: 167,617 </hover>
+       	<url>http://monitor.creativecommons.org/Greece</url>
+		<target>_new</target>
+</state>
+<state id="CA">
+        <name>Canada</name>
+        <data>1217567</data>
+        <hover>Total number: 1,217,567 </hover>
+       	<url>http://monitor.creativecommons.org/Canada</url>
+		<target>_new</target>
+</state>
+<state id="IT">
+        <name>Italy</name>
+        <data>8186440</data>
+        <hover>Total number: 8,186,440 </hover>
+       	<url>http://monitor.creativecommons.org/Italy</url>
+		<target>_new</target>
+</state>
+<state id="EC">
+        <name>Ecuador</name>
+        <data>62033</data>
+        <hover>Total number: 62,033 </hover>
+       	<url>http://monitor.creativecommons.org/Ecuador</url>
+		<target>_new</target>
+</state>
+<state id="AS">
+        <name>Australia</name>
+        <data>518007</data>
+        <hover>Total number: 518,007 </hover>
+       	<url>http://monitor.creativecommons.org/Australia</url>
+		<target>_new</target>
+</state>
+<state id="AR">
+        <name>Argentina</name>
+        <data>857566</data>
+        <hover>Total number: 857,566 </hover>
+       	<url>http://monitor.creativecommons.org/Argentina</url>
+		<target>_new</target>
+</state>
+<state id="AU">
+        <name>Austria</name>
+        <data>321897</data>
+        <hover>Total number: 321,897 </hover>
+       	<url>http://monitor.creativecommons.org/Austria</url>
+		<target>_new</target>
+</state>
+<state id="EZ">
+        <name>Czech Republic</name>
+        <data>2749</data>
+        <hover>Total number: 2,749 </hover>
+       	<url>http://monitor.creativecommons.org/Czech Republic</url>
+		<target>_new</target>
+</state>
+<state id="RP">
+        <name>Philippines</name>
+        <data>95607</data>
+        <hover>Total number: 95,607 </hover>
+       	<url>http://monitor.creativecommons.org/Philippines</url>
+		<target>_new</target>
+</state>
+<state id="GM">
+        <name>Germany</name>
+        <data>2309188</data>
+        <hover>Total number: 2,309,188 </hover>
+       	<url>http://monitor.creativecommons.org/Germany</url>
+		<target>_new</target>
+</state>
+<state id="HU">
+        <name>Hungary</name>
+        <data>693675</data>
+        <hover>Total number: 693,675 </hover>
+       	<url>http://monitor.creativecommons.org/Hungary</url>
+		<target>_new</target>
+</state>
+<state id="SZ">
+        <name>Switzerland</name>
+        <data>61451</data>
+        <hover>Total number: 61,451 </hover>
+       	<url>http://monitor.creativecommons.org/Switzerland</url>
+		<target>_new</target>
+</state>
+<state id="HK">
+        <name>Hong Kong</name>
+        <data>229274</data>
+        <hover>Total number: 229,274 </hover>
+       	<url>http://monitor.creativecommons.org/Hong Kong</url>
+		<target>_new</target>
+</state>
+<state id="SR">
+        <name>Serbia</name>
+        <data>52102</data>
+        <hover>Total number: 52,102 </hover>
+       	<url>http://monitor.creativecommons.org/Serbia</url>
+		<target>_new</target>
+</state>
+<state id="SP">
+        <name>Spain</name>
+        <data>9332736</data>
+        <hover>Total number: 9,332,736 </hover>
+       	<url>http://monitor.creativecommons.org/Spain</url>
+		<target>_new</target>
+</state>
+<state id="SW">
+        <name>Sweden</name>
+        <data>169881</data>
+        <hover>Total number: 169,881 </hover>
+       	<url>http://monitor.creativecommons.org/Sweden</url>
+		<target>_new</target>
+</state>
+<state id="MK">
+        <name>Macedonia</name>
+        <data>18726</data>
+        <hover>Total number: 18,726 </hover>
+       	<url>http://monitor.creativecommons.org/Macedonia</url>
+		<target>_new</target>
+</state>
+<state id="PO">
+        <name>Portugal</name>
+        <data>429925</data>
+        <hover>Total number: 429,925 </hover>
+       	<url>http://monitor.creativecommons.org/Portugal</url>
+		<target>_new</target>
+</state>
+<state id="KS">
+        <name>South Korea</name>
+        <data>3768077</data>
+        <hover>Total number: 3,768,077 </hover>
+       	<url>http://monitor.creativecommons.org/South Korea</url>
+		<target>_new</target>
+</state>
+<state id="MT">
+        <name>Malta</name>
+        <data>5004</data>
+        <hover>Total number: 5,004 </hover>
+       	<url>http://monitor.creativecommons.org/Malta</url>
+		<target>_new</target>
+</state>
+<state id="SI">
+        <name>Slovenia</name>
+        <data>57768</data>
+        <hover>Total number: 57,768 </hover>
+       	<url>http://monitor.creativecommons.org/Slovenia</url>
+		<target>_new</target>
+</state>
+<state id="SN">
+        <name>Singapore</name>
+        <data>22842</data>
+        <hover>Total number: 22,842 </hover>
+       	<url>http://monitor.creativecommons.org/Singapore</url>
+		<target>_new</target>
+</state>
+<state id="UK">
+        <name>United Kingdom</name>
+        <data>1856792</data>
+        <hover>Total number: 1,856,792 </hover>
+       	<url>http://monitor.creativecommons.org/United Kingdom</url>
+		<target>_new</target>
+</state>
+<state id="MY">
+        <name>Malaysia</name>
+        <data>120433</data>
+        <hover>Total number: 120,433 </hover>
+       	<url>http://monitor.creativecommons.org/Malaysia</url>
+		<target>_new</target>
+</state>
+<state id="MX">
+        <name>Mexico</name>
+        <data>842999</data>
+        <hover>Total number: 842,999 </hover>
+       	<url>http://monitor.creativecommons.org/Mexico</url>
+		<target>_new</target>
+</state>
+
+</countrydata>
