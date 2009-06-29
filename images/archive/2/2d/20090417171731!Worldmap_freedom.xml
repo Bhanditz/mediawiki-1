@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<countrydata>
+
+<!-- Adding info flash file to jurisdictions with data -->
+<state id="state_info_icon">
+		<src>http://monitor.creativecommons.org/images/b/b8/Info.swf</src>
+</state>
+
+
+<!-- Lightest Blue -->
+<state id="range">
+        <data>0 - 2</data>
+        <color>97FFFF</color>
+</state>
+<!-- Light Blue -->
+<state id="range">
+        <data>2 - 3</data>
+        <color>00EEEE</color>
+</state>
+<!-- Blue -->
+<state id="range">
+        <data>3 - 4</data>
+        <color>00B2EE</color>
+</state>
+<!-- Dark Blue -->
+<state id="range">
+        <data>4 - 5</data>
+        <color>0000FF</color>
+</state>
+<!-- Darkest Blue -->
+<state id="range">
+        <data>5 - 6</data>
+        <color>000080</color>
+</state>
+
+<state id="default_color">
+        <color>cccccc</color>
+</state>
+<state id="background_color">
+        <color>ddffff</color>
+</state>
+<state id="outline_color">
+        <color>333333</color>
+</state>
+
+<state id="">
+        <name>UK: England & Wales</name>
+        <data>3.605973952</data>
+        <hover>Freedom score: 3.61 </hover>
+       	<url>http://monitor.creativecommons.org/UK: England & Wales</url>
+		<target>_new</target>
+</state>
+<state id="BE">
+        <name>Belgium</name>
+        <data>1.82610438655</data>
+        <hover>Freedom score: 1.83 </hover>
+       	<url>http://monitor.creativecommons.org/Belgium</url>
+		<target>_new</target>
+</state>
+<state id="FR">
+        <name>France</name>
+        <data>2.35127636871</data>
+        <hover>Freedom score: 2.35 </hover>
+       	<url>http://monitor.creativecommons.org/France</url>
+		<target>_new</target>
+</state>
+<state id="HR">
+        <name>Croatia</name>
+        <data>3.72754857389</data>
+        <hover>Freedom score: 3.73 </hover>
+       	<url>http://monitor.creativecommons.org/Croatia</url>
+		<target>_new</target>
+</state>
+<state id="DA">
+        <name>Denmark</name>
+        <data>3.16887804878</data>
+        <hover>Freedom score: 3.17 </hover>
+       	<url>http://monitor.creativecommons.org/Denmark</url>
+		<target>_new</target>
+</state>
+<state id="BU">
+        <name>Bulgaria</name>
+        <data>3.69160320961</data>
+        <hover>Freedom score: 3.69 </hover>
+       	<url>http://monitor.creativecommons.org/Bulgaria</url>
+		<target>_new</target>
+</state>
+<state id="GT">
+        <name>Guatemala</name>
+        <data>4.04966398951</data>
+        <hover>Freedom score: 4.05 </hover>
+       	<url>http://monitor.creativecommons.org/Guatemala</url>
+		<target>_new</target>
+</state>
+<state id="US">
+        <name>United States</name>
+        <data>3.08576102494</data>
+        <hover>Freedom score: 3.09 </hover>
+       	<url>http://monitor.creativecommons.org/United States</url>
+		<target>_new</target>
+</state>
+<state id="BR">
+        <name>Brazil</name>
+        <data>2.34169809048</data>
+        <hover>Freedom score: 2.34 </hover>
+       	<url>http://monitor.creativecommons.org/Brazil</url>
+		<target>_new</target>
+</state>
+<state id="FI">
+        <name>Finland</name>
+        <data>1.40000507906</data>
+        <hover>Freedom score: 1.4 </hover>
+       	<url>http://monitor.creativecommons.org/Finland</url>
+		<target>_new</target>
+</state>
+<state id="JA">
+        <name>Japan</name>
+        <data>2.97577452999</data>
+        <hover>Freedom score: 2.98 </hover>
+       	<url>http://monitor.creativecommons.org/Japan</url>
+		<target>_new</target>
+</state>
+<state id="SF">
+        <name>South Africa</name>
+        <data>3.67848619624</data>
+        <hover>Freedom score: 3.68 </hover>
+       	<url>http://monitor.creativecommons.org/South Africa</url>
+		<target>_new</target>
+</state>
+<state id="NL">
+        <name>Netherlands</name>
+        <data>3.35874861698</data>
+        <hover>Freedom score: 3.36 </hover>
+       	<url>http://monitor.creativecommons.org/Netherlands</url>
+		<target>_new</target>
+</state>
+<state id="RQ">
+        <name>Puerto Rico</name>
+        <data>2.09702557058</data>
+        <hover>Freedom score: 2.1 </hover>
+       	<url>http://monitor.creativecommons.org/Puerto Rico</url>
+		<target>_new</target>
+</state>
+<state id="NO">
+        <name>Norway</name>
+        <data>3.08408443625</data>
+        <hover>Freedom score: 3.08 </hover>
+       	<url>http://monitor.creativecommons.org/Norway</url>
+		<target>_new</target>
+</state>
+<state id="TW">
+        <name>Taiwan</name>
+        <data>2.32134324984</data>
+        <hover>Freedom score: 2.32 </hover>
+       	<url>http://monitor.creativecommons.org/Taiwan</url>
+		<target>_new</target>
+</state>
+<state id="NZ">
+        <name>New Zealand</name>
+        <data>4.2251252558</data>
+        <hover>Freedom score: 4.23 </hover>
+       	<url>http://monitor.creativecommons.org/New Zealand</url>
+		<target>_new</target>
+</state>
+<state id="LU">
+        <name>Luxembourg</name>
+        <data>2.2997278575</data>
+        <hover>Freedom score: 2.3 </hover>
+       	<url>http://monitor.creativecommons.org/Luxembourg</url>
+		<target>_new</target>
+</state>
+<state id="TH">
+        <name>Thailand</name>
+        <data>4.62392328152</data>
+        <hover>Freedom score: 4.62 </hover>
+       	<url>http://monitor.creativecommons.org/Thailand</url>
+		<target>_new</target>
+</state>
+<state id="PE">
+        <name>Peru</name>
+        <data>2.33656562917</data>
+        <hover>Freedom score: 2.34 </hover>
+       	<url>http://monitor.creativecommons.org/Peru</url>
+		<target>_new</target>
+</state>
+<state id="RO">
+        <name>Romania</name>
+        <data>1.96488402415</data>
+        <hover>Freedom score: 1.96 </hover>
+       	<url>http://monitor.creativecommons.org/Romania</url>
+		<target>_new</target>
+</state>
+<state id="IS">
+        <name>Israel</name>
+        <data>2.81109035308</data>
+        <hover>Freedom score: 2.81 </hover>
+       	<url>http://monitor.creativecommons.org/Israel</url>
+		<target>_new</target>
+</state>
+<state id="PL">
+        <name>Poland</name>
+        <data>3.21583543609</data>
+        <hover>Freedom score: 3.22 </hover>
+       	<url>http://monitor.creativecommons.org/Poland</url>
+		<target>_new</target>
+</state>
+<state id="CI">
+        <name>Chile</name>
+        <data>2.3808094841</data>
+        <hover>Freedom score: 2.38 </hover>
+       	<url>http://monitor.creativecommons.org/Chile</url>
+		<target>_new</target>
+</state>
+<state id="CH">
+        <name>China Mainland</name>
+        <data>2.50069791548</data>
+        <hover>Freedom score: 2.5 </hover>
+       	<url>http://monitor.creativecommons.org/China Mainland</url>
+		<target>_new</target>
+</state>
+<state id="CO">
+        <name>Colombia</name>
+        <data>2.87706256481</data>
+        <hover>Freedom score: 2.88 </hover>
+       	<url>http://monitor.creativecommons.org/Colombia</url>
+		<target>_new</target>
+</state>
+<state id="GR">
+        <name>Greece</name>
+        <data>3.52740498322</data>
+        <hover>Freedom score: 3.53 </hover>
+       	<url>http://monitor.creativecommons.org/Greece</url>
+		<target>_new</target>
+</state>
+<state id="CA">
+        <name>Canada</name>
+        <data>2.7488660218</data>
+        <hover>Freedom score: 2.75 </hover>
+       	<url>http://monitor.creativecommons.org/Canada</url>
+		<target>_new</target>
+</state>
+<state id="IT">
+        <name>Italy</name>
+        <data>2.26585806009</data>
+        <hover>Freedom score: 2.27 </hover>
+       	<url>http://monitor.creativecommons.org/Italy</url>
+		<target>_new</target>
+</state>
+<state id="EC">
+        <name>Ecuador</name>
+        <data>2.56358734535</data>
+        <hover>Freedom score: 2.56 </hover>
+       	<url>http://monitor.creativecommons.org/Ecuador</url>
+		<target>_new</target>
+</state>
+<state id="AS">
+        <name>Australia</name>
+        <data>3.35652833414</data>
+        <hover>Freedom score: 3.36 </hover>
+       	<url>http://monitor.creativecommons.org/Australia</url>
+		<target>_new</target>
+</state>
+<state id="AR">
+        <name>Argentina</name>
+        <data>3.65892228199</data>
+        <hover>Freedom score: 3.66 </hover>
+       	<url>http://monitor.creativecommons.org/Argentina</url>
+		<target>_new</target>
+</state>
+<state id="AU">
+        <name>Austria</name>
+        <data>1.88577377796</data>
+        <hover>Freedom score: 1.89 </hover>
+       	<url>http://monitor.creativecommons.org/Austria</url>
+		<target>_new</target>
+</state>
+<state id="IN">
+        <name>India</name>
+        <data>2.98593986887</data>
+        <hover>Freedom score: 2.99 </hover>
+       	<url>http://monitor.creativecommons.org/India</url>
+		<target>_new</target>
+</state>
+<state id="RP">
+        <name>Philippines</name>
+        <data>3.23039338227</data>
+        <hover>Freedom score: 3.23 </hover>
+       	<url>http://monitor.creativecommons.org/Philippines</url>
+		<target>_new</target>
+</state>
+<state id="GM">
+        <name>Germany</name>
+        <data>2.9055037032</data>
+        <hover>Freedom score: 2.91 </hover>
+       	<url>http://monitor.creativecommons.org/Germany</url>
+		<target>_new</target>
+</state>
+<state id="HU">
+        <name>Hungary</name>
+        <data>2.75534161137</data>
+        <hover>Freedom score: 2.76 </hover>
+       	<url>http://monitor.creativecommons.org/Hungary</url>
+		<target>_new</target>
+</state>
+<state id="SZ">
+        <name>Switzerland</name>
+        <data>2.53172925764</data>
+        <hover>Freedom score: 2.53 </hover>
+       	<url>http://monitor.creativecommons.org/Switzerland</url>
+		<target>_new</target>
+</state>
+<state id="HK">
+        <name>Hong Kong</name>
+        <data>2.63961409109</data>
+        <hover>Freedom score: 2.64 </hover>
+       	<url>http://monitor.creativecommons.org/Hong Kong</url>
+		<target>_new</target>
+</state>
+<state id="SR">
+        <name>Serbia</name>
+        <data>2.48674424878</data>
+        <hover>Freedom score: 2.49 </hover>
+       	<url>http://monitor.creativecommons.org/Serbia</url>
+		<target>_new</target>
+</state>
+<state id="SP">
+        <name>Spain</name>
+        <data>3.42035444748</data>
+        <hover>Freedom score: 3.42 </hover>
+       	<url>http://monitor.creativecommons.org/Spain</url>
+		<target>_new</target>
+</state>
+<state id="SW">
+        <name>Sweden</name>
+        <data>3.65706814661</data>
+        <hover>Freedom score: 3.66 </hover>
+       	<url>http://monitor.creativecommons.org/Sweden</url>
+		<target>_new</target>
+</state>
+<state id="MK">
+        <name>Macedonia</name>
+        <data>2.81900624016</data>
+        <hover>Freedom score: 2.82 </hover>
+       	<url>http://monitor.creativecommons.org/Macedonia</url>
+		<target>_new</target>
+</state>
+<state id="PO">
+        <name>Portugal</name>
+        <data>2.21453392905</data>
+        <hover>Freedom score: 2.21 </hover>
+       	<url>http://monitor.creativecommons.org/Portugal</url>
+		<target>_new</target>
+</state>
+<state id="KS">
+        <name>Korea</name>
+        <data>1.76284463862</data>
+        <hover>Freedom score: 1.76 </hover>
+       	<url>http://monitor.creativecommons.org/Korea</url>
+		<target>_new</target>
+</state>
+<state id="MT">
+        <name>Malta</name>
+        <data>2.57620130793</data>
+        <hover>Freedom score: 2.58 </hover>
+       	<url>http://monitor.creativecommons.org/Malta</url>
+		<target>_new</target>
+</state>
+<state id="SI">
+        <name>Slovenia</name>
+        <data>2.52353827818</data>
+        <hover>Freedom score: 2.52 </hover>
+       	<url>http://monitor.creativecommons.org/Slovenia</url>
+		<target>_new</target>
+</state>
+<state id="SN">
+        <name>Singapore</name>
+        <data>3.51997849848</data>
+        <hover>Freedom score: 3.52 </hover>
+       	<url>http://monitor.creativecommons.org/Singapore</url>
+		<target>_new</target>
+</state>
+<state id="UK">
+        <name>United Kingdom</name>
+        <data>3.54272400269</data>
+        <hover>Freedom score: 3.54 </hover>
+       	<url>http://monitor.creativecommons.org/United Kingdom</url>
+		<target>_new</target>
+</state>
+<state id="MY">
+        <name>Malaysia</name>
+        <data>2.26405215386</data>
+        <hover>Freedom score: 2.26 </hover>
+       	<url>http://monitor.creativecommons.org/Malaysia</url>
+		<target>_new</target>
+</state>
+<state id="MX">
+        <name>Mexico</name>
+        <data>2.00128875026</data>
+        <hover>Freedom score: 2.0 </hover>
+       	<url>http://monitor.creativecommons.org/Mexico</url>
+		<target>_new</target>
+</state>
+
+</countrydata>

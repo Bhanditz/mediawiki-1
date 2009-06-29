@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<countrydata>
+
+<!-- Green -->
+<state id="range">
+        <data>0 - 2</data>
+        <color>33FF33</color>
+</state>
+<!-- Yellow -->
+<state id="range">
+        <data>2 - 3</data>
+        <color>FFFF33</color>
+</state>
+<!-- Orange -->
+<state id="range">
+        <data>3 - 4</data>
+        <color>FF9933</color>
+</state>
+<!-- Red -->
+<state id="range">
+        <data>4 - 6</data>
+        <color>FF3333</color>
+</state>
+<state id="default_color">
+        <color>cccccc</color>
+</state>
+<state id="background_color">
+        <color>ddffff</color>
+</state>
+<state id="outline_color">
+        <color>333333</color>
+</state>
+
+<state id="BE">
+        <name>Belgium</name>
+        <data>1.80358786674</data>
+        <hover>Freedom score: 1.8 </hover>
+</state>
+<state id="FR">
+        <name>France</name>
+        <data>2.36901282956</data>
+        <hover>Freedom score: 2.37 </hover>
+</state>
+<state id="HR">
+        <name>Croatia</name>
+        <data>3.73990963131</data>
+        <hover>Freedom score: 3.74 </hover>
+</state>
+<state id="DA">
+        <name>Denmark</name>
+        <data>3.20956974725</data>
+        <hover>Freedom score: 3.21 </hover>
+</state>
+<state id="BU">
+        <name>Bulgaria</name>
+        <data>3.66991864956</data>
+        <hover>Freedom score: 3.67 </hover>
+</state>
+<state id="GT">
+        <name>Guatemala</name>
+        <data>3.90672878774</data>
+        <hover>Freedom score: 3.91 </hover>
+</state>
+<state id="US">
+        <name>United States</name>
+        <data>3.13557841427</data>
+        <hover>Freedom score: 3.14 </hover>
+</state>
+<state id="BR">
+        <name>Brazil</name>
+        <data>2.37554875796</data>
+        <hover>Freedom score: 2.38 </hover>
+</state>
+<state id="FI">
+        <name>Finland</name>
+        <data>1.40924502224</data>
+        <hover>Freedom score: 1.41 </hover>
+</state>
+<state id="JA">
+        <name>Japan</name>
+        <data>2.98682928407</data>
+        <hover>Freedom score: 2.99 </hover>
+</state>
+<state id="SF">
+        <name>South Africa</name>
+        <data>3.68255718127</data>
+        <hover>Freedom score: 3.68 </hover>
+</state>
+<state id="NL">
+        <name>Netherlands</name>
+        <data>3.31561843205</data>
+        <hover>Freedom score: 3.32 </hover>
+</state>
+<state id="RQ">
+        <name>Puerto Rico</name>
+        <data>2.16780234325</data>
+        <hover>Freedom score: 2.17 </hover>
+</state>
+<state id="NO">
+        <name>Norway</name>
+        <data>3.06092918391</data>
+        <hover>Freedom score: 3.06 </hover>
+</state>
+<state id="RI">
+        <name>Serbia</name>
+        <data>2.54053381245</data>
+        <hover>Freedom score: 2.54 </hover>
+</state>
+<state id="NZ">
+        <name>New Zealand</name>
+        <data>3.91642750014</data>
+        <hover>Freedom score: 3.92 </hover>
+</state>
+<state id="LU">
+        <name>Luxembourg</name>
+        <data>2.41577886553</data>
+        <hover>Freedom score: 2.42 </hover>
+</state>
+<state id="TH">
+        <name>Thailand</name>
+        <data>4.22834067548</data>
+        <hover>Freedom score: 4.23 </hover>
+</state>
+<state id="PE">
+        <name>Peru</name>
+        <data>2.3085729465</data>
+        <hover>Freedom score: 2.31 </hover>
+</state>
+<state id="RO">
+        <name>Romania</name>
+        <data>1.88571147919</data>
+        <hover>Freedom score: 1.89 </hover>
+</state>
+<state id="IS">
+        <name>Israel</name>
+        <data>2.81861699688</data>
+        <hover>Freedom score: 2.82 </hover>
+</state>
+<state id="PL">
+        <name>Poland</name>
+        <data>3.1483070413</data>
+        <hover>Freedom score: 3.15 </hover>
+</state>
+<state id="CI">
+        <name>Chile</name>
+        <data>2.39971932787</data>
+        <hover>Freedom score: 2.4 </hover>
+</state>
+<state id="CH">
+        <name>China Mainland</name>
+        <data>2.50587461305</data>
+        <hover>Freedom score: 2.51 </hover>
+</state>
+<state id="CO">
+        <name>Colombia</name>
+        <data>2.87799487225</data>
+        <hover>Freedom score: 2.88 </hover>
+</state>
+<state id="GR">
+        <name>Greece</name>
+        <data>3.53914318154</data>
+        <hover>Freedom score: 3.54 </hover>
+</state>
+<state id="CA">
+        <name>Canada</name>
+        <data>2.79306065904</data>
+        <hover>Freedom score: 2.79 </hover>
+</state>
+<state id="IT">
+        <name>Italy</name>
+        <data>2.29474334472</data>
+        <hover>Freedom score: 2.29 </hover>
+</state>
+<state id="EC">
+        <name>Ecuador</name>
+        <data>2.53416849957</data>
+        <hover>Freedom score: 2.53 </hover>
+</state>
+<state id="AS">
+        <name>Australia</name>
+        <data>3.50362012852</data>
+        <hover>Freedom score: 3.5 </hover>
+</state>
+<state id="AR">
+        <name>Argentina</name>
+        <data>3.59525349131</data>
+        <hover>Freedom score: 3.6 </hover>
+</state>
+<state id="AU">
+        <name>Austria</name>
+        <data>1.91015975919</data>
+        <hover>Freedom score: 1.91 </hover>
+</state>
+<state id="IN">
+        <name>India</name>
+        <data>2.98406155537</data>
+        <hover>Freedom score: 2.98 </hover>
+</state>
+<state id="RP">
+        <name>Philippines</name>
+        <data>3.12193763093</data>
+        <hover>Freedom score: 3.12 </hover>
+</state>
+<state id="GM">
+        <name>Germany</name>
+        <data>2.8995952632</data>
+        <hover>Freedom score: 2.9 </hover>
+</state>
+<state id="HU">
+        <name>Hungary</name>
+        <data>2.7561346529</data>
+        <hover>Freedom score: 2.76 </hover>
+</state>
+<state id="SZ">
+        <name>Switzerland</name>
+        <data>2.40328205618</data>
+        <hover>Freedom score: 2.4 </hover>
+</state>
+<state id="HK">
+        <name>Hong Kong</name>
+        <data>2.67413649011</data>
+        <hover>Freedom score: 2.67 </hover>
+</state>
+<state id="SP">
+        <name>Spain</name>
+        <data>3.38443528773</data>
+        <hover>Freedom score: 3.38 </hover>
+</state>
+<state id="SW">
+        <name>Sweden</name>
+        <data>3.67400963246</data>
+        <hover>Freedom score: 3.67 </hover>
+</state>
+<state id="MK">
+        <name>Macedonia</name>
+        <data>2.84526460571</data>
+        <hover>Freedom score: 2.85 </hover>
+</state>
+<state id="PO">
+        <name>Portugal</name>
+        <data>2.21950304825</data>
+        <hover>Freedom score: 2.22 </hover>
+</state>
+<state id="KS">
+        <name>Korea</name>
+        <data>1.73612444216</data>
+        <hover>Freedom score: 1.74 </hover>
+</state>
+<state id="MT">
+        <name>Malta</name>
+        <data>2.54948522086</data>
+        <hover>Freedom score: 2.55 </hover>
+</state>
+<state id="SI">
+        <name>Slovenia</name>
+        <data>2.63727403732</data>
+        <hover>Freedom score: 2.64 </hover>
+</state>
+<state id="JO">
+        <name>Jordan</name>
+        <data>nan</data>
+        <hover>Freedom score: nan </hover>
+</state>
+<state id="SN">
+        <name>Singapore</name>
+        <data>3.51745435016</data>
+        <hover>Freedom score: 3.52 </hover>
+</state>
+<state id="TW">
+        <name>Taiwan</name>
+        <data>2.26358696363</data>
+        <hover>Freedom score: 2.26 </hover>
+</state>
+<state id="MY">
+        <name>Malaysia</name>
+        <data>2.29272226192</data>
+        <hover>Freedom score: 2.29 </hover>
+</state>
+<state id="MX">
+        <name>Mexico</name>
+        <data>1.97067521862</data>
+        <hover>Freedom score: 1.97 </hover>
+</state>
+
+</countrydata>

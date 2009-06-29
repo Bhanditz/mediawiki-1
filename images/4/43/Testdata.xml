@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<countrydata>
+
+<state id="default_color">
+                <color>ADA69E</color>
+</state>
+
+<state id="state_info_icon">
+		<src>icon/info.swf</src>
+	</state>
+	
+<state id="background_color">
+                <color>d8eaf1</color>
+</state>
+
+<state id="outline_color">
+                <color>666666</color>
+</state>
+
+<state id="range">
+                <data>1</data>
+                <color>FCFCAE</color>
+</state>
+
+<state id="range">
+                <data>2</data>
+                <color>F2EB11</color>
+</state>
+
+<state id="range">
+                <data>3</data>
+                <color>F39A00</color>
+</state>
+
+<state id="range">
+                <data>4</data>
+                <color>E35D04</color>
+</state>
+
+<state id="range">
+                <data>5</data>
+                <color>B12F02</color>
+				</state>
+
+<state id="AF">
+	<name>Afghanistan</name>
+	<data>1</data>
+	<url>http://opennet.net/research/profiles/afghanistan</url>
+	<target>_new</target>
+
+</state>
+
+
+<state id="AG">
+		<name>Algeria</name>
+		<data>1</data>
+		<url>http://opennet.net/research/profiles/algeria</url>
+		<target>_new</target>
+</state>
+
+<state id="AJ">
+		<name>Azerbaijan</name>
+		<data>3</data>
+		<url>http://opennet.net/research/profiles/azerbaijan</url>
+		<target>_new</target>
+		
+</state>
+
+<state id="BA">
+		<name>Bahrain</name>
+		<data>4</data>
+		<url>http://opennet.net/research/profiles/bahrain</url>
+		<target>_new</target>
+		
+</state>
+
+<state id="BO">
+		<name>Belarus</name>	
+		<data>2</data>
+		<url>http://opennet.net/research/profiles/belarus</url>
+		<target>_new</target>
+
+</state>
+
+<state id="BM">
+		<name>Burma (Myanmar)</name>
+		<data>5</data>
+		<url>http://opennet.net/research/profiles/myanmar</url>
+		<target>_new</target>
+		
+</state>
+
+<state id="CH">
+		<name>China</name>
+		<data>5</data>
+		<url>http://opennet.net/research/profiles/china</url>
+		<target>_new</target>
+</state>
+
+<state id="CU">
+		<name>Cuba</name>
+		<data>2</data>
+         <url>http://opennet.net/research/profiles/cuba</url>
+	     <target>_new</target>
+</state>
+
+<state id="EG">
+		<name>Egypt</name>
+		<data>1</data>
+		<url>http://opennet.net/research/profiles/egypt</url>
+		<target>_new</target>	
+	</state>
+
+<state id="ET">
+		<name>Ethiopia</name>
+		<data>4</data>
+		<url>http://opennet.net/research/profiles/ethiopia</url>
+		<target>_new</target>
+
+</state>	
+		
+<state id="IN">
+		<name>India</name>
+		<data>1</data>
+		<url>http://opennet.net/research/profiles/india</url>
+		<target>_new</target>
+			
+</state>
+
+<state id="IR">
+		<name>Iran</name>
+		<data>5</data>
+		<url>http://opennet.net/research/profiles/iran</url>
+		<target>_new</target>
+			
+</state>
+
+<state id="IZ">
+	<name>Iraq</name>
+	<data>1</data>
+		<url>http://opennet.net/research/profiles/iraq</url>
+		<target>_new</target>
+			
+</state>
+
+<state id="IS">
+		<name>Israel</name>
+		<data>1</data>
+		<url>http://opennet.net/research/profiles/israel</url>
+		<target>_new</target>
+			
+</state>
+
+
+<state id="JO">
+		<name>Jordan</name>
+		<data>3</data>
+		<url>http://opennet.net/research/profiles/jordan</url>
+		<target>_new</target>
+		
+</state>
+
+<state id="KZ">
+		<name>Kazakhstan</name>
+		<data>2</data>
+		<url>http://opennet.net/research/profiles/kazakhstan</url>
+		<target>_new</target>
+		
+</state>
+
+<state id="KS">
+		<name>South Korea</name>
+		<data>1</data>
+		<url>http://opennet.net/research/profiles/south-korea</url>
+		<target>_new</target>
+		
+</state>
+
+
+<state id="KG">
+		<name>Kyrgyzstan</name>
+		<data>1</data>
+		<url>http://opennet.net/research/profiles/kyrgyzstan</url>
+		<target>_new</target>
+		
+</state>
+
+<state id="LY">
+		<name>Libyan Arab Jamahiriya</name>
+		<data>4</data>
+		<url>http://opennet.net/research/profiles/libya</url>
+		<target>_new</target>
+		
+	</state>
+
+<state id="MY">
+		<name>Malaysia</name>
+		<data>1</data>
+		<url>http://opennet.net/research/profiles/malaysia</url>
+		<target>_new</target>
+		
+	</state>
+
+
+<state id="MD">
+	<name>Moldova</name>
+		<data>1</data>
+		<url>http://opennet.net/research/profiles/moldova</url>
+		<target>_new</target>
+		
+	</state>
+
+<state id="MO">
+		<name>Morocco</name>
+		<data>0</data>
+		<url>http://opennet.net/research/profiles/morocco</url>
+		<target>_new</target>
+		
+		</state>
+
+
+<state id="NP">
+		<name>Nepal</name>
+		<data>1</data>
+		<url>http://opennet.net/research/profiles/nepal</url>
+		<target>_new</target>
+
+</state>
+
+<state id="KN">
+		<name>North Korea</name>
+		<data>5</data>
+		<url>http://opennet.net/research/profiles/north-korea</url>
+		<target>_new</target>
+
+</state>
+
+<state id="MU">
+		<name>Oman</name>
+		<data>1</data>
+		<url>http://opennet.net/research/profiles/oman</url>
+		<target>_new</target>
+</state>
+
+<state id="PK">
+		<name>Pakistan</name>
+		<data>3</data>
+		<url>http://opennet.net/research/profiles/pakistan</url>
+		<target>_new</target>
+	</state>
+
+
+<state id="RS">
+		<name>Russia</name>
+		<data>1</data>
+		<url>http://opennet.net/research/regions/cis</url>
+		<target>_new</target>
+		</state>
+
+<state id="SA">
+		<name>Saudi Arabia</name>
+		<data>4</data>
+		<url>http://opennet.net/research/profiles/saudi-arabia</url>
+		<target>_new</target>
+	
+</state>
+
+<state id="SN">
+		<name>Singapore</name>
+		<data>1</data>
+		<url>http://opennet.net/research/profiles/singapore</url>
+		<target>_new</target>
+		
+</state>
+
+<state id="SU">
+		<name>Sudan</name>
+		<data>1</data>
+		<url>http://opennet.net/research/profiles/sudan</url>
+		<target>_new</target>
+</state>
+
+<state id="SY">
+	        <name>Syria</name>
+			<data>5</data>
+		<url>http://opennet.net/research/profiles/syria</url>
+		<target>_new</target>
+</state>
+
+<state id="TI">
+		<name>Tajikistan</name>
+		<data>2</data>
+		<url>http://opennet.net/research/profiles/tajikistan</url>
+		<target>_new</target>
+</state>
+
+<state id="TH">
+		<name>Thailand</name>
+		<data>3</data>
+		<url>http://opennet.net/research/profiles/thailand</url>
+		<target>_new</target>
+</state>
+
+<state id="TS">
+		<name>Tunisia</name>
+		<data>5</data>
+		<url>http://opennet.net/research/profiles/tunisia</url>
+		<target>_new</target>
+</state>
+
+<state id="UP">
+		<name>Ukraine</name>
+		<data>1</data>
+		<url>http://opennet.net/research/profiles/ukraine</url>
+		<target>_new</target>
+</state>
+
+<state id="TC">
+		<name>United Arab Emirates</name>
+		<data>3</data>
+		<url>http://opennet.net/research/profiles/uae</url>
+		<target>_new</target>
+</state>
+
+
+<state id="UZ">
+		<name>Uzbekistan</name>
+		<data>4</data>
+		<url>http://opennet.net/research/profiles/uzbekistan</url>
+		<target>_new</target>
+		</state>
+
+
+<state id="VE">
+		<name>Venezuela</name>
+		<data>1</data>
+		<url>http://opennet.net/research/profiles/venezuela</url>
+		<target>_new</target>
+		</state>
+
+<state id="VM">
+		<name>Vietnam</name>
+		<data>5</data>
+		<url>http://opennet.net/research/profiles/vietnam</url>
+		<target>_new</target>
+</state>
+
+
+<state id="YM">
+		<name>Yemen</name>
+		<data>1</data>
+		<url>http://opennet.net/research/profiles/yemen</url>
+		<target>_new</target>
+</state>
+		
+<state id="ZI">
+		<name>Zimbabwe</name>
+		<data>1</data>
+		<url>http://opennet.net/research/profiles/zimbabwe</url>
+		<target>_new</target>
+</state>
+
+</countrydata>
