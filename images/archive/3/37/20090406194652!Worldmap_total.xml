@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<countrydata>
+
+<!-- Green -->
+<state id="range">
+        <data>0 - 50000</data>
+        <color>33FF33</color>
+</state>
+<!-- Yellow -->
+<state id="range">
+        <data>50000 - 1000000</data>
+        <color>FFFF33</color>
+</state>
+<!-- Orange -->
+<state id="range">
+        <data>1000000 - 5000000</data>
+        <color>FF9933</color>
+</state>
+<!-- Red -->
+<state id="range">
+        <data>5000000 - 1000000000</data>
+        <color>FF3333</color>
+</state>
+<state id="default_color">
+        <color>cccccc</color>
+</state>
+<state id="background_color">
+        <color>ddffff</color>
+</state>
+<state id="outline_color">
+        <color>333333</color>
+</state>
+
+<state id="BE">
+        <name>Belgium</name>
+        <data>336224</data>
+        <hover>Total number: 336,224 </hover>
+</state>
+<state id="FR">
+        <name>France</name>
+        <data>3393350</data>
+        <hover>Total number: 3,393,350 </hover>
+</state>
+<state id="HR">
+        <name>Croatia</name>
+        <data>339409</data>
+        <hover>Total number: 339,409 </hover>
+</state>
+<state id="DA">
+        <name>Denmark</name>
+        <data>56193</data>
+        <hover>Total number: 56,193 </hover>
+</state>
+<state id="BU">
+        <name>Bulgaria</name>
+        <data>326912</data>
+        <hover>Total number: 326,912 </hover>
+</state>
+<state id="GT">
+        <name>Guatemala</name>
+        <data>11415</data>
+        <hover>Total number: 11,415 </hover>
+</state>
+<state id="US">
+        <name>United States</name>
+        <data>5874246</data>
+        <hover>Total number: 5,874,246 </hover>
+</state>
+<state id="BR">
+        <name>Brazil</name>
+        <data>1346127</data>
+        <hover>Total number: 1,346,127 </hover>
+</state>
+<state id="FI">
+        <name>Finland</name>
+        <data>250253</data>
+        <hover>Total number: 250,253 </hover>
+</state>
+<state id="JA">
+        <name>Japan</name>
+        <data>2361339</data>
+        <hover>Total number: 2,361,339 </hover>
+</state>
+<state id="SF">
+        <name>South Africa</name>
+        <data>146492</data>
+        <hover>Total number: 146,492 </hover>
+</state>
+<state id="NL">
+        <name>Netherlands</name>
+        <data>868367</data>
+        <hover>Total number: 868,367 </hover>
+</state>
+<state id="RQ">
+        <name>Puerto Rico</name>
+        <data>21084</data>
+        <hover>Total number: 21,084 </hover>
+</state>
+<state id="NO">
+        <name>Norway</name>
+        <data>28935</data>
+        <hover>Total number: 28,935 </hover>
+</state>
+<state id="RI">
+        <name>Serbia</name>
+        <data>49184</data>
+        <hover>Total number: 49,184 </hover>
+</state>
+<state id="NZ">
+        <name>New Zealand</name>
+        <data>59193</data>
+        <hover>Total number: 59,193 </hover>
+</state>
+<state id="LU">
+        <name>Luxembourg</name>
+        <data>3658</data>
+        <hover>Total number: 3,658 </hover>
+</state>
+<state id="TH">
+        <name>Thailand</name>
+        <data>5559</data>
+        <hover>Total number: 5,559 </hover>
+</state>
+<state id="PE">
+        <name>Peru</name>
+        <data>167900</data>
+        <hover>Total number: 167,900 </hover>
+</state>
+<state id="RO">
+        <name>Romania</name>
+        <data>84820</data>
+        <hover>Total number: 84,820 </hover>
+</state>
+<state id="IS">
+        <name>Israel</name>
+        <data>92595</data>
+        <hover>Total number: 92,595 </hover>
+</state>
+<state id="PL">
+        <name>Poland</name>
+        <data>462508</data>
+        <hover>Total number: 462,508 </hover>
+</state>
+<state id="CI">
+        <name>Chile</name>
+        <data>545128</data>
+        <hover>Total number: 545,128 </hover>
+</state>
+<state id="CH">
+        <name>China Mainland</name>
+        <data>798618</data>
+        <hover>Total number: 798,618 </hover>
+</state>
+<state id="CO">
+        <name>Colombia</name>
+        <data>119456</data>
+        <hover>Total number: 119,456 </hover>
+</state>
+<state id="GR">
+        <name>Greece</name>
+        <data>139864</data>
+        <hover>Total number: 139,864 </hover>
+</state>
+<state id="CA">
+        <name>Canada</name>
+        <data>1062355</data>
+        <hover>Total number: 1,062,355 </hover>
+</state>
+<state id="IT">
+        <name>Italy</name>
+        <data>7685993</data>
+        <hover>Total number: 7,685,993 </hover>
+</state>
+<state id="EC">
+        <name>Ecuador</name>
+        <data>55919</data>
+        <hover>Total number: 55,919 </hover>
+</state>
+<state id="AS">
+        <name>Australia</name>
+        <data>412928</data>
+        <hover>Total number: 412,928 </hover>
+</state>
+<state id="AR">
+        <name>Argentina</name>
+        <data>792781</data>
+        <hover>Total number: 792,781 </hover>
+</state>
+<state id="AU">
+        <name>Austria</name>
+        <data>316494</data>
+        <hover>Total number: 316,494 </hover>
+</state>
+<state id="IN">
+        <name>India</name>
+        <data>237401</data>
+        <hover>Total number: 237,401 </hover>
+</state>
+<state id="RP">
+        <name>Philippines</name>
+        <data>71287</data>
+        <hover>Total number: 71,287 </hover>
+</state>
+<state id="GM">
+        <name>Germany</name>
+        <data>2267133</data>
+        <hover>Total number: 2,267,133 </hover>
+</state>
+<state id="HU">
+        <name>Hungary</name>
+        <data>542893</data>
+        <hover>Total number: 542,893 </hover>
+</state>
+<state id="SZ">
+        <name>Switzerland</name>
+        <data>61423</data>
+        <hover>Total number: 61,423 </hover>
+</state>
+<state id="HK">
+        <name>Hong Kong</name>
+        <data>204890</data>
+        <hover>Total number: 204,890 </hover>
+</state>
+<state id="SP">
+        <name>Spain</name>
+        <data>8635246</data>
+        <hover>Total number: 8,635,246 </hover>
+</state>
+<state id="SW">
+        <name>Sweden</name>
+        <data>153901</data>
+        <hover>Total number: 153,901 </hover>
+</state>
+<state id="MK">
+        <name>Macedonia</name>
+        <data>16695</data>
+        <hover>Total number: 16,695 </hover>
+</state>
+<state id="PO">
+        <name>Portugal</name>
+        <data>386246</data>
+        <hover>Total number: 386,246 </hover>
+</state>
+<state id="KS">
+        <name>Korea</name>
+        <data>3586430</data>
+        <hover>Total number: 3,586,430 </hover>
+</state>
+<state id="MT">
+        <name>Malta</name>
+        <data>3154</data>
+        <hover>Total number: 3,154 </hover>
+</state>
+<state id="SI">
+        <name>Slovenia</name>
+        <data>57674</data>
+        <hover>Total number: 57,674 </hover>
+</state>
+<state id="JO">
+        <name>Jordan</name>
+        <data>0</data>
+        <hover>Total number: 0 </hover>
+</state>
+<state id="SN">
+        <name>Singapore</name>
+        <data>15546</data>
+        <hover>Total number: 15,546 </hover>
+</state>
+<state id="UK">
+        <name>United Kingdom</name>
+        <data>1630483</data>
+        <hover>Total number: 1,630,483 </hover>
+</state>
+<state id="TW">
+        <name>Taiwan</name>
+        <data>3576357</data>
+        <hover>Total number: 3,576,357 </hover>
+</state>
+<state id="MY">
+        <name>Malaysia</name>
+        <data>103874</data>
+        <hover>Total number: 103,874 </hover>
+</state>
+<state id="MX">
+        <name>Mexico</name>
+        <data>852966</data>
+        <hover>Total number: 852,966 </hover>
+</state>
+
+</countrydata>
