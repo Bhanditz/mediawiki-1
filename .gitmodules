@@ -1,0 +1,3 @@
+[submodule "extensions/Cite"]
+	path = extensions/Cite
+	url = git@code.creativecommons.org:mw-ext/cite.git
