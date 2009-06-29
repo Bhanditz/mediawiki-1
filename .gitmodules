@@ -4,3 +4,6 @@
 [submodule "extensions/OpenID"]
 	path = extensions/OpenID
 	url = git@code.creativecommons.org:mw-ext/openid.git
+[submodule "extensions/recaptcha"]
+	path = extensions/recaptcha
+	url = git@code.creativecommons.org:mw-ext/recaptcha.git
