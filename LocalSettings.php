@@ -212,7 +212,7 @@ require_once( "extensions/HeaderFooter/HeaderFooter.php" );
 # Rich editor
 require_once("extensions/FCKeditor/FCKeditor.php");
 # Enable rich editor by default
-$wgDefaultUserOptions['riched_start_disabled'] = 0;
+#$wgDefaultUserOptions['riched_start_disabled'] = 0;
 
 # PDF export
 # NOTE: 1. require installation of htmldoc.
