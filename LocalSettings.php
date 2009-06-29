@@ -221,3 +221,8 @@ require_once("extensions/PdfExport/PdfExport.php");
 
 # Cite
 require_once('extensions/Cite/Cite.php');
+
+# recaptcha
+require_once( "$IP/extensions/recaptcha/ReCaptcha.php" );
+$recaptcha_public_key = '6Le98wYAAAAAALfwwVk1Y_bfh1JaTAef-GoOGmdv';
+$recaptcha_private_key = '6Le98wYAAAAAAECgp7-EYlBBtx90HUkG07S9fXML';
