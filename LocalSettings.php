@@ -146,11 +146,12 @@ $wgSquidServers = array('127.0.0.1');
 # Make it so users with confirmed e-mail addresses are in the group.
 $wgAutopromote['emailconfirmed'] = APCOND_EMAILCONFIRMED;
 
+# Now we have recaptcha to anit-spam, so allow editing for anonymous editing on any pages.
 # This allows anonymous editing of any Talk pages (odd numbered namespaces),
 # but requires one be in the emailconfirmeed group to edit articles.
 $wgGroupPermissions['emailconfirmed']['editcontent'] = true;
-$editPermission = array( 'editcontent' );
-for ( $i = 0; $i < 1000; $i++) $wgNamespaceProtection[$i] = $editPermission;
+# $editPermission = array( 'editcontent' );
+# for ( $i = 0; $i < 1000; $i++) $wgNamespaceProtection[$i] = $editPermission;
 
 ## For attaching licensing metadata to pages, and displaying an
 ## appropriate copyright notice / icon. GNU Free Documentation
