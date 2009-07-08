@@ -1,9 +1,9 @@
 [submodule "extensions/Cite"]
 	path = extensions/Cite
-	url = git@code.creativecommons.org:mw-ext/cite.git
+	url = git://code.creativecommons.org/mw-ext/cite.git
 [submodule "extensions/OpenID"]
 	path = extensions/OpenID
-	url = git@code.creativecommons.org:mw-ext/openid.git
+	url = git://code.creativecommons.org/mw-ext/openid.git
 [submodule "extensions/recaptcha"]
 	path = extensions/recaptcha
-	url = git@code.creativecommons.org:mw-ext/recaptcha.git
+	url = git://code.creativecommons.org/mw-ext/recaptcha.git
