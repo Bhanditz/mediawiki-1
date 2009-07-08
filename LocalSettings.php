@@ -152,8 +152,6 @@ $wgGroupPermissions['emailconfirmed']['editcontent'] = true;
 $editPermission = array( 'editcontent' );
 for ( $i = 0; $i < 1000; $i++) $wgNamespaceProtection[$i] = $editPermission;
 
-$wgGroupPermissions['*']['createaccount']    = false;
-
 ## For attaching licensing metadata to pages, and displaying an
 ## appropriate copyright notice / icon. GNU Free Documentation
 ## License and Creative Commons licenses are supported so far.
