@@ -1,60 +1,60 @@
 [submodule "extensions/CategoryTree"]
 	path = extensions/CategoryTree
-	url = git@code.creativecommons.org:mw-ext/categorytree.git
+	url = git://code.creativecommons.org/mw-ext/categorytree.git
 [submodule "extensions/CC_Semantic_Extensions"]
 	path = extensions/CC_Semantic_Extensions
-	url = git@code.creativecommons.org:mw-ext/cc-semantic-extensions.git
+	url = git://code.creativecommons.org/mw-ext/cc-semantic-extensions.git
 [submodule "extensions/Cite"]
 	path = extensions/Cite
-	url = git@code.creativecommons.org:mw-ext/cite.git
+	url = git://code.creativecommons.org/mw-ext/cite.git
 [submodule "extensions/ConfirmEdit"]
 	path = extensions/ConfirmEdit
-	url = git@code.creativecommons.org:mw-ext/confirmedit.git
+	url = git://code.creativecommons.org/mw-ext/confirmedit.git
 [submodule "extensions/ImageMap"]
 	path = extensions/ImageMap
-	url = git@code.creativecommons.org:mw-ext/imagemap.git
+	url = git://code.creativecommons.org/mw-ext/imagemap.git
 [submodule "extensions/OpenID"]
 	path = extensions/OpenID
-	url = git@code.creativecommons.org:mw-ext/openid.git
+	url = git://code.creativecommons.org/mw-ext/openid.git
 [submodule "extensions/ParserFunctions"]
 	path = extensions/ParserFunctions
-	url = git@code.creativecommons.org:mw-ext/parserfunctions.git
+	url = git://code.creativecommons.org/mw-ext/parserfunctions.git
 [submodule "extensions/Preloader"]
 	path = extensions/Preloader
-	url = git@code.creativecommons.org:mw-ext/preloader.git
+	url = git://code.creativecommons.org/mw-ext/preloader.git
 [submodule "extensions/recaptcha"]
 	path = extensions/recaptcha
-	url = git@code.creativecommons.org:mw-ext/recaptcha.git
+	url = git://code.creativecommons.org/mw-ext/recaptcha.git
 [submodule "extensions/Renameuser"]
 	path = extensions/Renameuser
-	url = git@code.creativecommons.org:mw-ext/renameuser.git
+	url = git://code.creativecommons.org/mw-ext/renameuser.git
 [submodule "extensions/SemanticDrilldown"]
 	path = extensions/SemanticDrilldown
-	url = git@code.creativecommons.org:mw-ext/semanticdrilldown.git
+	url = git://code.creativecommons.org/mw-ext/semanticdrilldown.git
 [submodule "extensions/SemanticForms"]
 	path = extensions/SemanticForms
-	url = git@code.creativecommons.org:mw-ext/semanticforms.git
+	url = git://code.creativecommons.org/mw-ext/semanticforms.git
 [submodule "extensions/SemanticMediaWiki"]
 	path = extensions/SemanticMediaWiki
-	url = git@code.creativecommons.org:mw-ext/semanticmediawiki.git
+	url = git://code.creativecommons.org/mw-ext/semanticmediawiki.git
 [submodule "extensions/SpamBlacklist"]
 	path = extensions/SpamBlacklist
-	url = git@code.creativecommons.org:mw-ext/spamblacklist.git
+	url = git://code.creativecommons.org/mw-ext/spamblacklist.git
 [submodule "extensions/SyntaxHighlight_GeSHi"]
 	path = extensions/SyntaxHighlight_GeSHi
-	url = git@code.creativecommons.org:mw-ext/syntaxhighlight_geshi.git
+	url = git://code.creativecommons.org/mw-ext/syntaxhighlight_geshi.git
 [submodule "extensions/SemanticEditTime"]
 	path = extensions/SemanticEditTime
-	url = git@code.creativecommons.org:SemanticEditTime.git
+	url = git://code.creativecommons.org:SemanticEditTime.git
 [submodule "extensions/StringFunctions"]
 	path = extensions/StringFunctions
-	url = git@code.creativecommons.org:mw-ext/stringfunctions.git
+	url = git://code.creativecommons.org/mw-ext/stringfunctions.git
 [submodule "extensions/SemanticTasks"]
 	path = extensions/SemanticTasks
-	url = git@code.creativecommons.org:mw-ext/semantictasks.git
+	url = git://code.creativecommons.org/mw-ext/semantictasks.git
 [submodule "skins/cc"]
 	path = skins/cc
-	url = git@code.creativecommons.org:themes/cc_wiki.git
+	url = git://code.creativecommons.org:themes/cc_wiki.git
 [submodule "extensions/HeaderTabs"]
 	path = extensions/HeaderTabs
-	url = git@code.creativecommons.org:mw-ext/headertabs.git
+	url = git://code.creativecommons.org/mw-ext/headertabs.git
