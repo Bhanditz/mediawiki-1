@@ -58,3 +58,6 @@
 [submodule "extensions/HeaderTabs"]
 	path = extensions/HeaderTabs
 	url = git://code.creativecommons.org/mw-ext/headertabs.git
+[submodule "extensions/AbuseFilter"]
+	path = extensions/AbuseFilter
+	url = git://code.creativecommons.org/mw-ext/abusefilter.git
