@@ -212,7 +212,7 @@ class MonoBookTemplate extends QuickTemplate {
 		// Generate additional footer links
 		$footerlinks = array(
 			'lastmod', 'viewcount', 'numberofwatchingusers', 'credits', 'copyright',
-			'privacy', 'about', 'disclaimer', 'tagline',
+			'about', 'disclaimer', 'tagline',
 		);
 		$validFooterLinks = array();
 		foreach( $footerlinks as $aLink ) {
@@ -229,6 +229,9 @@ class MonoBookTemplate extends QuickTemplate {
 <?php 			}
 			}
 ?>
+                <li><a href="http://creativecommons.org/policies/">Policies</a></li>
+                <li><a href="http://creativecommons.org/privacy/">Privacy Policy</a></li>
+                <li><a href="http://creativecommons.org/terms/">Terms of Use</a></li>
 			</ul>
 <?php	}
 ?>
