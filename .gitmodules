@@ -61,3 +61,6 @@
 [submodule "extensions/AbuseFilter"]
 	path = extensions/AbuseFilter
 	url = git://code.creativecommons.org/mw-ext/abusefilter.git
+[submodule "extensions/SemanticResultFormats"]
+	path = extensions/SemanticResultFormats
+	url = git://code.creativecommons.org/mw-ext/semanticresultformats.git
