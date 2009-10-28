@@ -64,3 +64,6 @@
 [submodule "extensions/SemanticResultFormats"]
 	path = extensions/SemanticResultFormats
 	url = git://code.creativecommons.org/mw-ext/semanticresultformats.git
+[submodule "extensions/ExternalData"]
+	path = extensions/ExternalData
+	url = git://code.creativecommons.org/mw-ext/externaldata
