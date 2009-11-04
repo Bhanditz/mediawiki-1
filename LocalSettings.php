@@ -321,7 +321,7 @@ require_once('extensions/ImageMap/ImageMap.php');
 $wgAllowExternalImages = true;
 
 # Put a reCaptcha on the registration form
-require_once( "$IP/extensions/reCAPTCHA/ReCaptcha.php" );
+require_once( "$IP/extensions/recaptcha/ReCaptcha.php" );
 $recaptcha_public_key = '6LcyxAMAAAAAANYY_jMZFr8LaKQnCINSOJWsQ8iK';
 $recaptcha_private_key = '6LcyxAMAAAAAABJ3_h53Iq8GQfm5MdSyriIWyzOJ';
 
@@ -372,7 +372,7 @@ require_once( "extensions/StubManager/StubManager.php" );
 require_once( "$IP/extensions/HeaderFooter/HeaderFooter.php" );
 
 #Inputbox
-require_once($IP.'/extensions/inputbox/inputbox.php');
+require_once($IP.'/extensions/InputBox/inputbox.php');
 
 #ImageLink
 require_once( "$IP/extensions/ImageLink/ImageLink.php" );
