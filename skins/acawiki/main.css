@@ -12,11 +12,11 @@
 #column-content {
 	width: 100%;
 	float: right;
-	margin: 0 0 .6em -12.2em;
+	margin: 0 0 .6em -14.2em;
 	padding: 0;
 }
 #content {
-	margin: 13.15em 0 0 13.2em;
+	margin: 13.15em 0 0 15.2em;
 	padding: 1em 3em 1.5em 3em;
 	min-width: 620px;
 	position: relative;
@@ -41,7 +41,7 @@
 
 body {
 	font: x-small sans-serif;
-	background-color: #e5dcca; /*#e2e2e2;*/
+	background-color: #acb9d5;
 	color: black;
 	margin: 0;
 	padding: 1em;
@@ -731,9 +731,9 @@ special external link styling */
 #p-mainNav {
 	font-size:90%;
 	margin-top: 0.5em;
-	width: 11em;
+	width: 13em;
 	padding: 1em 1.7em 1em 0.5em;
-	background-color: #ece4d4;
+	background-color: #d3dcec;
 }
 
 
@@ -741,6 +741,8 @@ special external link styling */
 ** Search portlet
 */
 #p-search {
+	visibility: hidden;
+	display: none;
 	position: relative;
 	z-index: 3;
 }
@@ -855,7 +857,7 @@ li#pt-login {
 #p-cactions {
 	position: absolute;
 	top: 12.66em;
-	left: 14.75em;
+	left: 16.75em;
 	margin: 0;
 	white-space: nowrap;
 	width: auto;
