@@ -168,17 +168,20 @@ $wgUsePathInfo = false;
 
 # Users who have created accounts may not edit/upload, unless they have
 # confirmed their email address
+
 $wgGroupPermissions['*']['edit'] = false;
 $wgGroupPermissions['user' ]['move'] = false;
 $wgGroupPermissions['user' ]['edit'] = false;
 $wgGroupPermissions['user' ]['upload'] = false;
 $wgGroupPermissions['user' ]['createpage'] = false;
 $wgGroupPermissions['user' ]['createtalk'] = false;
-$wgGroupPermissions['emailconfirmed' ]['move'] = true;
-$wgGroupPermissions['emailconfirmed' ]['edit'] = true;
-$wgGroupPermissions['emailconfirmed' ]['upload'] = true;
-$wgGroupPermissions['emailconfirmed' ]['createpage'] = true;
-$wgGroupPermissions['emailconfirmed' ]['createtalk'] = true;
+
+$wgGroupPermissions['autoconfirmed' ]['move'] = true;
+$wgGroupPermissions['autoconfirmed' ]['edit'] = true;
+$wgGroupPermissions['autoconfirmed' ]['upload'] = true;
+$wgGroupPermissions['autoconfirmed' ]['createpage'] = true;
+$wgGroupPermissions['autoconfirmed' ]['createtalk'] = true;
+
 
 # no need to display the IP address
 $wgShowIPinHeader = false;
@@ -319,8 +322,8 @@ $wgAllowExternalImages = true;
 
 # Put a reCaptcha on the registration form
 require_once( "$IP/extensions/reCAPTCHA/ReCaptcha.php" );
-$recaptcha_public_key = '6LfFQQEAAAAAAPTcluUIkwdwqoj65TxYzbhjuTdS';
-$recaptcha_private_key = '6LfFQQEAAAAAAN0h0UMx-4QtbG-BXAB7--gTRtwU';
+$recaptcha_public_key = '6LcyxAMAAAAAANYY_jMZFr8LaKQnCINSOJWsQ8iK';
+$recaptcha_private_key = '6LcyxAMAAAAAABJ3_h53Iq8GQfm5MdSyriIWyzOJ';
 
 # Now that we are using APC to speed up PHP, then we might as well
 # allow MediaWiki to take advantage of this as well.  Thanks to
@@ -376,5 +379,3 @@ require_once( "$IP/extensions/ImageLink/ImageLink.php" );
 
 #NoTitle Extension - http://www.mediawiki.org/wiki/Extension:NoTitle
 require_once( "$IP/extensions/NoTitle.php" );
-
-
