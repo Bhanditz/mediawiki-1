@@ -3884,4 +3884,7 @@ Enter the filename without the "{{ns:file}}:" prefix.',
 'dberr-outofdate'   => 'Note that their indexes of our content may be out of date.',
 'dberr-cachederror' => 'This is a cached copy of the requested page, and may not be up to date.',
 
+#Acawiki
+'summarytitles'         => 'Summary Titles:',
+
 );
