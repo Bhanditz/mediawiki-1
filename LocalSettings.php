@@ -379,3 +379,6 @@ require_once( "$IP/extensions/ImageLink/1.7.1/ImageLink.php" );
 
 #NoTitle Extension - http://www.mediawiki.org/wiki/Extension:NoTitle
 require_once( "$IP/extensions/NoTitle.php" );
+
+#BibTexImport Extension
+require_once("$IP/extensions/BibTexImport/SpecialBibTexImport.php");
