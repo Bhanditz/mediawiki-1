@@ -52,9 +52,6 @@
 [submodule "extensions/SemanticTasks"]
 	path = extensions/SemanticTasks
 	url = git://code.creativecommons.org/mw-ext/semantictasks.git
-[submodule "skins/cc"]
-	path = skins/cc
-	url = git://code.creativecommons.org/themes/cc_wiki.git
 [submodule "extensions/HeaderTabs"]
 	path = extensions/HeaderTabs
 	url = git://code.creativecommons.org/mw-ext/headertabs.git
