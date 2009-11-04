@@ -82,3 +82,6 @@
 [submodule "extensions/InputBox"]
 	path = extensions/InputBox
 	url = git://code.creativecommons.org/mw-ext/inputbox.git
+[submodule "extensions/BibTexImport"]
+	path = extensions/BibTexImport
+	url = git://code.creativecommons.org/bibteximport.git
