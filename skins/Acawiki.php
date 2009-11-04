@@ -297,7 +297,7 @@ Search box
 			<ul id="f-list">
 <?php
 		$footerlinks = array(
-			'about', 'privacy', 'tagline',
+			'copyright', 'about', 'privacy', 'tagline',
 		);
 		foreach( $footerlinks as $aLink ) {
 			if( isset( $this->data[$aLink] ) && $this->data[$aLink] ) {
