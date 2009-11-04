@@ -45,7 +45,7 @@
 	url = git://code.creativecommons.org/mw-ext/syntaxhighlight_geshi.git
 [submodule "extensions/SemanticEditTime"]
 	path = extensions/SemanticEditTime
-	url = git://code.creativecommons.org:SemanticEditTime.git
+	url = git://code.creativecommons.org/SemanticEditTime.git
 [submodule "extensions/StringFunctions"]
 	path = extensions/StringFunctions
 	url = git://code.creativecommons.org/mw-ext/stringfunctions.git
