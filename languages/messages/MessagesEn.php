@@ -4216,4 +4216,7 @@ This site is experiencing technical difficulties.',
 'htmlform-reset'               => 'Undo changes',
 'htmlform-selectorother-other' => 'Other',
 
+#Acawiki
+'summarytitles'         => 'Summary Titles:',
+
 );
