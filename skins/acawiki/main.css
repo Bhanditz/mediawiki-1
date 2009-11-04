@@ -1588,3 +1588,18 @@ div#mw-recreate-deleted-warn ul li {
 
 .acawiki-footer-comments {
 }
+
+ul.acawiki-user-footer {
+    list-style-image:none;
+    list-style-position:outside;    
+    list-style-type:none;
+    line-height:1.5em;  
+    text-align:center;
+}
+
+li.acawiki-user-footer {
+    display:inline;
+    overflow:visible;
+    margin:0 2em 0 0;
+}
+
