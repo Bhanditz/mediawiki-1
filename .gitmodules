@@ -67,3 +67,21 @@
 [submodule "extensions/ExternalData"]
 	path = extensions/ExternalData
 	url = git://code.creativecommons.org/mw-ext/externaldata
+[submodule "extensions/Contributors"]
+	path = extensions/Contributors
+	url = git://code.creativecommons.org/mw-ext/contributors.git
+[submodule "extensions/HeaderFooter"]
+	path = extensions/HeaderFooter
+	url = git://code.creativecommons.org/mw-ext/headerfooter.git
+[submodule "extensions/ImageLink"]
+	path = extensions/ImageLink
+	url = git://code.creativecommons.org/mw-ext/imagelink.git
+[submodule "extensions/StubManager"]
+	path = extensions/StubManager
+	url = git://code.creativecommons.org/mw-ext/stubmanager.git
+[submodule "extensions/Widgets"]
+	path = extensions/Widgets
+	url = git://code.creativecommons.org/mw-ext/widgets.git
+[submodule "extensions/InputBox"]
+	path = extensions/InputBox
+	url = git://code.creativecommons.org/mw-ext/inputbox.git
