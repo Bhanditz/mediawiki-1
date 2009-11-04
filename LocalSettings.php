@@ -149,7 +149,7 @@ $wgSitename         = "AcaWiki";
 
 # database connectivity settings
 $wgDBserver         = "localhost";
-$wgDBname           = "acawiki";
+$wgDBname           = "acawiki_staging";
 $wgDBuser           = "acawiki";
 $wgDBpassword       = "acawiki";
 $wgDBprefix         = "";
@@ -361,21 +361,21 @@ $wgArticleCommentDefaults['displaycomments']=true;
 $wgHooks['ArticleCommentsSpamCheck'][] = 'defaultArticleCommentSpamCheck';
 
 #Widgets extension
-require_once("$IP/extensions/Widgets/Widgets.php");
+require_once("$IP/extensions/Widgets/REL_0_8_8/Widgets.php");
 $wgGroupPermissions['sysop']['editwidgets'] = true;
 
 #Acawiki Logo
 $wgLogo = "$wgScriptPath/skins/common/images/acawiki-header.png";
 
 #HeaderFooter
-require_once( "extensions/StubManager/StubManager.php" );
-require_once( "$IP/extensions/HeaderFooter/HeaderFooter.php" );
+require_once( "extensions/StubManager/1.3.2/StubManager.php" );
+require_once( "$IP/extensions/HeaderFooter/2.0.1/HeaderFooter.php" );
 
 #Inputbox
-require_once($IP.'/extensions/InputBox/inputbox.php');
+require_once($IP.'/extensions/InputBox/InputBox.php');
 
 #ImageLink
-require_once( "$IP/extensions/ImageLink/ImageLink.php" );
+require_once( "$IP/extensions/ImageLink/1.7.1/ImageLink.php" );
 
 #NoTitle Extension - http://www.mediawiki.org/wiki/Extension:NoTitle
 require_once( "$IP/extensions/NoTitle.php" );
