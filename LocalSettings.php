@@ -116,11 +116,11 @@ $wgDefaultSkin = 'monobook';
 ## For attaching licensing metadata to pages, and displaying an
 ## appropriate copyright notice / icon. GNU Free Documentation
 ## License and Creative Commons licenses are supported so far.
-# $wgEnableCreativeCommonsRdf = true;
+$wgEnableCreativeCommonsRdf = true;
 $wgRightsPage = ""; # Set to the title of a wiki page that describes your license/copyright
-$wgRightsUrl = "";
-$wgRightsText = "";
-$wgRightsIcon = "";
+$wgRightsUrl = "http://creativecommons.org/licenses/by/3.0/";
+$wgRightsText = "Attribution 3.0 Unported";
+$wgRightsIcon = "http://i.creativecommons.org/l/by/3.0/88x31.png";
 # $wgRightsCode = ""; # Not yet used
 
 $wgDiff3 = "/usr/bin/diff3";
@@ -149,7 +149,7 @@ $wgSitename         = "AcaWiki";
 
 # database connectivity settings
 $wgDBserver         = "localhost";
-$wgDBname           = "acawiki_staging";
+$wgDBname           = "acawiki";
 $wgDBuser           = "acawiki";
 $wgDBpassword       = "acawiki";
 $wgDBprefix         = "";
@@ -169,12 +169,12 @@ $wgUsePathInfo = false;
 # Users who have created accounts may not edit/upload, unless they have
 # confirmed their email address
 
-$wgGroupPermissions['*']['edit'] = false;
+$wgGroupPermissions['*']['edit'] = true;
 $wgGroupPermissions['user' ]['move'] = false;
-$wgGroupPermissions['user' ]['edit'] = false;
-$wgGroupPermissions['user' ]['upload'] = false;
-$wgGroupPermissions['user' ]['createpage'] = false;
-$wgGroupPermissions['user' ]['createtalk'] = false;
+$wgGroupPermissions['user' ]['edit'] = true;
+$wgGroupPermissions['user' ]['upload'] = true;
+$wgGroupPermissions['user' ]['createpage'] = true;
+$wgGroupPermissions['user' ]['createtalk'] = true;
 
 $wgGroupPermissions['autoconfirmed' ]['move'] = true;
 $wgGroupPermissions['autoconfirmed' ]['edit'] = true;
@@ -184,7 +184,7 @@ $wgGroupPermissions['autoconfirmed' ]['createtalk'] = true;
 
 
 # no need to display the IP address
-$wgShowIPinHeader = false;
+$wgShowIPinHeader = true;
 
 # Uncomment these to prevent enditing of any page by anyone.
 # Useful for maintenance.
@@ -204,6 +204,12 @@ $wgUploadDirectory = "{$IP}/images";
 # Extensions of allowable uploads
 $wgFileExtensions = array( 'png', 'gif', 'jpg', 'jpeg', 'ogg', 'pdf', 'svg', 'svgz', 'xcf', 'm4v', 'zip', 'odf', 'odp', 'odt', 'ods', 'doc', 'xls', 'ppt' );
 
+# Extra Namespace for Literature Reviews
+define("ACAWIKI_NS_LIT_REVIEW", 200); 
+define("ACAWIKI_NS_LIT_REVIEW_TALK", 201); 
+$wgExtraNamespaces[ACAWIKI_NS_LIT_REVIEW] = "Literature_Review";
+$wgExtraNamespaces[ACAWIKI_NS_LIT_REVIEW_TALK] = "Literature_Review_discussion";
+
 #Search by default in...
 #Set default searching
 $wgNamespacesToBeSearchedDefault = array(
@@ -222,8 +228,16 @@ NS_TEMPLATE_TALK =>  false,
 NS_HELP =>           false,
 NS_HELP_TALK =>      false,
 NS_CATEGORY =>       true,
-NS_CATEGORY_TALK =>  true
+NS_CATEGORY_TALK =>  true,
+ACAWIKI_NS_LIT_REVIEW => true
 );
+
+# These were causing problems on our other wikis
+# so I've disabled them here since they are aren't
+# being used in the Acawiki skin.  Just a precautionrary
+# measure (nkinkade 2009-08-17)
+$wgEnableCounters = false;
+
 
 
 
@@ -261,7 +275,7 @@ $wgEnableParserCache = false; // don't cache parser output
 
 #------- http://ontoworld.org/wiki/Help:Installation -------------------
 include_once('extensions/SemanticMediaWiki/includes/SMW_Settings.php');
-enableSemantics('http://wiki.creativecommons.org');
+enableSemantics('acawiki.org');
 
 	#---- ParserFucntions
 require_once( "$IP/extensions/ParserFunctions/ParserFunctions.php" );
@@ -322,8 +336,8 @@ $wgAllowExternalImages = true;
 
 # Put a reCaptcha on the registration form
 require_once( "$IP/extensions/recaptcha/ReCaptcha.php" );
-$recaptcha_public_key = '6LcyxAMAAAAAANYY_jMZFr8LaKQnCINSOJWsQ8iK';
-$recaptcha_private_key = '6LcyxAMAAAAAABJ3_h53Iq8GQfm5MdSyriIWyzOJ';
+$recaptcha_public_key = '6Ld3LgQAAAAAANXTNXJXLHeVhTU56W6GtQSKIMG3';
+$recaptcha_private_key = '6Ld3LgQAAAAAAPtPJFyf1bAGxz1SEC6vvfIJXTUd';
 
 # Now that we are using APC to speed up PHP, then we might as well
 # allow MediaWiki to take advantage of this as well.  Thanks to
@@ -337,6 +351,9 @@ $wgMainCacheType = CACHE_ACCEL;
 
 # SemanticDrilldown http://www.mediawiki.org/wiki/Extension:Semantic_Drilldown
 include_once('extensions/SemanticDrilldown/includes/SD_Settings.php');
+
+# SemanticResultFormats
+require_once("$IP/extensions/SemanticResultFormats/SRF_Settings.php");
 
 # Added this extension per request from GSoC person Hugo Dworak (nkinkade 2008-06-11)
 #require_once("extensions/SyntaxHighlight_GeSHi/SyntaxHighlight_GeSHi.php");
