@@ -79,3 +79,6 @@
 [submodule "extensions/Validator"]
 	path = extensions/Validator
 	url = git://code.creativecommons.org/mw-ext/validator.git
+[submodule "extensions/SemanticInternalObjects"]
+	path = extensions/SemanticInternalObjects
+	url = git://code.creativecommons.org/mw-ext/semanticinternalobjects
