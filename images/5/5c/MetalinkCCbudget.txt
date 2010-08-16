@@ -1,0 +1,5 @@
+Admission, travel, hotels for IETF conferences: $2,000
+Developer to add Metalink support to Firefox: $2,000
+Developer to add Metalink support to Chrome: $2,000
+Computer hardware (netbook or laptop): $500
+Internet access: $600

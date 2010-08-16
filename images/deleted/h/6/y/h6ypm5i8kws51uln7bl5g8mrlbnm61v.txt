@@ -1,0 +1,28 @@
+                         Verysoft AllProxy facilitates the Internet access.
+
+ At the present time very important user tools have become the sites of Social Networks in order to find some people that resembling to the user life interest, looking for groups of interest, to use the social sites for self-expression and self-actualization, find some hobby, create some interest blog, and, of course, just communicate with friends and other people all over the world. Apart from such large-scale giants like Facebook, MySpace, Youtube, Reunion allowing easily and simply facilitate to find oneself a group of interest, hobby, friends, etc. there are different kind of chats, audio and video playing significant role in the process of communication with the world.
+
+ At the mean, the Internet user that surf in the internet does not have an idea how a process of request and delivery of relevant content from the Internet resources to the user is going on. There are a lot of cases when one has been blocked on the chat, or wanted to use covered IP-address because of spammers, viral attackers and hackers, or simply the content delivery is slow because of high traffic.
+
+ As a matter of fact, there is no problem, but only situation that has to be solved. In order to enforce acceptable network use policies and provide security such as anti-virus, anti-malware or anti-spam services computer user is able to use proxy servers. To lessen network traffic and an ability to enhance network security are the most tempting and indispensable functions of proxy servers. A proxy server enhances network security by providing controls for receiving and forwarding (or rejecting) requests between isolated networks, for example, forwarding requests across a firewall. A proxy server lessens network traffic by rejecting unwanted requests, forwarding requests to balance and optimize server workload, and fulfilling requests by serving data from cache rather than unnecessarily contacting the true destination server. 
+
+ Verysoft  team of developers have generated all necessary and unique features in AllProxy Lite in order to make the Internet surfing fast and safety. AllProxy Lite is a proxifier and a proxy configuration tool. You can set up facebook proxy, youtube proxy, socks proxy or any other kind of proxys. You can connect to most popular proxy servers with custom proxy settings. It's easy to bypass proxy, unblock proxy, redirect all network connections using anonymous proxy, your own proxy list or proxy sites. Try it now for free. For more information about the features and trial version of AllProxy Lite follow the site: http://very-soft.com/allproxylite
+
+ To facilitate the comprehension about proxy servers there is short description below:
+ Proxy servers are computers that offer a computer network service that allows its clients to connect indirectly to other network services. Proxies that are able to block the offensive web content are called web proxies. Another meaning of web proxies is reformatting the pages for other different operating systems. The internet providers might also set up proxies for preventing the occurrence of the computer viruses or any other hostile content such as spam that might affect your PC.
+
+ The proxy server has a large variety of potential purposes, keeping machines behind it anonymous (mainly for security); speeding up access to resources (using caching). Web proxies are commonly used to cache web pages from a web server; applying access policy to network services or content, e.g. to block undesired sites; providing company employee Internet usage reporting; bypassing security/parental controls; scanning transmitted content for malware before delivery; scanning outbound content, e.g., for data leak protection; circumventing regional restrictions; etc. 
+
+ There are a lot of different types of proxy servers, some commonly known proxys are described below.
+ A transparent proxy makes your original IP address available through the http headers. This proxy is generally used for their ability to cache websites and do not as mentioned before effectively provide any anonymity to those who use them. But you can still use this to get past minor bans. The term transparent is used in the terms that your IP address is exposed and in the terms that you do not know when you're using it.
+ A distorting Proxy server makes an incorrect original IP address available through the http headers. But they do let the administrators know that you are using a proxy server. 
+ An anonymous proxy server also known as web proxy, generally attempts to anonymize web surfing by hiding the original IP address of the end user. This type of proxy server are typically difficult to track, and provides reasonable anonymity for most users.
+ High Anonymity Proxy server does not identify itself as a proxy server and does not make available the original IP address. High anonymity proxies, only include the REMOTE_ADDR header with the IP address of the proxy server, making it appears that the proxy server is the client.
+
+ Thousands of Internet surfers use proxy server in order to facilitate the Internet surfing. Let's do it with Verysoft AllProxy. Visit our official web site: http://very-soft.com/ 
+
+Andrey Sagataev
+Marketing Manager
+Verysoft, LLC
+Website http://very-soft.com 
+ 

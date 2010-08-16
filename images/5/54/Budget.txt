@@ -1,0 +1,27 @@
+Budget for FooCorp's first record
+=================================
+
+
+
+  All figures in US dollars.
+
+----------------------------------------
+
+ Incorporation in the state of MA |  800
+-----------------------------------------
+ Album recording                  | 3000
+-----------------------------------------
+ Album marketing                  | 1000
+-----------------------------------------
+ Physical pressing (limited)      | 1500
+-----------------------------------------
+ Online setup (iTunes, et al)     |  250
+-----------------------------------------
+ Free software development        |  850
+
+-----------------------------------------
+ 
+                           Total:  $7400
+
+
+
