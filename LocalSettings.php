@@ -85,13 +85,13 @@ $wgDBmwschema       = "mediawiki";
 $wgDBts2schema      = "public";
 
 ## Shared memory settings
-$wgMainCacheType = CACHE_NONE;
-$wgMemCachedServers = array();
+$wgMainCacheType = CACHE_ACCEL;
+#$wgMemCachedServers = array();
 
 ## To enable image uploads, make sure the 'images' directory
 ## is writable, then set this to true:
-$wgUseImageMagick = true;
-$wgImageMagickConvertCommand = "/usr/bin/convert";
+#$wgUseImageMagick = true;
+#$wgImageMagickConvertCommand = "/usr/bin/convert";
 
 ## If you want to use image uploads under safe mode,
 ## create the directories images/archive, images/thumb and
@@ -238,8 +238,8 @@ ACAWIKI_NS_LIT_REVIEW => true
 # measure (nkinkade 2009-08-17)
 $wgEnableCounters = false;
 
-
-
+# http://www.mediawiki.org/wiki/Manual:$wgUseTeX
+$wgUseTeX = true;
 
 # Enable uploads
 $wgEnableUploads = true;
@@ -264,6 +264,9 @@ $wgEnableSorbs = true;
 # http://wiki.chongqed.org/CSSHiddenSpam
 $wgSpamRegex = "/\<.*style.*?(display|position|overflow|visibility|height)\s*:.*?>/i";
 
+$wgMaxShellMemory = 196608;
+$wgSVGConverter = 'rsvg';
+
 # This should force MW to generate each page every time it is requested.
 # Specifically, this is being added because of the Semantic MW <ask> section
 # not updating the list of CC Birthday 2007 parties at /Birthday_Party_2007
@@ -271,7 +274,7 @@ $wgSpamRegex = "/\<.*style.*?(display|position|overflow|visibility|height)\s*:.*
 # newly added parties don't show up.  This could impact the performance of the
 # Wiki, so we need to keep our eyes open for degraded performance here forward.
 # Nathan Kinkade 2007-12-05 14:38:07 PST
-$wgEnableParserCache = false; // don't cache parser output
+#$wgEnableParserCache = false; // don't cache parser output
 
 #------- http://ontoworld.org/wiki/Help:Installation -------------------
 include_once('extensions/SemanticMediaWiki/includes/SMW_Settings.php');
@@ -339,6 +342,9 @@ require_once( "$IP/extensions/recaptcha/ReCaptcha.php" );
 $recaptcha_public_key = '6Ld3LgQAAAAAANXTNXJXLHeVhTU56W6GtQSKIMG3';
 $recaptcha_private_key = '6Ld3LgQAAAAAAPtPJFyf1bAGxz1SEC6vvfIJXTUd';
 
+# Added this per Benjamin Mako (nkinkade 2010-06-22)
+$ceAllowConfirmedEmail = true;
+
 # Now that we are using APC to speed up PHP, then we might as well
 # allow MediaWiki to take advantage of this as well.  Thanks to
 # Asheesh for pointing this out. (nkinkade 2008-04-22)
@@ -372,7 +378,7 @@ require_once( "$IP/extensions/Contributors/Contributors.php" );
 #require_once( "$IP/extensions/CommentPages/CommentPages.php" );
 
 #Article Comments (extension modified by Steren Giannini)
-require_once('extensions/ArticleComments.php');
+# require_once('extensions/ArticleComments.php');
 $wgArticleCommentsNSDisplayList = array(NS_MAIN, NS_TALK, NS_HELP, NS_HELP_TALK);
 $wgArticleCommentDefaults['displaycomments']=true;
 $wgHooks['ArticleCommentsSpamCheck'][] = 'defaultArticleCommentSpamCheck';
@@ -399,3 +405,12 @@ require_once( "$IP/extensions/NoTitle.php" );
 
 #BibTexImport Extension
 require_once("$IP/extensions/BibTexImport/SpecialBibTexImport.php");
+
+# http://www.mediawiki.org/wiki/Extension:Recent_Activity_Notify
+require_once("$IP/extensions/RecentActivityNotify/RecentActivityNotify.php");
+
+
+# Store 13 weeks of Recent Change data
+# NRY per NP, 4 Aug 2010
+$wgRCMaxAge = 13 * 7 * 24 * 3600;
+
