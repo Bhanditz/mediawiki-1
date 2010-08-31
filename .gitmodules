@@ -82,3 +82,6 @@
 [submodule "extensions/SemanticInternalObjects"]
 	path = extensions/SemanticInternalObjects
 	url = git://code.creativecommons.org/mw-ext/semanticinternalobjects
+[submodule "extensions/Collection"]
+	path = extensions/Collection
+	url = git://code.creativecommons.org/mw-ext/collection.git
