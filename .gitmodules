@@ -85,3 +85,6 @@
 [submodule "extensions/Collection"]
 	path = extensions/Collection
 	url = git://code.creativecommons.org/mw-ext/collection.git
+[submodule "extensions/Maps.new"]
+	path = extensions/Maps.new
+	url = git://code.creativecommons.org/mw-ext/maps.git
