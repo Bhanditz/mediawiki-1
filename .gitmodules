@@ -70,12 +70,6 @@
 [submodule "extensions/ArrayExtension"]
 	path = extensions/ArrayExtension
 	url = git://code.creativecommons.org/mw-ext/arrayextension.git
-[submodule "extensions/Maps"]
-	path = extensions/Maps
-	url = git://code.creativecommons.org/mw-ext/maps.git
-[submodule "extensions/SemanticMaps"]
-	path = extensions/SemanticMaps
-	url = git://code.creativecommons.org/mw-ext/semanticmaps.git
 [submodule "extensions/Validator"]
 	path = extensions/Validator
 	url = git://code.creativecommons.org/mw-ext/validator.git
@@ -85,6 +79,9 @@
 [submodule "extensions/Collection"]
 	path = extensions/Collection
 	url = git://code.creativecommons.org/mw-ext/collection.git
-[submodule "extensions/Maps.new"]
-	path = extensions/Maps.new
+[submodule "extensions/Maps"]
+	path = extensions/Maps
 	url = git://code.creativecommons.org/mw-ext/maps.git
+[submodule "extensions/SemanticMaps"]
+	path = extensions/SemanticMaps
+	url = git://code.creativecommons.org/mw-ext/semanticmaps.git
