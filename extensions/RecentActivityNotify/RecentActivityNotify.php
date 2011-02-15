@@ -168,7 +168,7 @@ $wgContLang->timeanddate( $this->timestamp, true, false, $timecorrection ),
     return true;
 }
 
-function NotifyArticleSaved ( $article, $user, $text, $summary, $minoredit, $watchthis, $sectionanchor, $flags, $revision, $status, $baseRevId ) {
+function NotifyArticleSaved ( &$article, &$user, $text, $summary, $minoredit, $watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId ) {
 
     if (CheckIfNotificationNeeded ($user)) {
 		global $wgSitename, $wgServer, $wgScriptPath;
