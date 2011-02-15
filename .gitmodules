@@ -76,9 +76,6 @@
 [submodule "extensions/StubManager"]
 	path = extensions/StubManager
 	url = git://code.creativecommons.org/mw-ext/stubmanager.git
-[submodule "extensions/Widgets"]
-	path = extensions/Widgets
-	url = git://code.creativecommons.org/mw-ext/widgets.git
 [submodule "extensions/InputBox"]
 	path = extensions/InputBox
 	url = git://code.creativecommons.org/mw-ext/inputbox.git
