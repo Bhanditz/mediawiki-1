@@ -11,7 +11,7 @@ class HeaderFooter
 	/**
 	 * Main Hook
 	 */
-	public function hOutputPageParserOutput( &$op, &$parserOutput )
+	public function hOutputPageParserOutput( &$op, $parserOutput )
 	{
 		global $action;
 		if ( ($action == 'edit') || ($action == 'submit') )
