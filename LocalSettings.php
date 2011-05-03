@@ -164,7 +164,8 @@ $wgArticlePath = "/$1";
 # Added this to fix some brokenness related to $wgArticlePath.
 # For more information see:
 # http://bugzilla.wikimedia.org/show_bug.cgi?id=11428
-$wgUsePathInfo = false;
+#$wgUsePathInfo = false;
+$wgUsePathInfo = true;
 
 # Users who have created accounts may not edit/upload, unless they have
 # confirmed their email address
@@ -277,7 +278,8 @@ $wgSVGConverter = 'rsvg';
 #$wgEnableParserCache = false; // don't cache parser output
 
 #------- http://ontoworld.org/wiki/Help:Installation -------------------
-include_once('extensions/SemanticMediaWiki/includes/SMW_Settings.php');
+#include_once('extensions/SemanticMediaWiki/includes/SMW_Settings.php');
+include_once("$IP/extensions/SemanticMediaWiki/SemanticMediaWiki.php");
 enableSemantics('acawiki.org');
 
 	#---- ParserFucntions
@@ -384,7 +386,7 @@ $wgArticleCommentDefaults['displaycomments']=true;
 $wgHooks['ArticleCommentsSpamCheck'][] = 'defaultArticleCommentSpamCheck';
 
 #Widgets extension
-require_once("$IP/extensions/Widgets/REL_0_8_8/Widgets.php");
+require_once("$IP/extensions/Widgets/Widgets.php");
 $wgGroupPermissions['sysop']['editwidgets'] = true;
 
 #Acawiki Logo
@@ -409,6 +411,8 @@ require_once("$IP/extensions/BibTexImport/SpecialBibTexImport.php");
 # http://www.mediawiki.org/wiki/Extension:Recent_Activity_Notify
 require_once("$IP/extensions/RecentActivityNotify/RecentActivityNotify.php");
 
+# Validator
+require_once( "$IP/extensions/Validator/Validator.php" );
 
 # Store 13 weeks of Recent Change data
 # NRY per NP, 4 Aug 2010
