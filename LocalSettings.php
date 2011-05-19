@@ -156,7 +156,8 @@ $wgDBprefix         = "";
 $wgDBtype           = "mysql";
 
 # which skin to use
-$wgDefaultSkin = 'acawiki';
+#$wgDefaultSkin = 'acawiki';
+$wgDefaultSkin = 'vector';
 
 # cleans up the urls, so they don't include index.php everywhere
 $wgArticlePath = "/$1";
@@ -390,7 +391,8 @@ require_once("$IP/extensions/Widgets/Widgets.php");
 $wgGroupPermissions['sysop']['editwidgets'] = true;
 
 #Acawiki Logo
-$wgLogo = "$wgScriptPath/skins/common/images/acawiki-header.png";
+#$wgLogo = "$wgScriptPath/skins/common/images/acawiki-header.png";
+$wgLogo = "$wgScriptPath/skins/common/images/acawiki-logo-135x135.png";
 
 #HeaderFooter
 require_once( "extensions/StubManager/1.3.2/StubManager.php" );
