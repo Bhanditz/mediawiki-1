@@ -3,7 +3,7 @@
 /**
  * @group Database
  */
-class TitlePermissionTest extends MediaWikiTestCase {
+class TitlePermissionTest extends MediaWikiLangTestCase {
 	protected $title;
 	protected $user;
 	protected $anonUser;
@@ -14,6 +14,7 @@ class TitlePermissionTest extends MediaWikiTestCase {
 
 	function setUp() {
 		global $wgLocaltimezone, $wgLocalTZoffset, $wgMemc, $wgContLang, $wgLang;
+		parent::setUp();
 
 		if(!$wgMemc) {
 			$wgMemc = new EmptyBagOStuff;
@@ -50,12 +51,22 @@ class TitlePermissionTest extends MediaWikiTestCase {
 		}
 	}
 
+	function tearDown() {
+		parent::tearDown();
+	}
+
 	function setUserPerm( $perm ) {
-		if ( is_array( $perm ) ) {
-			$this->user->mRights = $perm;
-		} else {
-			$this->user->mRights = array( $perm );
+		// Setting member variables is evil!!!
+
+		if ( !is_array( $perm ) ) {
+			$perm = array( $perm );
 		}
+		for ($i = 0; $i < 100; $i++) {
+			$this->user->mRights[$i] = $perm;
+		}
+		
+		// Hack, hack hack ...
+		$this->user->mRights['*'] = $perm;
 	}
 
 	function setTitle( $ns, $title = "Main_Page" ) {
@@ -65,7 +76,7 @@ class TitlePermissionTest extends MediaWikiTestCase {
 	function setUser( $userName = null ) {
 		if ( $userName === 'anon' ) {
 			$this->user = $this->anonUser;
-		} else if ( $userName === null || $userName === $this->userName ) {
+		} elseif ( $userName === null || $userName === $this->userName ) {
 			$this->user = $this->userUser;
 		} else {
 			$this->user = $this->altUser;
@@ -326,7 +337,6 @@ class TitlePermissionTest extends MediaWikiTestCase {
 		$this->assertEquals( $result2, $res );
 	}
 
-	function testPermissionHooks() { }
 	function testSpecialsAndNSPermissions() {
 		$this->setUser( $this->userName );
 		global $wgUser;
@@ -380,22 +390,22 @@ class TitlePermissionTest extends MediaWikiTestCase {
 							 $this->title->userCan( 'bogus' ) );
 	}
 
-	function testCSSandJSPermissions() {
+	function testCssAndJavascriptPermissions() {
 		$this->setUser( $this->userName );
 		global $wgUser;
 		$wgUser = $this->user;
 
 		$this->setTitle( NS_USER, $this->altUserName . '/test.js' );
 		$this->runCSSandJSPermissions(
-			array( array( 'badaccess-group0' ), array( 'customcssjsprotected' ) ),
-			array( array( 'badaccess-group0' ), array( 'customcssjsprotected'  ) ),
+			array( array( 'badaccess-group0' ), array( 'customjsprotected' ) ),
+			array( array( 'badaccess-group0' ), array( 'customjsprotected' ) ),
 			array( array( 'badaccess-group0' ) ) );
 
 		$this->setTitle( NS_USER, $this->altUserName . '/test.css' );
 		$this->runCSSandJSPermissions(
-			array( array( 'badaccess-group0' ), array( 'customcssjsprotected' ) ),
+			array( array( 'badaccess-group0' ), array( 'customcssprotected' ) ),
 			array( array( 'badaccess-group0' ) ),
-			array( array( 'badaccess-group0' ),  array( 'customcssjsprotected' ) ) );
+			array( array( 'badaccess-group0' ),  array( 'customcssprotected' ) ) );
 
 		$this->setTitle( NS_USER, $this->altUserName . '/tempo' );
 		$this->runCSSandJSPermissions(

@@ -9,7 +9,10 @@ class ZhClient {
 	/**
 	 * Constructor
 	 *
-	 * @access private
+	 * @param $host
+	 * @param $port
+	 *
+	 * @return ZhClient
 	 */
 	function __construct( $host, $port ) {
 		$this->mHost = $host;
@@ -19,6 +22,8 @@ class ZhClient {
 
 	/**
 	 * Check if connection to zhdaemon is successful
+	 *
+	 * @return bool
 	 */
 	function isconnected() {
 		return $this->mConnected;
@@ -28,6 +33,8 @@ class ZhClient {
 	 * Establish conncetion
 	 *
 	 * @access private
+	 *
+	 * @return bool
 	 */
 	function connect() {
 		wfSuppressWarnings();
@@ -44,6 +51,8 @@ class ZhClient {
 	 * Query the daemon and return the result
 	 *
 	 * @access private
+	 *
+	 * @return string
 	 */
 	function query( $request ) {
 		if ( !$this->mConnected ) {

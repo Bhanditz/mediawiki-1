@@ -263,15 +263,6 @@ $messages = array(
 'category-file-count-limited'    => '{{PLURAL:$1|A file disi|Den $1 file disi}} de ini a grupu disi.',
 'listingcontinuesabbrev'         => 'moro',
 
-'mainpagetext'      => "'''MediaWiki seti kon bun.'''",
-'mainpagedocfooter' => 'Luku na ini a [http://meta.wikimedia.org/wiki/Help:Yepi yepibuku] fu si fa fu kebrouki a wikisoftware.
-
-== Moro yepi ==
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Den seti]
-* [http://www.mediawiki.org/wiki/Manual:FAQ Sani di ben aksi furu (FAQ)]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Boskopu grupu gi nyun meki]',
-
 'about'         => 'Abra',
 'article'       => 'Papira',
 'newwindow'     => '(o opo ini wan nyun fensre)',
@@ -305,7 +296,6 @@ $messages = array(
 'history'           => 'Historia fu a papira',
 'history_short'     => 'Historia',
 'updatedmarker'     => 'kenki sensi mi laste fisiti',
-'info_short'        => 'Infrumasie',
 'printableversion'  => 'Print',
 'permalink'         => 'Permalink',
 'print'             => 'Kwinsi',
@@ -445,7 +435,6 @@ A kan taki a abi wan noso moro karakter san no bun fu kebroiki gi nen.',
 'viewsourcefor'        => 'fu $1',
 'protectedpagetext'    => 'A papira disi sroto gi kenki.',
 'viewsourcetext'       => 'Yu kan luku nanga kopi a source fu a papira disi:',
-'customcssjsprotected' => 'Yu no kan kenki a papira disi, bika a abi seti fu wan tra kebroikiman.',
 'ns-specialprotected'  => 'Spesrutu papira no kan kenki.',
 'titleprotected'       => "[[User:$1|$1]] sroto a meki fu wan papira nanga a nen disi
 Fu san ede: ''$2''.",
@@ -490,7 +479,7 @@ Kenki den seti fu yu browser so dati a kan kisi den cookies disi, én pruberi ba
 'loginsuccesstitle'       => 'Yu psa kon now.',
 'loginsuccess'            => "'''Now yu de na tapu {{SITENAME}} leki \"\$1\".'''",
 'nosuchuser'              => 'No wan kebroikiman de san nen "$1".<br />Luku efu yu skrifi a nen bun, noso meki an nyun account.',
-'nosuchusershort'         => 'No wan kebroikiman de di nen "<nowiki>$1</nowiki>".<br />Luku efu yu skrifi a nen bun.',
+'nosuchusershort'         => 'No wan kebroikiman de di nen "$1".<br />Luku efu yu skrifi a nen bun.',
 'nouserspecified'         => 'Yu musu gi wan kebroikiman nen.',
 'wrongpassword'           => 'Psa wortu no bun.<br />
 Pruberi baka.',
@@ -976,11 +965,9 @@ Papira ini [[Special:Watchlist|yu Tan Luku réy]] '''fatu'''.",
 # Watchlist
 'watchlist'         => 'Mi Tan Luku réy',
 'mywatchlist'       => 'Mi Tan luku réy',
-'addedwatch'        => 'Presi a yu sirey',
 'addedwatchtext'    => "A papira \"[[:\$1]]\" ben presi a yu [[Special:Watchlist|sirey]]. Folo kenki fu disi papira nanga a taki sey opo [[Special:Watchlist|yu sirey]] nanga sey '''deku''' ini a [[Special:RecentChanges|rey fu bakseywan kenki]].
 
 Iksi yu wan papira no langar wana si, go na a papira nanga du opo \"No si\" ini a menu.",
-'removedwatch'      => 'Trowe fu yu sirey',
 'removedwatchtext'  => 'A papira "[[:$1]]" ben trowe fu yu sirey.',
 'watch'             => 'Tan luku',
 'watchthispage'     => 'Tan luku a papira disi',
@@ -997,7 +984,7 @@ Iksi yu wan papira no langar wana si, go na a papira nanga du opo \"No si\" ini 
 'historywarning'        => 'Warskow: a papira di yu wani puru abi wan historia:',
 'confirmdeletetext'     => 'Yu wanaefru ben trowen wan papira, nanga si stori. Gi klari a dyaso-ondro ini a box taki disi we fuli yu miki ben, taki yu den folo luku nanga taki a trowe gu ben nanga a [[{{MediaWiki:Policy-url}}|polisi]].',
 'actioncomplete'        => 'Aksi e du',
-'deletedtext'           => '"<nowiki>$1</nowiki>" ben e trowe. Si a $2 fu wan sibuku fu bakaseywan trowe.',
+'deletedtext'           => '"$1" ben e trowe. Si a $2 fu wan sibuku fu bakaseywan trowe.',
 'deletedarticle'        => 'puru "[[$1]]"',
 'dellogpage'            => 'Log buku fu puru',
 'deletecomment'         => 'Yesikrari:',
@@ -1015,7 +1002,7 @@ Iksi yu wan papira no langar wana si, go na a papira nanga du opo \"No si\" ini 
 'protectexpiry'               => 'Lasi:',
 'protect_expiry_invalid'      => 'A lasi ben fowtu.',
 'protect_expiry_old'          => 'A lasi ben ini iksini.',
-'protect-text'                => "Dyaso ben yu kan tu kenki nanga aluku a tapunivo fu a papira '''<nowiki>$1</nowiki>'''.",
+'protect-text'                => "Dyaso ben yu kan tu kenki nanga aluku a tapunivo fu a papira '''$1'''.",
 'protect-locked-access'       => "'''Yu masyin abi no lesi tu kenki a tapunivo.'''
 Disi ben a tapunivo fu a papira '''[[$1]]''' now:",
 'protect-cascadeon'           => 'Disi papira ben tapu sins a ini den folo {{PLURAL:$1|papira|peprewoysi}} ben e presi, dy tapu ben nanga a kaskade-opsi. A tapunivo kenki abi no efekti.',

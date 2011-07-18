@@ -429,15 +429,6 @@ $messages = array(
 'noindex-category'               => 'Neindeksitaj paĝoj',
 'broken-file-category'           => 'Paĝoj kun trompitaj dosierligiloj',
 
-'mainpagetext'      => "'''MediaWiki estis sukcese instalita.'''",
-'mainpagedocfooter' => "Konsultu la [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide User's Guide] por informo pri uzado de vikia programaro.
-
-==Kiel komenci==
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Listo de konfiguraĵoj] (angla)
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki Oftaj Demandoj] (angla)
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki dissendolisto pri anoncoj] (angla)",
-
 'about'         => 'Enkonduko',
 'article'       => 'Artikolo',
 'newwindow'     => '(en nova fenestro)',
@@ -488,7 +479,6 @@ $messages = array(
 'history'           => 'Historio de versioj',
 'history_short'     => 'Historio',
 'updatedmarker'     => 'ĝisdatita de post mia lasta vizito',
-'info_short'        => 'Informo',
 'printableversion'  => 'Presebla versio',
 'permalink'         => 'Konstanta ligilo',
 'print'             => 'Printi',
@@ -690,7 +680,6 @@ Peto: $2',
 'cascadeprotected'     => 'Ĉi tiu paĝo estas protektita kontraŭ redaktado, ĉar ĝi estas inkludita en la {{PLURAL:$1|sekvan paĝon, kiu|sekvajn paĝojn, kiuj}} estas {{PLURAL:$1|protektata|protektataj}} kun la "kaskada" opcio turnita sur:
 $2',
 'namespaceprotected'   => "Vi ne rajtas redakti paĝojn en la '''$1''' nomspaco.",
-'customcssjsprotected' => 'Vi ne rajtas redakti ĉi tiun paĝon, ĉar ĝi enhavas personajn alĝustigojn de alia uzanto.',
 'ns-specialprotected'  => 'Paĝoj en la {{ns:special}} nomspaco ne povas esti redaktataj.',
 'titleprotected'       => "Ĉi titolo estas protektita de kreado de [[User:$1|$1]].
 La kialo donata estis ''$2''.",
@@ -745,7 +734,7 @@ Bonvolu elekti alian nomon.',
 'nosuchuser'                 => 'Neniu uzanto havas nomon "$1".
 Nomoj por uzantoj estas usklecodistinga.
 Kontrolu vian literumadon, aŭ [[Special:UserLogin/signup|kreu novan konton]].',
-'nosuchusershort'            => 'Ne ekzistas uzanto kun la nomo "<nowiki>$1</nowiki>". Bonvolu kontroli vian ortografion.',
+'nosuchusershort'            => 'Ne ekzistas uzanto kun la nomo "$1". Bonvolu kontroli vian ortografion.',
 'nouserspecified'            => 'Vi devas entajpi salutnomon.',
 'login-userblocked'          => 'Ĉi tiu uzanto estas forbarita. Ensalutado ne estas permesita.',
 'wrongpassword'              => 'Vi tajpis malĝustan pasvorton. Bonvolu provi denove.',
@@ -945,7 +934,7 @@ aŭ [{{fullurl:{{FULLPAGENAME}}|action=edit}} redakti ĉi tiun paĝon]</span>.',
 'noarticletext-nopermission'       => 'Estas neniom da teksto en ĉi tiu paĝo.
 Vi povas [[Special:Search/{{PAGENAME}}|serĉi ĉi tiun paĝan titolon]] en aliaj paĝoj,
 aŭ <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} serĉi la rilatajn protokolojn]</span>.',
-'userpage-userdoesnotexist'        => 'Uzantokonto "$1" ne estas registrita. Bonvolu konfirmi se vi volas krei/redakti ĉi tiun paĝon.',
+'userpage-userdoesnotexist'        => 'Uzantokonto "<nowiki>$1</nowiki>" ne estas registrita. Bonvolu konfirmi se vi volas krei/redakti ĉi tiun paĝon.',
 'userpage-userdoesnotexist-view'   => 'Uzanto-konto "$1" ne estas registrita.',
 'blocked-notice-logextract'        => 'Ĉi tiu uzanto estas ĉi-momente forbarita.
 La lasta protokolero estas jene montrata por via referenco:',
@@ -1337,7 +1326,9 @@ indekso pro troŝarĝita servilo. Intertempe, vi povas serĉi per <i>guglo</i> a
 'prefs-skin'                    => 'Etoso',
 'skin-preview'                  => 'Antaŭrigardo',
 'datedefault'                   => 'Nenia prefero',
+'prefs-beta'                    => 'Ecoj de Beta',
 'prefs-datetime'                => 'Dato kaj horo',
+'prefs-labs'                    => 'Ecoj el Laboratorio',
 'prefs-personal'                => 'Uzanta profilo',
 'prefs-rc'                      => 'Lastaj ŝanĝoj',
 'prefs-watchlist'               => 'Atentaro',
@@ -1371,7 +1362,7 @@ Jen hazarde generita valoro por via uzo: $1',
 'savedprefs'                    => 'Viaj preferoj estas konservitaj.',
 'timezonelegend'                => 'Horzono:',
 'localtime'                     => 'Loka tempo:',
-'timezoneuseserverdefault'      => 'Uzi defaŭlton de servilo',
+'timezoneuseserverdefault'      => 'Uzi defaŭlton de servilo ($1)',
 'timezoneuseoffset'             => 'Alia (Enigu diferencon)',
 'timezoneoffset'                => 'Diferenco¹:',
 'servertime'                    => 'Servila tempo:',
@@ -1744,10 +1735,6 @@ Alŝutante Java-dosieron estas malpermesita, ĉar ili povas kaŭzi sekureco-limi
 'upload-options'              => 'Alŝutaj agordoj',
 'watchthisupload'             => 'Atenti ĉi tiun dosieron',
 'filewasdeleted'              => 'Dosiero de ĉi nomo estis antaŭe alŝutita kaj poste redaktita. Vi kontrolu la $1 antaux alŝutante ĝin denove.',
-'upload-wasdeleted'           => "'''Averto: Vi alŝutas dosieron kiu estis antaŭe forigita.'''
-
-Vi konsideru ĉu taŭgas alŝuti ĉi tiu dosiero.
-jen la protokolo pri forigado por ĉi tiu dosiero por via oportuneco:",
 'filename-bad-prefix'         => "La nomo de la dosiero kiun vi alŝutas komencas kun '''\"\$1\"''', kiu estas nepriskriba nomo ofte aŭtomate donata de ciferecaj fotiloj. Bonvolu elekti pli priskriban nomon por via bildo.",
 'upload-success-subj'         => 'Alŝuto sukcesis!',
 'upload-success-msg'          => 'Via alŝuto el [$2] sukcesis. Ĝi disponeblas ĉi tie [[:{{ns:file}}:$1]]',
@@ -1868,7 +1855,6 @@ La jena listo montras la {{PLURAL:$1|unua paĝligilo|unuaj $1 paĝligiloj}} al n
 [[Special:WhatLinksHere/$2|Plena listo]] estas atingebla.',
 'nolinkstoimage'            => 'Neniu paĝo ligas al ĉi tiu dosiero.',
 'morelinkstoimage'          => 'Rigardi [[Special:WhatLinksHere/$1|pliajn ligilojn]] al ĉi tiu dosiero.',
-'redirectstofile'           => 'Jen {{PLURAL:$1|dosiero liganta|dosieroj ligantaj}} al ĉi tiu dosiero:',
 'duplicatesoffile'          => 'La {{PLURAL:$1|jena dosiero estas duplikato|jenaj dosieroj estas duplikatoj}} de ĉi tiu dosiero ([[Special:FileDuplicateSearch/$2|pluaj detaloj]]):',
 'sharedupload'              => 'Ĉi tiu dosiero estas de $1 kaj estas uzebla de aliaj projektoj.',
 'sharedupload-desc-there'   => 'Ĉi tiu dosiero estas de $1 kaj estas uzebla en aliaj projektoj.
@@ -2193,9 +2179,7 @@ La retadreso kiun vi enigis en [[Special:Preferences|viaj preferoj]] aperos kiel
 'watchlistanontext'    => 'Bonvolu $1 por vidi aŭ redakti erojn en via atentaro.',
 'watchnologin'         => 'Ne ensalutinta',
 'watchnologintext'     => 'Nepras [[Special:UserLogin|ensaluti]] por ŝanĝi vian atentaron.',
-'addedwatch'           => 'Aldoniĝis al atentaro',
 'addedwatchtext'       => "La paĝo \"[[:\$1]]\" estis aldonita al via [[Special:Watchlist|atentaro]]. Estontaj ŝanĝoj de tiu ĉi paĝo aperos en '''grasa tiparo''' en la [[Special:RecentChanges|listo de Lastaj Ŝanĝoj]], kaj estos listigitaj en via atentaro. Se vi poste volos forigi la paĝon el via atentaro, alklaku \"Malatentu paĝon\" en la ilobreto.",
-'removedwatch'         => 'Forigis el atentaro',
 'removedwatchtext'     => 'La paĝo "[[:$1]]" estas forigita el via [[Special:Watchlist|atentaro]].',
 'watch'                => 'Atenti',
 'watchthispage'        => 'Priatenti paĝon',
@@ -2247,7 +2231,7 @@ Ne estos aliaj avertoj kaze de sekvaj ŝanĝoj krom se vi vizitus la paĝon. Vi 
 
 --
 Por ŝanĝi la elektojn de via atentaro, bonvolu viziti
-{{fullurl:{{#special:Watchlist}}/edit}}
+{{fullurl:{{#special:EditWatchlist}}}}
 
 Por forigi la paĝon el via atentaro, bonvolu viziti
 $UNWATCHURL
@@ -2268,7 +2252,7 @@ Por viaj reagoj kaj por obteni plian helpon:
 'confirmdeletetext'      => 'Vi forigos la artikolon aŭ dosieron kaj forviŝos ĝian tutan historion el la datumaro.<br /> Bonvolu konfirmi, ke vi vere intencas tion, kaj ke vi komprenas la sekvojn, kaj ke vi ja sekvas la [[{{MediaWiki:Policy-url}}|regulojn pri forigado]].',
 'actioncomplete'         => 'Ago farita',
 'actionfailed'           => 'Ago malsukcesis',
-'deletedtext'            => '"<nowiki>$1</nowiki>" estas forigita.
+'deletedtext'            => '"$1" estas forigita.
 Vidu la paĝon $2 por registro de lastatempaj forigoj.',
 'deletedarticle'         => 'forigis "[[$1]]"',
 'suppressedarticle'      => '"[[$1]]" estas subigita',
@@ -2304,9 +2288,9 @@ La lasta redaktinto estis [[User:$3|$3]] ([[User talk:$3|diskuto]]{{int:pipe-sep
 
 # Edit tokens
 'sessionfailure-title' => 'Seanco malsukcesis',
-'sessionfailure'       => 'Ŝajnas ke estas problemo kun via ensalutado;
+'sessionfailure'       => 'Ŝajnas, ke estas problemo kun via ensalutado;
 Ĉi ago estis nuligita por malhelpi fiensalutadon.
-Bonvolu alklalki la reirbutonon kaj reŝarĝi la paĝon el kiu vi venas, kaj provu denove.',
+Bonvolu alklaki la reirbutonon kaj reŝargi la paĝon el kiu vi venas, kaj provu denove.',
 
 # Protect
 'protectlogpage'              => 'Protokolo pri protektoj',
@@ -2324,7 +2308,7 @@ Vidu [[Special:ProtectedPages|liston de protektitaj paĝoj]] por pli da informoj
 'protect_expiry_invalid'      => 'Malvalida findaŭro.',
 'protect_expiry_old'          => 'Eksvalidiĝa tempo jam pasis.',
 'protect-unchain-permissions' => 'Malŝlosi pluajn protektajn opciojn',
-'protect-text'                => "Vi povas ĉi tie vidi kaj ŝanĝi la protektnivelon de la paĝo '''<nowiki>$1</nowiki>'''.",
+'protect-text'                => "Vi povas ĉi tie vidi kaj ŝanĝi la protektnivelon de la paĝo '''$1'''.",
 'protect-locked-blocked'      => "Vi ne povas ŝanĝi prokekto-nivelojn dum forbarita. Jen la nunaj ecoj de la paĝo '''$1''':",
 'protect-locked-dblock'       => "Ne povas ŝanĝi nivelojn de protekto pro aktiva datumbaza ŝlosado.
 Jen la nunaj agordoj de la paĝo '''$1''':",
@@ -2880,9 +2864,7 @@ Datoj de versioj kaj nomoj de redaktantoj estos preservitaj.
 'tooltip-summary'                 => 'Enigu mallongan resumon',
 
 # Metadata
-'nodublincore'      => 'Dublin Core RDF metadatumo estas malebligita por ĉi servilo.',
-'nocreativecommons' => 'RDF metadatenoj de la Krea Komunaĵo estas malpermesitaj por ĉi tiu servilo.',
-'notacceptable'     => 'La viki-servilo ne povas doni datumon en formato kiun via kliento povas legi.',
+'notacceptable' => 'La viki-servilo ne povas doni datumon en formato kiun via kliento povas legi.',
 
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Anonima uzanto|Anonimaj uzantoj}} de {{SITENAME}}',
@@ -2904,14 +2886,6 @@ Datoj de versioj kaj nomoj de redaktantoj estos preservitaj.
 'spambot_username'    => 'Trudmesaĝa forigo de MediaWiki',
 'spam_reverting'      => 'Restarigo de lasta versio ne entenante ligilojn al $1',
 'spam_blanking'       => 'Forviŝo de ĉiuj versioj entenantaj ligilojn al $1',
-
-# Info page
-'infosubtitle'   => 'Informoj por paĝo',
-'numedits'       => 'Nombro de redaktoj (paĝo): $1',
-'numtalkedits'   => 'Nombro de redaktoj (diskuto-paĝo): $1',
-'numwatchers'    => 'Nombro de atentantoj: $1',
-'numauthors'     => 'Nombro de apartaj aŭtoroj (paĝo): $1',
-'numtalkauthors' => 'Nombro de apartaj aŭtoroj (diskuto-paĝo): $1',
 
 # Skin names
 'skinname-standard'    => 'Klasika',
@@ -2994,7 +2968,7 @@ Sekvaj ligilo en la sama linio estas konsiderata kiel esceptoj (paĝoj kiel la b
 
 # Metadata
 'metadata'          => 'Metadatenoj',
-'metadata-help'     => 'Ĉi tiu dosiero enhavas plian informon, verŝajne aldonita de la cifereca fotilo aŭ skanilo uzata krei aux skani ĝin. Se la dosiero estis modifita de ties originala stato, iuj detaloj eble ne estas tute estos sama kiel la modifita bildo.',
+'metadata-help'     => 'Ĉi tiu dosiero enhavas plian informon, verŝajne aldonitan de la cifereca fotilo aŭ skanilo uzita por krei aux skani ĝin. Se la dosiero estis modifita de sia originala stato, iuj detaloj eble ne konformos al efektiva stato de la modifita bildo.',
 'metadata-expand'   => 'Montri etendajn detalojn',
 'metadata-collapse' => 'Kaŝi etendajn detalojn',
 'metadata-fields'   => 'Metadatumaj kampoj de ĉi tiu mesaĝo estos inkluzivita en la paĝoj de bidloj kiam la metadatuma tabelo estas disfaldigita. 
@@ -3668,7 +3642,7 @@ Entajpu la dosiernomon sen la prefikso "{{ns:file}}:"',
 # Database error messages
 'dberr-header'      => 'Ĉi tiu vikio havas problemon',
 'dberr-problems'    => 'Bedaŭrinde, ĉi tiu retejo suferas pro teknikaj problemoj.',
-'dberr-again'       => 'Bonvolu atendi kelkajn minutojn kaj reŝarĝi.',
+'dberr-again'       => 'Bonvolu atendi kelkajn minutojn kaj reŝargi.',
 'dberr-info'        => '(Ne povas kontakti la datenbazan servilon: $1)',
 'dberr-usegoogle'   => 'Vi povas serĉi Guglon dume.',
 'dberr-outofdate'   => 'Notu ke iliaj indeksoj de nia enhavo eble ne estas ĝisdatigaj.',
@@ -3689,5 +3663,20 @@ Entajpu la dosiernomon sen la prefikso "{{ns:file}}:"',
 # SQLite database support
 'sqlite-has-fts' => '$1 kun tut-teksta subteno',
 'sqlite-no-fts'  => '$1 sen tut-teksta subteno',
+
+# Add categories per AJAX
+'ajax-add-category'            => 'Aldoni kategorion',
+'ajax-add-category-submit'     => 'Aldoni',
+'ajax-confirm-title'           => 'Konfirmi agon',
+'ajax-confirm-prompt'          => 'Vi povas provizi redaktan resumon suben.
+Klaku butonon "Konservi" por konservi vian redakton.',
+'ajax-confirm-save'            => 'Konservi',
+'ajax-add-category-summary'    => 'Aldoni kategorion "$1"',
+'ajax-remove-category-summary' => 'Forigi kategorion "$1"',
+'ajax-confirm-actionsummary'   => 'Ago por fari:',
+'ajax-error-title'             => 'Eraro',
+'ajax-error-dismiss'           => 'Ek!',
+'ajax-remove-category-error'   => 'Ne eblas forigi ĉi tiun kategorion.
+Ĉi tiel okazas kiam la kategorio estis aldonita al la paĝo per ŝablono.',
 
 );

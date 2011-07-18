@@ -203,8 +203,6 @@ $messages = array(
 'category-article-count'        => '{{PLURAL:$2|ໝວດນີ້ມີໜ້າຢູ່ພຽງໜ້າດຽວ|ມີ {{PLURAL:$1|ໜ້າດຽວ|$1 ໜ້າ}} ໃນໝວດນີ້ ເຕັມ $2}}',
 'listingcontinuesabbrev'        => 'ຕໍ່.',
 
-'mainpagetext' => "'''ຕິດຕັ້ງມີເດຍວິກິນີ້ສຳເລັດແລ້ວ.'''",
-
 'about'         => 'ກ່ຽວກັບ',
 'article'       => 'ບົດຄວາມ',
 'newwindow'     => '(ເປີດເປັນ ປ່ອງຢ້ຽມ(ວິນໂດ)ໃໝ່ )',
@@ -233,7 +231,6 @@ $messages = array(
 'searcharticle'    => 'ໄປ',
 'history'          => 'ປະຫວັດ',
 'history_short'    => 'ປະຫວັດການດັດແກ້',
-'info_short'       => 'ຂ້ອມູນ',
 'printableversion' => 'ສະບັບພິມໄດ້',
 'permalink'        => 'ລິ້ງຄ໌ຖາວອນ',
 'print'            => 'ພິມ',
@@ -722,9 +719,7 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'mywatchlist'          => 'ລາຍການຕິດຕາມ',
 'watchlistanontext'    => 'ກະລຸນາ $1 ເພື່ອເບິ່ງ ຫຼື ດັດແກ້ ໜ້າຢູ່ໃນລາຍການຕິດຕາມຂອງທ່ານ.',
 'watchnologin'         => 'ບໍ່ໄດ້ເຊັນເຂົ້າ',
-'addedwatch'           => 'ເພີ່ມໃສ່ລາຍການຕິດຕາມແລ້ວ',
 'addedwatchtext'       => 'ໜ້າ "[[:$1]]" ໄດ້ຖືກເພີ່ມໃສ່  [[Special:Watchlist|ລາຍການຕິດຕາມ]] ຂອງ ທ່ານ',
-'removedwatch'         => 'ເອົາອອກຈາກລາຍການຕິດຕາມ',
 'removedwatchtext'     => 'ໜ້າ "[[:$1]]" ໄດ້ຖືກເອົາອອກຈາກ ລາຍການຕິດຕາມ ຂອງ ທ່ານ.',
 'watch'                => 'ຕິດຕາມ',
 'watchthispage'        => 'ຕິດຕາມໜ້ານີ້',
@@ -763,7 +758,7 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'prot_1movedto2'              => '[[$1]] ຍ້າຍໄປ [[$2]]',
 'protect-legend'              => 'ຢືນຢັນ ການປົກປ້ອງ',
 'protectexpiry'               => 'ໝົດກຳນົດ:',
-'protect-text'                => "ທ່ານສາມາດເບິ່ງ ແລະ ປ່ຽນແປງ ລະດັບການປົກປ້ອງ ສຳຫຼັບ ໜ້າ  '''<nowiki>$1</nowiki> ຢູ່ນີ້'''.",
+'protect-text'                => "ທ່ານສາມາດເບິ່ງ ແລະ ປ່ຽນແປງ ລະດັບການປົກປ້ອງ ສຳຫຼັບ ໜ້າ  '''$1 ຢູ່ນີ້'''.",
 'protect-level-autoconfirmed' => 'ຫ້າມຜູ້ໃຊ້ບໍ່ໄດ້ເຊັນເຂົ້າ',
 'protect-level-sysop'         => 'ສະເພາະຜູ້ບໍລິຫານລະບົບ',
 'protect-expiring'            => 'ໝົດອາຍຸ $1 (UTC)',
@@ -899,9 +894,6 @@ Also see [[Special:WantedCategories|wanted categories]].',
 
 # Attribution
 'anonymous' => 'ຜູ້ໃຊ້ ບໍ່ສະແດງຊື່ ຈາກ {{SITENAME}}',
-
-# Info page
-'numedits' => 'ຈຳນວນດັດແກ້ (ໜ້າ): $1',
 
 # Browsing diffs
 'previousdiff' => 'ສ່ວນຕ່າງກ່ອນ',

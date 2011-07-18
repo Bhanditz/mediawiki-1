@@ -134,7 +134,7 @@ class SkinTemplate extends Skin {
 	function outputPage( OutputPage $out ) {
 		global $wgUser, $wgLang, $wgContLang;
 		global $wgScript, $wgStylePath, $wgLanguageCode;
-		global $wgMimeType, $wgJsMimeType, $wgOutputEncoding, $wgRequest;
+		global $wgMimeType, $wgJsMimeType, $wgRequest;
 		global $wgXhtmlDefaultNamespace, $wgXhtmlNamespaces, $wgHtml5Version;
 		global $wgDisableCounters, $wgLogo, $wgHideInterlanguageLinks;
 		global $wgMaxCredits, $wgShowCreditsIfMax;
@@ -194,7 +194,7 @@ class SkinTemplate extends Skin {
 			$tpl->set( 'usercss', false );
 
 			$this->userjs = $this->userjsprev = false;
-			# FIXME: this is the only use of OutputPage::isUserJsAllowed() anywhere; can we
+			# @todo FIXME: This is the only use of OutputPage::isUserJsAllowed() anywhere; can we
 			# get rid of it?  For that matter, why is any of this here at all?
 			$this->setupUserJs( $out->isUserJsAllowed() );
 			$tpl->setRef( 'userjs', $this->userjs );
@@ -274,7 +274,7 @@ class SkinTemplate extends Skin {
 
 		$tpl->setRef( 'mimetype', $wgMimeType );
 		$tpl->setRef( 'jsmimetype', $wgJsMimeType );
-		$tpl->setRef( 'charset', $wgOutputEncoding );
+		$tpl->set( 'charset', 'UTF-8' );
 		$tpl->setRef( 'wgScript', $wgScript );
 		$tpl->setRef( 'skinname', $this->skinname );
 		$tpl->set( 'skinclass', get_class( $this ) );
@@ -299,36 +299,31 @@ class SkinTemplate extends Skin {
 		$tpl->setRef( 'serverurl', $wgServer );
 		$tpl->setRef( 'logopath', $wgLogo );
 
-		$lang = wfUILang();
-		$tpl->set( 'lang', $lang->getCode() );
-		$tpl->set( 'dir', $lang->getDir() );
-		$tpl->set( 'rtl', $lang->isRTL() );
+		$contentlang = $wgContLang->getCode();
+		$contentdir  = $wgContLang->getDir();
+		$userlang = $wgLang->getCode();
+		$userdir  = $wgLang->getDir();
+
+		$tpl->set( 'lang', $userlang );
+		$tpl->set( 'dir', $userdir );
+		$tpl->set( 'rtl', $wgLang->isRTL() );
 
 		$tpl->set( 'capitalizeallnouns', $wgLang->capitalizeAllNouns() ? ' capitalize-all-nouns' : '' );
 		$tpl->set( 'showjumplinks', $wgUser->getOption( 'showjumplinks' ) );
 		$tpl->set( 'username', $wgUser->isAnon() ? null : $this->username );
 		$tpl->setRef( 'userpage', $this->userpage );
 		$tpl->setRef( 'userpageurl', $this->userpageUrlDetails['href'] );
-		$tpl->set( 'userlang', $wgLang->getCode() );
+		$tpl->set( 'userlang', $userlang );
 
 		// Users can have their language set differently than the
 		// content of the wiki. For these users, tell the web browser
 		// that interface elements are in a different language.
 		$tpl->set( 'userlangattributes', '' );
-		$tpl->set( 'specialpageattributes', '' );
+		$tpl->set( 'specialpageattributes', '' ); # obsolete
 
-		$lang = $wgLang->getCode();
-		$dir  = $wgLang->getDir();
-		if ( $lang !== $wgContLang->getCode() || $dir !== $wgContLang->getDir() ) {
-			$attrs = " lang='$lang' dir='$dir'";
-
+		if ( $userlang !== $contentlang || $userdir !== $contentdir ) {
+			$attrs = " lang='$userlang' dir='$userdir'";
 			$tpl->set( 'userlangattributes', $attrs );
-
-			// The content of SpecialPages should be presented in the
-			// user's language. Content of regular pages should not be touched.
-			if( $this->getTitle()->isSpecialPage() ) {
-				$tpl->set( 'specialpageattributes', $attrs );
-			}
 		}
 
 		$newtalks = $this->getNewtalks( $out );
@@ -454,11 +449,18 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'bottomscripts', $this->bottomScripts( $out ) );
 		$tpl->set( 'printfooter', $this->printSource() );
 
-		global $wgBetterDirectionality;
-		if ( $wgBetterDirectionality ) {
-			$realBodyAttribs = array( 'lang' => $wgLanguageCode, 'dir' => $wgContLang->getDir() );
+		# Add a <div class="mw-content-ltr/rtl"> around the body text
+		# not for special pages or file pages AND only when viewing AND if the page exists
+		# (or is in MW namespace, because that has default content)
+		if( !in_array( $this->getTitle()->getNamespace(), array( NS_SPECIAL, NS_FILE ) ) &&
+			in_array( $action, array( 'view', 'historysubmit' ) ) &&
+			( $this->getTitle()->exists() || $this->getTitle()->getNamespace() == NS_MEDIAWIKI ) ) {
+			$pageLang = $this->getTitle()->getPageLanguage();
+			$realBodyAttribs = array( 'lang' => $pageLang->getCode(), 'dir' => $pageLang->getDir(),
+				'class' => 'mw-content-'.$pageLang->getDir() );
 			$out->mBodytext = Html::rawElement( 'div', $realBodyAttribs, $out->mBodytext );
 		}
+
 		$tpl->setRef( 'bodytext', $out->mBodytext );
 
 		# Language links
@@ -666,16 +668,19 @@ class SkinTemplate extends Skin {
 					'active' => $title->isSpecial( 'Userlogin' ) && $is_signup
 				);
 			}
-			global $wgProto, $wgSecureLogin;
-			if( $wgProto === 'http' && $wgSecureLogin ) {
+			global $wgServer, $wgSecureLogin;
+			if( substr( $wgServer, 0, 5 ) === 'http:' && $wgSecureLogin ) {
 				$title = SpecialPage::getTitleFor( 'Userlogin' );
 				$https_url = preg_replace( '/^http:/', 'https:', $title->getFullURL() );
 				$login_url['href']  = $https_url;
-				$login_url['class'] = 'link-https';  # FIXME class depends on skin
+				# @todo FIXME: Class depends on skin
+				$login_url['class'] = 'link-https';
 				if ( isset($createaccount_url) ) {
-					$https_url = preg_replace( '/^http:/', 'https:', $title->getFullURL("type=signup") );
+					$https_url = preg_replace( '/^http:/', 'https:',
+						$title->getFullURL("type=signup") );
 					$createaccount_url['href']  = $https_url;
-					$createaccount_url['class'] = 'link-https';  # FIXME class depends on skin
+					# @todo FIXME: Class depends on skin
+					$createaccount_url['class'] = 'link-https';
 				}
 			}
 
@@ -740,7 +745,8 @@ class SkinTemplate extends Skin {
 			$text = $msg->text();
 		} else {
 			global $wgContLang;
-			$text = $wgContLang->getFormattedNsText( MWNamespace::getSubject( $title->getNamespace() ) );
+			$text = $wgContLang->getFormattedNsText(
+				MWNamespace::getSubject( $title->getNamespace() ) );
 		}
 
 		$result = array();
@@ -903,7 +909,7 @@ class SkinTemplate extends Skin {
 					( $action == 'edit' || $action == 'submit' ) &&
 					( $section != 'new' )
 				);
-				$msgKey = $title->exists() || ( $title->getNamespace() == NS_MEDIAWIKI && !wfEmptyMsg( $title->getText() ) ) ?
+				$msgKey = $title->exists() || ( $title->getNamespace() == NS_MEDIAWIKI && $title->getDefaultMessageText() !== false ) ?
 					"edit" : "create";
 				$content_navigation['views']['edit'] = array(
 					'class' => ( $selected ? 'selected' : '' ) . $isTalkClass,
@@ -976,7 +982,8 @@ class SkinTemplate extends Skin {
 			} else {
 				// article doesn't exist or is deleted
 				if ( $wgUser->isAllowed( 'deletedhistory' ) ) {
-					$n = $title->isDeleted();
+					$includeSuppressed = $wgUser->isAllowed( 'suppressrevision' );
+					$n = $title->isDeleted( $includeSuppressed );
 					if( $n ) {
 						$undelTitle = SpecialPage::getTitleFor( 'Undelete' );
 						// If the user can't undelete but can view deleted history show them a "View .. deleted" tab instead
@@ -1013,10 +1020,11 @@ class SkinTemplate extends Skin {
 				 * the global versions.
 				 */
 				$mode = $title->userIsWatching() ? 'unwatch' : 'watch';
+				$token = WatchAction::getWatchToken( $title, $wgUser, $mode );
 				$content_navigation['actions'][$mode] = array(
 					'class' => $onPage && ( $action == 'watch' || $action == 'unwatch' ) ? 'selected' : false,
 					'text' => wfMsg( $mode ), // uses 'watch' or 'unwatch' message
-					'href' => $title->getLocalURL( 'action=' . $mode )
+					'href' => $title->getLocalURL( array( 'action' => $mode, 'token' => $token ) )
 				);
 			}
 
@@ -1030,7 +1038,8 @@ class SkinTemplate extends Skin {
 				'context' => 'subject'
 			);
 
-			wfRunHooks( 'SkinTemplateNavigation::SpecialPage', array( &$this, &$content_navigation ) );
+			wfRunHooks( 'SkinTemplateNavigation::SpecialPage',
+				array( &$this, &$content_navigation ) );
 		}
 
 		// Gets list of language variants
@@ -1181,7 +1190,8 @@ class SkinTemplate extends Skin {
 			if ( !$out->isPrintable() ) {
 				$nav_urls['print'] = array(
 					'text' => wfMsg( 'printableversion' ),
-					'href' => $this->getTitle()->getLocalURL( $wgRequest->appendQueryValue( 'printable', 'yes', true ) )
+					'href' => $this->getTitle()->getLocalURL(
+						$wgRequest->appendQueryValue( 'printable', 'yes', true ) )
 				);
 			}
 
@@ -1195,7 +1205,8 @@ class SkinTemplate extends Skin {
 			}
 
 			// Use the copy of revision ID in case this undocumented, shady hook tries to mess with internals
-			wfRunHooks( 'SkinTemplateBuildNavUrlsNav_urlsAfterPermalink', array( &$this, &$nav_urls, &$revid, &$revid ) );
+			wfRunHooks( 'SkinTemplateBuildNavUrlsNav_urlsAfterPermalink',
+				array( &$this, &$nav_urls, &$revid, &$revid ) );
 		}
 
 		if( $this->getTitle()->getNamespace() != NS_SPECIAL ) {
@@ -1279,7 +1290,7 @@ class SkinTemplate extends Skin {
 
 	/**
 	 * @private
-	 * FIXME: why is this duplicated in/from OutputPage::getHeadScripts()??
+	 * @todo FIXME: Why is this duplicated in/from OutputPage::getHeadScripts()??
 	 */
 	function setupUserJs( $allowUserJs ) {
 		global $wgRequest, $wgJsMimeType;
@@ -1418,6 +1429,8 @@ abstract class QuickTemplate {
 
 	/**
 	 * @private
+	 *
+	 * @return bool
 	 */
 	function haveMsg( $str ) {
 		$msg = $this->translator->translate( $str );
@@ -1558,7 +1571,7 @@ abstract class BaseTemplate extends QuickTemplate {
 		}
 
 		$attrs = array();
-		foreach ( array( 'href', 'id', 'class', 'rel', 'type' ) as $attr ) {
+		foreach ( array( 'href', 'id', 'class', 'rel', 'type', 'target') as $attr ) {
 			if ( isset( $item[$attr] ) ) {
 				$attrs[$attr] = $item[$attr];
 			}
@@ -1576,7 +1589,7 @@ abstract class BaseTemplate extends QuickTemplate {
 			} else {
 				$attrs = array_merge(
 					$attrs,
-					$this->skin->tooltipAndAccesskeyAttribs( $item['single-id'] )
+					Linker::tooltipAndAccesskeyAttribs( $item['single-id'] )
 				);
 			}
 		}
@@ -1611,7 +1624,7 @@ abstract class BaseTemplate extends QuickTemplate {
 			}
 		} else {
 			$link = array();
-			foreach ( array( 'text', 'msg', 'href', 'rel', 'type', 'tooltiponly' ) as $k ) {
+			foreach ( array( 'text', 'msg', 'href', 'rel', 'type', 'tooltiponly', 'target' ) as $k ) {
 				if ( isset( $item[$k] ) ) {
 					$link[$k] = $item[$k];
 				}
@@ -1647,7 +1660,7 @@ abstract class BaseTemplate extends QuickTemplate {
 			'name' => 'search',
 			'value' => isset( $this->data['search'] ) ? $this->data['search'] : '',
 		);
-		$realAttrs = array_merge( $realAttrs, $this->skin->tooltipAndAccesskeyAttribs( 'search' ), $attrs );
+		$realAttrs = array_merge( $realAttrs, Linker::tooltipAndAccesskeyAttribs( 'search' ), $attrs );
 		return Html::element( 'input', $realAttrs );
 	}
 
@@ -1658,11 +1671,12 @@ abstract class BaseTemplate extends QuickTemplate {
 				$realAttrs = array(
 					'type' => 'submit',
 					'name' => $mode,
-					'value' => $this->translator->translate( $mode == 'go' ? 'searcharticle' : 'searchbutton' ),
+					'value' => $this->translator->translate(
+						$mode == 'go' ? 'searcharticle' : 'searchbutton' ),
 				);
 				$realAttrs = array_merge(
 					$realAttrs,
-					$this->skin->tooltipAndAccesskeyAttribs( "search-$mode" ),
+					Linker::tooltipAndAccesskeyAttribs( "search-$mode" ),
 					$attrs
 				);
 				return Html::element( 'input', $realAttrs );
@@ -1673,14 +1687,16 @@ abstract class BaseTemplate extends QuickTemplate {
 				);
 				$buttonAttrs = array_merge(
 					$buttonAttrs,
-					$this->skin->tooltipAndAccesskeyAttribs( 'search-fulltext' ),
+					Linker::tooltipAndAccesskeyAttribs( 'search-fulltext' ),
 					$attrs
 				);
 				unset( $buttonAttrs['src'] );
 				unset( $buttonAttrs['alt'] );
 				$imgAttrs = array(
 					'src' => $attrs['src'],
-					'alt' => isset( $attrs['alt'] ) ? $attrs['alt'] : $this->translator->translate( 'searchbutton' ),
+					'alt' => isset( $attrs['alt'] )
+						? $attrs['alt']
+						: $this->translator->translate( 'searchbutton' ),
 				);
 				return Html::rawElement( 'button', $buttonAttrs, Html::element( 'img', $imgAttrs ) );
 			default:

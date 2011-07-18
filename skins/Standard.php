@@ -18,11 +18,13 @@ class SkinStandard extends SkinLegacy {
 	var $skinname = 'standard', $stylename = 'standard',
 		$template = 'StandardTemplate';
 
+	/**
+	 * @param $out OutputPage
+	 */
 	function setupSkinUserCss( OutputPage $out ){
 		parent::setupSkinUserCss( $out );
 		$out->AddModuleStyles( 'skins.standard' );
 
-		global $wgContLang;
 		$qb = $this->qbSetting();
 		$rules = array();
 
@@ -41,9 +43,6 @@ class SkinStandard extends SkinLegacy {
 			$rules[] = "#article, #mw-data-after-content { margin-right: 152px; margin-left: 4px; }";
 		}
  		$style = implode( "\n", $rules );
- 		if ( $wgContLang->getDir() === 'rtl' ) {
- 			$style = CSSJanus::transform( $style, true, false );
-		}
 		$out->addInlineStyle( $style );
 	}
 
@@ -51,6 +50,9 @@ class SkinStandard extends SkinLegacy {
 
 class StandardTemplate extends LegacyTemplate {
 
+	/**
+	 * @return string
+	 */
 	function doAfterContent() {
 		global $wgContLang, $wgLang;
 		wfProfileIn( __METHOD__ );
@@ -99,6 +101,9 @@ class StandardTemplate extends LegacyTemplate {
 		return $s;
 	}
 
+	/**
+	 * @return string
+	 */
 	function quickBar() {
 		global $wgOut, $wgUser, $wgRequest, $wgContLang;
 
@@ -120,7 +125,7 @@ class StandardTemplate extends LegacyTemplate {
 		unset( $bar['TOOLBOX'] );
 
 		$barnumber = 1;
-		foreach ( $bar as $heading => $browseLinks ) {
+		foreach ( $bar as $browseLinks ) {
 			if ( $barnumber > 1 ) {
 				$s .= "\n<hr class='sep' />";
 			} 

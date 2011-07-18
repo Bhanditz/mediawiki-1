@@ -31,13 +31,6 @@ $messages = array(
 # User preference toggles
 'tog-enotifrevealaddr' => 'Ihre E-Mail-Adresse in Benachrichtigungs-E-Mails anzeigen',
 
-'mainpagedocfooter' => 'Hilfe zur Benutzung und Konfiguration der Wiki-Software finden Sie im [http://meta.wikimedia.org/wiki/Help:Contents Benutzerhandbuch].
-
-== Starthilfen ==
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Liste der Konfigurationsvariablen]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki-FAQ]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Mailingliste neuer MediaWiki-Versionen]',
-
 'view-pool-error' => 'Entschuldigung, die Server sind im Moment überlastet.
 Zu viele Benutzer versuchen diese Seite zu besuchen.
 Bitte warten Sie einige Minuten, bevor Sie es noch einmal versuchen.
@@ -50,23 +43,24 @@ $1',
 'youhavenewmessagesmulti' => 'Sie haben neue Nachrichten: $1',
 
 # General errors
-'enterlockreason'      => 'Bitte geben Sie einen Grund ein, warum die Datenbank gesperrt werden soll und eine Abschätzung über die Dauer der Sperrung',
-'readonlytext'         => 'Die Datenbank ist vorübergehend für Neueinträge und Änderungen gesperrt. Bitte versuchen Sie es später noch einmal.
+'enterlockreason'     => 'Bitte geben Sie einen Grund ein, warum die Datenbank gesperrt werden soll und eine Abschätzung über die Dauer der Sperrung',
+'readonlytext'        => 'Die Datenbank ist vorübergehend für Neueinträge und Änderungen gesperrt. Bitte versuchen Sie es später noch einmal.
 
 Grund der Sperrung: $1',
-'missing-article'      => 'Der Text von „$1“ $2 wurde nicht in der Datenbank gefunden.
+'missing-article'     => 'Der Text von „$1“ $2 wurde nicht in der Datenbank gefunden.
 
 Die Seite ist möglicherweise gelöscht oder verschoben worden.
 
 Falls dies nicht der Fall ist, haben Sie eventuell einen Fehler in der Software gefunden. Bitte melden Sie dies einem [[Special:ListUsers/sysop|Administrator]] unter Nennung der URL.',
-'actionthrottledtext'  => 'Im Rahmen einer Anti-Spam-Maßnahme kann diese Aktion in einem kurzen Zeitabstand nur begrenzt oft ausgeführt werden. Diese Grenze haben Sie überschritten.
+'actionthrottledtext' => 'Im Rahmen einer Anti-Spam-Maßnahme kann diese Aktion in einem kurzen Zeitabstand nur begrenzt oft ausgeführt werden. Diese Grenze haben Sie überschritten.
 Bitte versuchen Sie es in ein paar Minuten erneut.',
-'viewsourcetext'       => 'Sie können den Quelltext dieser Seite betrachten und kopieren:',
-'editinginterface'     => "'''Warnung:''' Diese Seite enthält von der MediaWiki-Software genutzten Text.
+'viewsourcetext'      => 'Sie können den Quelltext dieser Seite betrachten und kopieren:',
+'editinginterface'    => "'''Warnung:''' Diese Seite enthält von der MediaWiki-Software genutzten Text.
 Änderungen auf dieser Seite wirken sich auf die Benutzeroberfläche aus.
 Ziehen Sie bitte im Fall von Übersetzungen in Betracht, diese bei [http://translatewiki.net/wiki/Main_Page?setlang=de-formal translatewiki.net], der Lokalisierungsplattform für MediaWiki, durchzuführen.",
-'namespaceprotected'   => "Sie haben keine Berechtigung, Seiten im '''$1'''-Namensraum zu bearbeiten.",
-'customcssjsprotected' => 'Sie sind nicht berechtigt, diese Seite zu bearbeiten, da sie zu den persönlichen Einstellungen eines anderen Benutzers gehört.',
+'namespaceprotected'  => "Sie haben keine Berechtigung, Seiten im '''$1'''-Namensraum zu bearbeiten.",
+'customcssprotected'  => 'Sie haben nicht die Berechtigung diese CSS enthaltende Seite zu bearbeiten, da sie die persönlichen Einstellungen eines anderen Benutzers enthält.',
+'customjsprotected'   => 'Sie haben nicht die Berechtigung diese JavaScript enthaltende Seite zu bearbeiten, da sie die persönlichen Einstellungen eines anderen Benutzers enthält.',
 
 # Login and logout pages
 'logouttext'                 => "'''Sie sind nun abgemeldet.'''
@@ -90,7 +84,7 @@ Sie haben Cookies deaktiviert, bitte aktivieren Sie diese und versuchen Sie es e
 'loginsuccess'               => 'Sie sind jetzt als „$1“ bei {{SITENAME}} angemeldet.',
 'nosuchuser'                 => 'Der Benutzername „$1“ existiert nicht.
 Überprüfen Sie die Schreibweise (Groß-/Kleinschreibung beachten) oder [[Special:UserLogin/signup|melden Sie sich als neuer Benutzer an]].',
-'nosuchusershort'            => 'Der Benutzername „<nowiki>$1</nowiki>“ existiert nicht. Bitte überprüfen Sie die Schreibweise.',
+'nosuchusershort'            => 'Der Benutzername „$1“ existiert nicht. Bitte überprüfen Sie die Schreibweise.',
 'nouserspecified'            => 'Bitte geben Sie einen Benutzernamen an.',
 'wrongpassword'              => 'Das Passwort ist falsch. Bitte versuchen Sie es erneut.',
 'wrongpasswordempty'         => 'Es wurde kein Passwort eingegeben. Bitte versuchen Sie es erneut.',
@@ -197,8 +191,13 @@ Sie können diesen Titel auf den anderen Seiten [[Special:Search/{{PAGENAME}}|su
 'noarticletext-nopermission'       => 'Diese Seite enthält momentan noch keinen Text.
 Sie können diesen Titel auf den anderen Seiten [[Special:Search/{{PAGENAME}}|suchen]]
 oder in den zugehörigen <span class="plainlinks">[{{fullurl:{{#special:Log}}|page={{FULLPAGENAMEE}}}} Logbüchern suchen]</span>.',
-'userpage-userdoesnotexist'        => 'Das Benutzerkonto „$1“ ist nicht vorhanden. Bitte prüfen Sie, ob Sie diese Seite wirklich erstellen/bearbeiten möchten.',
-'clearyourcache'                   => "'''Hinweis - Leeren Sie nach dem Speichern den Browser-Cache, um die Änderungen sehen zu können:''' '''Mozilla/Firefox/Safari:''' ''Shift'' gedrückt halten und auf ''Aktualisieren'' klicken oder alternativ entweder ''Strg-F5'' oder ''Strg-R'' (''Befehlstaste-R'' auf dem Macintosh) drücken; '''Konqueror: '''Auf ''Aktualisieren'' klicken oder ''F5'' drücken; '''Opera:''' Cache unter ''Extras → Einstellungen'' leeren; '''Internet Explorer:''' ''Strg-F5'' drücken oder ''Strg'' gedrückt halten und dabei auf ''Aktualisieren'' klicken.",
+'userpage-userdoesnotexist'        => 'Das Benutzerkonto „<nowiki>$1</nowiki>“ ist nicht vorhanden. Bitte prüfen Sie, ob Sie diese Seite wirklich erstellen/bearbeiten möchten.',
+'clearyourcache'                   => "'''Hinweis:''' Leeren Sie nach dem Speichern den Browser-Cache, um die Änderungen sehen zu können.
+* '''Firefox/ Safari:''' ''Umschaltung'' drücken und gleichzeitig ''Aktualisieren'' anklicken oder entweder ''Strg+F5'' oder ''Strg+R'' (''Befehlstaste-R'' auf dem Mac) drücken
+* '''Google Chrome:''' ''Umschaltung+Strg+R'' (''Befehlstaste-R'' auf dem Mac) drücken
+* '''Internet Explorer:''' ''Strg+F5'' drücken oder ''Strg'' drücken und gleichzeitig ''Aktualisieren'' anklicken
+* '''Opera:''' ''Extras → Internetspuren löschen … → Individuelle Auswahl → Den kompletten Cache löschen''
+* '''Konqueror:''' ''Aktualisieren'' anklicken oder ''F5'' drücken",
 'usercssyoucanpreview'             => "'''Tipp:''' Benutzen Sie den „{{int:showpreview}}“-Button, um Ihr neues CSS vor dem Speichern zu testen.",
 'userjsyoucanpreview'              => "'''Tipp:''' Benutzen Sie den „{{int:showpreview}}“-Button, um Ihr neues JavaScript vor dem Speichern zu testen.",
 'usercsspreview'                   => "'''Beachten Sie, dass Sie nur eine Vorschau Ihres Benutzer-CSS betrachten.'''
@@ -380,10 +379,6 @@ Wenn Sie diese Datei trotzdem hochladen möchten, gehen Sie bitte zurück und ä
 'php-uploaddisabledtext'      => 'Das Hochladen von Dateien wurde in PHP deaktiviert.
 Bitte überprüfen Sie die <code>file_uploads</code>-Einstellung.',
 'filewasdeleted'              => 'Eine Datei mit diesem Namen wurde schon einmal hochgeladen und zwischenzeitlich wieder gelöscht. Bitte prüfen Sie zuerst den Eintrag im $1, bevor Sie die Datei wirklich speichern.',
-'upload-wasdeleted'           => "'''Achtung: Sie laden eine Datei hoch, die bereits früher gelöscht wurde.'''
-
-Bitte prüfen Sie sorgfältig, ob das erneute Hochladen den Richtlinien entspricht.
-Zu Ihrer Information folgt das Lösch-Logbuch mit der Begründung für die vorhergehende Löschung:",
 'filename-bad-prefix'         => "Der Dateiname beginnt mit '''„$1“'''. Dies ist im allgemeinen der von einer Digitalkamera vorgegebene Dateiname und daher nicht sehr aussagekräftig.
 Bitte geben Sie der Datei einen Namen, der den Inhalt besser beschreibt.",
 
@@ -473,7 +468,7 @@ Es werden Ihnen solange keine weiteren Benachrichtigungs-E-Mails gesendet, bis S
 --
 Um die Einstellungen der E-Mail-Benachrichtigung anzupassen, besuchen Sie {{fullurl:{{#special:Preferences}}}}
 
-Um die Einstellungen Ihrer Beobachtungsliste anzupassen, besuchen Sie {{fullurl:{{#special:Watchlist}}/edit}}
+Um die Einstellungen Ihrer Beobachtungsliste anzupassen, besuchen Sie {{fullurl:{{#special:EditWatchlist}}}}
 
 Um diese Seite von Ihrer Beobachtungsliste zu entfernen, besuchen Sie $UNWATCHURL
 
@@ -482,7 +477,7 @@ Rückmeldungen und weitere Hilfe: {{fullurl:{{MediaWiki:Helppage}}}}',
 # Delete
 'historywarning'    => "'''Achtung:''' Die Seite, die Sie löschen möchten, hat eine Versionsgeschichte mit etwa $1 {{PLURAL:$1|Version|Versionen}}:",
 'confirmdeletetext' => 'Sie sind dabei, eine Seite mit allen zugehörigen älteren Versionen zu löschen. Bitte bestätigen Sie, dass Sie sich der Konsequenzen bewusst sind, und dass Sie in Übereinstimmung mit den [[{{MediaWiki:Policy-url}}|Richtlinien]] handeln.',
-'deletedtext'       => '„<nowiki>$1</nowiki>“ wurde gelöscht. Im $2 finden Sie eine Liste der letzten Löschungen.',
+'deletedtext'       => '„$1“ wurde gelöscht. Im $2 finden Sie eine Liste der letzten Löschungen.',
 
 # Edit tokens
 'sessionfailure' => 'Es gab ein Problem mit der Übertragung Ihrer Benutzerdaten.
@@ -496,9 +491,8 @@ Bitte gehen Sie zurück und versuchen Sie den Vorgang erneut auszuführen.',
 'protect-cantedit'       => 'Sie können die Sperre dieser Seite nicht ändern, da Sie keine Berechtigung zum Bearbeiten der Seite haben.',
 
 # Undelete
-'undeleteextrahelp'          => '* Um die Seite komplett mit allen Versionen wiederherzustellen, wählen Sie keine Version aus, geben Sie eine Begründung an und klicken Sie auf „{{int:undeletebtn}}“.
-* Möchten Sie nur bestimmte Versionen wiederherstellen, so wählen Sie diese bitte einzeln anhand der Markierungen aus, geben eine Begründung an und klicken dann auf „{{int:undeletebtn}}“.
-* „{{int:undeletereset}}“ leert das Kommentarfeld und entfernt alle Markierungen bei den Versionen.',
+'undeleteextrahelp'          => '* Um die Seite mitsamt aller Versionen wiederherzustellen, wählen Sie keine Version aus, geben eine Begründung an und klicken dann auf „{{int:undeletebtn}}“.
+* Um lediglich bestimmte Versionen der Seite wiederherzustellen, wählen Sie die betreffenden Versionen einzeln aus, geben eine Begründung an und klicken dann auf „{{int:undeletebtn}}“.',
 'undeletehistory'            => 'Wenn Sie diese Seite wiederherstellen, werden auch alle alten Versionen wiederhergestellt.
 Wenn seit der Löschung eine neue Seite gleichen Namens erstellt wurde, werden die wiederhergestellten Versionen chronologisch in die Versionsgeschichte eingeordnet.',
 'undeleterevdel'             => 'Die Wiederherstellung wird nicht durchgeführt, wenn die aktuellste Version versteckt ist oder versteckte Teile enthält.
@@ -684,5 +678,9 @@ Sie können auch die [[Special:EditWatchlist|Standard-Bearbeitungsseite]] benutz
 'dberr-again'     => 'Warten Sie einige Minuten und versuchen Sie dann neu zuladen.',
 'dberr-usegoogle' => 'Sie könnten in der Zwischenzeit mit Google suchen.',
 'dberr-outofdate' => 'Beachten Sie, dass der Suchindex unserer Inhalte bei Google veraltet sein kann.',
+
+# Add categories per AJAX
+'ajax-confirm-prompt' => 'Sie können unten eine Zusammenfassung eingeben.
+Klicken Sie „Speichern“ um die Bearbeitung zu speichern.',
 
 );

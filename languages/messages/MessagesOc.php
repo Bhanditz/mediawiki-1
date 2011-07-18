@@ -419,15 +419,6 @@ $messages = array(
 'index-category'                 => 'Paginas indexadas',
 'noindex-category'               => 'Paginas pas indexadas',
 
-'mainpagetext'      => "'''MediaWiki es estat installat amb succès.'''",
-'mainpagedocfooter' => "Consultatz lo [http://meta.wikimedia.org/wiki/Ajuda:Contengut Guida de l'utilizaire] per mai d'entresenhas sus l'utilizacion d'aqueste logicial.
-
-== Començar amb MediaWiki ==
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Lista dels paramètres de configuracion]
-* [http://www.mediawiki.org/wiki/Manual:FAQ/fr FAQ MediaWiki]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Lista de discussions de las parucions de MediaWiki]",
-
 'about'         => 'A prepaus',
 'article'       => 'Article',
 'newwindow'     => '(dobrís una fenèstra novèla)',
@@ -477,7 +468,6 @@ $messages = array(
 'history'           => 'Istoric',
 'history_short'     => 'Istoric',
 'updatedmarker'     => 'modificat dempuèi ma darrièra visita',
-'info_short'        => 'Entresenhas',
 'printableversion'  => 'Version imprimibla',
 'permalink'         => 'Ligam istoric',
 'print'             => 'Imprimir',
@@ -666,7 +656,6 @@ Requèsta : $2',
 'cascadeprotected'     => "Aquesta pagina es actualament protegida perque es inclusa dins {{PLURAL:$1|la pagina seguenta|las paginas seguentas}}, {{PLURAL:$1|qu'es estada protegida|que son estadas protegidas}} amb l’opcion « proteccion en cascada » activada :
 $2",
 'namespaceprotected'   => "Avètz pas la permission de modificar las paginas de l’espaci de noms « '''$1''' ».",
-'customcssjsprotected' => "Avètz pas la permission d'editar aquesta pagina perque conten de preferéncias d’autres utilizaires.",
 'ns-specialprotected'  => 'Las paginas dins l’espaci de noms « {{ns:special}} » pòdon pas èsser modificadas',
 'titleprotected'       => "Aqueste títol es estat protegit a la creacion per [[User:$1|$1]].
 Lo motiu avançat es « ''$2'' ».",
@@ -718,7 +707,7 @@ Causissètz-ne un autre.",
 'nosuchuser'                 => "L'utilizaire « $1 » existís pas.
 Lo nom d'utilizaire es sensible a la cassa.
 Verificatz qu'avètz plan ortografiat lo nom, o [[Special:UserLogin/signup|creatz-vos un compte novèl]].",
-'nosuchusershort'            => 'I a pas de contributor amb lo nom « <nowiki>$1</nowiki> ». Verificatz l’ortografia.',
+'nosuchusershort'            => 'I a pas de contributor amb lo nom « $1 ». Verificatz l’ortografia.',
 'nouserspecified'            => "Vos cal especificar vòstre nom d'utilizaire.",
 'login-userblocked'          => 'Aqueste utilizaire es blocat. Connexion pas autorizada.',
 'wrongpassword'              => 'Lo senhal es incorrècte. Ensajatz tornarmai.',
@@ -882,7 +871,7 @@ o [{{fullurl:{{FULLPAGENAME}}|action=edit}} crear aquesta pagina]</span>.',
 'noarticletext-nopermission'       => 'Actualament i a pas cap de tèxte dins aquesta pagina.
 Podètz [[Special:Search/{{PAGENAME}}|far una recèrca sul títol de la pagina]] dins las autras paginas,
 o <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} recercar dins los jornals associats]</span>.',
-'userpage-userdoesnotexist'        => "Lo compte d'utilizaire « $1 » es pas enregistrat. Indicatz se volètz crear o editar aquesta pagina.",
+'userpage-userdoesnotexist'        => "Lo compte d'utilizaire « <nowiki>$1</nowiki> » es pas enregistrat. Indicatz se volètz crear o editar aquesta pagina.",
 'userpage-userdoesnotexist-view'   => "Lo compte d'utilizaire « $1 » es pas enregistrat.",
 'blocked-notice-logextract'        => 'Aqueste utilizaire es actualament blocat.
 La darrièra entrada del jornal dels blocatges es indicada çaijós a títol d’informacion :',
@@ -1258,7 +1247,9 @@ Atencion, lor indexacion de contengut {{SITENAME}} benlèu es pas a jorn.',
 'prefs-skin'                    => 'Aparéncia',
 'skin-preview'                  => 'Previsualizar',
 'datedefault'                   => 'Cap de preferéncia',
+'prefs-beta'                    => 'Foncionalitats bèta',
 'prefs-datetime'                => 'Data e ora',
+'prefs-labs'                    => 'Foncionalitats « labs »',
 'prefs-personal'                => 'Entresenhas personalas',
 'prefs-rc'                      => 'Darrièrs cambiaments',
 'prefs-watchlist'               => 'Lista de seguiment',
@@ -1292,7 +1283,7 @@ Vaquí una valor generada aleatòriament que podètz utilizar : $1',
 'savedprefs'                    => 'Las preferéncias son estadas salvadas.',
 'timezonelegend'                => 'Fus orari :',
 'localtime'                     => 'Ora locala :',
-'timezoneuseserverdefault'      => 'Utilizar la valor del servidor',
+'timezoneuseserverdefault'      => 'Utilizar la valor del servidor ($1)',
 'timezoneuseoffset'             => 'Autre (especificar lo descalatge)',
 'timezoneoffset'                => 'Decalatge orari¹ :',
 'servertime'                    => 'Ora del servidor :',
@@ -1654,9 +1645,6 @@ S'o volètz importar tornamai, tornatz en rèire e importatz-lo jos un autre nom
 'upload-options'              => 'Opcions de telecargament',
 'watchthisupload'             => 'Seguir aqueste fichièr',
 'filewasdeleted'              => 'Un fichièr amb aqueste nom ja es estat copiat, puèi suprimit. Vos caldriá verificar lo $1 abans de procedir a una còpia novèla.',
-'upload-wasdeleted'           => "'''Atencion : Sètz a importar un fichièr que ja es estat suprimit deperabans.'''
-
-Deuriatz considerar se es oportun de contunhar l'impòrt d'aqueste fichièr. Lo jornal de las supressions vos donarà los elements d'informacion.",
 'filename-bad-prefix'         => "Lo nom del fichièr qu'importatz comença per '''\"\$1\"''' qu'es un nom generalament donat pels aparelhs de fòto numerica e que decritz pas lo fichièr. Causissetz un nom de fichièr descrivent vòstre fichièr.",
 'filename-prefix-blacklist'   => ' #<!-- daissatz aquesta linha coma es --> <pre>
 # La sintaxi es la seguenta :
@@ -1768,7 +1756,6 @@ La tièra seguenta aficha {{PLURAL:$1|lo primièr ligam de pagina|los $1 primiè
 Una [[Special:WhatLinksHere/$2|tièra completa]] es disponibla.',
 'nolinkstoimage'            => 'Cap de pagina compòrta pas de ligam cap a aqueste imatge.',
 'morelinkstoimage'          => 'Vejatz [[Special:WhatLinksHere/$1|mai de ligams]] cap a aqueste imatge.',
-'redirectstofile'           => '{{PLURAL:$1|Lo fichièr seguent redirigís|Los fichièrs seguents redirigisson}} cap a aqueste fichièr :',
 'duplicatesoffile'          => "{{PLURAL:$1|Lo fichièr seguent es un duplicata|Los fichièrs seguents son de duplicatas}} d'aqueste fichièr ([[Special:FileDuplicateSearch/$2|mai de detalhs]]):",
 'sharedupload'              => 'Aqueste fichièr proven de $1 e pòt èsser utilizat per d’autres projèctes.',
 'sharedupload-desc-there'   => "Aqueste fichièr proven de $1 e pòt èsser utilizat per d'autres projèctes. Vejatz [$2 sa pagina de descripcion] per mai d'entresenhas.",
@@ -2082,10 +2069,8 @@ L'adreça electronica qu'avètz indicada dins [[Special:Preferences|vòstras pre
 'watchnologin'         => 'Vos sètz pas identificat(ada)',
 'watchnologintext'     => 'Vos cal èsser [[Special:UserLogin|connectat(ada)]]
 per modificar vòstra lista de seguiment.',
-'addedwatch'           => 'Apondut a la tièra',
 'addedwatchtext'       => 'La pagina "[[:$1]]" es estada aponduda a vòstra [[Special:Watchlist|lista de seguiment]].
 Las modificacions venentas d\'aquesta pagina e de la pagina de discussion associada seràn repertoriadas aicí, e la pagina apareisserà <b>en gras</b> dins la [[Special:RecentChanges|tièra dels darrièrs cambiaments]] per èsser localizada mai aisidament.',
-'removedwatch'         => 'Suprimida de la lista de seguiment',
 'removedwatchtext'     => 'La pagina « [[:$1]] » es estada levada de vòstra [[Special:Watchlist|lista de seguiment]].',
 'watch'                => 'Seguir',
 'watchthispage'        => 'Seguir aquesta pagina',
@@ -2138,7 +2123,7 @@ Podètz tanben reïnicializar las bandièras de notificacion per totas las pagin
 
 --
 Per modificar los paramètres de vòstra lista de seguiment, visitatz
-{{fullurl:{{#special:Watchlist}}/edit}}
+{{fullurl:{{#special:EditWatchlist}}}}
 
 Per suprimir la pagina de vòstra lista de seguiment, visitatz
 $UNWATCHURL
@@ -2160,7 +2145,7 @@ Retorn e assisténcia :
 Confirmatz qu'es plan çò que volètz far, que ne comprenètz las consequéncias e que fasètz aquò en acòrdi amb las [[{{MediaWiki:Policy-url}}|règlas intèrnas]].",
 'actioncomplete'         => 'Accion efectuada',
 'actionfailed'           => 'L’accion a fracassat',
-'deletedtext'            => '"<nowiki>$1</nowiki>" es estat suprimit.
+'deletedtext'            => '"$1" es estat suprimit.
 Vejatz $2 per una lista de las supressions recentas.',
 'deletedarticle'         => 'a escafat «[[$1]]»',
 'suppressedarticle'      => 'amagat  « [[$1]] »',
@@ -2217,7 +2202,7 @@ Clicatz sus « Precedent » e tornatz cargar la pagina d’ont venètz, puèi en
 'protect_expiry_invalid'      => 'Lo temps d’expiracion es invalid',
 'protect_expiry_old'          => 'Lo temps d’expiracion ja es passat.',
 'protect-unchain-permissions' => "Desvarrolhar ancara mai d'opcions de proteccion",
-'protect-text'                => "Podètz consultar e modificar lo nivèl de proteccion de la pagina '''<nowiki>$1</nowiki>'''. Asseguratz-vos que seguissètz las règlas intèrnas.",
+'protect-text'                => "Podètz consultar e modificar lo nivèl de proteccion de la pagina '''$1'''. Asseguratz-vos que seguissètz las règlas intèrnas.",
 'protect-locked-blocked'      => "Podètz pas modificar lo nivèl de proteccion tant que sètz blocat. Vaquí los reglatges actuals de la pagina '''$1''' :",
 'protect-locked-dblock'       => "Lo nivèl de proteccion pòt pas èsser modificat perque la banca de donadas es blocada. Vaquí los reglatges actuals de la pagina '''$1''' :",
 'protect-locked-access'       => "Avètz pas los dreches necessaris per modificar la proteccion de la pagina. Vaquí los reglatges actuals de la pagina '''$1''' :",
@@ -2750,9 +2735,7 @@ Totas las accions d’importacion interwiki son conservadas dins lo [[Special:Lo
 'vector.js'      => '/* Tot JavaScript aicí serà cargat amb las paginas accedidas pels utilizaires de l’abilhatge Vector unicament. */',
 
 # Metadata
-'nodublincore'      => 'Las metadonadas « Dublin Core RDF » son desactivadas sus aqueste servidor.',
-'nocreativecommons' => 'Las metadonadas « Creative Commons RDF » son desactivadas sus aqueste servidor.',
-'notacceptable'     => 'Aqueste servidor wiki pòt pas fornir las donadas dins un format que vòstre client es capable de legir.',
+'notacceptable' => 'Aqueste servidor wiki pòt pas fornir las donadas dins un format que vòstre client es capable de legir.',
 
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Utilizaire anonim|Utilizaires anonims}} de {{SITENAME}}',
@@ -2774,14 +2757,6 @@ Aquò es probablament causat per un ligam sus lista negra que punta cap a un sit
 'spambot_username'    => 'Netejatge de spam de MediaWiki',
 'spam_reverting'      => 'Restabliment de la darrièra version que conten pas de ligam cap a $1',
 'spam_blanking'       => 'Totas las versions que contenon de ligams cap a $1 son blanquidas',
-
-# Info page
-'infosubtitle'   => 'Entresenhas per la pagina',
-'numedits'       => 'Nombre de modificacions : $1',
-'numtalkedits'   => 'Nombre de modificacions (pagina de discussion) : $1',
-'numwatchers'    => "Nombre de contributors qu'an la pagina dins lor lista de seguiment : $1",
-'numauthors'     => 'Nombre d’autors distints : $1',
-'numtalkauthors' => 'Nombre d’autors distints (pagina de discussion) : $1',
 
 # Skin names
 'skinname-standard'    => 'Estandard',

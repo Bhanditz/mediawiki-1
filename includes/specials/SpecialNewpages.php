@@ -34,6 +34,7 @@ class SpecialNewpages extends IncludableSpecialPage {
 	 * @var FormOptions
 	 */
 	protected $opts;
+	protected $customFilters;
 
 	// Some internal settings
 	protected $showNavigation = false;
@@ -58,6 +59,12 @@ class SpecialNewpages extends IncludableSpecialPage {
 		$opts->add( 'username', '' );
 		$opts->add( 'feed', '' );
 		$opts->add( 'tagfilter', '' );
+
+		$this->customFilters = array();
+		wfRunHooks( 'SpecialNewPagesFilters', array( $this, &$this->customFilters ) );
+		foreach( $this->customFilters as $key => $params ) {
+			$opts->add( $key, $params['default'] );
+		}
 
 		// Set values
 		$opts->fetchValuesFromRequest( $this->getRequest() );
@@ -167,13 +174,15 @@ class SpecialNewpages extends IncludableSpecialPage {
 			'hidebots' => 'rcshowhidebots',
 			'hideredirs' => 'whatlinkshere-hideredirs'
 		);
+		foreach ( $this->customFilters as $key => $params ) {
+			$filters[$key] = $params['msg'];
+		}
 
 		// Disable some if needed
-		# FIXME: throws E_NOTICEs if not set; and doesn't obey hooks etc.
+		# @todo FIXME: Throws E_NOTICEs if not set; and doesn't obey hooks etc.
 		if ( $wgGroupPermissions['*']['createpage'] !== true ) {
 			unset( $filters['hideliu'] );
 		}
-
 		if ( !$this->getUser()->useNPPatrol() ) {
 			unset( $filters['hidepatrolled'] );
 		}
@@ -280,7 +289,7 @@ class SpecialNewpages extends IncludableSpecialPage {
 	 * @return String
 	 */
 	public function formatRow( $result ) {
-		global $wgLang, $wgContLang;
+		global $wgLang;
 
 		# Revision deletion works on revisions, so we should cast one
 		$row = array(
@@ -293,7 +302,7 @@ class SpecialNewpages extends IncludableSpecialPage {
 
 		$classes = array();
 
-		$dm = $wgContLang->getDirMark();
+		$dm = $wgLang->getDirMark();
 
 		$title = Title::makeTitleSafe( $result->rc_namespace, $result->rc_title );
 		$time = Html::element( 'span', array( 'class' => 'mw-newpages-time' ),
@@ -370,12 +379,12 @@ class SpecialNewpages extends IncludableSpecialPage {
 		global $wgFeed, $wgFeedClasses, $wgFeedLimit;
 
 		if ( !$wgFeed ) {
-			$wgOut->addWikiMsg( 'feed-unavailable' );
+			$this->getOutput()->addWikiMsg( 'feed-unavailable' );
 			return;
 		}
 
 		if( !isset( $wgFeedClasses[$type] ) ) {
-			$this->getOut()->addWikiMsg( 'feed-invalid' );
+			$this->getOutput()->addWikiMsg( 'feed-invalid' );
 			return;
 		}
 
@@ -431,7 +440,7 @@ class SpecialNewpages extends IncludableSpecialPage {
 		$revision = Revision::newFromId( $row->rev_id );
 		if( $revision ) {
 			return '<p>' . htmlspecialchars( $revision->getUserText() ) . wfMsgForContent( 'colon-separator' ) .
-				htmlspecialchars( FeedItem::stripComment( $revision->getComment() ) ) . 
+				htmlspecialchars( FeedItem::stripComment( $revision->getComment() ) ) .
 				"</p>\n<hr />\n<div>" .
 				nl2br( htmlspecialchars( $revision->getText() ) ) . "</div>";
 		}
@@ -444,7 +453,12 @@ class SpecialNewpages extends IncludableSpecialPage {
  */
 class NewPagesPager extends ReverseChronologicalPager {
 	// Stored opts
-	protected $opts, $mForm;
+	protected $opts;
+
+	/**
+	 * @var HtmlForm
+	 */
+	protected $mForm;
 
 	function __construct( $form, FormOptions $opts ) {
 		parent::__construct();
@@ -452,12 +466,26 @@ class NewPagesPager extends ReverseChronologicalPager {
 		$this->opts = $opts;
 	}
 
+	/**
+	 * @return Title
+	 */
 	function getTitle() {
 		static $title = null;
 		if ( $title === null ) {
 			$title = $this->mForm->getTitle();
 		}
 		return $title;
+	}
+
+	/**
+	 * @return User
+	 */
+	function getUser() {
+		static $user = null;
+		if ( $user === null ) {
+			$user = $this->mForm->getUser();
+		}
+		return $user;
 	}
 
 	function getQueryInfo() {
@@ -497,23 +525,25 @@ class NewPagesPager extends ReverseChronologicalPager {
 		if ( $this->opts->getValue( 'hideredirs' ) ) {
 			$conds['page_is_redirect'] = 0;
 		}
-  
+
 		// Allow changes to the New Pages query
-		wfRunHooks( 'SpecialNewpagesConditions', array( &$this, $this->opts, &$conds ) );
+		$tables = array( 'recentchanges', 'page' );
+		$fields = array(
+			'rc_namespace', 'rc_title', 'rc_cur_id', 'rc_user', 'rc_user_text',
+			'rc_comment', 'rc_timestamp', 'rc_patrolled','rc_id', 'rc_deleted',
+			'page_len AS length', 'page_latest AS rev_id', 'ts_tags'
+		);
+		$join_conds = array( 'page' => array( 'INNER JOIN', 'page_id=rc_cur_id' ) );
+
+		wfRunHooks( 'SpecialNewpagesConditions',
+			array( &$this, $this->opts, &$conds, &$tables, &$fields, &$join_conds ) );
 
 		$info = array(
-			'tables' => array( 'recentchanges', 'page' ),
-			'fields' => array(
-				'rc_namespace', 'rc_title', 'rc_cur_id', 'rc_user',
-				'rc_user_text', 'rc_comment', 'rc_timestamp', 'rc_patrolled',
-				'rc_id', 'rc_deleted', 'page_len AS length', 'page_latest AS rev_id',
-				'ts_tags'
-			),
-			'conds' => $conds,
-			'options' => array( 'USE INDEX' => array( 'recentchanges' => $rcIndexes ) ),
-			'join_conds' => array(
-				'page' => array( 'INNER JOIN', 'page_id=rc_cur_id' ),
-			),
+			'tables' 	 => $tables,
+			'fields' 	 => $fields,
+			'conds' 	 => $conds,
+			'options' 	 => array( 'USE INDEX' => array( 'recentchanges' => $rcIndexes ) ),
+			'join_conds' => $join_conds
 		);
 
 		// Empty array for fields, it'll be set by us anyway.

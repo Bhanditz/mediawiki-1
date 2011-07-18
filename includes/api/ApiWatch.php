@@ -53,26 +53,38 @@ class ApiWatch extends ApiBase {
 			$this->dieUsageMsg( array( 'invalidtitle', $params['title'] ) );
 		}
 
-		$article = new Article( $title );
+		$article = new Article( $title, 0 );
 		$res = array( 'title' => $title->getPrefixedText() );
 
 		if ( $params['unwatch'] ) {
 			$res['unwatched'] = '';
 			$res['message'] = wfMsgExt( 'removedwatchtext', array( 'parse' ), $title->getPrefixedText() );
-			$success = Action::factory( 'unwatch', $article )->execute();
+			$success = WatchAction::doUnwatch( $title, $wgUser );
 		} else {
 			$res['watched'] = '';
 			$res['message'] = wfMsgExt( 'addedwatchtext', array( 'parse' ), $title->getPrefixedText() );
-			$success = Action::factory( 'watch', $article )->execute();
+			$success = UnwatchAction::doWatch( $title, $wgUser );
 		}
 		if ( !$success ) {
-			$this->dieUsageMsg( array( 'hookaborted' ) );
+			$this->dieUsageMsg( 'hookaborted' );
 		}
 		$this->getResult()->addValue( null, $this->getModuleName(), $res );
 	}
 
+	public function mustBePosted() {
+		return true;
+	}
+
 	public function isWriteMode() {
 		return true;
+	}
+
+	public function needsToken() {
+		return true;
+	}
+
+	public function getTokenSalt() {
+		return 'watch';
 	}
 
 	public function getAllowedParams() {
@@ -81,8 +93,8 @@ class ApiWatch extends ApiBase {
 				ApiBase::PARAM_TYPE => 'string',
 				ApiBase::PARAM_REQUIRED => true
 			),
-
 			'unwatch' => false,
+			'token' => null,
 		);
 	}
 
@@ -90,6 +102,7 @@ class ApiWatch extends ApiBase {
 		return array(
 			'title' => 'The page to (un)watch',
 			'unwatch' => 'If set the page will be unwatched rather than watched',
+			'token' => 'A token previously acquired via prop=info',
 		);
 	}
 
@@ -110,6 +123,10 @@ class ApiWatch extends ApiBase {
 			'api.php?action=watch&title=Main_Page',
 			'api.php?action=watch&title=Main_Page&unwatch=',
 		);
+	}
+
+	public function getHelpUrls() {
+		return 'http://www.mediawiki.org/wiki/API:Watch';
 	}
 
 	public function getVersion() {

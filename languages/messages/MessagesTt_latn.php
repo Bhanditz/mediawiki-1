@@ -221,14 +221,7 @@ $messages = array(
 'index-category'                 => 'İndekslanğan bitlär',
 'noindex-category'               => 'İndekslanmağan bitlär',
 
-'linkprefix'        => '/^(.*?)([a-zA-Z\\x80-\\xff]+)$/sD',
-'mainpagetext'      => '«MediaWiki» uñışlı quyıldı.',
-'mainpagedocfooter' => "Bu wiki turında mäğlümatnı [http://meta.wikimedia.org/wiki/Yärdäm:Eçtälek biredä] tabıp bula.
-
-== Qayber faydalı resurslar ==
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Köylänmälär isemlege (ing.)];
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki turında yış birelgän sorawlar häm cawaplar (ing.)];
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki'nıñ yaña versiäläre turında xäbärlär yazdırıp alu].",
+'linkprefix' => '/^(.*?)([a-zA-Z\\x80-\\xff]+)$/sD',
 
 'about'         => 'Taswirlama',
 'article'       => 'Mäqälä',
@@ -280,7 +273,6 @@ $messages = array(
 'history'           => 'Bitneñ tarixı',
 'history_short'     => 'Tarix',
 'updatedmarker'     => 'soñğı kerüemnän soñ yañartılğan',
-'info_short'        => 'Mäğlümat',
 'printableversion'  => 'Bastıru versiäse',
 'permalink'         => 'Daimi sıltama',
 'print'             => 'Bastıru',
@@ -476,7 +468,6 @@ Soraw: $2',
 'cascadeprotected'     => 'Bu bit üzgärtülärdän saqlanğan, çönki ul kaskadlı saqlaw qabul itelgän {{PLURAL:$1|bitkä|bitlärgä}} östälgän:
 $2',
 'namespaceprotected'   => "'''$1''' isem kiñlegendäge bitlärne üzgärtü öçen sezneñ röxsätegez yuq.",
-'customcssjsprotected' => 'Sez bu bitne üzgärtä almıysız, çönki anda başqa qullanıçınıñ köylänmäläre bar.',
 'ns-specialprotected'  => 'Maxsus bitlärne üzgärtep bulmıy.',
 'titleprotected'       => "Bu isem belän bit yasaw [[User:$1|$1]] tarafınnan tıyılğan.
 Ul kürsätkän säbäp: ''$2''.",
@@ -529,7 +520,7 @@ Zinhar, başqa isem saylağız.',
 'nosuchuser'                 => '$1 isemle qullanuçı yuq.
 Qullanuçı isemeneñ döreslege registrğa bäyle.
 Yazılışığıznı tikşeregez yäki [[Special:UserLogin/signup|yaña xisap yazması tözegez]].',
-'nosuchusershort'            => '<nowiki>$1</nowiki> isemle qullanuçı yuq. Yazılışığıznı tikşeregez.',
+'nosuchusershort'            => '$1 isemle qullanuçı yuq. Yazılışığıznı tikşeregez.',
 'nouserspecified'            => 'Sez terkäw ismegezne kürsätergä tieşsez.',
 'login-userblocked'          => 'Bu qullanuçı tıyıldı. Kerü tıyılğan.',
 'wrongpassword'              => 'Yazılğan sersüz döres tügel. Tağın ber tapqır sınağız.',
@@ -682,7 +673,7 @@ yäki '''[{{fullurl:{{FULLPAGENAME}}|action=edit}} şuşındıy isemle yaña bit
 'noarticletext-nopermission'       => 'Xäzerge waqıtta bu bittä tekst yuq.
 Sez [[Special:Search/{{PAGENAME}}|bu isem kergän başqa mäqälälärne]],
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} köndäleklärdäge yazmalarnı] taba alasız.</span>',
-'userpage-userdoesnotexist'        => '«$1» isemle xisap yazması yuq. Sez çınlap ta bu bitne yasarğa yäisä üzgärtergä telisezme?',
+'userpage-userdoesnotexist'        => '«<nowiki>$1</nowiki>» isemle xisap yazması yuq. Sez çınlap ta bu bitne yasarğa yäisä üzgärtergä telisezme?',
 'userpage-userdoesnotexist-view'   => '"$1" isemle xisap yazması yuq.',
 'blocked-notice-logextract'        => 'Bu qullanuçı xäzergä tıyıldı.
 Tübändä tıyu köndälegeneñ soñğı yazu birelgän:',
@@ -1263,10 +1254,6 @@ Faylnı mäqälägä yökläw öçen Sez menä bu ürnäklärne qullana alasız:
 'upload-options'             => 'Yökläw parametrları',
 'watchthisupload'            => 'Bu faylnı küzätü',
 'filewasdeleted'             => 'Mondıy isemle fayl beterelgän bulğan inde. Zinhar,yañadan yökläw aldınnan $1 qarağız',
-'upload-wasdeleted'          => "'''İğtibar: Sez beterelgän fayl urınına yañasın yöklämäkçe bulasız.'''
-
-Sezgä çınnan da bu faylnı yökläw kiräkme?
-Tübändä faylnıñ beterü köndälege kiterelä:",
 'filename-bad-prefix'        => "Faylnıñ iseme '''«$1»''' dip başlana. Zinhar, faylnı taswirlawçı isem biregez.",
 'filename-prefix-blacklist'  => ' #<!-- niçek bar şulay qaldırığız --> <pre>
 # Sintaksis töbändägeçä:
@@ -1531,10 +1518,8 @@ Asta [[Special:UnusedCategories|qullanılmağan törkemnär]] kärsätelgän.
 'nowatchlist'       => 'Küzätü isemlegegezdä bitlär yuq.',
 'watchnologin'      => 'Kermädegez',
 'watchnologintext'  => 'Küzätü isemlegegezne üzgärtü öçen, sez [[Special:UserLogin|kerergä]] tieşsez.',
-'addedwatch'        => 'Küzätü isemlegenä östägän',
 'addedwatchtext'    => "\"[[:\$1]]\" bite [[Special:Watchlist|küzätü isemlegegezgä]] östälde.
 Bu bittä häm anıñ bäxäslegendä barlıq bulaçaq üzgärtülär şunda kürsäteler, häm, [[Special:RecentChanges|soñğı üzgärtülär]] isemlegendä bu bitne ciñelräk tabu öçen, ul '''qalın mäten''' belän kürsäteler.",
-'removedwatch'      => 'Küzätü isemlegennän beterelgän',
 'removedwatchtext'  => '«[[:$1]]» bite [[Special:Watchlist|sezneñ küzätü isemlegennän]] beterelde.',
 'watch'             => 'Küzätü',
 'watchthispage'     => 'Bu bitne küzätü',
@@ -1572,7 +1557,7 @@ Bu bitkä kermäsägez, anıñ başqa üzgärtüläre turında xat cibärelmäy�
 
 --
 Küzätü isemlege köyläwlären üzgärtü:
-{{fullurl:{{#special:Watchlist}}/edit}}
+{{fullurl:{{#special:EditWatchlist}}}}
 
 Bitne sezneñ küzätü isemlegezdän beterü:
 $UNWATCHURL
@@ -1592,7 +1577,7 @@ Elemtä häm yärdäm:
 'confirmdeletetext'      => 'Sez bu bitneñ (yäki räsemneñ) tulısınça beterelüen soradığız.
 Zinhar, monı çınnan da eşlärgä telägänegezne, monıñ näticälären añlağanığıznı häm [[{{MediaWiki:Policy-url}}]] bülegendäge qäğeydälär buyınça eşlägänegezne raslağız.',
 'actioncomplete'         => 'Ğämäl başqarğan',
-'deletedtext'            => '«<nowiki>$1</nowiki>» beterelgän inde.<br />
+'deletedtext'            => '«$1» beterelgän inde.<br />
 Soñğı beterelgän bitlärne kürer öçen, $2 qarağız.',
 'deletedarticle'         => '«[[$1]]» beterelde',
 'dellogpage'             => 'Beterü köndälege',
@@ -1628,7 +1613,7 @@ Soñğı beterelgän bitlärne kürer öçen, $2 qarağız.',
 'protect_expiry_invalid'      => 'Yaqlaw betü waqıtı döres tügel.',
 'protect_expiry_old'          => 'Yaqlaw betü köne uzğan köngä quyılğan.',
 'protect-unchain-permissions' => 'Östämä yaqlaw çaraların açu',
-'protect-text'                => "Biredä sez '''<nowiki>$1</nowiki>''' bite öçen yaqlaw däräcäsene qarıy häm üzgärä alasız.",
+'protect-text'                => "Biredä sez '''$1''' bite öçen yaqlaw däräcäsene qarıy häm üzgärä alasız.",
 'protect-locked-access'       => "Xisap yazmağızğa bitlärneñ yaqlaw däräcäsen üzgärtü öçen xaq citmi. '''$1''' biteneñ xäzerge köyläwläre:",
 'protect-cascadeon'           => 'Bu bit yaqlanğan, çönki ul älege kaskadlı yaqlawlı {{PLURAL:$1|bitkä|bitlärgä}} kerä. Sez bu bitneñ yaqlaw däräcäsen üzgärtä alasız, ämma kaskadlı yaqlaw üzgärmäyäçäk.',
 'protect-default'             => 'Yaqlawsız',
@@ -1939,9 +1924,6 @@ Zinhar başqa isem saylağız.',
 
 # Spam protection
 'spamprotectiontitle' => 'Spam filtrı',
-
-# Info page
-'infosubtitle' => 'Bit turında',
 
 # Skin names
 'skinname-standard'    => 'Klassik',

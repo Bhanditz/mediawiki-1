@@ -91,6 +91,8 @@ class BacklinkCache {
 
 	/**
 	 * Set the Database object to use
+	 *
+	 * @param $db DatabaseBase
 	 */
 	public function setDB( $db ) {
 		$this->db = $db;
@@ -151,7 +153,7 @@ class BacklinkCache {
 			return $ta;
 		}
 
-		// FIXME : make this a function?
+		// @todo FIXME: Make this a function?
 		if ( !isset( $this->fullResultCache[$table] ) ) {
 			wfDebug( __METHOD__ . ": from DB\n" );
 			$res = $this->getDB()->select(
@@ -200,15 +202,25 @@ class BacklinkCache {
 	protected function getConditions( $table ) {
 		$prefix = $this->getPrefix( $table );
 
-		// FIXME imagelinks and categorylinks do not rely on getNamespace,
+		// @todo FIXME: imagelinks and categorylinks do not rely on getNamespace,
 		// they could be moved up for nicer case statements
 		switch ( $table ) {
 			case 'pagelinks':
 			case 'templatelinks':
+				$conds = array(
+					"{$prefix}_namespace" => $this->title->getNamespace(),
+					"{$prefix}_title"     => $this->title->getDBkey(),
+					"page_id={$prefix}_from"
+				);
+				break;
 			case 'redirect':
 				$conds = array(
 					"{$prefix}_namespace" => $this->title->getNamespace(),
 					"{$prefix}_title"     => $this->title->getDBkey(),
+					$this->getDb()->makeList( array(
+						"{$prefix}_interwiki = ''",
+						"{$prefix}_interwiki is null",
+					), LIST_OR ),
 					"page_id={$prefix}_from"
 				);
 				break;

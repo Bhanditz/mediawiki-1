@@ -399,15 +399,6 @@ $messages = array(
 'index-category'                 => 'Ինդեքսավորված էջեր',
 'noindex-category'               => 'Ինդեքսավորված էջեր չկան',
 
-'mainpagetext'      => "'''«MediaWiki» ծրագիրը հաջողությամբ տեղադրվեց։'''",
-'mainpagedocfooter' => "Այցելեք [http://meta.wikimedia.org/wiki/Help:Contents User's Guide]՝ վիքի ծրագրային ապահովման օգտագործման մասին տեղեկությունների համար։
-
-== Որոշ օգտակար ռեսուրսներ ==
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
-
 'about'         => 'Էությունը',
 'article'       => 'Հոդված',
 'newwindow'     => '(բացվելու է նոր պատուհանի մեջ)',
@@ -457,7 +448,6 @@ $messages = array(
 'history'           => 'Էջի պատմություն',
 'history_short'     => 'Պատմություն',
 'updatedmarker'     => 'թարմացվել է իմ վերջին այցից հետո',
-'info_short'        => 'Տեղեկություն',
 'printableversion'  => 'Տպելու տարբերակ',
 'permalink'         => 'Մշտական հղում',
 'print'             => 'Տպել',
@@ -567,7 +557,7 @@ $1',
 'nstab-media'     => 'Մեդիա էջ',
 'nstab-special'   => 'Սպասարկող էջ',
 'nstab-project'   => 'Նախագծի էջ',
-'nstab-image'     => 'Ֆայլ',
+'nstab-image'     => 'Նիշք',
 'nstab-mediawiki' => 'Ուղերձ',
 'nstab-template'  => 'Կաղապար',
 'nstab-help'      => 'Օգնության էջ',
@@ -648,7 +638,6 @@ $1',
 'cascadeprotected'     => 'Այս էջը պաշտպանված է խմբագրումից, քանի որ ընդգրկված է հետևյալ {{PLURAL:$1|էջի|էջերի}} տեքստում, {{PLURAL:$1|որը|որոնք}} պաշտպանվել {{PLURAL:$1|է|են}} կասկադային հնարավորությամբ.
 $2',
 'namespaceprotected'   => 'Դուք չունեք «$1» անվանատարածքի էջերի խմբագրման իրավունք։',
-'customcssjsprotected' => 'Դուք չունեք այս էջի խմբագրման իրավունք, քանի որ այն պարունակում է այլ մասնակցի անձնական նախընտրություններ։',
 'ns-specialprotected'  => '«{{ns:special}}» անվանատարածքի էջերը չեն կարող խմբագրվել։',
 'titleprotected'       => "Այս անվանմամբ էջի ստեղծումը արգելվել է [[User:$1|$1]] մասնակցի կողմից։
 Տրված պատճառն է՝ ''$2''։",
@@ -697,7 +686,7 @@ $2',
 'nosuchuser'                 => '$1 անունով մասնակից գոյություն չունի։
 Մասնակիցների անունները զգայուն են մեծատառերի նկատմամբ։
 Ստուգեք ձեր ուղղագրությունը կամ [[Special:UserLogin/signup|ստեղծեք նոր մասնակցի հաշիվ]]։',
-'nosuchusershort'            => '<nowiki>$1</nowiki> անունով մասնակից գոյություն չունի։ Ստուգեք ձեր ուղղագրությունը։',
+'nosuchusershort'            => '$1 անունով մասնակից գոյություն չունի։ Ստուգեք ձեր ուղղագրությունը։',
 'nouserspecified'            => 'Հարկավոր է նշել մասնակցային անուն։',
 'login-userblocked'          => 'Այս մասնակիցը արգելափակված է: Մուտքը արգելված է:',
 'wrongpassword'              => 'Մուտքագրված գաղտնաբառը սխալ էր։ Խնդրում ենք կրկին փորձել։',
@@ -844,7 +833,7 @@ $2',
 Դուք կարող եք [[Special:Search/{{PAGENAME}}|որոնել այս անվանումը]] այլ էջերում, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} որոնել համապատասխան տեղեկամատյանները] կամ [{{fullurl:{{FULLPAGENAME}}|action=edit}} ստեղծել նոր էջ այս անվանմամբ]</span>։',
 'noarticletext-nopermission'       => 'Ներկայումս այս էջում որևէ տեքստ չկա։
 Դուք կարող եք [[Special:Search/{{PAGENAME}}|որոնել այս անվանունը]] այլ էջերում կամ <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} որոնել այն տեղեկամատյաններում]</span>։',
-'userpage-userdoesnotexist'        => '«$1» անվանմամբ մասնակից գոյություն չունի։
+'userpage-userdoesnotexist'        => '«<nowiki>$1</nowiki>» անվանմամբ մասնակից գոյություն չունի։
 Խնդրում ենք հավաստիանալ նրանում, թե արդյոք ուզում եք ստեղծել/խմբագրել այս էջը։',
 'userpage-userdoesnotexist-view'   => '«$1» անվանմամբ գրանցված մասնակից չկա։',
 'clearyourcache'                   => "'''Ծանուցում. Հիշելուց հետո կատարված փոփոխությունները տեսնելու համար մաքրեք ձեր զննարկիչի հիշապահեստը. '''
@@ -1343,10 +1332,6 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 'destfilename'                => 'Նիշքի նոր անվանում՝',
 'watchthisupload'             => 'Հսկել այս նիշքը',
 'filewasdeleted'              => 'Այս անվանմամբ նիշք նախկինում բեռնվել է և հետագայում ջնջվել։ Այն կրկին բեռնելուց առաջ խնդրում ենք ստուգել $1։',
-'upload-wasdeleted'           => "'''Զգուշացում. Դուք փորձում եք բեռնել նախկինում ջնջված նիշք։'''
-
-Խնդրում ենք վերանայել նիշքի բեռնման նպատակահարմարությունը։
-Այս նիշքի ջնջման տեղեկամատյանը բերված է ստորև.",
 'filename-bad-prefix'         => "Բեռնվող նիշքի անվանումը սկսվում է '''<tt>«$1»</tt>''' արտահայտությամբ, որը ոչ-նկարագրական է և սովորաբար տրվում է թվային լուսանկարչական ապարատների կողմից։ Խնդրում ենք ընտրել ավելի նկարագրական անվանում ձեր նիշքի համար։",
 'upload-success-subj'         => 'Բեռնումը կատարված է',
 
@@ -1382,7 +1367,7 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 'listfiles_count'       => 'Տարբերակ',
 
 # File description page
-'file-anchor-link'          => 'Ֆայլ',
+'file-anchor-link'          => 'Նիշք',
 'filehist'                  => 'Նիշքի պատմություն',
 'filehist-help'             => 'Մատնահարեք օրվան/ժամին՝ նիշքի այդ պահին տեսքը դիտելու համար։',
 'filehist-deleteall'        => 'ջնջել բոլորը',
@@ -1642,11 +1627,9 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'watchlistanontext'    => 'Անհրաժեշտ է $1՝ հսկացանկը դիտելու կամ խմբագրելու համար։',
 'watchnologin'         => 'Չեք մտել համակարգ',
 'watchnologintext'     => 'Անհրաժեշտ է [[Special:UserLogin|մտնել համակարգ]]՝ հսկացանկը փոփոխելու համար։',
-'addedwatch'           => 'Ավելացված է հսկացանկին',
 'addedwatchtext'       => '«[[:$1]]» էջը ավելացված է ձեր [[Special:Watchlist|հսկացանկին]]։ Այս էջի և նրան կապված քննարկումների էջի հետագա փոփոխությունները կգրանցվեն այդտեղ, և կցուցադրվեն թավատառ [[Special:RecentChanges|վերջին փոփոխությունների]] ցանկում։
 
 Հետագայում հսկացանկից էջը հեռացնելու ցանկության դեպքում մատնահարեք էջի վերնամասի ընտրացանկում գտնվող «հանել հսկումից» կոճակին։',
-'removedwatch'         => 'Հանված է հսկման ցանկից',
 'removedwatchtext'     => '«[[:$1]]» էջը հանված է [[Special:Watchlist|ձեր հսկացանկից]]։',
 'watch'                => 'Հսկել',
 'watchthispage'        => 'Հսկել այս էջը',
@@ -1697,7 +1680,7 @@ $NEWPAGE
 
 --
 Ձեր հսկացանկի նախընտրությունները փոխելու համար այցելեք՝
-{{fullurl:{{#special:Watchlist}}/edit}}
+{{fullurl:{{#special:EditWatchlist}}}}
 
 Հետադարձ կապ և օգնություն՝
 {{fullurl:{{MediaWiki:Helppage}}}}',
@@ -1714,7 +1697,7 @@ $NEWPAGE
 'historywarning'        => 'Զգուշացում. էջը, որը դուք պատրաստվում եք ջնջել ունի փոփոխությունների պատմություն։',
 'confirmdeletetext'     => 'Դուք պատրաստվում եք ընդմիշտ ջնջել էջը կամ պատկերը տվյալների բազայից իր փոփոխությունների պատմությամբ հանդերձ։ Խնդրում ենք հաստատել, որ դուք իրոք մտադրված եք դա անել, հասկանում եք դրա հետևանքները և գործում եք [[{{MediaWiki:Policy-url}}|կանոնադրության]] սահմաններում։',
 'actioncomplete'        => 'Գործողությունը ավարտված  է',
-'deletedtext'           => '«<nowiki>$1</nowiki>» էջը ջնջված է։
+'deletedtext'           => '«$1» էջը ջնջված է։
 Տես $2՝ վերջին ջնջումների պատմության համար։',
 'deletedarticle'        => 'ջնջված է «[[$1]]»',
 'dellogpage'            => 'Ջնջման տեղեկամատյան',
@@ -1756,7 +1739,7 @@ $NEWPAGE
 'protectexpiry'               => 'Մարում.',
 'protect_expiry_invalid'      => 'Անթույլատրելի մարման ժամկետ։',
 'protect_expiry_old'          => 'Մարման ժամկետը անցյալում է։',
-'protect-text'                => "Այստեղ դուք կարող եք դիտել և փոխել '''<nowiki>$1</nowiki>''' էջի պաշտպանման մակարդակը։",
+'protect-text'                => "Այստեղ դուք կարող եք դիտել և փոխել '''$1''' էջի պաշտպանման մակարդակը։",
 'protect-locked-blocked'      => "Դուք չեք կարող փոխել էջի պաշտպանման մակարդակը քանի դեռ արգելափակված եք։ Էջի ընթացիկ կարգավորումն է՝ '''$1'''.",
 'protect-locked-dblock'       => "Պաշտպանման մակարդակը չի կարող փոխվել տվյալների բազայի կողպման պատճառով։ Էջի ընթացիկ կարգավորումն է՝ '''$1'''.",
 'protect-locked-access'       => "Ձեր մասնակցային հաշիվը չունի էջի պաշտպանման մակարդակը փոփոխելու իրավունք։
@@ -2047,7 +2030,7 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 
 # Thumbnails
 'thumbnail-more'           => 'Ընդարձակել',
-'filemissing'              => 'Նման ֆայլ չկա',
+'filemissing'              => 'Նման նիշք չկա',
 'thumbnail_error'          => 'Պատկերիկի ստեղծման սխալ. $1',
 'djvu_page_error'          => 'DjVu էջը լայնույթից դուրս է',
 'djvu_no_xml'              => 'Չհաջողվեց ստեղծել XML DjVu նիշքի համար',
@@ -2159,9 +2142,7 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'monobook.js' => '/* Հնացած է. օգտագործեք [[MediaWiki:common.js]] */',
 
 # Metadata
-'nodublincore'      => 'Dublin Core RDF մետատվյալները արգելված են այս սերվերում։',
-'nocreativecommons' => 'Creative Commons RDF մետատվյալները արգելված են այս սերվերում։',
-'notacceptable'     => 'Վիքի-սպասարկիչը չի կարող տվյլաները տրամադրել ձեր զննարկիչի կողմից կարդացվող ֆորմատով։',
+'notacceptable' => 'Վիքի-սպասարկիչը չի կարող տվյլաները տրամադրել ձեր զննարկիչի կողմից կարդացվող ֆորմատով։',
 
 # Attribution
 'anonymous'        => '{{grammar:genitive|{{SITENAME}}}} անանուն մասնակիցները',
@@ -2180,14 +2161,6 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'spambot_username'    => 'Սպամի մաքրում',
 'spam_reverting'      => 'Հետ է շրջվում վերջին տարբերակի, որը չի պարունակում հղումներ դեպի $1',
 'spam_blanking'       => 'Բոլոր տարբերակները պարունակում են հղումներ դեպի $1, մաքրում',
-
-# Info page
-'infosubtitle'   => 'Տեղեկությունների էջի մասին',
-'numedits'       => 'Խմբագրումների թիվ (հոդված). $1',
-'numtalkedits'   => 'Խմբագրումների թիվ (քննարկման էջ). $1',
-'numwatchers'    => 'Հսկողների թիվ. $1',
-'numauthors'     => 'Տարբեր հեղինակների թիվ (հոդված). $1',
-'numtalkauthors' => 'Տարբեր հեղինակների թիվ (քննարկման էջ). $1',
 
 # Skin names
 'skinname-standard'    => 'Դասական',

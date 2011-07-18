@@ -225,7 +225,7 @@ class BlockListPager extends TablePager {
 
 		static $sk, $msg;
 		if ( empty( $sk ) ) {
-			$sk = $wgUser->getSkin();
+			$sk = $this->getSkin();
 			$msg = array(
 				'anononlyblock',
 				'createaccountblock',
@@ -249,7 +249,7 @@ class BlockListPager extends TablePager {
 
 			case 'ipb_target':
 				if( $row->ipb_auto ){
-					$formatted = wfMessage( 'autoblockid', $row->ipb_id );
+					$formatted = wfMessage( 'autoblockid', $row->ipb_id )->parse();
 				} else {
 					list( $target, $type ) = Block::parseTarget( $row->ipb_address );
 					switch( $type ){

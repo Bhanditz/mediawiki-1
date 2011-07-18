@@ -20,7 +20,7 @@
  * @ingroup Actions
  */
 
-class WatchAction extends FormlessAction {
+class WatchAction extends FormAction {
 
 	public function getName() {
 		return 'watch';
@@ -35,28 +35,120 @@ class WatchAction extends FormlessAction {
 	}
 
 	protected function getDescription() {
-		return wfMsg( 'addedwatch' );
+		return wfMsg( 'addwatch' );
+	}
+
+	/**
+	 * Just get an empty form with a single submit button
+	 * @return array
+	 */
+	protected function getFormFields() {
+		return array();
+	}
+
+	public function onSubmit( $data ) {
+		wfProfileIn( __METHOD__ );
+		self::doWatch( $this->getTitle(), $this->getUser() );
+		wfProfileOut( __METHOD__ );
+		return true;
+	}
+
+	/**
+	 * This can be either formed or formless depending on the session token given
+	 */
+	public function show() {
+		$this->setHeaders();
+
+		$user = $this->getUser();
+		// This will throw exceptions if there's a problem
+		$this->checkCanExecute( $user );
+
+		// Must have valid token for this action/title
+		$salt = array( $this->getName(), $this->getTitle()->getDBkey() );
+
+		if ( $user->matchEditToken( $this->getRequest()->getVal( 'token' ), $salt ) ) {
+			$this->onSubmit( array() );
+			$this->onSuccess();
+		} else {
+			$form = $this->getForm();
+			if ( $form->show() ) {
+				$this->onSuccess();
+			}
+		}
 	}
 
 	protected function checkCanExecute( User $user ) {
+		// Must be logged in
 		if ( $user->isAnon() ) {
 			throw new ErrorPageError( 'watchnologin', 'watchnologintext' );
 		}
+
 		return parent::checkCanExecute( $user );
 	}
 
-	public function onView() {
-		wfProfileIn( __METHOD__ );
+	public static function doWatch( Title $title, User $user  ) {
+		$page = new Article( $title );
 
-		$user = $this->getUser();
-		if ( wfRunHooks( 'WatchArticle', array( &$user, &$this->page ) ) ) {
-			$this->getUser()->addWatch( $this->getTitle() );
-			wfRunHooks( 'WatchArticleComplete', array( &$user, &$this->page ) );
+		if ( wfRunHooks( 'WatchArticle', array( &$user, &$page ) ) ) {
+			$user->addWatch( $title );
+			wfRunHooks( 'WatchArticleComplete', array( &$user, &$page ) );
 		}
+		return true;
+	}
 
-		wfProfileOut( __METHOD__ );
+	public static function doUnwatch( Title $title, User $user  ) {
+		$page = new Article( $title );
 
-		return wfMessage( 'addedwatchtext', $this->getTitle()->getPrefixedText() )->parse();
+		if ( wfRunHooks( 'UnwatchArticle', array( &$user, &$page ) ) ) {
+			$user->removeWatch( $title );
+			wfRunHooks( 'UnwatchArticleComplete', array( &$user, &$page ) );
+		}
+		return true;
+	}
+
+	/**
+	 * Get token to watch (or unwatch) a page for a user
+	 *
+	 * @param Title $title Title object of page to watch
+	 * @param User $title User for whom the action is going to be performed
+	 * @param string $action Optionally override the action to 'unwatch'
+	 * @return string Token
+	 * @since 1.19
+	 */
+	public static function getWatchToken( Title $title, User $user, $action = 'watch' ) {
+		if ( $action != 'unwatch' ) {
+			$action = 'watch';
+		}
+		$salt = array( $action, $title->getDBkey() );
+
+		// This token stronger salted and not compatible with ApiWatch
+		// It's title/action specific because index.php is GET and API is POST
+		return $user->editToken( $salt );
+	}
+
+	/**
+	 * Get token to unwatch (or watch) a page for a user
+	 *
+	 * @param Title $title Title object of page to unwatch
+	 * @param User $title User for whom the action is going to be performed
+	 * @param string $action Optionally override the action to 'watch'
+	 * @return string Token
+	 * @since 1.19
+	 */
+	public static function getUnwatchToken( Title $title, User $user, $action = 'unwatch' ) {
+		return self::getWatchToken( $title, $user, $action );
+	}
+
+	protected function alterForm( HTMLForm $form ) {
+		$form->setSubmitText( wfMsg( 'confirm-watch-button' ) );
+	}
+
+	protected function preText() {
+		return wfMessage( 'confirm-watch-top' )->parse();
+	}
+
+	public function onSuccess() {
+		$this->getOutput()->addWikiMsg( 'addedwatchtext', $this->getTitle()->getPrefixedText() );
 	}
 }
 
@@ -67,20 +159,25 @@ class UnwatchAction extends WatchAction {
 	}
 
 	protected function getDescription() {
-		return wfMsg( 'removedwatch' );
+		return wfMsg( 'removewatch' );
 	}
 
-	public function onView() {
+	public function onSubmit( $data ) {
 		wfProfileIn( __METHOD__ );
-
-		$user = $this->getUser();
-		if ( wfRunHooks( 'UnwatchArticle', array( &$user, &$this->page ) ) ) {
-			$this->getUser()->removeWatch( $this->getTitle() );
-			wfRunHooks( 'UnwatchArticleComplete', array( &$user, &$this->page ) );
-		}
-
+		self::doUnwatch( $this->getTitle(), $this->getUser() );
 		wfProfileOut( __METHOD__ );
+		return true;
+	}
 
-		return wfMessage( 'removedwatchtext', $this->getTitle()->getPrefixedText() )->parse();
+	protected function alterForm( HTMLForm $form ) {
+		$form->setSubmitText( wfMsg( 'confirm-unwatch-button' ) );
+	}
+
+	protected function preText() {
+		return wfMessage( 'confirm-unwatch-top' )->parse();
+	}
+
+	public function onSuccess() {
+		$this->getOutput()->addWikiMsg( 'removedwatchtext', $this->getTitle()->getPrefixedText() );
 	}
 }

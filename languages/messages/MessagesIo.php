@@ -219,14 +219,6 @@ $messages = array(
 'category-file-count-limited'    => 'La sequanta {{PLURAL:$1|arkivo|$1 arkivi}} es en la aktuala kategorio.',
 'listingcontinuesabbrev'         => 'seq.',
 
-'mainpagetext'      => "'''MediaWiki instalesis sucese.'''",
-'mainpagedocfooter' => "Videz la [http://meta.wikimedia.org/wiki/Help:Contents Guidilo por Uzanti] por informo pri uzar la wiki programo.
-
-== Komencar ==
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Listo di ''Configuration setting'']
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki OQQ]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki nova versioni posto-listo]",
-
 'about'         => 'Pri',
 'article'       => 'artiklo',
 'newwindow'     => '(aparos en nova panelo)',
@@ -273,7 +265,6 @@ $messages = array(
 'history'           => 'Paginala historio',
 'history_short'     => 'Versionaro',
 'updatedmarker'     => 'aktualigita pos mea lasta vizito',
-'info_short'        => 'Informajo',
 'printableversion'  => 'Imprimebla versiono',
 'permalink'         => 'Permananta ligilo',
 'print'             => 'Imprimar',
@@ -455,7 +446,7 @@ Voluntez, elektez ula diferanta uzantonomo.',
 'nosuchuser'                 => 'Ne existas uzanto "$1".
 Uzanto-nomi esas mayu/minuskulo-distingenda.
 Kontrolez vua espelado, o [[Special:UserLogin/signup|krear nova konto]].',
-'nosuchusershort'            => 'Esas nula uzanto "<nowiki>$1</nowiki>".
+'nosuchusershort'            => 'Esas nula uzanto "$1".
 Kontrolez la espelado.',
 'nouserspecified'            => 'Vu mustas specigar uzantonomo.',
 'wrongpassword'              => 'La skribita pasovorto esis nekorekta. Voluntez probar itere.',
@@ -545,11 +536,11 @@ Se vu esas hike erore, kliktez sur la butono por retrovenar en vua navigilo.',
 Vu povas [[Special:Search/{{PAGENAME}}|serchar ica titulo]] en altra pagini,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} serchar en la relata registri],
 o [{{fullurl:{{FULLPAGENAME}}|action=edit}} redaktar ica pagino]</span>.',
-'userpage-userdoesnotexist'        => 'Uzanto-nomo "$1" no registragesis.
+'userpage-userdoesnotexist'        => 'Uzanto-nomo "<nowiki>$1</nowiki>" no registragesis.
 Voluntez konfirmez se vu volas krear/redaktar ica pagino.',
 'userpage-userdoesnotexist-view'   => 'Uzanto-nomo "$1" no registragesis.',
 'clearyourcache'                   => "'''Atencez: Pos registragar, vu probable mustas renovigar la tempala-magazino di vua navigilo por vidar la chanji.'''
-'''Mozilla / Firefox / Safari:''' tenez ''Shift'' kliktante ''Reload'', o presez sive  ''Ctrl-F5'' sive ''Ctrl-R'' (''Command-R'' ye Macintosh);
+'''Mozilla / Firefox / Safari:''' tenez ''Shift'' kliktante ''Reload'', o presez sive  ''Ctrl-F5'' sive ''Ctrl-R'' (''Command-R'' ye Mac);
 '''Konqueror''': kliktez ''Reload'' o presez ''F5'';
 '''Opera:''' vakuigez la tempala-magazino en ''Tools → Preferences'';
 '''Internet Explorer:''' tenez ''Ctrl'' kliktante ''Refresh,'' o presez ''Ctrl-F5''.",
@@ -1085,11 +1076,9 @@ Volutez kontrolar '''<tt>[[:$1]]</tt>''' se vu ne esas certa pri chanjar olu.
 'nowatchlist'        => 'Vu ne havas objekti en vua listo di surveyaji.',
 'watchnologin'       => 'Vu ne startis sesiono',
 'watchnologintext'   => 'Vu mustas [[Special:UserLogin|enirir]] por modifikar vua surveyaji.',
-'addedwatch'         => 'Adjuntita a la listo de surveyaji',
 'addedwatchtext'     => "La pagino \"<nowiki>\$1</nowiki>\" atachesis a vua [[Special:Watchlist|listo de surveyaji]]. Futura chanji di ica pagino ed olua relatanta debato-pagini montresos ibe, ed la pagino aparos per '''dika literi''' en la [[Special:RecentChanges|listo de recenta chanji]] por faciligar sua trovebleso.
 
 <p> Se vu volas efacar la pagino de vua listo de surveyaji pose, presez \"Ne plus surveyar\" en la selektaro.",
-'removedwatch'       => 'Efacita de surveyo-listo',
 'removedwatchtext'   => 'La pagino "[[:$1]]" forigesis de [[Special:Watchlist|vua surveyado]].',
 'watch'              => 'Surveyar',
 'watchthispage'      => 'Surveyar ica pagino',
@@ -1123,7 +1112,7 @@ Volutez kontrolar '''<tt>[[:$1]]</tt>''' se vu ne esas certa pri chanjar olu.
 'delete-legend'         => 'Efacar',
 'historywarning'        => 'Egardez: La pagino, quan vu efaceskas, havas versionaro:',
 'actioncomplete'        => 'Ago kompletigita',
-'deletedtext'           => '"<nowiki>$1</nowiki>" efacesis.
+'deletedtext'           => '"$1" efacesis.
 Videz $2 por obtenar registro di recenta efaci.',
 'deletedarticle'        => 'efacis "[[$1]]"',
 'dellogpage'            => 'Efaco-registraro',
@@ -1432,11 +1421,6 @@ Vu darfos adjuntar kauso en la rezumo.',
 # Spam protection
 'spamprotectiontitle' => 'Filtrilo kontre spamo',
 
-# Info page
-'numedits'    => 'Quanto di redakti (pagino): $1',
-'numwatchers' => 'Quanto di vizitanti: $1',
-'numauthors'  => 'Quanto di aparta autori (pagino): $1',
-
 # Patrol log
 'patrol-log-auto' => '(automata)',
 'patrol-log-diff' => 'revizado $1',
@@ -1592,5 +1576,13 @@ Vu darfos adjuntar kauso en la rezumo.',
 # HTML forms
 'htmlform-reset'               => 'Desfacar chanji',
 'htmlform-selectorother-other' => 'Altra',
+
+# Add categories per AJAX
+'ajax-add-category'            => 'Adjuntar kategorio',
+'ajax-add-category-submit'     => 'Adjuntar',
+'ajax-confirm-save'            => 'Registragar',
+'ajax-add-category-summary'    => 'Adjuntar kategorio "$1"',
+'ajax-remove-category-summary' => 'Forigar kategorio "$1"',
+'ajax-error-title'             => 'Eroro',
 
 );

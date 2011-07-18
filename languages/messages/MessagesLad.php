@@ -306,14 +306,6 @@ $messages = array(
 'noindex-category'               => 'Hojas no arregladas en lista',
 'broken-file-category'           => 'Hojas que tienen atamientos rotos de arxivos',
 
-'mainpagetext'      => "'''MedyaViki ya se kureó con reuxitá.'''",
-'mainpagedocfooter' => 'Konsulta la [http://meta.wikimedia.org/wiki/Ayudo:Contenido Guía de usador] para tomar enformasyones encima de como usar el lojikal viki.
-
-== En Empeçando ==
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings La lista de los arreglamientos de la konfiggurasyón]
-* [http://www.mediawiki.org/wiki/Manual:FAQ/lad DDS de MedyaViki]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce La lista de las letrales (e-mail) de MedyaViki]',
-
 'about'         => 'Encima de',
 'article'       => 'Artícůlo de contenido',
 'newwindow'     => '(Se avre en una mueva ventana)',
@@ -364,7 +356,6 @@ $messages = array(
 'history'           => 'La îstoria de la hoja',
 'history_short'     => 'Îstoria',
 'updatedmarker'     => 'trocado desde mi visita de alcavo',
-'info_short'        => 'Enformasyón',
 'printableversion'  => 'Vista apropiada para emprimir',
 'permalink'         => 'Atamiento mantenido',
 'print'             => 'Emprimir',
@@ -834,11 +825,9 @@ La descripción en su [$2 hoja de descripción del arxivo] está amostrada debax
 # Watchlist
 'watchlist'         => 'Mi lista de escogidas',
 'mywatchlist'       => 'Mi lista de akavidamientos',
-'addedwatch'        => 'Ajustado a la lista de escogidas',
 'addedwatchtext'    => "La hoja «[[:$1]]» fue ajustada a tu [[Special:Watchlist|lista de escogidas]]. Los trocamientos venideros en esta hoja i en tu hoja de diskussión associada se van indicar aí, i la hoja va aparecer '''gordo''' en la hoja de [[Special:RecentChanges|trocamientos freskos]] para hazerla más kolay de detektar.
 
 Cuando queres eliminar la hoja de tu lista de escogidas, piza «Dexar de cudiar» en el menú.",
-'removedwatch'      => 'Quitado de la lista de escogidas',
 'removedwatchtext'  => 'La hoja «[[:$1]]» fue eliminada de tu [[Special:Watchlist|lista de escogidas]].',
 'watch'             => 'cudia',
 'watchthispage'     => 'Cudia esta hoja',
@@ -858,7 +847,7 @@ en forma turable, ansí como todo su istoria.
 Si puede ser, confirma que de verdad queres hazer esto, que estás entendiendo las
 resultados, i que lo estás haziendo de acorddo con las [[{{MediaWiki:Policy-url}}|Políticas]].',
 'actioncomplete'        => 'Aksion kompleta',
-'deletedtext'           => '"<nowiki>$1</nowiki>" fue efassado.
+'deletedtext'           => '"$1" fue efassado.
 Mira $2 para un registro de los efassados nuevos.',
 'deletedarticle'        => 'efassó «[[$1]]»',
 'dellogpage'            => 'Registro de efassados',
@@ -882,7 +871,7 @@ Mira $2 para un registro de los efassados nuevos.',
 'protectexpiry'               => 'Escapa:',
 'protect_expiry_invalid'      => 'Tiempo de escapación yerrado.',
 'protect_expiry_old'          => 'El tiempo de escapación está en el passado.',
-'protect-text'                => "Puedes ver i trocar el nivel de protección de la hoja '''<nowiki>$1</nowiki>'''.",
+'protect-text'                => "Puedes ver i trocar el nivel de protección de la hoja '''$1'''.",
 'protect-locked-access'       => "Tu cuento no tiene permissión para trocar los niveles de protección de una hoja.
 A continuación se mostran las opciones actuales de la hoja '''$1''':",
 'protect-cascadeon'           => 'Esta hoja está guardada en momento porque está incluida en {{PLURAL:$1|la hoja venidera|las hojas venideras}}, que tienen activada la opción de protección en grados. Puedes trocar el nivel de protección de esta hoja, ma no va afectar a la protección en grados.',
@@ -982,8 +971,8 @@ Si puede ser, escoge otro nombre.',
 'talkexists'       => 'La hoja fue renombrada con reuxito, ma la diskussión no se pudo renombrar porque ya egziste una en el título nuevo. Si puede ser, házelo manualmente.',
 'movedto'          => 'renombrado a',
 'movetalk'         => 'Renombrar la hoja de diskussión también, si es possible.',
-'1movedto2'        => 'El nuevo nombre de la hoja [[$1]]; agora es [[$2]]',
-'1movedto2_redir'  => 'El títůlo [[$1]] fue reddireksyonado a la hoja [[$2]]',
+'1movedto2'        => 'El muevo nombre de la hoja [[$1]]; ya es [[$2]]',
+'1movedto2_redir'  => '[[$1]] fue taxireado a [[$2]] sovre una direksión',
 'movelogpage'      => 'Registro de traslados',
 'movereason'       => 'Razón:',
 'revertmove'       => 'abolta',

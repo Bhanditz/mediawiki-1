@@ -104,7 +104,7 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 		}
 
 		if ( isset( $show['hidden'] ) && isset( $show['!hidden'] ) ) {
-			$this->dieUsageMsg( array( 'show' ) );
+			$this->dieUsageMsg( 'show' );
 		}
 		if ( isset( $show['hidden'] ) || isset( $show['!hidden'] ) || isset( $prop['hidden'] ) )
 		{
@@ -248,6 +248,10 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 			'Get information about all categories used in the [[Albert Einstein]]:',
 			'  api.php?action=query&generator=categories&titles=Albert%20Einstein&prop=info'
 		);
+	}
+
+	public function getHelpUrls() {
+		return 'http://www.mediawiki.org/wiki/API:Properties#categories_.2F_cl';
 	}
 
 	public function getVersion() {

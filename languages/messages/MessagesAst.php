@@ -186,15 +186,6 @@ $messages = array(
 'noindex-category'               => 'Páxines ensin indexar',
 'broken-file-category'           => 'Páxines con enllaces frañaos a ficheros',
 
-'mainpagetext'      => "'''MediaWiki instalóse correchamente.'''",
-'mainpagedocfooter' => "Visita la [http://meta.wikimedia.org/wiki/Help:Contents Guía d'usuariu] pa saber cómo usar esti software wiki.
-
-== Empecipiando ==
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Llista de les opciones de configuración]
-* [http://www.mediawiki.org/wiki/Manual:FAQ FAQ de MediaWiki]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Llista de corréu de les ediciones de MediaWiki]",
-
 'about'         => 'Tocante a',
 'article'       => 'Conteníu de la páxina',
 'newwindow'     => '(abriráse nuna ventana nueva)',
@@ -223,7 +214,7 @@ $messages = array(
 'vector-action-move'             => 'Treslladar',
 'vector-action-protect'          => 'Protexer',
 'vector-action-undelete'         => 'Des-desaniciar',
-'vector-action-unprotect'        => 'Desprotexer',
+'vector-action-unprotect'        => 'Camudar la proteición',
 'vector-simplesearch-preference' => 'Activar suxerencies de gueta enantaes (piel Vector namái)',
 'vector-view-create'             => 'Crear',
 'vector-view-edit'               => 'Editar',
@@ -245,7 +236,6 @@ $messages = array(
 'history'           => 'Historial de la páxina',
 'history_short'     => 'Historial',
 'updatedmarker'     => 'actualizáu dende la mio última visita',
-'info_short'        => 'Información',
 'printableversion'  => 'Versión pa imprentar',
 'permalink'         => 'Enllaz permanente',
 'print'             => 'Imprentar',
@@ -261,8 +251,8 @@ $messages = array(
 'protect'           => 'Protexer',
 'protect_change'    => 'camudar',
 'protectthispage'   => 'Protexer esta páxina',
-'unprotect'         => 'Desprotexer',
-'unprotectthispage' => 'Desprotexer esta páxina',
+'unprotect'         => 'Camudar la proteición',
+'unprotectthispage' => 'Camudar la proteición desta páxina',
 'newpage'           => 'Páxina nueva',
 'talkpage'          => 'Aldericar sobre esta páxina',
 'talkpagelinktext'  => 'Alderique',
@@ -447,7 +437,6 @@ Si quies facer traducciones, por favor usa [http://translatewiki.net/wiki/Main_P
 'cascadeprotected'     => 'Esta páxina ta protexida d\'ediciones porque ta enxerta {{PLURAL:$1|na siguiente páxina|nes siguientes páxines}}, que {{PLURAL:$1|ta protexida|tán protexíes}} cola opción "en cascada":
 $2',
 'namespaceprotected'   => "Nun tienes permisu pa editar páxines nel espaciu de nomes '''$1'''.",
-'customcssjsprotected' => "Nun tienes permisu pa editar esta páxina porque contién preferencies personales d'otru usuariu.",
 'ns-specialprotected'  => 'Les páxines especiales nun se puen editar.',
 'titleprotected'       => "Esti títulu foi protexíu de la so creación por [[User:$1|$1]].
 El motivu conseñáu ye ''$2''.",
@@ -502,7 +491,7 @@ Asegúrate de tener activaes les cookies, recarga esta páxina y vuelve a tental
 'nosuchuser'                 => 'Nun hai usuariu dalu col nome "$1".
 Los nomes d\'usuariu distinguen mayúscules y minúscules.
 Comprueba la ortografía o [[Special:UserLogin/signup|crea una cuenta d\'usuariu nueva]].',
-'nosuchusershort'            => 'Nun hai nengún usuariu col nome "<nowiki>$1</nowiki>".
+'nosuchusershort'            => 'Nun hai nengún usuariu col nome "$1".
 Mira que tea bien escritu.',
 'nouserspecified'            => "Has especificar un nome d'usuariu.",
 'login-userblocked'          => 'Esti usuariu ta bloquiáu. Nun se permite la conexón.',
@@ -703,7 +692,7 @@ o [{{fullurl:{{FULLPAGENAME}}|action=edit}} editar ésta equí]</span>.',
 'noarticletext-nopermission'       => 'Anguaño nun hai testu nesta páxina.
 Pues [[Special:Search/{{PAGENAME}}|buscar esti títulu de páxina]] n\'otres páxines,
 o <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} buscar los rexistros rellacionaos]</span>.',
-'userpage-userdoesnotexist'        => 'La cuenta d\'usuariu "$1" nun ta rexistrada. Por favor asegúrate de que quies crear/editar esta páxina.',
+'userpage-userdoesnotexist'        => 'La cuenta d\'usuariu "<nowiki>$1</nowiki>" nun ta rexistrada. Por favor asegúrate de que quies crear/editar esta páxina.',
 'userpage-userdoesnotexist-view'   => 'La cuenta d\'usuariu "$1" nun ta rexistrada.',
 'blocked-notice-logextract'        => "Esti usuariu anguaño ta bloquiáu.
 La cabera entrada del rexistru de bloqueos s'ufre darréu pa referencia:",
@@ -1131,7 +1120,7 @@ Equí tienes un valor al debalu que pues usar: $1",
 'savedprefs'                    => 'Les tos preferencies quedaron grabaes.',
 'timezonelegend'                => 'Estaya horaria:',
 'localtime'                     => 'Hora llocal:',
-'timezoneuseserverdefault'      => 'Usar el sirvidor preferíu',
+'timezoneuseserverdefault'      => 'Usar el sirvidor preferíu ($1)',
 'timezoneuseoffset'             => 'Otru (especificar diferencia)',
 'timezoneoffset'                => 'Diferencia¹:',
 'servertime'                    => 'Hora del sirvidor:',
@@ -1512,10 +1501,6 @@ Xubir ficheros Java nun ta permitío, porque puen facer que se salten les torgue
 'watchthisupload'             => 'Vixilar esti ficheru',
 'filewasdeleted'              => 'Yá se xubió y se desanició depués un ficheru con esti nome.
 Habríes comprobar el $1 enantes de volver a xubilu.',
-'upload-wasdeleted'           => "'''Avisu: Tas xubiendo un ficheru que yá se desanició anteriormente.'''
-
-Habríes considerar si ye afechisco continuar xubiendo esti ficheru.
-Por comodidá s'amuesa equí'l rexistru de desaniciu d'esti ficheru:",
 'filename-bad-prefix'         => "El nome del ficheru que tas xubiendo entama con '''\"\$1\"''', que ye un nome non descriptivu que de vezu conseñen automáticamente les cámares dixitales.
 Por favor escueyi un nome más descriptivu pal to ficheru.",
 'filename-prefix-blacklist'   => ' #<!-- dexa esta llinia exactamente como ta --> <pre>
@@ -1652,7 +1637,6 @@ La llista siguiente amuesa{{PLURAL:$1|'l primer enllaz de páxina| los primeros 
 Hai disponible una [[Special:WhatLinksHere/$2|llista completa]].",
 'nolinkstoimage'            => "Nun hai páxines qu'enllacien a esti archivu.",
 'morelinkstoimage'          => 'Ver [[Special:WhatLinksHere/$1|más enllaces]] a esti archivu.',
-'redirectstofile'           => '{{PLURAL:$1|El siguiente archivu redirixe|Los siguientes $1 archivos redirixen}} a esti archivu:',
 'duplicatesoffile'          => "{{PLURAL:$1|El siguiente archivu ye un duplicáu|Los siguientes $1 archivos son duplicaos}} d'esti archivu ([[Special:FileDuplicateSearch/$2|más detalles]]):",
 'sharedupload'              => 'El ficheru ye de $1 y pueden que tean usandolu otros proyeutos.',
 'sharedupload-desc-there'   => 'Esti ficheru ye de $1 y puen usalu otros proyeutos.
@@ -1975,11 +1959,9 @@ La direición de corréu electrónicu qu'especificasti nes [[Special:Preferences
 'watchlistanontext'    => 'Por favor $1 pa ver o editar entraes na to llista de vixilancia.',
 'watchnologin'         => 'Non identificáu',
 'watchnologintext'     => 'Tienes que tar [[Special:UserLogin|identificáu]] pa poder camudar la to llista de vixilancia.',
-'addedwatch'           => 'Añadida a la llista de vixilancia',
 'addedwatchtext'       => 'Añadióse la páxina "[[:$1]]" a la to [[Special:Watchlist|llista de vixilancia]]. Los cambeos nesta páxina y la so páxina d\'alderique asociada van salite en negrina na llista de [[Special:RecentChanges|cambeos recientes]] pa que seya más fácil de vela.
 
 Si más tarde quies quitala de la llista de vixilancia calca en "Dexar de vixilar" nel menú llateral.',
-'removedwatch'         => 'Eliminada de la llista de vixilancia',
 'removedwatchtext'     => 'Desapuntóse la páxina "[[:$1]]" de la [[Special:Watchlist|to llista de vixilancia]].',
 'watch'                => 'Vixilar',
 'watchthispage'        => 'Vixilar esta páxina',
@@ -2016,7 +1998,7 @@ Si más tarde quies quitala de la llista de vixilancia calca en "Dexar de vixila
 'enotif_body'                  => 'Estimáu $WATCHINGUSERNAME,
 
 
-La páxina de {{SITENAME}} $PAGETITLE foi $CHANGEDORCREATED el $PAGEEDITDATE por $PAGEEDITOR, vete $PAGETITLE_URL pa ver la versión actual.
+La páxina de {{SITENAME}} $PAGETITLE foi $CHANGEDORCREATED el $PAGEEDITDATE por $PAGEEDITOR, mira $PAGETITLE_URL pa ver la versión actual.
 
 $NEWPAGE
 
@@ -2026,13 +2008,16 @@ Ponte\'n contautu col editor:
 corréu: $PAGEEDITOR_EMAIL
 wiki: $PAGEEDITOR_WIKI
 
-En casu de producise más cambeos, nun habrá más notificaciones a nun ser que visites esta páxina. Tamién podríes restablecer na to llista de vixilancia los marcadores de notificación de toles páxines que tengas vixilaes.
+En casu de producise más cambeos, nun habrá más notificaciones a nun ser que visites esta páxina. Tamién podríes reaniciar na to llista de vixilancia los marcadores de notificación de toles páxines que tengas vixilaes.
 
-             El to abertable sistema de notificación de {{SITENAME}}
+El to abertable sistema de notificación de {{SITENAME}}
 
 --
+Pa camudar les preferencies d\'avisos per corréu, visita
+{{fullurl:{{#special:Preferences}}}}
+
 Pa camudar la configuración de la to llista de vixilancia, visita
-{{fullurl:{{#special:Watchlist}}/edit}}
+{{fullurl:{{#special:EditWatchlist}}}}
 
 Pa desaniciar la páxina de la to llista de vixilancia, visita
 $UNWATCHURL
@@ -2054,7 +2039,7 @@ Más ayuda y sofitu:
 Por favor confirma que ye lo que quies facer, qu'entiendes les consecuencies, y que lo tas faciendo acordies coles [[{{MediaWiki:Policy-url}}|polítiques]].",
 'actioncomplete'         => 'Aición completada',
 'actionfailed'           => "Falló l'aición",
-'deletedtext'            => 'Esborróse "<nowiki>$1</nowiki>".
+'deletedtext'            => 'Esborróse "$1".
 Mira en $2 la llista de les últimes páxines esborraes.',
 'deletedarticle'         => 'esborró "[[$1]]"',
 'suppressedarticle'      => 'suprimió "[[$1]]"',
@@ -2099,10 +2084,11 @@ navegador pa cargar otra vuelta la páxina y vuelve a intentalo.',
 
 # Protect
 'protectlogpage'              => 'Rexistru de proteiciones',
-'protectlogtext'              => 'Esti ye un rexistru de les páxines candaes y descandaes. Consulta la [[Special:ProtectedPages|llista de páxines protexíes]] pa ver les proteiciones actives nestos momentos.',
+'protectlogtext'              => 'Darréu ta un rexistru de les protecciones de páxines.
+Consulta la [[Special:ProtectedPages|llista de páxines protexíes]] pa ver les proteiciones actives nestos momentos.',
 'protectedarticle'            => 'protexó $1',
 'modifiedarticleprotection'   => 'camudó\'l nivel de proteición de "[[$1]]"',
-'unprotectedarticle'          => 'desprotexó "[[$1]]"',
+'unprotectedarticle'          => 'quitó-y la protección a "[[$1]]"',
 'movedarticleprotection'      => 'treslladó los parámetros de proteición dende "[[$2]]" a "[[$1]]"',
 'protect-title'               => 'Protexendo "$1"',
 'prot_1movedto2'              => '[[$1]] treslladáu a [[$2]]',
@@ -2112,7 +2098,7 @@ navegador pa cargar otra vuelta la páxina y vuelve a intentalo.',
 'protect_expiry_invalid'      => 'Caducidá non válida.',
 'protect_expiry_old'          => 'La fecha de caducidá ta pasada.',
 'protect-unchain-permissions' => 'Desbloquiar les demás opciones de protección',
-'protect-text'                => "Equí pues ver y camudar el nivel de proteición de la páxina '''<nowiki>$1</nowiki>'''.",
+'protect-text'                => "Equí pues ver y camudar el nivel de proteición de la páxina '''$1'''.",
 'protect-locked-blocked'      => "Nun pues camudar los niveles de proteición mentes teas bloquiáu. Esta
 ye la configuración actual de la páxina '''$1''':",
 'protect-locked-dblock'       => "Los niveles de proteición nun puen ser camudaos pol mor d'un candáu activu de
@@ -2253,7 +2239,7 @@ La cabera entrada del rexistru de bloqueos s'ufre darréu pa referencia:",
 'nolinkshere-ns'           => "Nenguna páxina enllaza a '''[[:$1]]''' nel espaciu de nome conseñáu.",
 'isredirect'               => 'páxina redirixida',
 'istemplate'               => 'inclusión',
-'isimage'                  => "enllaz d'imaxe",
+'isimage'                  => 'enllaz al ficheru',
 'whatlinkshere-prev'       => '{{PLURAL:$1|anterior|anteriores $1}}',
 'whatlinkshere-next'       => '{{PLURAL:$1|siguiente|siguientes $1}}',
 'whatlinkshere-links'      => '← enllaces',
@@ -2622,7 +2608,7 @@ Guárdalu nel ordenador y xúbilu equí.",
 'tooltip-ca-viewsource'           => 'Esta páxina ta protexida. Pues ver el so códigu fonte.',
 'tooltip-ca-history'              => "Versiones antigües d'esta páxina.",
 'tooltip-ca-protect'              => 'Protexe esta páxina',
-'tooltip-ca-unprotect'            => 'Desprotexer esta páxina',
+'tooltip-ca-unprotect'            => 'Camudar la proteición desta páxina',
 'tooltip-ca-delete'               => 'Esborra esta páxina',
 'tooltip-ca-undelete'             => 'Restaura les ediciones feches nesta páxina enantes de que fuera esborrada',
 'tooltip-ca-move'                 => 'Tresllada esta páxina',
@@ -2699,9 +2685,7 @@ Guárdalu nel ordenador y xúbilu equí.",
 'vector.js'      => '/* Cualesquier JavaScript que tea equí se cargará pa los usuarios del aspeutu Vector */',
 
 # Metadata
-'nodublincore'      => 'Metadatos RDF Dublin Core desactivaos pa esti sirvidor.',
-'nocreativecommons' => 'Metadatos RDF Creative Commons desactivaos pa esti sirvidor.',
-'notacceptable'     => 'El sirvidor de la wiki nun pue suplir los datos nun formatu llexible pol to navegador.',
+'notacceptable' => 'El sirvidor de la wiki nun pue suplir los datos nun formatu llexible pol to navegador.',
 
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Usuariu anónimu|Usuarios anónimos}} de {{SITENAME}}',
@@ -2723,14 +2707,6 @@ Probablemente tea causao por un enllaz a un sitiu esternu de la llista prieta.',
 'spambot_username'    => 'Llimpieza de spam de MediaWiki',
 'spam_reverting'      => 'Revirtiendo a la cabera versión que nun contién enllaces a $1',
 'spam_blanking'       => 'Toles revisiones teníen enllaces a $1; dexando en blanco',
-
-# Info page
-'infosubtitle'   => 'Información de la páxina',
-'numedits'       => "Númberu d'ediciones (páxina): $1",
-'numtalkedits'   => "Númberu d'ediciones (páxina d'alderique): $1",
-'numwatchers'    => "Númberu d'usuarios vixilando: $1",
-'numauthors'     => "Númberu d'autores distintos (páxina): $1",
-'numtalkauthors' => "Númberu d'autores distintos (páxina d'alderique): $1",
 
 # Patrolling
 'markaspatrolleddiff'                 => 'Marcar como supervisada',
@@ -2774,6 +2750,7 @@ Al executalu pues comprometer el to sistema.",
 'widthheightpage'        => '$1×$2, $3 {{PLURAL:$3|páxina|páxines}}',
 'file-info'              => "tamañu d'archivu: $1, triba MIME: $2",
 'file-info-size'         => "$1 × $2 píxeles, tamañu d'archivu: $3, triba MIME: $4",
+'file-info-size-pages'   => '$1 × $2 pixels, tamañu del ficheru: $3, triba MIME: $4, $5 {{PLURAL:$5|páxina|páxines}}',
 'file-nohires'           => '<small>Nun ta disponible con mayor resolución.</small>',
 'svg-long-desc'          => "archivu SVG, $1 × $2 píxeles nominales, tamañu d'archivu: $3",
 'show-big-image'         => 'Resolución completa',
@@ -3004,6 +2981,9 @@ Los demás tarán anubríos de mou predetermináu.
 
 # EXIF attributes
 'exif-compression-1' => 'Non comprimida',
+'exif-compression-2' => 'CCITT Grupu 3 codificación Huffman RLE con Modificación 1-Dimensional',
+'exif-compression-3' => 'Codificación de fax CCITT Grupu 3',
+'exif-compression-4' => 'Codificación de fax CCITT Grupu 4',
 
 'exif-copyrighted-true'  => "Con drechos d'autor",
 'exif-copyrighted-false' => 'Dominiu públicu',

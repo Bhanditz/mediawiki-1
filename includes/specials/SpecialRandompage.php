@@ -126,15 +126,7 @@ class RandomPage extends SpecialPage {
 	}
 
 	protected function getQueryInfo( $randstr ) {
-		global $wgExtraRandompageSQL;
 		$redirect = $this->isRedirect() ? 1 : 0;
-
-		if ( $wgExtraRandompageSQL ) {
-			$this->extra[] = $wgExtraRandompageSQL;
-		}
-		if ( $this->addExtraSQL() ) {
-			$this->extra[] = $this->addExtraSQL();
-		}
 
 		return array(
 			'tables' => array( 'page' ),
@@ -167,13 +159,5 @@ class RandomPage extends SpecialPage {
 		);
 
 		return $dbr->fetchObject( $res );
-	}
-
-	/* an alternative to $wgExtraRandompageSQL so subclasses
-	 * can add their own SQL by overriding this function
-	 * @deprecated, append to $this->extra instead
-	 */
-	public function addExtraSQL() {
-		return '';
 	}
 }

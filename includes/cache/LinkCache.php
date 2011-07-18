@@ -34,11 +34,17 @@ class LinkCache {
 
 	/**
 	 * General accessor to get/set whether SELECT FOR UPDATE should be used
+	 *
+	 * @return bool
 	 */
 	public function forUpdate( $update = null ) {
 		return wfSetVar( $this->mForUpdate, $update );
 	}
 
+	/**
+	 * @param $title
+	 * @return array|int
+	 */
 	public function getGoodLinkID( $title ) {
 		if ( array_key_exists( $title, $this->mGoodLinks ) ) {
 			return $this->mGoodLinks[$title];
@@ -63,6 +69,10 @@ class LinkCache {
 		}
 	}
 
+	/**
+	 * @param $title
+	 * @return bool
+	 */
 	public function isBadLink( $title ) {
 		return array_key_exists( $title, $this->mBadLinks );
 	}
@@ -85,6 +95,9 @@ class LinkCache {
 			'revision' => intval( $revision ) );
 	}
 
+	/**
+	 * @param $title Title
+	 */
 	public function addBadLinkObj( $title ) {
 		$dbkey = $title->getPrefixedDbKey();
 		if ( !$this->isBadLink( $dbkey ) ) {
@@ -96,6 +109,9 @@ class LinkCache {
 		unset( $this->mBadLinks[$title] );
 	}
 
+	/**
+	 * @param $title Title
+	 */
 	public function clearLink( $title ) {
 		$dbkey = $title->getPrefixedDbKey();
 		if( isset($this->mBadLinks[$dbkey]) ) {

@@ -108,15 +108,6 @@ $messages = array(
 'index-category'                 => 'Indizierte Seyta',
 'noindex-category'               => 'Neindizierte Seyta',
 
-'mainpagetext'      => "'''MediaWiki wourde erfolgreich installiert.'''",
-'mainpagedocfooter' => 'Hilfe zur Benutzung und Konfiguration der Wiki-Software fendest du eim [http://meta.wikimedia.org/wiki/Help:Contents Benutzerhandbichl].
-
-== Stoarthilfa ==
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Liste der Konfigurationsvariablen]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki-FAQ]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Mailingliste neuer MediaWiki-Versionen]',
-
 'about'         => 'Ieber',
 'article'       => 'Seyte',
 'newwindow'     => '(wird ei annem neua Fanster geöffnet)',
@@ -292,7 +283,6 @@ Fier Iebersetzunga ziehe bitte ei Betracht, diese eim [http://translatewiki.net/
 'cascadeprotected'     => 'Diese Seyte ies zur Beoarbeetung gesperrt. Se ies ei de {{PLURAL:$1|folgende Seyte|folgenda Seyta}} eengebunda, de mittels dar Kaskadensperroption geschietzt {{PLURAL:$1|ies|sein}}:
 $2',
 'namespaceprotected'   => "Du host kenne Berechtigung, de Seyte eim '''$1'''-Noamensraum zu beorbeeta.",
-'customcssjsprotected' => 'Du biest ne berechtigt, diese Seyte zu beoarbeeta, do se zu dann persenlicha Eenstellunga annes andern Benutzers gehiert.',
 'ns-specialprotected'  => 'Spezialseyta kinna nicht beoarbeet warn.',
 'titleprotected'       => "Enne Seyte miet dam della Noama koan nicht oageläat warn.
 De Sperre wurde durch [[User:$1|$1]] miet der Begrindung ''„$2“'' eigerichtet.",
@@ -340,7 +330,7 @@ Vergiss nä, denne [[Special:Preferences|{{SITENAME}}-Eistellunga]] oazupoassa.'
 'loginsuccess'               => 'Du biest jitz ols „$1“ bei {{SITENAME}} oagemeldet.',
 'nosuchuser'                 => 'Dar Nutzernoame „$1“ existiert ne.
 Ieberpriefe de Schreibweise (Gruß-/Kleenschreibung beachta) oder [[Special:UserLogin/signup|melde diech ols neuer Benutzer oa]].',
-'nosuchusershort'            => 'Dar Nutzernoame „<nowiki>$1</nowiki>“ existiert ne. Bitte ieberpriefe de Schreibweise.',
+'nosuchusershort'            => 'Dar Nutzernoame „$1“ existiert ne. Bitte ieberpriefe de Schreibweise.',
 'nouserspecified'            => 'Bitte gieb enn Benutzernoamen oa.',
 'wrongpassword'              => 'Doas Passwurt ies foalsch (oder fehlt). Bitte versuche is erneut.',
 'wrongpasswordempty'         => 'Is wurde kei Poaßwurt eigegahn. Bitte versuchs nuch amool.',
@@ -479,9 +469,9 @@ Du koast diesen Tittel uffa andern Seyta [[Special:Search/{{PAGENAME}}|sucha]],
 'noarticletext-nopermission'       => 'Diese Seyte enthält momentan noo kenn Text.
 Du koast diesen Tittel uff dann andern Seyta [[Special:Search/{{PAGENAME}}|sicha]]
 oder ei dann zugehieriga <span class="plainlinks">[{{fullurl:{{#special:Log}}|page={{FULLPAGENAMEE}}}} Logbichern sicha].</span>',
-'userpage-userdoesnotexist'        => 'Doas Nutzerkonto „$1“ ies ne vurhanda. Bitte priefe, ob du diese Seyte wirklich erstalla/beoarbeeta wielst.',
+'userpage-userdoesnotexist'        => 'Doas Nutzerkonto „<nowiki>$1</nowiki>“ ies ne vurhanda. Bitte priefe, ob du diese Seyte wirklich erstalla/beoarbeeta wielst.',
 'userpage-userdoesnotexist-view'   => 'Nutzerkonto „$1“ existiert ne.',
-'clearyourcache'                   => "'''Hinweis - Laare noach damm Speichern dann Browser-Cache, im de Änderungen sahn zu kinna:''' '''Mozilla/Firefox/Safari:''' ''Shift'' gedrückt halten und uff ''Aktualisiera'' klicka oder alternativ entweder ''Strg-F5'' oder ''Strg-R'' (''Befehlstaste-R'' bei Macintosh) dricka; '''Konqueror: '''Uff ''Aktualisiera'' klicka oder ''F5'' dricka; '''Opera:''' Cache under ''Extras → Eenstellunga'' laara; '''Internet Explorer:''' ''Strg-F5'' dricka oder ''Strg'' gedrickt halta und dabei ''Aktualisiera'' oaklicka.",
+'clearyourcache'                   => "'''Hinweis - Laare noach damm Speichern dann Browser-Cache, im de Änderungen sahn zu kinna:''' '''Mozilla/Firefox/Safari:''' ''Shift'' gedrückt halten und uff ''Aktualisiera'' klicka oder alternativ entweder ''Strg-F5'' oder ''Strg-R'' (''Befehlstaste-R'' bei Mac) dricka; '''Konqueror: '''Uff ''Aktualisiera'' klicka oder ''F5'' dricka; '''Opera:''' Cache under ''Extras → Eenstellunga'' laara; '''Internet Explorer:''' ''Strg-F5'' dricka oder ''Strg'' gedrickt halta und dabei ''Aktualisiera'' oaklicka.",
 'usercssyoucanpreview'             => "'''Tipp:''' Benutze dann Vurschau-Button, im dei neues CSS vur damm Speichern zu testa.",
 'userjsyoucanpreview'              => "'''Tipp:''' Benutze dann Vurschau-Button, im dei neues JS vur damm Speichern zu testa.",
 'usercsspreview'                   => "== Vurschau Dennes Nutzer-CSS ==
@@ -1020,10 +1010,6 @@ Bitte priefe, ob du doas Bild ei voller Ufflesung vorliegen host und loade diese
 'upload-options'             => 'Huchloade-Optionen',
 'watchthisupload'            => 'Diese Datei beobachta',
 'filewasdeleted'             => 'Anne Datei miet diesem Noama wurde schunnt eemoll huchgeloada und zwischenzeitlich wieder geläscht. Bitte priefe zuerst dann Eintrag eim $1, bevor du de Datei wirklich speicherst.',
-'upload-wasdeleted'          => "'''Ochtiche: Du lädst anne Datei huch, de bereits frieher geläscht wurde.'''
-
-Bitte priefe sorgfältig, ob doas erneute Huchloada dann Richtlinien entspricht.
-Zu denner Information folgt doas Läsch-Logbuch miet dar Begrindung fier de vorhergehende Läschung:",
 'filename-bad-prefix'        => "Dar Dateinoame beginnt miet '''„$1“'''. Dies ies eim allgemeena dar vu a'r Digitalkamera vorgegebene Dateinoame und daher ne sehr aussagekräftig.
 Bitte gieb dar Datei an'n Noama, dar dann Inhalt besser beschreibt.",
 'upload-success-subj'        => 'Erfolgreich huchgeloada',
@@ -1082,7 +1068,6 @@ De folgende Liste zeigt ock {{PLURAL:$1|dann erschta Link|de erschta $1 Links}} 
 Anne [[Special:WhatLinksHere/$2|vullständige Liste]] ies verfiegbar.',
 'nolinkstoimage'            => 'Kenne Seyte nutzt diese Datei.',
 'morelinkstoimage'          => '[[Special:WhatLinksHere/$1|Weitere Links]] fier diese Datei.',
-'redirectstofile'           => 'De {{PLURAL:$1|folgende Datei leitet|folgenda $1 Dateien leiten}} uff diese Datei wetter:',
 'duplicatesoffile'          => 'De {{PLURAL:$1|folgende Datei ies a Duplikat|folgenda $1 Dateien sein Duplikate}} dieser Datei ([[Special:FileDuplicateSearch/$2|wettere Details]]):',
 'sharedupload'              => 'Diese Datei stommt ous $1 on dorf voo andern Projekta verwendet waan.',
 'filepage-nofile-link'      => 'Is existiert kenne Datei mit diesem Noama, oaber du koast [$1 diese Datei huchloada].',
@@ -1332,14 +1317,12 @@ Ols Obsender werd de E-Mail-Adtresse aus denn [[Special:Preferences|Einstellunga
 'watchlistanontext'    => 'Du mußt diech $1, im denne Beobachtungsliste zu sahn oder Einträge uff ihr zu beoarbeeta.',
 'watchnologin'         => 'Du best ne oagemeldet',
 'watchnologintext'     => 'Du mußt [[Special:UserLogin|oagemeldet]] sei, im denne Beobachtungsliste zu beoarbeeta.',
-'addedwatch'           => 'Zerr Beobachtungsliste hinzugefiegt',
 'addedwatchtext'       => 'De Seyte „<nowiki>$1</nowiki>“ wurde zu denner [[Special:Watchlist|Beobachtungsliste]] hinzugefiegt.
 
 Spätere Änneronga oa dieser Seyte on dar dazugeheeriga Dischkursseite waan durt gelistet on
 ei dar Iebersicht dar [[Special:RecentChanges|letzta Änneronga]] ei Fettschrift dargestellt.
 
 Wenn du de Seyte wieder voo denner Beobachtungsliste entferna mechtest, klicke uff dar jeweiligen Seyte uff „nee meh beobachta“.',
-'removedwatch'         => 'Vun dar Beobachtungsliste entfernt',
 'removedwatchtext'     => 'De Seyte „[[:$1]]“ wurde vun denner [[Special:Watchlist|Beobachtungsliste]] entfernt.',
 'watch'                => 'Beobachta',
 'watchthispage'        => 'Seyte beobachta',
@@ -1389,7 +1372,7 @@ Is waan sulange kenne wettera Benachrichtigungs-E-Mails gesendet, bis du de Seyt
              Dei freindliches {{SITENAME}}-Benoachrichtigungssystem
 
 --
-Im de Einstellunga denner Beobachtungsliste oazupoaßa, besiche: {{fullurl:{{#special:Watchlist}}/edit}}
+Im de Einstellunga denner Beobachtungsliste oazupoaßa, besiche: {{fullurl:{{#special:EditWatchlist}}}}
 
 Rickmeldungen und wettere Helfe: {{fullurl:{{MediaWiki:Helppage}}}}',
 
@@ -1406,7 +1389,7 @@ Rickmeldungen und wettere Helfe: {{fullurl:{{MediaWiki:Helppage}}}}',
 'confirmdeletetext'      => 'Du best dabei, eene Seyte miet olla zugeheeriga ältera Versiona zu läscha. Bite bestätige dazu, dass du dir dar Konsequenza bewusst best, on dass du ei Iebereinstimmung miet dan [[{{MediaWiki:Policy-url}}|Richtlinia]] handelst.',
 'actioncomplete'         => 'Aksjonn beendet',
 'actionfailed'           => 'Aksjonn fahlgeschlaga',
-'deletedtext'            => '„<nowiki>$1</nowiki>“ wurde geläscht. Eim $2 findest du eene Liste dar letzta Läschunga.',
+'deletedtext'            => '„$1“ wurde geläscht. Eim $2 findest du eene Liste dar letzta Läschunga.',
 'deletedarticle'         => 'hoot „[[$1]]“ geläscht',
 'suppressedarticle'      => 'veränderte de Sechtbarkeet vu „[[$1]]“',
 'dellogpage'             => 'Läsch-Logbuch',
@@ -1869,9 +1852,7 @@ Olle Transwiki-Import-Aksjonna waan eim [[Special:Log/import|Import-Logbuch]] pr
 'tooltip-undo'                    => 'Moacht lediglich diese eene Änderung rieckgängig on zeigt doas Resultat ei dar Vorschau oa, damit ei dar Zusommafassungszeile eene Begründung angegeba waan koan.',
 
 # Metadata
-'nodublincore'      => 'Dublin-Core-RDF-Metadaten sein fier diesen Server deaktiviert.',
-'nocreativecommons' => 'Creative-Commons-RDF-Metadaten sein fier diesen Server deaktiviert.',
-'notacceptable'     => 'Dar Wiki-Server koan de Daten ne fier dei Ausgabegerät uffbereita.',
+'notacceptable' => 'Dar Wiki-Server koan de Daten ne fier dei Ausgabegerät uffbereita.',
 
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Anonymer Nutzer|Anonyme Nutzer}} uff {{SITENAME}}',
@@ -1887,14 +1868,6 @@ Olle Transwiki-Import-Aksjonna waan eim [[Special:Log/import|Import-Logbuch]] pr
 'spamprotectiontext'  => "De Seyte, de du speichern wielst, wurde vum Spamschutzfilter blockiert. Doas leit woahrscheinlich oa an'm Link uff anne externe Seyte.",
 'spamprotectionmatch' => "'''Dar folgende Text wurde vum Spamfilter gefunda: ''$1'''''",
 'spam_blanking'       => 'Olle Versionen enthielta Links zu $1, bereinigt.',
-
-# Info page
-'infosubtitle'   => 'Seytainformation',
-'numedits'       => 'Oazoahl dar Seyta änderunga: $1',
-'numtalkedits'   => 'Oazoahl dar Dischkuränderunga: $1',
-'numwatchers'    => 'Oazoahl dar Beobachter: $1',
-'numauthors'     => 'Oazoahl dar Autoren: $1',
-'numtalkauthors' => 'Oazoahl dar Dischkurteelnahmer: $1',
 
 # Patrolling
 'markaspatrolleddiff'                 => 'Ols kontrolliert markiern',
@@ -2292,5 +2265,18 @@ De Eengabe muuß ohne dann Zusatz „{{ns:file}}:“ erfolga.',
 'htmlform-submit'              => 'Ieberträän',
 'htmlform-reset'               => 'Änderunga rickgängig macha',
 'htmlform-selectorother-other' => 'Ondere',
+
+# Add categories per AJAX
+'ajax-add-category'            => 'Kategorie hinzufiega',
+'ajax-add-category-submit'     => 'Hinzufügen',
+'ajax-confirm-title'           => 'Aksjonn bestätiga',
+'ajax-confirm-save'            => 'Speichern',
+'ajax-add-category-summary'    => 'Kategorie „$1“ hinzufiega',
+'ajax-remove-category-summary' => 'Kategorie „$1“ entferna',
+'ajax-confirm-actionsummary'   => 'Auszufiehrende Aksjonn:',
+'ajax-error-title'             => 'Fahler',
+'ajax-error-dismiss'           => 'OK',
+'ajax-remove-category-error'   => 'Is woar ne meeglich, de Kategorie zu entferna.
+Dies passiert normalerweise, wenn de Kategorie ieber anne Vurloage eingebunda ies.',
 
 );

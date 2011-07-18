@@ -5,22 +5,23 @@
  * configuration, and optionally loads Setup.php depending on whether
  * MW_NO_SETUP is defined.
  *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
  * @file
  */
-
-/**
- * Detect compiled mode by looking for a function that only exists if compiled 
- * in. Note that we can't use function_exists(), because it is terribly broken 
- * under HipHop due to the "volatile" feature.
- */
-function wfDetectCompiledMode() {
-	try {
-		$r = new ReflectionFunction( 'wfHipHopCompilerVersion' );
-	} catch ( ReflectionException $e ) {
-		$r = false;
-	}
-	return $r !== false;
-}
 
 # Protect against register_globals
 # This must be done before any globals are set by the code
@@ -56,6 +57,11 @@ if ( ini_get( 'register_globals' ) ) {
 	}
 }
 
+# bug 15461: Make IE8 turn off content sniffing. Everbody else should ignore this
+# We're adding it here so that it's *always* set, even for alternate entry
+# points and when $wgOut gets disabled or overridden.
+header( 'X-Content-Type-Options: nosniff' );
+
 $wgRequestTime = microtime(true);
 # getrusage() does not exist on the Microsoft Windows platforms, catching this
 if ( function_exists ( 'getrusage' ) ) {
@@ -81,26 +87,26 @@ if ( $IP === false ) {
 	$IP = realpath( '.' );
 }
 
-if ( wfDetectCompiledMode() ) {
+if ( isset( $_SERVER['MW_COMPILED'] ) ) {
 	define( 'MW_COMPILED', 1 );
-}
-
-if ( !defined( 'MW_COMPILED' ) ) {
+} else {
 	# Get MWInit class
 	require_once( "$IP/includes/Init.php" );
 
 	# Start the autoloader, so that extensions can derive classes from core files
 	require_once( "$IP/includes/AutoLoader.php" );
 
-	# Start profiler
-	# FIXME: rewrite wfProfileIn/wfProfileOut so that they can work in compiled mode
+	# Load the profiler
 	require_once( "$IP/includes/profiler/Profiler.php" );
-	if ( file_exists( "$IP/StartProfiler.php" ) ) {
-		require_once( "$IP/StartProfiler.php" );
-	}
 
 	# Load up some global defines.
 	require_once( "$IP/includes/Defines.php" );
+}
+
+# Start the profiler
+$wgProfiler = array();
+if ( file_exists( "$IP/StartProfiler.php" ) ) {
+	require( "$IP/StartProfiler.php" );
 }
 
 wfProfileIn( 'WebStart.php-conf' );

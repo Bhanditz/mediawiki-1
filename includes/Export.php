@@ -438,11 +438,12 @@ class XmlDumpWriter {
 	/**
 	 * Closes the output stream with the closing root element.
 	 * Call when finished dumping things.
+	 *
+	 * @return string
 	 */
 	function closeStream() {
 		return "</mediawiki>\n";
 	}
-
 
 	/**
 	 * Opens a <page> section on the output stream, with data
@@ -603,8 +604,8 @@ class XmlDumpWriter {
 	 */
 	function writeUploads( $row, $dumpContents = false ) {
 		if ( $row->page_namespace == NS_IMAGE ) {
-			$img = wfFindFile( $row->page_title );
-			if ( $img ) {
+			$img = wfLocalFile( $row->page_title );
+			if ( $img && $img->exists() ) {
 				$out = '';
 				foreach ( array_reverse( $img->getHistory() ) as $ver ) {
 					$out .= $this->writeUpload( $ver, $dumpContents );
@@ -616,6 +617,11 @@ class XmlDumpWriter {
 		return '';
 	}
 
+	/**
+	 * @param $file File
+	 * @param $dumpContents bool
+	 * @return string
+	 */
 	function writeUpload( $file, $dumpContents = false ) {
 		if ( $file->isOld() ) {
 			$archiveName = "      " . 

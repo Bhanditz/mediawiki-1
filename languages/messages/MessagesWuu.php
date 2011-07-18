@@ -144,14 +144,6 @@ $messages = array(
 'index-category'                 => '索引拉许个页面',
 'noindex-category'               => '弗曾索引拉许个页面',
 
-'mainpagetext'      => "'''MediaWiki安装成功哉！'''",
-'mainpagedocfooter' => '请访问[http://meta.wikimedia.org/wiki/Help:Contents 用户手册]以获得使用此维基软件个信息！
-
-== 入门 ==
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings MediaWiki 配置设置列表]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki 常见问题解答]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki 发布邮件列表]',
-
 'about'         => '关于',
 'article'       => '内容页面',
 'newwindow'     => '（垃拉新窗口里向开开来）',
@@ -202,7 +194,6 @@ $messages = array(
 'history'           => '页面档案',
 'history_short'     => '历史',
 'updatedmarker'     => '上趟访问以来个更新',
-'info_short'        => '信息',
 'printableversion'  => '打印版',
 'permalink'         => '永久链接',
 'print'             => '打印',
@@ -382,7 +373,6 @@ $1',
 'cascadeprotected'     => '箇只页面拨保护拉许，因为箇只页面拨下底已经标注“联锁保护”个{{PLURAL:$1|一只|多只}}被保护页面包含：
 $2',
 'namespaceprotected'   => "侬无没编辑'''$1'''名字空间里向页面个权限。",
-'customcssjsprotected' => '侬无权编辑箇只页面，因为渠包含其他用户个个人设定。',
 'ns-specialprotected'  => '特殊页编辑是弗来三个。',
 'titleprotected'       => "箇只标题已经拨[[User:$1|$1]]保护以防止创建。理由是''$2''。",
 
@@ -430,7 +420,7 @@ $2',
 'loginsuccesstitle'          => '登录成功',
 'loginsuccess'               => "'''侬现在以 \"\$1\" 个身份登录到{{SITENAME}}。 '''",
 'nosuchuser'                 => '寻弗着用户“$1”。用户名是大小写敏感外加区分繁简体个。请检查拼写，或者[[Special:UserLogin/signup|开只新账户]]。',
-'nosuchusershort'            => '无没叫“<nowiki>$1</nowiki>”个用户。请检查侬个输入。',
+'nosuchusershort'            => '无没叫“$1”个用户。请检查侬个输入。',
 'nouserspecified'            => '侬必须选个用户名。',
 'login-userblocked'          => '箇个用户拨封锁拉许。弗允许登录。',
 'wrongpassword'              => '密码弗对。请侬再试试看。',
@@ -575,12 +565,12 @@ $2',
 'noarticletext'                    => '箇只页面目前呒没内容。侬可以垃拉其他页面高头[[Special:Search/{{PAGENAME}}|搜索此页标题]]、<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} 搜索相关日志]或[{{fullurl:{{FULLPAGENAME}}|action=edit}} 编辑此页]。</span>',
 'noarticletext-nopermission'       => '箇只页面目前呒没内容，侬可以垃拉其它页[[Special:Search/{{PAGENAME}}|搜索此页标题]]，
 或<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} 搜索有关日志]</span>。',
-'userpage-userdoesnotexist'        => '用户账户“$1”弗曾创建。请垃拉创建／编辑迭个页面前头先检查一记。',
+'userpage-userdoesnotexist'        => '用户账户“<nowiki>$1</nowiki>”弗曾创建。请垃拉创建／编辑迭个页面前头先检查一记。',
 'userpage-userdoesnotexist-view'   => '用户账户“$1”弗曾创建。',
 'blocked-notice-logextract'        => '箇位用户箇歇畀封锁垃许。
 下头有最近个封锁纪录以供参考：',
 'clearyourcache'                   => "'''注意：垃拉保存之后，侬必须清除浏览器个缓存再好看见所作出个改变。'''
-'''Mozilla / Firefox / Safari'''：揿牢''Shift''再点击''刷新''，或揿''Ctrl-F5''或''Ctrl-R''（垃拉Macintosh上揿 ''Command-R''）；
+'''Mozilla / Firefox / Safari'''：揿牢''Shift''再点击''刷新''，或揿''Ctrl-F5''或''Ctrl-R''（垃拉Mac上揿 ''Command-R''）；
 '''Konqueror'''：只需点击''刷新''或揿''F5''；
 '''Opera'''：垃拉 ''工具→首选项''里向完整清除渠拉个缓存，或揿''Alt-F5''；
 '''Internet Explorer'''：揿牢''Ctrl''再点击''刷新''，或揿''Ctrl-F5''。",
@@ -1243,10 +1233,8 @@ $1",
 'mywatchlist'       => '我个监控列表',
 'nowatchlist'       => '倷个监控列表是空个。',
 'watchnologin'      => '朆登录',
-'addedwatch'        => '加到监控列表哉',
 'addedwatchtext'    => "该个页面 \"[[:\$1]]\" 已经加到侬个[[Special:Watchlist|监控列表]]哉。
 将来对该页面个改动搭仔搭界个讲张页个改动会列表垃该面，并且页面会垃拉[[Special:RecentChanges|近段辰光个改变列表]]里向显示成功'''黑体'''，实梗好外加便当拿渠拣出来。假使侬歇仔两日又想拿箇个页面登侬个监控列表里向拿脱个说法，垃侧条里向点击“弗要监控。",
-'removedwatch'      => '从监控列表里向拿脱哉',
 'removedwatchtext'  => '页面[[:$1]]已经从[[Special:Watchlist|侬个监控页面]]里向拿脱。',
 'watch'             => '监控',
 'watchthispage'     => '监控该只页面',
@@ -1272,7 +1260,7 @@ $1",
 'confirmdeletetext'     => '侬即将删除一只页面或图像以及其历史。
 请确定侬要进行此项操作，并且了解其后果，同时侬个行为符合[[{{MediaWiki:Policy-url}}|the policy]]。',
 'actioncomplete'        => '操作完成哉',
-'deletedtext'           => '"<nowiki>$1</nowiki>"已经删除。最近删除记录请参见$2。',
+'deletedtext'           => '"$1"已经删除。最近删除记录请参见$2。',
 'deletedarticle'        => '"[[$1]]" 已经删脱哉',
 'dellogpage'            => '删除记录',
 'deletionlog'           => '删除记录',
@@ -1296,7 +1284,7 @@ $1",
 'protectexpiry'               => '到期：',
 'protect_expiry_invalid'      => '到期辰光无效。',
 'protect_expiry_old'          => '到期辰光已经过去哉。',
-'protect-text'                => '侬好垃拉此地浏览搭仔修改页面<strong><nowiki>$1</nowiki></strong>个保护级别。',
+'protect-text'                => '侬好垃拉此地浏览搭仔修改页面<strong>$1</strong>个保护级别。',
 'protect-locked-access'       => '侬个账户权限弗好修改保护级别。
 下底是<strong>$1</strong>箇歇个保护级别：',
 'protect-cascadeon'           => '下底个{{PLURAL:$1|一只|多只}}页面包含 本页面个同时，启动了连锁保护，因此本页面目前也拨保护拉许，弗好编辑。侬可以设置本页面个保护级别，但箇个并弗会对连锁保护有所影响。',

@@ -54,6 +54,8 @@ abstract class ApiQueryBase extends ApiBase {
 	 *
 	 * Public caching will only be allowed if *all* the modules that supply
 	 * data for a given request return a cache mode of public.
+	 *
+	 * @return string
 	 */
 	public function getCacheMode( $params ) {
 		return 'private';
@@ -109,7 +111,7 @@ abstract class ApiQueryBase extends ApiBase {
 
 	/**
 	 * Add a set of fields to select to the internal array
-	 * @param $value mixed Field name or array of field names
+	 * @param $value array|string Field name or array of field names
 	 */
 	protected function addFields( $value ) {
 		if ( is_array( $value ) ) {
@@ -121,7 +123,7 @@ abstract class ApiQueryBase extends ApiBase {
 
 	/**
 	 * Same as addFields(), but add the fields only if a condition is met
-	 * @param $value mixed See addFields()
+	 * @param $value array|string See addFields()
 	 * @param $condition bool If false, do nothing
 	 * @return bool $condition
 	 */
@@ -350,14 +352,15 @@ abstract class ApiQueryBase extends ApiBase {
 	protected function setContinueEnumParameter( $paramName, $paramValue ) {
 		$paramName = $this->encodeParamName( $paramName );
 		$msg = array( $paramName => $paramValue );
-		$this->getResult()->disableSizeCheck();
-		$this->getResult()->addValue( 'query-continue', $this->getModuleName(), $msg );
-		$this->getResult()->enableSizeCheck();
+		$result = $this->getResult();
+		$result->disableSizeCheck();
+		$result->addValue( 'query-continue', $this->getModuleName(), $msg );
+		$result->enableSizeCheck();
 	}
 
 	/**
 	 * Get the Query database connection (read-only)
-	 * @return Database
+	 * @return DatabaseBase
 	 */
 	protected function getDB() {
 		if ( is_null( $this->mDb ) ) {
@@ -511,6 +514,25 @@ abstract class ApiQueryBase extends ApiBase {
 		}
 	}
 
+	/**
+	 * @param $hash string
+	 * @return bool
+	 */
+	public function validateSha1Hash( $hash ) {
+		return preg_match( '/[a-fA-F0-9]{40}/', $hash );
+	}
+
+	/**
+	 * @param $hash string
+	 * @return bool
+	 */
+	public function validateSha1Base36Hash( $hash ) {
+		return preg_match( '/[a-zA-Z0-9]{31}/', $hash );
+	}
+
+	/**
+	 * @return array
+	 */
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'invalidtitle', 'title' ),

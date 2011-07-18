@@ -90,6 +90,8 @@ class HTMLCacheUpdate
 	 * Partition the current range given by $this->mStart and $this->mEnd,
 	 * using a pre-calculated title array which gives the links in that range.
 	 * Queue the resulting jobs.
+	 *
+	 * @param $titleArray array
 	 */
 	protected function insertJobsFromTitles( $titleArray ) {
 		# We make subpartitions in the sense that the start of the first job
@@ -151,15 +153,6 @@ class HTMLCacheUpdate
 			$jobs[] = new HTMLCacheUpdateJob( $this->mTitle, $params );
 		}
 		Job::batchInsert( $jobs );
-	}
-
-	/**
-	 * Invalidate a range of pages, right now
-	 * @deprecated
-	 */
-	public function invalidate( $startId = false, $endId = false ) {
-		$titleArray = $this->mCache->getLinks( $this->mTable, $startId, $endId );
-		$this->invalidateTitles( $titleArray );
 	}
 
 	/**

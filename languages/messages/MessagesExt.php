@@ -137,15 +137,6 @@ $messages = array(
 'category-file-count-limited'    => '{{PLURAL:$1|El siguienti archivu está|Los siguientis $1 archivus están}} nesta categoria.',
 'listingcontinuesabbrev'         => 'acont.',
 
-'mainpagetext'      => "'''MeyaGüiqui s'á istalau satihatoriamenti.'''",
-'mainpagedocfooter' => "Consurta la [http://meta.wikimedia.org/wiki/Help:Contents User's Guide] pa sabel mas al tentu el huncionamientu el software güiqui.
-
-== Esminciandu ==
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
-
 'about'         => 'Al tentu',
 'article'       => 'Artículu',
 'newwindow'     => "(s'abrirá nuna nueva ventana)",
@@ -195,7 +186,6 @@ $messages = array(
 'history'           => 'Estorial',
 'history_short'     => 'Estorial',
 'updatedmarker'     => 'atualizau dendi la mi úrtima vesita',
-'info_short'        => 'Enjolmación',
 'printableversion'  => 'Velsión pa imprental',
 'permalink'         => 'Atiju remanenti',
 'print'             => 'Imprental',
@@ -377,7 +367,6 @@ Pa traucil, consiera gastal [http://translatewiki.net/wiki/Main_Page?setlang=en 
 'cascadeprotected'     => 'Esta páhina s\'alcuentra protehia ebiu a que horma parti e {{PLURAL:$1|la siguienti páhina|las siguientis páhinas}}, qu\'están protehias cola oción "proteción en cascá" ativá:
 $2',
 'namespaceprotected'   => "Nu tiinis premisu pa eital páhinas nel \"espaciu e nombris\" '''\$1'''.",
-'customcssjsprotected' => "Nu tiinis premisu pa eital esta páhina ebiu a que contieni la configuración presonal d'otru usuáriu.",
 'ns-specialprotected'  => 'Nu se puein eital las páhinas el {{ns:special}} "espaciu e nombris".',
 'titleprotected'       => "Esti entítulu á siu atarugau pol [[User:$1|$1]].
 La razón es la siguienti: ''$2''.",
@@ -426,7 +415,7 @@ Alcuerdati de chambal las tus [[Special:Preferences|preferéncias de {{SITENAME}
 'loginsuccess'               => "'''Acabihas d'entral en {{SITENAME}} con el nombri \"\$1\".'''",
 'nosuchuser'                 => 'Nu dessisti dengún usuáriu anombrau "$1".
 Compreba que lo aigas escritu bien, u [[Special:UserLogin/signup|cria una cuenta nueva]].',
-'nosuchusershort'            => 'Nu ai dengún usuáriu llamau "<nowiki>$1</nowiki>". Compreba qu\'esté bien escritu.',
+'nosuchusershort'            => 'Nu ai dengún usuáriu llamau "$1". Compreba qu\'esté bien escritu.',
 'nouserspecified'            => "Ebis escribil un nombri d'usuáriu.",
 'wrongpassword'              => 'La consínia escrebia nu es correta. Pol favol, preba otra vezi.',
 'wrongpasswordempty'         => 'As ehau en brancu la consínia. Pol favol, preba otra vezi.',
@@ -566,8 +555,8 @@ Si nu quieis crial esti artículu, solu tiinis que pursal nel botón \"'''atrás
 Pueis [[Special:Search/{{PAGENAME}}|landeal el entítulu del artículu]] en otras páhinas,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} search the related logs],
 u [{{fullurl:{{FULLPAGENAME}}|action=edit}} eital ésta]</span>.',
-'userpage-userdoesnotexist'        => 'La cuenta d\'usuáriu "$1" nu está rustria. Pol favol, compreba que rialmenti quieis crial/eital esta páhina.',
-'clearyourcache'                   => "'''Nota:''' Aluspués d'emburacal el archivu, ebi gorvel a cargal la página pa vel los chambus. '''Mozilla / Firefox / Safari:''' Pursa la tecra ''Shift'' mentris das a ''Recargal'', u pursa ''Ctrl-F5'' u ''Ctrl-R'' (''Command-R'' en Macintosh);
+'userpage-userdoesnotexist'        => 'La cuenta d\'usuáriu "<nowiki>$1</nowiki>" nu está rustria. Pol favol, compreba que rialmenti quieis crial/eital esta páhina.',
+'clearyourcache'                   => "'''Nota:''' Aluspués d'emburacal el archivu, ebi gorvel a cargal la página pa vel los chambus. '''Mozilla / Firefox / Safari:''' Pursa la tecra ''Shift'' mentris das a ''Recargal'', u pursa ''Ctrl-F5'' u ''Ctrl-R'' (''Command-R'' en Mac);
 '''Konqueror:''' Pursa ''F5'' u ''Recargal'';
 '''Opera:''' Esborra el caché en ''Herramientas→Preferéncias''.
 '''Internet Explorer:''' Mantén ''Ctrl'' mentris pursas ''Atualizal'', u pursa ''Ctrl-F5''.",
@@ -1121,10 +1110,6 @@ Si acontinas queriendu empuntal el archivu, vai alatrás i escambia el nombri el
 'upload-maxfilesize'          => 'Grandol máisimu el archivu: $1',
 'watchthisupload'             => 'Vegilal esti archivu',
 'filewasdeleted'              => 'Un archivu con el mesmu nombri ya hue empuntau i alogu esborrau. Eberias comprebal el $1 enantis de gorvel a empuntalu.',
-'upload-wasdeleted'           => "'''Avisu: Estás tratandu d´empuntal un archivu que ya hue esborrau.'''
-
-Eberias arreparal en si es convenienti acontinal empuntandu el archivu u nu.
-Velaquí el antigu rustrihu d´esborrau pa esti archivu:",
 'filename-bad-prefix'         => "El nombri del archivu qu'estás empuntandu esmiença pol '''\"\$1\"''', es izil, es un nombri nu descritivu (típicu nombri dau autumaticamenti pol cámaras dehitalis). Pol favol, chamba el nombri del tu archivu.",
 'upload-success-subj'         => 'Empuntu satisfatoriu',
 
@@ -1428,13 +1413,11 @@ La direción email qu'aigas escrebiu enas tus preferéncias apaicirá cumu remit
 'watchlistanontext'    => 'Pa vel u eital las entrás ena tu lista e seguimientu es mestel $1.',
 'watchnologin'         => 'Nu estás rustriu',
 'watchnologintext'     => 'Ebis [[Special:UserLogin|abril la tu cuenta]] pa puel hazel chambus ena tu lista e seguimientu.',
-'addedwatch'           => 'Añiiu a la lista e seguimientu',
 'addedwatchtext'       => "S´á añiiu la páhina \"[[:\$1]]\" a la tu [[Special:Watchlist|lista e seguimientu]].
 Los huturus chambus de la páhina i ena su caraba se muestrarán aquí,
 i el su entítulu apaicirá en '''negrina''' ena [[Special:RecentChanges|lista d´úrtimus chambus]].
 
 Si quieis ehal de vehilal la páhina, pursa sobri \"Ehal de vehilal\".",
-'removedwatch'         => 'Esborrau e la lista e seguimientu',
 'removedwatchtext'     => 'La página "[[:$1]]" á siu esborrá de la tu [[Special:Watchlist|lista de seguimientu]].',
 'watch'                => 'Vegilal',
 'watchthispage'        => 'Vehilal esta páhina',
@@ -1487,7 +1470,7 @@ Nel chascu en que nu vesitis el artículu, nu se te hazrán mas notificacionis. 
 
 --
 Pa hazel chambus ena tu lista e seguimientu, vesita
-{{fullurl:{{#special:Watchlist}}/edit}}
+{{fullurl:{{#special:EditWatchlist}}}}
 
 Ayua la Güiquipeya:
 {{fullurl:{{MediaWiki:Helppage}}}}',
@@ -1506,7 +1489,7 @@ Ayua la Güiquipeya:
 Pol favol, confirma que realmenti quieis hazel esu, qu'entiendis las consecuencias, i que lo hazis dalcuerdu cola
 [[{{MediaWiki:Policy-url}}]].",
 'actioncomplete'         => 'Ación acabihá',
-'deletedtext'            => 'S\'á esborrau "<nowiki>$1</nowiki>" corretamenti.
+'deletedtext'            => 'S\'á esborrau "$1" corretamenti.
 Consurta $2 pa vel los úrtimus esborraus.',
 'deletedarticle'         => 'esborrau "[[$1]]"',
 'dellogpage'             => 'Rustrihu d´esborrau',
@@ -1554,7 +1537,7 @@ tu escrucaol pa cargal otra vezi la páhina i güervi a ententalu.",
 'protectexpiry'               => 'Acabiha:',
 'protect_expiry_invalid'      => 'La fecha e cauciá nu es correta.',
 'protect_expiry_old'          => 'La fecha e cauciá está nel pasau.',
-'protect-text'                => "Aquí pueis vel i chambal el nivel de proteción la páhina '''<nowiki>$1</nowiki>'''.",
+'protect-text'                => "Aquí pueis vel i chambal el nivel de proteción la páhina '''$1'''.",
 'protect-locked-blocked'      => "Nu pueis chambal los nivelis de proteción mentris estés atarugau. Velaquí las ocionis atulais la páhina '''$1''':",
 'protect-locked-dblock'       => "Nu se puein chambal los nivelis de proteción ebiu a un tarugu ativu ena basi e datus.
 Velaquí las ocionis atualis la páhina '''$1''':",
@@ -1962,9 +1945,7 @@ Pol favol, gasta el botón "previsoreal" enantis d\'emburacal.',
 'monobook.js' => '/* Antigu; gasta [[MediaWiki:common.js]] */',
 
 # Metadata
-'nodublincore'      => 'Metadatus RDF Dublin Core desativaus pa esti sirviol.',
-'nocreativecommons' => 'Metadatus RDF Creative Commons desativaus pa esti sirviol.',
-'notacceptable'     => 'El sirviol de la güiqui nu puei chambal los datus a un hormatu leibri pol tu escrucaol.',
+'notacceptable' => 'El sirviol de la güiqui nu puei chambal los datus a un hormatu leibri pol tu escrucaol.',
 
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Ussuáriu anónimu|Ussuárius anónimus}} en {{SITENAME}}',
@@ -1983,14 +1964,6 @@ Pol favol, gasta el botón "previsoreal" enantis d\'emburacal.',
 'spambot_username'    => 'MediaWiki limpia-spam',
 'spam_reverting'      => 'Revirtiendu a la úrtima velsión que nu contenga atihus a $1',
 'spam_blanking'       => 'Tolas revisionis tienin atihus a $1, branqueandu',
-
-# Info page
-'infosubtitle'   => 'Enhormación pala páhina',
-'numedits'       => 'Númeru d´eicionis (artículu): $1',
-'numtalkedits'   => 'Númeru d´eicionis (páhina e caraba): $1',
-'numwatchers'    => 'Númeru d´usuárius vehilandu: $1',
-'numauthors'     => 'Númeru d´autoris deferentis (artículu): $1',
-'numtalkauthors' => 'Númeru d´autoris deferentis (páhina e caraba): $1',
 
 # Patrolling
 'markaspatrolleddiff'                 => 'Aseñalal cumu patrullau',

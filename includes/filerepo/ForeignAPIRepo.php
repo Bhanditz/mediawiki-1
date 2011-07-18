@@ -75,6 +75,8 @@ class ForeignAPIRepo extends FileRepo {
 	/**
 	 * Per docs in FileRepo, this needs to return false if we don't support versioned
 	 * files. Well, we don't.
+	 *
+	 * @return File
 	 */
 	function newFile( $title, $time = false ) {
 		if ( $time ) {
@@ -83,21 +85,30 @@ class ForeignAPIRepo extends FileRepo {
 		return parent::newFile( $title, $time );
 	}
 
-/**
- * No-ops
- */
+	/**
+	 * No-ops
+	 */
+
 	function storeBatch( $triplets, $flags = 0 ) {
 		return false;
 	}
+
 	function storeTemp( $originalName, $srcPath ) {
 		return false;
 	}
+
 	function append( $srcPath, $toAppendPath, $flags = 0 ){
 		return false;
 	}
+
+	function appendFinish( $toAppendPath ){
+		return false;
+	}
+
 	function publishBatch( $triplets, $flags = 0 ) {
 		return false;
 	}
+
 	function deleteBatch( $sourceDestPairs ) {
 		return false;
 	}
@@ -109,7 +120,7 @@ class ForeignAPIRepo extends FileRepo {
 				$results[$k] = true;
 				unset( $files[$k] );
 			} elseif( self::isVirtualUrl( $f ) ) {
-				# TODO! FIXME! We need to be able to handle virtual
+				# @todo FIXME: We need to be able to handle virtual
 				# URLs better, at least when we know they refer to the
 				# same repo.
 				$results[$k] = false;
@@ -216,7 +227,7 @@ class ForeignAPIRepo extends FileRepo {
 		}
 	}
 
-	/*
+	/**
 	 * Return the imageurl from cache if possible
 	 *
 	 * If the url has been requested today, get it from cache
@@ -295,7 +306,7 @@ class ForeignAPIRepo extends FileRepo {
 			}
 		}
 
-		# FIXME: Delete old thumbs that aren't being used. Maintenance script?
+		# @todo FIXME: Delete old thumbs that aren't being used. Maintenance script?
 		wfSuppressWarnings();
 		if( !file_put_contents( $localFilename, $thumb ) ) {
 			wfRestoreWarnings();

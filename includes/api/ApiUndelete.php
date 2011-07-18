@@ -43,11 +43,11 @@ class ApiUndelete extends ApiBase {
 		$params = $this->extractRequestParams();
 
 		if ( !$wgUser->isAllowed( 'undelete' ) ) {
-			$this->dieUsageMsg( array( 'permdenied-undelete' ) );
+			$this->dieUsageMsg( 'permdenied-undelete' );
 		}
 
 		if ( $wgUser->isBlocked() ) {
-			$this->dieUsageMsg( array( 'blockedtext' ) );
+			$this->dieUsageMsg( 'blockedtext' );
 		}
 
 		$titleObj = Title::newFromText( $params['title'] );
@@ -69,7 +69,7 @@ class ApiUndelete extends ApiBase {
 		$pa = new PageArchive( $titleObj );
 		$retval = $pa->undelete( ( isset( $params['timestamps'] ) ? $params['timestamps'] : array() ), $params['reason'] );
 		if ( !is_array( $retval ) ) {
-			$this->dieUsageMsg( array( 'cannotundelete' ) );
+			$this->dieUsageMsg( 'cannotundelete' );
 		}
 
 		if ( $retval[1] ) {
@@ -103,7 +103,8 @@ class ApiUndelete extends ApiBase {
 			'token' => null,
 			'reason' => '',
 			'timestamps' => array(
-				ApiBase::PARAM_ISMULTI => true
+				ApiBase::PARAM_TYPE => 'timestamp',
+				ApiBase::PARAM_ISMULTI => true,
 			),
 			'watchlist' => array(
 				ApiBase::PARAM_DFLT => 'preferences',
@@ -156,6 +157,10 @@ class ApiUndelete extends ApiBase {
 			'api.php?action=undelete&title=Main%20Page&token=123ABC&reason=Restoring%20main%20page',
 			'api.php?action=undelete&title=Main%20Page&token=123ABC&timestamps=20070703220045|20070702194856'
 		);
+	}
+
+	public function getHelpUrls() {
+		return 'http://www.mediawiki.org/wiki/API:Undelete';
 	}
 
 	public function getVersion() {

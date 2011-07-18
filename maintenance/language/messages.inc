@@ -161,8 +161,6 @@ $wgMessageStructure = array(
 	),
 	'mainpage' => array(
 		'linkprefix',
-		'mainpagetext',
-		'mainpagedocfooter',
 	),
 	'miscellaneous1' => array(
 		'about',
@@ -218,7 +216,6 @@ $wgMessageStructure = array(
 		'history',
 		'history_short',
 		'updatedmarker',
-		'info_short',
 		'printableversion',
 		'permalink',
 		'print',
@@ -340,7 +337,7 @@ $wgMessageStructure = array(
 		'red-link-title',
 		'sort-descending',
 		'sort-ascending',
-        
+
 	),
 	'nstab' => array(
 		'nstab-main',
@@ -405,7 +402,8 @@ $wgMessageStructure = array(
 		'sqlhidden',
 		'cascadeprotected',
 		'namespaceprotected',
-		'customcssjsprotected',
+		'customcssprotected',
+		'customjsprotected',
 		'ns-specialprotected',
 		'titleprotected',
 	),
@@ -911,6 +909,7 @@ $wgMessageStructure = array(
 		'qbsettings-fixedright',
 		'qbsettings-floatingleft',
 		'qbsettings-floatingright',
+		'qbsettings-directionality',
 	),
 	'preferences' => array(
 		'preferences',
@@ -923,7 +922,9 @@ $wgMessageStructure = array(
 		'prefs-skin',
 		'skin-preview',
 		'datedefault',
+		'prefs-beta',
 		'prefs-datetime',
+		'prefs-labs',
 		'prefs-personal',
 		'prefs-rc',
 		'prefs-watchlist',
@@ -1009,7 +1010,7 @@ $wgMessageStructure = array(
 		'prefs-help-email',
 		'prefs-help-email-others',
 		'prefs-help-email-required',
-	
+
 		'prefs-info',
 		'prefs-i18n',
 		'prefs-signature',
@@ -1142,6 +1143,7 @@ $wgMessageStructure = array(
 		'rightslog',
 		'rightslogtext',
 		'rightslogentry',
+		'rightslogentry-autopromote',
 		'rightsnone',
 	),
 	'action' => array(
@@ -1282,6 +1284,7 @@ $wgMessageStructure = array(
 		'large-file',
 		'largefileserver',
 		'emptyfile',
+		'windows-nonascii-filename',
 		'fileexists',
 		'filepageexists',
 		'fileexists-extension',
@@ -1313,7 +1316,6 @@ $wgMessageStructure = array(
 		'upload-options',
 		'watchthisupload',
 		'filewasdeleted',
-		'upload-wasdeleted',
 		'filename-bad-prefix',
 		'filename-prefix-blacklist',
 		'upload-success-subj',
@@ -1428,7 +1430,7 @@ $wgMessageStructure = array(
 		'linkstoimage-more',
 		'nolinkstoimage',
 		'morelinkstoimage',
-		'redirectstofile',
+		'linkstoimage-redirect',
 		'duplicatesoffile',
 		'sharedupload',
 		'sharedupload-desc-there',
@@ -1795,9 +1797,9 @@ $wgMessageStructure = array(
 		'watchlistanontext',
 		'watchnologin',
 		'watchnologintext',
-		'addedwatch',
+		'addwatch',
 		'addedwatchtext',
-		'removedwatch',
+		'removewatch',
 		'removedwatchtext',
 		'watch',
 		'watchthispage',
@@ -1820,6 +1822,7 @@ $wgMessageStructure = array(
 	'watching' => array(
 		'watching',
 		'unwatching',
+		'watcherrortext',
 	),
 	'enotif' => array(
 		'enotif_mailer',
@@ -1978,7 +1981,9 @@ $wgMessageStructure = array(
 	'nsform' => array(
 		'namespace',
 		'invert',
+		'tooltip-invert',
 		'namespace_association',
+		'tooltip-namespace_association',
 		'blanknamespace',
 	),
 	'contributions' => array(
@@ -2010,6 +2015,7 @@ $wgMessageStructure = array(
 		'sp-contributions-explain',
 		'sp-contributions-footer',
 		'sp-contributions-footer-anon',
+		'sp-contributions-showsizediff',
 	),
 	'whatlinkshere' => array(
 		'whatlinkshere',
@@ -2161,6 +2167,7 @@ $wgMessageStructure = array(
 		'unlockdbsuccesstext',
 		'lockfilenotwritable',
 		'databasenotlocked',
+		'lockedbyandtime',
 	),
 	'movepage' => array(
 		'move-page',
@@ -2485,8 +2492,6 @@ $wgMessageStructure = array(
 		'group-bureaucrat.js',
 	),
 	'metadata_cc' => array(
-		'nodublincore',
-		'nocreativecommons',
 		'notacceptable',
 	),
 	'attribution' => array(
@@ -2510,12 +2515,17 @@ $wgMessageStructure = array(
 		'spam_blanking',
 	),
 	'info' => array(
-		'infosubtitle',
-		'numedits',
-		'numtalkedits',
-		'numwatchers',
-		'numauthors',
-		'numtalkauthors',
+		'pageinfo-title',
+		'pageinfo-header-edits',
+		'pageinfo-header-watchlist',
+		'pageinfo-header-views',
+		'pageinfo-subjectpage',
+		'pageinfo-talkpage',
+		'pageinfo-watchers',
+		'pageinfo-edits',
+		'pageinfo-authors',
+		'pageinfo-views',
+		'pageinfo-viewsperedit',
 	),
 	'skin' => array(
 		'skinname-standard',
@@ -2569,6 +2579,7 @@ $wgMessageStructure = array(
 		'widthheightpage',
 		'file-info',
 		'file-info-size',
+		'file-info-size-pages',
 		'file-nohires',
 		'svg-long-desc',
 		'show-big-image',
@@ -2598,6 +2609,7 @@ $wgMessageStructure = array(
 		'seconds-abbrev',
 		'minutes-abbrev',
 		'hours-abbrev',
+		'days-abbrev',
 	),
 	'badimagelist' => array(
 		'bad_image_list',
@@ -2848,7 +2860,16 @@ $wgMessageStructure = array(
 	),
 	'exif-compression' => array(
 		'exif-compression-1',
+		'exif-compression-2',
+		'exif-compression-3',
+		'exif-compression-4',
+		'exif-compression-5',
 		'exif-compression-6',
+		'exif-compression-7',
+		'exif-compression-8',
+		'exif-compression-32773',
+		'exif-compression-32946',
+		'exif-compression-34712',
 	),
 	'exif-copyrighted' => array(
 		'exif-copyrighted-true',
@@ -3168,8 +3189,13 @@ $wgMessageStructure = array(
 		'confirm-purge-top',
 		'confirm-purge-bottom',
 	),
+	'watch-unwatch' => array(
+		'confirm-watch-button',
+		'confirm-watch-top',
+		'confirm-unwatch-button',
+		'confirm-unwatch-top',
+	),
 	'separators' => array(
-		'catseparator',
 		'semicolon-separator',
 		'comma-separator',
 		'colon-separator',
@@ -3222,6 +3248,9 @@ $wgMessageStructure = array(
 	'lagwarning' => array(
 		'lag-warn-normal',
 		'lag-warn-high',
+	),
+	'watch' => array(
+		'confirm-watch-button',
 	),
 	'watchlisteditor' => array(
 		'watchlistedit-numitems',
@@ -3320,6 +3349,7 @@ $wgMessageStructure = array(
 		'version-variables',
 		'version-antispam',
 		'version-skins',
+		'version-api',
 		'version-other',
 		'version-mediahandlers',
 		'version-hooks',
@@ -3426,6 +3456,34 @@ $wgMessageStructure = array(
 		'sqlite-has-fts',
 		'sqlite-no-fts',
 	),
+	'unwatch' => array(
+		'confirm-unwatch-button',
+	),
+	'ajax-category' => array(
+		'ajax-add-category',
+		'ajax-remove-category',
+		'ajax-edit-category',
+		'ajax-add-category-submit',
+		'ajax-confirm-ok',
+		'ajax-confirm-title',
+		'ajax-confirm-prompt',
+		'ajax-confirm-save',
+		'ajax-confirm-save-all',
+		'ajax-cancel',
+		'ajax-add-category-summary',
+		'ajax-edit-category-summary',
+		'ajax-remove-category-summary',
+		'ajax-add-category-question',
+		'ajax-edit-category-question',
+		'ajax-remove-category-question',
+		'ajax-confirm-actionsummary',
+		'ajax-error-title',
+		'ajax-error-dismiss',
+		'ajax-remove-category-error',
+		'ajax-edit-category-error',
+		'ajax-category-already-present',
+	),
+
 );
 
 /** Comments for each block */
@@ -3627,6 +3685,7 @@ Variants for Chinese language",
 	'deleteconflict'        => 'Delete conflict',
 	'unit-pixel'            => '',
 	'purge'                 => 'action=purge',
+	'watch-unwatch'         => 'action=watch/unwatch',
 	'separators'            => 'Separators for various lists, etc.',
 	'imgmulti'              => 'Multipage image navigation',
 	'tablepager'            => 'Table pager',
@@ -3653,4 +3712,5 @@ Variants for Chinese language",
 	'db-error-messages'     => 'Database error messages',
 	'html-forms'            => 'HTML forms',
 	'sqlite'                => 'SQLite database support',
+	'ajax-category'         => 'Add categories per AJAX',
 );

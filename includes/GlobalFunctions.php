@@ -8,10 +8,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( "This file is part of MediaWiki, it is not a valid entry point" );
 }
 
-if ( !defined( 'MW_COMPILED' ) ) {
-	require_once( dirname( __FILE__ ) . '/normal/UtfNormalUtil.php' );
-}
-
 // Hide compatibility functions from Doxygen
 /// @cond
 
@@ -54,7 +50,7 @@ if( !function_exists( 'mb_strpos' ) ) {
 	function mb_strpos( $haystack, $needle, $offset = 0, $encoding = '' ) {
 		return Fallback::mb_strpos( $haystack, $needle, $offset, $encoding );
 	}
-	
+
 }
 
 if( !function_exists( 'mb_strrpos' ) ) {
@@ -89,6 +85,12 @@ if ( !function_exists( 'istainted' ) ) {
 function wfArrayDiff2( $a, $b ) {
 	return array_udiff( $a, $b, 'wfArrayDiff2_cmp' );
 }
+
+/**
+ * @param $a
+ * @param $b
+ * @return int
+ */
 function wfArrayDiff2_cmp( $a, $b ) {
 	if ( !is_array( $a ) ) {
 		return strcmp( $a, $b );
@@ -105,6 +107,151 @@ function wfArrayDiff2_cmp( $a, $b ) {
 		}
 		return 0;
 	}
+}
+
+/**
+ * Array lookup
+ * Returns an array where the values in the first array are replaced by the
+ * values in the second array with the corresponding keys
+ *
+ * @param $a Array
+ * @param $b Array
+ * @return array
+ */
+function wfArrayLookup( $a, $b ) {
+	return array_flip( array_intersect( array_flip( $a ), array_keys( $b ) ) );
+}
+
+/**
+ * Appends to second array if $value differs from that in $default
+ *
+ * @param $key String|Int
+ * @param $value Mixed
+ * @param $default Mixed
+ * @param $changed Array to alter
+ */
+function wfAppendToArrayIfNotDefault( $key, $value, $default, &$changed ) {
+	if ( is_null( $changed ) ) {
+		throw new MWException( 'GlobalFunctions::wfAppendToArrayIfNotDefault got null' );
+	}
+	if ( $default[$key] !== $value ) {
+		$changed[$key] = $value;
+	}
+}
+
+/**
+ * Backwards array plus for people who haven't bothered to read the PHP manual
+ * XXX: will not darn your socks for you.
+ *
+ * @param $array1 Array
+ * @param [$array2, [...]] Arrays
+ * @return Array
+ */
+function wfArrayMerge( $array1/* ... */ ) {
+	$args = func_get_args();
+	$args = array_reverse( $args, true );
+	$out = array();
+	foreach ( $args as $arg ) {
+		$out += $arg;
+	}
+	return $out;
+}
+
+/**
+ * Merge arrays in the style of getUserPermissionsErrors, with duplicate removal
+ * e.g.
+ *	wfMergeErrorArrays(
+ *		array( array( 'x' ) ),
+ *		array( array( 'x', '2' ) ),
+ *		array( array( 'x' ) ),
+ *		array( array( 'y') )
+ *	);
+ * returns:
+ * 		array(
+ *   		array( 'x', '2' ),
+ *   		array( 'x' ),
+ *   		array( 'y' )
+ *   	)
+ * @param varargs
+ * @return Array
+ */
+function wfMergeErrorArrays( /*...*/ ) {
+	$args = func_get_args();
+	$out = array();
+	foreach ( $args as $errors ) {
+		foreach ( $errors as $params ) {
+			# @todo FIXME: Sometimes get nested arrays for $params,
+			# which leads to E_NOTICEs
+			$spec = implode( "\t", $params );
+			$out[$spec] = $params;
+		}
+	}
+	return array_values( $out );
+}
+
+/**
+ * Insert array into another array after the specified *KEY*
+ *
+ * @param $array Array: The array.
+ * @param $insert Array: The array to insert.
+ * @param $after Mixed: The key to insert after
+ * @return Array
+ */
+function wfArrayInsertAfter( $array, $insert, $after ) {
+	// Find the offset of the element to insert after.
+	$keys = array_keys( $array );
+	$offsetByKey = array_flip( $keys );
+
+	$offset = $offsetByKey[$after];
+
+	// Insert at the specified offset
+	$before = array_slice( $array, 0, $offset + 1, true );
+	$after = array_slice( $array, $offset + 1, count( $array ) - $offset, true );
+
+	$output = $before + $insert + $after;
+
+	return $output;
+}
+
+/**
+ * Recursively converts the parameter (an object) to an array with the same data
+ *
+ * @param $objOrArray Object|Array
+ * @param $recursive Bool
+ * @return Array
+ */
+function wfObjectToArray( $objOrArray, $recursive = true ) {
+	$array = array();
+	if( is_object( $objOrArray ) ) {
+		$objOrArray = get_object_vars( $objOrArray );
+	}
+	foreach ( $objOrArray as $key => $value ) {
+		if ( $recursive && ( is_object( $value ) || is_array( $value ) ) ) {
+			$value = wfObjectToArray( $value );
+		}
+
+		$array[$key] = $value;
+	}
+
+	return $array;
+}
+
+/**
+ * Wrapper around array_map() which also taints variables
+ *
+ * @param  $function Callback
+ * @param  $input Array
+ * @return Array
+ */
+function wfArrayMap( $function, $input ) {
+	$ret = array_map( $function, $input );
+	foreach ( $ret as $key => $value ) {
+		$taint = istainted( $input[$key] );
+		if ( $taint ) {
+			taint( $ret[$key], $taint );
+		}
+	}
+	return $ret;
 }
 
 /**
@@ -165,6 +312,277 @@ function wfUrlencode( $s ) {
 }
 
 /**
+ * This function takes two arrays as input, and returns a CGI-style string, e.g.
+ * "days=7&limit=100". Options in the first array override options in the second.
+ * Options set to "" will not be output.
+ *
+ * @param $array1 Array ( String|Array )
+ * @param $array2 Array ( String|Array )
+ * @param $prefix String
+ * @return String
+ */
+function wfArrayToCGI( $array1, $array2 = null, $prefix = '' ) {
+	if ( !is_null( $array2 ) ) {
+		$array1 = $array1 + $array2;
+	}
+
+	$cgi = '';
+	foreach ( $array1 as $key => $value ) {
+		if ( $value !== '' ) {
+			if ( $cgi != '' ) {
+				$cgi .= '&';
+			}
+			if ( $prefix !== '' ) {
+				$key = $prefix . "[$key]";
+			}
+			if ( is_array( $value ) ) {
+				$firstTime = true;
+				foreach ( $value as $k => $v ) {
+					$cgi .= $firstTime ? '' : '&';
+					if ( is_array( $v ) ) {
+						$cgi .= wfArrayToCGI( $v, null, $key . "[$k]" );
+					} else {
+						$cgi .= urlencode( $key . "[$k]" ) . '=' . urlencode( $v );
+					}
+					$firstTime = false;
+				}
+			} else {
+				if ( is_object( $value ) ) {
+					$value = $value->__toString();
+				}
+				$cgi .= urlencode( $key ) . '=' . urlencode( $value );
+			}
+		}
+	}
+	return $cgi;
+}
+
+/**
+ * This is the logical opposite of wfArrayToCGI(): it accepts a query string as
+ * its argument and returns the same string in array form.  This allows compa-
+ * tibility with legacy functions that accept raw query strings instead of nice
+ * arrays.  Of course, keys and values are urldecode()d.  Don't try passing in-
+ * valid query strings, or it will explode.
+ *
+ * @param $query String: query string
+ * @return array Array version of input
+ */
+function wfCgiToArray( $query ) {
+	if ( isset( $query[0] ) && $query[0] == '?' ) {
+		$query = substr( $query, 1 );
+	}
+	$bits = explode( '&', $query );
+	$ret = array();
+	foreach ( $bits as $bit ) {
+		if ( $bit === '' ) {
+			continue;
+		}
+		list( $key, $value ) = explode( '=', $bit );
+		$key = urldecode( $key );
+		$value = urldecode( $value );
+		if ( strpos( $key, '[' ) !== false ) {
+			$keys = array_reverse( explode( '[', $key ) );
+			$key = array_pop( $keys );
+			$temp = $value;
+			foreach ( $keys as $k ) {
+				$k = substr( $k, 0, -1 );
+				$temp = array( $k => $temp );
+			}
+			if ( isset( $ret[$key] ) ) {
+				$ret[$key] = array_merge( $ret[$key], $temp );
+			} else {
+				$ret[$key] = $temp;
+			}
+		} else {
+			$ret[$key] = $value;
+		}
+	}
+	return $ret;
+}
+
+/**
+ * Append a query string to an existing URL, which may or may not already
+ * have query string parameters already. If so, they will be combined.
+ *
+ * @param $url String
+ * @param $query Mixed: string or associative array
+ * @return string
+ */
+function wfAppendQuery( $url, $query ) {
+	if ( is_array( $query ) ) {
+		$query = wfArrayToCGI( $query );
+	}
+	if( $query != '' ) {
+		if( false === strpos( $url, '?' ) ) {
+			$url .= '?';
+		} else {
+			$url .= '&';
+		}
+		$url .= $query;
+	}
+	return $url;
+}
+
+/**
+ * Expand a potentially local URL to a fully-qualified URL.  Assumes $wgServer
+ * is correct.
+ *
+ * @todo this won't work with current-path-relative URLs
+ * like "subdir/foo.html", etc.
+ *
+ * @param $url String: either fully-qualified or a local path + query
+ * @return string Fully-qualified URL
+ */
+function wfExpandUrl( $url ) {
+	global $wgServer;
+	if( substr( $url, 0, 2 ) == '//' ) {
+		$bits = wfParseUrl( $wgServer );
+		$scheme = $bits && $bits['scheme'] !== '' ? $bits['scheme'] : 'http';
+		return $scheme . ':' . $url;
+	} elseif( substr( $url, 0, 1 ) == '/' ) {
+		return $wgServer . $url;
+	} else {
+		return $url;
+	}
+}
+
+/**
+ * Returns a regular expression of url protocols
+ *
+ * @return String
+ */
+function wfUrlProtocols() {
+	global $wgUrlProtocols;
+
+	static $retval = null;
+	if ( !is_null( $retval ) ) {
+		return $retval;
+	}
+
+	// Support old-style $wgUrlProtocols strings, for backwards compatibility
+	// with LocalSettings files from 1.5
+	if ( is_array( $wgUrlProtocols ) ) {
+		$protocols = array();
+		foreach ( $wgUrlProtocols as $protocol ) {
+			$protocols[] = preg_quote( $protocol, '/' );
+		}
+
+		$retval = implode( '|', $protocols );
+	} else {
+		$retval = $wgUrlProtocols;
+	}
+	return $retval;
+}
+
+/**
+ * parse_url() work-alike, but non-broken.  Differences:
+ *
+ * 1) Does not raise warnings on bad URLs (just returns false)
+ * 2) Handles protocols that don't use :// (e.g., mailto: and news: , as well as protocol-relative URLs) correctly
+ * 3) Adds a "delimiter" element to the array, either '://', ':' or '//' (see (2))
+ *
+ * @param $url String: a URL to parse
+ * @return Array: bits of the URL in an associative array, per PHP docs
+ */
+function wfParseUrl( $url ) {
+	global $wgUrlProtocols; // Allow all protocols defined in DefaultSettings/LocalSettings.php
+	
+	// Protocol-relative URLs are handled really badly by parse_url(). It's so bad that the easiest
+	// way to handle them is to just prepend 'http:' and strip the protocol out later
+	$wasRelative = substr( $url, 0, 2 ) == '//';
+	if ( $wasRelative ) {
+		$url = "http:$url";
+	}
+	wfSuppressWarnings();
+	$bits = parse_url( $url );
+	wfRestoreWarnings();
+	if ( !$bits ) {
+		return false;
+	}
+
+	// most of the protocols are followed by ://, but mailto: and sometimes news: not, check for it
+	if ( in_array( $bits['scheme'] . '://', $wgUrlProtocols ) ) {
+		$bits['delimiter'] = '://';
+	} elseif ( in_array( $bits['scheme'] . ':', $wgUrlProtocols ) ) {
+		$bits['delimiter'] = ':';
+		// parse_url detects for news: and mailto: the host part of an url as path
+		// We have to correct this wrong detection
+		if ( isset( $bits['path'] ) ) {
+			$bits['host'] = $bits['path'];
+			$bits['path'] = '';
+		}
+	} else {
+		return false;
+	}
+
+	/* Provide an empty host for eg. file:/// urls (see bug 28627) */
+	if ( !isset( $bits['host'] ) ) {
+		$bits['host'] = '';
+
+		/* parse_url loses the third / for file:///c:/ urls (but not on variants) */
+		if ( substr( $bits['path'], 0, 1 ) !== '/' ) {
+			$bits['path'] = '/' . $bits['path'];
+		}
+	}
+	
+	// If the URL was protocol-relative, fix scheme and delimiter
+	if ( $wasRelative ) {
+		$bits['scheme'] = '';
+		$bits['delimiter'] = '//';
+	}
+	return $bits;
+}
+
+/**
+ * Make a URL index, appropriate for the el_index field of externallinks.
+ *
+ * @param $url String
+ * @return String
+ */
+function wfMakeUrlIndex( $url ) {
+	$bits = wfParseUrl( $url );
+
+	// Reverse the labels in the hostname, convert to lower case
+	// For emails reverse domainpart only
+	if ( $bits['scheme'] == 'mailto' ) {
+		$mailparts = explode( '@', $bits['host'], 2 );
+		if ( count( $mailparts ) === 2 ) {
+			$domainpart = strtolower( implode( '.', array_reverse( explode( '.', $mailparts[1] ) ) ) );
+		} else {
+			// No domain specified, don't mangle it
+			$domainpart = '';
+		}
+		$reversedHost = $domainpart . '@' . $mailparts[0];
+	} else {
+		$reversedHost = strtolower( implode( '.', array_reverse( explode( '.', $bits['host'] ) ) ) );
+	}
+	// Add an extra dot to the end
+	// Why? Is it in wrong place in mailto links?
+	if ( substr( $reversedHost, -1, 1 ) !== '.' ) {
+		$reversedHost .= '.';
+	}
+	// Reconstruct the pseudo-URL
+	$prot = $bits['scheme'];
+	$index = $prot . $bits['delimiter'] . $reversedHost;
+	// Leave out user and password. Add the port, path, query and fragment
+	if ( isset( $bits['port'] ) ) {
+		$index .= ':' . $bits['port'];
+	}
+	if ( isset( $bits['path'] ) ) {
+		$index .= $bits['path'];
+	} else {
+		$index .= '/';
+	}
+	if ( isset( $bits['query'] ) ) {
+		$index .= '?' . $bits['query'];
+	}
+	if ( isset( $bits['fragment'] ) ) {
+		$index .= '#' . $bits['fragment'];
+	}
+	return $index;
+}
+
+/**
  * Sends a line to the debug log if enabled or, optionally, to a comment in output.
  * In normal operation this is a NOP.
  *
@@ -184,32 +602,55 @@ function wfDebug( $text, $logonly = false ) {
 	static $cache = array(); // Cache of unoutputted messages
 	$text = wfDebugTimer() . $text;
 
-	# Check for raw action using $_GET not $wgRequest, since the latter might not be initialised yet
-	if ( isset( $_GET['action'] ) && $_GET['action'] == 'raw' && !$wgDebugRawPage ) {
+	if ( !$wgDebugRawPage && wfIsDebugRawPage() ) {
 		return;
 	}
 
 	if ( ( $wgDebugComments || $wgShowDebug ) && !$logonly ) {
 		$cache[] = $text;
 
-		if ( isset( $wgOut ) && StubObject::isRealObject( $wgOut ) ) {
+		if ( isset( $wgOut ) && is_object( $wgOut ) ) {
 			// add the message and any cached messages to the output
 			array_map( array( $wgOut, 'debug' ), $cache );
 			$cache = array();
 		}
 	}
-	if ( $wgDebugLogFile != '' && !$wgProfileOnly ) {
-		# Strip unprintables; they can switch terminal modes when binary data
-		# gets dumped, which is pretty annoying.
-		$text = preg_replace( '![\x00-\x08\x0b\x0c\x0e-\x1f]!', ' ', $text );
-		$text = $wgDebugLogPrefix . $text;
-		wfErrorLog( $text, $wgDebugLogFile );
+	if ( wfRunHooks( 'Debug', array( $text, null /* no log group */ ) ) ) {
+		if ( $wgDebugLogFile != '' && !$wgProfileOnly ) {
+			# Strip unprintables; they can switch terminal modes when binary data
+			# gets dumped, which is pretty annoying.
+			$text = preg_replace( '![\x00-\x08\x0b\x0c\x0e-\x1f]!', ' ', $text );
+			$text = $wgDebugLogPrefix . $text;
+			wfErrorLog( $text, $wgDebugLogFile );
+		}
 	}
 }
 
 /**
+ * Returns true if debug logging should be suppressed if $wgDebugRawPage = false
+ */
+function wfIsDebugRawPage() {
+	static $cache;
+	if ( $cache !== null ) {
+		return $cache;
+	}
+	# Check for raw action using $_GET not $wgRequest, since the latter might not be initialised yet
+	if ( ( isset( $_GET['action'] ) && $_GET['action'] == 'raw' )
+		|| (
+			isset( $_SERVER['SCRIPT_NAME'] )
+			&& substr( $_SERVER['SCRIPT_NAME'], -8 ) == 'load.php'
+		) )
+	{
+		$cache = true;
+	} else {
+		$cache = false;
+	}
+	return $cache;
+}
+
+/**
  * Get microsecond timestamps for debug logs
- * 
+ *
  * @return string
  */
 function wfDebugTimer() {
@@ -264,7 +705,9 @@ function wfDebugLog( $logGroup, $text, $public = true ) {
 		} else {
 			$host = '';
 		}
-		wfErrorLog( "$time $host $wiki: $text", $wgDebugLogGroups[$logGroup] );
+		if ( wfRunHooks( 'Debug', array( $text, $logGroup ) ) ) {
+			wfErrorLog( "$time $host $wiki: $text", $wgDebugLogGroups[$logGroup] );
+		}
 	} elseif ( $public === true ) {
 		wfDebug( $text, true );
 	}
@@ -372,7 +815,7 @@ function wfLogProfilingData() {
 	$profiler->logData();
 
 	// Check whether this should be logged in the debug file.
-	if ( $wgDebugLogFile == '' || ( $wgRequest->getVal( 'action' ) == 'raw' && !$wgDebugRawPage ) ) {
+	if ( $wgDebugLogFile == '' || ( !$wgDebugRawPage && wfIsDebugRawPage() ) ) {
 		return;
 	}
 
@@ -390,7 +833,7 @@ function wfLogProfilingData() {
 		$forward = "\t(proxied via {$_SERVER['REMOTE_ADDR']}{$forward})";
 	}
 	// Don't load $wgUser at this late stage just for statistics purposes
-	// FIXME: We can detect some anons even if it is not loaded. See User::getId()
+	// @todo FIXME: We can detect some anons even if it is not loaded. See User::getId()
 	if ( $wgUser->isItemLoaded( 'id' ) && $wgUser->isAnon() ) {
 		$forward .= ' anon';
 	}
@@ -480,17 +923,15 @@ function wfGetLangObj( $langcode = false ) {
 }
 
 /**
- * Use this instead of $wgContLang, when working with user interface.
- * User interface is currently hard coded according to wiki content language
- * in many ways, especially regarding to text direction. There is lots stuff
- * to fix, hence this function to keep the old behaviour unless the global
- * $wgBetterDirectionality is enabled (or removed when everything works).
+ * Old function when $wgBetterDirectionality existed
+ * Removed in core, kept in extensions for backwards compat.
  *
+ * @deprecated since 1.19
  * @return Language
  */
 function wfUILang() {
-	global $wgBetterDirectionality;
-	return wfGetLangObj( !$wgBetterDirectionality );
+	global $wgLang;
+	return $wgLang;
 }
 
 /**
@@ -533,15 +974,18 @@ function wfMessageFallback( /*...*/ ) {
  * @param $key String: lookup key for the message, usually
  *    defined in languages/Language.php
  *
- * This function also takes extra optional parameters (not
- * shown in the function definition), which can be used to
- * insert variable text into the predefined message.
+ * Parameters to the message, which can be used to insert variable text into
+ * it, can be passed to this function in the following formats:
+ * - One per argument, starting at the second parameter
+ * - As an array in the second parameter
+ * These are not shown in the function definition.
+ *
  * @return String
  */
 function wfMsg( $key ) {
 	$args = func_get_args();
 	array_shift( $args );
-	return wfMsgReal( $key, $args, true );
+	return wfMsgReal( $key, $args );
 }
 
 /**
@@ -612,38 +1056,6 @@ function wfMsgForContentNoTrans( $key ) {
 }
 
 /**
- * Get a message from the language file, for the UI elements
- *
- * @deprecated in 1.18; use wfMessage()
- */
-function wfMsgNoDB( $key ) {
-	wfDeprecated( __FUNCTION__ );
-	$args = func_get_args();
-	array_shift( $args );
-	return wfMsgReal( $key, $args, false );
-}
-
-/**
- * Get a message from the language file, for the content
- *
- * @deprecated in 1.18; use wfMessage()
- */
-function wfMsgNoDBForContent( $key ) {
-	wfDeprecated( __FUNCTION__ );
-	global $wgForceUIMsgAsContentMsg;
-	$args = func_get_args();
-	array_shift( $args );
-	$forcontent = true;
-	if( is_array( $wgForceUIMsgAsContentMsg ) &&
-		in_array( $key,	$wgForceUIMsgAsContentMsg ) )
-	{
-		$forcontent = false;
-	}
-	return wfMsgReal( $key, $args, false, $forcontent );
-}
-
-
-/**
  * Really get a message
  *
  * @param $key String: key to get.
@@ -662,22 +1074,6 @@ function wfMsgReal( $key, $args, $useDB = true, $forContent = false, $transform 
 }
 
 /**
- * This function provides the message source for messages to be edited which are *not* stored in the database.
- *
- * @deprecated in 1.18; use wfMessage()
- * @param $key String
- */
-function wfMsgWeirdKey( $key ) {
-	wfDeprecated( __FUNCTION__ );
-	$source = wfMsgGetKey( $key, false, true, false );
-	if ( wfEmptyMsg( $key ) ) {
-		return '';
-	} else {
-		return $source;
-	}
-}
-
-/**
  * Fetch a message string value, but don't replace any keys yet.
  *
  * @param $key String
@@ -687,7 +1083,7 @@ function wfMsgWeirdKey( $key ) {
  * @param $transform Boolean: whether to parse magic words, etc.
  * @return string
  */
-function wfMsgGetKey( $key, $useDB, $langCode = false, $transform = true ) {
+function wfMsgGetKey( $key, $useDB = true, $langCode = false, $transform = true ) {
 	wfRunHooks( 'NormalizeMessageKey', array( &$key, &$useDB, &$langCode, &$transform ) );
 
 	$cache = MessageCache::singleton();
@@ -742,7 +1138,7 @@ function wfMsgReplaceArgs( $message, $args ) {
 function wfMsgHtml( $key ) {
 	$args = func_get_args();
 	array_shift( $args );
-	return wfMsgReplaceArgs( htmlspecialchars( wfMsgGetKey( $key, true ) ), $args );
+	return wfMsgReplaceArgs( htmlspecialchars( wfMsgGetKey( $key ) ), $args );
 }
 
 /**
@@ -760,7 +1156,7 @@ function wfMsgWikiHtml( $key ) {
 	$args = func_get_args();
 	array_shift( $args );
 	return wfMsgReplaceArgs(
-		MessageCache::singleton()->parse( wfMsgGetKey( $key, true ), null, /* can't be set to false */ true )->getText(),
+		MessageCache::singleton()->parse( wfMsgGetKey( $key ), null, /* can't be set to false */ true )->getText(),
 		$args );
 }
 
@@ -848,66 +1244,16 @@ function wfMsgExt( $key, $options ) {
 	return $string;
 }
 
-
 /**
- * Just like exit() but makes a note of it.
- * Commits open transactions except if the error parameter is set
+ * Since wfMsg() and co suck, they don't return false if the message key they
+ * looked up didn't exist but a XHTML string, this function checks for the
+ * nonexistance of messages by checking the MessageCache::get() result directly.
  *
- * @deprecated Please return control to the caller or throw an exception. Will
- *             be removed in 1.19.
+ * @param $key      String: the message key looked up
+ * @return Boolean True if the message *doesn't* exist.
  */
-function wfAbruptExit( $error = false ) {
-	static $called = false;
-	if ( $called ) {
-		exit( -1 );
-	}
-	$called = true;
-
-	wfDeprecated( __FUNCTION__ );
-	$bt = wfDebugBacktrace();
-	if( $bt ) {
-		for( $i = 0; $i < count( $bt ); $i++ ) {
-			$file = isset( $bt[$i]['file'] ) ? $bt[$i]['file'] : 'unknown';
-			$line = isset( $bt[$i]['line'] ) ? $bt[$i]['line'] : 'unknown';
-			wfDebug( "WARNING: Abrupt exit in $file at line $line\n");
-		}
-	} else {
-		wfDebug( "WARNING: Abrupt exit\n" );
-	}
-
-	wfLogProfilingData();
-
-	if ( !$error ) {
-		wfGetLB()->closeAll();
-	}
-	exit( -1 );
-}
-
-/**
- * @deprecated Please return control the caller or throw an exception. Will
- *             be removed in 1.19.
- */
-function wfErrorExit() {
-	wfDeprecated( __FUNCTION__ );
-	wfAbruptExit( true );
-}
-
-/**
- * Print an error message and die, returning nonzero to the shell if any.  Plain die()
- * fails to return nonzero to the shell if you pass a string.  Entry points may customise
- * this function to return a prettier error message, but implementations must not assume
- * access to any of the usual MediaWiki infrastructure (AutoLoader, localisation, database,
- * etc).  This should not be called directly once $wgFullyInitialised is set; instead,
- * throw an exception and let Exception.php handle whether or not it's possible to show
- * a prettier error.
- *
- * @param $msg String
- */
-if( !function_exists( 'wfDie' ) ){
-	function wfDie( $msg = '' ) {
-		echo $msg;
-		die( 1 );
-	}
+function wfEmptyMsg( $key ) {
+	return MessageCache::singleton()->get( $key, /*useDB*/true, /*content*/false ) === false;
 }
 
 /**
@@ -924,7 +1270,7 @@ function wfDebugDieBacktrace( $msg = '' ) {
  * Fetch server name for use in error reporting etc.
  * Use real server name if available, so we know which machine
  * in a server farm generated the current page.
- * 
+ *
  * @return string
  */
 function wfHostname() {
@@ -932,7 +1278,7 @@ function wfHostname() {
 	if ( is_null( $host ) ) {
 		if ( function_exists( 'posix_uname' ) ) {
 			// This function not present on Windows
-			$uname = @posix_uname();
+			$uname = posix_uname();
 		} else {
 			$uname = false;
 		}
@@ -979,7 +1325,7 @@ function wfReportTime() {
  *
  * @return array of backtrace information
  */
-function wfDebugBacktrace() {
+function wfDebugBacktrace( $limit = 0 ) {
 	static $disabled = null;
 
 	if( extension_loaded( 'Zend Optimizer' ) ) {
@@ -1001,7 +1347,11 @@ function wfDebugBacktrace() {
 		return array();
 	}
 
-	return array_slice( debug_backtrace(), 1 );
+	if ( $limit && version_compare( PHP_VERSION, '5.4.0', '>=' ) ) {
+		return array_slice( debug_backtrace( DEBUG_BACKTRACE_PROVIDE_OBJECT, 1 ), 1 );
+	} else {
+		return array_slice( debug_backtrace(), 1 );
+	}
 }
 
 /**
@@ -1036,7 +1386,7 @@ function wfBacktrace() {
 			$msg .= '<li>' . $file . ' line ' . $line . ' calls ';
 		}
 		if( !empty( $call['class'] ) ) {
-			$msg .= $call['class'] . '::';
+			$msg .= $call['class'] . $call['type'];
 		}
 		$msg .= $call['function'] . '()';
 
@@ -1053,6 +1403,51 @@ function wfBacktrace() {
 	}
 
 	return $msg;
+}
+
+/**
+ * Get the name of the function which called this function
+ *
+ * @param $level Int
+ * @return Bool|string
+ */
+function wfGetCaller( $level = 2 ) {
+	$backtrace = wfDebugBacktrace( $level );
+	if ( isset( $backtrace[$level] ) ) {
+		return wfFormatStackFrame( $backtrace[$level] );
+	} else {
+		$caller = 'unknown';
+	}
+	return $caller;
+}
+
+/**
+ * Return a string consisting of callers in the stack. Useful sometimes
+ * for profiling specific points.
+ *
+ * @param $limit The maximum depth of the stack frame to return, or false for
+ *               the entire stack.
+ * @return String
+ */
+function wfGetAllCallers( $limit = 3 ) {
+	$trace = array_reverse( wfDebugBacktrace() );
+	if ( !$limit || $limit > count( $trace ) - 1 ) {
+		$limit = count( $trace ) - 1;
+	}
+	$trace = array_slice( $trace, -$limit - 1, $limit );
+	return implode( '/', array_map( 'wfFormatStackFrame', $trace ) );
+}
+
+/**
+ * Return a string representation of frame
+ *
+ * @param $frame Array
+ * @return Bool
+ */
+function wfFormatStackFrame( $frame ) {
+	return isset( $frame['class'] ) ?
+		$frame['class'] . '::' . $frame['function'] :
+		$frame['function'];
 }
 
 
@@ -1077,25 +1472,6 @@ function wfShowingResults( $offset, $limit ) {
 }
 
 /**
- * @todo document
- *
- * @param $offset Int
- * @param $limit Int
- * @param $num Int
- * @return String
- */
-function wfShowingResultsNum( $offset, $limit, $num ) {
-	global $wgLang;
-	return wfMsgExt(
-		'showingresultsnum',
-		array( 'parseinline' ),
-		$wgLang->formatNum( $limit ),
-		$wgLang->formatNum( $offset + 1 ),
-		$wgLang->formatNum( $num )
-	);
-}
-
-/**
  * Generate (prev x| next x) (20|50|100...) type links for paging
  *
  * @param $offset String
@@ -1108,7 +1484,7 @@ function wfShowingResultsNum( $offset, $limit, $num ) {
 function wfViewPrevNext( $offset, $limit, $link, $query = '', $atend = false ) {
 	global $wgLang;
 	$fmtLimit = $wgLang->formatNum( $limit );
-	// FIXME: Why on earth this needs one message for the text and another one for tooltip??
+	// @todo FIXME: Why on earth this needs one message for the text and another one for tooltip?
 	# Get prev/next link display text
 	$prev = wfMsgExt( 'prevn', array( 'parsemag', 'escape' ), $fmtLimit );
 	$next = wfMsgExt( 'nextn', array( 'parsemag', 'escape' ), $fmtLimit );
@@ -1182,7 +1558,7 @@ function wfNumLink( $offset, $limit, $title, $query = '' ) {
 
 /**
  * @todo document
- * @todo FIXME: we may want to blacklist some broken browsers
+ * @todo FIXME: We may want to blacklist some broken browsers
  *
  * @param $force Bool
  * @return bool Whereas client accept gzip compression
@@ -1192,7 +1568,7 @@ function wfClientAcceptsGzip( $force = false ) {
 	if ( $result === null || $force ) {
 		$result = false;
 		if( isset( $_SERVER['HTTP_ACCEPT_ENCODING'] ) ) {
-			# FIXME: we may want to blacklist some broken browsers
+			# @todo FIXME: We may want to blacklist some broken browsers
 			$m = array();
 			if( preg_match(
 				'/\bgzip(?:;(q)=([0-9]+(?:\.[0-9]+)))?\b/',
@@ -1290,119 +1666,6 @@ function wfSetBit( &$dest, $bit, $state = true ) {
 		}
 	}
 	return $temp;
-}
-
-/**
- * This function takes two arrays as input, and returns a CGI-style string, e.g.
- * "days=7&limit=100". Options in the first array override options in the second.
- * Options set to "" will not be output.
- *
- * @param $array1 Array( String|Array )
- * @param $array2 Array( String|Array )
- * @return String
- */
-function wfArrayToCGI( $array1, $array2 = null ) {
-	if ( !is_null( $array2 ) ) {
-		$array1 = $array1 + $array2;
-	}
-
-	$cgi = '';
-	foreach ( $array1 as $key => $value ) {
-		if ( $value !== '' ) {
-			if ( $cgi != '' ) {
-				$cgi .= '&';
-			}
-			if ( is_array( $value ) ) {
-				$firstTime = true;
-				foreach ( $value as $v ) {
-					$cgi .= ( $firstTime ? '' : '&') .
-						urlencode( $key . '[]' ) . '=' .
-						urlencode( $v );
-					$firstTime = false;
-				}
-			} else {
-				if ( is_object( $value ) ) {
-					$value = $value->__toString();
-				}
-				$cgi .= urlencode( $key ) . '=' .
-					urlencode( $value );
-			}
-		}
-	}
-	return $cgi;
-}
-
-/**
- * This is the logical opposite of wfArrayToCGI(): it accepts a query string as
- * its argument and returns the same string in array form.  This allows compa-
- * tibility with legacy functions that accept raw query strings instead of nice
- * arrays.  Of course, keys and values are urldecode()d.  Don't try passing in-
- * valid query strings, or it will explode.
- *
- * @param $query String: query string
- * @return array Array version of input
- */
-function wfCgiToArray( $query ) {
-	if( isset( $query[0] ) && $query[0] == '?' ) {
-		$query = substr( $query, 1 );
-	}
-	$bits = explode( '&', $query );
-	$ret = array();
-	foreach( $bits as $bit ) {
-		if( $bit === '' ) {
-			continue;
-		}
-		list( $key, $value ) = explode( '=', $bit );
-		$key = urldecode( $key );
-		$value = urldecode( $value );
-		$ret[$key] = $value;
-	}
-	return $ret;
-}
-
-/**
- * Append a query string to an existing URL, which may or may not already
- * have query string parameters already. If so, they will be combined.
- *
- * @param $url String
- * @param $query Mixed: string or associative array
- * @return string
- */
-function wfAppendQuery( $url, $query ) {
-	if ( is_array( $query ) ) {
-		$query = wfArrayToCGI( $query );
-	}
-	if( $query != '' ) {
-		if( false === strpos( $url, '?' ) ) {
-			$url .= '?';
-		} else {
-			$url .= '&';
-		}
-		$url .= $query;
-	}
-	return $url;
-}
-
-/**
- * Expand a potentially local URL to a fully-qualified URL.  Assumes $wgServer
- * and $wgProto are correct.
- *
- * @todo this won't work with current-path-relative URLs
- * like "subdir/foo.html", etc.
- *
- * @param $url String: either fully-qualified or a local path + query
- * @return string Fully-qualified URL
- */
-function wfExpandUrl( $url ) {
-	if( substr( $url, 0, 2 ) == '//' ) {
-		global $wgProto;
-		return $wgProto . ':' . $url;
-	} elseif( substr( $url, 0, 1 ) == '/' ) {
-		global $wgServer;
-		return $wgServer . $url;
-	} else {
-		return $url;
-	}
 }
 
 /**
@@ -1625,7 +1888,7 @@ function wfDiff( $before, $after, $params = '-u' ) {
 function wfVarDump( $var ) {
 	global $wgOut;
 	$s = str_replace( "\n", "<br />\n", var_export( $var, true ) . "\n" );
-	if ( headers_sent() || !@is_object( $wgOut ) ) {
+	if ( headers_sent() || !isset( $wgOut ) || !is_object( $wgOut ) ) {
 		print $s;
 	} else {
 		$wgOut->addHTML( $s );
@@ -1747,13 +2010,13 @@ function wfAcceptToPrefs( $accept, $def = '*/*' ) {
 	$parts = explode( ',', $accept );
 
 	foreach( $parts as $part ) {
-		# FIXME: doesn't deal with params like 'text/html; level=1'
-		@list( $value, $qpart ) = explode( ';', trim( $part ) );
+		# @todo FIXME: Doesn't deal with params like 'text/html; level=1'
+		$values = explode( ';', trim( $part ) );
 		$match = array();
-		if( !isset( $qpart ) ) {
-			$prefs[$value] = 1.0;
-		} elseif( preg_match( '/q\s*=\s*(\d*\.\d+)/', $qpart, $match ) ) {
-			$prefs[$value] = floatval( $match[1] );
+		if ( count( $values ) == 1 ) {
+			$prefs[$values[0]] = 1.0;
+		} elseif ( preg_match( '/q\s*=\s*(\d*\.\d+)/', $values[1], $match ) ) {
+			$prefs[$values[0]] = floatval( $match[1] );
 		}
 	}
 
@@ -1797,7 +2060,7 @@ function mimeTypeMatch( $type, $avail ) {
  * @param $sprefs Array: server's offered types
  * @return string
  *
- * @todo FIXME: doesn't handle params like 'text/plain; charset=UTF-8'
+ * @todo FIXME: Doesn't handle params like 'text/plain; charset=UTF-8'
  * XXX: generalize to negotiate other stuff
  */
 function wfNegotiateType( $cprefs, $sprefs ) {
@@ -1834,19 +2097,6 @@ function wfNegotiateType( $cprefs, $sprefs ) {
 	}
 
 	return $besttype;
-}
-
-/**
- * Array lookup
- * Returns an array where the values in the first array are replaced by the
- * values in the second array with the corresponding keys
- *
- * @param $a Array
- * @param $b Array
- * @return array
- */
-function wfArrayLookup( $a, $b ) {
-	return array_flip( array_intersect( array_flip( $a ), array_keys( $b ) ) );
 }
 
 /**
@@ -2002,8 +2252,6 @@ function wfTimestamp( $outputtype = TS_UNIX, $ts = 0 ) {
 		return false;
 	}
 
-
-
 	static $formats = array(
 		TS_UNIX => 'U',
 		TS_MW => 'YmdHis',
@@ -2126,15 +2374,6 @@ function swap( &$x, &$y ) {
 	$z = $x;
 	$x = $y;
 	$y = $z;
-}
-
-/**
- * BC wrapper for MimeMagic::singleton()
- * @deprecated No longer needed as of 1.17 (r68836). Remove in 1.19.
- */
-function &wfGetMimeMagic() {
-	wfDeprecated( __FUNCTION__ );
-	return MimeMagic::singleton();
 }
 
 /**
@@ -2263,49 +2502,6 @@ function wfPercent( $nr, $acc = 2, $round = true ) {
 }
 
 /**
- * Encrypt a username/password.
- *
- * @param $userid Integer: ID of the user
- * @param $password String: password of the user
- * @return String: hashed password
- * @deprecated since 1.13 Use User::crypt() or User::oldCrypt() instead
- */
-function wfEncryptPassword( $userid, $password ) {
-	wfDeprecated(__FUNCTION__);
-	# Just wrap around User::oldCrypt()
-	return User::oldCrypt( $password, $userid );
-}
-
-/**
- * Appends to second array if $value differs from that in $default
- *
- * @param $key String|Int
- * @param $value Mixed
- * @param $default Mixed
- * @param $changed Array to alter
- */
-function wfAppendToArrayIfNotDefault( $key, $value, $default, &$changed ) {
-	if ( is_null( $changed ) ) {
-		throw new MWException( 'GlobalFunctions::wfAppendToArrayIfNotDefault got null' );
-	}
-	if ( $default[$key] !== $value ) {
-		$changed[$key] = $value;
-	}
-}
-
-/**
- * Since wfMsg() and co suck, they don't return false if the message key they
- * looked up didn't exist but a XHTML string, this function checks for the
- * nonexistance of messages by checking the MessageCache::get() result directly.
- *
- * @param $key      String: the message key looked up
- * @return Boolean True if the message *doesn't* exist.
- */
-function wfEmptyMsg( $key ) {
-	return MessageCache::singleton()->get( $key, /*useDB*/true, /*content*/false ) === false;
-}
-
-/**
  * Find out whether or not a mixed variable exists in a string
  *
  * @param $needle String
@@ -2316,42 +2512,25 @@ function wfEmptyMsg( $key ) {
 function in_string( $needle, $str, $insensitive = false ) {
 	$func = 'strpos';
 	if( $insensitive ) $func = 'stripos';
-	
+
 	return $func( $str, $needle ) !== false;
 }
 
-function wfSpecialList( $page, $details ) {
-	global $wgContLang;
-	$details = $details ? ' ' . $wgContLang->getDirMark() . "($details)" : '';
-	return $page . $details;
-}
-
 /**
- * Returns a regular expression of url protocols
+ * Make a list item, used by various special pages
  *
+ * @param $page String Page link
+ * @param $details String Text between brackets
+ * @param $oppositedm Boolean	Add the direction mark opposite to your
+ *								language, to display text properly
  * @return String
  */
-function wfUrlProtocols() {
-	global $wgUrlProtocols;
-
-	static $retval = null;
-	if ( !is_null( $retval ) ) {
-		return $retval;
-	}
-
-	// Support old-style $wgUrlProtocols strings, for backwards compatibility
-	// with LocalSettings files from 1.5
-	if ( is_array( $wgUrlProtocols ) ) {
-		$protocols = array();
-		foreach ( $wgUrlProtocols as $protocol ) {
-			$protocols[] = preg_quote( $protocol, '/' );
-		}
-
-		$retval = implode( '|', $protocols );
-	} else {
-		$retval = $wgUrlProtocols;
-	}
-	return $retval;
+function wfSpecialList( $page, $details, $oppositedm = true ) {
+	global $wgLang;
+	$dirmark = ( $oppositedm ? $wgLang->getDirMark( true ) : '' ) .
+		$wgLang->getDirMark();
+	$details = $details ? $dirmark . " ($details)" : '';
+	return $page . $details;
 }
 
 /**
@@ -2644,151 +2823,6 @@ function wfRelativePath( $path, $from ) {
 }
 
 /**
- * Backwards array plus for people who haven't bothered to read the PHP manual
- * XXX: will not darn your socks for you.
- *
- * @param $array1 Array
- * @param [$array2, [...]] Arrays
- * @return Array
- */
-function wfArrayMerge( $array1/* ... */ ) {
-	$args = func_get_args();
-	$args = array_reverse( $args, true );
-	$out = array();
-	foreach ( $args as $arg ) {
-		$out += $arg;
-	}
-	return $out;
-}
-
-/**
- * Merge arrays in the style of getUserPermissionsErrors, with duplicate removal
- * e.g.
- *	wfMergeErrorArrays(
- *		array( array( 'x' ) ),
- *		array( array( 'x', '2' ) ),
- *		array( array( 'x' ) ),
- *		array( array( 'y') )
- *	);
- * returns:
- * 		array(
- *   		array( 'x', '2' ),
- *   		array( 'x' ),
- *   		array( 'y' )
- *   	)
- * @param varargs
- * @return Array
- */
-function wfMergeErrorArrays( /*...*/ ) {
-	$args = func_get_args();
-	$out = array();
-	foreach ( $args as $errors ) {
-		foreach ( $errors as $params ) {
-			# FIXME: sometimes get nested arrays for $params,
-			# which leads to E_NOTICEs
-			$spec = implode( "\t", $params );
-			$out[$spec] = $params;
-		}
-	}
-	return array_values( $out );
-}
-
-/**
- * parse_url() work-alike, but non-broken.  Differences:
- *
- * 1) Does not raise warnings on bad URLs (just returns false)
- * 2) Handles protocols that don't use :// (e.g., mailto: and news:) correctly
- * 3) Adds a "delimiter" element to the array, either '://' or ':' (see (2))
- *
- * @param $url String: a URL to parse
- * @return Array: bits of the URL in an associative array, per PHP docs
- */
-function wfParseUrl( $url ) {
-	global $wgUrlProtocols; // Allow all protocols defined in DefaultSettings/LocalSettings.php
-	wfSuppressWarnings();
-	$bits = parse_url( $url );
-	wfRestoreWarnings();
-	if ( !$bits ) {
-		return false;
-	}
-
-	// most of the protocols are followed by ://, but mailto: and sometimes news: not, check for it
-	if ( in_array( $bits['scheme'] . '://', $wgUrlProtocols ) ) {
-		$bits['delimiter'] = '://';
-	} elseif ( in_array( $bits['scheme'] . ':', $wgUrlProtocols ) ) {
-		$bits['delimiter'] = ':';
-		// parse_url detects for news: and mailto: the host part of an url as path
-		// We have to correct this wrong detection
-		if ( isset( $bits['path'] ) ) {
-			$bits['host'] = $bits['path'];
-			$bits['path'] = '';
-		}
-	} else {
-		return false;
-	}
-
-	/* Provide an empty host for eg. file:/// urls (see bug 28627) */
-	if ( !isset( $bits['host'] ) ) {
-		$bits['host'] = '';
-		
-		/* parse_url loses the third / for file:///c:/ urls (but not on variants) */
-		if ( substr( $bits['path'], 0, 1 ) !== '/' ) {
-			$bits['path'] = '/' . $bits['path'];
-		}
-	}
-	return $bits;
-}
-
-/**
- * Make a URL index, appropriate for the el_index field of externallinks.
- *
- * @param $url String
- * @return String
- */
-function wfMakeUrlIndex( $url ) {
-	$bits = wfParseUrl( $url );
-
-	// Reverse the labels in the hostname, convert to lower case
-	// For emails reverse domainpart only
-	if ( $bits['scheme'] == 'mailto' ) {
-		$mailparts = explode( '@', $bits['host'], 2 );
-		if ( count( $mailparts ) === 2 ) {
-			$domainpart = strtolower( implode( '.', array_reverse( explode( '.', $mailparts[1] ) ) ) );
-		} else {
-			// No domain specified, don't mangle it
-			$domainpart = '';
-		}
-		$reversedHost = $domainpart . '@' . $mailparts[0];
-	} else {
-		$reversedHost = strtolower( implode( '.', array_reverse( explode( '.', $bits['host'] ) ) ) );
-	}
-	// Add an extra dot to the end
-	// Why? Is it in wrong place in mailto links?
-	if ( substr( $reversedHost, -1, 1 ) !== '.' ) {
-		$reversedHost .= '.';
-	}
-	// Reconstruct the pseudo-URL
-	$prot = $bits['scheme'];
-	$index = $prot . $bits['delimiter'] . $reversedHost;
-	// Leave out user and password. Add the port, path, query and fragment
-	if ( isset( $bits['port'] ) ) {
-		$index .= ':' . $bits['port'];
-	}
-	if ( isset( $bits['path'] ) ) {
-		$index .= $bits['path'];
-	} else {
-		$index .= '/';
-	}
-	if ( isset( $bits['query'] ) ) {
-		$index .= '?' . $bits['query'];
-	}
-	if ( isset( $bits['fragment'] ) ) {
-		$index .= '#' . $bits['fragment'];
-	}
-	return $index;
-}
-
-/**
  * Do any deferred updates and clear the list
  *
  * @param $commit String: set to 'commit' to commit after every update to
@@ -2914,9 +2948,10 @@ function wfBaseConvert( $input, $sourceBase, $destBase, $pad = 1, $lowercase = t
  *
  * @param $name String
  * @param $p Array: parameters
- * @deprecated
+ * @deprecated since 1.18, warnings in 1.19, removal in 1.20
  */
 function wfCreateObject( $name, $p ) {
+	wfDeprecated( __FUNCTION__ );
 	return MWFunction::newObj( $name, $p );
 }
 
@@ -2947,11 +2982,11 @@ function wfSetupSession( $sessionId = false ) {
 			global $IP;
 			require_once( "$IP/includes/cache/MemcachedSessions.php" );
 		}
-		session_set_save_handler( 'memsess_open', 'memsess_close', 'memsess_read', 
+		session_set_save_handler( 'memsess_open', 'memsess_close', 'memsess_read',
 			'memsess_write', 'memsess_destroy', 'memsess_gc' );
 
-		// It's necessary to register a shutdown function to call session_write_close(), 
-		// because by the time the request shutdown function for the session module is 
+		// It's necessary to register a shutdown function to call session_write_close(),
+		// because by the time the request shutdown function for the session module is
 		// called, $wgMemc has already been destroyed. Shutdown functions registered
 		// this way are called before object destruction.
 		register_shutdown_function( 'memsess_write_close' );
@@ -2996,51 +3031,6 @@ function wfGetPrecompiledData( $name ) {
 		}
 	}
 	return false;
-}
-
-/**
- * Get the name of the function which called this function
- *
- * @param $level Int
- * @return Bool|string
- */
-function wfGetCaller( $level = 2 ) {
-	$backtrace = wfDebugBacktrace();
-	if ( isset( $backtrace[$level] ) ) {
-		return wfFormatStackFrame( $backtrace[$level] );
-	} else {
-		$caller = 'unknown';
-	}
-	return $caller;
-}
-
-/**
- * Return a string consisting of callers in the stack. Useful sometimes
- * for profiling specific points.
- *
- * @param $limit The maximum depth of the stack frame to return, or false for
- *               the entire stack.
- * @return String
- */
-function wfGetAllCallers( $limit = 3 ) {
-	$trace = array_reverse( wfDebugBacktrace() );
-	if ( !$limit || $limit > count( $trace ) - 1 ) {
-		$limit = count( $trace ) - 1;
-	}
-	$trace = array_slice( $trace, -$limit - 1, $limit );
-	return implode( '/', array_map( 'wfFormatStackFrame', $trace ) );
-}
-
-/**
- * Return a string representation of frame
- *
- * @param $frame Array
- * @return Bool
- */
-function wfFormatStackFrame( $frame ) {
-	return isset( $frame['class'] ) ?
-		$frame['class'] . '::' . $frame['function'] :
-		$frame['function'];
 }
 
 /**
@@ -3119,6 +3109,9 @@ function wfSplitWikiID( $wiki ) {
  * Note: multiple calls to wfGetDB(DB_SLAVE) during the course of one request
  * will always return the same object, unless the underlying connection or load
  * balancer is manually destroyed.
+ *
+ * Note 2: use $this->getDB() in maintenance scripts that may be invoked by
+ * updater to ensure that a proper database is being updated.
  *
  * @return DatabaseBase
  */
@@ -3243,7 +3236,7 @@ function wfBoolToStr( $value ) {
 /**
  * Load an extension messages file
  *
- * @deprecated in 1.16, warnings in 1.18, remove in 1.20
+ * @deprecated since 1.16, warnings in 1.18, remove in 1.20
  * @codeCoverageIgnore
  */
 function wfLoadExtensionMessages() {
@@ -3280,32 +3273,33 @@ function wfDeprecated( $function ) {
  * $wgDevelopmentWarnings
  *
  * @param $msg String: message to send
- * @param $callerOffset Integer: number of itmes to go back in the backtrace to
+ * @param $callerOffset Integer: number of items to go back in the backtrace to
  *        find the correct caller (1 = function calling wfWarn, ...)
  * @param $level Integer: PHP error level; only used when $wgDevelopmentWarnings
  *        is true
  */
 function wfWarn( $msg, $callerOffset = 1, $level = E_USER_NOTICE ) {
+	global $wgDevelopmentWarnings;
+
 	$callers = wfDebugBacktrace();
-	if( isset( $callers[$callerOffset + 1] ) ){
+	if ( isset( $callers[$callerOffset + 1] ) ) {
 		$callerfunc = $callers[$callerOffset + 1];
 		$callerfile = $callers[$callerOffset];
-		if( isset( $callerfile['file'] ) && isset( $callerfile['line'] ) ) {
+		if ( isset( $callerfile['file'] ) && isset( $callerfile['line'] ) ) {
 			$file = $callerfile['file'] . ' at line ' . $callerfile['line'];
 		} else {
 			$file = '(internal function)';
 		}
 		$func = '';
-		if( isset( $callerfunc['class'] ) ) {
+		if ( isset( $callerfunc['class'] ) ) {
 			$func .= $callerfunc['class'] . '::';
 		}
-		if( isset( $callerfunc['function'] ) ) {
+		if ( isset( $callerfunc['function'] ) ) {
 			$func .= $callerfunc['function'];
 		}
 		$msg .= " [Called from $func in $file]";
 	}
 
-	global $wgDevelopmentWarnings;
 	if ( $wgDevelopmentWarnings ) {
 		trigger_error( $msg, $level );
 	} else {
@@ -3319,7 +3313,7 @@ function wfWarn( $msg, $callerOffset = 1, $level = E_USER_NOTICE ) {
  * master position. Use this when updating very large numbers of rows, as
  * in maintenance scripts, to avoid causing too much lag.  Of course, this is
  * a no-op if there are no slaves.
- * 
+ *
  * @param $maxLag Integer (deprecated)
  * @param $wiki mixed Wiki identifier accepted by wfGetLB
  * @return null
@@ -3337,11 +3331,12 @@ function wfWaitForSlaves( $maxLag = false, $wiki = false ) {
 
 /**
  * Used to be used for outputting text in the installer/updater
- * @deprecated Warnings in 1.19, removal in 1.20
+ * @deprecated since 1.18, warnings in 1.19, remove in 1.20
  */
 function wfOut( $s ) {
+	wfDeprecated( __METHOD__ );
 	global $wgCommandLineMode;
-	if ( $wgCommandLineMode && !defined( 'MEDIAWIKI_INSTALL' ) ) {
+	if ( $wgCommandLineMode ) {
 		echo $s;
 	} else {
 		echo htmlspecialchars( $s );
@@ -3372,7 +3367,7 @@ function wfCountDown( $n ) {
  * Generate a random 32-character hexadecimal token.
  * @param $salt Mixed: some sort of salt, if necessary, to add to random
  *              characters before hashing.
- * @return Array
+ * @return string
  * @codeCoverageIgnore
  */
 function wfGenerateToken( $salt = '' ) {
@@ -3397,53 +3392,6 @@ function wfStripIllegalFilenameChars( $name ) {
 		$name
 	);
 	return $name;
-}
-
-/**
- * Insert array into another array after the specified *KEY*
- *
- * @param $array Array: The array.
- * @param $insert Array: The array to insert.
- * @param $after Mixed: The key to insert after
- * @return Array
- */
-function wfArrayInsertAfter( $array, $insert, $after ) {
-	// Find the offset of the element to insert after.
-	$keys = array_keys( $array );
-	$offsetByKey = array_flip( $keys );
-
-	$offset = $offsetByKey[$after];
-
-	// Insert at the specified offset
-	$before = array_slice( $array, 0, $offset + 1, true );
-	$after = array_slice( $array, $offset + 1, count( $array ) - $offset, true );
-
-	$output = $before + $insert + $after;
-
-	return $output;
-}
-
-/**
- * Recursively converts the parameter (an object) to an array with the same data
- *
- * @param $objOrArray Object|Array
- * @param $recursive Bool
- * @return Array
- */
-function wfObjectToArray( $objOrArray, $recursive = true ) {
-	$array = array();
-	if( is_object( $objOrArray ) ) {
-		$objOrArray = get_object_vars( $objOrArray );
-	}
-	foreach ( $objOrArray as $key => $value ) {
-		if ( $recursive && ( is_object( $value ) || is_array( $value ) ) ) {
-			$value = wfObjectToArray( $value );
-		}
-
-		$array[$key] = $value;
-	}
-
-	return $array;
 }
 
 /**
@@ -3515,7 +3463,7 @@ function wfBCP47( $code ) {
 	$codeBCP = array();
 	foreach ( $codeSegment as $segNo => $seg ) {
 		if ( count( $codeSegment ) > 0 ) {
-			// when previous segment is x, it is a private segment and should be lc 
+			// when previous segment is x, it is a private segment and should be lc
 			if( $segNo > 0 && strtolower( $codeSegment[($segNo - 1)] ) == 'x') {
 				$codeBCP[$segNo] = strtolower( $seg );
 			// ISO 3166 country code
@@ -3538,28 +3486,9 @@ function wfBCP47( $code ) {
 }
 
 /**
- * Wrapper around array_map() which also taints variables
- *
- * @param  $function Callback
- * @param  $input Array
- * @return Array
- */
-function wfArrayMap( $function, $input ) {
-	$ret = array_map( $function, $input );
-	foreach ( $ret as $key => $value ) {
-		$taint = istainted( $input[$key] );
-		if ( $taint ) {
-			taint( $ret[$key], $taint );
-		}
-	}
-	return $ret;
-}
-
-
-/**
  * Get a cache object.
  *
- * @param integer $inputType Cache type, one the the CACHE_* constants.
+ * @param $inputType integer Cache type, one the the CACHE_* constants.
  * @return BagOStuff
  */
 function wfGetCache( $inputType ) {
@@ -3596,3 +3525,13 @@ function wfGetParserCacheStorage() {
 	return ObjectCache::getInstance( $wgParserCacheType );
 }
 
+/**
+ * Call hook functions defined in $wgHooks
+ *
+ * @param $event String: event name
+ * @param $args Array: parameters passed to hook functions
+ * @return Boolean
+ */
+function wfRunHooks( $event, $args = array() ) {
+	return Hooks::run( $event, $args );
+}

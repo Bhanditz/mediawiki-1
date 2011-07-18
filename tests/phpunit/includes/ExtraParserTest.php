@@ -9,8 +9,10 @@ class ExtraParserTest extends MediaWikiTestCase {
 		global $wgMemc;
 		global $wgContLang;
 		global $wgShowDBErrorBacktrace;
+		global $wgLanguageCode;
 
 		$wgShowDBErrorBacktrace = true;
+		$wgLanguageCode = 'en';
 		$wgContLang = new Language( 'en' );
 		$wgMemc = new EmptyBagOStuff;
 		
@@ -41,13 +43,11 @@ class ExtraParserTest extends MediaWikiTestCase {
 	}
 	
 	function testPreSaveTransform() {
-		global $wgUser, $wgTitle;
+		global $wgUser;
 		$title = Title::newFromText( __FUNCTION__ );
-		$oldTitle = $wgTitle; $wgTitle = $title; # Used by transformMsg()
 		$outputText = $this->parser->preSaveTransform( "Test\r\n{{subst:Foo}}\n{{Bar}}", $title, $wgUser, $this->options );
 
 		$this->assertEquals( "Test\nContent of ''Template:Foo''\n{{Bar}}", $outputText );
-		$wgTitle = $oldTitle;
 	}
 	
 	function testPreprocess() {

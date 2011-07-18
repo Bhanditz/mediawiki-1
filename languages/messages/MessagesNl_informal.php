@@ -35,21 +35,20 @@ Het kan ook wijzen op een fout in de software van {{SITENAME}}.',
 Een lijst met bestaande speciale pagina’s staat op [[Special:SpecialPages|speciale pagina’s]].',
 
 # General errors
-'missing-article'      => 'In de database is geen inhoud aangetroffen voor de pagina "$1" die er wel zou moeten zijn ($2).
+'missing-article'     => 'In de database is geen inhoud aangetroffen voor de pagina "$1" die er wel zou moeten zijn ($2).
 
 Dit kan voorkomen als je een verouderde verwijzing naar het verschil tussen twee versies van een pagina volgt of een versie opvraagt die is verwijderd.
 
 Als dit niet het geval is, heb je wellicht een fout in de software gevonden.
 Maak hiervan melding bij een [[Special:ListUsers/sysop|systeembeheerder]] van {{SITENAME}} en vermeld daarbij de URL van deze pagina.',
-'actionthrottledtext'  => 'Als maatregel tegen spam is het aantal keren per tijdseenheid dat je deze handeling kunt verrichten beperkt.
+'actionthrottledtext' => 'Als maatregel tegen spam is het aantal keren per tijdseenheid dat je deze handeling kunt verrichten beperkt.
 De limiet is overschreden.
 Probeer het over een aantal minuten opnieuw.',
-'viewsourcetext'       => 'Je kunt de brontekst van deze pagina bekijken en kopiëren:',
-'editinginterface'     => "'''Waarschuwing:''' Je bewerkt een pagina die gebruikt wordt door de software.
+'viewsourcetext'      => 'Je kunt de brontekst van deze pagina bekijken en kopiëren:',
+'editinginterface'    => "'''Waarschuwing:''' Je bewerkt een pagina die gebruikt wordt door de software.
 Bewerkingen op deze pagina beïnvloeden de gebruikersinterface van iedereen.
 Overweeg voor vertalingen om [http://translatewiki.net/wiki/Main_Page?setlang=nl translatewiki.net] te gebruiken, het vertalingsproject voor MediaWiki.",
-'namespaceprotected'   => "Je hebt geen rechten om pagina's in de naamruimte '''$1''' te bewerken.",
-'customcssjsprotected' => 'Je kunt deze pagina niet bewerken, omdat die persoonlijke instellingen van een andere gebruiker bevat.',
+'namespaceprotected'  => "Je hebt geen rechten om pagina's in de naamruimte '''$1''' te bewerken.",
 
 # Login and logout pages
 'logouttext'                 => "'''Je bent nu afgemeld.'''
@@ -178,11 +177,11 @@ Je kunt [[Special:Search/{{PAGENAME}}|naar deze term zoeken]] in andere pagina\'
 'noarticletext-nopermission'       => 'Deze pagina bevat geen tekst.
 Je kunt [[Special:Search/{{PAGENAME}}|naar deze term zoeken]] in andere pagina\'s of
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} de logboeken doorzoeken]</span>.',
-'userpage-userdoesnotexist'        => 'Je bewerkt een gebruikerspagina van een gebruiker die niet bestaat (gebruiker "$1").
+'userpage-userdoesnotexist'        => 'Je bewerkt een gebruikerspagina van een gebruiker die niet bestaat (gebruiker "<nowiki>$1</nowiki>").
 Controleer of je deze pagina wel wilt aanmaken/bewerken.',
 'clearyourcache'                   => "'''Let op! Nadat je de wijzigingen hebt opgeslagen is het wellicht nodig je browsercache te legen.'''
 
-'''Mozilla / Firefox / Safari:''' houd ''Shift'' ingedrukt terwijl je op ''Huidige pagina vernieuwen'' klikt of typ ''Ctrl-F5'' of ''Ctrl-R'' (''Command-R'' op eenMacintosh);
+'''Mozilla / Firefox / Safari:''' houd ''Shift'' ingedrukt terwijl je op ''Huidige pagina vernieuwen'' klikt of typ ''Ctrl-F5'' of ''Ctrl-R'' (''Command-R'' op eenMac);
 '''Konqueror: '''klik ''Reload'' of typ ''F5;''
 '''Opera:''' leeg je cache in ''Extra → Voorkeuren;''
 '''Internet Explorer:''' houd ''Ctrl'' ingedrukt terwijl je op ''Vernieuwen'' klikt of type ''Ctrl-F5.''",
@@ -357,10 +356,6 @@ Raadpleeg het verwijderingslogboek voordat je verder gaat.',
 'uploadfromurl-queued'        => 'Je upload is in de wachtrij geplaatst.',
 'filewasdeleted'              => 'Er is eerder een bestand met deze naam verwijderd.
 Raadpleeg het $1 voordat je het opnieuw toevoegt.',
-'upload-wasdeleted'           => "'''Waarschuwing: je bent een bestand dat eerder verwijderd was aan het uploaden.'''
-
-Controleer of het inderdaad je bedoeling is dit bestand te uploaden.
-Het verwijderingslogboek van dit bestand kunt je hier zien:",
 'filename-bad-prefix'         => "De naam van het bestand dat je aan het uploaden bent begint met '''\"\$1\"''', wat een niet-beschrijvende naam is die meestal automatisch door een digitale camera wordt gegeven.
 Kies een duidelijke naam voor je bestand.",
 'upload-success-msg'          => 'Je upload van [$2] is geslaagd en is beschikbaar: [[:{{ns:file}}:$1]]',
@@ -466,7 +461,7 @@ Je handeling is gestopt uit voorzorg tegen een beveiligingsrisico (dat bestaat u
 Ga een pagina terug, laad die pagina opnieuw en probeer het nog eens.',
 
 # Protect
-'protect-text'           => "Hier kun je het beveiligingsniveau voor de pagina '''<nowiki>$1</nowiki>''' bekijken en wijzigen.",
+'protect-text'           => "Hier kun je het beveiligingsniveau voor de pagina '''$1''' bekijken en wijzigen.",
 'protect-locked-blocked' => "Je kunt het beveiligingsniveau niet wijzigen terwijl je geblokkeerd bent.
 Hier zijn de huidige instellingen voor de pagina '''$1''':",
 'protect-locked-access'  => "Je hebt geen rechten om het beveiligingsniveau te wijzigen.
@@ -653,5 +648,9 @@ Samen met dit programma hoor je een [{{SERVER}}{{SCRIPTPATH}}/COPYING kopie van 
 
 # HTML forms
 'htmlform-float-invalid' => 'De waarde die je hebt opgegeven is geen getal.',
+
+# Add categories per AJAX
+'ajax-confirm-prompt' => 'Je kunt hieronder een bewerkingssamenvatting opgeven.
+Klik "Opslaan" om je bewerking op te slaan.',
 
 );

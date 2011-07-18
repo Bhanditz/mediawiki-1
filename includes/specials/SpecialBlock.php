@@ -48,7 +48,7 @@ class SpecialBlock extends SpecialPage {
 
 	/// @var Bool
 	protected $alreadyBlocked;
-	
+
 	/// @var Array
 	protected $preErrors = array();
 
@@ -59,15 +59,15 @@ class SpecialBlock extends SpecialPage {
 	public function execute( $par ) {
 		global $wgUser, $wgOut, $wgRequest;
 
-		# Can't block when the database is locked
-		if( wfReadOnly() ) {
-			$wgOut->readOnlyPage();
-			return;
-		}
 		# Permission check
 		if( !$this->userCanExecute( $wgUser ) ) {
-			$wgOut->permissionRequired( 'block' );
+			$this->displayRestrictionError();
 			return;
+		}
+
+		# Can't block when the database is locked
+		if( wfReadOnly() ) {
+			throw new ReadOnlyError;
 		}
 
 		# Extract variables from the request.  Try not to get into a situation where we
@@ -77,7 +77,7 @@ class SpecialBlock extends SpecialPage {
 		if ( $this->target instanceof User ) {
 			# Set the 'relevant user' in the skin, so it displays links like Contributions,
 			# User logs, UserRights, etc.
-			$wgUser->getSkin()->setRelevantUser( $this->target );
+			$this->getSkin()->setRelevantUser( $this->target );
 		}
 
 		list( $this->previousTarget, /*...*/ ) = Block::parseTarget( $wgRequest->getVal( 'wpPreviousTarget' ) );
@@ -486,7 +486,8 @@ class SpecialBlock extends SpecialPage {
 		if( $type == Block::TYPE_USER ){
 			# TODO: why do we not have a User->exists() method?
 			if( !$target->getId() ){
-				return wfMessage( 'nosuchusershort', $target->getName() );
+				return wfMessage( 'nosuchusershort',
+					wfEscapeWikiText( $target->getName() ) );
 			}
 
 			$status = self::checkUnblockSelf( $target );
@@ -553,7 +554,8 @@ class SpecialBlock extends SpecialPage {
 			# Give admins a heads-up before they go and block themselves.  Much messier
 			# to do this for IPs, but it's pretty unlikely they'd ever get the 'block'
 			# permission anyway, although the code does allow for it
-			if( $target === $wgUser->getName() && ( $data['PreviousTarget'] != $data['Target'] || !$data['Confirm'] ) )
+			if( $target === $wgUser->getName() &&
+				( $data['PreviousTarget'] != $data['Target'] || !$data['Confirm'] ) )
 			{
 				return array( 'ipb-blockingself' );
 			}
@@ -633,7 +635,9 @@ class SpecialBlock extends SpecialPage {
 		$status = $block->insert();
 		if( !$status ) {
 			# Show form unless the user is already aware of this...
-			if( ( $data['PreviousTarget'] != htmlspecialchars( $block->getTarget() ) ) || !$data['Confirm'] ) {
+			if( !$data['Confirm'] || ( array_key_exists( 'PreviousTarget', $data )
+				&& $data['PreviousTarget'] !== htmlspecialchars( $block->getTarget() ) ) )
+			{
 				return array( array( 'ipb_already_blocked', $block->getTarget() ) );
 			# Otherwise, try to update the block...
 			} else {
@@ -709,7 +713,7 @@ class SpecialBlock extends SpecialPage {
 
 	/**
 	 * Get an array of suggested block durations from MediaWiki:Ipboptions
-	 * FIXME: this uses a rather odd syntax for the options, should it be converted
+	 * @todo FIXME: This uses a rather odd syntax for the options, should it be converted
 	 *     to the standard "**<duration>|<displayname>" format?
 	 * @return Array
 	 */
@@ -742,7 +746,7 @@ class SpecialBlock extends SpecialPage {
 	public static function parseExpiryInput( $expiry ) {
 		static $infinity;
 		if( $infinity == null ){
-			$infinity = wfGetDB( DB_READ )->getInfinity();
+			$infinity = wfGetDB( DB_SLAVE )->getInfinity();
 		}
 		if ( $expiry == 'infinite' || $expiry == 'indefinite' ) {
 			$expiry = $infinity;

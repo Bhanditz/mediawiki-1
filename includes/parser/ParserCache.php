@@ -134,6 +134,11 @@ class ParserCache {
 	/**
 	 * Retrieve the ParserOutput from ParserCache.
 	 * false if not found or outdated.
+	 *
+	 * @param $article Article
+	 * @param $popts ParserOptions
+	 * @param $useOutdated
+	 *
 	 * @return ParserOutput|false
 	 */
 	public function get( $article, $popts, $useOutdated = false ) {
@@ -176,9 +181,6 @@ class ParserCache {
 			wfDebug( "ParserOutput key expired, touched $touched, epoch $wgCacheEpoch, cached $cacheTime\n" );
 			$value = false;
 		} else {
-			if ( isset( $value->mTimestamp ) ) {
-				$article->mTimestamp = $value->mTimestamp;
-			}
 			wfIncrStats( "pcache_hit" );
 		}
 

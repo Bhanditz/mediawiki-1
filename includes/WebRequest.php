@@ -45,7 +45,7 @@ class WebRequest {
 	private $response;
 
 	public function __construct() {
-		/// @todo Fixme: this preemptive de-quoting can interfere with other web libraries
+		/// @todo FIXME: This preemptive de-quoting can interfere with other web libraries
 		///        and increases our memory footprint. It would be cleaner to do on
 		///        demand; but currently we have no wrapper for $_SERVER etc.
 		$this->checkMagicQuotes();
@@ -125,6 +125,47 @@ class WebRequest {
 	}
 
 	/**
+	 * Work out an appropriate URL prefix containing scheme and host, based on
+	 * information detected from $_SERVER
+	 *
+	 * @return string
+	 */
+	public static function detectServer() {
+		if ( isset( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] == 'on') {
+			$proto = 'https';
+			$stdPort = 443;
+		} else {
+			$proto = 'http';
+			$stdPort = 80;
+		}
+
+		$varNames = array( 'HTTP_HOST', 'SERVER_NAME', 'HOSTNAME', 'SERVER_ADDR' );
+		$host = 'localhost';
+		$port = $stdPort;
+		foreach ( $varNames as $varName ) {
+			if ( !isset( $_SERVER[$varName] ) ) {
+				continue;
+			}
+			$parts = IP::splitHostAndPort( $_SERVER[$varName] );
+			if ( !$parts ) {
+				// Invalid, do not use
+				continue;
+			}
+			$host = $parts[0];
+			if ( $parts[1] === false ) {
+				if ( isset( $_SERVER['SERVER_PORT'] ) ) {
+					$port = $_SERVER['SERVER_PORT'];
+				} // else leave it as $stdPort
+			} else {
+				$port = $parts[1];
+			}
+			break;
+		}
+
+		return $proto . '://' . IP::combineHostAndPort( $host, $port, $stdPort );
+	}
+
+	/**
 	 * Check for title, action, and/or variant data in the URL
 	 * and interpolate it into the GET variables.
 	 * This should only be run after $wgContLang is available,
@@ -157,7 +198,7 @@ class WebRequest {
 	 *             passed on as the value of this URL parameter
 	 * @return array of URL variables to interpolate; empty if no match
 	 */
-	private static function extractTitle( $path, $bases, $key=false ) {
+	private static function extractTitle( $path, $bases, $key = false ) {
 		foreach( (array)$bases as $keyValue => $base ) {
 			// Find the part after $wgArticlePath
 			$base = str_replace( '$1', '', $base );
@@ -227,7 +268,7 @@ class WebRequest {
 			}
 		} else {
 			global $wgContLang;
-			$data = $wgContLang->normalize( $data );
+			$data = isset( $wgContLang ) ? $wgContLang->normalize( $data ) : UtfNormal::cleanUp( $data );
 		}
 		return $data;
 	}
@@ -285,7 +326,7 @@ class WebRequest {
 	}
 
 	/**
-	 * Set an aribtrary value into our get/post data.
+	 * Set an arbitrary value into our get/post data.
 	 *
 	 * @param $key String: key name to use
 	 * @param $value Mixed: value to set
@@ -425,6 +466,8 @@ class WebRequest {
 	 * Extracts the given named values into an array.
 	 * If no arguments are given, returns all input values.
 	 * No transformation is performed on the values.
+	 *
+	 * @return array
 	 */
 	public function getValues() {
 		$names = func_get_args();
@@ -440,6 +483,16 @@ class WebRequest {
 			}
 		}
 		return $retVal;
+	}
+
+	/**
+	 * Returns the names of all input values excluding those in $exclude.
+	 *
+	 * @param $exclude Array
+	 * @return array
+	 */
+	public function getValueNames( $exclude = array() ) {
+		return array_diff( array_keys( $this->getValues() ), $exclude );
 	}
 
 	/**
@@ -497,7 +550,8 @@ class WebRequest {
 	}
 
 	/**
-	 * Return the path portion of the request URI.
+	 * Return the path and query string portion of the request URI.
+	 * This will be suitable for use as a relative link in HTML output.
 	 *
 	 * @return String
 	 */
@@ -535,7 +589,9 @@ class WebRequest {
 	}
 
 	/**
-	 * Return the request URI with the canonical service and hostname.
+	 * Return the request URI with the canonical service and hostname, path,
+	 * and query string. This will be suitable for use as an absolute link
+	 * in HTML or other output.
 	 *
 	 * @return String
 	 */
@@ -564,6 +620,12 @@ class WebRequest {
 		return htmlspecialchars( $this->appendQuery( $query ) );
 	}
 
+	/**
+	 * @param $key
+	 * @param $value
+	 * @param $onlyquery bool
+	 * @return String
+	 */
 	public function appendQueryValue( $key, $value, $onlyquery = false ) {
 		return $this->appendQueryArray( array( $key => $value ), $onlyquery );
 	}
@@ -633,7 +695,7 @@ class WebRequest {
 	/**
 	 * Return the size of the upload, or 0.
 	 *
-	 * @deprecated
+	 * @deprecated since 1.17
 	 * @param $key String:
 	 * @return integer
 	 */
@@ -672,7 +734,7 @@ class WebRequest {
 	/**
 	 * Return a WebRequestUpload object corresponding to the key
 	 *
-	 * @param @key string
+	 * @param $key string
 	 * @return WebRequestUpload
 	 */
 	public function getUpload( $key ) {
@@ -707,7 +769,6 @@ class WebRequest {
 				$this->headers[ strtoupper( $tempName ) ] = $tempValue;
 			}
 		} else {
-			$headers = $_SERVER;
 			foreach ( $_SERVER as $name => $value ) {
 				if ( substr( $name, 0, 5 ) === 'HTTP_' ) {
 					$name = str_replace( '_', '-',  substr( $name, 5 ) );
@@ -732,6 +793,8 @@ class WebRequest {
 	/**
 	 * Get a request header, or false if it isn't set
 	 * @param $name String: case-insensitive header name
+	 *
+	 * @return string|false
 	 */
 	public function getHeader( $name ) {
 		$this->initHeaders();
@@ -767,10 +830,13 @@ class WebRequest {
 	}
 
 	/**
-	 * Check if Internet Explorer will detect an incorrect cache extension in 
+	 * Check if Internet Explorer will detect an incorrect cache extension in
 	 * PATH_INFO or QUERY_STRING. If the request can't be allowed, show an error
 	 * message or redirect to a safer URL. Returns true if the URL is OK, and
 	 * false if an error message has been shown and the request should be aborted.
+	 *
+	 * @param $extWhitelist array
+	 * @return bool
 	 */
 	public function checkUrlExtension( $extWhitelist = array() ) {
 		global $wgScriptExtension;
@@ -786,15 +852,18 @@ class WebRequest {
 			}
 			wfHttpError( 403, 'Forbidden',
 				'Invalid file extension found in the path info or query string.' );
-			
+
 			return false;
 		}
 		return true;
 	}
 
 	/**
-	 * Attempt to redirect to a URL with a QUERY_STRING that's not dangerous in 
+	 * Attempt to redirect to a URL with a QUERY_STRING that's not dangerous in
 	 * IE 6. Returns true if it was successful, false otherwise.
+	 *
+	 * @param $url string
+	 * @return bool
 	 */
 	protected function doSecurityRedirect( $url ) {
 		header( 'Location: ' . $url );
@@ -808,11 +877,11 @@ class WebRequest {
 <body>
 <h1>Security redirect</h1>
 <p>
-We can't serve non-HTML content from the URL you have requested, because 
+We can't serve non-HTML content from the URL you have requested, because
 Internet Explorer would interpret it as an incorrect and potentially dangerous
 content type.</p>
-<p>Instead, please use <a href="$encUrl">this URL</a>, which is the same as the URL you have requested, except that 
-"&amp;*" is appended. This prevents Internet Explorer from seeing a bogus file 
+<p>Instead, please use <a href="$encUrl">this URL</a>, which is the same as the URL you have requested, except that
+"&amp;*" is appended. This prevents Internet Explorer from seeing a bogus file
 extension.
 </p>
 </body>
@@ -837,8 +906,10 @@ HTML;
 	 * Also checks for anything that looks like a file extension at the end of
 	 * QUERY_STRING, since IE 6 and earlier will use this to get the file type
 	 * if there was no dot before the question mark (bug 28235).
+	 *
+	 * @deprecated Use checkUrlExtension().
 	 */
-	public function isPathInfoBad() {
+	public function isPathInfoBad( $extWhitelist = array() ) {
 		global $wgScriptExtension;
 		$extWhitelist[] = ltrim( $wgScriptExtension, '.' );
 		return IEUrlExtension::areServerVarsBad( $_SERVER, $extWhitelist );
@@ -875,7 +946,7 @@ HTML;
 		foreach ( $langs as $lang => $val ) {
 			if ( $val === '' ) {
 				$langs[$lang] = 1;
-			} else if ( $val == 0 ) {
+			} elseif ( $val == 0 ) {
 				unset($langs[$lang]);
 			}
 		}
@@ -1079,7 +1150,7 @@ class FauxRequest extends WebRequest {
 	public function getSessionArray() {
 		return $this->session;
 	}
-	
+
 	public function isPathInfoBad( $extWhitelist = array() ) {
 		return false;
 	}

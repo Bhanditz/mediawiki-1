@@ -70,7 +70,8 @@ class ApiQueryExternalLinks extends ApiQueryBase {
 		}
 
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
-		if ( !is_null( $params['offset'] ) ) {
+		$offset = isset( $params['offset'] ) ? $params['offset'] : 0;
+		if ( $offset ) {
 			$this->addOption( 'OFFSET', $params['offset'] );
 		}
 
@@ -81,14 +82,15 @@ class ApiQueryExternalLinks extends ApiQueryBase {
 			if ( ++$count > $params['limit'] ) {
 				// We've reached the one extra which shows that
 				// there are additional pages to be had. Stop here...
-				$this->setContinueEnumParameter( 'offset', @$params['offset'] + $params['limit'] );
+				$this->setContinueEnumParameter( 'offset', $offset + $params['limit'] );
 				break;
 			}
 			$entry = array();
+			// We *could* run this through wfExpandUrl() but I think it's better to output the link verbatim, even if it's protocol-relative --Roan
 			ApiResult::setContent( $entry, $row->el_to );
 			$fit = $this->addPageSubItem( $row->el_from, $entry );
 			if ( !$fit ) {
-				$this->setContinueEnumParameter( 'offset', @$params['offset'] + $count - 1 );
+				$this->setContinueEnumParameter( 'offset', $offset + $count - 1 );
 				break;
 			}
 		}
@@ -146,6 +148,10 @@ class ApiQueryExternalLinks extends ApiQueryBase {
 			'Get a list of external links on the [[Main Page]]:',
 			'  api.php?action=query&prop=extlinks&titles=Main%20Page',
 		);
+	}
+
+	public function getHelpUrls() {
+		return 'http://www.mediawiki.org/wiki/API:Properties#extlinks_.2F_el';
 	}
 
 	public function getVersion() {

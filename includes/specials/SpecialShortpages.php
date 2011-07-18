@@ -61,6 +61,11 @@ class ShortPagesPage extends QueryPage {
 		return array( 'page_len' );
 	}
 
+	/**
+	 * @param $db DatabaseBase
+	 * @param $res
+	 * @return void
+	 */
 	function preprocessResults( $db, $res ) {
 		# There's no point doing a batch check if we aren't caching results;
 		# the page must exist for it to have been pulled out of the table
@@ -81,8 +86,8 @@ class ShortPagesPage extends QueryPage {
 	}
 
 	function formatResult( $skin, $result ) {
-		global $wgLang, $wgContLang;
-		$dm = $wgContLang->getDirMark();
+		global $wgLang;
+		$dm = $wgLang->getDirMark();
 
 		$title = Title::makeTitle( $result->namespace, $result->title );
 		if ( !$title ) {

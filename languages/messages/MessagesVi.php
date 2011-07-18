@@ -415,15 +415,6 @@ $messages = array(
 'noindex-category'               => 'Trang không hiển thị trong bộ máy tìm kiếm',
 'broken-file-category'           => 'Trang nhúng tập tin không tồn tại',
 
-'mainpagetext'      => "'''MediaWiki đã được cài đặt thành công.'''",
-'mainpagedocfooter' => 'Xin đọc [http://meta.wikimedia.org/wiki/Help:Contents Hướng dẫn sử dụng] để biết thêm thông tin về cách sử dụng phần mềm wiki.
-
-== Để bắt đầu ==
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Danh sách các thiết lập cấu hình]
-* [http://www.mediawiki.org/wiki/Manual:FAQ Các câu hỏi thường gặp MediaWiki]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Danh sách gửi thư về việc phát hành MediaWiki]',
-
 'about'         => 'Giới thiệu',
 'article'       => 'Trang nội dung',
 'newwindow'     => '(mở cửa sổ mới)',
@@ -452,7 +443,7 @@ $messages = array(
 'vector-action-move'             => 'Di chuyển',
 'vector-action-protect'          => 'Khóa',
 'vector-action-undelete'         => 'Phục hồi',
-'vector-action-unprotect'        => 'Mở khóa',
+'vector-action-unprotect'        => 'Đổi mức khóa',
 'vector-simplesearch-preference' => 'Gợi ý tìm kiếm nâng cao (cần bề ngoài Vectơ)',
 'vector-view-create'             => 'Tạo',
 'vector-view-edit'               => 'Sửa',
@@ -474,7 +465,6 @@ $messages = array(
 'history'           => 'Lịch sử trang',
 'history_short'     => 'Lịch sử',
 'updatedmarker'     => 'được cập nhật kể từ lần xem cuối',
-'info_short'        => 'Thông tin',
 'printableversion'  => 'Bản để in',
 'permalink'         => 'Liên kết thường trực',
 'print'             => 'In',
@@ -490,8 +480,8 @@ $messages = array(
 'protect'           => 'Khóa',
 'protect_change'    => 'thay đổi',
 'protectthispage'   => 'Khóa trang này',
-'unprotect'         => 'Mở khóa',
-'unprotectthispage' => 'Mở khóa trang này',
+'unprotect'         => 'Đổi mức khóa',
+'unprotectthispage' => 'Thay đổi mức khóa của trang này',
 'newpage'           => 'Trang mới',
 'talkpage'          => 'Thảo luận về trang này',
 'talkpagelinktext'  => 'Thảo luận',
@@ -672,7 +662,8 @@ Truy vấn: $2',
 'cascadeprotected'     => 'Trang này đã bị khóa không cho sửa đổi, vì nó được nhúng vào {{PLURAL:$1|trang|những trang}} đã bị khóa với tùy chọn “khóa theo tầng” được kích hoạt:
 $2',
 'namespaceprotected'   => "Bạn không có quyền sửa các trang trong không gian tên '''$1'''.",
-'customcssjsprotected' => 'Bạn không có quyền sửa đổi trang này vì nó chứa các tùy chọn cá nhân của một thành viên khác.',
+'customcssprotected'   => 'Bạn không có quyền sửa đổi trang CSS này vì nó chứa các tùy chọn cá nhân của một thành viên khác.',
+'customjsprotected'    => 'Bạn không có quyền sửa đổi trang JavaScript này vì nó chứa các tùy chọn cá nhân của một thành viên khác.',
 'ns-specialprotected'  => 'Không thể sửa chữa các trang trong không gian tên {{ns:special}}.',
 'titleprotected'       => "Tựa đề này đã bị [[User:$1|$1]] khóa không cho tạo ra.
 Lý do được cung cấp là ''$2''.",
@@ -727,7 +718,7 @@ Hãy chắc chắn bạn đã bật lên cookie, làm mới trang này, và th�
 'nosuchuser'                 => 'Không có thành viên nào có tên “$1”.
 Tên người dùng có phân biệt chữ hoa chữ thường.
 Hãy kiểm tra lại chính tả, hoặc [[Special:UserLogin/signup|mở tài khoản mới]].',
-'nosuchusershort'            => 'Không có thành viên nào có tên “<nowiki>$1</nowiki>”. Xin hãy kiểm tra lại chính tả.',
+'nosuchusershort'            => 'Không có thành viên nào có tên “$1”. Xin hãy kiểm tra lại chính tả.',
 'nouserspecified'            => 'Bạn phải đưa ra tên đăng ký.',
 'login-userblocked'          => 'Thành viên này đã bị cấm. Không cho phép đăng nhập.',
 'wrongpassword'              => 'Mật khẩu sai. Xin vui lòng nhập lại.',
@@ -850,7 +841,7 @@ Mật khẩu tạm: $2',
 'minoredit'                        => 'Sửa đổi nhỏ',
 'watchthis'                        => 'Theo dõi trang này',
 'savearticle'                      => 'Lưu trang',
-'preview'                          => 'Xem thử',
+'preview'                          => 'Xem trước',
 'showpreview'                      => 'Xem thử',
 'showlivepreview'                  => 'Xem thử nhanh',
 'showdiff'                         => 'Xem thay đổi',
@@ -920,10 +911,15 @@ hoặc [{{fullurl:{{FULLPAGENAME}}|action=edit}} sửa đổi trang này]</span>
 'noarticletext-nopermission'       => 'Trang này hiện đang trống.
 Bạn có thể [[Special:Search/{{PAGENAME}}|tìm kiếm tựa trang này]] tại các trang khác,
 hoặc <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} tìm kiếm các nhật trình liên quan]</span>.',
-'userpage-userdoesnotexist'        => 'Tài khoản mang tên “$1” chưa được đăng ký. Xin hãy kiểm tra lại nếu bạn muốn tạo/sửa trang này.',
+'userpage-userdoesnotexist'        => 'Tài khoản mang tên “<nowiki>$1</nowiki>” chưa được đăng ký. Xin hãy kiểm tra lại nếu bạn muốn tạo/sửa trang này.',
 'userpage-userdoesnotexist-view'   => 'Tài khoản “$1” chưa được đăng ký.',
 'blocked-notice-logextract'        => 'Người dùng này hiện đang bị cấm sửa đổi. Nhật trình cấm gần nhất được ghi ở dưới để tiện theo dõi:',
-'clearyourcache'                   => "'''Ghi chú&nbsp;– Sau khi lưu trang, có thể bạn sẽ phải xóa bộ nhớ đệm của trình duyệt để xem các thay đổi.''' '''Mozilla / Firefox / Safari:''' giữ phím ''Shift'' trong khi nhấn ''Reload'' (''Tải lại''), hoặc nhấn tổ hợp ''Ctrl-F5'' hay ''Ctrl-R'' (<span title=\"Command\">⌘</span>''R'' trên Macintosh); '''Konqueror:''' nhấn nút ''Reload'' hoặc nhấn ''F5''; '''Opera:''' xóa bộ nhớ đệm trong ''Tools → Preferences''; '''Internet Explorer:''' giữ phím ''Ctrl'' trong khi nhấn ''Refresh'', hoặc nhấn tổ hợp ''Ctrl-F5''.",
+'clearyourcache'                   => "'''Ghi chú:''' Sau khi lưu trang, có thể bạn sẽ phải xóa bộ nhớ đệm của trình duyệt để xem các thay đổi.
+* '''Firefox / Safari:''' giữ phím ''Shift'' trong khi nhấn ''Reload'' (''Tải lại''), hoặc nhấn tổ hợp ''Ctrl-F5'' hay ''Ctrl-R'' (<span title=\"Command\">⌘</span>R trên Mac)
+* '''Google Chrome:''' nhấn tổ hợp ''Ctrl-Shift-R'' (<span title=\"Shift\">⇧</span><span title=\"Command\">⌘</span>R trên Mac)
+* '''Internet Explorer:''' giữ phím ''Ctrl'' trong khi nhấn ''Refresh'', hoặc nhấn tổ hợp ''Ctrl-F5''
+* '''Konqueror:''' nhấn nút ''Reload'' hoặc nhấn ''F5''
+* '''Opera:''' xóa bộ nhớ đệm trong ''Tools → Preferences''",
 'usercssyoucanpreview'             => "'''Mẹo:''' Sử dụng nút “{{int:showpreview}}” để kiểm thử bản CSS của bạn trước khi lưu trang.",
 'userjsyoucanpreview'              => "'''Mẹo:''' Sử dụng nút “{{int:showpreview}}” để kiểm thử bản JS của bạn trước khi lưu trang.",
 'usercsspreview'                   => "'''Hãy nhớ rằng bạn chỉ đang xem thử trang CSS cá nhân của bạn.
@@ -1290,12 +1286,13 @@ Xin hãy bảo đảm giữ vững tính liên tục của lịch sử trang.',
 'searchdisabled'                   => 'Chức năng tìm kiếm tại {{SITENAME}} đã bị tắt. Bạn có tìm kiếm bằng Google trong thời gian này. Chú ý rằng các chỉ mục từ {{SITENAME}} của chúng có thể đã lỗi thời.',
 
 # Quickbar
-'qbsettings'               => 'Thanh công cụ',
-'qbsettings-none'          => 'Không có',
-'qbsettings-fixedleft'     => 'Cố định trái',
-'qbsettings-fixedright'    => 'Cố định phải',
-'qbsettings-floatingleft'  => 'Nổi bên trái',
-'qbsettings-floatingright' => 'Nổi bên phải',
+'qbsettings'                => 'Thanh công cụ',
+'qbsettings-none'           => 'Không có',
+'qbsettings-fixedleft'      => 'Cố định trái',
+'qbsettings-fixedright'     => 'Cố định phải',
+'qbsettings-floatingleft'   => 'Nổi bên trái',
+'qbsettings-floatingright'  => 'Nổi bên phải',
+'qbsettings-directionality' => 'Cố định, theo hướng viết ngôn ngữ của bạn',
 
 # Preferences page
 'preferences'                   => 'Tùy chọn',
@@ -1307,7 +1304,9 @@ Xin hãy bảo đảm giữ vững tính liên tục của lịch sử trang.',
 'prefs-skin'                    => 'Hình dạng',
 'skin-preview'                  => 'Xem thử',
 'datedefault'                   => 'Không quan tâm',
+'prefs-beta'                    => 'Tính năng beta',
 'prefs-datetime'                => 'Ngày tháng',
+'prefs-labs'                    => 'Tính năng phòng thí nghiệm',
 'prefs-personal'                => 'Thông tin cá nhân',
 'prefs-rc'                      => 'Thay đổi gần đây',
 'prefs-watchlist'               => 'Theo dõi',
@@ -1341,7 +1340,7 @@ Bất cứ ai biết được khóa trong ô này cũng có thể đọc đượ
 'savedprefs'                    => 'Đã lưu các tùy chọn cá nhân.',
 'timezonelegend'                => 'Múi giờ:',
 'localtime'                     => 'Giờ hiện tại:',
-'timezoneuseserverdefault'      => 'Sử dụng giờ mặc định của máy chủ',
+'timezoneuseserverdefault'      => 'Sử dụng giờ mặc định của wiki ($1)',
 'timezoneuseoffset'             => 'Khác (cần ghi số giờ chênh lệch)',
 'timezoneoffset'                => 'Chênh giờ¹:',
 'servertime'                    => 'Giờ máy chủ:',
@@ -1449,7 +1448,7 @@ Nếu bạn đồng ý cung cấp, nó sẽ dùng để ghi nhận công lao c�
 'group-autoconfirmed-member' => 'thành viên tự động xác nhận',
 'group-bot-member'           => 'bot',
 'group-sysop-member'         => 'bảo quản viên',
-'group-bureaucrat-member'    => 'Hành chính viên',
+'group-bureaucrat-member'    => 'hành chính viên',
 'group-suppress-member'      => 'giám sát viên',
 
 'grouppage-user'          => '{{ns:project}}:Thành viên',
@@ -1522,10 +1521,11 @@ Nếu bạn đồng ý cung cấp, nó sẽ dùng để ghi nhận công lao c�
 'right-sendemail'             => 'Gửi thư điện tử cho thành viên khác',
 
 # User rights log
-'rightslog'      => 'Nhật trình cấp quyền thành viên',
-'rightslogtext'  => 'Đây là nhật trình lưu những thay đổi đối với các quyền hạn thành viên.',
-'rightslogentry' => 'đã đổi cấp của thành viên $1 từ $2 thành $3',
-'rightsnone'     => '(không có)',
+'rightslog'                  => 'Nhật trình cấp quyền thành viên',
+'rightslogtext'              => 'Đây là nhật trình lưu những thay đổi đối với các quyền hạn thành viên.',
+'rightslogentry'             => 'đã đổi cấp của thành viên $1 từ $2 thành $3',
+'rightslogentry-autopromote' => 'được tự động phong cấp từ $2 đến $3',
+'rightsnone'                 => '(không có)',
 
 # Associated actions - in the sentence "You do not have permission to X"
 'action-read'                 => 'đọc trang này',
@@ -1670,6 +1670,7 @@ Chỉ chấp nhận {{PLURAL:$3|loại tập tin|các loại tập tin}} sau: $2
 'large-file'                  => 'Các tập tin được khuyến cáo không được lớn hơn $1; tập tin này lớn đến $2.',
 'largefileserver'             => 'Tập tin này quá lớn so với khả năng phục vụ của máy chủ.',
 'emptyfile'                   => 'Tập tin bạn vừa mới tải lên có vẻ trống không. Điều này có thể xảy ra khi bạn đánh sai tên tập tin. Xin hãy chắc chắn rằng bạn thật sự muốn tải lên tập tin này.',
+'windows-nonascii-filename'   => 'Wiki này không hỗ trợ ký tự đặc biệt trong tên tập tin.',
 'fileexists'                  => "Một tập tin với tên này đã tồn tại, xin hãy kiểm tra lại '''<tt>[[:$1]]</tt>''' nếu bạn không chắc bạn có muốn thay đổi nó hay không.
 [[$1|thumb]]",
 'filepageexists'              => "Trang miêu tả của tập tin này đã được tạo tại '''<tt>[[:\$1]]</tt>''', nhưng hiện không có tập tin nào có tên như vậy.
@@ -1715,9 +1716,6 @@ Không được phép tải lên các tập tin Java, bởi vì chúng có thể
 'upload-options'              => 'Tùy chọn tải lên',
 'watchthisupload'             => 'Theo dõi tập tin này',
 'filewasdeleted'              => 'Một tên với tên này đã được tải lên trước đã rồi sau đó bị xóa. Bạn nên kiểm tra lại $1 trước khi tải nó lên lại lần nữa.',
-'upload-wasdeleted'           => "'''Cảnh báo: Bạn đang tải lên một tập tin từng bị xóa trước đây.'''
-
-Bạn nên cân nhắc trong việc tiếp tục tải lên tập tin này. Nhật trình xóa của tập tin được đưa ra dưới đây để tiện theo dõi:",
 'filename-bad-prefix'         => "Tên cho tập tin mà bạn đang tải lên bắt đầu bằng '''“$1”''', đây không phải là dạng tên tiêu biểu có tính chất miêu tả do các máy chụp ảnh số tự động đặt. Xin hãy chọn một tên có tính chất miêu tả và gợi nhớ hơn cho tập tin của bạn.",
 'filename-prefix-blacklist'   => ' #<!-- xin để nguyên hàng này --> <pre>
 # Cú pháp như sau:
@@ -1853,7 +1851,7 @@ Danh sách dưới đây chỉ hiển thị {{PLURAL:$1|liên kết đầu tiên
 Có [[Special:WhatLinksHere/$2|danh sách đầy đủ ở đây]].',
 'nolinkstoimage'            => 'Không có trang nào chứa liên kết đến hình.',
 'morelinkstoimage'          => 'Xem [[Special:WhatLinksHere/$1|thêm liên kết]] đến tập tin này.',
-'redirectstofile'           => '{{PLURAL:$1|Tập tin|$1 tập tin}} sau chuyển hướng đến tập tin này:',
+'linkstoimage-redirect'     => '$1 (tập tin đổi hướng) $2',
 'duplicatesoffile'          => '{{PLURAL:$1|Tập tin sau|$1 tập tin sau}} là bản sao của tập tin này ([[Special:FileDuplicateSearch/$2|chi tiết]]):',
 'sharedupload'              => 'Tập tin này đặt tại $1 và các dự án khác có thể dùng chúng.',
 'sharedupload-desc-there'   => 'Tập tin này đặt tại $1 và các dự án khác có thể sử dụng chúng.
@@ -2051,7 +2049,7 @@ Bạn có thể thu hẹp kết quả bằng cách chọn loại nhật trình, 
 'log-title-wildcard'   => 'Tìm các tựa trang bắt đầu bằng các chữ này',
 
 # Special:AllPages
-'allpages'          => 'Tất cả các trang',
+'allpages'          => 'Mọi trang',
 'alphaindexline'    => '$1 đến $2',
 'nextpage'          => 'Trang sau ($1)',
 'prevpage'          => 'Trang trước ($1)',
@@ -2175,11 +2173,11 @@ Có [[{{MediaWiki:Listgrouprights-helppage}}|thông tin thêm]] về từng nhó
 'watchlistanontext'    => 'Xin hãy $1 để xem hay sửa đổi các trang được theo dõi.',
 'watchnologin'         => 'Chưa đăng nhập',
 'watchnologintext'     => 'Bạn phải [[Special:UserLogin|đăng nhập]] mới sửa đổi được danh sách theo dõi.',
-'addedwatch'           => 'Đã thêm vào danh sách theo dõi',
+'addwatch'             => 'Thêm vào danh sách theo dõi',
 'addedwatchtext'       => 'Trang “<nowiki>$1</nowiki>” đã được cho vào [[Special:Watchlist|danh sách theo dõi]]. Những sửa đổi đối với trang này và trang thảo luận của nó sẽ được liệt kê, và được <b>tô đậm</b> trong [[Special:RecentChanges|danh sách các thay đổi mới]].
 
 Nếu bạn muốn cho trang này ra khỏi danh sách theo dõi, nhấn vào "Ngừng theo dõi" ở trên.',
-'removedwatch'         => 'Đã ra khỏi danh sách theo dõi',
+'removewatch'          => 'Gỡ khỏi danh sách theo dõi',
 'removedwatchtext'     => 'Trang “[[:$1]]” đã được đưa ra khỏi [[Special:Watchlist|danh sách theo dõi]] của bạn.',
 'watch'                => 'Theo dõi',
 'watchthispage'        => 'Theo dõi trang này',
@@ -2200,8 +2198,9 @@ Nếu bạn muốn cho trang này ra khỏi danh sách theo dõi, nhấn vào "N
 'watchlist-options'    => 'Tùy chọn về danh sách theo dõi',
 
 # Displayed when you click the "watch" button and it is in the process of watching
-'watching'   => 'Đang theo dõi…',
-'unwatching' => 'Đang ngừng theo dõi…',
+'watching'       => 'Đang theo dõi…',
+'unwatching'     => 'Đang ngừng theo dõi…',
+'watcherrortext' => 'Lỗi xảy ra khi theo dõi hoặc ngừng theo dõi “$1”.',
 
 'enotif_mailer'                => 'Thông báo của {{SITENAME}}',
 'enotif_reset'                 => 'Đánh dấu đã xem mọi trang',
@@ -2236,7 +2235,7 @@ Bạn cũng có thể thiết lập lại việc nhắc nhở cho tất cả cá
 {{fullurl:{{#special:Preferences}}}}
 
 Để thay đổi các thiết lập danh sách theo dõi, mời xem:
-{{fullurl:{{#special:Watchlist}}/edit}}
+{{fullurl:{{#special:EditWatchlist}}}}
 
 Để xóa trang ra khỏi danh sách theo dõi của bạn, mời xem:
 $UNWATCHURL
@@ -2258,7 +2257,7 @@ Phản hồi và cần sự hỗ trợ:
 Xin xác nhận việc bạn định làm, và hiểu rõ những hệ lụy của nó, và bạn thực hiện nó theo đúng đúng [[{{MediaWiki:Policy-url}}|quy định]].',
 'actioncomplete'         => 'Đã thực hiện xong',
 'actionfailed'           => 'Tác động bị thất bại',
-'deletedtext'            => 'Đã xóa “<nowiki>$1</nowiki>”. Xem danh sách các xóa bỏ gần nhất tại $2.',
+'deletedtext'            => 'Đã xóa “$1”. Xem danh sách các xóa bỏ gần nhất tại $2.',
 'deletedarticle'         => 'đã xóa “[[$1]]”',
 'suppressedarticle'      => 'đã giấu "[[$1]]"',
 'dellogpage'             => 'Nhật trình xóa',
@@ -2301,7 +2300,7 @@ quay về phiên bản cuối của $2.',
 
 # Protect
 'protectlogpage'              => 'Nhật trình khóa',
-'protectlogtext'              => 'Dưới đây là danh sách các thao tác khóa và mở khóa trang. Xem [[Special:ProtectedPages|danh sách các trang bị khóa]] để xem danh sách các trang hiện thời đang bị khóa.',
+'protectlogtext'              => 'Đây là danh sách các thay đổi mức khóa trang. Xem [[Special:ProtectedPages|danh sách các trang hiện thời đang bị khóa]].',
 'protectedarticle'            => 'đã khóa “[[$1]]”',
 'modifiedarticleprotection'   => 'đã đổi mức khóa cho “[[$1]]”',
 'unprotectedarticle'          => 'đã mở khóa cho “[[$1]]”',
@@ -2314,7 +2313,7 @@ quay về phiên bản cuối của $2.',
 'protect_expiry_invalid'      => 'Thời hạn không hợp lệ.',
 'protect_expiry_old'          => 'Thời hạn đã qua.',
 'protect-unchain-permissions' => 'Thay đổi các tùy chọn khóa trang khác',
-'protect-text'                => "Bạn có thể xem và đổi kiểu khóa trang '''<nowiki>$1</nowiki>''' ở đây.",
+'protect-text'                => "Bạn có thể xem và đổi kiểu khóa trang '''$1''' ở đây.",
 'protect-locked-blocked'      => "Bạn không thể đổi mức khóa khi bị cấm. Đây là trạng thái
 hiện tại của trang '''$1''':",
 'protect-locked-dblock'       => "Hiện không thể đổi mức khóa do cơ sở dữ liệu bị khóa.
@@ -2367,8 +2366,8 @@ hiện tại của trang '''$1''':",
 'viewdeletedpage'              => 'Xem các trang bị xóa',
 'undeletepagetext'             => '{{PLURAL:$1|Trang sau|$1 trang sau}} đã bị xóa nhưng vẫn nằm trong kho lưu trữ và có thể phục hồi được. Kho lưu trữ sẽ được xóa định kỳ.',
 'undelete-fieldset-title'      => 'Phục hồi phiên bản',
-'undeleteextrahelp'            => "Để phục hồi toàn bộ lịch sử trang, hãy để trống các hộp kiểm và bấm nút '''''Phục hồi'''''.
-Để thực hiện phục hồi có chọn lọc, hãy đánh dấu vào hộp kiểm của các phiên bản muốn phục hồi, rồi bấm nút '''''Phục hồi'''''.
+'undeleteextrahelp'            => "Để phục hồi toàn bộ lịch sử trang, hãy để trống các hộp kiểm và bấm nút '''''{{int:undeletebtn}}'''''.
+Để thực hiện phục hồi có chọn lọc, hãy đánh dấu vào hộp kiểm của các phiên bản muốn phục hồi, rồi bấm nút '''''{{int:undeletebtn}}'''''.
 Bấm nút '''''Tẩy trống''''' sẽ tẩy trống ô lý do và tất cả các hộp kiểm.",
 'undeleterevisions'            => '$1 {{PLURAL:$1|bản|bản}} đã được lưu',
 'undeletehistory'              => 'Nếu bạn phục hồi trang này, tất cả các phiên bản của nó cũng sẽ được phục hồi vào lịch sử của trang.
@@ -2413,10 +2412,12 @@ $1',
 'undelete-show-file-submit'    => 'Có',
 
 # Namespace form on various pages
-'namespace'             => 'Không gian tên:',
-'invert'                => 'Đảo ngược lựa chọn',
-'namespace_association' => 'Không gian tên cùng đôi',
-'blanknamespace'        => '(Chính)',
+'namespace'                     => 'Không gian tên:',
+'invert'                        => 'Đảo ngược lựa chọn',
+'tooltip-invert'                => 'Ẩn các thay đổi trong các không gian tên được chọn và tương ứng',
+'namespace_association'         => 'Không gian tên cùng đôi',
+'tooltip-namespace_association' => 'Cũng ẩn không gian tên thảo luận hoặc nội dung ứng với không gian được chọn',
+'blanknamespace'                => '(Chính)',
 
 # Contributions
 'contributions'       => 'Đóng góp của thành viên',
@@ -2443,6 +2444,7 @@ $1',
 'sp-contributions-username'            => 'Địa chỉ IP hay tên thành viên:',
 'sp-contributions-toponly'             => 'Chỉ hiện các phiên bản gần đây',
 'sp-contributions-submit'              => 'Tìm kiếm',
+'sp-contributions-showsizediff'        => 'Hiện khác biệt về kích thước trang',
 
 # What links here
 'whatlinkshere'            => 'Các liên kết đến đây',
@@ -2453,7 +2455,7 @@ $1',
 'nolinkshere-ns'           => "Không có trang nào liên kết đến '''[[:$1]]''' trong không gian tên đã chọn.",
 'isredirect'               => 'trang đổi hướng',
 'istemplate'               => 'được nhúng vào',
-'isimage'                  => 'liên kết hình',
+'isimage'                  => 'liên kết tập tin',
 'whatlinkshere-prev'       => '{{PLURAL:$1|kết quả trước|$1 kết quả trước}}',
 'whatlinkshere-next'       => '{{PLURAL:$1|kết quả sau|$1 kết quả sau}}',
 'whatlinkshere-links'      => '← liên kết',
@@ -2607,6 +2609,7 @@ Xin hãy xác nhận đây là điều bạn định làm.',
 'unlockdbsuccesstext' => 'Cơ sở dữ liệu đã được mở khóa.',
 'lockfilenotwritable' => 'Tập tin khóa của cơ sở dữ liệu không cho phép ghi. Để khóa hay mở khóa cơ sở dữ liệu, máy chủ web phải có khả năng ghi tập tin.',
 'databasenotlocked'   => 'Cơ sở dữ liệu không bị khóa.',
+'lockedbyandtime'     => '($1 khóa vào $2 lúc $3)',
 
 # Move page
 'move-page'                    => 'Di chuyển $1',
@@ -2816,7 +2819,7 @@ Lưu nó vào máy tính của bạn rồi tải nó lên đây.',
 'tooltip-ca-viewsource'           => 'Trang này được khóa. Bạn có thể xem mã nguồn.',
 'tooltip-ca-history'              => 'Những phiên bản cũ của trang này.',
 'tooltip-ca-protect'              => 'Khóa trang này lại',
-'tooltip-ca-unprotect'            => 'Mở khóa trang này',
+'tooltip-ca-unprotect'            => 'Thay đổi mức khóa của trang này',
 'tooltip-ca-delete'               => 'Xóa trang này',
 'tooltip-ca-undelete'             => 'Phục hồi những sửa đổi trên trang này như trước khi nó bị xóa',
 'tooltip-ca-move'                 => 'Di chuyển trang này',
@@ -2893,9 +2896,7 @@ Lưu nó vào máy tính của bạn rồi tải nó lên đây.',
 'vector.js'      => '/* Mã JavaScript tại đây sẽ được tải khi người dùng sử dụng bề ngoài Vectơ */',
 
 # Metadata
-'nodublincore'      => 'Máy chủ không hỗ trợ siêu dữ liệu Dublin Core RDF.',
-'nocreativecommons' => 'Máy chủ không hỗ trợ siêu dữ liệu Creative Commons RDF.',
-'notacceptable'     => 'Máy chủ không thể cho ra định dạng dữ liệu tương thích với phần mềm của bạn.',
+'notacceptable' => 'Máy chủ không thể cho ra định dạng dữ liệu tương thích với phần mềm của bạn.',
 
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Thành viên|Thành viên}} vô danh của {{SITENAME}}',
@@ -2919,12 +2920,17 @@ Lưu nó vào máy tính của bạn rồi tải nó lên đây.',
 'spam_blanking'       => 'Tất cả các phiên bản có liên kết đến $1, đang tẩy trống',
 
 # Info page
-'infosubtitle'   => 'Thông tin về trang',
-'numedits'       => 'Số lần sửa đổi (trang nội dung): $1',
-'numtalkedits'   => 'Số lần sửa đổi (trang thảo luận): $1',
-'numwatchers'    => 'Số người theo dõi: $1',
-'numauthors'     => 'Số người sửa đổi khác nhau (trang nội dung): $1',
-'numtalkauthors' => 'Số người sửa đổi khác nhau (trang thảo luận): $1',
+'pageinfo-title'            => 'Thông tin về “$1”',
+'pageinfo-header-edits'     => 'Lần sửa',
+'pageinfo-header-watchlist' => 'Danh sách theo dõi',
+'pageinfo-header-views'     => 'Lần xem',
+'pageinfo-subjectpage'      => 'Trang',
+'pageinfo-talkpage'         => 'Trang thảo luận',
+'pageinfo-watchers'         => 'Số người theo dõi',
+'pageinfo-edits'            => 'Số lần sửa đổi',
+'pageinfo-authors'          => 'Số tác giả riêng',
+'pageinfo-views'            => 'Số lần xem',
+'pageinfo-viewsperedit'     => 'Số lần xem mỗi sửa đổi',
 
 # Skin names
 'skinname-standard'    => 'Cổ điển',
@@ -2976,9 +2982,10 @@ Nếu thực thi nó máy tính của bạn có thể bị tiếm quyền.",
 'thumbsize'              => 'Cỡ hình thu nhỏ:',
 'widthheightpage'        => '$1×$2, $3 {{PLURAL:$3|trang|trang}}',
 'file-info'              => 'kích thước tập tin: $1, kiểu MIME: $2',
-'file-info-size'         => '$1 × $2 điểm ảnh, kích thước tập tin: $3, kiểu MIME: $4',
+'file-info-size'         => '$1×$2 điểm ảnh, kích thước tập tin: $3, kiểu MIME: $4',
+'file-info-size-pages'   => '$1×$2 điểm ảnh, kích thước tập tin: $3, kiểu MIME: $4, $5 trang',
 'file-nohires'           => '<small>Không có độ phân giải cao hơn.</small>',
-'svg-long-desc'          => 'tập tin SVG, $1 × $2 điểm ảnh trên danh nghĩa, kích thước: $3',
+'svg-long-desc'          => 'tập tin SVG, $1×$2 điểm ảnh trên danh nghĩa, kích thước: $3',
 'show-big-image'         => 'Độ phân giải tối đa',
 'show-big-image-preview' => '<small>Kích thước của ảnh xem thử: $1.</small>',
 'show-big-image-other'   => '<small>Độ phân giải khác: $1.</small>',
@@ -3249,7 +3256,10 @@ Những thông tin khác mặc định sẽ được ẩn đi.
 
 # EXIF attributes
 'exif-compression-1' => 'Không nén',
-'exif-compression-6' => 'JPEG',
+'exif-compression-2' => 'CCITT Nhóm 3: mã hóa thời gian chạy Huffman sửa một chiều',
+'exif-compression-3' => 'CCITT Nhóm 3: mã hóa fax',
+'exif-compression-4' => 'CCITT Nhóm 4: mã hóa fax',
+'exif-compression-6' => 'JPEG (cũ)',
 
 'exif-copyrighted-true'  => 'Dưới bản quyền',
 'exif-copyrighted-false' => 'Phạm vi công cộng',
@@ -3557,9 +3567,15 @@ Xin hãy xác nhận bạn thực sự muốn tạo lại trang này.",
 'recreate'                 => 'Tạo ra lại',
 
 # action=purge
-'confirm_purge_button' => 'OK',
+'confirm_purge_button' => 'Làm mới',
 'confirm-purge-top'    => 'Làm sạch vùng nhớ đệm của trang này?',
 'confirm-purge-bottom' => 'Làm mới một trang sẽ giúp xóa bộ đệm và buộc hiển thị phiên bản gần nhất.',
+
+# action=watch/unwatch
+'confirm-watch-button'   => 'Theo dõi',
+'confirm-watch-top'      => 'Bạn có muốn thêm trang này vào danh sách theo dõi của bạn?',
+'confirm-unwatch-button' => 'Ngừng theo dõi',
+'confirm-unwatch-top'    => 'Bạn có muốn gỡ trang này khỏi danh sách theo dõi của bạn?',
 
 # Separators for various lists, etc.
 'ellipsis' => '…',
@@ -3580,7 +3596,7 @@ Xin hãy xác nhận bạn thực sự muốn tạo lại trang này.",
 'table_pager_limit'        => 'Xem $1 kết quả mỗi trang',
 'table_pager_limit_label'  => 'Số khoản mỗi trang:',
 'table_pager_limit_submit' => 'Xem',
-'table_pager_empty'        => 'Không có kết quả nào.',
+'table_pager_empty'        => 'Không tìm thấy kết quả',
 
 # Auto-summaries
 'autosumm-blank'   => 'Tẩy trống trang',
@@ -3605,7 +3621,7 @@ Xin hãy xác nhận bạn thực sự muốn tạo lại trang này.",
 'watchlistedit-numitems'       => 'Danh sách theo dõi của bạn có $1 {{PLURAL:$1|tựa đề|tựa đề}}, không tính các trang thảo luận.',
 'watchlistedit-noitems'        => 'Danh sách các trang bạn theo dõi hiện không có gì.',
 'watchlistedit-normal-title'   => 'Sửa các trang tôi theo dõi',
-'watchlistedit-normal-legend'  => 'Bỏ các trang đang theo dõi ra khỏi danh sách',
+'watchlistedit-normal-legend'  => 'Gỡ trang khỏi danh sách',
 'watchlistedit-normal-explain' => 'Tên các trang bạn theo dõi được hiển thị dưới đây. Để xóa một tên trang, chọn vào hộp kiểm bên cạnh nó, rồi nhấn “{{int:Watchlistedit-normal-submit}}”. Bạn cũng có thể [[Special:EditWatchlist/raw|sửa danh sách theo dạng thô]].',
 'watchlistedit-normal-submit'  => 'Bỏ trang đã chọn',
 'watchlistedit-normal-done'    => '$1 {{PLURAL:$1|tựa đề|tựa đề}} đã được xóa khỏi danh sách các trang theo dõi:',
@@ -3721,7 +3737,7 @@ Hãy ghi vào tên tập tin, không bao gồm tiền tố “{{ns:file}}:”.',
 'fileduplicatesearch-legend'    => 'Tìm kiếm tập tin trùng lắp',
 'fileduplicatesearch-filename'  => 'Tên tập tin:',
 'fileduplicatesearch-submit'    => 'Tìm kiếm',
-'fileduplicatesearch-info'      => '$1 × $2 điểm ảnh<br />Kích thước tập tin: $3<br />Kiểu MIME: $4',
+'fileduplicatesearch-info'      => '$1×$2 điểm ảnh<br />Kích thước tập tin: $3<br />Kiểu MIME: $4',
 'fileduplicatesearch-result-1'  => 'Không có bản sao y hệt với tập tin “$1”.',
 'fileduplicatesearch-result-n'  => 'Có {{PLURAL:$2|1 bản sao|$2 bản sao}} y hệt với tập tin “$1”.',
 'fileduplicatesearch-noresults' => 'Không tìm thấy tập tin nào tên “$1”.',
@@ -3805,5 +3821,32 @@ Hãy ghi vào tên tập tin, không bao gồm tiền tố “{{ns:file}}:”.',
 # SQLite database support
 'sqlite-has-fts' => '$1 với sự hỗ trợ tìm kiếm toàn văn',
 'sqlite-no-fts'  => '$1 không có hỗ trợ tìm kiếm toàn văn',
+
+# Add categories per AJAX
+'ajax-add-category'             => 'Thêm thể loại',
+'ajax-remove-category'          => 'Gỡ thể loại',
+'ajax-edit-category'            => 'Sửa thể loại',
+'ajax-add-category-submit'      => 'Thêm',
+'ajax-confirm-ok'               => 'OK',
+'ajax-confirm-title'            => 'Xác nhận tác vụ',
+'ajax-confirm-prompt'           => 'Bạn có thể thêm tóm lược sửa đổi vào bên dưới.
+Nhấn “Lưu” để lưu sửa đổi của bạn.',
+'ajax-confirm-save'             => 'Lưu',
+'ajax-confirm-save-all'         => 'Lưu tất cả thay đổi',
+'ajax-cancel'                   => 'Hủy bỏ các sửa đổi',
+'ajax-add-category-summary'     => 'Thêm thể loại “$1”',
+'ajax-edit-category-summary'    => 'Thay thể loại “$1” bằng “$2”',
+'ajax-remove-category-summary'  => 'Gỡ thể loại “$1”',
+'ajax-add-category-question'    => 'Tại sao bạn muốn xếp vào thể loại “$1”?',
+'ajax-edit-category-question'   => 'Tại sao bạn muốn thay thể loại “$1” bằng “$2”?',
+'ajax-remove-category-question' => 'Tại sao bạn muốn gỡ thể loại “$1”?',
+'ajax-confirm-actionsummary'    => 'Tác vụ thực hiện:',
+'ajax-error-title'              => 'Lỗi',
+'ajax-error-dismiss'            => 'OK',
+'ajax-remove-category-error'    => 'Không thể gỡ bỏ thể loại này.
+Điều này thường xảy ra khi thể loại được thêm vào trang thông qua một bản mẫu.',
+'ajax-edit-category-error'      => 'Không thể sửa đổi thể loại này.
+Điều này thường xảy ra khi thể loại được thêm vào trang thông qua một bản mẫu.',
+'ajax-category-already-present' => 'Trang này đã nằm trong thể loại “$1”.',
 
 );

@@ -186,7 +186,6 @@ $messages = array(
 'searcharticle'     => 'прѣиди',
 'history'           => 'страницѧ їсторїꙗ',
 'history_short'     => 'їсторїꙗ',
-'info_short'        => 'плирофорїꙗ',
 'printableversion'  => 'пєчатьнъ обраꙁъ',
 'permalink'         => 'въиньна съвѧꙁь',
 'print'             => 'пєчатаниѥ',
@@ -590,7 +589,6 @@ $messages = array(
 # Watchlist
 'watchlist'        => 'моꙗ блюдєниꙗ',
 'mywatchlist'      => 'моꙗ блюдєниꙗ',
-'addedwatch'       => 'страница нꙑнѣ подъ твоимь блюдєниѥмь ѥстъ',
 'addedwatchtext'   => "страница ⁖ [[:$1]] ⁖ нꙑнѣ подъ твоимь [[Special:Watchlist|блюдєниѥмь]] ѥстъ ⁙
 всꙗ ѥѩ и ѥѩжє бєсѣдꙑ мѣнꙑ страницѧ ⁖ [[Special:Watchlist|моꙗ блюдєниꙗ]] ⁖ покаꙁанꙑ сѫтъ и  [[Special:RecentChanges|послѣдьнъ мѣнъ]] каталоꙃѣ '''чрьнꙑимъ''' сѧ авлꙗѭтъ",
 'removedwatchtext' => 'страница ⁖ [[:$1]] ⁖ нꙑнѣ твоѥго [[Special:Watchlist|блюдєниꙗ]] иꙁнєсєна ѥстъ',
@@ -610,7 +608,7 @@ $messages = array(
 'excontentauthor' => "вънѫтри бѣ : '$1' (и послѣдьн҄ии дѣтєл҄ь бѣ '[[Special:Contributions/$2|$2]]')",
 'delete-legend'   => 'поничьжєниѥ',
 'actioncomplete'  => 'дѣиство сътворєно ѥстъ',
-'deletedtext'     => 'страница ⁖ <nowiki>$1</nowiki> ⁖ поничьжєна ѥстъ ⁙
+'deletedtext'     => 'страница ⁖ $1 ⁖ поничьжєна ѥстъ ⁙
 виждь ⁖ $2 ⁖ послѣдьнъ поничьжєниѩ дѣлꙗ',
 'deletedarticle'  => '⁖ [[$1]] ⁖ поничьжєнъ ѥстъ',
 'dellogpage'      => 'поничьжєниꙗ їсторїꙗ',

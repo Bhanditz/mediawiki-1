@@ -39,7 +39,7 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 	const LINKS = 'links';
 	const TEMPLATES = 'templates';
 
-	private $table, $prefix, $description;
+	private $table, $prefix, $description, $helpUrl;
 
 	public function __construct( $query, $moduleName ) {
 		switch ( $moduleName ) {
@@ -48,12 +48,14 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 				$this->prefix = 'pl';
 				$this->description = 'link';
 				$this->titlesParam = 'titles';
+				$this->helpUrl = 'http://www.mediawiki.org/wiki/API:Properties#links_.2F_pl';
 				break;
 			case self::TEMPLATES:
 				$this->table = 'templatelinks';
 				$this->prefix = 'tl';
 				$this->description = 'template';
 				$this->titlesParam = 'templates';
+				$this->helpUrl = 'http://www.mediawiki.org/wiki/API:Properties#templates_.2F_tl';
 				break;
 			default:
 				ApiBase::dieDebug( __METHOD__, 'Unknown module name' );
@@ -217,7 +219,7 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 		);
 		if ( $this->getModuleName() == self::LINKS ) {
 			$arr[$this->titlesParam] = 'Only list links to these titles. Useful for checking whether a certain page links to a certain title.';
-		} else if ( $this->getModuleName() == self::TEMPLATES ) {
+		} elseif ( $this->getModuleName() == self::TEMPLATES ) {
 			$arr[$this->titlesParam] = 'Only list these templates. Useful for checking whether a certain page uses a certain template.';
 		}
 		return $arr;
@@ -236,6 +238,10 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 			"Get {$this->description}s from the Main Page in the User and Template namespaces:",
 			"  api.php?action=query&prop={$this->getModuleName()}&titles=Main%20Page&{$this->prefix}namespace=2|10"
 		);
+	}
+
+	public function getHelpUrls() {
+		return $this->helpUrl;
 	}
 
 	public function getVersion() {

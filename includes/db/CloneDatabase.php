@@ -62,9 +62,10 @@ class CloneDatabase {
 	 * @param $tablesToClone Array An array of tables to clone, unprefixed
 	 * @param $newTablePrefix String Prefix to assign to the tables
 	 * @param $oldTablePrefix String Prefix on current tables, if not $wgDBprefix
+	 * @param $dropCurrentTables bool
 	 */
 	public function __construct( DatabaseBase $db, array $tablesToClone,
-		$newTablePrefix = 'parsertest', $oldTablePrefix = '', $dropCurrentTables = true )
+		$newTablePrefix, $oldTablePrefix = '', $dropCurrentTables = true )
 	{
 		$this->db = $db;
 		$this->tablesToClone = $tablesToClone;

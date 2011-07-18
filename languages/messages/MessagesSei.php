@@ -118,8 +118,6 @@ $messages = array(
 'category-empty'         => "''Cayliib danjobam nihíl''",
 'listingcontinuesabbrev' => 'korb.',
 
-'mainpagetext' => "'''MediaWiki coccebj installöx successua zo mii.'''",
-
 'about'         => 'Miixaz',
 'article'       => 'Artículo',
 'newwindow'     => '(dansinám precquen)',
@@ -153,7 +151,6 @@ $messages = array(
 'history'           => 'Historiám páhina',
 'history_short'     => 'Historiám',
 'updatedmarker'     => 'Par hiineditar visitua ciónsam',
-'info_short'        => 'Informacion',
 'printableversion'  => 'Cabjöxino printino',
 'permalink'         => 'Link permanentöj',
 'print'             => 'Printom',
@@ -316,7 +313,6 @@ Query: $2',
 'cascadeprotected'     => 'Jan páhina coccebj protectöxde ticpatlöx, zo coccebj cascadande jan {{PLURAL:$1|páhina|páhinám}}, jan coccebj protëctox cascadanöx opcion zo mii:
 $2',
 'namespaceprotected'   => "Me necoccebj permiccion ticpatlöx páhinám '''$1''' ipartuatl zo iti.",
-'customcssjsprotected' => 'Me necoccebj permiccion ticpatlöx jan páhina, zo coccebj diijömde caitom quáatlaác.',
 'ns-specialprotected'  => 'Páhinámde {{ns:special}} zo iti neticpatlöx.',
 
 # Login and logout pages
@@ -355,7 +351,7 @@ Mecaitom coccebj creatöx. Quiix hequáatlaácde {{SITENAME}} pos-poop.",
 'loginsuccesstitle'          => 'Caápo tampua',
 'loginsuccess'               => "'''Me coccebj caápo {{SITENAME}} itide \"\$1\".'''",
 'nosuchuser'                 => 'Jan caitom necoccebj zo, ID "$1". Cohuatlöx mecuáxiit jöx creatom huncaitom.',
-'nosuchusershort'            => 'Jan caitom necoccebj zo, ID "<nowiki>$1</nowiki>". Cohuatlöx mecuáxiit.',
+'nosuchusershort'            => 'Jan caitom necoccebj zo, ID "$1". Cohuatlöx mecuáxiit.',
 'nouserspecified'            => 'Me coccebj IDde caitom caápo.',
 'wrongpassword'              => 'Römjde quimx canj. Vanquimx canj.',
 'wrongpasswordempty'         => 'Quimx canj blankanj. Vanquimx canj.',
@@ -888,8 +884,6 @@ iitom e-iitomde diijömde caitóm.',
 'nowatchlist'      => 'Hecoccebj 0 itémii helistade cáminot iti.',
 'watchnologin'     => 'Necaápo',
 'watchnologintext' => 'Zo coccebj Neces [[Special:UserLogin|caápo]] ticpatlöx helistade cáminot.',
-'addedwatch'       => 'Plusöxaj listade cáminot',
-'removedwatch'     => 'Delatajde he listade cáminot',
 'removedwatchtext' => 'Páhina zo "[[:$1]]" coccebj delataj me listade cáminot.',
 'watch'            => 'Cáminot',
 'watchthispage'    => 'Cáminot jan páhina',
@@ -1035,9 +1029,6 @@ iitom e-iitomde diijömde caitóm.',
 
 # Spam protection
 'spambot_username' => 'MediaWiki nespam',
-
-# Info page
-'infosubtitle' => 'Informacionde páhina',
 
 # Media information
 'widthheightpage' => '$1×$2, $3 páhinám',

@@ -55,20 +55,20 @@ class ApiUnblock extends ApiBase {
 		}
 
 		if ( is_null( $params['id'] ) && is_null( $params['user'] ) ) {
-			$this->dieUsageMsg( array( 'unblock-notarget' ) );
+			$this->dieUsageMsg( 'unblock-notarget' );
 		}
 		if ( !is_null( $params['id'] ) && !is_null( $params['user'] ) ) {
-			$this->dieUsageMsg( array( 'unblock-idanduser' ) );
+			$this->dieUsageMsg( 'unblock-idanduser' );
 		}
 
 		if ( !$wgUser->isAllowed( 'block' ) ) {
-			$this->dieUsageMsg( array( 'cantunblock' ) );
+			$this->dieUsageMsg( 'cantunblock' );
 		}
 		# bug 15810: blocked admins should have limited access here
 		if ( $wgUser->isBlocked() ) {
 			$status = SpecialBlock::checkUnblockSelf( $params['user'] );
 			if ( $status !== true ) {
-				$this->dieUsageMsg( array( $status ) );
+				$this->dieUsageMsg( $status );
 			}
 		}
 
@@ -146,6 +146,10 @@ class ApiUnblock extends ApiBase {
 			'api.php?action=unblock&id=105',
 			'api.php?action=unblock&user=Bob&reason=Sorry%20Bob'
 		);
+	}
+
+	public function getHelpUrls() {
+		return 'http://www.mediawiki.org/wiki/API:Block';
 	}
 
 	public function getVersion() {

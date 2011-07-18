@@ -247,6 +247,10 @@ class WebInstaller extends Installer {
 		$this->currentPageName = $page->getName();
 		$this->startPageWrapper( $pageName );
 
+		if( $page->isSlow() ) {
+			$this->disableTimeLimit();
+		}
+
 		$result = $page->execute();
 
 		$this->endPageWrapper();
@@ -615,23 +619,11 @@ class WebInstaller extends Installer {
 	 *
 	 * @return string
 	 */
-	public function getInfoBox( $text, $icon = 'info-32.png', $class = false ) {
-		$s =
-			"<div class=\"config-info $class\">\n" .
-				"<div class=\"config-info-left\">\n" .
-				Html::element( 'img',
-					array(
-						'src' => '../skins/common/images/' . $icon,
-						'alt' => wfMsg( 'config-information' ),
-					)
-				) . "\n" .
-				"</div>\n" .
-				"<div class=\"config-info-right\">\n" .
-					$this->parse( $text, true ) . "\n" .
-				"</div>\n" .
-				"<div style=\"clear: left;\"></div>\n" .
-			"</div>\n";
-		return $s;
+	public function getInfoBox( $text, $icon = false, $class = false ) {
+		$text = $this->parse( $text, true );
+		$icon = ( $icon == false ) ? '../skins/common/images/info-32.png' : '../skins/common/images/'.$icon;
+		$alt = wfMsg( 'config-information' );
+		return Html::infoBox( $text, $icon, $alt, $class, false );
 	}
 
 	/**
@@ -969,6 +961,8 @@ class WebInstaller extends Installer {
 
 	/**
 	 * Output an error or warning box using a Status object.
+	 *
+	 * @param $status Status
 	 */
 	public function showStatusBox( $status ) {
 		if( !$status->isGood() ) {
@@ -1042,10 +1036,10 @@ class WebInstaller extends Installer {
 			htmlspecialchars( $linkText ) .
 			'</a>';
 	}
-	
+
 	/**
 	 * Helper for "Download LocalSettings" link on WebInstall_Complete
-	 * 
+	 *
 	 * @return String Html for download link
 	 */
 	public function downloadLinkHook( $text, $attribs, $parser  ) {

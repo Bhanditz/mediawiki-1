@@ -517,6 +517,10 @@ class Preferences {
 		}
 	}
 
+	/**
+	 * @param $user User
+	 * @param $defaultPreferences Array
+	 */
 	static function filesPreferences( $user, &$defaultPreferences ) {
 		## Files #####################################
 		$defaultPreferences['imagesize'] = array(
@@ -595,6 +599,10 @@ class Preferences {
 		);
 	}
 
+	/**
+	 * @param $user User
+	 * @param $defaultPreferences Array
+	 */
 	static function renderingPreferences( $user, &$defaultPreferences ) {
 		## Page Rendering ##############################
 		global $wgAllowUserCssPrefs;
@@ -668,6 +676,10 @@ class Preferences {
 		);
 	}
 
+	/**
+	 * @param $user User
+	 * @param $defaultPreferences Array
+	 */
 	static function editingPreferences( $user, &$defaultPreferences ) {
 		global $wgUseExternalEditor, $wgAllowUserCssPrefs;
 
@@ -733,11 +745,14 @@ class Preferences {
 			'section' => 'editing/advancedediting',
 			'label-message' => 'tog-showtoolbar',
 		);
-		$defaultPreferences['minordefault'] = array(
-			'type' => 'toggle',
-			'section' => 'editing/advancedediting',
-			'label-message' => 'tog-minordefault',
-		);
+
+		if ( $user->isAllowed( 'minoredit' ) ) {
+			$defaultPreferences['minordefault'] = array(
+				'type' => 'toggle',
+				'section' => 'editing/advancedediting',
+				'label-message' => 'tog-minordefault',
+			);
+		}
 
 		if ( $wgUseExternalEditor ) {
 			$defaultPreferences['externaleditor'] = array(
@@ -766,8 +781,12 @@ class Preferences {
 		);
 	}
 
+	/**
+	 * @param $user User
+	 * @param $defaultPreferences Array
+	 */
 	static function rcPreferences( $user, &$defaultPreferences ) {
-		global $wgRCMaxAge, $wgUseRCPatrol, $wgLang;
+		global $wgRCMaxAge, $wgLang;
 
 		## RecentChanges #####################################
 		$defaultPreferences['rcdays'] = array(
@@ -799,7 +818,7 @@ class Preferences {
 			'section' => 'rc/advancedrc',
 		);
 
-		if ( $wgUseRCPatrol ) {
+		if ( $user->useRCPatrol() ) {
 			$defaultPreferences['hidepatrolled'] = array(
 				'type' => 'toggle',
 				'section' => 'rc/advancedrc',
@@ -825,7 +844,6 @@ class Preferences {
 	/**
 	 * @param $user User
 	 * @param $defaultPreferences
-	 * @return void
 	 */
 	static function watchlistPreferences( $user, &$defaultPreferences ) {
 		global $wgUseRCPatrol, $wgEnableAPI;
@@ -920,6 +938,10 @@ class Preferences {
 		}
 	}
 
+	/**
+	 * @param $user User
+	 * @param $defaultPreferences Array
+	 */
 	static function searchPreferences( $user, &$defaultPreferences ) {
 		global $wgContLang;
 
@@ -981,6 +1003,10 @@ class Preferences {
 		);
 	}
 
+	/**
+	 * @param $user User
+	 * @param $defaultPreferences Array
+	 */
 	static function miscPreferences( $user, &$defaultPreferences ) {
 		## Misc #####################################
 		$defaultPreferences['diffonly'] = array(
@@ -1064,6 +1090,9 @@ class Preferences {
 		return $ret;
 	}
 
+	/**
+	 * @return array
+	 */
 	static function getDateOptions() {
 		global $wgLang;
 		$dateopts = $wgLang->getDatePreferences();
@@ -1095,6 +1124,9 @@ class Preferences {
 		return $ret;
 	}
 
+	/**
+	 * @return array
+	 */
 	static function getImageSizes() {
 		global $wgImageLimits;
 
@@ -1108,6 +1140,9 @@ class Preferences {
 		return $ret;
 	}
 
+	/**
+	 * @return array
+	 */
 	static function getThumbSizes() {
 		global $wgThumbLimits;
 
@@ -1121,6 +1156,11 @@ class Preferences {
 		return $ret;
 	}
 
+	/**
+	 * @param $signature
+	 * @param $alldata
+	 * @return bool|string
+	 */
 	static function validateSignature( $signature, $alldata ) {
 		global $wgParser, $wgMaxSigChars, $wgLang;
 		if ( mb_strlen( $signature ) > $wgMaxSigChars ) {
@@ -1138,6 +1178,11 @@ class Preferences {
 		}
 	}
 
+	/**
+	 * @param $signature string
+	 * @param $alldata array
+	 * @return string
+	 */
 	static function cleanSignature( $signature, $alldata ) {
 		global $wgParser;
 		if ( isset( $alldata['fancysig'] ) && $alldata['fancysig'] ) {
@@ -1150,6 +1195,11 @@ class Preferences {
 		return $signature;
 	}
 
+	/**
+	 * @param $email
+	 * @param $alldata
+	 * @return bool|String
+	 */
 	static function validateEmail( $email, $alldata ) {
 		if ( $email && !Sanitizer::validateEmail( $email ) ) {
 			return wfMsgExt( 'invalidemailaddress', 'parseinline' );
@@ -1162,6 +1212,11 @@ class Preferences {
 		return true;
 	}
 
+	/**
+	 * @param $user User
+	 * @param $formClass string
+	 * @return HtmlForm
+	 */
 	static function getFormObject( $user, $formClass = 'PreferencesForm' ) {
 		$formDescriptor = Preferences::getPreferences( $user );
 		$htmlForm = new $formClass( $formDescriptor, 'prefs' );
@@ -1177,12 +1232,21 @@ class Preferences {
 		return $htmlForm;
 	}
 
+	/**
+	 * @return array
+	 */
 	static function getTimezoneOptions() {
 		$opt = array();
 
-		global $wgLocalTZoffset;
-
-		$opt[wfMsg( 'timezoneuseserverdefault' )] = "System|$wgLocalTZoffset";
+		global $wgLocalTZoffset, $wgLocaltimezone;
+		// Check that $wgLocalTZoffset is the same as $wgLocaltimezone
+		if ( $wgLocalTZoffset == date( 'Z' ) / 60 ) {
+			$server_tz_msg = wfMsg( 'timezoneuseserverdefault', $wgLocaltimezone );
+		} else {
+		 	$tzstring = sprintf( '%+03d:%02d', floor( $wgLocalTZoffset / 60 ), abs( $wgLocalTZoffset ) % 60 );
+			$server_tz_msg = wfMsg( 'timezoneuseserverdefault', $tzstring );
+		}
+		$opt[$server_tz_msg] = "System|$wgLocalTZoffset";
 		$opt[wfMsg( 'timezoneuseoffset' )] = 'other';
 		$opt[wfMsg( 'guesstimezone' )] = 'guess';
 
@@ -1233,10 +1297,20 @@ class Preferences {
 		return $opt;
 	}
 
+	/**
+	 * @param $value
+	 * @param $alldata
+	 * @return int
+	 */
 	static function filterIntval( $value, $alldata ){
 		return intval( $value );
 	}
 
+	/**
+	 * @param $tz
+	 * @param $alldata
+	 * @return string
+	 */
 	static function filterTimezoneInput( $tz, $alldata ) {
 		$data = explode( '|', $tz, 3 );
 		switch ( $data[0] ) {
@@ -1262,6 +1336,11 @@ class Preferences {
 		}
 	}
 
+	/**
+	 * @param $formData
+	 * @param $entryPoint string
+	 * @return bool|Status|string
+	 */
 	static function tryFormSubmit( $formData, $entryPoint = 'internal' ) {
 		global $wgUser, $wgEmailAuthentication, $wgEnableEmail;
 
@@ -1343,6 +1422,10 @@ class Preferences {
 		return $result;
 	}
 
+	/**
+	 * @param $formData
+	 * @return Status
+	 */
 	public static function tryUISubmit( $formData ) {
 		$res = self::tryFormSubmit( $formData, 'ui' );
 
@@ -1385,12 +1468,20 @@ class Preferences {
 
 /** Some tweaks to allow js prefs to work */
 class PreferencesForm extends HTMLForm {
+
+	/**
+	 * @param $html string
+	 * @return String
+	 */
 	function wrapForm( $html ) {
 		$html = Xml::tags( 'div', array( 'id' => 'preferences' ), $html );
 
 		return parent::wrapForm( $html );
 	}
 
+	/**
+	 * @return String
+	 */
 	function getButtons() {
 		$html = parent::getButtons();
 
@@ -1406,6 +1497,10 @@ class PreferencesForm extends HTMLForm {
 		return $html;
 	}
 
+	/**
+	 * @param $data array
+	 * @return array
+	 */
 	function filterDataForSubmit( $data ) {
 		// Support for separating MultiSelect preferences into multiple preferences
 		// Due to lack of array support.
@@ -1424,5 +1519,11 @@ class PreferencesForm extends HTMLForm {
 		}
 
 		return $data;
+	}
+	/**
+	 * Get the whole body of the form.
+	 */
+	function getBody() {
+		return $this->displaySection( $this->mFieldTree, '', true );
 	}
 }

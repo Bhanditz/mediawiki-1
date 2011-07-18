@@ -25,6 +25,7 @@
 /**
  * Factory for handling the special page list and generating SpecialPage objects
  * @ingroup SpecialPage
+ * @since 1.17
  */
 class SpecialPageFactory {
 
@@ -266,7 +267,7 @@ class SpecialPageFactory {
 	}
 
 	/**
-	 * Add a page to a certain display group for Special:SpecialPages
+	 * Get the group that the special page belongs in on Special:SpecialPage
 	 *
 	 * @param $page SpecialPage
 	 */
@@ -314,7 +315,7 @@ class SpecialPageFactory {
 			$rec = self::getList()->$realName;
 			if ( is_string( $rec ) ) {
 				$className = $rec;
-				self::getList()->$realName = new $className;
+				return new $className;
 			} elseif ( is_array( $rec ) ) {
 				// @deprecated, officially since 1.18, unofficially since forever
 				wfDebug( "Array syntax for \$wgSpecialPages is deprecated, define a subclass of SpecialPage instead." );
@@ -405,7 +406,7 @@ class SpecialPageFactory {
 	public static function executePath( Title &$title, RequestContext &$context, $including = false ) {
 		wfProfileIn( __METHOD__ );
 
-		// FIXME: redirects broken due to this call
+		// @todo FIXME: Redirects broken due to this call
 		$bits = explode( '/', $title->getDBkey(), 2 );
 		$name = $bits[0];
 		if ( !isset( $bits[1] ) ) { // bug 2087
@@ -416,10 +417,10 @@ class SpecialPageFactory {
 		$page = self::getPage( $name );
 		// Nonexistent?
 		if ( !$page ) {
-			$context->output->setArticleRelated( false );
-			$context->output->setRobotPolicy( 'noindex,nofollow' );
-			$context->output->setStatusCode( 404 );
-			$context->output->showErrorPage( 'nosuchspecialpage', 'nospecialpagetext' );
+			$context->getOutput()->setArticleRelated( false );
+			$context->getOutput()->setRobotPolicy( 'noindex,nofollow' );
+			$context->getOutput()->setStatusCode( 404 );
+			$context->getOutput()->showErrorPage( 'nosuchspecialpage', 'nospecialpagetext' );
 			wfProfileOut( __METHOD__ );
 			return false;
 		}
@@ -433,17 +434,17 @@ class SpecialPageFactory {
 			// the request. Such POST requests are possible for old extensions that
 			// generate self-links without being aware that their default name has
 			// changed.
-			if ( $name != $page->getLocalName() && !$context->request->wasPosted() ) {
-				$query = $_GET;
+			if ( $name != $page->getLocalName() && !$context->getRequest()->wasPosted() ) {
+				$query = $context->getRequest()->getQueryValues();
 				unset( $query['title'] );
 				$query = wfArrayToCGI( $query );
 				$title = $page->getTitle( $par );
 				$url = $title->getFullUrl( $query );
-				$context->output->redirect( $url );
+				$context->getOutput()->redirect( $url );
 				wfProfileOut( __METHOD__ );
 				return $title;
 			} else {
-				$context->title = $page->getTitle();
+				$context->setTitle( $page->getTitle() );
 			}
 
 		} elseif ( !$page->isIncludable() ) {
@@ -467,18 +468,27 @@ class SpecialPageFactory {
 	 * Returns false if there was no such special page, or a title object if it was
 	 * a redirect.
 	 *
+	 * Also saves the current $wgTitle, $wgOut, and $wgRequest variables so that
+	 * the special page will get the context it'd expect on a normal request,
+	 * and then restores them to their previous values after.
+	 *
 	 * @param $title Title
 	 *
 	 * @return String: HTML fragment
 	 */
 	static function capturePath( &$title ) {
-		global $wgOut, $wgTitle;
+		global $wgOut, $wgTitle, $wgRequest;
 
 		$oldTitle = $wgTitle;
 		$oldOut = $wgOut;
+		$oldRequest = $wgRequest;
+
+		// Don't want special pages interpreting ?feed=atom parameters.
+		$wgRequest = new FauxRequest( array() );
 
 		$context = new RequestContext;
 		$context->setTitle( $title );
+		$context->setRequest( $wgRequest );
 		$wgOut = $context->getOutput();
 
 		$ret = self::executePath( $title, $context, true );
@@ -487,6 +497,7 @@ class SpecialPageFactory {
 		}
 		$wgTitle = $oldTitle;
 		$wgOut = $oldOut;
+		$wgRequest = $oldRequest;
 		return $ret;
 	}
 
@@ -501,6 +512,7 @@ class SpecialPageFactory {
 	static function getLocalNameFor( $name, $subpage = false ) {
 		global $wgContLang;
 		$aliases = $wgContLang->getSpecialPageAliases();
+		
 		if ( isset( $aliases[$name][0] ) ) {
 			$name = $aliases[$name][0];
 		} else {

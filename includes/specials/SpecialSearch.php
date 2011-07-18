@@ -37,6 +37,9 @@ class SpecialSearch extends SpecialPage {
 	/// For links
 	protected $extraParams = array();
 
+	/// No idea, apparently used by some other classes
+	protected $mPrefix;
+
 	const NAMESPACES_CURRENT = 'sense';
 
 	public function __construct() {
@@ -84,6 +87,7 @@ class SpecialSearch extends SpecialPage {
 	 */
 	public function load( &$request, &$user ) {
 		list( $this->limit, $this->offset ) = $request->getLimitOffset( 20, 'searchlimit' );
+		$this->mPrefix = $request->getVal( 'prefix', '' );
 
 
 		# Extract manually requested namespaces
@@ -118,7 +122,7 @@ class SpecialSearch extends SpecialPage {
 		// Redirects defaults to true, but we don't know whether it was ticked of or just missing
 		$default = $request->getBool( 'profile' ) ? 0 : 1;
 		$this->searchRedirects = $request->getBool( 'redirs', $default ) ? 1 : 0;
-		$this->sk = $user->getSkin();
+		$this->sk = $this->getSkin();
 		$this->didYouMeanHtml = ''; # html of did you mean... link
 		$this->fulltext = $request->getVal('fulltext');
 	}
@@ -169,16 +173,17 @@ class SpecialSearch extends SpecialPage {
 	 * @param $term String
 	 */
 	public function showResults( $term ) {
-		global $wgOut, $wgUser, $wgDisableTextSearch, $wgContLang, $wgScript;
+		global $wgOut, $wgDisableTextSearch, $wgContLang, $wgScript;
 		wfProfileIn( __METHOD__ );
 
-		$sk = $wgUser->getSkin();
+		$sk = $this->getSkin();
 
 		$search = $this->getSearchEngine();
 		$search->setLimitOffset( $this->limit, $this->offset );
 		$search->setNamespaces( $this->namespaces );
 		$search->showRedirects = $this->searchRedirects; // BC
 		$search->setFeatureData( 'list-redirects', $this->searchRedirects );
+		$search->prefix = $this->mPrefix;
 		$term = $search->transformSearchTerm($term);
 
 		wfRunHooks( 'SpecialSearchSetupEngine', array( $this, $this->profile, $search ) );
@@ -193,14 +198,13 @@ class SpecialSearch extends SpecialPage {
 				wfProfileOut( __METHOD__ );
 				return;
 			}
-			global $wgInputEncoding;
 			$wgOut->addHTML(
 				Xml::openElement( 'fieldset' ) .
 				Xml::element( 'legend', null, wfMsg( 'search-external' ) ) .
 				Xml::element( 'p', array( 'class' => 'mw-searchdisabled' ), wfMsg( 'searchdisabled' ) ) .
 				wfMsg( 'googlesearch',
 					htmlspecialchars( $term ),
-					htmlspecialchars( $wgInputEncoding ),
+					htmlspecialchars( 'UTF-8' ),
 					htmlspecialchars( wfMsg( 'searchbutton' ) )
 				) .
 				Xml::closeElement( 'fieldset' )
@@ -371,8 +375,9 @@ class SpecialSearch extends SpecialPage {
 		global $wgOut;
 
 		// show direct page/create link if applicable
+		// Check DBkey !== '' in case of fragment link only.
 		$messageName = null;
-		if( !is_null($t) ) {
+		if( !is_null($t) && $t->getDBkey() !== '' ) {
 			if( $t->isKnown() ) {
 				$messageName = 'searchmenu-exists';
 			} elseif( $t->userCan( 'create' ) ) {
@@ -402,7 +407,6 @@ class SpecialSearch extends SpecialPage {
 			$wgOut->setHTMLTitle( wfMsg( 'pagetitle', wfMsg( 'searchresults-title', $term ) ) );
 		}
 		// add javascript specific to special:search
-		$wgOut->addModules( 'mediawiki.legacy.search' );
 		$wgOut->addModules( 'mediawiki.special.search' );
 	}
 
@@ -477,7 +481,7 @@ class SpecialSearch extends SpecialPage {
 	 * @param $terms Array: terms to highlight
 	 */
 	protected function showHit( $result, $terms ) {
-		global $wgLang, $wgUser;
+		global $wgLang;
 		wfProfileIn( __METHOD__ );
 
 		if( $result->isBrokenTitle() ) {
@@ -485,7 +489,7 @@ class SpecialSearch extends SpecialPage {
 			return "<!-- Broken link in search result -->\n";
 		}
 
-		$sk = $wgUser->getSkin();
+		$sk = $this->getSkin();
 		$t = $result->getTitle();
 
 		$titleSnippet = $result->getTitleSnippet($terms);
@@ -577,7 +581,7 @@ class SpecialSearch extends SpecialPage {
 		$size = wfMsgExt(
 			'search-result-size',
 			array( 'parsemag', 'escape' ),
-			$this->sk->formatSize( $byteSize ),
+			$wgLang->formatSize( $byteSize ),
 			$wgLang->formatNum( $wordCount )
 		);
 
@@ -858,7 +862,6 @@ class SpecialSearch extends SpecialPage {
 						array(
 							'type'=>'button',
 							'id' => 'mw-search-toggleall',
-							'onclick' => 'mwToggleSearchCheckboxes("all");',
 							'value' => wfMsg( 'powersearch-toggleall' )
 						)
 					) .
@@ -867,7 +870,6 @@ class SpecialSearch extends SpecialPage {
 						array(
 							'type'=>'button',
 							'id' => 'mw-search-togglenone',
-							'onclick' => 'mwToggleSearchCheckboxes("none");',
 							'value' => wfMsg( 'powersearch-togglenone' )
 						)
 					)
@@ -981,7 +983,11 @@ class SpecialSearch extends SpecialPage {
 			} elseif ( $resultsShown >= $this->limit ) {
 				$top = wfShowingResults( $this->offset, $this->limit );
 			} else {
-				$top = wfShowingResultsNum( $this->offset, $this->limit, $resultsShown );
+				$top =  wfMsgExt( 'showingresultsnum', array( 'parseinline' ),
+					$wgLang->formatNum( $this->limit ),
+					$wgLang->formatNum( $this->offset + 1 ),
+					$wgLang->formatNum( $resultsShown )
+				);
 			}
 			$out .= Xml::tags( 'div', array( 'class' => 'results-info' ),
 				Xml::tags( 'ul', null, Xml::tags( 'li', null, $top ) )
@@ -1036,9 +1042,7 @@ class SpecialSearch extends SpecialPage {
 			'a',
 			array(
 				'href' => $this->getTitle()->getLocalURL( $stParams ),
-				'title' => $tooltip,
-				'onmousedown' => 'mwSearchHeaderClick(this);',
-				'onkeydown' => 'mwSearchHeaderClick(this);'),
+				'title' => $tooltip),
 			$label
 		);
 	}

@@ -17,9 +17,9 @@ class HttpTest extends MediaWikiTestCase {
 	static $has_proxy = false;
 	static $proxy = "http://hulk:8080/";
 	var $test_geturl = array(
-		"http://www.example.com/",
+		"http://en.wikipedia.org/robots.txt",
+		"https://secure.wikimedia.org/",
 		"http://pecl.php.net/feeds/pkg_apc.rss",
-		"http://toolserver.org/~jan/poll/dev/main.php?page=wiki_output&id=3",
 		"http://meta.wikimedia.org/w/index.php?title=Interwiki_map&action=raw",
 		"http://www.mediawiki.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:MediaWiki_hooks&format=php",
 	);
@@ -113,11 +113,11 @@ class HttpTest extends MediaWikiTestCase {
 							  "Request took less than {$timeout}s via " . Http::$httpEngine );
 		$this->assertEquals( $r, false, "false -- what we get on error from Http::get()" );
 
-		$r = Http::get( "http://www.example.com/this-file-does-not-exist", $timeout );
+		$r = Http::get( "http://www.mediawiki.org/xml/made-up-url", $timeout );
 		$this->assertFalse( $r, "False on 404s" );
 
 
-		$r = MWHttpRequest::factory( "http://www.example.com/this-file-does-not-exist" );
+		$r = MWHttpRequest::factory( "http://www.mediawiki.org/xml/made-up-url" );
 		$er = $r->execute();
 		if ( $r instanceof PhpHttpRequest && version_compare( '5.2.10', phpversion(), '>' ) ) {
 			$this->assertRegexp( "/HTTP request failed/", $er->getWikiText() );
@@ -316,29 +316,47 @@ class HttpTest extends MediaWikiTestCase {
 	function testIsValidUrl() {
 	}
 
-	function testValidateCookieDomain() {
-		$this->assertFalse( Cookie::validateCookieDomain( "co.uk" ) );
-		$this->assertFalse( Cookie::validateCookieDomain( ".co.uk" ) );
-		$this->assertFalse( Cookie::validateCookieDomain( "gov.uk" ) );
-		$this->assertFalse( Cookie::validateCookieDomain( ".gov.uk" ) );
-		$this->assertTrue( Cookie::validateCookieDomain( "supermarket.uk" ) );
-		$this->assertFalse( Cookie::validateCookieDomain( "uk" ) );
-		$this->assertFalse( Cookie::validateCookieDomain( ".uk" ) );
-		$this->assertFalse( Cookie::validateCookieDomain( "127.0.0." ) );
-		$this->assertFalse( Cookie::validateCookieDomain( "127." ) );
-		$this->assertFalse( Cookie::validateCookieDomain( "127.0.0.1." ) );
-		$this->assertTrue( Cookie::validateCookieDomain( "127.0.0.1" ) );
-		$this->assertFalse( Cookie::validateCookieDomain( "333.0.0.1" ) );
-		$this->assertTrue( Cookie::validateCookieDomain( "example.com" ) );
-		$this->assertFalse( Cookie::validateCookieDomain( "example.com." ) );
-		$this->assertTrue( Cookie::validateCookieDomain( ".example.com" ) );
+	/**
+	 * @dataProvider cookieDomains
+	 */
+	function testValidateCookieDomain( $expected, $domain, $origin=null ) {
+		if ( $origin ) {
+			$ok = Cookie::validateCookieDomain( $domain, $origin );
+			$msg = "$domain against origin $origin";
+		} else {
+			$ok = Cookie::validateCookieDomain( $domain );
+			$msg = "$domain";
+		}
+		$this->assertEquals( $expected, $ok, $msg );
+	}
+	
+	function cookieDomains() {
+		return array(
+			array( false, "org"),
+			array( false, ".org"),
+			array( true, "wikipedia.org"),
+			array( true, ".wikipedia.org"),
+			array( false, "co.uk" ),
+			array( false, ".co.uk" ),
+			array( false, "gov.uk" ),
+			array( false, ".gov.uk" ),
+			array( true, "supermarket.uk" ),
+			array( false, "uk" ),
+			array( false, ".uk" ),
+			array( false, "127.0.0." ),
+			array( false, "127." ),
+			array( false, "127.0.0.1." ),
+			array( true, "127.0.0.1" ),
+			array( false, "333.0.0.1" ),
+			array( true, "example.com" ),
+			array( false, "example.com." ),
+			array( true, ".example.com" ),
 
-		$this->assertTrue( Cookie::validateCookieDomain( ".example.com", "www.example.com" ) );
-		$this->assertFalse( Cookie::validateCookieDomain( "example.com", "www.example.com" ) );
-		$this->assertTrue( Cookie::validateCookieDomain( "127.0.0.1", "127.0.0.1" ) );
-		$this->assertFalse( Cookie::validateCookieDomain( "127.0.0.1", "localhost" ) );
-
-
+			array( true, ".example.com", "www.example.com" ),
+			array( false, "example.com", "www.example.com" ),
+			array( true, "127.0.0.1", "127.0.0.1" ),
+			array( false, "127.0.0.1", "localhost" ),
+		);
 	}
 
 	function testSetCooke() {
@@ -540,10 +558,9 @@ class HttpTest extends MediaWikiTestCase {
 		return array(
 			array( false, '¿non sens before!! http://a', 'Allow anything before URI' ),
 
-			# (ftp|http|https) - only three schemes allowed 
+			# (http|https) - only two schemes allowed
 			array( true,  'http://www.example.org/' ),
 			array( true,  'https://www.example.org/' ),
-			array( true,  'ftp://www.example.org/' ),
 			array( true,  'http://www.example.org', 'URI without directory' ),
 			array( true,  'http://a', 'Short name' ),
 			array( true, 'http://étoile', 'Allow UTF-8 in hostname' ),  # 'étoile' is french for 'star'
@@ -572,8 +589,6 @@ class HttpTest extends MediaWikiTestCase {
 			array( true, 'https://example.org:80/' ),
 			array( true, 'http://example.org:443/' ),
 			array( true, 'https://example.org:443/' ),
-			array( true, 'ftp://example.org:1/', 'Minimum' ),
-			array( true, 'ftp://example.org:65535/', 'Maximum port number' ),
 
 			# Part after the hostname is / or / with something else
 			array( true, 'http://example/#' ),

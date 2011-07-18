@@ -65,9 +65,6 @@ class WikiMap {
 	 * @return String: HTML link or false if the wiki was not found
 	 */
 	public static function makeForeignLink( $wikiID, $page, $text=null ) {
-		global $wgUser;
-		$sk = $wgUser->getSkin();
-
 		if ( !$text ) {
 			$text = $page;
 		}
@@ -77,7 +74,7 @@ class WikiMap {
 			return false;
 		}
 
-		return $sk->makeExternalLink( $url, $text );
+		return Linker::makeExternalLink( $url, $text );
 	}
 
 	/**
@@ -142,7 +139,7 @@ class WikiReference {
 	/**
 	 * Helper function for getUrl()
 	 *
-	 * @todo FIXME: this may be generalized...
+	 * @todo FIXME: This may be generalized...
 	 * @param $page String: page name (must be normalised before calling this function!)
 	 * @return String: Url fragment
 	 */

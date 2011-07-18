@@ -64,7 +64,7 @@ class SearchEngine {
 
 	/**
 	 * If this search backend can list/unlist redirects
-	 * @deprecated Call supports( 'list-redirects' );
+	 * @deprecated since 1.19 Call supports( 'list-redirects' );
 	 */
 	function acceptListRedirects() {
 		return $this->supports( 'list-redirects' );
@@ -132,11 +132,11 @@ class SearchEngine {
 		wfRunHooks( 'SearchGetNearMatchComplete', array( $searchterm, &$title ) );
 		return $title;
 	}
-	
+
 	/**
-	 * Do a near match (see SearchEngine::getNearMatch) and wrap it into a 
+	 * Do a near match (see SearchEngine::getNearMatch) and wrap it into a
 	 * SearchResultSet.
-	 * 
+	 *
 	 * @param $searchterm string
 	 * @return SearchResultSet
 	 */
@@ -177,7 +177,7 @@ class SearchEngine {
 
 			# See if it still otherwise has content is some sane sense
 			$context->setTitle( $title );
-			$article = MediaWiki::articleFromTitle( $title, $context );
+			$article = Article::newFromTitle( $title, $context );
 			if ( $article->hasViewableContent() ) {
 				return $title;
 			}
@@ -300,7 +300,7 @@ class SearchEngine {
 		if ( strncmp( $query, $allkeyword, strlen( $allkeyword ) ) == 0 ) {
 			$this->namespaces = null;
 			$parsed = substr( $query, strlen( $allkeyword ) );
-		} else if ( strpos( $query, ':' ) !== false ) {
+		} elseif ( strpos( $query, ':' ) !== false ) {
 			$prefix = substr( $query, 0, strpos( $query, ':' ) );
 			$index = $wgContLang->getNsIndex( $prefix );
 			if ( $index !== false ) {
@@ -473,11 +473,13 @@ class SearchEngine {
 	 */
 	public static function getOpenSearchTemplate() {
 		global $wgOpenSearchTemplate, $wgServer;
-		if ( $wgOpenSearchTemplate )	{
+		if ( $wgOpenSearchTemplate ) {
 			return $wgOpenSearchTemplate;
 		} else {
 			$ns = implode( '|', SearchEngine::defaultNamespaces() );
-			if ( !$ns ) $ns = "0";
+			if ( !$ns ) {
+				$ns = "0";
+			}
 			return $wgServer . wfScript( 'api' ) . '?action=opensearch&search={searchTerms}&namespace=' . $ns;
 		}
 	}
@@ -639,7 +641,7 @@ class SqlSearchResultSet extends SearchResultSet {
 		$row = $this->mResultSet->fetchObject();
 		if ( $row === false )
 			return false;
-			
+
 		return SearchResult::newFromRow( $row );
 	}
 
@@ -660,7 +662,7 @@ class SearchResultTooMany {
 
 
 /**
- * @todo Fixme: This class is horribly factored. It would probably be better to
+ * @todo FIXME: This class is horribly factored. It would probably be better to
  * have a useful base class to which you pass some standard information, then
  * let the fancy self-highlighters extend that.
  * @ingroup Search
@@ -685,8 +687,8 @@ class SearchResult {
 
 	/**
 	 * Return a new SearchResult and initializes it with a title.
-	 * 
-	 * @param $title Title 
+	 *
+	 * @param $title Title
 	 * @return SearchResult
 	 */
 	public static function newFromTitle( $title ) {
@@ -696,7 +698,7 @@ class SearchResult {
 	}
 	/**
 	 * Return a new SearchResult and initializes it with a row.
-	 * 
+	 *
 	 * @param $row object
 	 * @return SearchResult
 	 */
@@ -705,28 +707,28 @@ class SearchResult {
 		$result->initFromRow( $row );
 		return $result;
 	}
-	
+
 	public function __construct( $row = null ) {
 		if ( !is_null( $row ) ) {
 			// Backwards compatibility with pre-1.17 callers
 			$this->initFromRow( $row );
 		}
 	}
-	
+
 	/**
 	 * Initialize from a database row. Makes a Title and passes that to
 	 * initFromTitle.
-	 * 
+	 *
 	 * @param $row object
 	 */
 	protected function initFromRow( $row ) {
 		$this->initFromTitle( Title::makeTitle( $row->page_namespace, $row->page_title ) );
 	}
-	
+
 	/**
 	 * Initialize from a Title and if possible initializes a corresponding
 	 * Revision and File.
-	 * 
+	 *
 	 * @param $title Title
 	 */
 	protected function initFromTitle( $title ) {
@@ -843,7 +845,7 @@ class SearchResult {
 	function getTimestamp() {
 		if ( $this->mRevision )
 			return $this->mRevision->getTimestamp();
-		else if ( $this->mImage )
+		elseif ( $this->mImage )
 			return $this->mImage->getTimestamp();
 		return '';
 	}
@@ -941,7 +943,7 @@ class SearchHighlighter {
 			2 => '/(\[\[)|(\]\])/', // image
 			3 => "/(\n\\{\\|)|(\n\\|\\})/" ); // table
 
-		// FIXME: this should prolly be a hook or something
+		// @todo FIXME: This should prolly be a hook or something
 		if ( function_exists( 'wfCite' ) ) {
 			$spat .= '|(<ref>)'; // references via cite extension
 			$endPatterns[4] = '/(<ref>)|(<\/ref>)/';
@@ -1027,7 +1029,7 @@ class SearchHighlighter {
 		$anyterm = implode( '|', $terms );
 		$phrase = implode( "$wgSearchHighlightBoundaries+", $terms );
 
-		// FIXME: a hack to scale contextchars, a correct solution
+		// @todo FIXME: A hack to scale contextchars, a correct solution
 		// would be to have contextchars actually be char and not byte
 		// length, and do proper utf-8 substrings and lengths everywhere,
 		// but PHP is making that very hard and unclean to implement :(
@@ -1400,7 +1402,7 @@ class SearchHighlighter {
 
 /**
  * Dummy class to be used when non-supported Database engine is present.
- * @todo Fixme: dummy class should probably try something at least mildly useful,
+ * @todo FIXME: Dummy class should probably try something at least mildly useful,
  * such as a LIKE search through titles.
  * @ingroup Search
  */

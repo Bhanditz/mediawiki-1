@@ -117,7 +117,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		$data = array();
 		$mainPage = Title::newMainPage();
 		$data['mainpage'] = $mainPage->getPrefixedText();
-		$data['base'] = $mainPage->getFullUrl();
+		$data['base'] = wfExpandUrl( $mainPage->getFullUrl() );
 		$data['sitename'] = $GLOBALS['wgSitename'];
 		$data['generator'] = "MediaWiki {$GLOBALS['wgVersion']}";
 		$data['phpversion'] = phpversion();
@@ -284,7 +284,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 			if ( isset( $langNames[$row->iw_prefix] ) ) {
 				$val['language'] = $langNames[$row->iw_prefix];
 			}
-			$val['url'] = $row->iw_url;
+			$val['url'] = wfExpandUrl( $row->iw_url );
 			$val['wikiid'] = $row->iw_wikiid;
 			$val['api'] = $row->iw_api;
 
@@ -298,12 +298,12 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 	protected function appendDbReplLagInfo( $property, $includeAll ) {
 		global $wgShowHostnames;
 		$data = array();
+		$lb = wfGetLB();
 		if ( $includeAll ) {
 			if ( !$wgShowHostnames ) {
 				$this->dieUsage( 'Cannot view all servers info unless $wgShowHostnames is true', 'includeAllDenied' );
 			}
 
-			$lb = wfGetLB();
 			$lags = $lb->getLagTimes();
 			foreach ( $lags as $i => $lag ) {
 				$data[] = array(
@@ -312,9 +312,11 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 				);
 			}
 		} else {
-			list( $host, $lag ) = wfGetLB()->getMaxLag();
+			list( $host, $lag, $index ) = $lb->getMaxLag();
 			$data[] = array(
-				'host' => $wgShowHostnames ? $host : '',
+				'host' => $wgShowHostnames
+						? $lb->getServerName( $index )
+						: '',
 				'lag' => intval( $lag )
 			);
 		}
@@ -345,6 +347,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		global $wgGroupPermissions, $wgAddGroups, $wgRemoveGroups, $wgGroupsAddToSelf, $wgGroupsRemoveFromSelf;
 
 		$data = array();
+		$result = $this->getResult();
 		foreach ( $wgGroupPermissions as $group => $permissions ) {
 			$arr = array(
 				'name' => $group,
@@ -373,16 +376,16 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 			foreach ( $groupArr as $type => $rights ) {
 				if ( isset( $rights[$group] ) ) {
 					$arr[$type] = $rights[$group];
-					$this->getResult()->setIndexedTagName( $arr[$type], 'group' );
+					$result->setIndexedTagName( $arr[$type], 'group' );
 				}
 			}
 
-			$this->getResult()->setIndexedTagName( $arr['rights'], 'permission' );
+			$result->setIndexedTagName( $arr['rights'], 'permission' );
 			$data[] = $arr;
 		}
 
-		$this->getResult()->setIndexedTagName( $data, 'group' );
-		return $this->getResult()->addValue( 'query', $property, $data );
+		$result->setIndexedTagName( $data, 'group' );
+		return $result->addValue( 'query', $property, $data );
 	}
 
 	protected function appendFileExtensions( $property ) {
@@ -445,7 +448,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 	protected function appendRightsInfo( $property ) {
 		global $wgRightsPage, $wgRightsUrl, $wgRightsText;
 		$title = Title::newFromText( $wgRightsPage );
-		$url = $title ? $title->getFullURL() : $wgRightsUrl;
+		$url = $title ? wfExpandUrl( $title->getFullURL() ) : $wgRightsUrl;
 		$text = $wgRightsText;
 		if ( !$text && $title ) {
 			$text = $title->getPrefixedText();
@@ -605,6 +608,10 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 			'api.php?action=query&meta=siteinfo&siprop=interwikimap&sifilteriw=local',
 			'api.php?action=query&meta=siteinfo&siprop=dbrepllag&sishowalldb=',
 		);
+	}
+
+	public function getHelpUrls() {
+		return 'http://www.mediawiki.org/wiki/API:Meta#siteinfo_.2F_si';
 	}
 
 	public function getVersion() {

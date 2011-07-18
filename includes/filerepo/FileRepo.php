@@ -40,7 +40,7 @@ abstract class FileRepo {
 		$this->initialCapital = MWNamespace::isCapitalized( NS_FILE );
 		foreach ( array( 'descBaseUrl', 'scriptDirUrl', 'articleUrl', 'fetchDescription',
 			'thumbScriptUrl', 'initialCapital', 'pathDisclosureProtection',
-			'descriptionCacheExpiry', 'hashLevels', 'url', 'thumbUrl', 'scriptExtension' ) 
+			'descriptionCacheExpiry', 'hashLevels', 'url', 'thumbUrl', 'scriptExtension' )
 			as $var )
 		{
 			if ( isset( $info[$var] ) ) {
@@ -52,6 +52,10 @@ abstract class FileRepo {
 
 	/**
 	 * Determine if a string is an mwrepo:// URL
+	 *
+	 * @param $url string
+	 *
+	 * @return bool
 	 */
 	static function isVirtualUrl( $url ) {
 		return substr( $url, 0, 9 ) == 'mwrepo://';
@@ -93,7 +97,7 @@ abstract class FileRepo {
 	 * version control should return false if the time is specified.
 	 *
 	 * @param $title Mixed: Title object or string
-	 * @param $options Associative array of options:
+	 * @param $options array Associative array of options:
 	 *     time:           requested time for an archived image, or false for the
 	 *                     current version. An image object will be returned which was
 	 *                     created at the specified time.
@@ -103,6 +107,8 @@ abstract class FileRepo {
 	 *     private:        If true, return restricted (deleted) files if the current
 	 *                     user is allowed to view them. Otherwise, such files will not
 	 *                     be found.
+	 *
+	 * @return File|false
 	 */
 	function findFile( $title, $options = array() ) {
 		$time = isset( $options['time'] ) ? $options['time'] : false;
@@ -126,7 +132,7 @@ abstract class FileRepo {
 			if ( $img && $img->exists() ) {
 				if ( !$img->isDeleted(File::DELETED_FILE) ) {
 					return $img;
-				} else if ( !empty( $options['private'] )  && $img->userCan(File::DELETED_FILE) ) {
+				} elseif ( !empty( $options['private'] )  && $img->userCan(File::DELETED_FILE) ) {
 					return $img;
 				}
 			}
@@ -150,7 +156,7 @@ abstract class FileRepo {
 		return false;
 	}
 
-	/*
+	/**
 	 * Find many files at once.
 	 * @param $items An array of titles, or an array of findFile() options with
 	 *    the "title" option giving the title. Example:
@@ -227,7 +233,7 @@ abstract class FileRepo {
 			if ( $img && $img->exists() ) {
 				if ( !$img->isDeleted(File::DELETED_FILE) ) {
 					return $img;
-				} else if ( !empty( $options['private'] ) && $img->userCan(File::DELETED_FILE) ) {
+				} elseif ( !empty( $options['private'] ) && $img->userCan(File::DELETED_FILE) ) {
 					return $img;
 				}
 			}
@@ -302,18 +308,18 @@ abstract class FileRepo {
 	function getName() {
 		return $this->name;
 	}
-	
+
 	/**
 	 * Make an url to this repo
-	 * 
+	 *
 	 * @param $query mixed Query string to append
 	 * @param $entry string Entry point; defaults to index
 	 * @return string
 	 */
 	function makeUrl( $query = '', $entry = 'index' ) {
 		$ext = isset( $this->scriptExtension ) ? $this->scriptExtension : '.php';
-		return wfAppendQuery( "{$this->scriptDirUrl}/{$entry}{$ext}", $query ); 
-	} 
+		return wfAppendQuery( "{$this->scriptDirUrl}/{$entry}{$ext}", $query );
+	}
 
 	/**
 	 * Get the URL of an image description page. May return false if it is
@@ -363,7 +369,7 @@ abstract class FileRepo {
 			$query .= '&uselang=' . $lang;
 		}
 		if ( isset( $this->scriptDirUrl ) ) {
-			return $this->makeUrl( 
+			return $this->makeUrl(
 				'title=' .
 				wfUrlencode( 'Image:' . $name ) .
 				"&$query" );
@@ -376,7 +382,7 @@ abstract class FileRepo {
 			}
 		}
 	}
-	
+
 	/**
 	 * Get the URL of the stylesheet to apply to description pages
 	 * @return string
@@ -429,7 +435,8 @@ abstract class FileRepo {
 
 
 	/**
-	 * Append the contents of the source path to the given file.
+	 * Append the contents of the source path to the given file, OR queue
+	 * the appending operation in anticipation of a later appendFinish() call.
 	 * @param $srcPath String: location of the source file
 	 * @param $toAppendPath String: path to append to.
 	 * @param $flags Integer: bitfield, may be FileRepo::DELETE_SOURCE to indicate
@@ -437,6 +444,13 @@ abstract class FileRepo {
 	 * @return mixed Status or false
 	 */
 	abstract function append( $srcPath, $toAppendPath, $flags = 0 );
+
+	/**
+	 * Finish the append operation.
+	 * @param $toAppendPath String: path to append to.
+	 * @return mixed Status or false
+	 */
+	abstract function appendFinish( $toAppendPath );
 
 	/**
 	 * Remove a temporary file or mark it for garbage collection
@@ -598,7 +612,7 @@ abstract class FileRepo {
 	function newFatal( $message /*, parameters...*/ ) {
 		$params = func_get_args();
 		array_unshift( $params, $this );
-		return call_user_func_array( array( 'FileRepoStatus', 'newFatal' ), $params );
+		return MWInit::callStaticMethod( 'FileRepoStatus', 'newFatal', $params );
 	}
 
 	/**
@@ -689,7 +703,7 @@ abstract class FileRepo {
 		array_unshift( $args, 'filerepo', $this->getName() );
 		return call_user_func_array( 'wfMemcKey', $args );
 	}
-	
+
 	/**
 	 * Get an UploadStash associated with this repo.
 	 *

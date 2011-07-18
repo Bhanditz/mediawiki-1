@@ -201,15 +201,6 @@ $messages = array(
 'category-file-count-limited'    => "Ev {{PLURAL:$1|data'yê|$1 datayên}} jêr di vê kategorîyê da ne.",
 'listingcontinuesabbrev'         => 'dewam',
 
-'mainpagetext'      => "'''MediaWiki serketî hate çêkirin.'''",
-'mainpagedocfooter' => 'Alîkarî ji bo bikaranîn û guherandin yê datayê Wîkî tu di bin [http://meta.wikimedia.org/wiki/Help:Contents pirtûka alîkarîyê ji bikarhêneran] da dikarê bibînê.
-
-== Alîkarî ji bo destpêkê ==
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Lîsteya varîyablên konfîgûrasîyonê]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Lîsteya e-nameyên versyonên nuh yê MediaWiki]',
-
 'about'         => 'Der barê',
 'article'       => 'Gotar',
 'newwindow'     => '(di rûpelekî din da yê were nîşandan)',
@@ -259,7 +250,6 @@ $messages = array(
 'history'           => 'Dîroka rûpelê',
 'history_short'     => 'Dîrok / Nivîskar',
 'updatedmarker'     => 'hate guherandin ji serlêdana dawî yê min da',
-'info_short'        => 'Zanyarî',
 'printableversion'  => 'Versiyon ji bo çapkirinê',
 'permalink'         => 'Lînkê tim',
 'print'             => 'Çap',
@@ -431,7 +421,6 @@ $2
 
 </strong>',
 'namespaceprotected'   => "Qebûlkirinê te tune, ku tu vê rûpelê di namespace'a $1 da biguherînê.",
-'customcssjsprotected' => 'Qebûlkirinên te tune ne, tu nikanê vê rûpelê biguherînê, ji ber ku di vir da tercihên bikarhênerekî din hene.',
 'ns-specialprotected'  => "Rûpel di namespace'a {{ns:special}} nikanin werin guherandin.",
 'titleprotected'       => "Rûpelek bi vî navî nikane were çêkirin. Ev astengkirina ji [[User:$1|$1]] bi sedemê ''$2'' hate çêkirin.",
 
@@ -473,7 +462,7 @@ Hesaba te hat afirandin. Tu dikarî niha [[Special:Preferences|tercîhên xwe di
 'loginsuccesstitle'          => 'Têketin serkeftî!',
 'loginsuccess'               => 'Tu niha di {{SITENAME}} de qeydkirî yî wek "$1".',
 'nosuchuser'                 => 'Bikarhênera/ê bi navê "$1" tune. Navê rast binivîse an bi vê formê <b>hesabeke nû çêke</b>. (Ji bo hevalên nû "Têkeve" çênabe!)',
-'nosuchusershort'            => 'Li vê derê ne bikarhênerek bi navî "<nowiki>$1</nowiki>" heye. Li nivîsandinê xwe seke.',
+'nosuchusershort'            => 'Li vê derê ne bikarhênerek bi navî "$1" heye. Li nivîsandinê xwe seke.',
 'nouserspecified'            => 'Navî xwe wek bikarhêner têkê.',
 'login-userblocked'          => 'Rê li ber vî bikarînerî hatiye girtin. Destûr bo têketinê nîne.',
 'wrongpassword'              => 'Şifreya ku te nivîsand şaşe. Ji kerema xwe careke din biceribîne.',
@@ -612,7 +601,7 @@ Eger tu bi şaştî hatî, bizivire rûpela berê.",
 'noarticletext'                    => 'Ev rûpel niha vala ye, tu dikarî [[Special:Search/{{PAGENAME}}|Di nav gotarên din de li "{{PAGENAME}}" bigere]] an [{{fullurl:{{FULLPAGENAME}}|action=edit}} vê rûpelê biguherînî].',
 'noarticletext-nopermission'       => 'Ev rûpel niha vala ye, tu dikarî [[Special:Search/{{PAGENAME}}|Di nav gotarên din de li "{{PAGENAME}}" bigere]] an [{{fullurl:{{FULLPAGENAME}}|action=edit}} vê rûpelê biguherînî].
 Ev rûpel niha vala ye, tu dikarî [[Special:Search/{{PAGENAME}}|Di nav gotarên din de li "{{PAGENAME}}" bigere]] an [{{fullurl:{{FULLPAGENAME}}|action=edit}} vê rûpelê biguherînî].',
-'userpage-userdoesnotexist'        => 'Account\'î bikarhêneran "$1" nehatîye qeydkirin. Xêra xwe seke ku tu dixazê vê rûpelê çêkê/biguherînê.',
+'userpage-userdoesnotexist'        => 'Account\'î bikarhêneran "<nowiki>$1</nowiki>" nehatîye qeydkirin. Xêra xwe seke ku tu dixazê vê rûpelê çêkê/biguherînê.',
 'userpage-userdoesnotexist-view'   => 'Hesabê bikarhêner  "$1"  nehatiye qeyd kirin.',
 'clearyourcache'                   => "'''Zanibe:''' Piştî tomarkirinê, tu gireke cache'a browser'î xwe dîsa wînê ji bo dîtina guherandinan. '''Mozilla / Firefor /Safari:''' Kepsa ''Shift'' bigre û li ''Reload'' xe, ya ''Ctrl-Shift-R'' bikepsîne (''Cmd-Shift-R'' li cem Apple Mac); '''IE:''' Kepsa ''Ctrl'' bigre û li ''Reload'' xe, ya li ''Ctrl-F5''; '''Konqueror:''' bes li ''Reload'' xe ya li kepsa ''F5'' xe; bikarhênerên '''Opera''' girekin belkî cache'a xwe tevda di bin ''Tools → Preferences'' da valabikin.",
 'usercssyoucanpreview'             => "'''Tîp:''' 'Pêşdîtin' bikarwîne ji bo tu bibînê çawa CSS'ê te yê nuh e berî tomarkirinê.",
@@ -1024,11 +1013,6 @@ Xêra xwe navekî din bibîne.",
 'upload-maxfilesize'      => "Mezinbûna data'yê ya herî mezin: $1",
 'watchthisupload'         => 'Vê rûpelê bişopîne',
 'filewasdeleted'          => "Data'yek bi vê navê hatibû barkirin û jêbirin. Xêra xwe li $1 seke ku barkirina te hêja ye ya na.",
-'upload-wasdeleted'       => "'''Hîşyar: Tu data'yekê bardikê yê berê hatibû jêbirin.'''
-
-Zanibe, ku ev barkirina kê were qebûlkirin ya na.
-
-Înformasyonan li ser jêbirinê kevin ra:",
 'filename-bad-prefix'     => "Nava wê data'yê, yê tu niha bardikê, bi '''\"\$1\"''' destpêdike. Kamêrayên dîjîtal wan navan didin wêneyên xwe. Ji kerema xwe navekî baştir binivisîne ji bo mirov zûtir zanibin ku şayeşê vê wêneyê çî ye.",
 'upload-success-subj'     => 'Barkirin serkeftî',
 
@@ -1270,7 +1254,6 @@ Binêre [[Special:WantedCategories|kategorîyên xastî]].',
 'watchlistanontext'    => 'Ji bo sekirinê ya xeyrandinê lîsteya te ya şopandinê tu gireke xwe $1.',
 'watchnologin'         => 'Te xwe qeyd nekirîye.',
 'watchnologintext'     => 'Ji bo xeyrandinê lîsteya te ya şopandinê tu gireke xwe [[Special:UserLogin|qedy kiribe]].',
-'addedwatch'           => 'Hat îlawekirinî listeya şopandinê',
 'addedwatchtext'       => "Rûpela \"<nowiki>\$1</nowiki>\" çû ser [[Special:Watchlist|lîsteya te ya şopandinê]].
 Li dahatû de her guhartoyek li wê rûpelê û rûpela guftûgo ya wê were kirin li vir dêt nîşan dan,
 
@@ -1278,7 +1261,6 @@ Li rûpela [[Special:RecentChanges|Guherandinên dawî]] jî ji bo hasan dîtina
 
 
 <p>Her dem tu bixwazî ew rûpel li nav lîsteya te ya şopandinê derbikî, li ser wê rûpelê, klîk bike \"êdî neşopîne\".</p>",
-'removedwatch'         => 'Ji lîsteya şopandinê hate jêbirin',
 'removedwatchtext'     => 'Rûpela "[[:$1]]" ji lîsteya te ya şopandinê hate jêbirin.',
 'watch'                => 'Bişopîne',
 'watchthispage'        => 'Vê rûpelê bişopîne',
@@ -1323,7 +1305,7 @@ Heta tu vê guherandinê senekê, mêsajên din ji ber ku guherandinê wê rûpe
 
 --
 Eger tu dixazê lîstêya xwe yê şopandinê biguherînê, li
-{{fullurl:{{#special:Watchlist}}/edit}} seke.
+{{fullurl:{{#special:EditWatchlist}}}} seke.
 
 "Feedback" û alîkarîyê din:
 {{fullurl:{{MediaWiki:Helppage}}}}',
@@ -1341,7 +1323,7 @@ Naverroka berî betalkirinê ev bû:'$1'",
 'historywarning'         => "'''Hîşyar''': Dîrokeka ev rûpela tu dixwazî jê bibî heye:",
 'confirmdeletetext'      => 'Tu kê niha rûpelekê bi tev dîroka wê jêbibê. Xêra xwe zanibe tu kê niha çi bikê û zanibe, çi di wîkîyê da yê bibe. Hên jî seke, ku ev jêbirina bi [[{{MediaWiki:Policy-url}}|mafên wîkîyê]] ra dimeşin ya na.',
 'actioncomplete'         => 'Çalakî temam',
-'deletedtext'            => '"<nowiki>$1</nowiki>" hat jêbirin. Ji bo qeyda rûpelên ku di dema nêzîk de hatin jêbirin binêre $2.',
+'deletedtext'            => '"$1" hat jêbirin. Ji bo qeyda rûpelên ku di dema nêzîk de hatin jêbirin binêre $2.',
 'deletedarticle'         => '"[[$1]]" hat jêbirin',
 'dellogpage'             => 'Reşahîya jêbirin',
 'dellogpagetext'         => 'Li jêr lîsteyek ji jêbirinên dawî heye.',
@@ -1755,11 +1737,6 @@ if (wgUserLanguage == "ku-arab")
 'spamprotectiontitle' => 'Parastina spam',
 'spamprotectiontext'  => 'Ew rûpela yê tu dixast tomarbikê hate astengkirin ji ber ku parastina spam. Ew çêbû ji ber ku lînkekî derva di vê rûpelê da ye.',
 'spamprotectionmatch' => 'Ev nivîsa parastinê spam vêxist: $1',
-
-# Info page
-'numedits'     => 'Hejmara guherandinan (rûpel): $1',
-'numtalkedits' => 'Hejmara guherandinan (guftûgo): $1',
-'numwatchers'  => 'Hejmara kesên dişopînin: $1',
 
 # Patrolling
 'markaspatrolleddiff'   => 'Wek serrastkirî nîşanbide',

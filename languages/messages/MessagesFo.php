@@ -204,8 +204,6 @@ $messages = array(
 'category-empty'         => "''Hesin bólkur inniheldur ongar greinir ella miðlar í løtuni.''",
 'listingcontinuesabbrev' => 'frh.',
 
-'mainpagetext' => "'''Innlegging av Wiki-ritbúnaði væleydnað.'''",
-
 'about'         => 'Um',
 'article'       => 'Innihaldssíða',
 'newwindow'     => '(kemur í nýggjan glugga)',
@@ -248,7 +246,6 @@ $messages = array(
 'searcharticle'     => 'Far',
 'history'           => 'Síðusøga',
 'history_short'     => 'Søga',
-'info_short'        => 'Upplýsingar',
 'printableversion'  => 'Prentvinarlig útgáva',
 'permalink'         => 'Støðug slóð',
 'print'             => 'Prenta',
@@ -404,7 +401,7 @@ Tín konto er nú stovnað. Gloym ikki at broyta tínar {{SITENAME}} innstilling
 'loginsuccesstitle'          => 'Innritan væleydnað',
 'loginsuccess'               => "'''Tú hevur nú ritað inn í {{SITENAME}} sum \"\$1\".'''",
 'nosuchuser'                 => 'Eingin brúkari er við navninum "$1". Kanna stavseting ella nýt frymilin niðanfyri til at stovna nýggja kontu.',
-'nosuchusershort'            => 'Eingin brúkari er við navninum "<nowiki>$1</nowiki>". Kanna stavseting.',
+'nosuchusershort'            => 'Eingin brúkari er við navninum "$1". Kanna stavseting.',
 'wrongpassword'              => 'Loyniorðið, sum tú skrivaði, er skeivt. Vinaliga royn aftur.',
 'wrongpasswordempty'         => 'Loyniorð manglar. Vinarliga royn aftur.',
 'mailmypassword'             => 'Send mær eitt nýtt loyniorð',
@@ -808,13 +805,11 @@ ella hevur hann valt ikki at taka ímóti t-posti frá øðrum brúkarum.',
 'mywatchlist'       => 'Mítt eftirlit',
 'nowatchlist'       => 'Tú hevur ongar lutir í eftirlitinum.',
 'watchnologin'      => 'Tú hevur ikki ritað inn',
-'addedwatch'        => 'Lagt undir eftirlit',
 'addedwatchtext'    => "Síðan \"<nowiki>\$1</nowiki>\" er løgd undir [[Special:Watchlist|eftirlit]] hjá tær.
 Framtíðar broytingar á hesi síðu og tilknýttu kjaksíðuni verða at síggja her.
 Tá sæst síðan sum '''feit skrift''' í [[Special:RecentChanges|broytingaryvirlitinum]] fyri at gera hana lættari at síggja.
 
 Vilt tú flyta síðuna undan tínum eftirliti, kanst tú trýsta á \"Strika eftirlit\" á síðuni.",
-'removedwatch'      => 'Strikað úr eftirliti',
 'removedwatchtext'  => 'Síðan "[[:$1]]" er strikað úr tínum eftirliti.',
 'watch'             => 'Eftirlit',
 'watchthispage'     => 'Hav eftirlit við hesi síðuni',
@@ -847,7 +842,7 @@ Vinarliga vátta at tú ætlar at gera hetta, at tú skilur
 avleiðingarnar og at tú gert tað í tráð við
 [[{{MediaWiki:Policy-url}}]].',
 'actioncomplete'    => 'Verkið er fullgjørt',
-'deletedtext'       => '"<nowiki>$1</nowiki>" er nú strikað.
+'deletedtext'       => '"$1" er nú strikað.
 Sí $2 fyri fulla skráseting av strikingum.',
 'deletedarticle'    => 'strikaði "[[$1]]"',
 'dellogpage'        => 'Striku logg',
@@ -1051,9 +1046,6 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'othercontribs' => 'Grundað á arbeiði eftir $1.',
 'others'        => 'onnur',
 'siteusers'     => '{{SITENAME}}brúkari(ar) $1',
-
-# Info page
-'infosubtitle' => 'Upplýsingar um síðu',
 
 # Skin names
 'skinname-standard'    => 'Standardur',

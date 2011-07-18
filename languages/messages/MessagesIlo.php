@@ -126,8 +126,6 @@ $messages = array(
 'category-file-count-limited'    => 'Ti sumaganad a {{PLURAL:$1|file|$1 files}} ket adda iti agdama a categoria.',
 'listingcontinuesabbrev'         => 'tuloy.',
 
-'mainpagetext' => "'''Sibaballigi a nainstolar ti MediaWiki.'''",
-
 'about'         => 'Maipapan iti',
 'article'       => 'Panid ti linaon',
 'newwindow'     => '(aglukat iti sabali a tawa)',
@@ -167,7 +165,6 @@ $messages = array(
 'history'           => 'Pakasaritaan ti panid',
 'history_short'     => 'pakasaritaan',
 'updatedmarker'     => 'napabaro sipud naudi nga isasarungkarko',
-'info_short'        => 'Informasion',
 'printableversion'  => 'Version a maiprinta',
 'permalink'         => 'Permanente a silpo',
 'print'             => 'Imaldit',
@@ -325,7 +322,6 @@ Dagiti panangbalbaliw iti daytoy a panid ket apektaranna ti langa ti user interf
 Para kadagiti patarus, pangngaasim ta padasem nga aramaten ti [http://translatewiki.net/wiki/Main_Page?setlang=ilo translatewiki.net], ti MediaWiki localisation project.",
 'sqlhidden'            => '(nakalemmeng ti SQL query)',
 'namespaceprotected'   => "Awananka iti pammalubos a mangbaliw kadagiti panid iti '''$1''' a namespace.",
-'customcssjsprotected' => 'Awananka iti pammalubos a mangedit iti daytoy a panid, agsipud ta adda linaonna a personal a settings ti sabali nga agar-aramat.',
 'ns-specialprotected'  => 'Saan a mabalin  a baliwan dagiti espesial a panid.',
 'titleprotected'       => "Sinaluadan daytoy a titulo manipud iti pannakaparnuay ni [[User:$1|$1]].
 Ti naited a rason ket ''$2''.",
@@ -370,7 +366,7 @@ Pangngaasim ta pagbalinem ida ket padasem manen ti sumrek.',
 'loginsuccesstitle'          => 'Balligi ti panagserrek',
 'loginsuccess'               => "'''Nakastrekkan iti {{SITENAME}} a kas ni \"\$1\".'''",
 'nosuchuser'                 => 'Awan ti agar-aramat nga agnagan iti "$1". Kitaem ti espelingmo, wenno mangaramidka laengen iti baro nga account.',
-'nosuchusershort'            => 'Awan ti agar-aramat nga addaan iti nagan a "<nowiki>$1</nowiki>".
+'nosuchusershort'            => 'Awan ti agar-aramat nga addaan iti nagan a "$1".
 Kitaem ti espelingmo.',
 'nouserspecified'            => 'Nasken a mangipanka iti nagan.',
 'wrongpassword'              => 'Biddut (wenno awan) ti password nga impanmo. Padasem koma manen, apo.',
@@ -474,7 +470,7 @@ Ti agdama nga IP addressmo ket $3, ket ti block ID ket #$5. Pangngaasim ta irama
 'newarticle'                       => '(Baro)',
 'newarticletext'                   => "Nasurotmo ti maysa a panilpo iti saan pay a narugian wenno naaramid a panid. Tapno marugian daytoy a panid, rugiamon ti agikur-it wenno agisurat iti pagsuratan a kahon iti baba (kitaen ti [[{{MediaWiki:Helppage}}|panid ti tulong]] para iti ad-adu pay nga informasion). No met nakadanonka ditoy a dimo inggagara wenno gapu iti biddut, iklikmo laeng ti '''back''' button ti browsermo tapno makasublika iti naggapuam a panid.",
 'noarticletext'                    => 'Awan pay ti texto wenno linaonna daytoy a panid, mabalinmo ti [[Special:Search/{{PAGENAME}}|agsapul iti kastoy a titulo ti panid]] iti sabsabali a pampanid wenno [{{fullurl:{{NAMESPACE}}:{{PAGENAME}}|action=edit}} rugianen daytoy a panid].',
-'userpage-userdoesnotexist'        => 'Ti account ti agar-aramat "$1" ket saan a nakarehistro. Pangngaasim ta tsek-apem no kayatmo a partuaten wenno editen daytoy a panid.',
+'userpage-userdoesnotexist'        => 'Ti account ti agar-aramat "<nowiki>$1</nowiki>" ket saan a nakarehistro. Pangngaasim ta tsek-apem no kayatmo a partuaten wenno editen daytoy a panid.',
 'usercsspreview'                   => "'''Laglagipem nga ipre-previem laeng ti user CSS, saan pay a naidulin!'''",
 'updated'                          => '(Napabaro)',
 'note'                             => "'''Palagip:'''",
@@ -872,7 +868,6 @@ Dagiti panid iti [[Special:Watchlist|listaan ti bambantayam]] ket '''naipuskol''
 'linkstoimage'              => 'Dagiti sumaganad a panid ket nakasilpo itoy a file:',
 'nolinkstoimage'            => 'Awan ti pampanid a nakasilpo iti daytoy a file.',
 'morelinkstoimage'          => 'Kitaen ti [[Special:WhatLinksHere/$1|ad-adu pay a panilpo]] kadaytoy a file.',
-'redirectstofile'           => 'Dagiti sumaganad a files ket ag-redirect iti daytoy a file:',
 'duplicatesoffile'          => 'Dagiti sumaganad a files ket duplikado daytoy a file:',
 'sharedupload'              => 'Daytoy a file ket pagraranudan nga upload ket mabalin nga aramaten ti sabsabali pay a projectos.',
 'uploadnewversion-linktext' => 'Mangipan iti kabarbaro a version daytoy a file',
@@ -1054,10 +1049,8 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'nowatchlist'       => 'Awan ti pampanid iti listaan dagiti bambantayam.',
 'watchnologin'      => 'Saan a nakastrek',
 'watchnologintext'  => 'Nasken a [[Special:UserLogin|naka-loginka]] tapno mabaliwam dagiti bambantayam a panid.',
-'addedwatch'        => 'Nainayon kadagiti bambantayan',
 'addedwatchtext'    => "Nainayonen ti panid a \"[[:\$1]]\" iti [[Special:Watchlist|listaan ti bambantayam]].
 Mailistanto ditoy dagiti pannkabalbaliw daytoy a panid iti masakbayan agraman ti kanaigna a panid-tungtongan, ket agparang ti panid a kas '''napuskol''' iti [[Special:RecentChanges|listaan ti naudi a balbaliw]] tapno nalaklaka a malasin.",
-'removedwatch'      => 'Naikkaten kadagiti bambantayan',
 'removedwatchtext'  => 'Naikkaten ti panid a "[[:$1]]" iti listaan ti bambantayam.',
 'watch'             => 'bantayan',
 'watchthispage'     => 'Bantayan daytoy a panid',
@@ -1098,7 +1091,7 @@ Mailistanto ditoy dagiti pannkabalbaliw daytoy a panid iti masakbayan agraman ti
 'confirmdeletetext'      => 'Ikkatemon ti maysa a panid agraman am-amin a pakasaritaanna.
 Pangngaasim ta pasingkedam a talaga a kayatmo nga aramiden daytoy, a maawatam ti bunga ti panangikkatmo, ken aramidem daytoy kas maiyannugot iti [[{{MediaWiki:Policy-url}}|annuroten]].',
 'actioncomplete'         => 'Nalpasen a naaramid',
-'deletedtext'            => 'Naikkaten ti "<nowiki>$1</nowiki>".
+'deletedtext'            => 'Naikkaten ti "$1".
 Kitaen ti $2 para iti record dagiti naudi a naikkat.',
 'deletedarticle'         => 'naikkaten ti "[[$1]]"',
 'dellogpage'             => 'Log ti naikkat',
@@ -1136,7 +1129,7 @@ naisubli manen iti naudi a version ni $2.',
 'protectexpiry'               => 'Agpaso inton:',
 'protect_expiry_invalid'      => 'Saan a mabalin ti oras a panagpaso.',
 'protect_expiry_old'          => 'Adda iti napalabas ti oras ti panagpaso.',
-'protect-text'                => "Mabalinmo a kitaen ken sukatan ti agpang ti saluad ditoy ti panid a '''<nowiki>$1</nowiki>'''.",
+'protect-text'                => "Mabalinmo a kitaen ken sukatan ti agpang ti saluad ditoy ti panid a '''$1'''.",
 'protect-locked-access'       => "Awanan pammalubos ti accountmo a mangbaliw kadagiti level ti saluad ti panid.
 Dagitoy dagiti agdama a settings ti panid a '''$1''':",
 'protect-cascadeon'           => 'Daytoy a panid ket sisasaluad iti agdama gapu ta nairaman iti sumaganad a {{PLURAL:$1|panid, nga addaan|pampanid, nga addaan}} iti sipapakat a cascading a saluad.
@@ -1442,12 +1435,6 @@ Pangngaasim ta i-manualmo lattan a pagtiponem ida.'''",
 
 # Spam protection
 'spambot_username' => 'Panagdalus iti MediaWiki spam',
-
-# Info page
-'infosubtitle' => 'Informasion para iti panid',
-'numedits'     => 'Bilang ti panangbaliw (panid): $1',
-'numtalkedits' => 'Bilang ti edits (panid ti diskusion): $1',
-'numwatchers'  => 'Bilang dagiti agbambantay: $1',
 
 # Patrolling
 'markaspatrolleddiff'    => 'Markaan a kas napatruliaan',

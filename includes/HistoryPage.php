@@ -326,6 +326,10 @@ class HistoryPager extends ReverseChronologicalPager {
 		return $this->historyPage->getArticle();
 	}
 
+	function getTitle() {
+		return $this->title;
+	}
+
 	function getSqlComment() {
 		if ( $this->conds ) {
 			return 'history page filtered'; // potentially slow, see CR r58153
@@ -339,7 +343,7 @@ class HistoryPager extends ReverseChronologicalPager {
 			'tables'  => array( 'revision' ),
 			'fields'  => Revision::selectFields(),
 			'conds'   => array_merge(
-				array( 'rev_page' => $this->historyPage->getTitle()->getArticleID() ),
+				array( 'rev_page' => $this->title->getArticleID() ),
 				$this->conds ),
 			'options' => array( 'USE INDEX' => array( 'revision' => 'page_timestamp' ) ),
 			'join_conds' => array( 'tag_summary' => array( 'LEFT JOIN', 'ts_rev_id=rev_id' ) ),
@@ -397,7 +401,7 @@ class HistoryPager extends ReverseChronologicalPager {
 		$this->buttons = '<div>';
 		$this->buttons .= $this->submitButton( wfMsg( 'compareselectedversions' ),
 			array( 'class' => 'historysubmit' )
-				+ $wgUser->getSkin()->tooltipAndAccessKeyAttribs( 'compareselectedversions' )
+				+ Linker::tooltipAndAccesskeyAttribs( 'compareselectedversions' )
 		) . "\n";
 
 		if ( $wgUser->isAllowed( 'deleterevision' ) ) {
@@ -409,17 +413,14 @@ class HistoryPager extends ReverseChronologicalPager {
 	}
 
 	private function getRevisionButton( $name, $msg ) {
-		global $wgContLang;
 		$this->preventClickjacking();
-		$float = $wgContLang->alignEnd();
 		# Note bug #20966, <button> is non-standard in IE<8
 		$element = Html::element( 'button',
 			array(
 				'type' => 'submit',
 				'name' => $name,
 				'value' => '1',
-				'style' => "float: $float;",
-				'class' => "mw-history-$name-button",
+				'class' => "mw-history-$name-button mw-float-end",
 			),
 			wfMsg( $msg )
 		) . "\n";
@@ -518,7 +519,7 @@ class HistoryPager extends ReverseChronologicalPager {
 					array( 'name' => 'ids[' . $rev->getId() . ']' ) );
 			}
 		// User can only view deleted revisions...
-		} else if ( $rev->getVisibility() && $wgUser->isAllowed( 'deletedhistory' ) ) {
+		} elseif ( $rev->getVisibility() && $wgUser->isAllowed( 'deletedhistory' ) ) {
 			// If revision was hidden from sysops, disable the link
 			if ( !$rev->userCan( Revision::DELETED_RESTRICTED ) ) {
 				$cdel = $this->getSkin()->revDeleteLinkDisabled( false );
@@ -534,9 +535,13 @@ class HistoryPager extends ReverseChronologicalPager {
 			$s .= " $del ";
 		}
 
+		$dirmark = $wgLang->getDirMark();
+
 		$s .= " $link";
+		$s .= $dirmark;
 		$s .= " <span class='history-user'>" .
 			$this->getSkin()->revUserTools( $rev, true ) . "</span>";
+		$s .= $dirmark;
 
 		if ( $rev->isMinor() ) {
 			$s .= ' ' . ChangesList::flag( 'minor' );
@@ -726,7 +731,7 @@ class HistoryPager extends ReverseChronologicalPager {
 				if ( !$rev->userCan( Revision::DELETED_TEXT ) ) {
 					$radio['disabled'] = 'disabled';
 					$checkmark = array(); // We will check the next possible one
-				} else if ( !$this->oldIdChecked ) {
+				} elseif ( !$this->oldIdChecked ) {
 					$checkmark = array( 'checked' => 'checked' );
 					$this->oldIdChecked = $id;
 				} else {

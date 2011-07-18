@@ -49,7 +49,7 @@ class DisambiguationsPage extends PageQueryPage {
 		$dp = Title::newFromText($dMsgText);
 		if( $dp ) {
 			if( $dp->getNamespace() != NS_TEMPLATE ) {
-				# FIXME we assume the disambiguation message is a template but
+				# @todo FIXME: We assume the disambiguation message is a template but
 				# the page can potentially be from another namespace :/
 				wfDebug("Mediawiki:disambiguationspage message does not refer to a template!\n");
 			}
@@ -78,7 +78,7 @@ class DisambiguationsPage extends PageQueryPage {
 			wfDebug("Mediawiki:disambiguationspage message does not link to any templates!\n");
 		}
 
-		// FIXME: What are pagelinks and p2 doing here?
+		// @todo FIXME: What are pagelinks and p2 doing here?
 		return array (
 			'tables' => array( 'templatelinks', 'p1' => 'page', 'pagelinks', 'p2' => 'page' ),
 			'fields' => array( 'p1.page_namespace AS namespace',
@@ -102,7 +102,10 @@ class DisambiguationsPage extends PageQueryPage {
 	}
 
 	/**
-	 * Fetch  links and cache their existence
+	 * Fetch links and cache their existence
+	 *
+	 * @param $db DatabaseBase
+	 * @param $res
 	 */
 	function preprocessResults( $db, $res ) {
 		$batch = new LinkBatch;
@@ -118,16 +121,16 @@ class DisambiguationsPage extends PageQueryPage {
 		}
 	}
 
-
 	function formatResult( $skin, $result ) {
-		global $wgContLang;
+		global $wgLang;
+
 		$title = Title::newFromID( $result->value );
 		$dp = Title::makeTitle( $result->namespace, $result->title );
 
 		$from = $skin->link( $title );
 		$edit = $skin->link( $title, wfMsgExt( 'parentheses', array( 'escape' ), wfMsg( 'editlink' ) ) ,
 			array(), array( 'redirect' => 'no', 'action' => 'edit' ) );
-		$arr  = $wgContLang->getArrow();
+		$arr  = $wgLang->getArrow();
 		$to   = $skin->link( $dp );
 
 		return "$from $edit $arr $to";

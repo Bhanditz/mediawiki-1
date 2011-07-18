@@ -170,7 +170,6 @@ $messages = array(
 'searcharticle'    => 'Go',
 'history'          => 'Ol senis long dispela pes',
 'history_short'    => 'Ol senis',
-'info_short'       => 'Infomesen',
 'print'            => 'Prinim',
 'edit'             => 'Senisim',
 'create'           => 'Kirapim',
@@ -603,14 +602,12 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'nowatchlist'          => 'Nogat wanpela samting istap long lukautbuk bilong yu.',
 'watchlistanontext'    => 'Yu mas $1 long lukim o senisim ol samting long lukautbuk bilong yu.',
 'watchnologintext'     => 'Yu mas [[Special:UserLogin|login]] long senisim lukautbuk bilong yu.',
-'addedwatch'           => 'Igo insait long lukautbuk',
 'addedwatchtext'       => "Pes \"[[:\$1]]\" igo insait long [[Special:Watchlist|lukautbuk]] bilong yu nau.
 Bai yu lukim ol nupela senis long dispela pes, na pes toktok bilong en, long lukautbuk,
 na dispela pes bai kamap '''strongpela''' long [[Special:RecentChanges|pes bilong ol nupela senis]]
 na olsem bai isi long lukim em.
 
 Sapos yu laik rausim dispela pes long lukautbuk bilong yu bihain, paitim \"Pinis long lukautim\" taim yu lukim pes.",
-'removedwatch'         => 'Raus pinis long lukautbuk',
 'removedwatchtext'     => 'Pes "[[:$1]]" i raus pinis long [[Special:Watchlist|lukautbuk bilong yu]].',
 'watch'                => 'Lukautim',
 'watchthispage'        => 'Lukautim dispela pes',
@@ -660,6 +657,7 @@ Sapos yu laik rausim dispela pes long lukautbuk bilong yu bihain, paitim \"Pinis
 
 # Undelete
 'undeletelink'              => 'soim/restore',
+'undeleteviewlink'          => 'lukim',
 'undeletecomment'           => 'As bilong en:',
 'undelete-search-submit'    => 'Painim',
 'undelete-show-file-submit' => 'Yes',
@@ -748,6 +746,7 @@ Yu inap lukim as tok bilong em',
 'tooltip-ca-unwatch'             => 'Rausim dispela pes long lukautbuk bilong yu (Remove this page from your watchlist)',
 'tooltip-search'                 => 'Painim long {{SITENAME}}',
 'tooltip-search-fulltext'        => 'Painim dispela hap tok insait long olgeta pes',
+'tooltip-p-logo'                 => 'Lukim fran pes (Visit the main page)',
 'tooltip-n-mainpage'             => 'Lukim fran pes (Visit the main page)',
 'tooltip-n-mainpage-description' => 'Lukim fran pes (Visit the main page)',
 'tooltip-n-help'                 => 'Ples long painim halivim',

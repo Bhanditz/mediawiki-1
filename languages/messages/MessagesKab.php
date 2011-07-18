@@ -175,7 +175,6 @@ $messages = array(
 'history'           => 'Amezruy n usebter',
 'history_short'     => 'Amezruy',
 'updatedmarker'     => 'yettubeddel segmi tarzeft taneggarut inu',
-'info_short'        => 'Talɣut',
 'printableversion'  => 'Tasiwelt iwakken ad timprimiḍ',
 'permalink'         => 'Azday ur yettbeddil ara',
 'print'             => 'Imprimi',
@@ -360,7 +359,7 @@ Isem n wemseqdac inek yettwaxleq. Ur tettuḍ ara ad tbeddleḍ Isemyifiyen n {{
 'loginsuccesstitle'          => 'Tkecmeḍ !',
 'loginsuccess'               => "'''Tkecmeḍ ar {{SITENAME}} s yisem n wemseqdac \"\$1\".'''",
 'nosuchuser'                 => 'Ulac isem n wemseqdac s yisem "$1". Ssenqed tira n yisem-nni, neɣ xelq isem n wemseqdac amaynut.',
-'nosuchusershort'            => 'Ulac isem n wemseqdac s yisem "<nowiki>$1</nowiki>". Ssenqed tira n yisem-nni.',
+'nosuchusershort'            => 'Ulac isem n wemseqdac s yisem "$1". Ssenqed tira n yisem-nni.',
 'nouserspecified'            => 'Yessefk ad tefkeḍ isem n wemseqdac.',
 'wrongpassword'              => 'Awal n tbaḍnit ɣaleṭ. Ɛreḍ daɣen.',
 'wrongpasswordempty'         => 'Awal n tbaḍnit ulac-it. Ɛreḍ daɣen.',
@@ -990,13 +989,11 @@ deg « Expéditeur» n izen inek iwakken amseqdac-nni yezmer a k-yerr.',
 'watchlistanontext'    => 'G leɛnaya-k $1 iwakken ad twalaḍ neɣ tbeddleḍ iferdas deg wumuɣ n uɛessi inek.',
 'watchnologin'         => 'Ur tekcimeḍ ara',
 'watchnologintext'     => 'Yessefk ad [[Special:UserLogin|tkecmeḍ]] iwakken ad tbeddleḍ umuɣ n uɛessi inek.',
-'addedwatch'           => 'Yerna ɣer wumuɣ n uɛessi',
 'addedwatchtext'       => "Asebter \"[[:\$1]]\" yettwarnu deg [[Special:Watchlist|wumuɣ n uɛessi]] inek.
 Ma llan ibeddlen deg usebter-nni neɣ deg usbtar umyennan ines, ad banen dagi,
 Deg [[Special:RecentChanges|wumuɣ n yibeddlen imaynuten]] ad banen s '''yisekkilen ibberbuzen''' (akken ad teẓriḍ).
 
 Ma tebɣiḍ ad tekkseḍ asebter seg wumuɣ n uɛessi inek, wekki ɣef \"Fakk aɛessi\".",
-'removedwatch'         => 'Yettwakkes seg wumuɣ n uɛessi',
 'removedwatchtext'     => 'Asebter "[[:$1]]" yettwakkes seg wumuɣ n uɛessi inek.',
 'watch'                => 'Ɛass',
 'watchthispage'        => 'Ɛass asebter-agi',
@@ -1045,7 +1042,7 @@ Ur yelli ara email n talɣut asmi llan ibeddlen deg usebter ala lukan teẓreḍ
 
 --
 Akken ad tbeddleḍ n wumuɣ n uɛessi inek settings, ruḥ ɣer
-{{fullurl:{{#special:Watchlist}}/edit}}
+{{fullurl:{{#special:EditWatchlist}}}}
 
 Tadhelt:
 {{fullurl:{{MediaWiki:Helppage}}}}',
@@ -1059,7 +1056,7 @@ Tadhelt:
 'exblank'         => 'asebter yella d ilem',
 'historywarning'  => 'Aɣtal: Asebter i ara temḥuḍ yesɛa amezruy:',
 'actioncomplete'  => 'Axdam yekfa',
-'deletedtext'     => '"<nowiki>$1</nowiki>" yettumḥa.
+'deletedtext'     => '"$1" yettumḥa.
 Ẓer $2 i aɣmis n yimḥayin imaynuten.',
 'deletedarticle'  => '"[[$1]]" yettumḥa',
 'dellogpage'      => 'Aɣmis n umḥay',
@@ -1318,14 +1315,6 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'spamprotectionmatch' => 'Aḍris-agi ur t-iɛeǧ \'\'"aḥraz mgel "Spam"\'\': $1',
 'spam_reverting'      => 'Asuɣal i tasiwel taneggarut i ur tesɛi ara izdayen ɣer $1',
 'spam_blanking'       => 'Akk tisiwal sɛan izdayen ɣer $1, ad yemḥu',
-
-# Info page
-'infosubtitle'   => 'Talɣut n usebter',
-'numedits'       => 'Geddac n yibeddlen (amagrad): $1',
-'numtalkedits'   => 'Geddac n yibeddlen (asebter n wemyannan): $1',
-'numwatchers'    => 'Geddac n yiɛessasen: $1',
-'numauthors'     => 'Geddac n yimseqdacen i yuran (amagrad): $1',
-'numtalkauthors' => 'Geddac n yimsedac i yuran (asebter n wemyennan): $1',
 
 # Patrolling
 'markaspatrolleddiff'                 => 'Rcem "yettwassenqden"',

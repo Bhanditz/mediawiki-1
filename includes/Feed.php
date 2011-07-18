@@ -36,9 +36,8 @@
  * @ingroup Feed
  */
 class FeedItem {
-	/**#@+
-	 * @var string
-	 * @private
+	/**
+	 * @var Title
 	 */
 	var $Title = 'Wiki';
 	var $Description = '';
@@ -47,12 +46,11 @@ class FeedItem {
 	var $Author = '';
 	var $UniqueId = '';
 	var $RSSIsPermalink;
-	/**#@-*/
 
 	/**
 	 * Constructor
 	 *
-	 * @param $Title String: Item's title
+	 * @param $Title String|Title Item's title
 	 * @param $Description String
 	 * @param $Url String: URL uniquely designating the item.
 	 * @param $Date String: Item's date
@@ -418,7 +416,7 @@ class AtomFeed extends ChannelFeed {
 		<?php if( $item->getAuthor() ) { ?><author><name><?php print $item->getAuthor() ?></name></author><?php }?>
 	</entry>
 
-<?php /* FIXME need to add comments
+<?php /* @todo FIXME: Need to add comments
 	<?php if( $item->getComments() ) { ?><dc:comment><?php print $item->getComments() ?></dc:comment><?php }?>
 	  */
 	}

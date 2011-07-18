@@ -9,17 +9,21 @@ $wgAutoloadClasses += array(
 	'MediaWikiTestCase' => "$testFolder/phpunit/MediaWikiTestCase.php",
 	'MediaWikiPHPUnitCommand' => "$testFolder/phpunit/MediaWikiPHPUnitCommand.php",
 	'MediaWikiLangTestCase' => "$testFolder/phpunit/MediaWikiLangTestCase.php",
-		
-		//API
-		'ApiTestSetup' => "$testFolder/phpunit/includes/api/ApiSetup.php",
-		'ApiTestCase' => "$testFolder/phpunit/includes/api/ApiTestCase.php",
-		'ApiTestUser' => "$testFolder/phpunit/includes/api/ApiTestUser.php",
-		'RandomImageGenerator' => "$testFolder/phpunit/includes/api/RandomImageGenerator.php",
-	
-		//Parser
-		'ParserTestFileIterator' => "$testFolder/phpunit/includes/parser/NewParserHelpers.php",
-		
-		
+
+	//includes
+	'BlockTest' => "$testFolder/phpunit/includes/BlockTest.php",
+
+	//API
+	'ApiFormatTestBase' => "$testFolder/phpunit/includes/api/format/ApiFormatTestBase.php",
+	'ApiTestCase' => "$testFolder/phpunit/includes/api/ApiTestCase.php",
+	'ApiTestUser' => "$testFolder/phpunit/includes/api/ApiTestUser.php",
+	'MockApi' => "$testFolder/phpunit/includes/api/ApiTestCase.php",
+	'RandomImageGenerator' => "$testFolder/phpunit/includes/api/RandomImageGenerator.php",
+	'UserWrapper' => "$testFolder/phpunit/includes/api/ApiTestCase.php",
+
+	//Parser
+	'ParserTestFileIterator' => "$testFolder/phpunit/includes/parser/NewParserHelpers.php",
+
 	//Selenium
 	'SeleniumTestConstants' => "$testFolder/selenium/SeleniumTestConstants.php",
 

@@ -274,14 +274,6 @@ $messages = array(
 'index-category'                 => '做咗索引嘅版',
 'noindex-category'               => '未做索引嘅版',
 
-'mainpagetext'      => "'''MediaWiki已經裝好。'''",
-'mainpagedocfooter' => '參閱[http://meta.wikimedia.org/wiki/Help:Contents 用戶指引]（英），裏面有資料講點用wiki軟件。
-
-==開始使用==
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings 配置設定清單]（英）
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki 常見問題]（英）
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki 發佈郵件名單]（英）',
-
 'about'         => '關於',
 'article'       => '內容頁',
 'newwindow'     => '（響新視窗度打開）',
@@ -332,7 +324,6 @@ $messages = array(
 'history'           => '版史',
 'history_short'     => '歷史',
 'updatedmarker'     => '我上次來之後嘅修改',
-'info_short'        => '資訊',
 'printableversion'  => '可打印版本',
 'permalink'         => '永久連結',
 'print'             => '印',
@@ -527,7 +518,6 @@ $1',
 'sqlhidden'            => '(SQL 查詢隱藏)',
 'cascadeprotected'     => '呢一版已經保護咗唔能夠編輯，因為佢係響以下嘅{{PLURAL:$1|一|幾}}頁度包含咗，當中啟用咗"連串"保護選項來保護嗰一版: $2',
 'namespaceprotected'   => "你無權編輯響'''$1'''空間名裏面嘅呢一版。",
-'customcssjsprotected' => '你無權編輯呢一版，因為佢包含咗另一位用戶嘅個人設定。',
 'ns-specialprotected'  => '特別頁係唔可以編輯嘅。',
 'titleprotected'       => "呢個標題已經俾[[User:$1|$1]]保護咗防止去開。原因係''$2''。",
 
@@ -580,7 +570,7 @@ $1',
 'nosuchuser'                 => '呢度冇叫做 "$1"嘅用戶。
 用戶名係有分大細楷嘅。
 請檢查你個名嘅輸入方法，或者[[Special:UserLogin/signup|建立一個新嘅戶口]]。',
-'nosuchusershort'            => '呢度冇叫做 "<nowiki>$1</nowiki>"嘅用戶。 請檢查你個名嘅輸入方法。',
+'nosuchusershort'            => '呢度冇叫做 "$1"嘅用戶。 請檢查你個名嘅輸入方法。',
 'nouserspecified'            => '你需要指定一個用戶名。',
 'login-userblocked'          => '呢位用戶封鎖咗。唔容許登入。',
 'wrongpassword'              => '密碼唔啱，麻煩你再試多次。',
@@ -738,12 +728,12 @@ $1',
 或者[{{fullurl:{{FULLPAGENAME}}|action=edit}} 編輯呢一版]</span>。',
 'noarticletext-nopermission'       => '喺呢一頁而家並冇任何嘅文字，你可以喺其它嘅頁面中[[Special:Search/{{PAGENAME}}|搵呢一頁嘅標題]]，
 或者<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} 搵有關嘅日誌]</span>。',
-'userpage-userdoesnotexist'        => '用戶戶口"$1"重未開。請響䦒／編輯呢版之前先檢查一下。',
+'userpage-userdoesnotexist'        => '用戶戶口"<nowiki>$1</nowiki>"重未開。請響䦒／編輯呢版之前先檢查一下。',
 'userpage-userdoesnotexist-view'   => '用戶戶口"$1"重未開。',
 'blocked-notice-logextract'        => '呢位用戶而家被封鎖緊。
 下面有最近嘅封鎖紀錄以供參考：',
 'clearyourcache'                   => "'''注意：喺儲存之後，你可能要先略過你嘅瀏覽器快取去睇到更改。'''
-'''Mozilla / Firefox / Safari:''' 㩒住''Shift''掣再撳''重新載入''，又或者㩒''Ctrl-F5''或者''Ctrl-R''（喺Macintosh㩒''Command-R''掣）；
+'''Mozilla / Firefox / Safari:''' 㩒住''Shift''掣再撳''重新載入''，又或者㩒''Ctrl-F5''或者''Ctrl-R''（喺Mac㩒''Command-R''掣）；
 '''Konqueror:''' 就咁以撳個''重載''掣，又或者㩒''F5''；
 '''Opera:'''喺''工具→喜好設定''之中清佢哋嘅快取，又或者㩒''Alt-F5''；
 '''Internet Explorer:''' 㩒住''Ctrl''掣再撳''重新整理''，又或者㩒''Ctrl-F5''掣。",
@@ -1129,7 +1119,9 @@ $1",
 'prefs-skin'                    => '畫面',
 'skin-preview'                  => '預覽',
 'datedefault'                   => '冇喜好',
+'prefs-beta'                    => '試緊嘅特色',
 'prefs-datetime'                => '日期同埋時間',
+'prefs-labs'                    => '實驗性嘅特色',
 'prefs-personal'                => '用戶簡介',
 'prefs-rc'                      => '最近更改',
 'prefs-watchlist'               => '監視清單',
@@ -1530,10 +1522,6 @@ $1",
 'upload-options'              => '上載選項',
 'watchthisupload'             => '監視呢個檔案',
 'filewasdeleted'              => '呢個檔案所使用嘅名曾經上載後，跟住就刪除咗。你應該響重新上載佢之前檢查吓$1。',
-'upload-wasdeleted'           => "'''警告: 你而家上載嘅一個檔案係先前曾經刪除過嘅。'''
-
-你應該要考慮吓繼續上載呢個檔案係唔係適合嘅。
-為咗方便起見，呢個檔案嘅刪除記錄已經響下面提供:",
 'filename-bad-prefix'         => "你上載嘅檔名係以'''\"\$1\"'''做開頭，通常呢種無含意嘅檔名係響數碼相機度自動編排。請響你個檔案度揀過一個更加有意義嘅檔名。",
 'upload-success-subj'         => '成功嘅上載',
 'upload-success-msg'          => '你響[$2]嘅上載已經成功，可以喺呢度搵到：[[:{{ns:file}}:$1]]。',
@@ -1651,7 +1639,6 @@ $1',
 一個[[Special:WhatLinksHere/$2|完整嘅表]]可以提供。',
 'nolinkstoimage'            => '冇個頁面連結到呢個檔案。',
 'morelinkstoimage'          => '去睇連到呢個檔案嘅[[Special:WhatLinksHere/$1|更多連結]]。',
-'redirectstofile'           => '下面嘅$1個檔案跳轉到呢個檔案:',
 'duplicatesoffile'          => '下面嘅$1個檔案係同呢個檔案重覆 ([[Special:FileDuplicateSearch/$2|更多細節]]):',
 'sharedupload'              => '呢個檔案係出自$1，可以喺其他計劃中使用。',
 'sharedupload-desc-there'   => '呢個檔案係出自$1，可以喺其他計劃中使用。
@@ -1967,10 +1954,8 @@ Template:搞清楚',
 'watchlistanontext'    => '請先$1去睇或者改響你監視清單度嘅項目。',
 'watchnologin'         => '未登入',
 'watchnologintext'     => '你必須先[[Special:UserLogin|登入]]至可以更改你嘅監視清單。',
-'addedwatch'           => '加到監視清單度',
 'addedwatchtext'       => "頁面「[[:$1]]」已加入到你嘅[[Special:Watchlist|監視清單]]度。
 呢個頁面以及佢個討論頁以後嘅修改都會列喺嗰度，佢喺[[Special:RecentChanges|最近更改清單]]度會以'''粗體'''顯示，等你可以容易啲睇到佢。",
-'removedwatch'         => '已經由監視清單中刪除',
 'removedwatchtext'     => '頁面「[[:$1]]」已經喺[[Special:Watchlist|你嘅監視清單]]度刪除。',
 'watch'                => '監視',
 'watchthispage'        => '監視呢頁',
@@ -2021,7 +2006,7 @@ wiki: $PAGEEDITOR_WIKI
             {{SITENAME}}通知系統
 
 --
-要修改你嘅監視清單設定，請睇{{fullurl:{{#special:Watchlist}}/edit}}
+要修改你嘅監視清單設定，請睇{{fullurl:{{#special:EditWatchlist}}}}
 
 要刪除你嘅監視清單度嘅呢一版，請睇$UNWATCHURL
 
@@ -2042,7 +2027,7 @@ wiki: $PAGEEDITOR_WIKI
 請確認你打算噉做，而且你知道後果係點，加上確認你噉做冇違反到[[{{MediaWiki:Policy-url}}]]。',
 'actioncomplete'         => '操作完成',
 'actionfailed'           => '操作失敗',
-'deletedtext'            => '"<nowiki>$1</nowiki>"已經刪除。最近嘅刪除記錄請睇$2。',
+'deletedtext'            => '"$1"已經刪除。最近嘅刪除記錄請睇$2。',
 'deletedarticle'         => '已經刪除"[[$1]]"',
 'suppressedarticle'      => '已經廢止"[[$1]]"',
 'dellogpage'             => '刪除日誌',
@@ -2095,7 +2080,7 @@ wiki: $PAGEEDITOR_WIKI
 'protect_expiry_invalid'      => '到期時間唔正確。',
 'protect_expiry_old'          => '到期時間係響之前過去嘅。',
 'protect-unchain-permissions' => '解除更多嘅保護選項',
-'protect-text'                => "你可以喺呢度睇到同修改頁面'''<nowiki>$1</nowiki>'''嘅保護等級。",
+'protect-text'                => "你可以喺呢度睇到同修改頁面'''$1'''嘅保護等級。",
 'protect-locked-blocked'      => "當你響被封鎖嗰陣唔可以改呢版嘅保護等級。
 呢個係'''$1'''版嘅現時設定：",
 'protect-locked-dblock'       => "響資料庫主動鎖住咗嗰陣係唔可以改呢版嘅保護等級。
@@ -2640,9 +2625,7 @@ $1',
 'vector.js'      => '/* 響每一次個頁面載入時，用域達畫面嘅用戶都會載入呢度任何嘅JavaScript */',
 
 # Metadata
-'nodublincore'      => 'Dublin Core RDF metadata 已經喺呢一個伺服器上停用。',
-'nocreativecommons' => 'Creative Commons RDF metadata 已經喺呢一個伺服器上停用。',
-'notacceptable'     => '呢個 wiki 伺服器唔能夠畀一個可以讀嘅資料畀個客。',
+'notacceptable' => '呢個 wiki 伺服器唔能夠畀一個可以讀嘅資料畀個客。',
 
 # Attribution
 'anonymous'        => '{{SITENAME}}嘅匿名{{PLURAL:$1|用戶|用戶}}',
@@ -2664,14 +2647,6 @@ $1',
 'spambot_username'    => 'MediaWiki垃圾清除',
 'spam_reverting'      => '恢復返去最後一個唔包含指去$1嘅連結嘅嗰個修訂。',
 'spam_blanking'       => '全部版本都含有指去$1嘅連結，留空',
-
-# Info page
-'infosubtitle'   => '頁面嘅資訊',
-'numedits'       => '編輯次數（版頁）：$1',
-'numtalkedits'   => '編輯次數（討論頁）：$1',
-'numwatchers'    => '監視者數：$1',
-'numauthors'     => '唔同編者嘅數目（版頁）：$1',
-'numtalkauthors' => '唔同編者嘅數目（討論頁）：$1',
 
 # Skin names
 'skinname-standard'    => '傳統',
@@ -3351,5 +3326,20 @@ MediaWiki是基於使用目的而加以發佈，但係就唔會負上任何嘅�
 # SQLite database support
 'sqlite-has-fts' => '$1 有全文搜尋支援',
 'sqlite-no-fts'  => '$1 冇全文搜尋支援',
+
+# Add categories per AJAX
+'ajax-add-category'            => '加分類',
+'ajax-add-category-submit'     => '加',
+'ajax-confirm-title'           => '確認動作',
+'ajax-confirm-prompt'          => '你可以響下面提供一個編輯摘要。
+撳『儲存』去保存你嘅編輯。',
+'ajax-confirm-save'            => '儲存',
+'ajax-add-category-summary'    => '加入分類「$1」',
+'ajax-remove-category-summary' => '拎走分類「$1」',
+'ajax-confirm-actionsummary'   => '做咗嘅動作：',
+'ajax-error-title'             => '錯誤',
+'ajax-error-dismiss'           => '好',
+'ajax-remove-category-error'   => '唔能夠拎走呢個分類。
+通常係發生響一個模度加入咗嗰個分類。',
 
 );

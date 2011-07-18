@@ -40,7 +40,7 @@ class SpecialExport extends SpecialPage {
 	public function execute( $par ) {
 		global $wgOut, $wgRequest, $wgSitename, $wgExportAllowListContributors;
 		global $wgExportAllowHistory, $wgExportMaxHistory, $wgExportMaxLinkDepth;
-		global $wgExportFromNamespaces, $wgUser;
+		global $wgExportFromNamespaces;
 
 		$this->setHeaders();
 		$this->outputHeader();
@@ -63,7 +63,7 @@ class SpecialExport extends SpecialPage {
 				$t = Title::makeTitleSafe( NS_MAIN, $catname );
 				if ( $t ) {
 					/**
-					 * @todo Fixme: this can lead to hitting memory limit for very large
+					 * @todo FIXME: This can lead to hitting memory limit for very large
 					 * categories. Ideally we would do the lookup synchronously
 					 * during the export in a single query.
 					 */
@@ -74,7 +74,7 @@ class SpecialExport extends SpecialPage {
 				}
 			}
 		}
-		else if( $wgRequest->getCheck( 'addns' ) && $wgExportFromNamespaces ) {
+		elseif( $wgRequest->getCheck( 'addns' ) && $wgExportFromNamespaces ) {
 			$page = $wgRequest->getText( 'pages' );
 			$nsindex = $wgRequest->getText( 'nsindex', '' );
 
@@ -88,7 +88,7 @@ class SpecialExport extends SpecialPage {
 				}
 			}
 		}
-		else if( $wgRequest->wasPosted() && $par == '' ) {
+		elseif( $wgRequest->wasPosted() && $par == '' ) {
 			$page = $wgRequest->getText( 'pages' );
 			$this->curonly = $wgRequest->getCheck( 'curonly' );
 			$rawOffset = $wgRequest->getVal( 'offset' );
@@ -215,7 +215,7 @@ class SpecialExport extends SpecialPage {
 			$wgRequest->wasPosted() ? $wgRequest->getCheck( 'wpDownload' ) : true
 		) . '<br />';
 
-		$form .= Xml::submitButton( wfMsg( 'export-submit' ), $wgUser->getSkin()->tooltipAndAccessKeyAttribs( 'export' ) );
+		$form .= Xml::submitButton( wfMsg( 'export-submit' ), Linker::tooltipAndAccesskeyAttribs( 'export' ) );
 		$form .= Xml::closeElement( 'form' );
 
 		$wgOut->addHTML( $form );
@@ -464,7 +464,7 @@ class SpecialExport extends SpecialPage {
 
 			if( $title ) {
 				$pageSet[$title->getPrefixedText()] = true;
-				/// @todo Fixme: May or may not be more efficient to batch these
+				/// @todo FIXME: May or may not be more efficient to batch these
 				///        by namespace when given multiple input pages.
 				$result = $dbr->select(
 					array( 'page', $table ),

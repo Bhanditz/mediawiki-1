@@ -189,7 +189,9 @@ class MessageCache {
 
 		fwrite( $file, $hash . $serialized );
 		fclose( $file );
-		@chmod( $filename, 0666 );
+		wfSuppressWarnings();
+		chmod( $filename, 0666 );
+		wfRestoreWarnings();
 	}
 
 	function saveToScript( $array, $hash, $code ) {
@@ -197,7 +199,7 @@ class MessageCache {
 
 		$filename = "$wgCacheDirectory/messages-" . wfWikiID() . "-$code";
 		$tempFilename = $filename . '.tmp';
-  		wfMkdirParents( $wgCacheDirectory ); // might fail
+		wfMkdirParents( $wgCacheDirectory ); // might fail
 
 		wfSuppressWarnings();
 		$file = fopen( $tempFilename, 'w' );

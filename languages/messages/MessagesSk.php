@@ -407,15 +407,6 @@ $messages = array(
 'noindex-category'               => 'neindexované stránky',
 'broken-file-category'           => 'Stránky s poškodenými odkazmi súbor',
 
-'mainpagetext'      => "'''Softvér MediaWiki bol úspešne nainštalovaný.'''",
-'mainpagedocfooter' => 'Informácie ako používať wiki softvér nájdete v [http://meta.wikimedia.org/wiki/Help:Contents Používateľskej príručke].
-
-== Začíname ==
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Zoznam konfiguračných nastavení]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce mailing list nových verzií MediaWiki]',
-
 'about'         => 'Projekt',
 'article'       => 'Stránka s obsahom',
 'newwindow'     => '(otvorí v novom okne)',
@@ -466,7 +457,6 @@ $messages = array(
 'history'           => 'História stránky',
 'history_short'     => 'História',
 'updatedmarker'     => 'aktualizované od mojej poslednej návštevy',
-'info_short'        => 'Informácie',
 'printableversion'  => 'Verzia na tlač',
 'permalink'         => 'Trvalý odkaz',
 'print'             => 'Tlač',
@@ -662,7 +652,6 @@ Požiadavka: $2',
 'cascadeprotected'     => 'Táto stránka bola zamknutá proti úpravám, pretože je použitá na {{PLURAL:$1|nasledovnej stránke, ktorá je zamknutá|nasledovných stránkach, ktoré sú zamknuté}} voľbou „kaskádového zamknutia“:
 $2',
 'namespaceprotected'   => "Nemáte povolenie upravovať stránky v mennom priestore '''$1'''.",
-'customcssjsprotected' => 'Nemáte povolenie na úpravu tejto stránky, pretože obsahuje osobné nastavenia iného používateľa.',
 'ns-specialprotected'  => 'Stránky v mennom pristore {{ns:special}} nie je možné upravovať.',
 'titleprotected'       => "Používateľ [[User:$1|$1]] zabránil vytváraniu stránky s týmto názvom.
 Udaný dôvod: ''$2''.",
@@ -719,7 +708,7 @@ Ubezpečte sa, že máte povolené cookies, obnovte túto stránku a skúste to 
 'nosuchuser'                 => 'Používateľské meno „$1“ neexistuje.
 V používateľských menách sa rozlišuje veľkosť písmen.
 Skontrolujte preklepy alebo sa [[Special:UserLogin/signup|zaregistrujte ako nový používateľ]].',
-'nosuchusershort'            => 'V súčasnosti neexistuje používateľ s menom „<nowiki>$1</nowiki>“. Skontrolujte preklepy.',
+'nosuchusershort'            => 'V súčasnosti neexistuje používateľ s menom „$1“. Skontrolujte preklepy.',
 'nouserspecified'            => 'Musíte uviesť meno používateľa.',
 'login-userblocked'          => 'Tento používateľ je zablokovaný. Nie je mu dovolené prihlásiť sa.',
 'wrongpassword'              => 'Zadané heslo je nesprávne. Skúste  znovu.',
@@ -923,12 +912,12 @@ alebo [{{fullurl:{{FULLPAGENAME}}|action=edit}} upravovať túto stránku]</span
 'noarticletext-nopermission'       => 'Táto stránka momentálne neobsahuje žiadny text.
 Môžete [[Special:Search/{{PAGENAME}}|hľadať názov tejto stránky]] v texte iných stránok
 alebo <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} si pozrieť súvisiace záznamy]</span>.',
-'userpage-userdoesnotexist'        => 'Používateľský účet „$1“ nie je registrovaný. Prosím, skontrolujte, či naozaj chcete vytvoriť/upravovať túto stránku.',
+'userpage-userdoesnotexist'        => 'Používateľský účet „<nowiki>$1</nowiki>“ nie je registrovaný. Prosím, skontrolujte, či naozaj chcete vytvoriť/upravovať túto stránku.',
 'userpage-userdoesnotexist-view'   => 'Používateľský účet „$1“ nie je registrovaný.',
 'blocked-notice-logextract'        => 'Tento používateľ je momentálne zablokovaný.
 Dolu je pre informáciu posledná položka zo záznamu blokovaní:',
 'clearyourcache'                   => "'''Poznámka: Aby sa zmeny prejavili, po uložení musíte vymazať vyrovnávaciu pamäť vášho prehliadača.'''
-'''Mozilla / Firefox / Safari:''' držte stlačený ''Shift'' a kliknite na ''Reload'' alebo stlačte buď ''Ctrl-F5'' alebo ''Ctrl-R'' (''Comand-R'' na Macintosh); '''Konqueror:''': kliknite na tlačidlo ''Reload'' alebo stlačte ''F5''; '''Opera''' vymazať vyrovnávaciu pamäť prehliadača v ponuke ''Tools→Preferences''; '''Internet Explorer:''' držte ''Ctrl'' a kliknite na ''Refresh'' alebo stlačte ''Ctrl-F5'';",
+'''Mozilla / Firefox / Safari:''' držte stlačený ''Shift'' a kliknite na ''Reload'' alebo stlačte buď ''Ctrl-F5'' alebo ''Ctrl-R'' (''Comand-R'' na Mac); '''Konqueror:''': kliknite na tlačidlo ''Reload'' alebo stlačte ''F5''; '''Opera''' vymazať vyrovnávaciu pamäť prehliadača v ponuke ''Tools→Preferences''; '''Internet Explorer:''' držte ''Ctrl'' a kliknite na ''Refresh'' alebo stlačte ''Ctrl-F5'';",
 'usercssyoucanpreview'             => "'''Tip:''' Váš nový CSS pred uložením otestujete stlačením tlačidla „{{int:showpreview}}“.",
 'userjsyoucanpreview'              => "'''Tip:''' Váš nový JS pred uložením otestujete stlačením tlačidla „{{int:showpreview}}“.",
 'usercsspreview'                   => "'''Nezabudnite, že toto je iba náhľad vášho používateľského CSS, ešte nebolo uložené!'''",
@@ -1315,7 +1304,9 @@ Uistite sa, že táto zmena zachová historickú kontinuitu zmien stránky.',
 'prefs-skin'                    => 'Vzhľad',
 'skin-preview'                  => 'Náhľad',
 'datedefault'                   => 'štandardný',
+'prefs-beta'                    => 'Nové funkcie',
 'prefs-datetime'                => 'Dátum a čas',
+'prefs-labs'                    => 'Laboratórne funkcie',
 'prefs-personal'                => 'Profil',
 'prefs-rc'                      => 'Posledné úpravy',
 'prefs-watchlist'               => 'Sledované stránky',
@@ -1720,10 +1711,6 @@ Nahrávanie súborov Java nie je povolené, pretože môžu spôsobiť obídenie
 'upload-options'              => 'Možnosti nahrávania',
 'watchthisupload'             => 'Sledovať tento súbor',
 'filewasdeleted'              => 'Súbor s týmto názvom bol už nahraný a následne zmazaný. Mali by ste skontrolovať $1 predtým, ako budete pokračovať na opätovné nahranie.',
-'upload-wasdeleted'           => "'''Upozornenie: Nahrávate súbor, ktorý bol predtým zmazaný.'''
-
-Mali by ste zvážiť, či je vhodné pokračovať v nahrávaní tohto súboru.
-Tu je na záznam zmazaní tohto súboru:",
 'filename-bad-prefix'         => "Názov súboru, ktorý nahrávate, začína '''„$1“''', čo nie je popisné meno. Takýto názov typicky priraďujú digitálne fotoaparáty automaticky. Prosím, dajte vášmu súboru popisnejší názov.",
 'filename-prefix-blacklist'   => '  #<!-- tento riadok ponechajte bez zmeny --> <pre>
 # Syntax sa používa nasledovne:
@@ -1859,7 +1846,6 @@ Nasledovný zoznam zobrazuje {{PLURAL:$1|prvú stránku odkazujúcu|prvé $1 str
 Môžete si pozrieť [[Special:WhatLinksHere/$2|úplný zoznam]].',
 'nolinkstoimage'            => 'Žiadne stránky neobsahujú odkazy na tento obrázok.',
 'morelinkstoimage'          => 'Zobraziť [[Special:WhatLinksHere/$1|ďalšie odkazy]] na tento súbor.',
-'redirectstofile'           => '{{PLURAL:$1|Nasledujúci súbor presmerúva|Nasledujúce $1 súbory presmerúvajú|Nasledujúcich $1 súborov presmerúva}} na tento súbor:',
 'duplicatesoffile'          => '{{PLURAL:$1|Nasledujúci súbor je duplikát|Nasledujúce $1 súbory sú duplikáty||Nasledujúcich $1 súborov sú duplikáty}} tohto súboru ([[Special:FileDuplicateSearch/$2|podrobnosti]]):',
 'sharedupload'              => 'Tento zdieľaný súbor je z $1 a je možné ho používať na iných projektoch.',
 'sharedupload-desc-there'   => 'Tento zdieľaný súbor je z $1 a je možné ho používať na iných projektoch. Ďalšie informácie nájdete na [$2 popisnej stránke súboru].',
@@ -2181,11 +2167,9 @@ Emailová adresa, ktorú ste zadali vo svojich [[Special:Preferences|nastaveniac
 'watchlistanontext'    => 'Prosím $1 pre prezeranie alebo úpravu vášho zoznamu sledovaných stránok.',
 'watchnologin'         => 'Nie ste prihlásený/á',
 'watchnologintext'     => 'Musíte byť [[Special:UserLogin|prihlásený/á]], aby ste mohli modifikovať vaše sledované stránky.',
-'addedwatch'           => 'Pridaná do zoznamu sledovaných stránok',
 'addedwatchtext'       => "Stránka [[$1]] bola pridaná do [[Special:Watchlist|sledovaných stránok]]. Budú tam uvedené ďalšie úpravy tejto stránky a jej diskusie a stránka bude zobrazená '''tučne''' v [[Special:RecentChanges|zozname posledných úprav]], aby ste ju ľahšie našli.
 
 Ak budete chcieť neskôr stránku odstrániť zo sledovaných stránok, kliknite na „{{int:unwatch}}“ v záložkách na vrchu.",
-'removedwatch'         => 'Odstránená zo zoznamu sledovaných stránok',
 'removedwatchtext'     => 'Stránka „[[:$1]]“ bola odstránená z vášho [[Special:Watchlist|zoznamu sledovaných stránok]].',
 'watch'                => 'Sledovať',
 'watchthispage'        => 'Sledovať túto stránku',
@@ -2257,7 +2241,7 @@ Návrhy a ďalšia pomoc:
 'confirmdeletetext'      => 'Chystáte sa trvalo zmazať z databázy stránku alebo obrázok spolu so všetkými jeho/jej predošlými verziami. Potvrďte, že máte v úmysle tak urobiť, že ste si vedomý následkov, a že to robíte v súlade so [[{{MediaWiki:Policy-url}}|zásadami a smernicami {{GRAMMAR:genitív|{{SITENAME}}}}]].',
 'actioncomplete'         => 'Úloha bola dokončená',
 'actionfailed'           => 'Operácia sa nepodarila',
-'deletedtext'            => '"<nowiki>$1</nowiki>" bol zmazaný.
+'deletedtext'            => '"$1" bol zmazaný.
 Na $2 nájdete zoznam posledných zmazaní.',
 'deletedarticle'         => '„[[$1]]“ zmazaná',
 'suppressedarticle'      => 'potlačil „[[$1]]“',
@@ -2312,7 +2296,7 @@ Môžete si pozrieť aj [[Special:ProtectedPages|zoznam momentálne platných za
 'protect_expiry_invalid'      => 'Neplatný čas vypršania.',
 'protect_expiry_old'          => 'Čas vypršania je v minulosti.',
 'protect-unchain-permissions' => 'Odomknúť ďalšie možnosti ochrany',
-'protect-text'                => "Tu si môžete pozrieť a zmeniť úroveň ochrany stránky '''<nowiki>$1</nowiki>'''.",
+'protect-text'                => "Tu si môžete pozrieť a zmeniť úroveň ochrany stránky '''$1'''.",
 'protect-locked-blocked'      => "Nemôžete meniť úroveň ochrany, kým ste zablokovaný.
 Tu sú aktuálne nastavenia stránky '''$1''':",
 'protect-locked-dblock'       => "Nie je možné zmeniť úroveň ochrany z dôvodu aktívneho zámku databázy.
@@ -2903,9 +2887,7 @@ Umožnuje do zhrnutia pridanie dôvodu.',
 'vector.js'      => '/* Tu sa nachádzajúci JavaScript sa načíta používateľom vzhľadu Vector */',
 
 # Metadata
-'nodublincore'      => 'Dublin Core RDF metadáta pre tento server vypnuté.',
-'nocreativecommons' => 'Creative Commons RDF metadata pre tento server vypnuté.',
-'notacceptable'     => 'Wiki server nedokáže poskytovať dáta vo formáte, v akom ich váš klient vie čítať.',
+'notacceptable' => 'Wiki server nedokáže poskytovať dáta vo formáte, v akom ich váš klient vie čítať.',
 
 # Attribution
 'anonymous'        => '$1 {{PLURAL:$1|anonymný používateľ|anonymní používatelia|anonymných používateľov}} {{GRAMMAR:genitív|{{SITENAME}}}}',
@@ -2927,14 +2909,6 @@ Pravdepodobne to spôsobil odkaz na externú internetovú lokalitu, ktorá sa na
 'spambot_username'    => 'MediaWiki čistenie spamu',
 'spam_reverting'      => 'Vraciam poslednú verziu, ktorá neobsahuje odkazy na $1',
 'spam_blanking'       => 'Všetky revízie obsahovali odkaz na $1, odstraňujem obsah',
-
-# Info page
-'infosubtitle'   => 'Informácie o stránke',
-'numedits'       => 'Počet úprav (stránka): $1',
-'numtalkedits'   => 'Počet úprav (diskusná stránka): $1',
-'numwatchers'    => 'Počet zobrazení: $1',
-'numauthors'     => 'Počet odlišných autorov (stránka): $1',
-'numtalkauthors' => 'Počet odlišných autorov (diskusná stránka): $1',
 
 # Skin names
 'skinname-standard'    => 'Klasický',
@@ -3728,5 +3702,20 @@ Zadajte názov súboru bez predpony „{{ns:file}}:“.',
 # SQLite database support
 'sqlite-has-fts' => '$1 s podporou vyhľadávania v plnom texte',
 'sqlite-no-fts'  => '$1 bez podpory vyhľadávania v plnom texte',
+
+# Add categories per AJAX
+'ajax-add-category'            => 'Pridať kategóriu',
+'ajax-add-category-submit'     => 'Pridať',
+'ajax-confirm-title'           => 'Potvrdiť operáciu',
+'ajax-confirm-prompt'          => 'Dolu môžete napísať zhrnutie úprav.
+Svoje úpravy uložíte kliknutím na „Uložiť“.',
+'ajax-confirm-save'            => 'Uložiť',
+'ajax-add-category-summary'    => 'Pridať kategóriu „$1“',
+'ajax-remove-category-summary' => 'Odstrániť kategóriu „$1“',
+'ajax-confirm-actionsummary'   => 'Vykonať operáciu:',
+'ajax-error-title'             => 'Chyba',
+'ajax-error-dismiss'           => 'OK',
+'ajax-remove-category-error'   => 'Nebolo možné odstrániť túto kategóriu.
+To sa zvyčajne stane, keď bola kategória pridaná na stránku v pomocou šablóny.',
 
 );

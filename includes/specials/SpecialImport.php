@@ -66,8 +66,8 @@ class SpecialImport extends SpecialPage {
 			return $wgOut->permissionRequired( 'import' );
 		}
 
-		# TODO: allow Title::getUserPermissionsErrors() to take an array
-		# FIXME: Title::checkSpecialsAndNSPermissions() has a very wierd expectation of what
+		# @todo Allow Title::getUserPermissionsErrors() to take an array
+		# @todo FIXME: Title::checkSpecialsAndNSPermissions() has a very wierd expectation of what
 		# getUserPermissionsErrors() might actually be used for, hence the 'ns-specialprotected'
 		$errors = wfMergeErrorArrays(
 			$this->getTitle()->getUserPermissionsErrors(
@@ -292,7 +292,7 @@ class SpecialImport extends SpecialPage {
 					<td>
 					</td>
 					<td class='mw-submit'>" .
-						Xml::submitButton( wfMsg( 'import-interwiki-submit' ), $wgUser->getSkin()->tooltipAndAccessKeyAttribs( 'import' ) ) .
+						Xml::submitButton( wfMsg( 'import-interwiki-submit' ), Linker::tooltipAndAccesskeyAttribs( 'import' ) ) .
 					"</td>
 				</tr>" .
 				Xml::closeElement( 'table' ).
@@ -350,15 +350,13 @@ class ImportReporter {
 		$args = func_get_args();
 		call_user_func_array( $this->mOriginalPageOutCallback, $args );
 
-		$skin = $wgUser->getSkin();
-
 		$this->mPageCount++;
 
 		$localCount = $wgLang->formatNum( $successCount );
 		$contentCount = $wgContLang->formatNum( $successCount );
 
 		if( $successCount > 0 ) {
-			$wgOut->addHTML( "<li>" . $skin->linkKnown( $title ) . " " .
+			$wgOut->addHTML( "<li>" . Linker::linkKnown( $title ) . " " .
 				wfMsgExt( 'import-revision-count', array( 'parsemag', 'escape' ), $localCount ) .
 				"</li>\n"
 			);
@@ -392,7 +390,7 @@ class ImportReporter {
 			$article->updateRevisionOn( $dbw, $nullRevision );
 			wfRunHooks( 'NewRevisionFromEditComplete', array($article, $nullRevision, $latest, $wgUser) );
 		} else {
-			$wgOut->addHTML( "<li>" . $skin->linkKnown( $title ) . " " .
+			$wgOut->addHTML( "<li>" . Linker::linkKnown( $title ) . " " .
 				wfMsgHtml( 'import-nonewrevisions' ) . "</li>\n" );
 		}
 	}

@@ -63,6 +63,9 @@ class ListredirectsPage extends QueryPage {
 
 	/**
 	 * Cache page existence for performance
+	 *
+	 * @param $db DatabaseBase
+	 * @param $res ResultWrapper
 	 */
 	function preprocessResults( $db, $res ) {
 		$batch = new LinkBatch;
@@ -93,8 +96,6 @@ class ListredirectsPage extends QueryPage {
 	}
 
 	function formatResult( $skin, $result ) {
-		global $wgContLang;
-
 		# Make a link to the redirect itself
 		$rd_title = Title::makeTitle( $result->namespace, $result->title );
 		$rd_link = $skin->link(
@@ -107,8 +108,9 @@ class ListredirectsPage extends QueryPage {
 		# Find out where the redirect leads
 		$target = $this->getRedirectTarget( $result );
 		if( $target ) {
+			global $wgLang;
 			# Make a link to the destination page
-			$arr = $wgContLang->getArrow() . $wgContLang->getDirMark();
+			$arr = $wgLang->getArrow() . $wgLang->getDirMark();
 			$targetLink = $skin->link( $target );
 			return "$rd_link $arr $targetLink";
 		} else {

@@ -155,15 +155,6 @@ $messages = array(
 'category-file-count-limited'    => "Deêze categorie bevat {{PLURAL:$1|'t volhende bestand|de volhende $1 bestan'n}}.",
 'listingcontinuesabbrev'         => 'vedder',
 
-'mainpagetext'      => "'''De installaotie van MediaWiki is geslaegd.'''",
-'mainpagedocfooter' => "Raedpleeg de [http://meta.wikimedia.org/wiki/ZEA_Ulpe:Inhoudsopgaeve andleidieng] voe informatie over 't gebruuk van de wikisoftware.
-
-== Meer ulpe over MediaWiki ==
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Lieste mie instelliengen]
-* [http://www.mediawiki.org/wiki/Manual:FAQ Veehestelde vraehen (FAQ)]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Mailienglieste voe ankondigiengen van nieuwe versies]",
-
 'about'         => 'Info',
 'article'       => 'Artikel',
 'newwindow'     => '(opent een nieuw scherm)',
@@ -197,7 +188,6 @@ $messages = array(
 'history'           => 'Paginaheschiedenisse',
 'history_short'     => 'Geschiedenisse',
 'updatedmarker'     => 'bewerkt sins men lèste bezoek',
-'info_short'        => 'Informaotie',
 'printableversion'  => 'Printbaere versie',
 'permalink'         => 'Permanente lienk',
 'print'             => "Print'n",
@@ -368,7 +358,6 @@ Probeer 't over een antal menuten wee.",
 'cascadeprotected'     => "Deêze pagina kan nie bewerkt worn, omda 't een is openomen in de volhende {{PLURAL:$1|pagina|pagina's}} die beveiligd {{PLURAL:$1|is|zien}} mie de cascaode-optie:
 $2",
 'namespaceprotected'   => "Je ei hin rechen om pagina's in de naemruumte '''$1''' te bewerken.",
-'customcssjsprotected' => 'Je kan deêze pagina nie bewerken, omda die persoônlijke instelliengen van een aore gebruker bevat.',
 'ns-specialprotected'  => 'Pagina\'s in de naemruumte "{{ns:special}}" kunn\'n nie bewerkt worn.',
 'titleprotected'       => "'t Anmaeken van deêze pagina is beveiligd deur [[User:$1|$1]].
 De heheven reeën is ''$2''.",
@@ -413,7 +402,7 @@ Schaokel die asjeblieft in en meld dinae an mie je nieuwe gebrukersnaem en wacht
 'loginsuccess'               => "'''Je bin noe anemeld bie {{SITENAME}} as \"\$1\".'''",
 'nosuchuser'                 => 'De gebruker "$1" besti nie.
 Controleer de schriefwieze of [[Special:UserLogin/signup|mik een nieuwe gebruker an]].',
-'nosuchusershort'            => 'De gebruker "<nowiki>$1</nowiki>" besti nie. Controleer de schriefwieze.',
+'nosuchusershort'            => 'De gebruker "$1" besti nie. Controleer de schriefwieze.',
 'nouserspecified'            => 'Je dien een gebrukersnaem op te heven.',
 'wrongpassword'              => "Wachtwoôrd onjuust. Probeer 't opnieuw.",
 'wrongpasswordempty'         => "'t Opeheven wachtwoôrd was leeg. Probeer 't opnieuw.",
@@ -542,7 +531,7 @@ Zien/eur IP-adres kan deu meêr as eên gebruker gebruukt ore.
 A je 'n bericht gekrege è dat-a dudelik nie an joe gericht is, ka je 't beste [[Special:UserLogin|jen eige anmelde]] om zukke verwarrienge in 't vervolg te vòkommen.''",
 'noarticletext'              => 'Deêze pagina bevat hin tekst.
 Je kan [[Special:Search/{{PAGENAME}}|ni deêze term zoeken]] in aore pagina\'s of <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} deêze pagina bewerken]</span>.',
-'userpage-userdoesnotexist'  => 'Je bewerk een gebrukerspagina van een gebruker die a nie besti (gebruker "$1"). Controleer of a je deêze pagina wè wil anmaeken/bewerken.',
+'userpage-userdoesnotexist'  => 'Je bewerk een gebrukerspagina van een gebruker die a nie besti (gebruker "<nowiki>$1</nowiki>"). Controleer of a je deêze pagina wè wil anmaeken/bewerken.',
 'clearyourcache'             => '\'\'\'Let op!\'\'\' Leeg je cache naeda je de wiezigiengen ei opeslogen.
 
 {| border="1" cellpadding="3" class=toccolours style="border: 1px #AAAAAA solid; border-collapse: collapse;"
@@ -1021,7 +1010,6 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'mywatchlist'       => 'Mien volglieste',
 'watchnologin'      => 'Je bin nie angemolde.',
 'watchnologintext'  => 'Je moe [[Special:UserLogin|angemolde]] weze om je volglieste an te passen.',
-'addedwatch'        => 'An de volglieste toegevoegd',
 'addedwatchtext'    => "De bladzie \"[[:\$1]]\" is an je [[Special:Watchlist|Volglieste]] toegevoegd.
 Veranderiengen an deêze bladzie en de overlegbladzie die-a d'rbie oort zulle ierop zichtbaer ore
 en de bladzie komt '''vet''' te staen in de [[Special:RecentChanges|lieste van wat-a juust veranderd is]], daermee 't makkeliker te vinden is.

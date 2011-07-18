@@ -78,8 +78,9 @@ class ApiLogin extends ApiBase {
 				$wgUser->setOption( 'rememberpassword', 1 );
 				$wgUser->setCookies( $this->getMain()->getRequest() );
 
-				// Run hooks. FIXME: split back and frontend from this hook.
-				// FIXME: This hook should be placed in the backend
+				// Run hooks.
+				// @todo FIXME: Split back and frontend from this hook.
+				// @todo FIXME: This hook should be placed in the backend
 				$injected_html = '';
 				wfRunHooks( 'UserLoginComplete', array( &$wgUser, &$injected_html ) );
 
@@ -209,6 +210,10 @@ class ApiLogin extends ApiBase {
 		return array(
 			'api.php?action=login&lgname=user&lgpassword=password'
 		);
+	}
+
+	public function getHelpUrls() {
+		return 'http://www.mediawiki.org/wiki/API:Login';
 	}
 
 	public function getVersion() {

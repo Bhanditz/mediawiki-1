@@ -55,7 +55,7 @@ class DeletedContribsPager extends IndexPager {
 		// Paranoia: avoid brute force searches (bug 17792)
 		if( !$wgUser->isAllowed( 'deletedhistory' ) ) {
 			$conds[] = $this->mDb->bitAnd('ar_deleted',Revision::DELETED_USER) . ' = 0';
-		} else if( !$wgUser->isAllowed( 'suppressrevision' ) ) {
+		} elseif( !$wgUser->isAllowed( 'suppressrevision' ) ) {
 			$conds[] = $this->mDb->bitAnd('ar_deleted',Revision::SUPPRESSED_USER) .
 				' != ' . Revision::SUPPRESSED_USER;
 		}
@@ -63,7 +63,7 @@ class DeletedContribsPager extends IndexPager {
 			'tables' => array( 'archive' ),
 			'fields' => array(
 				'ar_rev_id', 'ar_namespace', 'ar_title', 'ar_timestamp', 'ar_comment', 'ar_minor_edit',
-				'ar_user', 'ar_user_text', 'ar_deleted'
+				'ar_user', 'ar_user_text', 'ar_deleted', 'ar_len'
 			),
 			'conds' => $conds,
 			'options' => array( 'USE INDEX' => $index )
@@ -74,7 +74,7 @@ class DeletedContribsPager extends IndexPager {
 		$condition = array();
 
 		$condition['ar_user_text'] = $this->target;
-		$index = 'usertext_timestamp';
+		$index = array( 'archive' => 'ar_usertext_timestamp' );
 
 		return array( $index, $condition );
 	}
@@ -235,7 +235,8 @@ class DeletedContribsPager extends IndexPager {
 			wfMsg( 'parentheses', $wgLang->pipeList( array( $last, $dellog, $reviewlink ) ) )
 		);
 
-		$ret = "{$del}{$link} {$tools} . . {$mflag} {$pagelink} {$comment}";
+		$diffOut = Linker::formatRevisionSize( $row->ar_len );
+		$ret = "{$del}{$link} {$tools} . . {$mflag} {$diffOut} {$pagelink} {$comment}";
 
 		# Denote if username is redacted for this edit
 		if( $rev->isDeleted( Revision::DELETED_USER ) ) {
@@ -351,12 +352,12 @@ class DeletedContributionsPage extends SpecialPage {
 	 * @param $nt Title object for the target
 	 * @param $id Integer: User ID for the target
 	 * @return String: appropriately-escaped HTML to be output literally
-	 * @todo Fixme: almost the same as contributionsSub in SpecialContributions.php. Could be combined.
+	 * @todo FIXME: Almost the same as contributionsSub in SpecialContributions.php. Could be combined.
 	 */
 	function getSubTitle( $nt, $id ) {
 		global $wgLang, $wgUser, $wgOut;
 
-		$sk = $wgUser->getSkin();
+		$sk = $this->getSkin();
 
 		if ( $id === null ) {
 			$user = htmlspecialchars( $nt->getText() );

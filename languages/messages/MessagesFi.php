@@ -11,6 +11,7 @@
  * @author Centerlink
  * @author Cimon Avaro
  * @author Crt
+ * @author Harriv
  * @author Jaakonam
  * @author Jack Phoenix
  * @author Mobe
@@ -427,25 +428,7 @@ $messages = array(
 'listingcontinuesabbrev'         => 'jatkuu',
 'index-category'                 => 'Indeksoidut sivut',
 'noindex-category'               => 'Indeksointikiellolliset sivut',
-
-'mainpagetext'      => "'''MediaWiki on onnistuneesti asennettu.'''",
-'mainpagedocfooter' => "Lisätietoja käytöstä on sivulla [http://meta.wikimedia.org/wiki/Help:Contents User's Guide].
-
-=== Lisäohjeita ===
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Asetusten teko-ohjeita]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWikin FAQ]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Sähköpostilista, jolla tiedotetaan MediaWikin uusista versioista]
-
-=== Asetukset ===
-
-Tarkista, että alla olevat taivutusmuodot ovat oikein. Jos eivät, tee tarvittavat muutokset LocalSettings.php:hen seuraavasti:
- \$wgGrammarForms['fi']['genitive']['{{SITENAME}}'] = '...';
- \$wgGrammarForms['fi']['partitive']['{{SITENAME}}'] = '...';
- \$wgGrammarForms['fi']['elative']['{{SITENAME}}'] = '...';
- \$wgGrammarForms['fi']['inessive']['{{SITENAME}}'] = '...';
- \$wgGrammarForms['fi']['illative']['{{SITENAME}}'] = '...';
-Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive|{{SITENAME}}}} (yötä) — {{GRAMMAR:elative|{{SITENAME}}}} (yöstä) — {{GRAMMAR:inessive|{{SITENAME}}}} (yössä) — {{GRAMMAR:illative|{{SITENAME}}}} (yöhön).",
+'broken-file-category'           => 'Sivut joilla toimimattomia tiedostolinkkejä',
 
 'about'         => 'Tietoja',
 'article'       => 'Sivu',
@@ -497,7 +480,6 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'history'           => 'Historia',
 'history_short'     => 'Historia',
 'updatedmarker'     => 'päivitetty viimeisimmän käyntisi jälkeen',
-'info_short'        => 'Tiedotus',
 'printableversion'  => 'Tulostettava versio',
 'permalink'         => 'Ikilinkki',
 'print'             => 'Tulosta',
@@ -607,6 +589,8 @@ $1',
 'page-rss-feed'           => '$1 (RSS-syöte)',
 'page-atom-feed'          => '$1 (Atom-syöte)',
 'red-link-title'          => '$1 (sivua ei ole)',
+'sort-descending'         => 'Lajittele laskevassa järjestyksessä',
+'sort-ascending'          => 'Lajittele nousevassa järjestyksessä',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Sivu',
@@ -690,7 +674,8 @@ Viestien kääntäminen tulisi tehdä [http://translatewiki.net/wiki/Main_Page?s
 'cascadeprotected'     => 'Tämä sivu on suojattu muokkauksilta, koska se on sisällytetty alla {{PLURAL:$1|olevaan laajennetusti suojattuun sivuun|oleviin laajennetusti suojattuihin sivuihin}}:
 $2',
 'namespaceprotected'   => "Et voi muokata sivuja nimiavaruudessa '''$1'''.",
-'customcssjsprotected' => 'Sinulla ei ole oikeuksia muuttaa toisten käyttäjien henkilökohtaisia asetuksia.',
+'customcssprotected'   => 'Sinulla ei ole oikeutta muuttaa tätä CSS-sivua, koska se sisältää toisen käyttäjän henkilökohtaisia asetuksia.',
+'customjsprotected'    => 'Sinulla ei ole oikeutta muuttaa tätä JavaScript-sivua, koska se sisältää toisen käyttäjän henkilökohtaisia asetuksia.',
 'ns-specialprotected'  => 'Toimintosivuja ei voi muokata.',
 'titleprotected'       => "Käyttäjä [[User:$1|$1]] on asettanut tämän sivun luontikieltoon: ''$2''.",
 
@@ -741,7 +726,7 @@ Käyttäjätunnuksesi on luotu.
 'loginsuccesstitle'          => 'Sisäänkirjautuminen onnistui',
 'loginsuccess'               => "'''Olet kirjautunut käyttäjänä $1.'''",
 'nosuchuser'                 => 'Käyttäjää ”$1” ei ole olemassa. Nimet ovat kirjainkoosta riippuvaisia. Tarkista kirjoititko nimen oikein, tai [[Special:UserLogin/signup|luo uusi käyttäjätunnus]].',
-'nosuchusershort'            => 'Käyttäjää nimeltä ”<nowiki>$1</nowiki>” ei ole. Kirjoititko nimen oikein?',
+'nosuchusershort'            => 'Käyttäjää nimeltä ”$1” ei ole. Kirjoititko nimen oikein?',
 'nouserspecified'            => 'Käyttäjätunnusta ei ole määritelty.',
 'login-userblocked'          => 'Tämä käyttäjä on estetty. Kirjautuminen ei ole sallittua.',
 'wrongpassword'              => 'Syöttämäsi salasana ei ole oikein. Ole hyvä ja yritä uudelleen.',
@@ -805,6 +790,7 @@ Olet saattanut jo onnistuneesti vaihtaa salasanasi tai pyytää uutta väliaikai
 
 # Special:PasswordReset
 'passwordreset'          => 'Salasanan alustus',
+'passwordreset-text'     => 'Saat sähköpostimuistutuksen tunnuksesi tiedoista, kun täytät tämän lomakkeen.',
 'passwordreset-legend'   => 'Salasanan vaihto',
 'passwordreset-username' => 'Käyttäjätunnus:',
 'passwordreset-email'    => 'Sähköpostiosoite',
@@ -904,12 +890,12 @@ tai [{{fullurl:{{FULLPAGENAME}}|action=edit}} muokata tätä sivua]</span>.',
 'noarticletext-nopermission'       => 'Tällä hetkellä tällä sivulla ei ole tekstiä.
 Voit [[Special:Search/{{PAGENAME}}|etsiä sivun nimellä]] muilta sivuilta
 tai <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} hakea aiheeseen liittyviä lokeja]</span>',
-'userpage-userdoesnotexist'        => 'Käyttäjätunnusta $1 ei ole rekisteröity. Varmista haluatko muokata tätä sivua.',
+'userpage-userdoesnotexist'        => 'Käyttäjätunnusta <nowiki>$1</nowiki> ei ole rekisteröity. Varmista haluatko muokata tätä sivua.',
 'userpage-userdoesnotexist-view'   => 'Käyttäjätunnusta ”$1” ei ole rekisteröity.',
 'blocked-notice-logextract'        => 'Tämä käyttäjä on tällä hetkellä estetty.
 Alla on viimeisin estolokin tapahtuma:',
 'clearyourcache'                   => "'''Huomautus:''' Selaimen välimuisti pitää tyhjentää asetusten tallentamisen jälkeen, jotta muutokset tulisivat voimaan:
-'''Mozilla, Firefox ja Safari:''' napsauta Vaihto-näppäin pohjassa Päivitä tai paina ''Ctrl-F5'' tai ''Ctrl-R'' (''Command-R'' Macintoshilla);
+'''Mozilla, Firefox ja Safari:''' napsauta Vaihto-näppäin pohjassa Päivitä tai paina ''Ctrl-F5'' tai ''Ctrl-R'' (''Command-R'' Macilla);
 '''Konqueror''': napsauta Päivitä tai paina ''F5'';
 '''Opera:''' tyhjennä välimuisti: ''Tools→Preferences'';
 '''Internet Explorer:''' napsauta ''Ctrl''-näppäin pohjassa Päivitä tai paina ''Ctrl-F5''.",
@@ -1279,7 +1265,9 @@ Kokeile lisätä haun alkuun ''all:'', niin haku kohdistuu kaikkeen sisältöön
 'prefs-skin'                    => 'Ulkoasu',
 'skin-preview'                  => 'esikatselu',
 'datedefault'                   => 'Ei valintaa',
+'prefs-beta'                    => 'Beta-ominaisuudet',
 'prefs-datetime'                => 'Aika ja päiväys',
+'prefs-labs'                    => 'Kokeelliset ominaisuudet',
 'prefs-personal'                => 'Käyttäjätiedot',
 'prefs-rc'                      => 'Tuoreet muutokset',
 'prefs-watchlist'               => 'Tarkkailulista',
@@ -1675,9 +1663,6 @@ Java-tiedostojen tallentaminen ei ole sallittua, sillä ne saattavat aiheuttaa t
 'upload-options'              => 'Tallennusasetukset',
 'watchthisupload'             => 'Tarkkaile tätä tiedostoa',
 'filewasdeleted'              => 'Tämän niminen tiedosto on lisätty ja poistettu aikaisemmin. Tarkista $1 ennen jatkamista.',
-'upload-wasdeleted'           => "'''Varoitus: Olet tallentamassa tiedostoa, joka on jo aikaisemmin poistettu.'''
-
-Harkitse, haluatko jatkaa tämän tiedoston tallentamista. Tiedoston poistoloki näkyy tässä:",
 'filename-bad-prefix'         => "Tallentamasi tiedoston nimi alkaa merkkijonolla '''$1''', joka on yleensä digitaalikameroiden automaattisesti antama nimi, joka ei kuvaa tiedoston sisältöä. Anna tiedostolle kuvaavampi nimi.",
 'upload-success-subj'         => 'Tallennus onnistui',
 'upload-success-msg'          => 'Tallennuksesi [$2] onnistui. Tiedosto on saatavilla täällä: [[:{{ns:file}}:$1]]',
@@ -1784,7 +1769,6 @@ Seuraava lista näyttää {{PLURAL:$1|ensimmäisen linkittävän sivun|$1 ensimm
 [[Special:WhatLinksHere/$2|Koko lista]] on saatavilla.',
 'nolinkstoimage'            => 'Tähän tiedostoon ei ole linkkejä miltään sivulta.',
 'morelinkstoimage'          => 'Näytä [[Special:WhatLinksHere/$1|lisää linkkejä]] tähän tiedostoon.',
-'redirectstofile'           => '{{PLURAL:$1|Seuraava tiedosto ohjaa|Seuraavat $1 tiedostoa ohjaavat}} tähän tiedostoon:',
 'duplicatesoffile'          => '{{PLURAL:$1|Seuraava tiedosto on tämän tiedoston kaksoiskappale|Seuraavat $1 tiedostoa ovat tämän tiedoston kaksoiskappaleita}} ([[Special:FileDuplicateSearch/$2|lisätietoja]]):',
 'sharedupload'              => 'Tämä tiedosto on jaettu kohteesta $1 ja muut projektit saattavat käyttää sitä.',
 'sharedupload-desc-there'   => 'Tämä tiedosto on jaettu kohteesta $1 ja muut projektit saattavat käyttää sitä.
@@ -2104,9 +2088,7 @@ Lisätietoa yksittäisistä käyttäjäoikeuksista saattaa löytyä [[{{MediaWik
 'watchlistanontext'    => 'Sinun täytyy $1, jos haluat käyttää tarkkailulistaa.',
 'watchnologin'         => 'Et ole kirjautunut sisään',
 'watchnologintext'     => 'Sinun pitää [[Special:UserLogin|kirjautua sisään]], jotta voisit käyttää tarkkailulistaasi.',
-'addedwatch'           => 'Lisätty tarkkailulistalle',
 'addedwatchtext'       => "Sivu '''<nowiki>$1</nowiki>''' on lisätty [[Special:Watchlist|tarkkailulistallesi]]. Tulevaisuudessa sivuun ja sen keskustelusivuun tehtävät muutokset listataan täällä. Sivu on '''lihavoitu''' [[Special:RecentChanges|tuoreiden muutosten listassa]], jotta huomaisit sen helpommin. Jos haluat myöhemmin poistaa sivun tarkkailulistaltasi, napsauta linkkiä ''lopeta tarkkailu'' sivun reunassa.",
-'removedwatch'         => 'Poistettu tarkkailulistalta',
 'removedwatchtext'     => "Sivu '''[[:$1]]''' on poistettu [[Special:Watchlist|tarkkailulistaltasi]].",
 'watch'                => 'Tarkkaile',
 'watchthispage'        => 'Tarkkaile tätä sivua',
@@ -2179,7 +2161,7 @@ Palaute ja lisäapu osoitteessa:
 'confirmdeletetext'      => 'Olet poistamassa sivun tai tiedoston ja kaiken sen historian. Ymmärrä teon seuraukset ja tee poisto {{GRAMMAR:genitive|{{SITENAME}}}} [[{{MediaWiki:Policy-url}}|käytäntöjen]] mukaisesti.',
 'actioncomplete'         => 'Toiminto suoritettu',
 'actionfailed'           => 'Toiminto epäonnistui',
-'deletedtext'            => '”<nowiki>$1</nowiki>” on poistettu.
+'deletedtext'            => '”$1” on poistettu.
 Sivulla $2 on lista viimeaikaisista poistoista.',
 'deletedarticle'         => 'poisti sivun [[$1]]',
 'suppressedarticle'      => 'häivytti sivun [[$1]]',
@@ -2231,7 +2213,7 @@ Viimeisimmän muokkauksen on tehnyt käyttäjä [[User:$3|$3]] ([[User talk:$3|k
 'protect_expiry_invalid'      => 'Vanhenemisaika ei kelpaa.',
 'protect_expiry_old'          => 'Vanhenemisaika on menneisyydessä.',
 'protect-unchain-permissions' => 'Avaa myöhemmät suojausvalinnat',
-'protect-text'                => "Voit katsoa ja muuttaa sivun '''<nowiki>$1</nowiki>''' suojauksia.",
+'protect-text'                => "Voit katsoa ja muuttaa sivun '''$1''' suojauksia.",
 'protect-locked-blocked'      => "Et voi muuttaa sivun suojauksia, koska sinut on estetty. Alla on sivun ”'''$1'''” nykyiset suojaukset:",
 'protect-locked-dblock'       => "Sivun suojauksia ei voi muuttaa, koska tietokanta on lukittu. Alla on sivun ”'''$1'''” nykyiset suojaukset:",
 'protect-locked-access'       => "Sinulla ei ole tarvittavia oikeuksia sivujen suojauksen muuttamiseen. Alla on sivun ”'''$1'''” nykyiset suojaukset:",
@@ -2372,6 +2354,7 @@ Alla on viimeisin estolokin tapahtuma:',
 'whatlinkshere-filters'    => 'Suotimet',
 
 # Block/unblock
+'autoblockid'                     => 'Automaattinen esto #$1',
 'block'                           => 'Estä käyttäjä',
 'unblock'                         => 'Poista käyttäjän esto',
 'blockip'                         => 'Estä käyttäjä',
@@ -2409,6 +2392,7 @@ Alla on viimeisin estolokin tapahtuma:',
 'blockipsuccesstext'              => 'Käyttäjä tai IP-osoite [[Special:Contributions/$1|$1]] on estetty.<br />
 Nykyiset estot löytyvät [[Special:IPBlockList|estolistalta]].',
 'ipb-blockingself'                => 'Olet estämässä itseäsi. Oletko varma, että haluat tehdä niin?',
+'ipb-confirmhideuser'             => 'Olet estämässä käyttäjää ”piilota käyttäjä” -toiminnon kanssa.  Tämä piilottaa käyttäjän nimen kaikissa luetteloissa ja lokitapahtumissa.  Oletko varma, että haluat tehdä näin?',
 'ipb-edit-dropdown'               => 'Muokkaa estosyitä',
 'ipb-unblock-addr'                => 'Poista käyttäjän $1 esto',
 'ipb-unblock'                     => 'Poista käyttäjän tai IP-osoitteen muokkausesto',
@@ -2706,7 +2690,7 @@ Tallenna tiedot koneellesi ja tuo ne tällä sivulla.',
 'tooltip-ca-viewsource'           => 'Näytä sivun lähdekoodi',
 'tooltip-ca-history'              => 'Sivun aikaisemmat versiot',
 'tooltip-ca-protect'              => 'Suojaa tämä sivu',
-'tooltip-ca-unprotect'            => 'Poista suojaus tältä sivulta',
+'tooltip-ca-unprotect'            => 'Muuta tämän sivun suojauksia',
 'tooltip-ca-delete'               => 'Poista tämä sivu',
 'tooltip-ca-undelete'             => 'Palauta tämä sivu',
 'tooltip-ca-move'                 => 'Siirrä tämä sivu',
@@ -2769,9 +2753,7 @@ Tallenna tiedot koneellesi ja tuo ne tällä sivulla.',
 'modern.js'      => '/* Tämän sivun JavaScript-koodi liitetään Moderni-tyyliin */',
 
 # Metadata
-'nodublincore'      => 'Dublin Core RDF-metatieto on poissa käytöstä tällä palvelimella.',
-'nocreativecommons' => 'Creative Commonsin RDF-metatieto on poissa käytöstä tällä palvelimella.',
-'notacceptable'     => 'Wikipalvelin ei voi näyttää tietoja muodossa, jota ohjelmasi voisi lukea.',
+'notacceptable' => 'Wikipalvelin ei voi näyttää tietoja muodossa, jota ohjelmasi voisi lukea.',
 
 # Attribution
 'anonymous'        => '{{GRAMMAR:genitive|{{SITENAME}}}} {{PLURAL:$1|anonyymi käyttäjä|anonyymit käyttäjät}}',
@@ -2792,14 +2774,6 @@ Tallenna tiedot koneellesi ja tuo ne tällä sivulla.',
 'spambot_username'    => 'MediaWikin mainospoistaja',
 'spam_reverting'      => 'Palautettu viimeisimpään versioon, joka ei sisällä linkkejä kohteeseen $1.',
 'spam_blanking'       => 'Kaikki versiot sisälsivät linkkejä kohteeseen $1. Sivu tyhjennetty.',
-
-# Info page
-'infosubtitle'   => 'Tietoja sivusta',
-'numedits'       => 'Sivun muokkausten määrä: $1',
-'numtalkedits'   => 'Keskustelusivun muokkausten määrä: $1',
-'numwatchers'    => 'Tarkkailijoiden määrä: $1',
-'numauthors'     => 'Sivun erillisten kirjoittajien määrä: $1',
-'numtalkauthors' => 'Keskustelusivun erillisten kirjoittajien määrä: $1',
 
 # Skin names
 'skinname-standard'    => 'Perus',
@@ -2853,6 +2827,7 @@ Suorittamalla sen järjestelmäsi voi muuttua epäluotettavaksi.",
 'widthheightpage'        => '$1×$2, $3 {{PLURAL:$3|sivu|sivua}}',
 'file-info'              => '$1, MIME-tyyppi: $2',
 'file-info-size'         => '$1×$2 px, $3, MIME-tyyppi: $4',
+'file-info-size-pages'   => '$1 × $2 pikseliä, tiedoston koko $3, MIME-tyyppi $4, $5 {{PLURAL:$5|sivu|sivua}}',
 'file-nohires'           => '<small>Tarkempaa kuvaa ei ole saatavilla.</small>',
 'svg-long-desc'          => 'SVG-tiedosto; oletustarkkuus $1×$2 kuvapistettä; tiedostokoko $3',
 'show-big-image'         => 'Korkeatarkkuuksinen versio',
@@ -2888,7 +2863,7 @@ Kaikki muut linkit ovat poikkeuksia eli toisin sanoen sivuja, joissa tiedostoa s
 'metadata-help'     => 'Tämä tiedosto sisältää esimerkiksi kuvanlukijan, digikameran tai kuvankäsittelyohjelman lisäämiä lisätietoja. Kaikki tiedot eivät enää välttämättä vastaa todellisuutta, jos kuvaa on muokattu sen alkuperäisen luonnin jälkeen.',
 'metadata-expand'   => 'Näytä kaikki sisältökuvaukset',
 'metadata-collapse' => 'Näytä vain tärkeimmät sisältökuvaukset',
-'metadata-fields'   => 'Seuraavat kentät ovat esillä kuvasivulla, kun sisältötietotaulukko on pienennettynä.
+'metadata-fields'   => 'Seuraavat metatietojen kentät ovat esillä kuvasivulla, kun sisältötietotaulukko on pienennettynä. Muut kentät ovat oletuksena piilotettuja.
 * make
 * model
 * datetimeoriginal
@@ -2937,8 +2912,8 @@ Kaikki muut linkit ovat poikkeuksia eli toisin sanoen sivuja, joissa tiedostoa s
 'exif-colorspace'                  => 'Väriavaruus',
 'exif-componentsconfiguration'     => 'Kunkin komponentin määritelmä',
 'exif-compressedbitsperpixel'      => 'Kuvan pakkaustapa',
-'exif-pixelydimension'             => 'Käyttökelpoinen kuvan leveys',
-'exif-pixelxdimension'             => 'Käyttökelpoinen kuvan korkeus',
+'exif-pixelydimension'             => 'Kuvan leveys',
+'exif-pixelxdimension'             => 'Kuvan korkeus',
 'exif-usercomment'                 => 'Käyttäjän kommentit',
 'exif-relatedsoundfile'            => 'Liitetty äänitiedosto',
 'exif-datetimeoriginal'            => 'Luontipäivämäärä',
@@ -2952,9 +2927,9 @@ Kaikki muut linkit ovat poikkeuksia eli toisin sanoen sivuja, joissa tiedostoa s
 'exif-exposureprogram'             => 'Valotusohjelma',
 'exif-spectralsensitivity'         => 'Värikirjoherkkyys',
 'exif-isospeedratings'             => 'Herkkyys (ISO)',
-'exif-shutterspeedvalue'           => 'Suljinaika',
-'exif-aperturevalue'               => 'Aukko',
-'exif-brightnessvalue'             => 'Kirkkaus',
+'exif-shutterspeedvalue'           => 'APEX-suljinaika',
+'exif-aperturevalue'               => 'APEX-aukko',
+'exif-brightnessvalue'             => 'APEX-kirkkaus',
 'exif-exposurebiasvalue'           => 'Valotuksen korjaus',
 'exif-maxaperturevalue'            => 'Suurin aukko',
 'exif-subjectdistance'             => 'Kohteen etäisyys',
@@ -3016,7 +2991,40 @@ Kaikki muut linkit ovat poikkeuksia eli toisin sanoen sivuja, joissa tiedostoa s
 'exif-gpsareainformation'          => 'GPS-alueen nimi',
 'exif-gpsdatestamp'                => 'GPS-päivämäärä',
 'exif-gpsdifferential'             => 'GPS-differentiaalikorjaus',
+'exif-jpegfilecomment'             => 'JPEG-tiedoston kommentti',
+'exif-keywords'                    => 'Avainsanat',
+'exif-worldregioncreated'          => 'Maailmanosa, jossa kuva on otettu',
+'exif-countrycreated'              => 'Maa, jossa kuva on otettu',
+'exif-countrycodecreated'          => 'Maakoodi, jossa kuva on otettu',
+'exif-provinceorstatecreated'      => 'Maakunta tai osavaltio, jossa kuva on otettu',
+'exif-citycreated'                 => 'Kaupunki, jossa kuva on otettu',
 'exif-objectname'                  => 'Lyhyt otsikko',
+'exif-specialinstructions'         => 'Erityiset ohjeet',
+'exif-source'                      => 'Lähde',
+'exif-urgency'                     => 'Kiireellisyys',
+'exif-locationdest'                => 'Kuvattu sijainti',
+'exif-locationdestcode'            => 'Kuvatun sijainnin sijaintikoodi',
+'exif-contact'                     => 'Yhteystiedot',
+'exif-writer'                      => 'Kirjoittaja',
+'exif-languagecode'                => 'Kieli',
+'exif-iimversion'                  => 'IIM:n versio',
+'exif-iimcategory'                 => 'Luokka',
+'exif-iimsupplementalcategory'     => 'Täydentävät luokat',
+'exif-datetimereleased'            => 'Julkaistu',
+'exif-identifier'                  => 'Tunniste',
+'exif-lens'                        => 'Objektiivi',
+'exif-serialnumber'                => 'Kameran sarjanumero',
+'exif-cameraownername'             => 'Kameran omistaja',
+'exif-nickname'                    => 'Kuvan epävirallinen nimi',
+'exif-copyrighted'                 => 'Tekijänoikeudellinen tila',
+'exif-copyrightowner'              => 'Tekijänoikeuden haltija',
+'exif-usageterms'                  => 'Käyttöehdot',
+'exif-licenseurl'                  => 'Tekijänoikeuslisenssin URL',
+'exif-morepermissionsurl'          => 'Vaihtoehtoiset lisenssitiedot',
+'exif-pngfilecomment'              => 'PNG-tiedoston kommentti',
+'exif-disclaimer'                  => 'Vastuuvapauslauseke',
+'exif-contentwarning'              => 'Sisältövaroitus',
+'exif-giffilecomment'              => 'GIF-tiedoston kommentti',
 
 # EXIF attributes
 'exif-compression-1' => 'Pakkaamaton',
@@ -3166,9 +3174,43 @@ Kaikki muut linkit ovat poikkeuksia eli toisin sanoen sivuja, joissa tiedostoa s
 'exif-gpsspeed-m' => 'mailia tunnissa',
 'exif-gpsspeed-n' => 'solmua',
 
+'exif-gpsdop-excellent' => 'Erinomainen ($1)',
+'exif-gpsdop-good'      => 'Hyvä ($1)',
+'exif-gpsdop-moderate'  => 'Tyydyttävä ($1)',
+'exif-gpsdop-fair'      => 'Välttävä ($1)',
+'exif-gpsdop-poor'      => 'Huono ($1)',
+
+'exif-objectcycle-a' => 'vain aamulla',
+
 # Pseudotags used for GPSTrackRef, GPSImgDirectionRef and GPSDestBearingRef
 'exif-gpsdirection-t' => 'Todellinen suunta',
 'exif-gpsdirection-m' => 'Magneettinen suunta',
+
+'exif-rating-rejected' => 'Hylätty',
+
+'exif-isospeedratings-overflow' => 'Suurempi kuin 65535',
+
+'exif-iimcategory-ace' => 'Taide, kulttuuri ja viihde',
+'exif-iimcategory-clj' => 'Rikos ja oikeus',
+'exif-iimcategory-dis' => 'Katastrofit ja onnettomuudet',
+'exif-iimcategory-fin' => 'Talous ja liiketoiminta',
+'exif-iimcategory-edu' => 'Koulutus',
+'exif-iimcategory-evn' => 'Ympäristö',
+'exif-iimcategory-hth' => 'Terveys',
+'exif-iimcategory-lab' => 'Työnteko',
+'exif-iimcategory-lif' => 'Elämäntapa ja vapaa-aika',
+'exif-iimcategory-pol' => 'Politiikka',
+'exif-iimcategory-rel' => 'Uskonto ja usko',
+'exif-iimcategory-sci' => 'Tiede ja tekniikka',
+'exif-iimcategory-soi' => 'Sosiaaliset kysymykset',
+'exif-iimcategory-spo' => 'Urheilu',
+'exif-iimcategory-war' => 'Sota, konflikti ja levottomuus',
+'exif-iimcategory-wea' => 'Sää',
+
+'exif-urgency-normal' => 'Tavallinen ($1)',
+'exif-urgency-low'    => 'Matala ($1)',
+'exif-urgency-high'   => 'Korkea ($1)',
+'exif-urgency-other'  => 'Käyttäjän määrittelemä prioriteetti ($1)',
 
 # External editor support
 'edit-externally'      => 'Muokkaa tätä tiedostoa ulkoisessa sovelluksessa',
@@ -3458,5 +3500,20 @@ Sinun olisi pitänyt saada [{{SERVER}}{{SCRIPTPATH}}/COPYING kopio GNU General P
 # SQLite database support
 'sqlite-has-fts' => '$1, jossa on tuki kokotekstihaulle',
 'sqlite-no-fts'  => '$1, jossa ei ole tukea kokotekstihaulle',
+
+# Add categories per AJAX
+'ajax-add-category'            => 'Lisää luokka',
+'ajax-add-category-submit'     => 'Lisää',
+'ajax-confirm-title'           => 'Vahvista toiminto',
+'ajax-confirm-prompt'          => 'Voit kirjoittaa alle muokkausyhteenvedon.
+Muokkaus tallentuu, kun napsautat »Tallenna».',
+'ajax-confirm-save'            => 'Tallenna',
+'ajax-add-category-summary'    => 'Lisää luokka ”$1”',
+'ajax-remove-category-summary' => 'Luokan ”$1” poisto',
+'ajax-confirm-actionsummary'   => 'Suoritettava toiminto:',
+'ajax-error-title'             => 'Virhe',
+'ajax-error-dismiss'           => 'OK',
+'ajax-remove-category-error'   => 'Luokan poistaminen ei onnistunut.
+Yleensä näin käy, kun luokka on lisätty sivulle mallineessa.',
 
 );

@@ -36,13 +36,7 @@ abstract class UploadBase {
 	const UPLOAD_VERIFICATION_ERROR = 11;
 	const HOOK_ABORTED = 11;
 	const FILE_TOO_LARGE = 12;
-
-	const SESSION_VERSION = 2;
-	const SESSION_KEYNAME = 'wsUploadData';
-
-	static public function getSessionKeyname() {
-		return self::SESSION_KEYNAME;
-	}
+	const WINDOWS_NONASCII_FILENAME = 13;
 
 	public function getVerificationErrorCode( $error ) {
 		$code_to_status = array(self::EMPTY_FILE => 'empty-file',
@@ -54,6 +48,7 @@ abstract class UploadBase {
 								self::OVERWRITE_EXISTING_FILE => 'overwrite',
 								self::VERIFICATION_ERROR => 'verification-error',
 								self::HOOK_ABORTED =>  'hookaborted',
+								self::WINDOWS_NONASCII_FILENAME => 'windows-nonascii-filename',
 		);
 		if( isset( $code_to_status[$error] ) ) {
 			return $code_to_status[$error];
@@ -68,15 +63,13 @@ abstract class UploadBase {
 	 */
 	public static function isEnabled() {
 		global $wgEnableUploads;
+
 		if ( !$wgEnableUploads ) {
 			return false;
 		}
 
 		# Check php's file_uploads setting
-		if( !wfIniGetBool( 'file_uploads' ) ) {
-			return false;
-		}
-		return true;
+		return wfIsHipHop() || wfIniGetBool( 'file_uploads' );
 	}
 
 	/**
@@ -102,6 +95,7 @@ abstract class UploadBase {
 	 * Create a form of UploadBase depending on wpSourceType and initializes it
 	 *
 	 * @param $request WebRequest
+	 * @param $type
 	 */
 	public static function createFromRequest( &$request, $type = null ) {
 		$type = $type ? $type : $request->getVal( 'wpSourceType', 'File' );
@@ -212,6 +206,19 @@ abstract class UploadBase {
 		$status = $repo->append( $srcPath, $toAppendPath );
 		return $status;
 	}
+
+	/**
+	 * Finish appending to the Repo file
+	 *
+	 * @param $toAppendPath String: path to the Repo file that will be appended to.
+	 * @return Status Status
+	 */
+	protected function appendFinish( $toAppendPath ) {
+		$repo = RepoGroup::singleton()->getLocalRepo();
+		$status = $repo->appendFinish( $toAppendPath );
+		return $status;
+	}
+
 
 	/**
 	 * @param $srcPath String: the source path
@@ -354,7 +361,6 @@ abstract class UploadBase {
 		$this->getTitle();
 
 		$this->mFileProps = File::getPropsFromPath( $this->mTempPath, $this->mFinalExtension );
-		$this->checkMacBinary();
 
 		# check mime type, if desired
 		$mime = $this->mFileProps[ 'file-mime' ];
@@ -496,6 +502,8 @@ abstract class UploadBase {
 	 * @return Array of warnings
 	 */
 	public function checkWarnings() {
+		global $wgLang;
+
 		$warnings = array();
 
 		$localFile = $this->getLocalFile();
@@ -516,7 +524,8 @@ abstract class UploadBase {
 		global $wgCheckFileExtensions, $wgFileExtensions;
 		if ( $wgCheckFileExtensions ) {
 			if ( !$this->checkFileExtension( $this->mFinalExtension, $wgFileExtensions ) ) {
-				$warnings['filetype-unwanted-type'] = $this->mFinalExtension;
+				$warnings['filetype-unwanted-type'] = array( $this->mFinalExtension,
+					$wgLang->commaList( $wgFileExtensions ), count( $wgFileExtensions ) );
 			}
 		}
 
@@ -580,7 +589,7 @@ abstract class UploadBase {
 			if ( $watch ) {
 				$user->addWatch( $this->getLocalFile()->getTitle() );
 			}
-
+						
 			wfRunHooks( 'UploadComplete', array( &$this ) );
 		}
 
@@ -597,13 +606,23 @@ abstract class UploadBase {
 		if ( $this->mTitle !== false ) {
 			return $this->mTitle;
 		}
+		
+		/* Assume that if a user specified File:Something.jpg, this is an error
+		 * and that the namespace prefix needs to be stripped of.
+		 */
+		$title = Title::newFromText( $this->mDesiredDestName );
+		if ( $title->getNamespace() == NS_FILE ) {
+			$this->mFilteredName = $title->getDBkey();
+		} else {
+			$this->mFilteredName = $this->mDesiredDestName;
+		}
 
 		/**
 		 * Chop off any directories in the given filename. Then
 		 * filter out illegal characters, and try to make a legible name
 		 * out of it. We'll strip some silently that Title would die on.
 		 */
-		$this->mFilteredName = wfStripIllegalFilenameChars( $this->mDesiredDestName );
+		$this->mFilteredName = wfStripIllegalFilenameChars( $this->mFilteredName );
 		/* Normalize to title form before we do any further processing */
 		$nt = Title::makeTitleSafe( NS_FILE, $this->mFilteredName );
 		if( is_null( $nt ) ) {
@@ -653,9 +672,15 @@ abstract class UploadBase {
 			return $this->mTitle = null;
 		} elseif ( $blackListedExtensions ||
 				( $wgCheckFileExtensions && $wgStrictFileExtensions &&
-					!$this->checkFileExtension( $this->mFinalExtension, $wgFileExtensions ) ) ) {
+					!$this->checkFileExtensionList( $ext, $wgFileExtensions ) ) ) {
 			$this->mBlackListedExtensions = $blackListedExtensions;
 			$this->mTitleError = self::FILETYPE_BADTYPE;
+			return $this->mTitle = null;
+		}
+		
+		// Windows may be broken with special characters, see bug XXX
+		if ( wfIsWindows() && !preg_match( '/^[\x0-\x7f]*$/', $nt->getText() ) ) {
+			$this->mTitleError = self::WINDOWS_NONASCII_FILENAME;
 			return $this->mTitle = null;
 		}
 
@@ -713,32 +738,40 @@ abstract class UploadBase {
 	 * by design) then we may want to stash the file temporarily, get more information, and publish the file later.
 	 *
 	 * This method will stash a file in a temporary directory for later processing, and save the necessary descriptive info
-	 * into the user's session.
-	 * This method returns the file object, which also has a 'sessionKey' property which can be passed through a form or
+	 * into the database.
+	 * This method returns the file object, which also has a 'fileKey' property which can be passed through a form or
 	 * API request to find this stashed file again.
 	 *
-	 * @param $key String: (optional) the session key used to find the file info again. If not supplied, a key will be autogenerated.
+	 * @param $key String: (optional) the file key used to find the file info again. If not supplied, a key will be autogenerated.
 	 * @return UploadStashFile stashed file
 	 */
-	public function stashSessionFile( $key = null ) {
+	public function stashFile( $key = null ) {
+		// was stashSessionFile
 		$stash = RepoGroup::singleton()->getLocalRepo()->getUploadStash();
-		$data = array(
-			'mFileProps' => $this->mFileProps,
-			'mSourceType' => $this->getSourceType(),
-		);
-		$file = $stash->stashFile( $this->mTempPath, $data, $key );
+
+		$file = $stash->stashFile( $this->mTempPath, $this->getSourceType(), $key );
 		$this->mLocalFile = $file;
 		return $file;
 	}
 
 	/**
-	 * Stash a file in a temporary directory, returning a key which can be used to find the file again. See stashSessionFile().
+	 * Stash a file in a temporary directory, returning a key which can be used to find the file again. See stashFile().
 	 *
-	 * @param $key String: (optional) the session key used to find the file info again. If not supplied, a key will be autogenerated.
-	 * @return String: session key
+	 * @param $key String: (optional) the file key used to find the file info again. If not supplied, a key will be autogenerated.
+	 * @return String: file key
+	 */
+	public function stashFileGetKey( $key = null ) {
+		return $this->stashFile( $key )->getFileKey();
+	}
+
+	/** 
+	 * alias for stashFileGetKey, for backwards compatibility
+	 *
+	 * @param $key String: (optional) the file key used to find the file info again. If not supplied, a key will be autogenerated.
+	 * @return String: file key
 	 */
 	public function stashSession( $key = null ) {
-		return $this->stashSessionFile( $key )->getSessionKey();
+		return $this->stashFileGetKey( $key );
 	}
 
 	/**
@@ -878,7 +911,7 @@ abstract class UploadBase {
 
 		$chunk = trim( $chunk );
 
-		# FIXME: convert from UTF-16 if necessarry!
+		# @todo FIXME: Convert from UTF-16 if necessarry!
 		wfDebug( __METHOD__ . ": checking for embedded scripts and HTML stuff\n" );
 
 		# check for HTML doctype
@@ -1080,30 +1113,6 @@ abstract class UploadBase {
 			wfDebug( __METHOD__ . ": FOUND VIRUS! scanner feedback: $output \n" );
 			return $output;
 		}
-	}
-
-	/**
-	 * Check if the temporary file is MacBinary-encoded, as some uploads
-	 * from Internet Explorer on Mac OS Classic and Mac OS X will be.
-	 * If so, the data fork will be extracted to a second temporary file,
-	 * which will then be checked for validity and either kept or discarded.
-	 */
-	private function checkMacBinary() {
-		$macbin = new MacBinary( $this->mTempPath );
-		if( $macbin->isValid() ) {
-			$dataFile = tempnam( wfTempDir(), 'WikiMacBinary' );
-			$dataHandle = fopen( $dataFile, 'wb' );
-
-			wfDebug( __METHOD__ . ": Extracting MacBinary data fork to $dataFile\n" );
-			$macbin->extractData( $dataHandle );
-
-			$this->mTempPath = $dataFile;
-			$this->mFileSize = $macbin->dataForkLength();
-
-			// We'll have to manually remove the new file if it's not kept.
-			$this->mRemoveTempFile = true;
-		}
-		$macbin->close();
 	}
 
 	/**

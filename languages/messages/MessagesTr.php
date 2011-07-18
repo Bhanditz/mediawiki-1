@@ -432,14 +432,6 @@ $messages = array(
 'index-category'                 => 'Dizinli sayfalar',
 'noindex-category'               => 'Dizinli olmayan sayfalar',
 
-'mainpagetext'      => "'''MediaWiki başarı ile kuruldu.'''",
-'mainpagedocfooter' => 'Viki yazılımının kullanımı hakkında bilgi almak için [http://meta.wikimedia.org/wiki/Help:Contents kullanıcı rehberine] bakınız.
-
-== Yeni Başlayanlar ==
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Yapılandırma ayarlarının listesi]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki SSS]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki e-posta listesi]',
-
 'about'         => 'Hakkında',
 'article'       => 'Madde',
 'newwindow'     => '(yeni bir pencerede açılır)',
@@ -490,7 +482,6 @@ $messages = array(
 'history'           => 'Sayfa geçmişi',
 'history_short'     => 'Geçmiş',
 'updatedmarker'     => 'son ziyaretimden sonra güncellenmiş',
-'info_short'        => 'Bilgi',
 'printableversion'  => 'Yazdırılabilir sürüm',
 'permalink'         => 'Kalıcı bağlantı',
 'print'             => 'Bastır',
@@ -684,7 +675,6 @@ Lütfen birkaç dakika sonra yeniden deneyin.',
 'cascadeprotected'     => 'Bu sayfa değişiklik yapılması engellenmiştir, çünkü  "kademeli" seçeneği aktif hale getirilerek koruma altına alınan {{PLURAL:$1|sayfada|sayfada}} kullanılmaktadır:
 $2',
 'namespaceprotected'   => "'''$1''' alandındaki sayfaları düzenlemeye izniniz bulunmamaktadır.",
-'customcssjsprotected' => 'Bu sayfayı değiştirmeye yetkiniz bulunmamaktadır, çünkü bu sayfa başka bir kullanıcının kişisel ayarlarını içermektedir.',
 'ns-specialprotected'  => '{{ns:special}} alanadı içindeki sayfalar değiştirilemez.',
 'titleprotected'       => "[[User:$1|$1]] tarafından oluşturulması engellenmesi için bu sayfa koruma altına alınmıştır.
 Verilen sebep: ''$2''.",
@@ -743,7 +733,7 @@ Lütfen çerez kullanımını açınız ve yeni kullanıcı adınız ve şifreni
 'nosuchuser'                 => '"$1" adında bir kullanıcı bulunmamaktadır.
 Kullanıcı adları büyük-küçük harf duyarlıdır.
 Yazılışı kontrol edin veya [[Special:UserLogin/signup|yeni bir hesap açın]].',
-'nosuchusershort'            => '"<nowiki>$1</nowiki>" adında bir kullanıcı bulunmamaktadır. Yazılışı kontrol edin.',
+'nosuchusershort'            => '"$1" adında bir kullanıcı bulunmamaktadır. Yazılışı kontrol edin.',
 'nouserspecified'            => 'Bir kullanıcı adı belirtmek zorundasınız.',
 'login-userblocked'          => 'Bu kullanıcı engellenmiş. Giriş yapmaya izin verilmiyor.',
 'wrongpassword'              => 'Parolayı yanlış girdiniz. Lütfen tekrar deneyiniz.',
@@ -914,7 +904,7 @@ ya da bu sayfayı [{{fullurl:{{FULLPAGENAME}}|action=edit}} değiştirebilirsini
 'noarticletext-nopermission'       => 'Bu sayfa şu anda boştur.
 Bu başlığı [[Special:Search/{{PAGENAME}}|diğer sayfalarda arayabilir]]
 ya da <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} ilgili kayıtları tarayabilirsiniz].</span>',
-'userpage-userdoesnotexist'        => '"$1" kullanıcı hesabı kayıtlı değil. Bu sayfayı oluşturmak/değiştirmek istiyorsanız lütfen kontrol edin.',
+'userpage-userdoesnotexist'        => '"<nowiki>$1</nowiki>" kullanıcı hesabı kayıtlı değil. Bu sayfayı oluşturmak/değiştirmek istiyorsanız lütfen kontrol edin.',
 'userpage-userdoesnotexist-view'   => '"$1" kullanıcı hesabı kayıtlı değil.',
 'blocked-notice-logextract'        => 'Bu kullanıcı şuanda engellenmiş.
 Son engelleme günlüğü girdisi referans için aşağıda sağlanmıştır:',
@@ -1302,7 +1292,9 @@ Aramanızın başına '''all:''' önekini ekleyerek tüm içeriği aramayı (tar
 'prefs-skin'                    => 'Görünüm',
 'skin-preview'                  => 'Önizleme',
 'datedefault'                   => 'Tercih yok',
+'prefs-beta'                    => 'Beta özellikleri',
 'prefs-datetime'                => 'Tarih ve saat',
+'prefs-labs'                    => 'Lab özellikleri',
 'prefs-personal'                => 'Kullanıcı bilgileri',
 'prefs-rc'                      => 'Son değişiklikler',
 'prefs-watchlist'               => 'İzleme listesi',
@@ -1706,10 +1698,6 @@ Java dosyalarının yüklenmesine izin verilmemektedir, zira güvenlik kısıtla
 'upload-options'              => 'Yükleme seçenekleri',
 'watchthisupload'             => 'Bu dosyayı izle',
 'filewasdeleted'              => 'Bu isimde bir dosya yakın zamanda yüklendi ve ardından hizmetliler tarafından silindi. Dosyayı yüklemeden önce, $1 sayfasına bir göz atınız.',
-'upload-wasdeleted'           => "'''Uyarı: Daha önce silinmiş olan bir dosyayı yüklüyorsunuz.'''
-
-Dosyanın yüklenmesinin uygun olup olmadığını dikkate almalısınız.
-Bu dosyanın silme kayıtları kolaylık olması için burada sunulmuştur:",
 'filename-bad-prefix'         => "Yüklemekte olduğunuz dosyanın adı, genel olarak dijital kameralar tarafından otomatik olarak ekelenen ve açıklayıcı olmayan '''\"\$1\"''' ile başlamaktadır.
 Lütfen dosyanız için daha açıklayıcı bir isim seçin.",
 'filename-prefix-blacklist'   => ' #<!-- leave this line exactly as it is --> <pre>
@@ -1848,7 +1836,6 @@ Sıradaki liste sadece bu dosyaya bağlantı veren {{PLURAL:$1|ilk dosyayı|ilk 
 [[Special:WhatLinksHere/$2|Tam bir liste]] mevcuttur.",
 'nolinkstoimage'            => 'Bu dosyaya bağlantı veren bir sayfa yok.',
 'morelinkstoimage'          => 'Bu dosyaya [[Special:WhatLinksHere/$1|daha fazla bağlantıları]] gör.',
-'redirectstofile'           => 'Şu {{PLURAL:$1|dosya|$1 dosya}}, bu dosyaya yönlendiriyor:',
 'duplicatesoffile'          => 'Şu {{PLURAL:$1|dosya|$1 dosya}}, bu dosyanın kopyası ([[Special:FileDuplicateSearch/$2|daha fazla ayrıntı]]):',
 'sharedupload'              => 'Bu dosya $1 deposundan ve diğer projelerde kullanılıyor olabilir.',
 'sharedupload-desc-there'   => 'Bu dosya $1 deposundan ve diğer projeler tarafından kullanılıyor olabilir. Daha fazla bilgi için lütfen [$2 dosya açıklama sayfasına] bakın.',
@@ -2163,7 +2150,6 @@ Bireysel haklarla ilgili [[{{MediaWiki:Listgrouprights-helppage}}|daha fazla bil
 'watchlistanontext'    => 'Lütfen izleme listenizdeki maddeleri görmek ya da değiştirmek için $1.',
 'watchnologin'         => 'Oturum açık değil.',
 'watchnologintext'     => 'İzleme listenizi değiştirebilmek için [[Special:UserLogin|oturum açmalısınız]].',
-'addedwatch'           => 'İzleme listesine kaydedildi.',
 'addedwatchtext'       => '"<nowiki>$1</nowiki>" adlı sayfa [[Special:Watchlist|izleme listenize]] kaydedildi.
 
 Gelecekte, bu sayfaya ve ilgili tartışma sayfasına yapılacak değişiklikler burada listelenecektir.
@@ -2171,7 +2157,6 @@ Gelecekte, bu sayfaya ve ilgili tartışma sayfasına yapılacak değişiklikler
 Kolayca seçilebilmeleri için de [[Special:RecentChanges|son değişiklikler listesi]] başlığı altında koyu harflerle listeleneceklerdir.
 
 Sayfayı izleme listenizden çıkarmak istediğinizde "sayfayı izlemeyi durdur" bağlantısına tıklayabilirsiniz.',
-'removedwatch'         => 'İzleme listenizden silindi',
 'removedwatchtext'     => '"[[:$1]]" sayfası [[Special:Watchlist|izleme listenizden]] silinmiştir.',
 'watch'                => 'İzle',
 'watchthispage'        => 'Sayfayı izle',
@@ -2223,7 +2208,7 @@ Bahsi geçen sayfayı ziyaret edinceye kadar sayfayla ilgili başka değişiklik
 
 --
 İzleme listesi ayarlarınızı değiştirmek için:
-{{fullurl:{{#special:Watchlist}}/edit}}
+{{fullurl:{{#special:EditWatchlist}}}}
 
 Sayfayı izleme listenizden silmek için:
 $UNWATCHURL
@@ -2245,7 +2230,7 @@ Geri bildirim ve daha fazla yardım için:
 Bu işlemden kaynaklı doğabilecek sonuçların farkında iseniz ve işlemin [[{{MediaWiki:Policy-url}}|Silme kurallarına]] uygun olduğuna eminseniz, işlemi onaylayın.',
 'actioncomplete'         => 'İşlem tamamlandı',
 'actionfailed'           => 'İşlem başarısız oldu',
-'deletedtext'            => '"<nowiki>$1</nowiki>" silindi.
+'deletedtext'            => '"$1" silindi.
 Yakın zamanda silinenleri görmek için: $2.',
 'deletedarticle'         => '"[[$1]]" silindi',
 'suppressedarticle'      => '"[[$1]]" bastırıldı',
@@ -2305,7 +2290,7 @@ Lütfen "geri" gidin ve geldiğiniz sayfayı yeniden yükleyin, sonra tekrar den
 'protect_expiry_invalid'      => 'Geçersiz bitiş tarihi.',
 'protect_expiry_old'          => 'Geçmişteki son kullanma zamanı.',
 'protect-unchain-permissions' => 'İleriki koruma seçeneklerinin kilidini kaldır',
-'protect-text'                => "'''<nowiki>$1</nowiki>''' sayfasının koruma durumunu buradan görebilir ve değiştirebilirsiniz.",
+'protect-text'                => "'''$1''' sayfasının koruma durumunu buradan görebilir ve değiştirebilirsiniz.",
 'protect-locked-blocked'      => "Engellenmiş iken koruma seviyelerini değiştiremezsiniz.
 '''$1''' sayfasının şu anki ayarları:",
 'protect-locked-dblock'       => "Aktif veritabanı kilidinden dolayı koruma seviyeleri değiştirilemez.
@@ -2862,9 +2847,7 @@ Geçici dosya kayıp.',
 'common.js' => '/* Buraya konulacak JavaScript kodu sitedeki her kullanıcı için her sayfa yüklendiğinde çalışacaktır */',
 
 # Metadata
-'nodublincore'      => 'Dublin Core RDF üstverisi bu sunucu için devre dışı bırakıldı.',
-'nocreativecommons' => 'Creative Commons RDF üstverisi bu sunucu için devre dışı bırakıldı.',
-'notacceptable'     => 'Bu viki sunucusu istemcinizin okuyabileceği formatta bir veri sağlayamıyor.',
+'notacceptable' => 'Bu viki sunucusu istemcinizin okuyabileceği formatta bir veri sağlayamıyor.',
 
 # Attribution
 'anonymous'        => '{{SITENAME}} sitesinin anonim {{PLURAL:$1|kullanıcısı|kullanıcıları}}',
@@ -2885,14 +2868,6 @@ Geçici dosya kayıp.',
 'spambot_username'    => 'Medyaviki spam temizleme',
 'spam_reverting'      => '$1 ile bağlantı içermeyen son sürüme geri dönülüyor',
 'spam_blanking'       => 'Tüm revizyonlar $1 sayfasına bağlantı içeriyor, boşaltılıyor',
-
-# Info page
-'infosubtitle'   => 'Sayfa için bilgi',
-'numedits'       => 'Değişiklik sayısı (sayfa): $1',
-'numtalkedits'   => 'Değişiklik sayısı (tartışma sayfası): $1',
-'numwatchers'    => 'izleyici sayısı: $1',
-'numauthors'     => 'Farklı yazar sayısı (sayfa): $1',
-'numtalkauthors' => 'Farklı yazar sayısı (tartışma sayfası): $1',
 
 # Skin names
 'skinname-standard'  => 'Klasik',

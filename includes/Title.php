@@ -1,14 +1,24 @@
 <?php
 /**
  * See title.txt
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
  * @file
  */
-
-/**
- * @deprecated This used to be a define, but was moved to
- * Title::GAID_FOR_UPDATE in 1.17. This will probably be removed in 1.18
- */
-define( 'GAID_FOR_UPDATE', Title::GAID_FOR_UPDATE );
 
 /**
  * Represents a title within MediaWiki.
@@ -242,13 +252,33 @@ class Title {
 	 */
 	public static function newFromRow( $row ) {
 		$t = self::makeTitle( $row->page_namespace, $row->page_title );
-
-		$t->mArticleID = isset( $row->page_id ) ? intval( $row->page_id ) : -1;
-		$t->mLength = isset( $row->page_len ) ? intval( $row->page_len ) : -1;
-		$t->mRedirect = isset( $row->page_is_redirect ) ? (bool)$row->page_is_redirect : null;
-		$t->mLatestID = isset( $row->page_latest ) ? intval( $row->page_latest ) : false;
-
+		$t->loadFromRow( $row );
 		return $t;
+	}
+
+	/**
+	 * Load Title object fields from a DB row.
+	 * If false is given, the title will be treated as non-existing.
+	 *
+	 * @param $row Object|false database row
+	 * @return void
+	 */
+	public function loadFromRow( $row ) {
+		if ( $row ) { // page found
+			if ( isset( $row->page_id ) )
+				$this->mArticleID = (int)$row->page_id;
+			if ( isset( $row->page_len ) )
+				$this->mLength = (int)$row->page_len;
+			if ( isset( $row->page_is_redirect ) )
+				$this->mRedirect = (bool)$row->page_is_redirect;
+			if ( isset( $row->page_latest ) )
+				$this->mLatestID = (int)$row->page_latest;
+		} else { // page not found
+			$this->mArticleID = 0;
+			$this->mLength = 0;
+			$this->mRedirect = false;
+			$this->mLatestID = 0;
+		}
 	}
 
 	/**
@@ -718,7 +748,8 @@ class Title {
 	 * @return String the prefixed title, with spaces
 	 */
 	public function getPrefixedText() {
-		if ( empty( $this->mPrefixedText ) ) { // FIXME: bad usage of empty() ?
+		// @todo FIXME: Bad usage of empty() ?
+		if ( empty( $this->mPrefixedText ) ) {
 			$s = $this->prefix( $this->mTextform );
 			$s = str_replace( '_', ' ', $s );
 			$this->mPrefixedText = $s;
@@ -741,7 +772,7 @@ class Title {
 	}
 
 	/**
-	 * Get the base name, i.e. the leftmost parts before the /
+	 * Get the base page name, i.e. the leftmost part before any slashes
 	 *
 	 * @return String Base name
 	 */
@@ -759,7 +790,7 @@ class Title {
 	}
 
 	/**
-	 * Get the lowest-level subpage name, i.e. the rightmost part after /
+	 * Get the lowest-level subpage name, i.e. the rightmost part after any slashes
 	 *
 	 * @return String Subpage name
 	 */
@@ -900,6 +931,7 @@ class Title {
 						}
 					}
 				}
+
 				if ( $url === false ) {
 					if ( $query == '-' ) {
 						$query = '';
@@ -908,7 +940,7 @@ class Title {
 				}
 			}
 
-			// FIXME: this causes breakage in various places when we
+			// @todo FIXME: This causes breakage in various places when we
 			// actually expected a local URL and end up with dupe prefixes.
 			if ( $wgRequest->getVal( 'action' ) == 'render' ) {
 				$url = $wgServer . $url;
@@ -1171,7 +1203,7 @@ class Title {
 	/**
 	 * Can $user perform $action on this page?
 	 *
-	 * FIXME: This *does not* check throttles (User::pingLimiter()).
+	 * @todo FIXME: This *does not* check throttles (User::pingLimiter()).
 	 *
 	 * @param $action String action that permission needs to be checked for
 	 * @param $user User to check
@@ -1207,34 +1239,33 @@ class Title {
 	 * @return Array list of errors
 	 */
 	private function checkQuickPermissions( $action, $user, $errors, $doExpensiveQueries, $short ) {
+		$ns = $this->getNamespace();
+		
 		if ( $action == 'create' ) {
-			if ( ( $this->isTalkPage() && !$user->isAllowed( 'createtalk' ) ) ||
-				 ( !$this->isTalkPage() && !$user->isAllowed( 'createpage' ) ) ) {
+			if ( ( $this->isTalkPage() && !$user->isAllowed( 'createtalk', $ns ) ) ||
+				 ( !$this->isTalkPage() && !$user->isAllowed( 'createpage', $ns ) ) ) {
 				$errors[] = $user->isAnon() ? array( 'nocreatetext' ) : array( 'nocreate-loggedin' );
 			}
 		} elseif ( $action == 'move' ) {
-			if ( !$user->isAllowed( 'move-rootuserpages' )
-					&& $this->mNamespace == NS_USER && !$this->isSubpage() ) {
+			if ( !$user->isAllowed( 'move-rootuserpages', $ns )
+					&& $ns == NS_USER && !$this->isSubpage() ) {
 				// Show user page-specific message only if the user can move other pages
 				$errors[] = array( 'cant-move-user-page' );
 			}
 
 			// Check if user is allowed to move files if it's a file
-			if ( $this->mNamespace == NS_FILE && !$user->isAllowed( 'movefile' ) ) {
+			if ( $ns == NS_FILE && !$user->isAllowed( 'movefile', $ns ) ) {
 				$errors[] = array( 'movenotallowedfile' );
 			}
 
-			if ( !$user->isAllowed( 'move' ) ) {
+			if ( !$user->isAllowed( 'move', $ns) ) {
 				// User can't move anything
-				global $wgGroupPermissions;
-				$userCanMove = false;
-				if ( isset( $wgGroupPermissions['user']['move'] ) ) {
-					$userCanMove = $wgGroupPermissions['user']['move'];
-				}
-				$autoconfirmedCanMove = false;
-				if ( isset( $wgGroupPermissions['autoconfirmed']['move'] ) ) {
-					$autoconfirmedCanMove = $wgGroupPermissions['autoconfirmed']['move'];
-				}
+
+				$userCanMove = in_array( 'move', User::getGroupPermissions( 
+					array( 'user' ), $ns ), true );
+				$autoconfirmedCanMove = in_array( 'move', User::getGroupPermissions( 
+					array( 'autoconfirmed' ), $ns ), true );
+
 				if ( $user->isAnon() && ( $userCanMove || $autoconfirmedCanMove ) ) {
 					// custom message if logged-in users without any special rights can move
 					$errors[] = array( 'movenologintext' );
@@ -1243,20 +1274,20 @@ class Title {
 				}
 			}
 		} elseif ( $action == 'move-target' ) {
-			if ( !$user->isAllowed( 'move' ) ) {
+			if ( !$user->isAllowed( 'move', $ns ) ) {
 				// User can't move anything
 				$errors[] = array( 'movenotallowed' );
-			} elseif ( !$user->isAllowed( 'move-rootuserpages' )
-					&& $this->mNamespace == NS_USER && !$this->isSubpage() ) {
+			} elseif ( !$user->isAllowed( 'move-rootuserpages', $ns )
+					&& $ns == NS_USER && !$this->isSubpage() ) {
 				// Show user page-specific message only if the user can move other pages
 				$errors[] = array( 'cant-move-to-user-page' );
 			}
-		} elseif ( !$user->isAllowed( $action ) ) {
+		} elseif ( !$user->isAllowed( $action, $ns ) ) {
 			// We avoid expensive display logic for quickUserCan's and such
 			$groups = false;
 			if ( !$short ) {
 				$groups = array_map( array( 'User', 'makeGroupLinkWiki' ),
-					User::getGroupsWithPermission( $action ) );
+					User::getGroupsWithPermission( $action, $ns ) );
 			}
 
 			if ( $groups ) {
@@ -1287,13 +1318,13 @@ class Title {
 		if ( is_array( $result ) && count( $result ) && !is_array( $result[0] ) ) {
 			// A single array representing an error
 			$errors[] = $result;
-		} else if ( is_array( $result ) && is_array( $result[0] ) ) {
+		} elseif ( is_array( $result ) && is_array( $result[0] ) ) {
 			// A nested array representing multiple errors
 			$errors = array_merge( $errors, $result );
-		} else if ( $result !== '' && is_string( $result ) ) {
+		} elseif ( $result !== '' && is_string( $result ) ) {
 			// A string representing a message-id
 			$errors[] = array( $result );
-		} else if ( $result === false ) {
+		} elseif ( $result === false ) {
 			// a generic "We don't want them to do that"
 			$errors[] = array( 'badaccess-group0' );
 		}
@@ -1380,9 +1411,9 @@ class Title {
 		if ( $action != 'patrol' && !$user->isAllowed( 'editusercssjs' )
 				&& !preg_match( '/^' . preg_quote( $user->getName(), '/' ) . '\//', $this->mTextform ) ) {
 			if ( $this->isCssSubpage() && !$user->isAllowed( 'editusercss' ) ) {
-				$errors[] = array( 'customcssjsprotected' );
-			} else if ( $this->isJsSubpage() && !$user->isAllowed( 'edituserjs' ) ) {
-				$errors[] = array( 'customcssjsprotected' );
+				$errors[] = array( 'customcssprotected' );
+			} elseif ( $this->isJsSubpage() && !$user->isAllowed( 'edituserjs' ) ) {
+				$errors[] = array( 'customjsprotected' );
 			}
 		}
 
@@ -1408,9 +1439,9 @@ class Title {
 			if ( $right == 'sysop' ) {
 				$right = 'protect';
 			}
-			if ( $right != '' && !$user->isAllowed( $right ) ) {
+			if ( $right != '' && !$user->isAllowed( $right, $this->mNamespace ) ) {
 				// Users with 'editprotected' permission can edit protected pages
-				if ( $action == 'edit' && $user->isAllowed( 'editprotected' ) ) {
+				if ( $action == 'edit' && $user->isAllowed( 'editprotected', $this->mNamespace ) ) {
 					// Users with 'editprotected' permission cannot edit protected pages
 					// with cascading option turned on.
 					if ( $this->mCascadeRestriction ) {
@@ -1451,7 +1482,7 @@ class Title {
 			if ( isset( $restrictions[$action] ) ) {
 				foreach ( $restrictions[$action] as $right ) {
 					$right = ( $right == 'sysop' ) ? 'protect' : $right;
-					if ( $right != '' && !$user->isAllowed( $right ) ) {
+					if ( $right != '' && !$user->isAllowed( $right, $this->mNamespace ) ) {
 						$pages = '';
 						foreach ( $cascadingSources as $page )
 							$pages .= '* [[:' . $page->getPrefixedText() . "]]\n";
@@ -1487,7 +1518,9 @@ class Title {
 				if( $title_protection['pt_create_perm'] == 'sysop' ) {
 					$title_protection['pt_create_perm'] = 'protect'; // B/C
 				}
-				if( $title_protection['pt_create_perm'] == '' || !$user->isAllowed( $title_protection['pt_create_perm'] ) ) {
+				if( $title_protection['pt_create_perm'] == '' || 
+						!$user->isAllowed( $title_protection['pt_create_perm'], 
+						$this->mNamespace ) ) {
 					$errors[] = array( 'titleprotected', User::whoIs( $title_protection['pt_user'] ), $title_protection['pt_reason'] );
 				}
 			}
@@ -1751,7 +1784,7 @@ class Title {
 				# Not a public wiki, so no shortcut
 				$useShortcut = false;
 			} elseif ( !empty( $wgRevokePermissions ) ) {
-				/*
+				/**
 				 * Iterate through each group with permissions being revoked (key not included since we don't care
 				 * what the group name is), then check if the read permission is being revoked. If it is, then
 				 * we don't use the shortcut below since the user might not be able to read, even though anon
@@ -2026,7 +2059,7 @@ class Title {
 
 		if ( isset( $this->mCascadeSources ) && $getPages ) {
 			return array( $this->mCascadeSources, $this->mCascadingRestrictions );
-		} else if ( isset( $this->mHasCascadingRestrictions ) && !$getPages ) {
+		} elseif ( isset( $this->mHasCascadingRestrictions ) && !$getPages ) {
 			return array( $this->mHasCascadingRestrictions, $pagerestrictions );
 		}
 
@@ -2312,20 +2345,37 @@ class Title {
 	/**
 	 * Is there a version of this page in the deletion archive?
 	 *
+	 * @param $includeSuppressed Boolean Include suppressed revisions?
 	 * @return Int the number of archived revisions
 	 */
-	public function isDeleted() {
+	public function isDeleted( $includeSuppressed = false ) {
 		if ( $this->getNamespace() < 0 ) {
 			$n = 0;
 		} else {
 			$dbr = wfGetDB( DB_SLAVE );
+			$conditions = array( 'ar_namespace' => $this->getNamespace(), 'ar_title' => $this->getDBkey() );
+
+			if( !$includeSuppressed ) {
+				$suppressedTextBits = REVISION::DELETED_TEXT | REVISION::DELETED_RESTRICTED;
+				$conditions[] = $dbr->bitAnd('ar_deleted', $suppressedTextBits ) .
+				' != ' . $suppressedTextBits;
+			}
+
 			$n = $dbr->selectField( 'archive', 'COUNT(*)',
-				array( 'ar_namespace' => $this->getNamespace(), 'ar_title' => $this->getDBkey() ),
+				$conditions,
 				__METHOD__
 			);
 			if ( $this->getNamespace() == NS_FILE ) {
-				$n += $dbr->selectField( 'filearchive', 'COUNT(*)',
-					array( 'fa_name' => $this->getDBkey() ),
+				$fconditions = array( 'fa_name' => $this->getDBkey() );
+				if( !$includeSuppressed ) {
+					$suppressedTextBits = FILE::DELETED_FILE | FILE::DELETED_RESTRICTED;
+					$fconditions[] = $dbr->bitAnd('fa_deleted', $suppressedTextBits ) .
+					' != ' . $suppressedTextBits;
+				}
+				
+				$n += $dbr->selectField( 'filearchive',
+					'COUNT(*)',
+					$fconditions,
 					__METHOD__
 				);
 			}
@@ -2599,7 +2649,7 @@ class Title {
 
 		# Initial colon indicates main namespace rather than specified default
 		# but should not create invalid {ns,title} pairs such as {0,Project:Foo}
-		if ( ':' == $dbkey { 0 } ) {
+		if ( ':' == $dbkey[0] ) {
 			$this->mNamespace = NS_MAIN;
 			$dbkey = substr( $dbkey, 1 ); # remove the colon but continue processing
 			$dbkey = trim( $dbkey, '_' ); # remove any subsequent whitespace
@@ -2621,7 +2671,7 @@ class Title {
 						if ( $wgContLang->getNsIndex( $x[1] ) ) {
 							# Disallow Talk:File:x type titles...
 							return false;
-						} else if ( Interwiki::isValidInterwiki( $x[1] ) ) {
+						} elseif ( Interwiki::isValidInterwiki( $x[1] ) ) {
 							# Disallow Talk:Interwiki:x type titles...
 							return false;
 						}
@@ -3088,14 +3138,14 @@ class Title {
 		}
 
 		$dbw->begin(); # If $file was a LocalFile, its transaction would have closed our own.
-		$pageid = $this->getArticleID( GAID_FOR_UPDATE );
+		$pageid = $this->getArticleID( self::GAID_FOR_UPDATE );
 		$protected = $this->isProtected();
 		$pageCountChange = ( $createRedirect ? 1 : 0 ) - ( $nt->exists() ? 1 : 0 );
 
 		// Do the actual move
 		$err = $this->moveToInternal( $nt, $reason, $createRedirect );
 		if ( is_array( $err ) ) {
-			# FIXME: What about the File we have already moved?
+			# @todo FIXME: What about the File we have already moved?
 			$dbw->rollback();
 			return $err;
 		}
@@ -3146,7 +3196,8 @@ class Title {
 			if ( $reason ) {
 				$comment .= wfMsgForContent( 'colon-separator' ) . $reason;
 			}
-			$log->addEntry( 'move_prot', $nt, $comment, array( $this->getPrefixedText() ) ); // FIXME: $params?
+			// @todo FIXME: $params?
+			$log->addEntry( 'move_prot', $nt, $comment, array( $this->getPrefixedText() ) );
 		}
 
 		# Update watchlists
@@ -3166,7 +3217,7 @@ class Title {
 		$u->doUpdate();
 
 		$dbw->commit();
-		
+
 		# Update site_stats
 		if ( $this->isContentPage() && !$nt->isContentPage() ) {
 			# No longer a content page
@@ -3278,9 +3329,6 @@ class Title {
 		}
 		$nullRevId = $nullRevision->insertOn( $dbw );
 
-		$article = new Article( $this );
-		wfRunHooks( 'NewRevisionFromEditComplete', array( $article, $nullRevision, $latest, $wgUser ) );
-
 		# Change the name of the target page:
 		$dbw->update( 'page',
 			/* SET */ array(
@@ -3293,6 +3341,9 @@ class Title {
 			__METHOD__
 		);
 		$nt->resetArticleID( $oldid );
+
+		$article = new Article( $nt );
+		wfRunHooks( 'NewRevisionFromEditComplete', array( $article, $nullRevision, $latest, $wgUser ) );
 
 		# Recreate the redirect, this time in the other direction.
 		if ( $createRedirect || !$wgUser->isAllowed( 'suppressredirect' ) ) {
@@ -3659,7 +3710,7 @@ class Title {
 	 * @return String: MW timestamp
 	 */
 	public function getEarliestRevTime( $flags = 0 ) {
-		$rev = $this->getFirstRevision( $flags );	
+		$rev = $this->getFirstRevision( $flags );
 		return $rev ? $rev->getTimestamp() : null;
 	}
 
@@ -4214,6 +4265,12 @@ class Title {
 	 */
 	public function getCategorySortkey( $prefix = '' ) {
 		$unprefixed = $this->getText();
+
+		// Anything that uses this hook should only depend
+		// on the Title object passed in, and should probably
+		// tell the users to run updateCollations.php --force
+		// in order to re-sort existing category relations.
+		wfRunHooks( 'GetDefaultSortkey', array( $this, &$unprefixed ) );
 		if ( $prefix !== '' ) {
 			# Separate with a line feed, so the unprefixed part is only used as
 			# a tiebreaker when two pages have the exact same prefix.
@@ -4223,6 +4280,37 @@ class Title {
 			return "$prefix\n$unprefixed";
 		}
 		return $unprefixed;
+	}
+
+	/**
+	 * Get the language in which the content of this page is written.
+	 * Defaults to $wgContLang, but in certain cases it can be e.g.
+	 * $wgLang (such as special pages, which are in the user language).
+	 *
+	 * @return object Language
+	 */
+	public function getPageLanguage() {
+		global $wgLang;
+		if ( $this->getNamespace() == NS_SPECIAL ) {
+			// special pages are in the user language
+			return $wgLang;
+		} elseif ( $this->isRedirect() ) {
+			// the arrow on a redirect page is aligned according to the user language
+			return $wgLang;
+		} elseif ( $this->isCssOrJsPage() ) {
+			// css/js should always be LTR and is, in fact, English
+			return wfGetLangObj( 'en' );
+		} elseif ( $this->getNamespace() == NS_MEDIAWIKI ) {
+			// Parse mediawiki messages with correct target language
+			list( /* $unused */, $lang ) = MessageCache::singleton()->figureMessage( $this->getText() );
+			return wfGetLangObj( $lang );
+		}
+		global $wgContLang;
+		// If nothing special, it should be in the wiki content language
+		$pageLang = $wgContLang;
+		// Hook at the end because we don't want to override the above stuff
+		wfRunHooks( 'PageContentLanguage', array( $this, &$pageLang, $wgLang ) );
+		return wfGetLangObj( $pageLang );
 	}
 }
 

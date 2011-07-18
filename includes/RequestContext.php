@@ -1,21 +1,111 @@
 <?php
 /**
- * Group all the pieces relevant to the context of a request into one instance
+ * Request-dependant objects containers.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
  *
  * @since 1.18
  *
- * @author IAlex
+ * @author Alexandre Emsenhuber
  * @author Daniel Friesen
  * @file
  */
 
-class RequestContext {
-	private $mRequest; // / WebRequest object
-	private $mTitle;   // / Title object
-	private $mOutput;  // / OutputPage object
-	private $mUser;    // / User object
-	private $mLang;    // / Language object
-	private $mSkin;    // / Skin object
+/**
+ * Interface for objects which can provide a context on request.
+ */
+interface IContextSource {
+
+	/**
+	 * Get the WebRequest object
+	 *
+	 * @return WebRequest
+	 */
+	public function getRequest();
+
+	/**
+	 * Get the Title object
+	 *
+	 * @return Title
+	 */
+	public function getTitle();
+
+	/**
+	 * Get the OutputPage object
+	 *
+	 * @return OutputPage object
+	 */
+	public function getOutput();
+
+	/**
+	 * Get the User object
+	 *
+	 * @return User
+	 */
+	public function getUser();
+
+	/**
+	 * Get the Language object
+	 *
+	 * @return Language
+	 */
+	public function getLang();
+
+	/**
+	 * Get the Skin object
+	 *
+	 * @return Skin
+	 */
+	public function getSkin();
+}
+
+/**
+ * Group all the pieces relevant to the context of a request into one instance
+ */
+class RequestContext implements IContextSource {
+
+	/**
+	 * @var WebRequest
+	 */
+	private $request;
+
+	/**
+	 * @var Title
+	 */
+	private $title;
+
+	/**
+	 * @var OutputPage
+	 */
+	private $output;
+
+	/**
+	 * @var User
+	 */
+	private $user;
+
+	/**
+	 * @var Language
+	 */
+	private $lang;
+
+	/**
+	 * @var Skin
+	 */
+	private $skin;
 
 	/**
 	 * Set the WebRequest object
@@ -23,7 +113,7 @@ class RequestContext {
 	 * @param $r WebRequest object
 	 */
 	public function setRequest( WebRequest $r ) {
-		$this->mRequest = $r;
+		$this->request = $r;
 	}
 
 	/**
@@ -32,11 +122,11 @@ class RequestContext {
 	 * @return WebRequest
 	 */
 	public function getRequest() {
-		if ( !isset( $this->mRequest ) ) {
+		if ( $this->request === null ) {
 			global $wgRequest; # fallback to $wg till we can improve this
-			$this->mRequest = $wgRequest;
+			$this->request = $wgRequest;
 		}
-		return $this->mRequest;
+		return $this->request;
 	}
 
 	/**
@@ -45,7 +135,7 @@ class RequestContext {
 	 * @param $t Title object
 	 */
 	public function setTitle( Title $t ) {
-		$this->mTitle = $t;
+		$this->title = $t;
 	}
 
 	/**
@@ -54,11 +144,18 @@ class RequestContext {
 	 * @return Title
 	 */
 	public function getTitle() {
-		if ( !isset( $this->mTitle ) ) {
+		if ( $this->title === null ) {
 			global $wgTitle; # fallback to $wg till we can improve this
-			$this->mTitle = $wgTitle;
+			$this->title = $wgTitle;
 		}
-		return $this->mTitle;
+		return $this->title;
+	}
+
+	/**
+	 * @param $o OutputPage
+	 */
+	public function setOutput( OutputPage $o ) {
+		$this->output = $o;
 	}
 
 	/**
@@ -67,10 +164,10 @@ class RequestContext {
 	 * @return OutputPage object
 	 */
 	public function getOutput() {
-		if ( !isset( $this->mOutput ) ) {
-			$this->mOutput = new OutputPage( $this );
+		if ( $this->output === null ) {
+			$this->output = new OutputPage( $this );
 		}
-		return $this->mOutput;
+		return $this->output;
 	}
 
 	/**
@@ -79,7 +176,7 @@ class RequestContext {
 	 * @param $u User
 	 */
 	public function setUser( User $u ) {
-		$this->mUser = $u;
+		$this->user = $u;
 	}
 
 	/**
@@ -88,13 +185,19 @@ class RequestContext {
 	 * @return User
 	 */
 	public function getUser() {
-		if ( !isset( $this->mUser ) ) {
-			global $wgCommandLineMode;
-			$this->mUser = $wgCommandLineMode
-				? new User
-				: User::newFromSession( $this->getRequest() );
+		if ( $this->user === null ) {
+			$this->user = User::newFromSession( $this->getRequest() );
 		}
-		return $this->mUser;
+		return $this->user;
+	}
+
+	/**
+	 * Set the Language object
+	 *
+	 * @param $l Language
+	 */
+	public function setLang( Language $l ) {
+		$this->lang = $l;
 	}
 
 	/**
@@ -103,7 +206,7 @@ class RequestContext {
 	 * @return Language
 	 */
 	public function getLang() {
-		if ( !isset( $this->mLang ) ) {
+		if ( $this->lang === null ) {
 			global $wgLanguageCode, $wgContLang;
 			$code = $this->getRequest()->getVal(
 				'uselang',
@@ -113,21 +216,31 @@ class RequestContext {
 			$code = strtolower( $code );
 
 			# Validate $code
-			if ( empty( $code ) || !Language::isValidCode( $code ) || ( $code === 'qqq' ) ) {
+			if( empty( $code ) || !Language::isValidCode( $code ) || ( $code === 'qqq' ) ) {
 				wfDebug( "Invalid user language code\n" );
 				$code = $wgLanguageCode;
 			}
 
 			wfRunHooks( 'UserGetLanguageObject', array( $this->getUser(), &$code ) );
 
-			if ( $code === $wgLanguageCode ) {
-				$this->mLang = $wgContLang;
+			if( $code === $wgLanguageCode ) {
+				$this->lang = $wgContLang;
 			} else {
 				$obj = Language::factory( $code );
-				$this->mLang = $obj;
+				$this->lang = $obj;
 			}
 		}
-		return $this->mLang;
+		return $this->lang;
+	}
+
+	/**
+	 * Set the Skin object
+	 *
+	 * @param $s Skin
+	 */
+	public function setSkin( Skin $s ) {
+		$this->skin = clone $s;
+		$this->skin->setContext( $this );
 	}
 
 	/**
@@ -136,11 +249,11 @@ class RequestContext {
 	 * @return Skin
 	 */
 	public function getSkin() {
-		if ( !isset( $this->mSkin ) ) {
+		if ( $this->skin === null ) {
 			wfProfileIn( __METHOD__ . '-createskin' );
-
+			
 			global $wgHiddenPrefs;
-			if ( !in_array( 'skin', $wgHiddenPrefs ) ) {
+			if( !in_array( 'skin', $wgHiddenPrefs ) ) {
 				# get the user skin
 				$userSkin = $this->getUser()->getOption( 'skin' );
 				$userSkin = $this->getRequest()->getVal( 'useskin', $userSkin );
@@ -150,11 +263,11 @@ class RequestContext {
 				$userSkin = $wgDefaultSkin;
 			}
 
-			$this->mSkin = Skin::newFromKey( $userSkin );
-			$this->mSkin->setContext( $this );
+			$this->skin = Skin::newFromKey( $userSkin );
+			$this->skin->setContext( $this );
 			wfProfileOut( __METHOD__ . '-createskin' );
 		}
-		return $this->mSkin;
+		return $this->skin;
 	}
 
 	/** Helpful methods **/
@@ -167,7 +280,7 @@ class RequestContext {
 	 */
 	public function msg() {
 		$args = func_get_args();
-		return call_user_func_array( 'wfMessage', $args )->inLanguage( $this->getLang() );
+		return call_user_func_array( 'wfMessage', $args )->inLanguage( $this->getLang() )->title( $this->getTitle() );
 	}
 
 	/** Static methods **/
@@ -179,31 +292,108 @@ class RequestContext {
 	 */
 	public static function getMain() {
 		static $instance = null;
-		if ( !isset( $instance ) ) {
+		if ( $instance === null ) {
 			$instance = new self;
 		}
 		return $instance;
 	}
-
-	/**
-	 * Make these C#-style accessors, so you can do $context->user->getName() which is
-	 * internally mapped to $context->__get('user')->getName() which is mapped to
-	 * $context->getUser()->getName()
-	 */
-	public function __get( $name ) {
-		if ( in_array( $name, array( 'request', 'title', 'output', 'user', 'lang', 'skin' ) ) ) {
-			$fname = 'get' . ucfirst( $name );
-			return $this->$fname();
-		}
-		trigger_error( "Undefined property {$name}", E_NOTICE );
-	}
-
-	public function __set( $name, $value ) {
-		if ( in_array( $name, array( 'request', 'title', 'output', 'user', 'lang', 'skin' ) ) ) {
-			$fname = 'set' . ucfirst( $name );
-			return $this->$fname( $value );
-		}
-		trigger_error( "Undefined property {$name}", E_NOTICE );
-	}
 }
 
+/**
+ * The simplest way of implementing IContextSource is to hold a RequestContext as a
+ * member variable and provide accessors to it.
+ */
+abstract class ContextSource implements IContextSource {
+
+	/**
+	 * @var RequestContext
+	 */
+	private $context;
+
+	/**
+	 * Get the RequestContext object
+	 *
+	 * @return RequestContext
+	 */
+	public function getContext() {
+		if ( $this->context === null ) {
+			$class = get_class( $this );
+			wfDebug( __METHOD__  . " ($class): called and \$context is null. Using RequestContext::getMain() for sanity\n" );
+			$this->context = RequestContext::getMain();
+		}
+		return $this->context;
+	}
+
+	/**
+	 * Set the RequestContext object
+	 *
+	 * @param $context RequestContext
+	 */
+	public function setContext( RequestContext $context ) {
+		$this->context = $context;
+	}
+
+	/**
+	 * Get the WebRequest object
+	 *
+	 * @return WebRequest
+	 */
+	public function getRequest() {
+		return $this->getContext()->getRequest();
+	}
+
+	/**
+	 * Get the Title object
+	 *
+	 * @return Title
+	 */
+	public function getTitle() {
+		return $this->getContext()->getTitle();
+	}
+
+	/**
+	 * Get the OutputPage object
+	 *
+	 * @return OutputPage object
+	 */
+	public function getOutput() {
+		return $this->getContext()->getOutput();
+	}
+
+	/**
+	 * Get the User object
+	 *
+	 * @return User
+	 */
+	public function getUser() {
+		return $this->getContext()->getUser();
+	}
+
+	/**
+	 * Get the Language object
+	 *
+	 * @return Language
+	 */
+	public function getLang() {
+		return $this->getContext()->getLang();
+	}
+
+	/**
+	 * Get the Skin object
+	 *
+	 * @return Skin
+	 */
+	public function getSkin() {
+		return $this->getContext()->getSkin();
+	}
+
+	/**
+	 * Get a Message object with context set
+	 * Parameters are the same as wfMessage()
+	 *
+	 * @return Message object
+	 */
+	public function msg( /* $args */ ) {
+		return call_user_func_array( array( $this->getContext(), 'msg' ), func_get_args() );
+	}
+}

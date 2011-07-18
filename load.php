@@ -23,20 +23,18 @@
  *
  */
 
-// We want error messages to not be interpreted as CSS or JS
-function wfDie( $msg = '' ) {
-	header( $_SERVER['SERVER_PROTOCOL'] . ' 500 MediaWiki configuration Error', true, 500 );
-	echo "/* $msg */";
-	die( 1 );
+// Bail if PHP is too low
+if ( !function_exists( 'version_compare' ) || version_compare( phpversion(), '5.2.3' ) < 0 ) {
+	require( dirname( __FILE__ ) . '/includes/PHPVersionError.php' );
+	wfPHPVersionError( 'load.php' );
 }
 
-// Die on unsupported PHP versions
-if( !function_exists( 'version_compare' ) || version_compare( phpversion(), '5.2.3' ) < 0 ){
-	$version = htmlspecialchars( $wgVersion );
-	wfDie( "MediaWiki $version requires at least PHP version 5.2.3." );
+if ( isset( $_SERVER['MW_COMPILED'] ) ) {
+	require ( 'phase3/includes/WebStart.php' );
+} else {
+	require ( dirname( __FILE__ ) . '/includes/WebStart.php' );
 }
 
-require ( dirname( __FILE__ ) . '/includes/WebStart.php' );
 wfProfileIn( 'load.php' );
 
 // URL safety checks

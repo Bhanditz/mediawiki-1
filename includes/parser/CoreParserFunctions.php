@@ -269,27 +269,30 @@ class CoreParserFunctions {
 
 	/**
 	 * @param $parser Parser
-	 * @param $user User
+	 * @param $username string
 	 * @return
 	 */
-	static function gender( $parser, $user ) {
+	static function gender( $parser, $username ) {
 		wfProfileIn( __METHOD__ );
 		$forms = array_slice( func_get_args(), 2);
+
+		$username = trim( $username );
 
 		// default
 		$gender = User::getDefaultOption( 'gender' );
 
 		// allow prefix.
-		$title = Title::newFromText( $user );
+		$title = Title::newFromText( $username );
 
-		if ( is_object( $title ) && $title->getNamespace() == NS_USER )
-			$user = $title->getText();
+		if ( $title && $title->getNamespace() == NS_USER ) {
+			$username = $title->getText();
+		}
 
 		// check parameter, or use the ParserOptions if in interface message
-		$user = User::newFromName( $user );
+		$user = User::newFromName( $username );
 		if ( $user ) {
 			$gender = $user->getOption( 'gender' );
-		} elseif ( $parser->getOptions()->getInterfaceMessage() ) {
+		} elseif ( $username === '' && $parser->getOptions()->getInterfaceMessage() ) {
 			$gender = $parser->getOptions()->getUser()->getOption( 'gender' );
 		}
 		$ret = $parser->getFunctionLang()->gender( $gender, $forms );
@@ -442,10 +445,11 @@ class CoreParserFunctions {
 			return '';
 		return wfUrlencode( $t->getSubjectNsText() );
 	}
-	/*
+
+	/**
 	 * Functions to get and normalize pagenames, corresponding to the magic words
 	 * of the same names
-	*/
+	 */
 	static function pagename( $parser, $title = null ) {
 		$t = Title::newFromText( $title );
 		if ( is_null( $t ) )
@@ -549,9 +553,9 @@ class CoreParserFunctions {
 	 * Return the size of the given page, or 0 if it's nonexistent.  This is an
 	 * expensive parser function and can't be called too many times per page.
 	 *
-	 * @todo Fixme: This doesn't work correctly on preview for getting the size
+	 * @todo FIXME: This doesn't work correctly on preview for getting the size
 	 *   of the current page.
-	 * @todo Fixme: Title::getLength() documentation claims that it adds things
+	 * @todo FIXME: Title::getLength() documentation claims that it adds things
 	 *   to the link cache, so the local cache here should be unnecessary, but
 	 *   in fact calling getLength() repeatedly for the same $page does seem to
 	 *   run one query for each call?
@@ -593,10 +597,25 @@ class CoreParserFunctions {
 		return implode( $restrictions, ',' );
 	}
 
-	static function language( $parser, $arg = '' ) {
+	/**
+	 * Gives language names.
+	 * @param $parser Parser
+	 * @param $code String  Language code
+	 * @param $language String  Language code
+	 * @return String
+	 */
+	static function language( $parser, $code = '', $language = '' ) {
 		global $wgContLang;
-		$lang = $wgContLang->getLanguageName( strtolower( $arg ) );
-		return $lang != '' ? $lang : $arg;
+		$code = strtolower( $code );
+		$language = strtolower( $language );
+
+		if ( $language !== '' ) {
+			$names = Language::getTranslatedLanguageNames( $language );
+			return isset( $names[$code] ) ? $names[$code] : wfBCP47( $code );
+		}
+
+		$lang = $wgContLang->getLanguageName( $code );
+		return $lang !== '' ? $lang : wfBCP47( $code );
 	}
 
 	/**

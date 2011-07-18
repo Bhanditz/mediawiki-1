@@ -145,10 +145,8 @@ abstract class ApiFormatBase extends ApiBase {
 		if ( is_null( $mime ) ) {
 			return; // skip any initialization
 		}
-		
-		if( !$this->getMain()->isInternalMode() ) {
-			header( "Content-Type: $mime; charset=utf-8" );
-		}
+
+		$this->getMain()->getRequest()->response()->header( "Content-Type: $mime; charset=utf-8" );
 
 		if ( $isHtml ) {
 ?>
@@ -267,7 +265,7 @@ See <a href='http://www.mediawiki.org/wiki/API'>complete documentation</a>, or
 		// encode all comments or tags as safe blue strings
 		$text = preg_replace( '/\&lt;(!--.*?--|.*?)\&gt;/', '<span style="color:blue;">&lt;\1&gt;</span>', $text );
 		// identify URLs
-		$protos = implode( "|", $wgUrlProtocols );
+		$protos = wfUrlProtocols();
 		// This regex hacks around bug 13218 (&quot; included in the URL)
 		$text = preg_replace( "#(($protos).*?)(&quot;)?([ \\'\"<>\n]|&lt;|&gt;|&quot;)#", '<a href="\\1">\\1</a>\\3\\4', $text );
 		// identify requests to api.php
@@ -294,6 +292,10 @@ See <a href='http://www.mediawiki.org/wiki/API'>complete documentation</a>, or
 
 	protected function getExamples() {
 		return 'api.php?action=query&meta=siteinfo&siprop=namespaces&format=' . $this->getModuleName();
+	}
+
+	public function getHelpUrls() {
+		return 'http://www.mediawiki.org/wiki/API:Data_formats';
 	}
 
 	public function getDescription() {

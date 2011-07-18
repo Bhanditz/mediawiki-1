@@ -31,7 +31,7 @@ function wfGetForwardedFor() {
 	#Try a couple of headers
 	if( isset( $set[$index] ) ) {
 		return $set[$index];
-	} else if( isset( $set[$index2] ) ) {
+	} elseif( isset( $set[$index2] ) ) {
 		return $set[$index2];
 	} else {
 		return null;
@@ -41,9 +41,12 @@ function wfGetForwardedFor() {
 /**
  * Returns the browser/OS data from the request header
  * Note: headers are spoofable
+ *
+ * @deprecated in 1.19; use $wgRequest->getHeader( 'User-Agent' ) instead.
  * @return string
  */
 function wfGetAgent() {
+	wfDeprecated( __FUNCTION__ );
 	if( function_exists( 'apache_request_headers' ) ) {
 		// More reliable than $_SERVER due to case and -/_ folding
 		$set = array();
@@ -77,8 +80,6 @@ function wfGetIP() {
 		return $ip;
 	}
 
-	$ipchain = array();
-
 	/* collect the originating ips */
 	# Client connecting to this webserver
 	if ( isset( $_SERVER['REMOTE_ADDR'] ) ) {
@@ -86,30 +87,29 @@ function wfGetIP() {
 	} elseif( $wgCommandLineMode ) {
 		$ip = '127.0.0.1';
 	}
-	if( $ip ) {
-		$ipchain[] = $ip;
-	}
 
-	# Append XFF on to $ipchain
+	# Append XFF
 	$forwardedFor = wfGetForwardedFor();
-	if ( isset( $forwardedFor ) ) {
-		$xff = array_map( 'trim', explode( ',', $forwardedFor ) );
-		$xff = array_reverse( $xff );
-		$ipchain = array_merge( $ipchain, $xff );
-	}
+	if ( $forwardedFor !== null ) {
+		$ipchain = array_map( 'trim', explode( ',', $forwardedFor ) );
+		$ipchain = array_reverse( $ipchain );
+		if ( $ip ) {
+			array_unshift( $ipchain, $ip );
+		}
 
-	# Step through XFF list and find the last address in the list which is a trusted server
-	# Set $ip to the IP address given by that trusted server, unless the address is not sensible (e.g. private)
-	foreach ( $ipchain as $i => $curIP ) {
-		$curIP = IP::canonicalize( $curIP );
-		if ( wfIsTrustedProxy( $curIP ) ) {
-			if ( isset( $ipchain[$i + 1] ) ) {
-				if( $wgUsePrivateIPs || IP::isPublic( $ipchain[$i + 1 ] ) ) {
-					$ip = $ipchain[$i + 1];
+		# Step through XFF list and find the last address in the list which is a trusted server
+		# Set $ip to the IP address given by that trusted server, unless the address is not sensible (e.g. private)
+		foreach ( $ipchain as $i => $curIP ) {
+			$curIP = IP::canonicalize( $curIP );
+			if ( wfIsTrustedProxy( $curIP ) ) {
+				if ( isset( $ipchain[$i + 1] ) ) {
+					if( $wgUsePrivateIPs || IP::isPublic( $ipchain[$i + 1 ] ) ) {
+						$ip = $ipchain[$i + 1];
+					}
 				}
+			} else {
+				break;
 			}
-		} else {
-			break;
 		}
 	}
 
@@ -179,46 +179,3 @@ function wfProxyCheck() {
 		$wgMemc->set( $mcKey, 1, $wgProxyMemcExpiry );
 	}
 }
-
-/**
- * Convert a network specification in CIDR notation to an integer network and a number of bits
- *
- * @deprecated Call IP::parseCIDR() directly, will be removed in 1.19
- * @return array(string, int)
- */
-function wfParseCIDR( $range ) {
-	wfDeprecated( __FUNCTION__ );
-	return IP::parseCIDR( $range );
-}
-
-/**
- * Check if an IP address is in the local proxy list
- * @return bool
- */
-function wfIsLocallyBlockedProxy( $ip ) {
-	global $wgProxyList;
-
-	if ( !$wgProxyList ) {
-		return false;
-	}
-	wfProfileIn( __METHOD__ );
-
-	if ( !is_array( $wgProxyList ) ) {
-		# Load from the specified file
-		$wgProxyList = array_map( 'trim', file( $wgProxyList ) );
-	}
-
-	if ( !is_array( $wgProxyList ) ) {
-		$ret = false;
-	} elseif ( array_search( $ip, $wgProxyList ) !== false ) {
-		$ret = true;
-	} elseif ( array_key_exists( $ip, $wgProxyList ) ) {
-		# Old-style flipped proxy list
-		$ret = true;
-	} else {
-		$ret = false;
-	}
-	wfProfileOut( __METHOD__ );
-	return $ret;
-}
-

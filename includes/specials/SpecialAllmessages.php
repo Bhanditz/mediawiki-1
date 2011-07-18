@@ -34,8 +34,6 @@ class SpecialAllmessages extends SpecialPage {
 	 */
 	protected $table;
 
-	protected $filter, $prefix, $langCode;
-
 	/**
 	 * Constructor
 	 */
@@ -73,85 +71,15 @@ class SpecialAllmessages extends SpecialPage {
 			wfGetLangObj( $request->getVal( 'lang', $par ) )
 		);
 
-		$this->langCode = $this->table->lang->getCode();
+		$this->langcode = $this->table->lang->getCode();
 
-		$out->addHTML( $this->buildForm() .
+		$out->addHTML( $this->table->buildForm() .
 			$this->table->getNavigationBar() .
-			$this->table->getLimitForm() .
 			$this->table->getBody() .
 			$this->table->getNavigationBar() );
 
 	}
 
-	function buildForm() {
-		global $wgScript;
-
-		$languages = Language::getLanguageNames( false );
-		ksort( $languages );
-
-		$out  = Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript, 'id' => 'mw-allmessages-form' ) ) .
-			Xml::fieldset( wfMsg( 'allmessages-filter-legend' ) ) .
-			Html::hidden( 'title', $this->getTitle()->getPrefixedText() ) .
-			Xml::openElement( 'table', array( 'class' => 'mw-allmessages-table' ) ) . "\n" .
-			'<tr>
-				<td class="mw-label">' .
-					Xml::label( wfMsg( 'allmessages-prefix' ), 'mw-allmessages-form-prefix' ) .
-				"</td>\n
-				<td class=\"mw-input\">" .
-					Xml::input( 'prefix', 20, str_replace( '_', ' ', $this->prefix ), array( 'id' => 'mw-allmessages-form-prefix' ) ) .
-				"</td>\n
-			</tr>
-			<tr>\n
-				<td class='mw-label'>" .
-					wfMsg( 'allmessages-filter' ) .
-				"</td>\n
-				<td class='mw-input'>" .
-					Xml::radioLabel( wfMsg( 'allmessages-filter-unmodified' ),
-						'filter',
-						'unmodified',
-						'mw-allmessages-form-filter-unmodified',
-						( $this->filter == 'unmodified' )
-					) .
-					Xml::radioLabel( wfMsg( 'allmessages-filter-all' ),
-						'filter',
-						'all',
-						'mw-allmessages-form-filter-all',
-						( $this->filter == 'all' )
-					) .
-					Xml::radioLabel( wfMsg( 'allmessages-filter-modified' ),
-						'filter',
-						'modified',
-						'mw-allmessages-form-filter-modified',
-					( $this->filter == 'modified' )
-				) .
-				"</td>\n
-			</tr>
-			<tr>\n
-				<td class=\"mw-label\">" .
-					Xml::label( wfMsg( 'allmessages-language' ), 'mw-allmessages-form-lang' ) .
-				"</td>\n
-				<td class=\"mw-input\">" .
-					Xml::openElement( 'select', array( 'id' => 'mw-allmessages-form-lang', 'name' => 'lang' ) );
-
-		foreach( $languages as $lang => $name ) {
-			$selected = $lang == $this->langCode;
-			$out .= Xml::option( $lang . ' - ' . $name, $lang, $selected ) . "\n";
-		}
-		$out .= Xml::closeElement( 'select' ) .
-				"</td>\n
-			</tr>
-			<tr>\n
-				<td></td>
-				<td>" .
-					Xml::submitButton( wfMsg( 'allmessages-filter-submit' ) ) .
-				"</td>\n
-			</tr>" .
-			Xml::closeElement( 'table' ) .
-			$this->table->getHiddenFields( array( 'title', 'prefix', 'filter', 'lang' ) ) .
-			Xml::closeElement( 'fieldset' ) .
-			Xml::closeElement( 'form' );
-		return $out;
-	}
 }
 
 /**
@@ -160,12 +88,9 @@ class SpecialAllmessages extends SpecialPage {
  */
 class AllmessagesTablePager extends TablePager {
 
-	public $mLimitsShown;
+	protected $filter, $prefix, $langcode, $displayPrefix;
 
-	/**
-	 * @var Skin
-	 */
-	protected $mSkin;
+	public $mLimitsShown;
 
 	/**
 	 * @var Language
@@ -202,11 +127,12 @@ class AllmessagesTablePager extends TablePager {
 		$prefix = $wgLang->ucfirst( $wgRequest->getVal( 'prefix', '' ) );
 		$prefix = $prefix != '' ? Title::makeTitleSafe( NS_MEDIAWIKI, $wgRequest->getVal( 'prefix', null ) ) : null;
 		if( $prefix !== null ){
-			$this->prefix = '/^' . preg_quote( $prefix->getDBkey() ) . '/i';
+			$this->displayPrefix = $prefix->getDBkey();
+			$this->prefix = '/^' . preg_quote( $this->displayPrefix ) . '/i';
 		} else {
+			$this->displayPrefix = false;
 			$this->prefix = false;
 		}
-		$this->getSkin();
 
 		// The suffix that may be needed for message names if we're in a
 		// different language (eg [[MediaWiki:Foo/fr]]: $suffix = '/fr'
@@ -215,6 +141,85 @@ class AllmessagesTablePager extends TablePager {
 		} else {
 			$this->suffix = '';
 		}
+	}
+
+	function buildForm() {
+		global $wgScript;
+
+		$languages = Language::getLanguageNames( false );
+		ksort( $languages );
+
+		$out  = Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript, 'id' => 'mw-allmessages-form' ) ) .
+			Xml::fieldset( wfMsg( 'allmessages-filter-legend' ) ) .
+			Html::hidden( 'title', $this->getTitle()->getPrefixedText() ) .
+			Xml::openElement( 'table', array( 'class' => 'mw-allmessages-table' ) ) . "\n" .
+			'<tr>
+				<td class="mw-label">' .
+					Xml::label( wfMsg( 'allmessages-prefix' ), 'mw-allmessages-form-prefix' ) .
+				"</td>\n
+				<td class=\"mw-input\">" .
+					Xml::input( 'prefix', 20, str_replace( '_', ' ', $this->displayPrefix ), array( 'id' => 'mw-allmessages-form-prefix' ) ) .
+				"</td>\n
+			</tr>
+			<tr>\n
+				<td class='mw-label'>" .
+					wfMsg( 'allmessages-filter' ) .
+				"</td>\n
+				<td class='mw-input'>" .
+					Xml::radioLabel( wfMsg( 'allmessages-filter-unmodified' ),
+						'filter',
+						'unmodified',
+						'mw-allmessages-form-filter-unmodified',
+						( $this->filter == 'unmodified' )
+					) .
+					Xml::radioLabel( wfMsg( 'allmessages-filter-all' ),
+						'filter',
+						'all',
+						'mw-allmessages-form-filter-all',
+						( $this->filter == 'all' )
+					) .
+					Xml::radioLabel( wfMsg( 'allmessages-filter-modified' ),
+						'filter',
+						'modified',
+						'mw-allmessages-form-filter-modified',
+					( $this->filter == 'modified' )
+				) .
+				"</td>\n
+			</tr>
+			<tr>\n
+				<td class=\"mw-label\">" .
+					Xml::label( wfMsg( 'allmessages-language' ), 'mw-allmessages-form-lang' ) .
+				"</td>\n
+				<td class=\"mw-input\">" .
+					Xml::openElement( 'select', array( 'id' => 'mw-allmessages-form-lang', 'name' => 'lang' ) );
+
+		foreach( $languages as $lang => $name ) {
+			$selected = $lang == $this->langcode;
+			$out .= Xml::option( $lang . ' - ' . $name, $lang, $selected ) . "\n";
+		}
+		$out .= Xml::closeElement( 'select' ) .
+				"</td>\n
+			</tr>" .
+
+			'<tr>
+				<td class="mw-label">' .
+					Xml::label( wfMsg( 'table_pager_limit_label'), 'mw-table_pager_limit_label' ) .
+				'</td>
+				<td class="mw-input">' .
+					$this->getLimitSelect() .
+				'</td>
+			<tr>
+				<td></td>
+				<td>' .
+					Xml::submitButton( wfMsg( 'allmessages-filter-submit' ) ) .
+				"</td>\n
+			</tr>" .
+
+			Xml::closeElement( 'table' ) .
+			$this->getHiddenFields( array( 'title', 'prefix', 'filter', 'lang', 'limit' ) ) .
+			Xml::closeElement( 'fieldset' ) .
+			Xml::closeElement( 'form' );
+		return $out;
 	}
 
 	function getAllMessages( $descending ) {
@@ -268,7 +273,7 @@ class AllmessagesTablePager extends TablePager {
 				} elseif( isset( $xNames[$s->page_title] ) ) {
 					$pageFlags[$s->page_title] = true;
 				}
-			} else if( $s->page_namespace == NS_MEDIAWIKI_TALK ){
+			} elseif( $s->page_namespace == NS_MEDIAWIKI_TALK ){
 				$talkFlags[$s->page_title] = true;
 			}
 		}
@@ -340,9 +345,9 @@ class AllmessagesTablePager extends TablePager {
 				$talk  = Title::makeTitle( NS_MEDIAWIKI_TALK, $value . $this->suffix );
 
 				if( $this->mCurrentRow->am_customised ){
-					$title = $this->mSkin->linkKnown( $title, $wgLang->lcfirst( $value ) );
+					$title = Linker::linkKnown( $title, $wgLang->lcfirst( $value ) );
 				} else {
-					$title = $this->mSkin->link(
+					$title = Linker::link(
 						$title,
 						$wgLang->lcfirst( $value ),
 						array(),
@@ -351,9 +356,9 @@ class AllmessagesTablePager extends TablePager {
 					);
 				}
 				if ( $this->mCurrentRow->am_talk_exists ) {
-					$talk = $this->mSkin->linkKnown( $talk , $this->talk );
+					$talk = Linker::linkKnown( $talk , $this->talk );
 				} else {
-					$talk = $this->mSkin->link(
+					$talk = Linker::link(
 						$talk,
 						$this->talk,
 						array(),
@@ -400,7 +405,9 @@ class AllmessagesTablePager extends TablePager {
 	}
 
 	function getCellAttrs( $field, $value ){
-		if( $this->mCurrentRow->am_customised && $field == 'am_title' ){
+		if( $field != 'am_title' ) {
+			return array( 'lang' => $this->langcode, 'dir' => $this->lang->getDir() );
+		} elseif( $this->mCurrentRow->am_customised && $field == 'am_title' ) {
 			return array( 'rowspan' => '2', 'class' => $field );
 		} else {
 			return array( 'class' => $field );

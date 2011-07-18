@@ -59,11 +59,11 @@ class FileDuplicateSearchPage extends QueryPage {
 
 	/**
 	 *
-	 * @param Array of File objects $dupes
+	 * @param $dupes Array of File objects
 	 */
 	function showList( $dupes ) {
-		global $wgUser, $wgOut;
-		$skin = $wgUser->getSkin();
+		global $wgOut;
+		$skin = $this->getSkin();
 
 		$html = array();
 		$html[] = $this->openList( 0 );
@@ -91,7 +91,7 @@ class FileDuplicateSearchPage extends QueryPage {
 	}
 
 	function execute( $par ) {
-		global $wgRequest, $wgOut, $wgLang, $wgContLang, $wgScript;
+		global $wgRequest, $wgOut, $wgLang, $wgScript;
 
 		$this->setHeaders();
 		$this->outputHeader();
@@ -118,7 +118,7 @@ class FileDuplicateSearchPage extends QueryPage {
 
 		if( $this->file ) {
 			$this->hash = $this->file->getSha1();
-		} else {
+		} elseif( $this->filename !== '' ) {
 			$wgOut->wrapWikiMsg(
 				"<p class='mw-fileduplicatesearch-noresults'>\n$1\n</p>",
 				array( 'fileduplicatesearch-noresults', wfEscapeWikiText( $this->filename ) )
@@ -126,14 +126,12 @@ class FileDuplicateSearchPage extends QueryPage {
 		}
 
 		if( $this->hash != '' ) {
-			$align = $wgContLang->alignEnd();
-
 			# Show a thumbnail of the file
 			$img = $this->file;
 			if ( $img ) {
 				$thumb = $img->transform( array( 'width' => 120, 'height' => 120 ) );
 				if( $thumb ) {
-					$wgOut->addHTML( '<div style="float:' . $align . '" id="mw-fileduplicatesearch-icon">' .
+					$wgOut->addHTML( '<div class="mw-float-end" id="mw-fileduplicatesearch-icon">' .
 						$thumb->toHtml( array( 'desc-link' => false ) ) . '<br />' .
 						wfMsgExt( 'fileduplicatesearch-info', array( 'parse' ),
 							$wgLang->formatNum( $img->getWidth() ),

@@ -305,9 +305,9 @@ class LanguageConverter {
 	 * If you want to parse rules, try to use convert() or
 	 * convertTo().
 	 *
-	 * @param $text String: the text to be converted
-	 * @param $toVariant String: the target language code
-	 * @return String: the converted text
+	 * @param $text String the text to be converted
+	 * @param $toVariant bool|string the target language code
+	 * @return String the converted text
 	 */
 	public function autoConvert( $text, $toVariant = false ) {
 		wfProfileIn( __METHOD__ );
@@ -320,10 +320,6 @@ class LanguageConverter {
 				wfProfileOut( __METHOD__ );
 				return $text;
 			}
-		}
-
-		if( $this->guessVariant( $text, $toVariant ) ) {
-			return $text;
 		}
 
 		/* we convert everything except:
@@ -472,7 +468,7 @@ class LanguageConverter {
 	 *
 	 * @param $text String: the text to be converted
 	 * @return Array: variant => converted text
-	 * @deprecated Use autoConvertToAllVariants() instead
+	 * @deprecated since 1.17 Use autoConvertToAllVariants() instead
 	 */
 	public function convertLinkToAllVariants( $text ) {
 		return $this->autoConvertToAllVariants( $text );
@@ -481,7 +477,7 @@ class LanguageConverter {
 	/**
 	 * Apply manual conversion rules.
 	 *
-	 * @param $convRule Object: Object of ConverterRule
+	 * @param $convRule ConverterRule Object of ConverterRule
 	 */
 	protected function applyManualConv( $convRule ) {
 		// Use syntax -{T|zh-cn:TitleCN; zh-tw:TitleTw}- to custom
@@ -521,7 +517,7 @@ class LanguageConverter {
 	 * Auto convert a Title object to a readable string in the
 	 * preferred variant.
 	 *
-	 * @param $title Object: a object of Title
+	 * @param $title Title a object of Title
 	 * @return String: converted title text
 	 */
 	public function convertTitle( $title ) {
@@ -531,9 +527,9 @@ class LanguageConverter {
 			$text = '';
 		} else {
 			// first let's check if a message has given us a converted name
-			$nsConvKey = 'conversion-ns' . $index;
-			if ( !wfEmptyMsg( $nsConvKey ) ) {
-				$text = wfMsgForContentNoTrans( $nsConvKey );
+			$nsConvMsg = wfMessage( 'conversion-ns' . $index )->inContentLanguage();
+			if ( $nsConvMsg->exists() ) {
+				$text = $nsConvMsg->plain();
 			} else {
 				// the message does not exist, try retrieve it from the current
 				// variant's namespace names.
@@ -575,7 +571,7 @@ class LanguageConverter {
 	 */
 	public function convertTo( $text, $variant ) {
 		global $wgDisableLangConversion;
-		if ( $wgDisableLangConversion || $this->guessVariant( $text, $variant ) ) {
+		if ( $wgDisableLangConversion ) {
 			return $text;
 		}
 		return $this->recursiveConvertTopLevel( $text, $variant );
@@ -622,7 +618,9 @@ class LanguageConverter {
 	 *
 	 * @param $text String: text to be converted
 	 * @param $variant String: the target variant code
+	 * @param $startPos int
 	 * @param $depth Integer: depth of recursion
+	 *
 	 * @return String: converted text
 	 */
 	protected function recursiveConvertRule( $text, $variant, &$startPos, $depth = 0 ) {
@@ -766,24 +764,12 @@ class LanguageConverter {
 
 	/**
 	 * Returns language specific hash options.
+	 *
+	 * @return string
 	 */
 	public function getExtraHashOptions() {
 		$variant = $this->getPreferredVariant();
 		return '!' . $variant;
-	}
-
-	/**
-	 * Guess if a text is written in a variant. This should be implemented in subclasses.
-	 *
-	 * @param string	$text the text to be checked
-	 * @param string	$variant language code of the variant to be checked for
-	 * @return bool	true if $text appears to be written in $variant, false if not
-	 *
-	 * @author Nikola Smolenski <smolensk@eunet.rs>
-	 * @since 1.18
-	 */
-	public function guessVariant($text, $variant) {
-		return false;
 	}
 
 	/**
@@ -794,7 +780,7 @@ class LanguageConverter {
 	 */
 	function loadDefaultTables() {
 		$name = get_class( $this );
-		wfDie( "Must implement loadDefaultTables() method in class $name" );
+		throw new MWException( "Must implement loadDefaultTables() method in class $name" );
 	}
 
 	/**
@@ -870,6 +856,8 @@ class LanguageConverter {
 	 * @param $code String: language code
 	 * @param $subpage String: subpage name
 	 * @param $recursive Boolean: parse subpages recursively? Defaults to true.
+	 *
+	 * @return array
 	 */
 	function parseCachedTable( $code, $subpage = '', $recursive = true ) {
 		static $parsed = array();
@@ -885,7 +873,7 @@ class LanguageConverter {
 		if ( strpos( $code, '/' ) === false ) {
 			$txt = MessageCache::singleton()->get( 'Conversiontable', true, $code );
 			if ( $txt === false ) {
-				# FIXME: this method doesn't seem to be expecting
+				# @todo FIXME: This method doesn't seem to be expecting
 				# this possible outcome...
 				$txt = '&lt;Conversiontable&gt;';
 			}
@@ -989,6 +977,10 @@ class LanguageConverter {
 	/**
 	 * Convert the sorting key for category links. This should make different
 	 * keys that are variants of each other map to the same key.
+	 *
+	 * @param $key string
+	 *
+	 * @return string
 	 */
 	function convertCategoryKey( $key ) {
 		return $key;
@@ -999,7 +991,7 @@ class LanguageConverter {
 	 * MediaWiki:Conversiontable* is updated.
 	 * @private
 	 *
-	 * @param $article Object: Article object
+	 * @param $article Article object
 	 * @param $user Object: User object for the current user
 	 * @param $text String: article text (?)
 	 * @param $summary String: edit summary of the edit
@@ -1233,6 +1225,8 @@ class ConverterRule {
 
 	/**
 	 * @private
+	 *
+	 * @return string
 	 */
 	function getRulesDesc() {
 		$codesep = $this->mConverter->mDescCodeSep;
@@ -1253,6 +1247,10 @@ class ConverterRule {
 	/**
 	 * Parse rules conversion.
 	 * @private
+	 *
+	 * @param $variant
+	 *
+	 * @return string
 	 */
 	function getRuleConvertedStr( $variant ) {
 		$bidtable = $this->mBidtable;
@@ -1462,6 +1460,7 @@ class ConverterRule {
 
 	/**
 	 * Get display text on markup -{...}-
+	 * @return string
 	 */
 	public function getDisplay() {
 		return $this->mRuleDisplay;
@@ -1469,6 +1468,7 @@ class ConverterRule {
 
 	/**
 	 * Get converted title.
+	 * @return string
 	 */
 	public function getTitle() {
 		return $this->mRuleTitle;
@@ -1476,6 +1476,7 @@ class ConverterRule {
 
 	/**
 	 * Return how deal with conversion rules.
+	 * @return string
 	 */
 	public function getRulesAction() {
 		return $this->mRulesAction;
@@ -1484,6 +1485,7 @@ class ConverterRule {
 	/**
 	 * Get conversion table. (bidirectional and unidirectional
 	 * conversion table)
+	 * @return array
 	 */
 	public function getConvTable() {
 		return $this->mConvTable;
@@ -1491,6 +1493,7 @@ class ConverterRule {
 
 	/**
 	 * Get conversion rules string.
+	 * @return string
 	 */
 	public function getRules() {
 		return $this->mRules;
@@ -1498,6 +1501,7 @@ class ConverterRule {
 
 	/**
 	 * Get conversion flags.
+	 * @return array
 	 */
 	public function getFlags() {
 		return $this->mFlags;

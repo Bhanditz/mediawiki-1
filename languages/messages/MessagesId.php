@@ -8,6 +8,7 @@
  * @file
  *
  * @author -iNu-
+ * @author ArdWar
  * @author Bennylin
  * @author Borgx
  * @author Farras
@@ -453,15 +454,6 @@ $messages = array(
 'noindex-category'               => 'Halaman yang tidak diindeks',
 'broken-file-category'           => 'Halaman dengan gambar rusak',
 
-'mainpagetext'      => "'''MediaWiki telah terpasang dengan sukses'''.",
-'mainpagedocfooter' => 'Silakan baca [http://www.mediawiki.org/wiki/Help:Contents/id Panduan Pengguna] untuk cara penggunaan perangkat lunak wiki ini.
-
-== Memulai penggunaan ==
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings/id Daftar pengaturan konfigurasi]
-* [http://www.mediawiki.org/wiki/Manual:FAQ/id Daftar pertanyaan yang sering diajukan mengenai MediaWiki]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Milis rilis MediaWiki]',
-
 'about'         => 'Tentang',
 'article'       => 'Halaman isi',
 'newwindow'     => '(buka di jendela baru)',
@@ -512,7 +504,6 @@ $messages = array(
 'history'           => 'Versi terdahulu halaman',
 'history_short'     => 'Versi terdahulu',
 'updatedmarker'     => 'diubah sejak kunjungan terakhir saya',
-'info_short'        => 'Informasi',
 'printableversion'  => 'Versi cetak',
 'permalink'         => 'Pranala permanen',
 'print'             => 'Cetak',
@@ -706,7 +697,6 @@ Untuk terjemahan, harap gunakan [http://translatewiki.net/wiki/Main_Page?setlang
 'cascadeprotected'     => 'Halaman ini telah dilindungi dari penyuntingan karena disertakan di {{PLURAL:$1|halaman|halaman-halaman}} berikut yang telah dilindungi dengan opsi "runtun":
 $2',
 'namespaceprotected'   => "Anda tak memiliki hak akses untuk menyunting halaman di ruang nama '''$1'''.",
-'customcssjsprotected' => 'Anda tak memiliki hak menyunting halaman ini karena mengandung pengaturan pribadi pengguna lain.',
 'ns-specialprotected'  => 'Halaman pada ruang nama {{ns:special}} tidak dapat disunting.',
 'titleprotected'       => "Judul ini dilindungi dari pembuatan oleh [[User:$1|$1]].
 Alasan yang diberikan adalah ''$2''.",
@@ -762,7 +752,7 @@ Pastikan Anda telah mengaktifkan kuki, lalu muat ulang halaman ini dan coba lagi
 'nosuchuser'                 => 'Tidak ada pengguna dengan nama "$1".
 Nama pengguna membedakan kapitalisasi.
 Periksa kembali ejaan Anda, atau [[Special:UserLogin/signup|buat akun baru]].',
-'nosuchusershort'            => 'Tidak ada pengguna dengan nama "<nowiki>$1</nowiki>".
+'nosuchusershort'            => 'Tidak ada pengguna dengan nama "$1".
 Silakan periksa kembali ejaan Anda.',
 'nouserspecified'            => 'Anda harus memasukkan nama pengguna.',
 'login-userblocked'          => 'Pengguna ini diblokir. Tidak diizinkan/diperbolehkan untuk masuk log.',
@@ -954,11 +944,11 @@ Jika Anda adalah seorang pengguna anonim dan merasa mendapatkan komentar-komenta
 Anda dapat [[Special:Search/{{PAGENAME}}|melakukan pencarian untuk judul halaman ini]] di halaman-halaman lain, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} mencari log terkait], atau [{{fullurl:{{FULLPAGENAME}}|action=edit}} menyunting halaman ini]</span>.',
 'noarticletext-nopermission'       => 'Saat ini tidak ada teks di halaman ini.
 Anda dapat [[Special:Search/{{PAGENAME}}|melakukan pencarian untuk judul halaman ini]] di halaman-halaman lain, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} mencari log terkait], atau [{{fullurl:{{FULLPAGENAME}}|action=edit}} menyunting halaman ini]</span>.',
-'userpage-userdoesnotexist'        => 'Akun pengguna "$1" tidak terdaftar.',
+'userpage-userdoesnotexist'        => 'Akun pengguna "<nowiki>$1</nowiki>" tidak terdaftar.',
 'userpage-userdoesnotexist-view'   => 'Pengguna "$1" tidak terdaftar.',
 'blocked-notice-logextract'        => 'Pengguna ini sedang diblokir.
 Entri log pemblokiran terakhir tersedia di bawah ini sebagai rujukan.',
-'clearyourcache'                   => "'''Catatan:''' Setelah menyimpan preferensi, Anda mungkin perlu membersihkan singgahan penjelajah web Anda untuk melihat perubahan. '''Mozilla / Firefox / Safari:''' tekan ''Ctrl-R'' (''Cmd-R'' pada Macintosh);
+'clearyourcache'                   => "'''Catatan:''' Setelah menyimpan preferensi, Anda mungkin perlu membersihkan singgahan penjelajah web Anda untuk melihat perubahan. '''Mozilla / Firefox / Safari:''' tekan ''Ctrl-R'' (''Cmd-R'' pada Mac);
 '''Konqueror:''': tekan ''F5'';
 '''Opera''' bersihkan singgahan melalui menu ''Tools → Preferences'';
 '''Internet Explorer:''' tekan ''Ctrl-F5''.",
@@ -1345,7 +1335,9 @@ Perlu diingat bahwa indeks Google untuk konten {{SITENAME}} mungkin belum mencak
 'prefs-skin'                    => 'Kulit',
 'skin-preview'                  => 'Pratayang',
 'datedefault'                   => 'Tak ada preferensi',
+'prefs-beta'                    => 'Fitur Beta',
 'prefs-datetime'                => 'Tanggal dan waktu',
+'prefs-labs'                    => 'Fitur Labs',
 'prefs-personal'                => 'Profil',
 'prefs-rc'                      => 'Perubahan terbaru',
 'prefs-watchlist'               => 'Pemantauan',
@@ -1378,7 +1370,7 @@ Berikut ini adalah nilai acak yang dapat Anda gunakan: $1',
 'savedprefs'                    => 'Preferensi Anda telah disimpan',
 'timezonelegend'                => 'Zona waktu:',
 'localtime'                     => 'Waktu setempat:',
-'timezoneuseserverdefault'      => 'Gunakan standar server',
+'timezoneuseserverdefault'      => 'Gunakan bawaan wiki ($1)',
 'timezoneuseoffset'             => 'Lainnya (tentukan perbedaannya)',
 'timezoneoffset'                => 'Perbedaan¹:',
 'servertime'                    => 'Waktu server:',
@@ -1705,6 +1697,7 @@ Lihat [[Special:NewFiles|galeri berkas baru]] untuk tampilan visual.',
 'large-file'                  => 'Ukuran berkas disarankan untuk tidak melebihi $1 bita; berkas ini berukuran $2 bita.',
 'largefileserver'             => 'Berkas ini lebih besar dari pada yang diizinkan server.',
 'emptyfile'                   => 'Berkas yang Anda muatkan kelihatannya kosong. Hal ini mungkin disebabkan karena adanya kesalahan ketik pada nama berkas. Silakan pastikan apakah Anda benar-benar ingin memuatkan berkas ini.',
+'windows-nonascii-filename'   => 'Wiki ini tidak mendukung nama berkas dengan karakter istimewa.',
 'fileexists'                  => "Suatu berkas dengan nama tersebut telah ada, harap periksa '''<tt>[[:$1]]</tt>''' jika Anda tidak yakin untuk mengubahnya.
 [[$1|thumb]]",
 'filepageexists'              => "Halaman deskripsi untuk berkas ini telah dibuat di '''<tt>[[:$1]]</tt>''', tapi saat ini tak ditemukan berkas dengan nama tersebut. Ringkasan yang Anda masukkan tidak akan tampil pada halaman deskripsi. Untuk memunculkannya, Anda perlu untuk menyuntingnya secara manual.
@@ -1748,10 +1741,6 @@ Penggunggahan berkas Java tidak diperbolehkan karena dapat menyebabkan pengabaia
 'upload-options'              => 'Opsi pengunggahan',
 'watchthisupload'             => 'Pantau berkas ini',
 'filewasdeleted'              => 'Suatu berkas dengan nama ini pernah dimuat dan selanjutnya dihapus. Harap cek $1 sebelum memuat lagi berkas tersebut.',
-'upload-wasdeleted'           => "'''Peringatan: Anda memuat suatu berkas yang telah pernah dihapus.'''
-
-Anda harus mempertimbangkan apakah perlu untuk melanjutkan pemuatan berkas ini.
-Log penghapusan berkas adalah sebagai berikut:",
 'filename-bad-prefix'         => "Nama berkas yang Anda muat diawali dengan '''\"\$1\"''', yang merupakan nama non-deskriptif yang biasanya diberikan secara otomatis oleh kamera digital. Harap pilih nama lain yang lebih deskriptif untuk berkas Anda.",
 'upload-success-subj'         => 'Berhasil dimuat',
 'upload-success-msg'          => 'Pengunggahan Anda dari [$2] berhasil. Hasilnya tersedia di sini: [[:{{ns:file}}:$1]]',
@@ -1871,7 +1860,7 @@ Daftar berikut menampilkan {{PLURAL:$1|halaman dengan pranala langsung|$1 halama
 Juga tersedia [[Special:WhatLinksHere/$2|daftar selengkapnya]].',
 'nolinkstoimage'            => 'Tidak ada halaman yang memiliki pranala ke berkas ini.',
 'morelinkstoimage'          => 'Lihat [[Special:WhatLinksHere/$1|pranala lainnya]] ke berkas ini.',
-'redirectstofile'           => 'Berkas berikut {{PLURAL:$1|dialihkan|$1 dialihkan}} ke berkas ini:',
+'linkstoimage-redirect'     => '$1 (pengalihan berkas) $2',
 'duplicatesoffile'          => '{{PLURAL:$1|Ada satu berkas yang|Sebanyak $1 berkas berikut}} merupakan duplikat dari berkas ini ([[Special:FileDuplicateSearch/$2|rincian lebih lanjut]]):',
 'sharedupload'              => 'Berkas ini berasal dari $1 dan mungkin digunakan oleh proyek-proyek lain.',
 'sharedupload-desc-there'   => 'Berkas ini berasal dari $1 dan mungkin digunakan oleh proyek-proyek lain.
@@ -2193,10 +2182,8 @@ Alamat surel yang Anda masukkan di [[Special:Preferences|preferensi akun Anda]] 
 'watchlistanontext'    => 'Silakan $1 untuk melihat atau menyunting daftar pantauan Anda.',
 'watchnologin'         => 'Belum masuk log',
 'watchnologintext'     => 'Anda harus [[Special:UserLogin|masuk log]] untuk mengubah daftar pantauan Anda.',
-'addedwatch'           => 'Telah ditambahkan ke daftar pantauan',
 'addedwatchtext'       => "Halaman \"[[:\$1]]\" telah ditambahkan ke [[Special:Watchlist|daftar pantauan]] Anda.
 Perubahan-perubahan berikutnya pada halaman tersebut dan halaman pembicaraan terkaitnya akan tercantum di sini, dan halaman itu akan ditampilkan '''tebal''' pada [[Special:RecentChanges|daftar perubahan terbaru]] agar lebih mudah terlihat.",
-'removedwatch'         => 'Telah dihapus dari daftar pantauan',
 'removedwatchtext'     => 'Halaman "[[:$1]]" telah dihapus dari [[Special:Watchlist|daftar pantauan]] Anda.',
 'watch'                => 'Pantau',
 'watchthispage'        => 'Pantau halaman ini',
@@ -2217,8 +2204,9 @@ Perubahan-perubahan berikutnya pada halaman tersebut dan halaman pembicaraan ter
 'watchlist-options'    => 'Opsi daftar pantauan',
 
 # Displayed when you click the "watch" button and it is in the process of watching
-'watching'   => 'Memantau...',
-'unwatching' => 'Menghilangkan pemantauan...',
+'watching'       => 'Memantau...',
+'unwatching'     => 'Menghilangkan pemantauan...',
+'watcherrortext' => 'Terjadi kesalahan saat mengubah preferensi daftar pantauan Anda untuk " $1 ".',
 
 'enotif_mailer'                => 'Pengirim Notifikasi {{SITENAME}}',
 'enotif_reset'                 => 'Tandai semua halaman sebagai telah dikunjungi',
@@ -2253,7 +2241,7 @@ Untuk mengubah setelan pemberitahuan surel, kunjungi
 {{fullurl:{{#special:Preferences}}}}
 
 Untuk mengubah setelan daftar pantauan, kunjungi
-{{fullurl:{{#special:Watchlist}}/edit}}
+{{fullurl:{{#special:EditWatchlist}}}}
 
 Untuk menghapus halaman dari daftar pantauan, kunjungi
 $UNWATCHURL
@@ -2274,7 +2262,7 @@ Umpan balik dan bantuan lebih lanjut:
 'confirmdeletetext'      => 'Anda akan menghapus halaman atau berkas ini secara permanen berikut semua sejarahnya dari basis data. Pastikan bahwa Anda memang ingin melakukannya, mengetahui segala akibatnya, dan apa yang Anda lakukan ini adalah sejalan dengan [[{{MediaWiki:Policy-url}}|kebijakan {{SITENAME}}]].',
 'actioncomplete'         => 'Proses selesai',
 'actionfailed'           => 'Eksekusi gagal',
-'deletedtext'            => '"<nowiki>$1</nowiki>" telah dihapus. Lihat $2 untuk log terkini halaman yang telah dihapus.',
+'deletedtext'            => '"$1" telah dihapus. Lihat $2 untuk log terkini halaman yang telah dihapus.',
 'deletedarticle'         => 'menghapus "[[$1]]"',
 'suppressedarticle'      => '"[[$1]]" disembunyikan',
 'dellogpage'             => 'Log penghapusan',
@@ -2330,7 +2318,7 @@ Lihat [[Special:ProtectedPages|daftar halaman yang dilindungi]] untuk daftar ter
 'protect_expiry_invalid'      => 'Waktu kedaluwarsa tidak sah.',
 'protect_expiry_old'          => 'Waktu kedaluwarsa adalah pada masa lampau.',
 'protect-unchain-permissions' => 'Aktifkan opsi pelindungan lanjutan',
-'protect-text'                => "Anda dapat melihat atau mengganti tingkatan pelindungan untuk halaman '''<nowiki>$1</nowiki>''' di sini.",
+'protect-text'                => "Anda dapat melihat atau mengganti tingkatan pelindungan untuk halaman '''$1''' di sini.",
 'protect-locked-blocked'      => "Anda tak dapat mengganti tingkat pelindungan selagi diblokir. Berikut adalah konfigurasi saat ini untuk halaman '''$1''':",
 'protect-locked-dblock'       => "Tingkat pelindungan tak dapat diganti karena aktifnya penguncian basis data. Berikut adalah konfigurasi saat ini untuk halaman '''$1''':",
 'protect-locked-access'       => "Akun Anda tidak dapat memiliki hak untuk mengganti tingkat pelindungan halaman. Berikut adalah konfigurasi saat ini untuk halaman '''$1''':",
@@ -2380,9 +2368,8 @@ Lihat [[Special:ProtectedPages|daftar halaman yang dilindungi]] untuk daftar ter
 'viewdeletedpage'              => 'Pembatalan penghapusan',
 'undeletepagetext'             => '{{PLURAL:$1|Halaman berikut|Sejumlah $1 halaman}} telah dihapus tapi masih ada di dalam arsip dan dapat dikembalikan. Arsip tersebut mungkin akan dibersihkan secara berkala.',
 'undelete-fieldset-title'      => 'Mengembalikan revisi',
-'undeleteextrahelp'            => "Untuk mengembalikan seluruh revisi-revisi terdahulu halaman, biarkan seluruh kotak cek tidak terpilih dan klik '''''Kembalikan'''''.
-Untuk melakukan pengembalian selektif, cek kotak revisi yang diinginkan dan klik '''''Kembalikan'''''.
-Menekan tombol '''''Reset''''' akan mengosongkan isian komentar dan semua kotak cek.",
+'undeleteextrahelp'            => "Untuk mengembalikan seluruh versi terdahulu halaman, biarkan semua kotak cek tidak terpilih dan klik '''''{{int:undeletebtn}}'''''.
+Untuk melakukan pengembalian selektif, cek kotak revisi yang sesuai dengan revisi yang ingin dikembalikan, dan klik '''''{{int:undeletebtn}}'''''.",
 'undeleterevisions'            => '$1 {{PLURAL:$1|revisi|revisi}} diarsipkan',
 'undeletehistory'              => 'Jika Anda mengembalikan halaman tersebut, semua revisi juga akan dikembalikan ke dalam daftar versi terdahulu halaman.
 Jika sebuah halaman baru dengan nama yang sama telah dibuat sejak penghapusan, revisi-revisi yang dikembalikan tersebut akan ditampilkan dalam daftar versi terdahulu.',
@@ -2454,6 +2441,7 @@ Catatan log pemblokiran terakhir tersedia di bawah ini sebagai rujukan:',
 'sp-contributions-username'            => 'Alamat IP atau nama pengguna:',
 'sp-contributions-toponly'             => 'Tampilkan hanya revisi teratas',
 'sp-contributions-submit'              => 'Cari',
+'sp-contributions-showsizediff'        => 'Tampilkan beda dalam ukuran halaman',
 
 # What links here
 'whatlinkshere'            => 'Pranala balik',
@@ -2559,8 +2547,8 @@ Lihat [[Special:IPBlockList|Daftar IP]] untuk meninjau kembali pemblokiran.',
 'autoblocker'                     => 'Diblokir secara otomatis karena alamat IP Anda digunakan oleh "[[User:$1|$1]]".
 Alasan yang diberikan untuk pemblokiran $1 adalah: "$2"',
 'blocklogpage'                    => 'Log pemblokiran',
-'blocklog-showlog'                => 'Pengguna ini telah diblokir sebelumnya. Log pemblokiran di sediakan dibawah untuk referensi:',
-'blocklog-showsuppresslog'        => 'Pengguna ini telah diblokir dan disembunyikan sebelumnya. Log penekanan disediakan dibawah untuk referensi:',
+'blocklog-showlog'                => 'Pengguna ini telah diblokir sebelumnya. Log pemblokiran disediakan di bawah untuk referensi:',
+'blocklog-showsuppresslog'        => 'Pengguna ini telah diblokir dan disembunyikan sebelumnya. Log supresi disediakan di bawah untuk referensi:',
 'blocklogentry'                   => 'memblokir [[$1]] dengan waktu kedaluwarsa $2 $3',
 'reblock-logentry'                => 'mengubah pemblokiran [[$1]] dengan waktu kedaluwarsa $2 $3',
 'blocklogtext'                    => 'Di bawah ini adalah log pemblokiran dan pembukaan blokir terhadap pengguna.
@@ -2615,6 +2603,7 @@ Pastikan Anda [[Special:UnlockDB|membuka kuncinya]] setelah pemeliharaan selesai
 'unlockdbsuccesstext' => 'Kunci basis data telah dibuka.',
 'lockfilenotwritable' => 'Berkas kunci basis data tidak dapat ditulis. Untuk mengunci atau membuka basis data, berkas ini harus dapat ditulis oleh server web.',
 'databasenotlocked'   => 'Basis data tidak terkunci.',
+'lockedbyandtime'     => '(oleh $1 pada $2 $3)',
 
 # Move page
 'move-page'                    => 'Pindahkan $1',
@@ -2695,9 +2684,9 @@ Halaman yang dituju, "[[:$1]]", telah mempunyai isi. Apakah Anda hendak menghapu
 'fix-double-redirects'         => 'Perbaiki semua pengalihan ganda yang mungkin terjadi',
 'move-leave-redirect'          => 'Buat pengalihan ke judul baru',
 'protectedpagemovewarning'     => "'''Peringatan''': Halaman ini telah dikunci sehingga hanya pengguna dengan hak akses pengurus yang bisa memindahkannya.
-Entri catatan terakhir disediakan dibawah untuk referensi:",
+Entri catatan terakhir disediakan di bawah untuk referensi:",
 'semiprotectedpagemovewarning' => "'''Catatan:''' Halaman ini telah dikunci sehingga hanya pengguna terdaftar yang dapat memindahkannya.
-Entri catatan terakhir disediakan dibawah untuk referensi:",
+Entri catatan terakhir disediakan di bawah untuk referensi:",
 'move-over-sharedrepo'         => '== Berkas sudah ada ==
 
 [[:$1]] sudah ada pada penyimpanan bersama. Memindahkan berkas ke judul ini akan menimpa berkas bersama.',
@@ -2894,9 +2883,7 @@ Simpan ke komputer Anda dan unggah ke sini.',
 'vector.js'      => '/* Semua JavaScript di sini akan dimuatkan untuk para pengguna yang menggunakan kulit Vector */',
 
 # Metadata
-'nodublincore'      => 'Metadata Dublin Core RDF dimatikan di server ini.',
-'nocreativecommons' => 'Metadata Creative Commons RDF dimatikan di server ini.',
-'notacceptable'     => 'Server wiki tidak dapat menyediakan data dalam format yang dapat dibaca oleh client Anda.',
+'notacceptable' => 'Server wiki tidak dapat menyediakan data dalam format yang dapat dibaca oleh client Anda.',
 
 # Attribution
 'anonymous'        => '{{PLURAL:$1|pengguna|para pengguna}} anonim {{SITENAME}}',
@@ -2918,14 +2905,6 @@ Ini mungkin disebabkan oleh pranala ke situs luar yang termasuk dalam daftar hit
 'spambot_username'    => 'Pembersihan span MediaWiki',
 'spam_reverting'      => 'Mengembalikan ke versi terakhir yang tak memiliki pranala ke $1',
 'spam_blanking'       => 'Semua revisi yang memiliki pranala ke $1, pengosongan',
-
-# Info page
-'infosubtitle'   => 'Informasi halaman',
-'numedits'       => 'Jumlah suntingan (halaman): $1',
-'numtalkedits'   => 'Jumlah suntingan (halaman pembicaraan): $1',
-'numwatchers'    => 'Jumlah pengamat: $1',
-'numauthors'     => 'Jumlah pengarang yang berbeda (halaman): $1',
-'numtalkauthors' => 'Jumlah pengarang yang berbeda (halaman pembicaraan): $1',
 
 # Skin names
 'skinname-standard' => 'Klasik',
@@ -2973,6 +2952,7 @@ Jika dijalankan, sistem Anda akan berisiko terserang.",
 'widthheightpage'        => '$1×$2, $3 {{PLURAL:$3|halaman|halaman}}',
 'file-info'              => 'ukuran berkas: $1, tipe MIME: $2',
 'file-info-size'         => '$1 × $2 piksel, ukuran berkas: $3, tipe MIME: $4',
+'file-info-size-pages'   => '$1 × $2 piksel, ukuran berkas: $3, jenis MIME: $4, $5 {{PLURAL:$5|halaman|halaman}}',
 'file-nohires'           => '<small>Tak tersedia resolusi yang lebih tinggi.</small>',
 'svg-long-desc'          => 'Berkas SVG, nominal $1 × $2 piksel, besar berkas: $3',
 'show-big-image'         => 'Resolusi penuh',
@@ -3210,6 +3190,9 @@ Data lain akan disembunyikan secara bawaan.
 
 # EXIF attributes
 'exif-compression-1' => 'Tak terkompresi',
+'exif-compression-2' => 'CCITT Group 3 1-Dimensional Modified Huffman RLE',
+'exif-compression-3' => 'CCITT Group 3 fax encoding',
+'exif-compression-4' => 'CCITT Group 4 fax encoding',
 
 'exif-copyrighted-true'  => 'Berhak cipta',
 'exif-copyrighted-false' => 'Domain publik',
@@ -3750,5 +3733,20 @@ Keterangan tampilan:
 # SQLite database support
 'sqlite-has-fts' => '$1 dengan dukungan pencarian teks lengkap',
 'sqlite-no-fts'  => '$1 tanpa dukungan pencarian teks lengkap',
+
+# Add categories per AJAX
+'ajax-add-category'            => 'Tambah kategori',
+'ajax-add-category-submit'     => 'Tambah',
+'ajax-confirm-title'           => 'Konfirmasi aksi',
+'ajax-confirm-prompt'          => 'Anda dapat menambahkan ringkasan suntingan di bawah.
+Tekan "Simpan" untuk menyimpan suntingan Anda.',
+'ajax-confirm-save'            => 'Simpan',
+'ajax-add-category-summary'    => 'Tambah kategori "$1"',
+'ajax-remove-category-summary' => 'Hapus kategori "$1"',
+'ajax-confirm-actionsummary'   => 'Aksi yang dilakukan:',
+'ajax-error-title'             => 'Kesalahan',
+'ajax-error-dismiss'           => 'OK',
+'ajax-remove-category-error'   => 'Tidak mungkin menghapus kategori ini.
+Biasanya karena kategori di tambahkan kehalaman melalui templat.',
 
 );

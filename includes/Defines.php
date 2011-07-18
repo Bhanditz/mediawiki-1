@@ -85,16 +85,6 @@ define( 'NS_IMAGE', NS_FILE );
 define( 'NS_IMAGE_TALK', NS_FILE_TALK );
 /**@}*/
 
-/**
- * Available feeds objects
- * Should probably only be defined when a page is syndicated ie when
- * $wgOut->isSyndicated() is true
- */
-$wgFeedClasses = array(
-	'rss' => 'RSSFeed',
-	'atom' => 'AtomFeed',
-);
-
 /**@{
  * Cache type
  */
@@ -120,7 +110,6 @@ define( 'MEDIATYPE_OFFICE',     'OFFICE' );      // Office Documents, Spreadshee
 define( 'MEDIATYPE_TEXT',       'TEXT' );        // Plain text (possibly containing program code or scripts)
 define( 'MEDIATYPE_EXECUTABLE', 'EXECUTABLE' );  // binary executable
 define( 'MEDIATYPE_ARCHIVE',    'ARCHIVE' );     // archive file (zip, tar, etc)
-define( 'MEDIATYPE_DATA',       'DATA' );        // A generic data file (like kml and kmz)
 /**@}*/
 
 /**@{
@@ -249,4 +238,5 @@ define( 'APCOND_ISIP', 5 );
 define( 'APCOND_IPINRANGE', 6 );
 define( 'APCOND_AGE_FROM_EDIT', 7 );
 define( 'APCOND_BLOCKED', 8 );
+define( 'APCOND_ISBOT', 9 );
 /**@}*/

@@ -82,28 +82,46 @@ class ResourceLoaderContext {
 			} else {
 				// This is a set of modules in foo.bar,baz notation
 				$pos = strrpos( $group, '.' );
-				$prefix = substr( $group, 0, $pos ); // 'foo'
-				$suffixes = explode( ',', substr( $group, $pos + 1 ) ); // array( 'bar', 'baz' )
-				foreach ( $suffixes as $suffix ) {
-					$retval[] = "$prefix.$suffix";
+				if ( $pos === false ) {
+					// Prefixless modules, i.e. without dots
+					$retval = explode( ',', $group );
+				} else {
+					// We have a prefix and a bunch of suffixes
+					$prefix = substr( $group, 0, $pos ); // 'foo'
+					$suffixes = explode( ',', substr( $group, $pos + 1 ) ); // array( 'bar', 'baz' )
+					foreach ( $suffixes as $suffix ) {
+						$retval[] = "$prefix.$suffix";
+					}
 				}
 			}
 		}
 		return $retval;
 	}
 
+	/**
+	 * @return ResourceLoader
+	 */
 	public function getResourceLoader() {
 		return $this->resourceLoader;
 	}
-	
+
+	/**
+	 * @return WebRequest
+	 */
 	public function getRequest() {
 		return $this->request;
 	}
 
+	/**
+	 * @return array
+	 */
 	public function getModules() {
 		return $this->modules;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getLanguage() {
 		if ( $this->language === null ) {
 			global $wgLang;
@@ -115,49 +133,79 @@ class ResourceLoaderContext {
 		return $this->language;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getDirection() {
 		if ( $this->direction === null ) {
 			$this->direction = $this->request->getVal( 'dir' );
 			if ( !$this->direction ) {
-				global $wgContLang;
-				$this->direction = $wgContLang->getDir();
+				# directionality based on user language (see bug 6100)
+				$this->direction = Language::factory( $this->language )->getDir();
 			}
 		}
 		return $this->direction;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getSkin() {
 		return $this->skin;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getUser() {
 		return $this->user;
 	}
 
+	/**
+	 * @return bool
+	 */
 	public function getDebug() {
 		return $this->debug;
 	}
 
+	/**
+	 * @return String
+	 */
 	public function getOnly() {
 		return $this->only;
 	}
 
+	/**
+	 * @return String
+	 */
 	public function getVersion() {
 		return $this->version;
 	}
 
+	/**
+	 * @return bool
+	 */
 	public function shouldIncludeScripts() {
 		return is_null( $this->only ) || $this->only === 'scripts';
 	}
 
+	/**
+	 * @return bool
+	 */
 	public function shouldIncludeStyles() {
 		return is_null( $this->only ) || $this->only === 'styles';
 	}
 
+	/**
+	 * @return bool
+	 */
 	public function shouldIncludeMessages() {
 		return is_null( $this->only ) || $this->only === 'messages';
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getHash() {
 		if ( !isset( $this->hash ) ) {
 			$this->hash = implode( '|', array(

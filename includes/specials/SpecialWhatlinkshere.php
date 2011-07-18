@@ -28,8 +28,17 @@
  */
 class SpecialWhatLinksHere extends SpecialPage {
 
-	// Stored objects
-	protected $opts, $target, $selfTitle;
+	/**
+	 * @var FormOptions
+	 */
+	protected $opts;
+
+	protected $selfTitle;
+
+	/**
+	 * @var Title
+	 */
+	protected $target;
 
 	protected $limits = array( 20, 50, 100, 250, 500 );
 
@@ -84,12 +93,11 @@ class SpecialWhatLinksHere extends SpecialPage {
 	}
 
 	/**
-	 * @param $level  int     Recursion level
+	 * @param $level int     Recursion level
 	 * @param $target Title   Target title
-	 * @param $limit  int     Number of entries to display
-	 * @param $from   Title   Display from this article ID
-	 * @param $back   Title   Display from this article ID at backwards scrolling
-	 * @private
+	 * @param $limit int     Number of entries to display
+	 * @param $from Title   Display from this article ID
+	 * @param $back Title   Display from this article ID at backwards scrolling
 	 */
 	function showIndirectLinks( $level, $target, $limit, $from = 0, $back = 0 ) {
 		global $wgMaxRedirectLinksRetrieved;
@@ -260,6 +268,9 @@ class SpecialWhatLinksHere extends SpecialPage {
 	}
 
 	protected function listItem( $row, $nt, $notClose = false ) {
+		global $wgLang;
+		$dirmark = $wgLang->getDirMark();
+
 		# local message cache
 		static $msgcache = null;
 		if ( $msgcache === null ) {
@@ -303,8 +314,8 @@ class SpecialWhatLinksHere extends SpecialPage {
 		$wlh = Xml::wrapClass( "($wlhLink)", 'mw-whatlinkshere-tools' );
 
 		return $notClose ?
-			Xml::openElement( 'li' ) . "$link $propsText $wlh\n" :
-			Xml::tags( 'li', null, "$link $propsText $wlh" ) . "\n";
+			Xml::openElement( 'li' ) . "$link $propsText $dirmark $wlh\n" :
+			Xml::tags( 'li', null, "$link $propsText $dirmark $wlh" ) . "\n";
 	}
 
 	protected function listEnd() {

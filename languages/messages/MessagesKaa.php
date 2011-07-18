@@ -266,14 +266,7 @@ $messages = array(
 'category-file-count-limited'    => "Usı kategoriyada to'mendegi {{PLURAL:$1|fayl|$1 fayl}} bar.",
 'listingcontinuesabbrev'         => 'dawamı',
 
-'linkprefix'        => '/^(.*?)([a-zıA-Zİ\\x80-\\xff]+)$/sDu',
-'mainpagetext'      => "'''MediaWiki tabıslı ornatıldı.'''",
-'mainpagedocfooter' => "Wiki bag'darlamasın qollanıw haqqındag'i mag'lıwmat usın [http://meta.wikimedia.org/wiki/Help:Contents Paydalanıwshılar qollanbasınan] ken'es alın'.
-
-== Baslaw ushın ==
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Konfiguratsiya sazlaw dizimi]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWikidin' Ko'p Soralatug'ın Sorawları]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki haqqında xat tarqatıw dizimi]",
+'linkprefix' => '/^(.*?)([a-zıA-Zİ\\x80-\\xff]+)$/sDu',
 
 'about'         => 'Proyekt haqqında',
 'article'       => "Mag'lıwmat beti",
@@ -324,7 +317,6 @@ $messages = array(
 'history'           => 'Bet tariyxı',
 'history_short'     => 'Tariyx',
 'updatedmarker'     => "aqırg'ı kirgenimnen keyin jan'alang'anlar",
-'info_short'        => "Mag'lıwmat",
 'printableversion'  => 'Baspa nusqası',
 'permalink'         => 'Turaqlı siltew',
 'print'             => "Baspag'a shıg'arıw",
@@ -508,7 +500,6 @@ Bul bettin' o'zgeriwi basqa paydalanıwshılardın' sırtqı interfeisine ta'sir
 Audarıw ushın,  MediaWiki programmasın jersindiriw [http://translatewiki.net/wiki/Main_Page?setlang=kaa translatewiki.net proyektisin] qarap shıg'ın'ız.",
 'sqlhidden'            => "(SQL sorawı jasırılg'an)",
 'namespaceprotected'   => "'''$1''' isimler ko'pligindegi betlerdi o'zgertiwge ruxsatın'ız joq.",
-'customcssjsprotected' => "Bul betti o'zgertiwin'izge ruqsatın'ız joq, sebebi bul jerde basqa paydalanıwshılardın' jeke sazlawları bar.",
 'ns-specialprotected'  => '"{{ns:special}}:" isimler ko\'pligindegi betler o\'zgertilmeydi',
 'titleprotected'       => "Bul atamanı jaratıw [[User:$1|$1]] ta'repinen qorg'alg'an.
 Keltirilgen sebep: ''$2''.",
@@ -559,7 +550,7 @@ Kukilerdi qosıp, qaytadan ko'rin'.",
 'loginsuccess'               => "'''{{SITENAME}} saytına \"\$1\" paydalanıwshı atı menen kirdin'iz.'''",
 'nosuchuser'                 => "\"\$1\" atlı paydalanıwshı joq.
 Tuwrı jazılg'anlıg'ın tekserin' yamasa [[Special:UserLogin/signup|taza akkaunt jaratın']].",
-'nosuchusershort'            => '"<nowiki>$1</nowiki>" atlı paydalanıwshı joq. Tuwrı jazılg\'anlıg\'ın tekserin\'.',
+'nosuchusershort'            => '"$1" atlı paydalanıwshı joq. Tuwrı jazılg\'anlıg\'ın tekserin\'.',
 'nouserspecified'            => "Siz paydalanıwshı atın ko'rsetpedin'iz.",
 'wrongpassword'              => "Qate parol kiritlgen. Qaytadan kiritin'.",
 'wrongpasswordempty'         => "Parol kiritilmegen. Qaytadan ha'reket etin'.",
@@ -693,7 +684,7 @@ Eger bul jerge aljasıp o'tken bolsan'ız, brauzerin'izdin' «Arqag'a» knopkas�
 Basqa betlerden usı bet atamasın [[Special:Search/{{PAGENAME}}|izlep ko'riwin'izge]],
 <span class=\"plainlinks\">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} tiyisli jurnallardı izlewin'izge],
 yamasa usı betti [{{fullurl:{{FULLPAGENAME}}|action=edit}} jaratıwin'ızga']</span> boladi.",
-'userpage-userdoesnotexist'        => "\"\$1\" paydalanıwshı akkauntı registratsiya qılınbag'an. Bul betti jaratqın'ız yamasa o'zgertkin'iz kelse tekserip ko'rin'.",
+'userpage-userdoesnotexist'        => "\"<nowiki>\$1</nowiki>\" paydalanıwshı akkauntı registratsiya qılınbag'an. Bul betti jaratqın'ız yamasa o'zgertkin'iz kelse tekserip ko'rin'.",
 'updated'                          => "(Jan'alang'an)",
 'note'                             => "'''Eskertiw:'''",
 'previewnote'                      => "'''Bul ele tek aldınnan ko'rip shıg'ıw; o'zgerisler ele saqlanbadı!'''",
@@ -1442,11 +1433,9 @@ Ja'nede [[Special:WantedCategories|kerekli kategoriyalardı]] qarap ko'rin'.",
 'watchlistanontext' => "Baqlaw dizimin'izdegilerdi qaraw yamasa o'zgertiw ushın $1 kerek.",
 'watchnologin'      => 'Kirilmegen',
 'watchnologintext'  => "Baqlaw dizimin'izdi o'zgertiw ushın [[Special:UserLogin|kiriwin'iz]] kerek.",
-'addedwatch'        => 'Baqlaw dizimine qosıldı',
 'addedwatchtext'    => "\"[[:\$1]]\" beti [[Special:Watchlist|baqlaw dizimin'izge]] qosıldı.
 Usı ha'm og'an baylanıslı bolg'an sa'wbet betlerinde bolatug'ın keleshektegi o'zgerisler usı dizimde ko'rsetiledi ha'mde betti tabıwdı an'satlastırıw ushın [[Special:RecentChanges|taza o'zgerisler diziminde]] '''juwan ha'ripte''' ko'rsetiledi.
 Eger siz bul betti baqlaw dizimin'izden o'shirmekshi bolsan'ız bettin' joqarg'ı on' jag'ındag'ı \"Baqlamaw\" jazıwın basın'.",
-'removedwatch'      => "Baqlaw diziminen o'shirildi",
 'removedwatchtext'  => '"[[:$1]]" beti [[Special:Watchlist|sizin\' baqlaw dizimin\'izden]] o\'shirildi.',
 'watch'             => 'Baqlaw',
 'watchthispage'     => 'Bul betti baqlaw',
@@ -1488,7 +1477,7 @@ Eger siz bul betti baqlaw dizimin'izden o'shirmekshi bolsan'ız bettin' joqarg'�
 'confirmdeletetext'     => "Siz bul betti yamasa su'wretti barliq tariyxı menen mag'lıwmatlar bazasınan o'shirejaqsız.
 Bunın' aqıbetin tu'singenin'izdi ha'm [[{{MediaWiki:Policy-url}}]] siyasatına ılayıqlı ekenligin tastıyıqlan'.",
 'actioncomplete'        => "Ha'reket tamamlandı",
-'deletedtext'           => "\"<nowiki>\$1</nowiki>\" o'shirildi.
+'deletedtext'           => "\"\$1\" o'shirildi.
 Aqırg'ı o'shirilgenlerdin' dizimin ko'riw ushin \$2 ni qaran'",
 'deletedarticle'        => '"[[$1]]" o\'shirildi',
 'dellogpage'            => "O'shiriw jurnalı",
@@ -1516,7 +1505,7 @@ Aqırg'ı o'shirilgenlerdin' dizimin ko'riw ushin \$2 ni qaran'",
 'protectexpiry'               => "Ku'shin joytıw waqtı:",
 'protect_expiry_invalid'      => "Nadurıs ku'shin joytıw waqtı.",
 'protect_expiry_old'          => "Kushin joytıw waqtı o'tip ketken.",
-'protect-text'                => "'''<nowiki>$1</nowiki>''' betinin' qorg'aw da'rejesin ko're yamasa o'zgerte alasız.",
+'protect-text'                => "'''$1''' betinin' qorg'aw da'rejesin ko're yamasa o'zgerte alasız.",
 'protect-locked-access'       => "Akkauntın'ızdın' bettın' qorg'aw da'rejesin o'zgertiwge ruxsatı joq.
 '''$1''' betinin' ha'zirgi sazlawları:",
 'protect-cascadeon'           => "Bul bet ha'zirgi waqıtta qorg'alg'an, sebebi usı bet kaskadlı qorg'awı bar {{PLURAL:$1|betke|betlerine}} qosılg'an. Bul bettin' qorg'aw da'rejesin o'zgerte alasız, biraq bul kaskadlı qorg'awg'a ta'sir etpeydi.",
@@ -1819,12 +1808,6 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'others'           => 'basqalar',
 'siteusers'        => '{{SITENAME}} {{PLURAL:$2|paydalanıwshı|paydalanıwshıları}} $1',
 'creditspage'      => 'Bet avtorları',
-
-# Info page
-'infosubtitle' => "Bet haqqında mag'lıwmat",
-'numedits'     => "O'zgerisler sanı (bet): $1",
-'numtalkedits' => "O'zgerisler sanı (diskussiya beti): $1",
-'numwatchers'  => 'Baqlawshılar sanı: $1',
 
 # Patrol log
 'patrol-log-auto' => '(avtomatlasqan)',

@@ -14,4 +14,5 @@ class TitleTest extends MediaWikiTestCase {
 			}
 		}
 	}
+
 }

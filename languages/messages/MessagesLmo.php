@@ -267,7 +267,6 @@ süi titul dai sezziún (JavaScript)',
 'searcharticle'     => 'Và',
 'history'           => 'Crunulugia de la pagina',
 'history_short'     => 'Crunulugìa',
-'info_short'        => 'Infurmazión',
 'printableversion'  => 'Versión stampàbil',
 'permalink'         => 'Culegament permanent',
 'print'             => 'Stampa',
@@ -459,7 +458,7 @@ Per piasè, abilita i cookies e pröa anmò a andà dent cunt el tò nom e la pa
 'nosuchuser'              => "A gh'è nissün druvat cun 'l nom ''$1''. <br />
 I suranomm i henn sensibil a i leter majùscul.<br />
 Cuntrola 'l nom che t'hee metüü denter o [[Special:UserLogin/signup|crea un cünt növ]].",
-'nosuchusershort'         => "Ghe n'è mia d'ütent cun el nom de \"<nowiki>\$1</nowiki>\". Ch'el cuntrola se l'ha scrivüü giüst.",
+'nosuchusershort'         => "Ghe n'è mia d'ütent cun el nom de \"\$1\". Ch'el cuntrola se l'ha scrivüü giüst.",
 'nouserspecified'         => "Te gh'heet da specificà un nom del druvatt.",
 'wrongpassword'           => "La ciav che t'hee metüü denter l'è nò giüsta. Pröva turna per piasè.",
 'wrongpasswordempty'      => "T'hee no metüü denter la parola ciav. Pröva turna per piasè.",
@@ -963,13 +962,11 @@ La descrizión sura la sua [$2 pagina de descrizión del file] l'è mustrada ch�
 # Watchlist
 'watchlist'         => "Paginn ch'a tegni d'ögg",
 'mywatchlist'       => "Paginn che a tegni d'ögg",
-'addedwatch'        => 'Pagina giuntada a la lista di paginn sot ögg',
 'addedwatchtext'    => "La pagina \"[[:\$1]]\" l'è stada giuntada a la lista di [[Special:Watchlist|paginn da tegn d'ögg]].
 I cambiament che vegnarà fai a 'sta pagina chì e a la sóa pagina de discüssion
 i vegnarann segnalaa chichinscì e la pagina la se vedarà cun caràter '''grev''' ins la
 [[Special:RecentChanges|lista dij cambiament recent]], giüst per metela in evidenza.
 <p>Se te vörat tö via quela pagina chì dala lista dij paginn da tegn d'ögg te pòdat schiscià 'l butón \"tegn pü d'ögg\".",
-'removedwatch'      => 'Scancelaa dala lista di usservazziún.',
 'removedwatchtext'  => 'La pagina "[[:$1]]" l\'è stada scancelada de la tò lista di [[Special:Watchlist|paginn sot ögg]].',
 'watch'             => "Tegn d'öcc",
 'watchthispage'     => "Tegn d'ögg quela pagina chì",
@@ -1020,7 +1017,7 @@ Per fà di cumünicazion de servizzi e per cercà jüt:
 'confirmdeletetext'      => "A te see lì per scancelà una pagina cun tüta la sua crunulugìa.
 Per piasè, dà la cunferma che te gh'hee intenzión de andà inanz cun 'l scancelament, che te see al curent di cunseguenz, e che te see adree a fàl segónd i regulament de [[{{MediaWiki:Policy-url}}]].",
 'actioncomplete'         => 'Aziun cumpletada',
-'deletedtext'            => 'La pagina "<nowiki>$1</nowiki>" l\'è stada scancelada. Varda el $2 per una lista di ültim scancelaziun.',
+'deletedtext'            => 'La pagina "$1" l\'è stada scancelada. Varda el $2 per una lista di ültim scancelaziun.',
 'deletedarticle'         => 'l\'ha scancelaa "[[$1]]"',
 'dellogpage'             => 'Register di scancelament',
 'deletionlog'            => 'log di scancelament',
@@ -1054,7 +1051,7 @@ L'ültima redatazziún l eva da [[User:$3|$3]] ([[User talk:$3|Discüssiún]])."
 'protectexpiry'               => 'Scadenza:',
 'protect_expiry_invalid'      => 'Scadenza pü bona',
 'protect_expiry_old'          => 'Scadenza giamò passada',
-'protect-text'                => "Chì se pö vardà e müdà el nivel de prutezión de la pagina '''<nowiki>$1</nowiki>'''.",
+'protect-text'                => "Chì se pö vardà e müdà el nivel de prutezión de la pagina '''$1'''.",
 'protect-locked-access'       => "El tò cünt a l'ha minga la qualifega per pudè müdà el nivel de prutezión.
 Quest chì a hinn i regulazión curent per la pagina '''$1''':",
 'protect-cascadeon'           => "Al mument, quela pagina chì l'è prutegiüda perchè l'è inclüsa int {{PLURAL:$1|la pagina chì suta, che la gh'ha|i paginn chì suta, ch'i gh'hann}} la prutezion a cascada. Se pö mudifegà 'l nivel de prutezion de quela pagina chì, ma una mudifega del gener la gh'avarà mia d'efet ins i impustazión ch'i deriven da la prutezión a cascada.",

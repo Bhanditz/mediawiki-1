@@ -166,15 +166,6 @@ $messages = array(
 'listingcontinuesabbrev'         => '(ተቀጥሏል)',
 'index-category'                 => ' ማውጫው ላይ የተመዘገብ ገጾች',
 
-'mainpagetext'      => "'''MediaWiki በትክክል ማስገባቱ ተከናወነ።'''",
-'mainpagedocfooter' => "ስለ ዊኪ ሶፍትዌር ጥቅም ለመረዳት፣ [http://meta.wikimedia.org/wiki/Help:Contents User's Guide] ያንብቡ።
-
-== ለመጀመር ==
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
-
 'about'         => 'ስለ',
 'article'       => 'መጣጥፍ',
 'newwindow'     => '(ባዲስ መስኮት ውስጥ ይከፈታል።)',
@@ -221,7 +212,6 @@ $messages = array(
 'history'           => 'የገጽ ታሪክ',
 'history_short'     => 'ታሪክ',
 'updatedmarker'     => 'ከመጨረሻው ጉብኝቴ በኋላ የተሻሻለ',
-'info_short'        => 'መረጃ',
 'printableversion'  => 'ለህትመት የተዘጋጀ',
 'permalink'         => 'ቋሚ መያያዣ',
 'print'             => 'ይታተም',
@@ -389,7 +379,6 @@ $1',
 'cascadeprotected'     => "'''ማስጠንቀቂያ፦''' ይህ አርእስት ሊፈጠር ወይም ሊቀየር አይቻልም። ምክንያቱም ወደ {{PLURAL:$1|ተከታተለው አርዕስት|ተከታተሉት አርእስቶች}} ተጨምሯል።
 $2",
 'namespaceprotected'   => "በ'''$1''' ክፍለ-ዊኪ ያሉትን ገጾች ለማዘጋጀት ፈቃድ የለዎም።",
-'customcssjsprotected' => 'ይህ ገጽ የሌላ ተጠቃሚ ምርጫዎች ስላሉበት እሱን ለማዘጋጀት ፈቃድ የለዎም።',
 'ns-specialprotected'  => 'ልዩ ገጾችን ማረም አይፈቀድም።',
 'titleprotected'       => "ይህ አርዕስት እንዳይፈጠር በ[[User:$1|$1]] ተጠብቋል። የተሰጠው ምክንያት ''$2'' ነው።",
 
@@ -432,7 +421,7 @@ $2",
 'loginsuccesstitle'          => 'መግባትዎ ተከናወነ!',
 'loginsuccess'               => 'እንደ «$1» ሆነው አሁን {{SITENAME}}ን ገብተዋል።',
 'nosuchuser'                 => '«$1» የሚል ብዕር ስም አልተገኘም። አጻጻፉን ይመልከቱ ወይም አዲስ ብዕር ስም ያውጡ።',
-'nosuchusershort'            => '«<nowiki>$1</nowiki>» የሚል ብዕር ስም አልተገኘም። አጻጻፉን ይመልከቱ።',
+'nosuchusershort'            => '«$1» የሚል ብዕር ስም አልተገኘም። አጻጻፉን ይመልከቱ።',
 'nouserspecified'            => 'አንድ ብዕር ስም መጠቆም ያስፈልጋል።',
 'wrongpassword'              => 'የተሰጠው መግቢያ ቃል ልክ አልነበረም። ዳግመኛ ይሞክሩ።',
 'wrongpasswordempty'         => 'ምንም መግቢያ ቃል አልተሰጠም። ዳግመኛ ይሞክሩ።',
@@ -558,7 +547,7 @@ $1ን ወይም ማንም ሌላ [[{{MediaWiki:Grouppage-sysop}}|መጋቢ]] ስ
 ወደዚህ በስሕተት ከሆነ የመጡት፣ የቃኝውን «Back» ቁልፍ ይጫኑ።',
 'anontalkpagetext'                 => "----''ይኸው ገጽ ገና ያልገባ ወይም ብዕር ስም የሌለው ተጠቃሚ ውይይት ገጽ ነው። መታወቂያው በ[[ቁጥር አድራሻ]] እንዲሆን ያስፈልጋል። አንዳንዴ ግን አንድ የቁጥር አድራሻ በሁለት ወይም በብዙ ተጠቃሚዎች የጋራ ሊሆን ይችላል። ስለዚህ ለርስዎ የማይገባ ውይይት እንዳይደርስልዎ፣ [[Special:UserLogin|«መግቢያ»]] በመጫን የብዕር ስም ለማውጣት ይችላሉ።''",
 'noarticletext'                    => 'በአሁኑ ወቅት በዚህ ገጽ ላይ ጽሑፍ የለም፤ ነገር ግን በሌሎች ገጾች ላይ [[Special:Search/{{PAGENAME}}|ይህን አርዕስት መፈለግ]]፣ <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} ከርዕሱ ጋር የተዛመዱ መዝገቦችን መፈልግ]፣ ወይም [{{fullurl:{{FULLPAGENAME}}|action=edit}} አዲስ ገፅ ሊያዘጋጁ] ይችላሉ</span>።',
-'userpage-userdoesnotexist'        => 'የብዕር ስም «$1» አልተመዘገበም። እባክዎ ይህን ገጽ ለመፍጠር/ ለማስተካከል የፈለጉ እንደ ሆነ ያረጋግጡ።',
+'userpage-userdoesnotexist'        => 'የብዕር ስም «<nowiki>$1</nowiki>» አልተመዘገበም። እባክዎ ይህን ገጽ ለመፍጠር/ ለማስተካከል የፈለጉ እንደ ሆነ ያረጋግጡ።',
 'usercssyoucanpreview'             => "'''ምክር፦''' ሳይቆጠብ አዲስ CSSዎን ለመሞከር 'ቅድመ እይታ' የሚለውን ይጫኑ።",
 'userjsyoucanpreview'              => "'''ምክር፦''' ሳይቆጠብ አዲስ JSዎን ለመሞከር 'ቅድመ እይታ' የሚለውን ይጫኑ።",
 'usercsspreview'                   => "'''ማስታወሻ፦ CSS-ዎን ለሙከራ ብቻ እያዩ ነው፤ ገና አልተቆጠበም!'''",
@@ -1067,9 +1056,6 @@ $1ን ወይም ማንም ሌላ [[{{MediaWiki:Grouppage-sysop}}|መጋቢ]] ስ
 'destfilename'                => 'የፋይሉ አዲስ ስም፦',
 'watchthisupload'             => 'ይህንን ገጽ ለመከታተል',
 'filewasdeleted'              => 'በዚሁ ስም ያለው ፋይል ከዚህ በፊት ተልኮ እንደገና ጠፍቷል።  ዳግመኛ ሳይልኩት $1 ማመልከት ያሻላል።',
-'upload-wasdeleted'           => "'''ማስጠንቀቂያ፦ ቀድሞ የተደለዘ ፋይል እየላኩ ነው።'''
-
-ይህን ፋይል መላክ የሚገባ መሆኑን ይቆጠሩ። የፋይሉ ማጥፋት መዝገብ ከዚህ ታች ይታያል፦",
 'filename-bad-prefix'         => "የሚልኩት ፋይል ስም በ'''«$1»''' ይጀመራል፤ ይህ ብዙ ጊዜ በቁጥራዊ ካሜራ የተወሰነ ገላጭ ያልሆነ ስም ይሆናል። እባክዎ ለፋይልዎ ገላጭ የሆነ ስም ይምረጡ።",
 'upload-success-subj'         => 'መላኩ ተከናወነ',
 
@@ -1126,7 +1112,6 @@ $1ን ወይም ማንም ሌላ [[{{MediaWiki:Grouppage-sysop}}|መጋቢ]] ስ
 'linkstoimage'              => '{{PLURAL:$1|የሚከተለው ገጽ ወደዚሁ ፋይል ተያይዟል|የሚከተሉ $1 ገጾች ወደዚሁ ፋይል ተያይዘዋል}}፦',
 'nolinkstoimage'            => 'ወዲህ ፋይል የተያያዘ ገጽ የለም።',
 'morelinkstoimage'          => 'ለዚህ ፋይል [[Special:WhatLinksHere/$1|ተጨማሪ መያያዣዎችን]] ለማየት።',
-'redirectstofile'           => 'ለዚህ ፋይል {{PLURAL:$1|የሚከተለው ፋይል መምሪያ መንገድ አለ|የሚከተሉት $1 ፋይሎች መምሪያ መንገዶች አሉ}}፦',
 'duplicatesoffile'          => '{{PLURAL:$1|የሚከተለው ፋይል የዚህ ፋይል ቅጂ ነው|የሚከተሉት $1 ፋይሎች የዚሁ ፋይል ቅጂዎች ናቸው}}፦',
 'sharedupload'              => 'ይህ ፋይል ከጋራ ምንጭ ($1) የተቀሰመ ነው። በማንኛውም ዊኪ ላይ ሊጠቅም ይቻላል።',
 'uploadnewversion-linktext' => 'ለዚሁ ፋይል አዲስ ዕትም ለመላክ',
@@ -1367,11 +1352,9 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'watchlistanontext'    => 'የሚከታተሉት ገጾች ዝርዝርዎን ለመመልከት ወይም ለማስተካከል እባክዎ $1።',
 'watchnologin'         => 'ገና አልገቡም',
 'watchnologintext'     => 'የሚከታተሏቸውን ገጾች ዝርዝር ለመቀየር [[Special:UserLogin|መግባት]] ይኖርብዎታል።',
-'addedwatch'           => 'ወደሚከታተሉት ገጾች ተጨመረ',
 'addedwatchtext'       => "ገጹ «$1» [[Special:Watchlist|ለሚከታተሉት ገጾች]] ተጨምሯል። ወደፊት ይህ ገጽ ወይም የውይይቱ ገጽ ሲቀየር፣ በዚያ ዝርዝር ላይ ይታያል። በተጨማሪም [[Special:RecentChanges|«በቅርብ ጊዜ በተለወጡ» ገጾች]] ዝርዝር፣ በቀላሉ እንዲታይ በ'''ጉልህ ፊደላት''' ተጽፎ ይገኛል።
 
 በኋላ ጊዜ ገጹን ከሚከታተሉት ገጾች ለማስወግድ የፈለጉ እንደሆነ፣ በጫፉ ዳርቻ «አለመከታተል» የሚለውን ይጫኑ።",
-'removedwatch'         => 'ከሚከታተሉት ገጾች ተወገደ',
 'removedwatchtext'     => 'ይህ ገፅ "[[:$1]]" ከ [[Special:Watchlist|your watchlist]] ተወግዷል።',
 'watch'                => 'ለመከታተል',
 'watchthispage'        => 'ይህንን ገጽ ለመከታተል',
@@ -1422,7 +1405,7 @@ $NEWPAGE
              ከክብር ጋር፣ የ{{SITENAME}} ኢሜል-ማስታወቂያ መርሃግብር።
 
 --
-የሚከታተሉት ገጾች ዝርዝር ለመቀየር፣ {{fullurl:{{#special:Watchlist}}/edit}} ይጎበኙ።
+የሚከታተሉት ገጾች ዝርዝር ለመቀየር፣ {{fullurl:{{#special:EditWatchlist}}}} ይጎበኙ።
 
 በተጨማሪ ለመረዳት፦
 {{fullurl:{{MediaWiki:Helppage}}}}',
@@ -1440,7 +1423,7 @@ $NEWPAGE
 'confirmdeletetext'      => 'ይህን ገጽ ከነ ሙሉ የለውጥ ታሪኩ ሊያጠፉት ነው።
 እባክዎን ይህን የሚያደርጉት አስበውበት፣ በ[[{{MediaWiki:Policy-url}}|መተዳደሪያ ደንብም]] መሰረት መሆኑን ያረጋግጡ።',
 'actioncomplete'         => 'ተፈጽሟል',
-'deletedtext'            => '«<nowiki>$1</nowiki>» ጠፍቷል።
+'deletedtext'            => '«$1» ጠፍቷል።
 
 (የጠፉትን ገጾች ሁሉ ለመመልከት $2 ይዩ።)',
 'deletedarticle'         => '«[[$1]]» አጠፋ',
@@ -1485,7 +1468,7 @@ $NEWPAGE
 'protectexpiry'               => 'የሚያልቅበት ግዜ፦',
 'protect_expiry_invalid'      => "የተሰጠው 'የሚያልቅበት ጊዜ' ልክ አይደለም።",
 'protect_expiry_old'          => "የተሰጠው 'የሚያልቅበት ጊዜ' ባለፈው ግዜ ነበር።",
-'protect-text'                => "እዚህ ለገጹ «'''<nowiki>$1</nowiki>'''» የመቆለፍ ደረጃ መመልከት ወይም መቀይር ይችላሉ።",
+'protect-text'                => "እዚህ ለገጹ «'''$1'''» የመቆለፍ ደረጃ መመልከት ወይም መቀይር ይችላሉ።",
 'protect-locked-blocked'      => "ማገጃ እያለብዎት የመቆለፍ ደረጃ ለመቀየር አይችሉም። ለገጹ '''$1''' የአሁኑኑ ደረጃ እንዲህ ነው፦",
 'protect-locked-dblock'       => "መረጃ-ቤቱ እራሱ አሁን ስለሚቆለፍ፣ የገጽ መቆለፍ ደረጃ ሊቀየር አይችልም። ለገጹ '''$1''' የአሁኑኑ ደረጃ እንዲህ ነው፦",
 'protect-locked-access'       => "እርስዎ ገጽ የመቆለፍ ወይም የመፍታት ፈቃድ የለዎም።<br />አሁኑ የዚሁ ገጽ መቆለፍ ደረጃ እንዲህ ነው፦ '''$1''':",
@@ -1864,10 +1847,6 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'tooltip-rollback'                => 'ROLLBACK የመጨረሻውን አዛጋጅ ለውጦች በፍጥነት ይገልበጣል።',
 'tooltip-undo'                    => '"መልስ" ይህን ቅድመ እይታ ወደ ቀድሞው የእርማት ቦታው መልስ። ማጠቃለያው ላይ ምክንያታችንን ለማስገባት ይፈቅድልናል።',
 
-# Metadata
-'nodublincore'      => 'Dublin Core RDF metadata ለዚህ ሰርቨር እንደማይሠራ ተደርጓል።',
-'nocreativecommons' => 'Creative Commons RDF metadata ለዚህ ሰርቨር እንደማይሠራ ተደርጓል።',
-
 # Attribution
 'anonymous'        => 'የ{{SITENAME}} ቁ. አድራሻ ተጠቃሚ(ዎች)',
 'siteuser'         => '{{SITENAME}} ተጠቃሚ $1',
@@ -1879,14 +1858,6 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'spamprotectiontitle' => 'የስፓም መከላከል ማጣሪያ',
 'spambot_username'    => 'MediaWiki የስፓም ማፅዳት',
 'spam_reverting'      => 'ወደ $1 የሚወስድ መያያዣ ወደሌለበት መጨረሻ ዕትም መለሰው',
-
-# Info page
-'infosubtitle'   => 'መረጃ ለገጹ',
-'numedits'       => 'የእትሞች ቁጥር (ገጽ)፦ $1',
-'numtalkedits'   => 'የእትሞች ቁጥር (የውይይት ገጽ)፦ $1',
-'numwatchers'    => 'የሚከታተሉት ተጠቃሚዎች ቁጥር፦ $1',
-'numauthors'     => 'የተለዩ አቅራቢዎች ቁጥር (ገጽ)፦ $1',
-'numtalkauthors' => 'የተለዩ አቅራቢዎች ቁጥር (የውይይት ገጽ)፦ $1',
 
 # Patrolling
 'markaspatrolleddiff'                 => 'የተሳለፈ ሆኖ ማመልከት',

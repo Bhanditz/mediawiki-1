@@ -76,7 +76,7 @@ class ApiQueryAllUsers extends ApiQueryBase {
 				$groups = array_merge( $groups, User::getGroupsWithPermission( $r ) );
 			}
 
-			$groups = array_diff( array_unique( $groups ), User::getImplicitGroups() );
+			$groups = array_unique( $groups );
 
 			if ( is_null( $params['group'] ) ) {
 				$params['group'] = $groups;
@@ -337,7 +337,7 @@ class ApiQueryAllUsers extends ApiQueryBase {
 				' groups        - Lists groups that the user is in. This uses more server resources and may return fewer results than the limit',
 				' rights        - Lists rights that the user has',
 				' editcount     - Adds the edit count of the user',
-				' registration  - Adds the timestamp of when the user registered',
+				' registration  - Adds the timestamp of when the user registered if available (may be blank)',
 				),
 			'limit' => 'How many total user names to return',
 			'witheditsonly' => 'Only list users who have made edits',
@@ -359,6 +359,10 @@ class ApiQueryAllUsers extends ApiQueryBase {
 		return array(
 			'api.php?action=query&list=allusers&aufrom=Y',
 		);
+	}
+
+	public function getHelpUrls() {
+		return 'http://www.mediawiki.org/wiki/API:Allusers';
 	}
 
 	public function getVersion() {

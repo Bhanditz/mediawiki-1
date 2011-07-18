@@ -104,7 +104,7 @@ class FormatMetadata {
 
 				$time = wfTimestamp( TS_MW, '1971:01:01 ' . $tags[$tag] );
 				// the 1971:01:01 is just a placeholder, and not shown to user.
-				if ( $time ) {
+				if ( $time && intval( $time ) > 0 ) {
 					$tags[$tag] = $wgLang->time( $time );
 				}
 				continue;
@@ -123,7 +123,9 @@ class FormatMetadata {
 				switch( $tag ) {
 				case 'Compression':
 					switch( $val ) {
-					case 1: case 6:
+					case 1: case 2: case 3: case 4:
+					case 5: case 6: case 7: case 8:
+					case 32773: case 32946: case 34712:
 						$val = self::msg( $tag, $val );
 						break;
 					default:
@@ -232,7 +234,7 @@ class FormatMetadata {
 						$val = wfMsg( 'exif-unknowndate' );
 					} elseif ( preg_match( '/^(?:\d{4}):(?:\d\d):(?:\d\d) (?:\d\d):(?:\d\d):(?:\d\d)$/D', $val ) ) {
 						$time = wfTimestamp( TS_MW, $val );
-						if ( $time ) {
+						if ( $time && intval( $time ) > 0 ) {
 							$val = $wgLang->timeanddate( $time );
 						}
 					} elseif ( preg_match( '/^(?:\d{4}):(?:\d\d):(?:\d\d)$/D', $val ) ) {
@@ -241,7 +243,7 @@ class FormatMetadata {
 							. substr( $val, 5, 2 )
 							. substr( $val, 8, 2 )
 							. '000000' );
-						if ( $time ) {
+						if ( $time && intval( $time ) > 0 ) {
 							$val = $wgLang->date( $time );
 						}
 					}
@@ -840,14 +842,14 @@ class FormatMetadata {
 			wfDebug( __METHOD__ . ' metadata array with 0 elements!' );
 			return ""; // paranoia. This should never happen
 		}
-		/* Fixme: This should hide some of the list entries if there are
-		* say more than four. Especially if a field is translated into 20
-		* languages, we don't want to show them all by default
-		*/
+		/* @todo FIXME: This should hide some of the list entries if there are
+		 * say more than four. Especially if a field is translated into 20
+		 * languages, we don't want to show them all by default
+		 */
 		else {
+			global $wgContLang;
 			switch( $type ) {
 			case 'lang':
-				global $wgContLang;
 				// Display default, followed by ContLang,
 				// followed by the rest in no particular
 				// order.
@@ -1336,7 +1338,7 @@ class FormatMetadata {
 /** For compatability with old FormatExif class
  * which some extensions use.
  *
- *@deprecated
+ * @deprecated since 1.18
  *
 **/
 class FormatExif {

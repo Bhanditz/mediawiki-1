@@ -187,7 +187,6 @@ ausghenn, mr mus dâdsuu ufm ajchnen rächnâr was âjrichdn ghenn)',
 'history'           => 'Wärsjoonsfolche',
 'history_short'     => 'Wärsjoonsfolche',
 'updatedmarker'     => "is gändârd wôrn sajde ds'ledschd dôô wôôr",
-'info_short'        => 'Infôrmadsjoon',
 'printableversion'  => 'Drug-wärsjoon',
 'permalink'         => 'Beschdendichä lingh',
 'print'             => 'Ausdrugâ',
@@ -614,7 +613,6 @@ Dii lisdn undn dsajch dâfâu nôr äärschd môôl {{PLURAL:$1|an|$1}} fârwajs
 S'gajd awâr aa â [[Special:WhatLinksHere/$2|lisdn mid alâ fârwajs]].",
 'nolinkstoimage'            => 'Diâ dadaj wärd närchends benudsd.',
 'morelinkstoimage'          => '[[Special:WhatLinksHere/$1|Diâ folchende]] fârwajs uf diâ dadaj.',
-'redirectstofile'           => 'Diâ {{PLURAL:$1|folchende dadaj schigd|folchende $1 dadajâ schigâ}} uf diâ dadaj wajdâr:',
 'duplicatesoffile'          => 'Dii {{PLURAL:$1|folchende dadaj is â dublighaad|folchende $1 dadajâ sn dublighaade}} fon dâr dadaj ([[Special:FileDuplicateSearch/$2|wajdâre ôôndlshajdâ]]):',
 'sharedupload'              => 'Dii dadaj ghumd fo $1, un mär däf se fär annäre brojägd aa ´heernemâ.',
 'sharedupload-desc-there'   => 'Dii dadaj ghumd fon $1, un mr däf se fir andârâ brojägd aa nemâ. Genauârs schded uf dr [$2 beschrajwungssajdâ fon dr dadaj].',
@@ -667,14 +665,12 @@ S'gajd awâr aa â [[Special:WhatLinksHere/$2|lisdn mid alâ fârwajs]].",
 # Watchlist
 'watchlist'         => 'Maj beoobachdungs-lisdn',
 'mywatchlist'       => 'Mâj beoobachdungslisdn',
-'addedwatch'        => 'Wärd ab jeds beoobachd',
 'addedwatchtext'    => "Di sajdn „[[:$1]]“ schdäd eds mid af dajnâr [[Special:Watchlist|beoobachdungs-lisdn]] .
 
 Wen sich af der sajdn oda iirâr disghusjoons-sajdn was duud, wärd se ab eds
  af di „[[Special:RecentChanges|Ledsdn ändrunga]]“ fäd dâdsuugschriim.
 
 Wenns'd dii sajdn irchendwan amôl nimä fârfolchn wilsd, musd bloos af „{{int:Unwatch}}“ glign.",
-'removedwatch'      => 'Wärd eds nimä´ beoobachd',
 'removedwatchtext'  => 'Dii sajdn „[[:$1]]“ is fo Dajnâr [[Special:Watchlist|beoobachdungslisdn]] nundârgnumma.',
 'watch'             => 'Beoobachdn',
 'watchthispage'     => 'Dii sajdn undâr beoobachdung nämâ',
@@ -691,7 +687,7 @@ Wenns'd dii sajdn irchendwan amôl nimä fârfolchn wilsd, musd bloos af „{{in
 'deletepage'             => 'Sajdn leschn',
 'confirmdeletetext'      => "Duu bisd grôd dâbaj, â sajdn midsamd alle dsugheeriche alde wärsjoona ds'leschn. Bide beschdäädich, das De wasd, was des als bewirgd, un das De Dich dâbaj aa an d'[[{{MediaWiki:Policy-url}}|richliinjen]] fo dem wighi hiir häldsd.",
 'actioncomplete'         => 'Erleedichd',
-'deletedtext'            => '„<nowiki>$1</nowiki>“ is gleschd wôrn. Im $2 findsd â lisdn mid dâ ledsdn leschunga.',
+'deletedtext'            => '„$1“ is gleschd wôrn. Im $2 findsd â lisdn mid dâ ledsdn leschunga.',
 'deletedarticle'         => 'had „[[$1]]“ gleschd',
 'dellogpage'             => 'Logbuch fo di leschunga',
 'deletecomment'          => 'Grund:',
@@ -719,7 +715,7 @@ Wenns'd dii sajdn irchendwan amôl nimä fârfolchn wilsd, musd bloos af „{{in
 'protectexpiry'               => 'Schbär-dauâr:',
 'protect_expiry_invalid'      => 'Dii ôôgeemne schbärdsajd is uugildich.',
 'protect_expiry_old'          => 'Dii schbärdsajd is scho ausglofn.',
-'protect-text'                => 'Dôô koosd dii fârschiida schbärn fon där sajdn „<nowiki>$1</nowiki>“ ôôschaua un ändârn.',
+'protect-text'                => 'Dôô koosd dii fârschiida schbärn fon där sajdn „$1“ ôôschaua un ändârn.',
 'protect-locked-access'       => "Duu hôsd nach Dajm Ôôgmäldnschdand (fgl. Daj ghondo)  ned des odâr diâ rechd, um an där schbäre fon derär sajdn was ds'ändârn. Däärdsajd sin dii gsedsdn schbärn fir dii sajdn '''„$1“:'''",
 'protect-cascadeon'           => 'Dii sajdn is däärdsajd daal fon âm reghursiifâ schbärn. Des ged iwâr {{PLURAL:$1|folchende sajdn|dii folchendn sajdn}} wech, un wal dii reghursiif gschbärd {{PLURAL:$1|is|san}}, isâs aa dii sajdn hiir. Ob mr jeds hiir loghaal schbärd odr endschbärd, des endârd alâs nigs drôô, was an schbärung fon da heer iwârghomd.',
 'protect-default'             => 'Ale benudsâr',

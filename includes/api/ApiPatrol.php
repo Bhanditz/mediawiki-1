@@ -42,13 +42,15 @@ class ApiPatrol extends ApiBase {
 	 * Patrols the article or provides the reason the patrol failed.
 	 */
 	public function execute() {
+		global $wgUser;
+
 		$params = $this->extractRequestParams();
 
 		$rc = RecentChange::newFromID( $params['rcid'] );
 		if ( !$rc instanceof RecentChange ) {
 			$this->dieUsageMsg( array( 'nosuchrcid', $params['rcid'] ) );
 		}
-		$retval = RecentChange::markPatrolled( $params['rcid'] );
+		$retval = $rc->doMarkPatrolled( $wgUser );
 
 		if ( $retval ) {
 			$this->dieUsageMsg( reset( $retval ) );
@@ -106,6 +108,10 @@ class ApiPatrol extends ApiBase {
 		return array(
 			'api.php?action=patrol&token=123abc&rcid=230672766'
 		);
+	}
+
+	public function getHelpUrls() {
+		return 'http://www.mediawiki.org/wiki/API:Patrol';
 	}
 
 	public function getVersion() {

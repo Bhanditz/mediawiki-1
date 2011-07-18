@@ -24,6 +24,8 @@ abstract class MediaHandler {
 	/**
 	 * Get a MediaHandler for a given MIME type from the instance cache
 	 *
+	 * @param $type string
+	 *
 	 * @return MediaHandler
 	 */
 	static function getHandler( $type ) {
@@ -48,20 +50,27 @@ abstract class MediaHandler {
 	 */
 	abstract function getParamMap();
 
-	/*
+	/**
 	 * Validate a thumbnail parameter at parse time.
 	 * Return true to accept the parameter, and false to reject it.
 	 * If you return false, the parser will do something quiet and forgiving.
+	 *
+	 * @param $name
+	 * @param $value
 	 */
 	abstract function validateParam( $name, $value );
 
 	/**
 	 * Merge a parameter array into a string appropriate for inclusion in filenames
+	 *
+	 * @param $params array
 	 */
 	abstract function makeParamString( $params );
 
 	/**
 	 * Parse a param string made with makeParamString back into an array
+	 *
+	 * @param $str string
 	 */
 	abstract function parseParamString( $str );
 
@@ -69,6 +78,8 @@ abstract class MediaHandler {
 	 * Changes the parameter array as necessary, ready for transformation.
 	 * Should be idempotent.
 	 * Returns false if the parameters are unacceptable and the transform should fail
+	 * @param $image
+	 * @param $params
 	 */
 	abstract function normaliseParams( $image, &$params );
 
@@ -137,6 +148,8 @@ abstract class MediaHandler {
 
 	/**
 	 * Get a string describing the type of metadata, for display purposes.
+	 *
+	 * @return string
 	 */
 	function getMetadataType( $image ) { return false; }
 
@@ -148,7 +161,7 @@ abstract class MediaHandler {
 	 * MediaHanlder::METADATA_COMPATIBLE if metadata is old but backwards
 	 * compatible (which may or may not trigger a metadata reload).
 	 */
-	function isMetadataValid( $image, $metadata ) { 
+	function isMetadataValid( $image, $metadata ) {
 		return self::METADATA_GOOD;
 	}
 
@@ -197,14 +210,14 @@ abstract class MediaHandler {
 	function getThumbType( $ext, $mime, $params = null ) {
 		$magic = MimeMagic::singleton();
 		if ( !$ext || $magic->isMatchingExtension( $ext, $mime ) === false ) {
-			// The extension is not valid for this mime type and we do 
+			// The extension is not valid for this mime type and we do
 			// recognize the mime type
 			$extensions = $magic->getExtensionsForType( $mime );
 			if ( $extensions ) {
 				return array( strtok( $extensions, ' ' ), $mime );
 			}
 		}
-		
+
 		// The extension is correct (true) or the mime type is unknown to
 		// MediaWiki (null)
 		return array( $ext, $mime );
@@ -280,7 +293,7 @@ abstract class MediaHandler {
 	 */
 
 	/**
-	 * FIXME: I don't really like this interface, it's not very flexible
+	 * @todo FIXME: I don't really like this interface, it's not very flexible
 	 * I think the media handler should generate HTML instead. It can do
 	 * all the formatting according to some standard. That makes it possible
 	 * to do things like visual indication of grouped and chained streams
@@ -344,12 +357,12 @@ abstract class MediaHandler {
 	/**
 	 * This is used to generate an array element for each metadata value
 	 * That array is then used to generate the table of metadata values
-	 * on the image page 
+	 * on the image page
 	 *
 	 * @param &$array Array An array containing elements for each type of visibility
 	 * and each of those elements being an array of metadata items. This function adds
 	 * a value to that array.
-	 * @param $visibility String ('visible' or 'collapsed') if this value is hidden
+	 * @param $visbility string ('visible' or 'collapsed') if this value is hidden
 	 * by default.
 	 * @param $type String type of metadata tag (currently always 'exif')
 	 * @param $id String the name of the metadata tag (like 'artist' for example).
@@ -362,15 +375,13 @@ abstract class MediaHandler {
 	 * @param $param String value to pass to the message for the name of the field
 	 * as $1. Currently this parameter doesn't seem to ever be used.
 	 *
-	 * @return Array $array but with the new metadata field added.
-	 *
 	 * Note, everything here is passed through the parser later on (!)
 	 */
 	protected static function addMeta( &$array, $visibility, $type, $id, $value, $param = false ) {
 		$msgName = "$type-$id";
 		if ( wfEmptyMsg( $msgName ) ) {
 			// This is for future compatibility when using instant commons.
-			// So as to not display as ugly a name if a new metadata 
+			// So as to not display as ugly a name if a new metadata
 			// property is defined that we don't know about
 			// (not a major issue since such a property would be collapsed
 			// by default).
@@ -402,10 +413,9 @@ abstract class MediaHandler {
 	 * @return string
 	 */
 	function getLongDesc( $file ) {
-		global $wgUser;
-		$sk = $wgUser->getSkin();
+		global $wgLang;
 		return wfMsgExt( 'file-info', 'parseinline',
-			$sk->formatSize( $file->getSize() ),
+			$wgLang->formatSize( $file->getSize() ),
 			$file->getMimeType() );
 	}
 
@@ -425,10 +435,9 @@ abstract class MediaHandler {
 	 * @return string
 	 */
 	static function getGeneralLongDesc( $file ) {
-		global $wgUser;
-		$sk = $wgUser->getSkin();
+		global $wgLang;
 		return wfMsgExt( 'file-info', 'parseinline',
-			$sk->formatSize( $file->getSize() ),
+			$wgLang->formatSize( $file->getSize() ),
 			$file->getMimeType() );
 	}
 
@@ -444,10 +453,10 @@ abstract class MediaHandler {
 	/**
 	 * File validation hook called on upload.
 	 *
-	 * If the file at the given local path is not valid, or its MIME type does not 
+	 * If the file at the given local path is not valid, or its MIME type does not
 	 * match the handler class, a Status object should be returned containing
 	 * relevant errors.
-	 * 
+	 *
 	 * @param $fileName The local path to the file.
 	 * @return Status object
 	 */
@@ -561,13 +570,44 @@ abstract class ImageHandler extends MediaHandler {
 
 		$srcWidth = $image->getWidth( $params['page'] );
 		$srcHeight = $image->getHeight( $params['page'] );
+		
 		if ( isset( $params['height'] ) && $params['height'] != -1 ) {
+			# Height & width were both set
 			if ( $params['width'] * $srcHeight > $params['height'] * $srcWidth ) {
+				# Height is the relative smaller dimension, so scale width accordingly
 				$params['width'] = wfFitBoxWidth( $srcWidth, $srcHeight, $params['height'] );
+				
+				if ( $params['width'] == 0 ) {
+					# Very small image, so we need to rely on client side scaling :(
+					$params['width'] = 1;
+				}
+				
+				$params['physicalWidth'] = $params['width'];
+			} else {
+				# Height was crap, unset it so that it will be calculated later
+				unset( $params['height'] );
 			}
 		}
-		$params['height'] = File::scaleHeight( $srcWidth, $srcHeight, $params['width'] );
-		if ( !$this->validateThumbParams( $params['width'], $params['height'], $srcWidth, $srcHeight, $mimeType ) ) {
+		
+		if ( !isset( $params['physicalWidth'] ) ) {
+			# Passed all validations, so set the physicalWidth
+			$params['physicalWidth'] = $params['width'];
+		}
+		
+		# Because thumbs are only referred to by width, the height always needs
+		# to be scaled by the width to keep the thumbnail sizes consistent,
+		# even if it was set inside the if block above
+		$params['physicalHeight'] = File::scaleHeight( $srcWidth, $srcHeight, 
+			$params['physicalWidth'] );
+
+		# Set the height if it was not validated in the if block higher up 
+		if ( !isset( $params['height'] ) || $params['height'] == -1 ) {
+			$params['height'] = $params['physicalHeight'];
+		}
+
+		
+		if ( !$this->validateThumbParams( $params['physicalWidth'], 
+				$params['physicalHeight'], $srcWidth, $srcHeight, $mimeType ) ) {
 			return false;
 		}
 		return true;
@@ -604,6 +644,10 @@ abstract class ImageHandler extends MediaHandler {
 		}
 
 		$height = File::scaleHeight( $srcWidth, $srcHeight, $width );
+		if ( $height == 0 ) {
+			# Force height to be at least 1 pixel
+			$height = 1;
+		}
 		return true;
 	}
 
@@ -655,11 +699,22 @@ abstract class ImageHandler extends MediaHandler {
 	 */
 	function getLongDesc( $file ) {
 		global $wgLang;
-		return wfMsgExt('file-info-size', 'parseinline',
-			$wgLang->formatNum( $file->getWidth() ),
-			$wgLang->formatNum( $file->getHeight() ),
-			$wgLang->formatSize( $file->getSize() ),
-			$file->getMimeType() );
+		$pages = $file->pageCount();
+		if ( $pages === false || $pages <= 1 ) {
+			$msg = wfMsgExt('file-info-size', 'parseinline',
+				$wgLang->formatNum( $file->getWidth() ),
+				$wgLang->formatNum( $file->getHeight() ),
+				$wgLang->formatSize( $file->getSize() ),
+				$file->getMimeType() );
+		} else {
+			$msg = wfMsgExt('file-info-size-pages', 'parseinline',
+				$wgLang->formatNum( $file->getWidth() ),
+				$wgLang->formatNum( $file->getHeight() ),
+				$wgLang->formatSize( $file->getSize() ),
+				$file->getMimeType(),
+				$wgLang->formatNum( $pages ) );
+		}
+		return $msg;
 	}
 
 	/**

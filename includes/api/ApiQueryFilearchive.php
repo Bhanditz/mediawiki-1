@@ -69,21 +69,10 @@ class ApiQueryFilearchive extends ApiQueryBase {
 		$this->addFields( array( 'fa_name', 'fa_deleted' ) );
 		$this->addFieldsIf( 'fa_storage_key', $fld_sha1 );
 		$this->addFieldsIf( 'fa_timestamp', $fld_timestamp );
-
-		if ( $fld_user ) {
-			$this->addFields( array( 'fa_user', 'fa_user_text' ) );
-		}
-
-		if ( $fld_dimensions || $fld_size ) {
-			$this->addFields( array( 'fa_height', 'fa_width', 'fa_size' ) );
-		}
-
+		$this->addFieldsIf( array( 'fa_user', 'fa_user_text' ), $fld_user );
+		$this->addFieldsIf( array( 'fa_height', 'fa_width', 'fa_size' ), $fld_dimensions || $fld_size );
 		$this->addFieldsIf( 'fa_description', $fld_description );
-
-		if ( $fld_mime ) {
-			$this->addFields( array( 'fa_major_mime', 'fa_minor_mime' ) );
-		}
-
+		$this->addFieldsIf( array( 'fa_major_mime', 'fa_minor_mime' ), $fld_mime );
 		$this->addFieldsIf( 'fa_metadata', $fld_metadata );
 		$this->addFieldsIf( 'fa_bits', $fld_bitdepth );
 
@@ -96,11 +85,36 @@ class ApiQueryFilearchive extends ApiQueryBase {
 			$this->addWhere( 'fa_name' . $db->buildLike( $this->titlePartToKey( $params['prefix'] ), $db->anyString() ) );
 		}
 
+		$sha1Set = isset( $params['sha1'] );
+		$sha1base36Set = isset( $params['sha1base36'] );
+		if ( $sha1Set || $sha1base36Set ) {
+			global $wgMiserMode;
+			if ( $wgMiserMode  ) {
+				$this->dieUsage( 'Search by hash disabled in Miser Mode', 'hashsearchdisabled' );
+			}
+
+			$sha1 = false;
+			if ( $sha1Set ) {
+				if ( !$this->validateSha1Hash( $params['sha1'] ) ) {
+					$this->dieUsage( 'The SHA1 hash provided is not valid', 'invalidsha1hash' );
+				}
+				$sha1 = wfBaseConvert( $params['sha1'], 16, 36, 31 );
+			} elseif ( $sha1base36Set ) {
+				if ( !$this->validateSha1Base36Hash( $params['sha1base36'] ) ) {
+					$this->dieUsage( 'The SHA1Base36 hash provided is not valid', 'invalidsha1base36hash' );
+				}
+				$sha1 = $params['sha1base36'];
+			}
+			if ( $sha1 ) {
+				$this->addWhere( 'fa_storage_key ' . $db->buildLike( "{$sha1}.", $db->anyString() ) );
+			}
+		}
+
 		if ( !$wgUser->isAllowed( 'suppressrevision' ) ) {
 			// Filter out revisions that the user is not allowed to see. There
 			// is no way to indicate that we have skipped stuff because the
 			// continuation parameter is fa_name
-			
+
 			// Note that this field is unindexed. This should however not be
 			// a big problem as files with fa_deleted are rare
 			$this->addWhereFld( 'fa_deleted', 0 );
@@ -167,7 +181,7 @@ class ApiQueryFilearchive extends ApiQueryBase {
 			if ( $fld_mime ) {
 				$file['mime'] = "$row->fa_major_mime/$row->fa_minor_mime";
 			}
-			
+
 			if ( $row->fa_deleted & File::DELETED_FILE ) {
 				$file['filehidden'] = '';
 			}
@@ -182,7 +196,7 @@ class ApiQueryFilearchive extends ApiQueryBase {
 				$file['suppressed'] = '';
 			}
 
-			
+
 			$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $file );
 			if ( !$fit ) {
 				$this->setContinueEnumParameter( 'from', $this->keyToTitle( $row->fa_name ) );
@@ -212,6 +226,8 @@ class ApiQueryFilearchive extends ApiQueryBase {
 					'descending'
 				)
 			),
+			'sha1' => null,
+			'sha1base36' => null,
 			'prop' => array(
 				ApiBase::PARAM_DFLT => 'timestamp',
 				ApiBase::PARAM_ISMULTI => true,
@@ -238,6 +254,8 @@ class ApiQueryFilearchive extends ApiQueryBase {
 			'prefix' => 'Search for all image titles that begin with this value',
 			'dir' => 'The direction in which to list',
 			'limit' => 'How many images to return in total',
+			'sha1' => "SHA1 hash of image. Overrides {$this->getModulePrefix()}sha1base36. Disabled in Miser Mode",
+			'sha1base36' => 'SHA1 hash of image in base 36 (used in MediaWiki). Disabled in Miser Mode',
 			'prop' => array(
 				'What image information to get:',
 				' sha1              - Adds SHA-1 hash for the image',
@@ -261,6 +279,9 @@ class ApiQueryFilearchive extends ApiQueryBase {
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to view deleted file information' ),
+			array( 'code' => 'hashsearchdisabled', 'info' => 'Search by hash disabled in Miser Mode' ),
+			array( 'code' => 'invalidsha1hash', 'info' => 'The SHA1 hash provided is not valid' ),
+			array( 'code' => 'invalidsha1base36hash', 'info' => 'The SHA1Base36 hash provided is not valid' ),
 		) );
 	}
 

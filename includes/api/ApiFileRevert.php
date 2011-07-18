@@ -55,20 +55,20 @@ class ApiFileRevert extends ApiBase {
 
 		// Check whether we're allowed to revert this file
 		$this->checkPermissions( $wgUser );
-		
+
 		$sourceUrl = $this->file->getArchiveVirtualUrl( $this->archiveName );
 		$status = $this->file->upload( $sourceUrl, $this->params['comment'], $this->params['comment'] );
 
 		if ( $status->isGood() ) {
 			$result = array( 'result' => 'Success' );
 		} else {
-			$result = array( 
-				'result' => 'Failure', 
+			$result = array(
+				'result' => 'Failure',
 				'errors' => $this->getResult()->convertStatusToArray( $status ),
 			);
 		}
 
-		$this->getResult()->addValue( null, $this->getModuleName(), $result );	
+		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 
 	}
 
@@ -86,8 +86,6 @@ class ApiFileRevert extends ApiBase {
 		if ( $permissionErrors ) {
 			$this->dieUsageMsg( $permissionErrors[0] );
 		}
-		
-		
 	}
 
 	/**
@@ -103,14 +101,14 @@ class ApiFileRevert extends ApiBase {
 		// Check if the file really exists
 		$this->file = wfLocalFile( $title );
 		if ( !$this->file->exists() ) {
-			$this->dieUsageMsg( array( 'notanarticle' ) );
+			$this->dieUsageMsg( 'notanarticle' );
 		}
 
 		// Check if the archivename is valid for this file
 		$this->archiveName = $this->params['archivename'];
 		$oldFile = RepoGroup::singleton()->getLocalRepo()->newFromArchiveName( $title, $this->archiveName );
 		if ( !$oldFile->exists() ) {
-			$this->dieUsageMsg( array( 'filerevert-badversion' ) );
+			$this->dieUsageMsg( 'filerevert-badversion' );
 		}
 	}
 
@@ -133,7 +131,7 @@ class ApiFileRevert extends ApiBase {
 			),
 			'archivename' => array(
 				ApiBase::PARAM_TYPE => 'string',
-				ApiBase::PARAM_REQUIRED => true,			
+				ApiBase::PARAM_REQUIRED => true,
 			),
 			'token' => null,
 		);

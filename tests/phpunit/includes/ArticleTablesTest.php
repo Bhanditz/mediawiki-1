@@ -2,19 +2,16 @@
 
 /**
  * @group Database
- * @group Destructive
  */
 class ArticleTablesTest extends MediaWikiLangTestCase {
-	/**
- 	 * @group Broken
-	 */
+
 	function testbug14404() {
 		global $wgUser, $wgContLang, $wgLanguageCode, $wgLang;
 		
 		$title = Title::newFromText("Bug 14404");
 		$article = new Article( $title );
 		$wgUser = new User();
-		$wgUser->mRights = array( 'createpage', 'edit', 'purge' );
+		$wgUser->mRights['*'] = array( 'createpage', 'edit', 'purge' );
 		$wgLanguageCode = 'es';
 		$wgContLang = Language::factory( 'es' );
 		

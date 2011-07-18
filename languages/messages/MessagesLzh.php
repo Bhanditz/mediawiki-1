@@ -195,15 +195,6 @@ $messages = array(
 'index-category'                 => '已索之頁',
 'noindex-category'               => '未索之頁',
 
-'mainpagetext'      => "'''共筆臺已立'''",
-'mainpagedocfooter' => "欲識維基，見[http://meta.wikimedia.org/wiki/Help:Contents User's Guide]
-
-== 始 ==
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
-
 'about'         => '述',
 'article'       => '文',
 'newwindow'     => '啟窗',
@@ -254,7 +245,6 @@ $messages = array(
 'history'           => '誌',
 'history_short'     => '誌',
 'updatedmarker'     => '新也',
-'info_short'        => '快訊',
 'printableversion'  => '印本',
 'permalink'         => '恆鏈',
 'print'             => '印',
@@ -437,7 +427,6 @@ $1',
 'cascadeprotected'     => '此頁"迭緘"矣。$1頁牽連如下：
 $2',
 'namespaceprotected'   => "子權未逮，莫能纂'''$1'''。",
-'customcssjsprotected' => '牽他人，子權未逮，莫能纂之。',
 'ns-specialprotected'  => '奇頁禁纂也。',
 'titleprotected'       => "緘焉自[[User:$1|$1]]防建也。因''$2''也。",
 
@@ -486,7 +475,7 @@ $2',
 'loginsuccesstitle'          => '登簿成矣',
 'loginsuccess'               => "'''$1'''登{{SITENAME}}矣",
 'nosuchuser'                 => '查無此人。',
-'nosuchusershort'            => '查無"<nowiki>$1</nowiki>"，惠核之。',
+'nosuchusershort'            => '查無"$1"，惠核之。',
 'nouserspecified'            => '簿名須也',
 'login-userblocked'          => '此簿已被封。登無簿也。',
 'wrongpassword'              => '符節不合，惠核之。',
@@ -618,12 +607,12 @@ $2',
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} 尋誌]，
 或[{{fullurl:{{FULLPAGENAME}}|action=edit}} 纂頁]</span>。',
 'noarticletext-nopermission'       => '查無此文。[[Special:Search/{{PAGENAME}}|尋題]]，或<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} 尋誌]</span>。',
-'userpage-userdoesnotexist'        => '「$1」之簿未增也。請建纂本頁前查之。',
+'userpage-userdoesnotexist'        => '「<nowiki>$1</nowiki>」之簿未增也。請建纂本頁前查之。',
 'userpage-userdoesnotexist-view'   => '「$1」之簿未增也。',
 'blocked-notice-logextract'        => '該簿現鎖也。
 下列之記鎖，以察之：',
 'clearyourcache'                   => "'''註：'''重取頁面，文方新焉。
-'''Mozilla / Firefox / Safari:'''押''Shift''並點''重新載入''，或合鍵''Ctrl-F5''或''Ctrl-R''（Macintosh為''Command-R''）。
+'''Mozilla / Firefox / Safari:'''押''Shift''並點''重新載入''，或合鍵''Ctrl-F5''或''Ctrl-R''（Mac為''Command-R''）。
 '''Konqueror:'''點''Reload''，或押''F5''。
 ：''Opera:'''須至''Tools→Preferences''清謄本。
 '''Internet Explorer:'''押''Ctrl''並點''重新整理''，或合鍵''Ctrl-F5''。",
@@ -1346,8 +1335,6 @@ $1",
 'upload-description'         => '檔述',
 'upload-options'             => '貢項',
 'watchthisupload'            => '派哨',
-'upload-wasdeleted'          => "'''警示：復獻棄檔，慎續之。'''
-誌刪如下：",
 'filename-bad-prefix'        => "獻檔以'''「$1」'''首，常由相機瞎造，惠更述之。",
 'upload-success-subj'        => '檔案安矣',
 'upload-success-msg'         => '爾自[$2]之貢安矣，見於此：[[:{{ns:file}}:$1]]',
@@ -1451,7 +1438,6 @@ $1',
 [[Special:WhatLinksHere/$2|整表]]可供之閱也。',
 'nolinkstoimage'                    => '無頁連本檔也。',
 'morelinkstoimage'                  => '閱檔[[Special:WhatLinksHere/$1|接]]。',
-'redirectstofile'                   => '下檔轉到此檔有$1：',
 'duplicatesoffile'                  => '下檔重此檔有$1（[[Special:FileDuplicateSearch/$2|詳]]）：',
 'sharedupload'                      => '此檔為$1之共傳，可另項用也。',
 'sharedupload-desc-there'           => '此檔為$1之共傳，可另項用也。
@@ -1755,9 +1741,7 @@ $1',
 'watchlistanontext'    => '$1以治哨',
 'watchnologin'         => '未登簿',
 'watchnologintext'     => '[[Special:UserLogin|登簿]]以治哨。',
-'addedwatch'           => '派哨',
 'addedwatchtext'       => "\"[[:\$1]]\"哨派矣。後有易、議者可見於[[Special:Watchlist|哨站]]，且'''粗體'''列於[[Special:RecentChanges|近易]]。",
-'removedwatch'         => '撤哨',
 'removedwatchtext'     => '"[[:$1]]"[[Special:Watchlist|哨]]撤矣。',
 'watch'                => '派哨',
 'watchthispage'        => '哨此報',
@@ -1805,7 +1789,7 @@ $NEWPAGE
 {{SITENAME}}敬上
 
 --
-欲更哨令，惠訪{{fullurl:{{#special:Watchlist}}/edit}}
+欲更哨令，惠訪{{fullurl:{{#special:EditWatchlist}}}}
 
 欲刪之頁，惠訪$UNWATCHURL
 
@@ -1824,7 +1808,7 @@ $NEWPAGE
 'confirmdeletetext'      => '欲刪此物與誌，知後果、合[[{{MediaWiki:Policy-url}}]]後再為之。',
 'actioncomplete'         => '成矣',
 'actionfailed'           => '敗矣',
-'deletedtext'            => '"<nowiki>$1</nowiki>"刪矣，見誌刪於$2。',
+'deletedtext'            => '"$1"刪矣，見誌刪於$2。',
 'deletedarticle'         => '刪焉「[[$1]]」',
 'suppressedarticle'      => '廢焉「[[$1]]」',
 'dellogpage'             => '誌刪',
@@ -1873,7 +1857,7 @@ $NEWPAGE
 'protect_expiry_invalid'      => '屆期不明。',
 'protect_expiry_old'          => '屆期已過。',
 'protect-unchain-permissions' => '解鎖更遠之項',
-'protect-text'                => "緘捆'''<nowiki>$1</nowiki>'''。",
+'protect-text'                => "緘捆'''$1'''。",
 'protect-locked-blocked'      => "簿禁，'''$1'''緘昔如下：",
 'protect-locked-dblock'       => "庫鎖，'''$1'''緘昔如下：",
 'protect-locked-access'       => "未准，'''$1'''緘昔如下：",
@@ -2397,14 +2381,6 @@ $1',
 'spam_reverting'      => '還新審之無鏈$1者。',
 'spam_blanking'       => '審皆鏈$1，遂令白頁。',
 
-# Info page
-'infosubtitle'   => '頁註',
-'numedits'       => '有纂$1',
-'numtalkedits'   => '有議$1',
-'numwatchers'    => '有哨$1',
-'numauthors'     => '編者$1',
-'numtalkauthors' => '議者$1',
-
 # Skin names
 'skinname-standard'    => '經典',
 'skinname-nostalgia'   => '懷古',
@@ -2803,5 +2779,20 @@ MediaWiki乃為用之發，無擔之責也；亦無售目之默擔也。參GNU�
 # SQLite database support
 'sqlite-has-fts' => '$1 含全文之尋',
 'sqlite-no-fts'  => '$1 不含全文之尋',
+
+# Add categories per AJAX
+'ajax-add-category'            => '加類',
+'ajax-add-category-submit'     => '加',
+'ajax-confirm-title'           => '確',
+'ajax-confirm-prompt'          => '爾能給纂要。
+按「存」以存爾纂也。',
+'ajax-confirm-save'            => '存',
+'ajax-add-category-summary'    => '加類「$1」',
+'ajax-remove-category-summary' => '取類「$1」',
+'ajax-confirm-actionsummary'   => '已成之作：',
+'ajax-error-title'             => '錯',
+'ajax-error-dismiss'           => '好',
+'ajax-remove-category-error'   => '無取此類也。
+常於一模入類。',
 
 );

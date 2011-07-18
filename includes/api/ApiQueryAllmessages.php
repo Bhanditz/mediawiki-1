@@ -84,7 +84,7 @@ class ApiQueryAllmessages extends ApiQueryBase {
 						$skip = true;
 					}
 					$messages_filtered[] = $message;
-				} else if ( $skip ) {
+				} elseif ( $skip ) {
 					break;
 				}
 			}
@@ -251,6 +251,10 @@ class ApiQueryAllmessages extends ApiQueryBase {
 			'api.php?action=query&meta=allmessages&amprefix=ipb-',
 			'api.php?action=query&meta=allmessages&ammessages=august|mainpage&amlang=de',
 		);
+	}
+
+	public function getHelpUrls() {
+		return 'http://www.mediawiki.org/wiki/API:Meta#allmessages_.2F_am';
 	}
 
 	public function getVersion() {

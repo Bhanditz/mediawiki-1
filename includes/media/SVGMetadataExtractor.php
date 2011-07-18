@@ -84,14 +84,14 @@ class SVGReader {
 		wfRestoreWarnings();
 	}
 
-	/*
+	/**
 	 * @return Array with the known metadata
 	 */
 	public function getMetadata() {
 		return $this->metadata;
 	}
 
-	/*
+	/**
 	 * Read the SVG
 	 */
 	public function read() {
@@ -144,7 +144,7 @@ class SVGReader {
 		return true;
 	}
 
-	/*
+	/**
 	 * Read a textelement from an element
 	 *
 	 * @param String $name of the element that we are reading from
@@ -177,11 +177,15 @@ class SVGReader {
 			return;
 		}
 		// TODO: find and store type of xml snippet. metadata['metadataType'] = "rdf"
-		$this->metadata[$metafield] = trim( $this->reader->readInnerXML() );
+		if( method_exists( $this->reader, 'readInnerXML()' ) ) {
+			$this->metadata[$metafield] = trim( $this->reader->readInnerXML() );
+		} else {
+			throw new MWException( "The PHP XMLReader extension does not come with readInnerXML() method. Your libxml is probably out of date (need 2.6.20 or later)." );
+		}
 		$this->reader->next();
 	}
 
-	/*
+	/**
 	 * Filter all children, looking for animate elements
 	 *
 	 * @param String $name of the element that we are reading from
@@ -235,7 +239,7 @@ class SVGReader {
 		wfDebug( "SVGReader WARN: $data\n" );
 	}
 
-	/*
+	/**
 	 * Parse the attributes of an SVG element
 	 *
 	 * The parser has to be in the start element of <svg>

@@ -59,6 +59,7 @@ class ApiPageSet extends ApiQueryBase {
 	 * Constructor
 	 * @param $query ApiQuery
 	 * @param $resolveRedirects bool Whether redirects should be resolved
+	 * @param $convertTitles bool
 	 */
 	public function __construct( $query, $resolveRedirects = false, $convertTitles = false ) {
 		parent::__construct( $query, 'query' );
@@ -212,7 +213,7 @@ class ApiPageSet extends ApiQueryBase {
 	/**
 	 * Get a list of redirect resolutions - maps a title to its redirect
 	 * target.
-	 * @return array prefixed_title (string) => prefixed_title (string)
+	 * @return array prefixed_title (string) => Title object
 	 */
 	public function getRedirectTitles() {
 		return $this->mRedirectTitles;
@@ -622,16 +623,17 @@ class ApiPageSet extends ApiQueryBase {
 			array(
 				'rd_from',
 				'rd_namespace',
+				'rd_fragment',
+				'rd_interwiki',
 				'rd_title'
 			), array( 'rd_from' => array_keys( $this->mPendingRedirectIDs ) ),
 			__METHOD__
 		);
 		$this->profileDBOut();
-
 		foreach ( $res as $row ) {
 			$rdfrom = intval( $row->rd_from );
 			$from = $this->mPendingRedirectIDs[$rdfrom]->getPrefixedText();
-			$to = Title::makeTitle( $row->rd_namespace, $row->rd_title )->getPrefixedText();
+			$to = Title::makeTitle( $row->rd_namespace, $row->rd_title, $row->rd_fragment, $row->rd_interwiki );
 			unset( $this->mPendingRedirectIDs[$rdfrom] );
 			if ( !isset( $this->mAllPages[$row->rd_namespace][$row->rd_title] ) ) {
 				$lb->add( $row->rd_namespace, $row->rd_title );
@@ -650,7 +652,7 @@ class ApiPageSet extends ApiQueryBase {
 					continue;
 				}
 				$lb->addObj( $rt );
-				$this->mRedirectTitles[$title->getPrefixedText()] = $rt->getPrefixedText();
+				$this->mRedirectTitles[$title->getPrefixedText()] = $rt;
 				unset( $this->mPendingRedirectIDs[$id] );
 			}
 		}

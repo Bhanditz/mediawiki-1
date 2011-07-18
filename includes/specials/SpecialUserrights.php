@@ -98,7 +98,7 @@ class UserrightsPage extends SpecialPage {
 		}
 
 		if( !$this->userCanChangeRights( $wgUser, true ) ) {
-			// fixme... there may be intermediate groups we can mention.
+			// @todo FIXME: There may be intermediate groups we can mention.
 			$wgOut->showPermissionsErrorPage( array( array(
 				$wgUser->isAnon()
 					? 'userrights-nologin'
@@ -231,7 +231,7 @@ class UserrightsPage extends SpecialPage {
 		$newGroups = array_unique( $newGroups );
 
 		// Ensure that caches are cleared
-		$user->invalidateCache( true );
+		$user->invalidateCache();
 
 		wfDebug( 'oldGroups: ' . print_r( $oldGroups, true ) );
 		wfDebug( 'newGroups: ' . print_r( $newGroups, true ) );
@@ -463,7 +463,7 @@ class UserrightsPage extends SpecialPage {
 					<td></td>
 					<td class='mw-submit'>" .
 						Xml::submitButton( wfMsg( 'saveusergroups' ),
-							array( 'name' => 'saveusergroups' ) + $wgUser->getSkin()->tooltipAndAccessKeyAttribs( 'userrights-set' ) ) .
+							array( 'name' => 'saveusergroups' ) + Linker::tooltipAndAccesskeyAttribs( 'userrights-set' ) ) .
 					"</td>
 				</tr>" .
 			Xml::closeElement( 'table' ) . "\n" .

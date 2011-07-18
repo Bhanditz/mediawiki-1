@@ -33,24 +33,11 @@ class SpecialPasswordReset extends FormSpecialPage {
 	}
 
 	public function userCanExecute( User $user ) {
-		global $wgPasswordResetRoutes, $wgAuth;
-
-		// Maybe password resets are disabled, or there are no allowable routes
-		if ( !is_array( $wgPasswordResetRoutes )
-			|| !in_array( true, array_values( $wgPasswordResetRoutes ) ) )
-		{
-			throw new ErrorPageError( 'internalerror', 'passwordreset-disabled' );
-		}
-
-		// Maybe the external auth plugin won't allow local password changes
-		if ( !$wgAuth->allowPasswordChange() ) {
+		$error = $this->canChangePassword( $user );
+		if ( is_string( $error ) ) {
+			throw new ErrorPageError( 'internalerror', $error );
+		} else if ( !$error ) {
 			throw new ErrorPageError( 'internalerror', 'resetpass_forbidden' );
-		}
-
-		// Maybe the user is blocked (check this here rather than relying on the parent
-		// method as we have a more specific error message to use here
-		if ( $user->isBlocked() ) {
-			throw new ErrorPageError( 'internalerror', 'blocked-mailpassword' );
 		}
 
 		return parent::userCanExecute( $user );
@@ -74,6 +61,10 @@ class SpecialPasswordReset extends FormSpecialPage {
 		}
 
 		return $a;
+	}
+
+	public function alterForm( HTMLForm $form ) {
+		$form->setSubmitText( wfMessage( "mailmypassword" ) );
 	}
 
 	protected function preText() {
@@ -141,7 +132,7 @@ class SpecialPasswordReset extends FormSpecialPage {
 		}
 
 		$firstUser = $users[0];
-		
+
 		if ( !$firstUser instanceof User || !$firstUser->getID() ) {
 			return array( array( 'nosuchuser', $data['Username'] ) );
 		}
@@ -210,7 +201,7 @@ class SpecialPasswordReset extends FormSpecialPage {
 		if ( $result->isGood() ) {
 			return true;
 		} else {
-			// FIXME: The email didn't send, but we have already set the password throttle
+			// @todo FIXME: The email didn't send, but we have already set the password throttle
 			// timestamp, so they won't be able to try again until it expires...  :(
 			return array( array( 'mailerror', $result->getMessage() ) );
 		}
@@ -219,5 +210,43 @@ class SpecialPasswordReset extends FormSpecialPage {
 	public function onSuccess() {
 		$this->getOutput()->addWikiMsg( 'passwordreset-emailsent' );
 		$this->getOutput()->returnToMain();
+	}
+
+	function canChangePassword(User $user) {
+		global $wgPasswordResetRoutes, $wgAuth;
+
+		// Maybe password resets are disabled, or there are no allowable routes
+		if ( !is_array( $wgPasswordResetRoutes ) ||
+			 !in_array( true, array_values( $wgPasswordResetRoutes ) ) ) {
+			return 'passwordreset-disabled';
+		}
+
+		// Maybe the external auth plugin won't allow local password changes
+		if ( !$wgAuth->allowPasswordChange() ) {
+			return 'resetpass_forbidden';
+		}
+
+		// Maybe the user is blocked (check this here rather than relying on the parent
+		// method as we have a more specific error message to use here
+		if ( $user->isBlocked() ) {
+			return 'blocked-mailpassword';
+		}
+
+		return true;
+	}
+
+
+	/**
+	 * Hide the password reset page if resets are disabled.
+	 * @return Bool
+	 */
+	function isListed() {
+		global $wgUser;
+
+		if ( $this->canChangePassword( $wgUser ) === true ) {
+			return parent::isListed();
+		}
+
+		return false;
 	}
 }

@@ -46,21 +46,28 @@ abstract class Job {
 	 * Pop a job of a certain type.  This tries less hard than pop() to
 	 * actually find a job; it may be adversely affected by concurrent job
 	 * runners.
+	 *
+	 * @param $type string
+	 *
+	 * @return Job
 	 */
 	static function pop_type( $type ) {
 		wfProfilein( __METHOD__ );
 
 		$dbw = wfGetDB( DB_MASTER );
 
+		$dbw->begin();
+
 		$row = $dbw->selectRow(
 			'job',
 			'*',
 			array( 'job_cmd' => $type ),
 			__METHOD__,
-			array( 'LIMIT' => 1 )
+			array( 'LIMIT' => 1, 'FOR UPDATE' )
 		);
 
 		if ( $row === false ) {
+			$dbw->commit();
 			wfProfileOut( __METHOD__ );
 			return false;
 		}
@@ -113,8 +120,12 @@ abstract class Job {
 			}
 		}
 		$offset = intval( $offset );
-		$row = $dbr->selectRow( 'job', '*', array_merge( $conditions, array( "job_id >= $offset" ) ) , __METHOD__,
-			array( 'ORDER BY' => 'job_id', 'LIMIT' => 1 ) 
+		$options = array( 'ORDER BY' => 'job_id', 'USE INDEX' => 'PRIMARY' );
+
+		$row = $dbr->selectRow( 'job', '*',
+			array_merge( $conditions, array( "job_id >= $offset" ) ),
+			__METHOD__,
+			$options
 		);
 
 		// Refetching without offset is needed as some of job IDs could have had delayed commits
@@ -122,8 +133,7 @@ abstract class Job {
 		//
 		if ( $row === false ) {
 			if ( $offset != 0 ) {
-				$row = $dbr->selectRow( 'job', '*', $conditions, __METHOD__,
-					array( 'ORDER BY' => 'job_id', 'LIMIT' => 1 ) );
+				$row = $dbr->selectRow( 'job', '*', $conditions, __METHOD__, $options );
 			}
 
 			if ( $row === false ) {

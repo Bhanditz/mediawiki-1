@@ -13,7 +13,7 @@ jQuery( function( $ ) {
 		$lis.removeClass( 'selected' );
 		$lis.each( function() {
 			var $this = $(this);
-			var $inputs = $this.find( 'input[type=radio]' );
+			var $inputs = $this.find( 'input[type="radio"]' );
 			if ( $inputs.length !== 2 ) {
 				return true;
 			}
@@ -47,42 +47,7 @@ jQuery( function( $ ) {
 		});
 		return true;
 	};
-	
-	var fixCompare = function () {
-		var $diffList = $( '#pagehistory' ),
-		 $histForm = $( '#mw-history-compare' ),
-		 $buttons = $histForm.find( 'input.historysubmit' );
-
-		// There's only one rev, nothing to do here
-		if ( !$buttons.length ) {
-			return false;
-		}
-
-		var buttonText = $buttons.remove().first().val(),
-		  $compareLink = $( '<a></a>', {
-				'class': 'compare-link',
-				'text': buttonText
-			}).button();
-		$histForm.prepend( $compareLink );
-		if ( $buttons.length == 2 ) {
-			$histForm.append( $compareLink.clone() );
-		}
-
-		var updateCompare = function() {
-			var $radio = $histForm.find( 'input[type=radio]:checked' );
-			var genLink = mw.config.get( 'wgScript' )
-				+ '?title=' + mw.util.wikiUrlencode( mw.config.get( 'wgPageName' ) )
-				+ '&diff=' + $radio.eq(0).val()
-				+ '&oldid=' + $radio.eq(1).val();
-			$( '.compare-link' ).each( function() {
-				$(this).attr('href', genLink);
-			});
-		}
-		updateCompare();
-		$diffList.change( updateCompare );
-	};
 
 	$( '#pagehistory li input[name="diff"], #pagehistory li input[name="oldid"]' ).click( updateDiffRadios );
-	fixCompare();
 	updateDiffRadios();
 });

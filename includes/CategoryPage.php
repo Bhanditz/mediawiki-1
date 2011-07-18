@@ -1,6 +1,6 @@
 <?php
 /**
- * Special handling for category description pages.
+ * Class for viewing MediaWiki category description pages.
  * Modelled after ImagePage.php.
  *
  * @file
@@ -16,6 +16,22 @@ if ( !defined( 'MEDIAWIKI' ) )
 class CategoryPage extends Article {
 	# Subclasses can change this to override the viewer class.
 	protected $mCategoryViewerClass = 'CategoryViewer';
+
+	protected function newPage( Title $title ) {
+		// Overload mPage with a category-specific page
+		return new WikiCategoryPage( $title );
+	}
+
+	/**
+	 * Constructor from a page id
+	 * @param $id Int article ID to load
+	 */
+	public static function newFromID( $id ) {
+		$t = Title::newFromID( $id );
+		# @todo FIXME: Doesn't inherit right
+		return $t == null ? null : new self( $t );
+		# return $t == null ? null : new static( $t ); // PHP 5.3
+	}
 
 	function view() {
 		global $wgRequest, $wgUser;
@@ -40,27 +56,6 @@ class CategoryPage extends Article {
 		if ( NS_CATEGORY == $this->mTitle->getNamespace() ) {
 			$this->closeShowCategory();
 		}
-	}
-
-	/**
-	 * Don't return a 404 for categories in use.
-	 * In use defined as: either the actual page exists
-	 * or the category currently has members.
-	 */
-	function hasViewableContent() {
-		if ( parent::hasViewableContent() ) {
-			return true;
-		} else {
-			$cat = Category::newFromTitle( $this->mTitle );
-			// If any of these are not 0, then has members
-			if ( $cat->getPageCount()
-				|| $cat->getSubcatCount()
-				|| $cat->getFileCount()
-			) {
-				return true;
-			}
-		}
-		return false;
 	}
 
 	function openShowCategory() {
@@ -91,7 +86,7 @@ class CategoryViewer {
 		$children, $children_start_char,
 		$showGallery, $imgsNoGalley,
 		$imgsNoGallery_start_char,
-		$skin, $imgsNoGallery;
+		$imgsNoGallery;
 
 	/**
 	 * @var 
@@ -164,7 +159,7 @@ class CategoryViewer {
 		if ( $r == '' ) {
 			// If there is no category content to display, only
 			// show the top part of the navigation links.
-			// FIXME: cannot be completely suppressed because it
+			// @todo FIXME: Cannot be completely suppressed because it
 			//        is unknown if 'until' or 'from' makes this
 			//        give 0 results.
 			$r = $r . $this->getCategoryTop();
@@ -178,6 +173,12 @@ class CategoryViewer {
 		if ( $r == '' ) {
 			$r = wfMsgExt( 'category-empty', array( 'parse' ) );
 		}
+
+		$pageLang = $this->title->getPageLanguage();
+		$langAttribs = array( 'lang' => $pageLang->getCode(), 'dir' => $pageLang->getDir() );
+		# close the previous div, show the headings in user language,
+		# then open a new div with the page content language again
+		$r = '</div>' . $r . Html::openElement( 'div', $langAttribs );
 
 		wfProfileOut( __METHOD__ );
 		return $wgContLang->convert( $r );
@@ -198,24 +199,13 @@ class CategoryViewer {
 	}
 
 	/**
-	 * @return Skin
-	 */
-	function getSkin() {
-		if ( !$this->skin ) {
-			global $wgUser;
-			$this->skin = $wgUser->getSkin();
-		}
-		return $this->skin;
-	}
-
-	/**
 	 * Add a subcategory to the internal lists, using a Category object
 	 */
 	function addSubcategoryObject( Category $cat, $sortkey, $pageLength ) {
 		// Subcategory; strip the 'Category' namespace from the link text.
 		$title = $cat->getTitle();
 
-		$link = $this->getSkin()->link( $title, $title->getText() );
+		$link = Linker::link( $title, htmlspecialchars( $title->getText() ) );
 		if ( $title->isRedirect() ) {
 			// This didn't used to add redirect-in-category, but might
 			// as well be consistent with the rest of the sections
@@ -230,7 +220,7 @@ class CategoryViewer {
 
 	/**
 	 * Add a subcategory to the internal lists, using a title object
-	 * @deprecated kept for compatibility, please use addSubcategoryObject instead
+	 * @deprecated since 1.17 kept for compatibility, please use addSubcategoryObject instead
 	 */
 	function addSubcategory( Title $title, $sortkey, $pageLength ) {
 		$this->addSubcategoryObject( Category::newFromTitle( $title ), $sortkey, $pageLength );
@@ -273,7 +263,7 @@ class CategoryViewer {
 				$this->gallery->add( $title );
 			}
 		} else {
-			$link = $this->getSkin()->link( $title );
+			$link = Linker::link( $title );
 			if ( $isRedirect ) {
 				// This seems kind of pointless given 'mw-redirect' class,
 				// but keeping for back-compatibility with user css.
@@ -292,7 +282,7 @@ class CategoryViewer {
 	function addPage( $title, $sortkey, $pageLength, $isRedirect = false ) {
 		global $wgContLang;
 
-		$link = $this->getSkin()->link( $title );
+		$link = Linker::link( $title );
 		if ( $isRedirect ) {
 			// This seems kind of pointless given 'mw-redirect' class,
 			// but keeping for back-compatiability with user css.
@@ -425,7 +415,7 @@ class CategoryViewer {
 		# Don't show articles section if there are none.
 		$r = '';
 
-		# FIXME, here and in the other two sections: we don't need to bother
+		# @todo FIXME: Here and in the other two sections: we don't need to bother
 		# with this rigamarole if the entire category contents fit on one page
 		# and have already been retrieved.  We can just use $rescnt in that
 		# case and save a query and some logic.
@@ -500,13 +490,20 @@ class CategoryViewer {
 	 * @private
 	 */
 	function formatList( $articles, $articles_start_char, $cutoff = 6 ) {
+		$list = '';
 		if ( count ( $articles ) > $cutoff ) {
-			return self::columnList( $articles, $articles_start_char );
+			$list = self::columnList( $articles, $articles_start_char );
 		} elseif ( count( $articles ) > 0 ) {
 			// for short lists of articles in categories.
-			return self::shortList( $articles, $articles_start_char );
+			$list = self::shortList( $articles, $articles_start_char );
 		}
-		return '';
+
+		$pageLang = $this->title->getPageLanguage();
+		$attribs = array( 'lang' => $pageLang->getCode(), 'dir' => $pageLang->getDir(),
+			'class' => 'mw-content-'.$pageLang->getDir() );
+		$list = Html::rawElement( 'div', $attribs, $list );
+
+		return $list;
 	}
 
 	/**
@@ -601,7 +598,7 @@ class CategoryViewer {
 	 */
 	private function pagingLinks( $first, $last, $type = '' ) {
 		global $wgLang;
-		$sk = $this->getSkin();
+
 		$limitText = $wgLang->formatNum( $this->limit );
 
 		$prevLink = wfMsgExt( 'prevn', array( 'escape', 'parsemag' ), $limitText );
@@ -610,8 +607,8 @@ class CategoryViewer {
 			$prevQuery = $this->query;
 			$prevQuery["{$type}until"] = $first;
 			unset( $prevQuery["{$type}from"] );
-			$prevLink = $sk->linkKnown(
-				$this->title,
+			$prevLink = Linker::linkKnown(
+				$this->addFragmentToTitle( $this->title, $type ),
 				$prevLink,
 				array(),
 				$prevQuery
@@ -624,8 +621,8 @@ class CategoryViewer {
 			$lastQuery = $this->query;
 			$lastQuery["{$type}from"] = $last;
 			unset( $lastQuery["{$type}until"] );
-			$nextLink = $sk->linkKnown(
-				$this->title,
+			$nextLink = Linker::linkKnown(
+				$this->addFragmentToTitle( $this->title, $type ),
 				$nextLink,
 				array(),
 				$lastQuery
@@ -635,6 +632,32 @@ class CategoryViewer {
 		return "($prevLink) ($nextLink)";
 	}
 
+	/**
+	 * Takes a title, and adds the fragment identifier that
+	 * corresponds to the correct segment of the category.
+	 *
+	 * @param Title $title: The title (usually $this->title)
+	 * @param String $section: Which section
+	 */
+	private function addFragmentToTitle( $title, $section ) {
+		switch ( $section ) {
+			case 'page':
+				$fragment = 'mw-pages';
+				break;
+			case 'subcat':
+				$fragment = 'mw-subcategories';
+				break;
+			case 'file':
+				$fragment = 'mw-category-media';
+				break;
+			default:
+				throw new MWException( __METHOD__ .
+					" Invalid section $section." );
+		}
+
+		return Title::makeTitle( $title->getNamespace(),
+			$title->getDBkey(), $fragment );
+	}
 	/**
 	 * What to do if the category table conflicts with the number of results
 	 * returned?  This function says what. Each type is considered independently

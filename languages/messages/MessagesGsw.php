@@ -247,9 +247,6 @@ $messages = array(
 'index-category'                 => 'Verzeichneti Syte',
 'noindex-category'               => 'Syte wu nit verzeichnet sin',
 
-'mainpagetext'      => "'''MediaWiki isch erfolgrich inschtalliert worre.'''",
-'mainpagedocfooter' => 'Lueg uf d [http://meta.wikimedia.org/wiki/MediaWiki_localisation Dokumentation fir d Aapassig vu dr Benutzeroberflächi] un s [http://meta.wikimedia.org/wiki/Help:Contents Benutzerhandbuech] fir d Hilf iber d Benutzig un s Yystelle.',
-
 'about'         => 'Über',
 'article'       => 'Inhaltssyte',
 'newwindow'     => '(imene nöie Fänschter)',
@@ -300,7 +297,6 @@ $messages = array(
 'history'           => 'Versione',
 'history_short'     => 'Versione/Autore',
 'updatedmarker'     => '(gändret syt mym letschte Bsuech)',
-'info_short'        => 'Information',
 'printableversion'  => 'Druck-Aasicht',
 'permalink'         => 'Bschtändigi URL',
 'print'             => 'Drucke',
@@ -496,7 +492,6 @@ Abfrog: $2',
 'cascadeprotected'     => 'Die Syte isch fir s Bearbeite gsperrt. Si isch yybunde in {{PLURAL:$1|die Syte, wu do chunnt|die Syte, wu do chemme}} , wu mit ere Kaskadesperroption gschitzt {{PLURAL:$1|isch|sin}}:
 $2',
 'namespaceprotected'   => "Du hesch kei Berächtigung, die Syte im '''$1'''-Namensruum z bearbeite.",
-'customcssjsprotected' => 'Du bisch nid berächtigt, die Syte  bearbeite, wel si zue dr persenlige Yystellige vun eme andere Benutzer ghert.',
 'ns-specialprotected'  => 'Spezialsyte chenne nid bearbeitet wäre.',
 'titleprotected'       => "E Syte mit däm Name cha nid aaglait wäre.
 Die Sperri isch dur [[User:$1|$1]] yygrichtet wore mit dr Begrindig ''„$2“''.",
@@ -553,7 +548,7 @@ S mueß sichergstellt syy, ass Cookies aktiviert sin. Derno ddie Syte nomol lade
 'nosuchuser'                 => 'Dr Benutzername "$1" git s nit.
 
 Iberprief d Schrybwys, oder mäld Di as [[Special:UserLogin/signup|neje Benutzer aa]].',
-'nosuchusershort'            => 'S git kei Benutzername „<nowiki>$1</nowiki>“. Bitte iberprief d Schrybwys.',
+'nosuchusershort'            => 'S git kei Benutzername „$1“. Bitte iberprief d Schrybwys.',
 'nouserspecified'            => 'Bitte gib e Benutzername yy.',
 'login-userblocked'          => 'Dää Benutzer isch gsperrt. Aamäldig nit erlaubt.',
 'wrongpassword'              => 'Des Passwort isch falsch (oder fählt). Bitte versuech s nomol.',
@@ -728,7 +723,7 @@ oder [{{fullurl:{{FULLPAGENAME}}|action=edit}} die Syte bearbeite]</span>.',
 'noarticletext-nopermission'       => 'In däre Syte het s zur Zyt no kei Text.
 Du chasch dää Titel uf andre Syte [[Special:Search/{{PAGENAME}}|sueche]]
 oder <span class="plainlinks">in dr zuegherige [{{fullurl:{{#special:Log}}|page={{FULLPAGENAMEE}}}} Logbiecher sueche].</span>',
-'userpage-userdoesnotexist'        => 'S Benutzerkonto „$1“ git s nit. Bitte prief, eb Du die Syte wirkli wit aalege/bearbeite.',
+'userpage-userdoesnotexist'        => 'S Benutzerkonto „<nowiki>$1</nowiki>“ git s nit. Bitte prief, eb Du die Syte wirkli wit aalege/bearbeite.',
 'userpage-userdoesnotexist-view'   => 'S Benutzerkonto „$1“ isch nit registriert.',
 'blocked-notice-logextract'        => 'Dää Benutzer isch zur Zyt gsperrt.
 As Information chunnt do ne aktuälle Uuszug us em Benutzersperr-Logbuech:',
@@ -1114,7 +1109,9 @@ Stell sicher, ass d Versionsgschicht vun eme Artikel historisch korrekt isch.',
 'prefs-skin'                    => 'Benutzeroberflechi',
 'skin-preview'                  => 'Vorschou',
 'datedefault'                   => 'kei Aagab',
+'prefs-beta'                    => 'Betafunktione',
 'prefs-datetime'                => 'Datum un Zyt',
+'prefs-labs'                    => 'Alphafunktione',
 'prefs-personal'                => 'Benutzerdate',
 'prefs-rc'                      => 'Letschti Änderige',
 'prefs-watchlist'               => 'Beobachtigslischte',
@@ -1148,7 +1145,7 @@ Do het s e zuefellig generierte Wärt, wu du chasch bruche: $1',
 'savedprefs'                    => 'Dyni Ystellige sy gspycheret worde.',
 'timezonelegend'                => 'Zytzone:',
 'localtime'                     => 'Ortszyt:',
-'timezoneuseserverdefault'      => 'Standardzyt vum Server',
+'timezoneuseserverdefault'      => 'Standardzyt vum Server ($1)',
 'timezoneuseoffset'             => 'Anderi (Unterschiid aagee)',
 'timezoneoffset'                => 'Unterschiid¹',
 'servertime'                    => 'Aktuälli Serverzyt:',
@@ -1518,10 +1515,6 @@ S Uffelade vu Java-Dateien isch nit gstattet, wel si s Umgoh vu Sicherheitsyysch
 'upload-options'              => 'Optione fir s Uffelade',
 'watchthisupload'             => 'Die Syte beobachte',
 'filewasdeleted'              => 'E Datei mit däm Name isch scho mol uffeglade wore un isch in dr Zwischezyt wider glescht wore. Bitte prief zerscht dr Yytrag im $1, voreb Du die Datei wirkli spycheresch.',
-'upload-wasdeleted'           => "'''Obacht: Du ladsch e Datei uffe, wu scho mol glescht woren isch.'''
-
-Bitte prief, eb s dr Richtlinie entspricht, wänn Du die Datei no mol uffeladesch..
-Zue Dyynere Information chunnt do s Lesch-Logbuech mit dr Begrindig fir di friejer Leschig:",
 'filename-bad-prefix'         => "Dr Dateiname fangt mit '''„$1“''' aa. Des isch isch normalerwyys dr Dateiname, wu vun ere Digitalkamera vorgee wird un d Datei nit bschryybt.
 Bitte gib dr Datei e Name, wu dr Inhalt besser bschryybt.",
 'upload-success-subj'         => 'Erfolgryych uffegelade',
@@ -1641,7 +1634,6 @@ Die Lischt zeigt nume {{PLURAL:$1|dr erscht Gleich|di erschte $1 Gleicher}} uf d
 E [[Special:WhatLinksHere/$2|vollständigi Lischt]] isch verfiegbar.',
 'nolinkstoimage'            => 'Kei Artikel verwändet des Bild.',
 'morelinkstoimage'          => '[[Special:WhatLinksHere/$1|Meh Gleicher]] fir die Datei.',
-'redirectstofile'           => 'Die {{PLURAL:$1|Datei leitet|$1 Dateie leite}} uf die Datei wyter:',
 'duplicatesoffile'          => 'Die {{PLURAL:$1|Datei isch e Duplikat|$1 Dateie sin Duplikat}} vu däre Datei ([[Special:FileDuplicateSearch/$2|meh Detail]]):',
 'sharedupload'              => 'Die Datei isch vu $1. S cha syy, ass si vu andere Projekt brucht wird.',
 'sharedupload-desc-there'   => 'Die Datei isch vu $1 un derf vu andere Projäkt bruucht wäre. Lueg uf dr [$2 Dateibschryybigssyte] no wytere Informatione.',
@@ -1955,12 +1947,10 @@ As Absender wird d E-Mail-Adräss us Dyyne [[Special:Preferences|Yystellige]] yy
 'watchlistanontext'    => 'Du muesch Di $1 go Dyyni Beobachtungslischt z säh oder go Yytreg uf ere bearbeite.',
 'watchnologin'         => 'Du bisch nit aagmäldet',
 'watchnologintext'     => 'Du muesch [[Special:UserLogin|aagmäldet]] syy, zum Dyyni Beobachtigssyte z bearbeite.',
-'addedwatch'           => 'zue de Beobachtigslischte drzue do',
 'addedwatchtext'       => "D Syte \"[[:\$1]]\" stoht jetz uf Dyyre [[Special:Watchlist|Beobachtigslischt]].
 Neji Änderige an dr Syte oder dr Diskussionssyte drvo chasch jetz dert säh. Usserdem sin die Änderige uf dr [[Special:RecentChanges|letschte Änderige]] '''fett''' gschribe, ass De si schnäller findsch.
 
 Wänn Du d Syte speter wider vu dr Lischt witt stryyche, deno druck eifach uf „{{int:Unwatch}}“.",
-'removedwatch'         => 'Us der Beobachtigsliste usegnuu',
 'removedwatchtext'     => 'D Syte «[[:$1]]» isch us dyre [[Special:Watchlist|Beobachtigsliste]] glösche worde.',
 'watch'                => 'Beobachte',
 'watchthispage'        => 'Die Syte beobachte',
@@ -2034,7 +2024,7 @@ Ruckmäldig un wyteri Hilf:
 Bitte bi Dir iber d Konsequänze bewusst, un bi sicher, dass Du Di an unsri [[{{MediaWiki:Policy-url}}|Leitlinie]] haltsch.',
 'actioncomplete'         => 'Uftrag usgfiert.',
 'actionfailed'           => 'Aktion fählgschlaa',
-'deletedtext'            => '«<nowiki>$1</nowiki>» isch glescht wore.
+'deletedtext'            => '«$1» isch glescht wore.
 Im $2 het s e Lischt vu dr letschte Leschige.',
 'deletedarticle'         => 'het „[[$1]]“ glescht',
 'suppressedarticle'      => 'het d Sichtbarkeit vu „[[$1]]“ gänderet',
@@ -2088,7 +2078,7 @@ Bitte gang zruck, tue d Syte nej lade un versuech s nomol.',
 'protect_expiry_invalid'      => 'Di gwählti Duur isch nid gültig.',
 'protect_expiry_old'          => 'Di gwählti Duur isch scho vergange.',
 'protect-unchain-permissions' => 'Wyteri Schutzoptione frej schalte',
-'protect-text'                => "Hie chasch der Schutzstatus vor Syte '''<nowiki>$1</nowiki>''' azeigen und ändere.",
+'protect-text'                => "Hie chasch der Schutzstatus vor Syte '''$1''' azeigen und ändere.",
 'protect-locked-blocked'      => "Du chasch dr Syteschutz nit ändere, wel Dyy Benutzerkonto gsperrt isch. Do sin di aktuälle Syteschutz-Yystellige fir d Syte '''„$1“:'''",
 'protect-locked-dblock'       => "D Datebank isch gsperrt, dr Syteschutz cha wäge däm nit gänderet wäre. Doo sin di aktuälle Syteschutz-Yystellige fir d Syte '''„$1“:'''",
 'protect-locked-access'       => "Dys Konto het nid di nötige Rächt, für der Schutzstatus z ändere.
@@ -2612,9 +2602,7 @@ Alli Transwiki-Import-Aktione werde im [[Special:Log/import|Import-Logbuech]] pr
 'tooltip-summary'                 => 'Gib e churzi Zämmefassig yy',
 
 # Metadata
-'nodublincore'      => 'Dublin-Core-RDF-Metadate sin fir dää Server deaktiviert.',
-'nocreativecommons' => 'Creative-Commons-RDF-Metadate sin fir dää Server deaktiviert.',
-'notacceptable'     => 'Dr Wiki-Server cha d Date nit im e Format z Verfiegig stelle, wu Dyy Grät cha läse.',
+'notacceptable' => 'Dr Wiki-Server cha d Date nit im e Format z Verfiegig stelle, wu Dyy Grät cha läse.',
 
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Anonyme Benutzer|Anonymi Benutzer}} uff {{SITENAME}}',
@@ -2635,14 +2623,6 @@ Alli Transwiki-Import-Aktione werde im [[Special:Log/import|Import-Logbuech]] pr
 'spambot_username'    => 'MediaWiki Spam-Syyferig',
 'spam_reverting'      => 'Letschti Version ohni Gleicher zue $1 widerhärgstellt.',
 'spam_blanking'       => 'In allene Versione het s Gleicher zue $1 gha, sufer gmacht.',
-
-# Info page
-'infosubtitle'   => 'Syteinformation',
-'numedits'       => 'Aazaal vo Ändrige aa dr Syte: $1',
-'numtalkedits'   => 'Aazaal vo Ändrige aa de Diskussionssyte: $1',
-'numwatchers'    => 'Die Syte wird vo $1 Lüt beobachtet',
-'numauthors'     => 'Aazaal vo Autore: $1',
-'numtalkauthors' => 'Aazaal vo Diskussionsteilnäämer: $1',
 
 # Patrolling
 'markaspatrolleddiff'                 => 'Als patrulyrt markyre',

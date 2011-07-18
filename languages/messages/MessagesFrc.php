@@ -7,6 +7,7 @@
  * @ingroup Language
  * @file
  *
+ * @author Ebe123
  * @author JeanVoisin
  * @author Peter17
  * @author PieRRoMaN
@@ -15,12 +16,16 @@
  * @author Zetud
  */
 
+$fallback = 'fr';
+
 $messages = array(
 # User preference toggles
 'tog-underline'               => 'Souligner les liens:',
 'tog-highlightbroken'         => 'Préparez les liens déconnectés <a href=""class="new">comme ça ici</a> (autrement: comme ça ici<a href=""class="internal">?</a>).',
 'tog-justify'                 => 'Égalisez les paragraphes',
 'tog-hideminor'               => 'Cachez les petits changements dans la liste des derniers changements',
+'tog-hidepatrolled'           => '↓ Cachez les petits changements dans la liste des derniers changements',
+'tog-newpageshidepatrolled'   => '↓Cache pages patrollés de la list des pages nouveau',
 'tog-extendwatchlist'         => 'Agrandir la liste des pages guettées pour montrer tous les changements',
 'tog-usenewrc'                => 'User les derniers changements improuvés (JavaScript)',
 'tog-numberheadings'          => 'Mettre les numéros sus les en-têtes',
@@ -43,6 +48,7 @@ $messages = array(
 'tog-enotifminoredits'        => 'Envoyer un e-mail même pour les petits changements',
 'tog-enotifrevealaddr'        => "Montrer mon adresse e-mail dans les e-mails d'avertissement",
 'tog-shownumberswatching'     => 'Montrer le montant de guetteurs',
+'tog-oldsig'                  => '↓ Preview du signature existant:',
 'tog-fancysig'                => 'Signature brute (sans liens préparés)',
 'tog-externaleditor'          => 'Utiliser par défaut un éditeur de texte externe (pour les utilisateurs avancés, nécessite des réglages spécifiques sur votre ordinateur)',
 'tog-externaldiff'            => 'User un autre comparateur comme réglage ordinaire',
@@ -52,6 +58,9 @@ $messages = array(
 'tog-watchlisthideown'        => 'Cacher mes changements dans la liste des pages guettées',
 'tog-watchlisthidebots'       => 'Cacher les changements faits par les bots dans la liste des pages guettées',
 'tog-watchlisthideminor'      => 'Cacher les petits changements dans la liste des pages guettées',
+'tog-watchlisthideliu'        => 'Cacher édites de useurs anonymes du liste de pages guettées',
+'tog-watchlisthideanons'      => 'Cacher édites de useurs anonymes du liste de pages guettées',
+'tog-watchlisthidepatrolled'  => 'Cacher les changements faits par les bots dans la liste des pages guettées',
 'tog-nolangconversion'        => 'Arrêter le changement des différences de langue',
 'tog-ccmeonemails'            => "Envoyer une copie des e-mails que j'envoye aux autres useurs",
 'tog-diffonly'                => 'Couper la page sous les diffs',
@@ -119,15 +128,6 @@ $messages = array(
 'category-media-header' => 'Média dans classe "$1"',
 'category-empty'        => "''À présent, cette classe a ni articles ni média.''",
 
-'mainpagetext'      => "'''Vous avez bien installé MediaWiki.'''",
-'mainpagedocfooter' => 'Lisez la [http://meta.wikimedia.org/wiki/Help:Contents Guide des Useurs] pour apprendre à user le wiki software.
-
-== Pour Commencer ==
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Réglage]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki: Questions Souvent Posées]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki Liste à Malle]',
-
 'about'         => 'Info',
 'article'       => 'Page des matières',
 'newwindow'     => '(va ouverre une nouvelle fenêtre)',
@@ -136,6 +136,7 @@ $messages = array(
 'mypage'        => 'Ma page',
 'mytalk'        => 'Ma page de discussion',
 'anontalk'      => 'Discussion avec cette adresse IP',
+'navigation'    => 'Navigation',
 
 # Cologne Blue skin
 'qbfind'         => 'Charcher',
@@ -147,6 +148,10 @@ $messages = array(
 'qbspecialpages' => 'Pages espéciales',
 'faq'            => 'Questions Communes',
 'faqpage'        => 'Project:Questions Communes',
+
+# Vector skin
+'vector-action-delete'  => 'Supprimer',
+'vector-action-protect' => 'Protéger',
 
 'errorpagetitle'    => 'Erreur',
 'returnto'          => 'Retourner back à la page $1.',
@@ -179,6 +184,7 @@ $messages = array(
 'personaltools'     => 'Outils personnels',
 'postcomment'       => 'Nouvelle section',
 'articlepage'       => "Voir l'article",
+'talk'              => 'Discussion',
 'views'             => 'Vues',
 'toolbox'           => "Boëte d'outils",
 'userpage'          => "Page d'useur",
@@ -241,8 +247,10 @@ $messages = array(
 'restorelink'             => '{{PLURAL:$1|1 changement ôté|$1 changements ôtés}}',
 'feedlinks'               => 'Distribution RSS:',
 'feed-invalid'            => 'Mauvaise qualité de distribution RSS.',
+'red-link-title'          => "$1 (page n'existe pas)",
 
 # Short words for each namespace, by default used in the namespace tab in monobook
+'nstab-main'     => 'Page',
 'nstab-user'     => 'Useur',
 'nstab-media'    => 'Média',
 'nstab-special'  => 'Page espécial',
@@ -312,7 +320,6 @@ Demande: $2',
 'cascadeprotected'     => 'Cette page est protégée parce qu’elle est incluse par {{PLURAL:$1|la page suivante, qui est protégée|les pages suivantes, qui sont protégées}} avec l’option « protection en cascade » activée :
 $2',
 'namespaceprotected'   => 'Vous avez pas la permission de changer les pages dans l\'espace de noms "$1".',
-'customcssjsprotected' => "Vous avez pas la permission de changer cette page parce qu'alle contient le réglage d'un autre useur.",
 'ns-specialprotected'  => "Vous pouvez pas changer les pages dans l'espace de noms {{ns:special}}.",
 
 # Login and logout pages
@@ -326,7 +333,7 @@ Votre compte a été créé.  Oubliez pas de changer votre réglage sus {{SITENA
 'yourname'                   => "Nom d'useur:",
 'yourpassword'               => 'Mot de passe:',
 'yourpasswordagain'          => 'Mot de passe encore:',
-'remembermypassword'         => 'Se rappeler de mon mot de passe (for a maximum of $1 {{PLURAL:$1|day|days}})',
+'remembermypassword'         => 'Garder mon mot de passe dans cette browser (pour un maximum of $1 {{PLURAL:$1|jour|jours}})',
 'yourdomainname'             => 'Votre domaine:',
 'externaldberror'            => "Soit y avait une erreur avec la base d'information de certification extérieur, soit vous avez pas la permission de renouveler votre compte extérieur.",
 'login'                      => 'Connecter',
@@ -341,18 +348,21 @@ Votre compte a été créé.  Oubliez pas de changer votre réglage sus {{SITENA
 'createaccount'              => 'Créer un compte',
 'gotaccount'                 => "Vous avez un compte déjà? '''$1'''.",
 'gotaccountlink'             => 'Connectez',
+'userlogin-resetlink'        => 'Oublié vôtre détailes de log in?',
 'createaccountmail'          => 'par e-mail',
 'badretype'                  => 'Les mots de passe que vous avez mis sont pas pareils.',
 'userexists'                 => "Le nom d'useur choisi est déjà usé.  Choissez donc un autre nom.",
 'loginerror'                 => "Erreur d'identification",
 'nocookiesnew'               => "Votre compte a été créé, mais vous êtes pas connecté.  {{SITENAME}} use les cookies pour connecter les useurs.  Partez les cookies et connectez avec votre nouveau nom d'useur et votre mot de passe, s'il vous plaît.",
 'nocookieslogin'             => '{{SITENAME}} use les cookies pour connecter les useurs.  Partez donc les cookies et assayez encore.',
+'nocookiesfornew'            => "Le conte d'useur n'était pas fait, à cause qu'on pouvait pas confirmer la source.  Ensurer que tu as des cookies, reload ce page et essayer encore.",
 'noname'                     => "Vous avez pas mis un bon nom d'useur.",
 'loginsuccesstitle'          => 'Vous êtes connecté',
 'loginsuccess'               => "'''Asteur vous êtes connecté à {{SITENAME}} comme \"\$1\".'''",
 'nosuchuser'                 => 'Y a aucun utilisateur avec le nom "$1".  Les noms d\'utilisateur respectent les majuscules et minuscules. Vérifiez l\'orthographe, ou créez un nouveau compte.',
-'nosuchusershort'            => 'Y a aucun useur avec le nom "<nowiki>$1</nowiki>".  Regardez donc l\'espellage.',
+'nosuchusershort'            => 'Y a aucun useur avec le nom "$1".  Regardez donc l\'espellage.',
 'nouserspecified'            => "Il faut mettre un nom d'useur.",
+'login-userblocked'          => 'Cet useur est blockée.  Log in pas accépté.',
 'wrongpassword'              => "Mauvais mot de passe.  Assayez encore s'il vous plaît.",
 'wrongpasswordempty'         => "Le mot de passe était vide.  Assayez encore s'il vous plaît.",
 'passwordtooshort'           => "Votre mot de passe est soit pas bon ou trop court.  Un mot de passe devrait avoir au moins $1 caractères et être différent de votre nom d'useur.",
@@ -402,7 +412,7 @@ Si quèqu\'une d\'autre a demandé ce mot de passe ou si vous vous rappelez de v
 'image_sample'    => 'Exemple.jpg',
 'image_tip'       => 'Mettez un portrait',
 'media_sample'    => 'Exemple.ogg',
-'media_tip'       => 'Lien dossier média',
+'media_tip'       => 'Lien dossier',
 'sig_tip'         => 'Votre signature avec la date',
 'hr_tip'          => 'Ligne horizontale (Abusez-lé pas.)',
 
@@ -593,14 +603,17 @@ Des autres administrateurs sus ce wiki ont la permission de voir et de rétablir
 'diff-multi'              => '({{PLURAL:$1|Un changement moyen caché|$1 changements moyens cachés}})',
 
 # Search results
-'searchresults'    => 'Résultats de la charche',
-'searchresulttext' => "Pour plus d'information pour vous aider à charcher dans {{SITENAME}}, voyez [[{{MediaWiki:Helppage}}|{{int:help}}]].",
-'searchhelp-url'   => 'Help:Aide',
+'searchresults'      => 'Résultats de la charche',
+'searchresulttext'   => "Pour plus d'information pour vous aider à charcher dans {{SITENAME}}, voyez [[{{MediaWiki:Helppage}}|{{int:help}}]].",
+'searchhelp-url'     => 'Help:Aide',
+'search-result-size' => '$1 ({{PLURAL:$2|1 mot|$2 mots}})',
 
 # Preferences page
 'preferences'         => 'Réglage',
 'mypreferences'       => 'Mon réglage',
 'skin-preview'        => "Vue d'avance",
+'prefs-custom-css'    => 'Custom CSS',
+'prefs-custom-js'     => 'Custom JavaScript',
 'username'            => "Nom d'useur:",
 'uid'                 => "Numéro d'useur:",
 'yourrealname'        => 'Vrai nom:',
@@ -609,11 +622,16 @@ Des autres administrateurs sus ce wiki ont la permission de voir et de rétablir
 'yournick'            => "'Tit nom:",
 'badsig'              => 'Votre signature brute est pas bonne.  Regardez-voir les tags HTML.',
 'badsiglength'        => "Votre 'tit nom est trop long.  Il faut que ça soye moins que $1 caractères.",
+'gender-male'         => 'Male',
+'gender-female'       => 'Female',
 'prefs-help-realname' => 'Votre vrai nom est pas nécessaire.  Si vous choisirait de le mettre, ça serait usé pour vous donner du crédit pour votre ouvrage.',
 'prefs-help-email'    => "Votre adresse e-mail est pas nécessaire, mais ça quitte le monde vous contacter par votre page d'useur ou votre page de discussion sans montrer votre identité.",
 
 # User rights
 'editinguser' => "Changement de '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+
+# Associated actions - in the sentence "You do not have permission to X"
+'action-edit' => 'Faire un changement',
 
 # File description page
 'file-anchor-link' => 'Dossier',
@@ -636,5 +654,16 @@ Des autres administrateurs sus ce wiki ont la permission de voir et de rétablir
 'mycontris'     => 'Mes changements',
 
 'sp-contributions-talk' => 'Discuter',
+
+# Block/unblock
+'contribslink' => 'changes',
+
+# Tooltip help for the actions
+'tooltip-search'          => 'Charche {{SITENAME}}',
+'tooltip-search-fulltext' => 'Charche les pages pour ce texte',
+'tooltip-p-logo'          => "Visitez la page d'acceuil",
+'tooltip-n-recentchanges' => 'La liste de changement récent dans ce wiki',
+'tooltip-n-help'          => 'La place pour savoir',
+'tooltip-t-specialpages'  => 'Liste de tout les pages speciales',
 
 );

@@ -267,15 +267,6 @@ $messages = array(
 'category-file-count-limited'    => 'Dizze kategory befettet {{PLURAL:$1|de folgjende triem|de folgjende $1 triemmen}}.',
 'listingcontinuesabbrev'         => '(ferfolch)',
 
-'mainpagetext'      => "'''MediaWiki-program goed ynstallearre.'''",
-'mainpagedocfooter' => "Rieplachtsje de [http://meta.wikimedia.org/wiki/Help:Ynhâldsopjefte hantlieding] foar ynformaasje oer it gebrûk fan 'e wikisoftware.
-
-== Mear help oer Mediawiki ==
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings List mei ynstellings]
-* [http://www.mediawiki.org/wiki/Manual:FAQ Faak stelde fragen (FAQ)]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Mailinglist foar oankundigings fan nije ferzjes]",
-
 'about'         => 'Ynfo',
 'article'       => 'Ynhâld side',
 'newwindow'     => '(nij finster)',
@@ -323,7 +314,6 @@ $messages = array(
 'history'           => 'Sideskiednis',
 'history_short'     => 'Skiednis',
 'updatedmarker'     => 'bewurke sûnt myn lêste besite',
-'info_short'        => 'Ynformaasje',
 'printableversion'  => 'Ofdruk-ferzje',
 'permalink'         => 'Fêste keppeling',
 'print'             => 'Ofdrukke',
@@ -505,7 +495,6 @@ Query: $2',
 'sqlhidden'            => '(SQL query ferburgen)',
 'cascadeprotected'     => 'Dizze side is skoattele tsjin wizigjen, om\'t der in ûnderdiel útmakket fan de neikommende {{PLURAL:$1|side|siden}}, dy\'t skoattele {{PLURAL:$1|is|binne}} mei de "ûnderlizzende siden" opsje ynskeakele: $2',
 'namespaceprotected'   => "Jo hawwe gjin rjochten om siden yn'e nammerûmte '''$1''' te bewurkjen.",
-'customcssjsprotected' => "Jo kinne dizze side net bewurkje, om't er persoanlike ynstellings fan in oare brûker befettet.",
 'ns-specialprotected'  => "Siden yn'e nammerûmte {{ns:special}} kinne net bewurke wurde.",
 'titleprotected'       => "It oanmeitsjen fan dizze side is befeilige troch [[User:$1|$1]].
 De oanfierde reden is ''$2''.",
@@ -692,11 +681,11 @@ Oars kinne jo tebek mei de tebek-knop fan jo blêder.",
 'anontalkpagetext'                 => "----''Dit is de oerlisside fan in ûnbekende meidogger; in meidogger dy't him/har net oanmeld hat. Om't der gjin namme bekend is, wurdt it ynternet-adres brûkt om oan te jaan wa. Mar faak is it sa dat sa'n adres net altyd troch deselde persoan brûkt wurdt. As jo it idee hawwe dat jo as ûnbekende meidogger opmerkings foar in oar krije, dan kinne jo jo [[Special:UserLogin/signup|registrearje]], of jo [[Special:UserLogin|oanmelde]]. Fan in oanmelde meidogger is it ynternet-adres net sichtber, en as oanmelde meidogger krije jo allinnich opmerkings dy't foar josels bedoeld binne.''",
 'noarticletext'                    => 'Der stjit noch gjin tekst op dizze side. Jo kinne
 [[Special:Search/{{PAGENAME}}|hjirboppe nei dy tekst sykje]], of [{{fullurl:{{FULLPAGENAME}}|action=edit}} de side skriuwe].',
-'userpage-userdoesnotexist'        => 'Jo bewurkje in brûkersside fan in brûker dy\'t net bestiet (brûker "$1").
+'userpage-userdoesnotexist'        => 'Jo bewurkje in brûkersside fan in brûker dy\'t net bestiet (brûker "<nowiki>$1</nowiki>").
 Kontrolearje oft jo dizze side wol oanmeitsje/bewurkje wolle.',
 'clearyourcache'                   => "'''Opmerking:''' Nei it fêstlizzen kin it nedich wêze de oerslach fan dyn blêder te leegjen foardat de wizigings te sjen binne.
 
-'''Mozilla / Firefox / Safari:''' hâld ''Shift'' yntreaun wylst jo op ''Dizze side fernije'' klikke, of typ ''Ctrl-F5'' of ''Ctrl-R'' (''Command-R'' op in Macintosh); '''Konqueror: '''klik ''Reload'' of typ ''F5;'' '''Opera:''' leegje jo cache yn ''Extra → Voorkeuren;'' '''Internet Explorer:''' hâld ''Ctrl'' yntreaun wylst jo ''Vernieuwen'' klikke of typ ''Ctrl-F5.''",
+'''Mozilla / Firefox / Safari:''' hâld ''Shift'' yntreaun wylst jo op ''Dizze side fernije'' klikke, of typ ''Ctrl-F5'' of ''Ctrl-R'' (''Command-R'' op in Mac); '''Konqueror: '''klik ''Reload'' of typ ''F5;'' '''Opera:''' leegje jo cache yn ''Extra → Voorkeuren;'' '''Internet Explorer:''' hâld ''Ctrl'' yntreaun wylst jo ''Vernieuwen'' klikke of typ ''Ctrl-F5.''",
 'usercssyoucanpreview'             => "'''Tip:''' Brûk de knop 'Earst oerlêze' om jo nije CSS te testen foar it fêstlizzen.",
 'userjsyoucanpreview'              => "'''Tip:''' Brûk de knop 'Earst oerlêze' om jo nije JS te testen foar it fêstlizzen.",
 'usercsspreview'                   => "'''Dit is allinne mar it oerlêzen fan jo persoanlike CSS. Hy is noch net fêstlein!'''",
@@ -1365,10 +1354,6 @@ Rieplachtsje it fuorthel-logboek foar't jo fierder geane.",
 'watchthisupload'             => 'Folgje dizze side',
 'filewasdeleted'              => "Der is earder in triem mei dizze namme fuorthelle.
 Rieplachtsje it $1 foar't jo him op'e nij tafoegje.",
-'upload-wasdeleted'           => "'''Warskôging: jo binne in triem oan it oanbieden, dy't earder fuorthelle wie.'''
-
-Kontrolearje oft it wier jo bedoeling is de triem oan te bieden.
-It fuorthellogboek fan dizze triem kinne jo hjir sjen:",
 'filename-bad-prefix'         => "De namme fan de triem dy't jo oanbiede begjint mei '''\"\$1\"''', dit wiist op in namme dy't automatysk troch in digitale kamera oanmakke wurdt. Feroarje de namme as jo wolle yn ien dy't in omskriuwing jout fan de triem.",
 'filename-prefix-blacklist'   => " #<!-- lit dizze line exakt sa't er is --> <pre>
 # Syntax is as folget:
@@ -1452,7 +1437,6 @@ De folgjende list jout allinne de earste {{PLURAL:$1|ferwizing|$1 ferwizings}} n
 Der is ek in [[Special:WhatLinksHere/$2|folsleine list]].',
 'nolinkstoimage'            => 'Der binne gjin siden oan dit ôfbyld keppele.',
 'morelinkstoimage'          => '[[Special:WhatLinksHere/$1|Mear ferwizings]] nei dizze triem besjen.',
-'redirectstofile'           => '{{PLURAL:$1|De folgjende triem ferwiist|De folgjende $1 triemmen ferwize}} troch nei dizze triem:',
 'duplicatesoffile'          => '{{PLURAL:$1|De folgjende triem is|De folgjende $1 triemmen binne}} idintyk oan dizze triem:',
 'sharedupload'              => 'Dizze triem is in dielde oanbieding en kin ek troch oare projekten brûkt wurde.',
 'filepage-nofile'           => "Der bestiet gjin triem mei sa'n namme.",
@@ -1736,11 +1720,9 @@ De ûntfanger kin dus daliks nei jo reagearje.',
 'nowatchlist'        => 'Jo hawwe gjin siden op jo folchlist.',
 'watchnologin'       => 'Net oanmeld yn',
 'watchnologintext'   => 'Jo moatte [[Special:UserLogin|oanmeld]] wêze om jo folchlist te feroarjen.',
-'addedwatch'         => 'Oan folchlist tafoege',
 'addedwatchtext'     => "De side \"'''[[:\$1]]'''\" is tafoege oan jo [[Special:Watchlist|folchlist]]. Bewurkings fan dizze side en oerlisside wurde yn de takomst op jo folchlist oanjûn. Hja wurde foar jo ek '''fet''' printe op [[Special:RecentChanges|Koartlyn feroare]].
 
 At jo letter in side net mear folgje wolle, dan brûke jo op dy side de keppeling \"Ferjit dizze side.\" Jo [[Special:Watchlist|folchlist]] hat ek in keppeling \"Jo folchlist bewurkje,\" foar at jo mear as ien side \"ferjitte\" wolle.",
-'removedwatch'       => 'Net mear folgje',
 'removedwatchtext'   => 'De side "[[:$1]]" stiet net mear op jo folchlist.',
 'watch'              => 'Folgje',
 'watchthispage'      => 'Folgje dizze side',
@@ -1782,7 +1764,7 @@ Fierdere meldings wurde jo net tastjoerd, oant jo de side lêzen hawwe. Op jo fo
                  Jo freonlike {{SITENAME}}-meldingssysteem.
 
 --
-Gean nei {{fullurl:{{#special:Watchlist}}/edit}}
+Gean nei {{fullurl:{{#special:EditWatchlist}}}}
 om jo folchlistynstellings te feroarjen.
 
 Reaksjes en fierdere help:
@@ -1803,7 +1785,7 @@ of ôfbyld, tegearre mei alle skiednis, út de databank.
 Befêstigje dat jo dat wier dwaan wolle. Befêstigje dat dat is wat jo witte wat it gefolch
 is en dat jo dit dogge neffens de [[{{MediaWiki:Policy-url}}]].',
 'actioncomplete'        => 'Dien',
-'deletedtext'           => '"<nowiki>$1</nowiki>" is wiske.
+'deletedtext'           => '"$1" is wiske.
 Sjoch "$2" foar in list fan wat resint wiske is.',
 'deletedarticle'        => '"[[$1]]" is wiske',
 'dellogpage'            => 'Wiskloch',
@@ -1847,7 +1829,7 @@ Sjoch [[Special:ProtectedPages|Skoattele side]] foar mear ynformaasje.',
 'protectexpiry'               => 'Ferrint nei',
 'protect_expiry_invalid'      => 'Tiid fan ferrinnen is net jildich.',
 'protect_expiry_old'          => 'Tiid fan ferrinnen leit yn it ferline.',
-'protect-text'                => "Hjir kin jo it nivo fan skoatteljen sjen en oanpasse foar de side '''<nowiki>$1</nowiki>'''.",
+'protect-text'                => "Hjir kin jo it nivo fan skoatteljen sjen en oanpasse foar de side '''$1'''.",
 'protect-locked-blocked'      => "Jo kinne it befeiligingsnivo net feroarje wylst jo blokkearre binne.
 Hjir binne de hjoeddeiske ynstellings foar de side '''$1''':",
 'protect-locked-dblock'       => "It befeiligingsnivo kin net feroare wurde om't de database sletten is.
@@ -2172,9 +2154,6 @@ Sjoch: [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation], [htt
 # Spam protection
 'spamprotectiontext'  => "De side dy't jo fêstlizze woene is blokkearre troch in spam filter. Dit wurdt wierskynlik feroarsake troch in ferwizing nei in ekstern webstee.",
 'spamprotectionmatch' => 'De neikommende tekst hat it spam filter aktivearre: $1',
-
-# Info page
-'infosubtitle' => 'Ynformaasje foar side',
 
 # Skin names
 'skinname-standard'  => 'Standert',

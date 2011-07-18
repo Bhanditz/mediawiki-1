@@ -121,6 +121,8 @@ class ApiQueryContributions extends ApiQueryBase {
 	/**
 	 * Validate the 'user' parameter and set the value to compare
 	 * against `revision`.`rev_user_text`
+	 *
+	 * @param $user string
 	 */
 	private function prepareUsername( $user ) {
 		if ( !is_null( $user ) && $user !== '' ) {
@@ -189,7 +191,7 @@ class ApiQueryContributions extends ApiQueryBase {
 			$show = array_flip( $show );
 			if ( ( isset( $show['minor'] ) && isset( $show['!minor'] ) )
 			   		|| ( isset( $show['patrolled'] ) && isset( $show['!patrolled'] ) ) ) {
-				$this->dieUsageMsg( array( 'show' ) );
+				$this->dieUsageMsg( 'show' );
 			}
 
 			$this->addWhereIf( 'rev_minor_edit = 0', isset( $show['!minor'] ) );
@@ -247,8 +249,7 @@ class ApiQueryContributions extends ApiQueryBase {
 		// $this->addFieldsIf( 'rev_text_id', $this->fld_ids ); // Should this field be exposed?
 		$this->addFieldsIf( 'rev_comment', $this->fld_comment || $this->fld_parsedcomment );
 		$this->addFieldsIf( 'rev_len', $this->fld_size );
-		$this->addFieldsIf( 'rev_minor_edit', $this->fld_flags );
-		$this->addFieldsIf( 'rev_parent_id', $this->fld_flags );
+		$this->addFieldsIf( array( 'rev_minor_edit', 'rev_parent_id' ), $this->fld_flags );
 		$this->addFieldsIf( 'rc_patrolled', $this->fld_patrolled );
 
 		if ( $this->fld_tags ) {
@@ -467,6 +468,10 @@ class ApiQueryContributions extends ApiQueryBase {
 			'api.php?action=query&list=usercontribs&ucuser=YurikBot',
 			'api.php?action=query&list=usercontribs&ucuserprefix=217.121.114.',
 		);
+	}
+
+	public function getHelpUrls() {
+		return 'http://www.mediawiki.org/wiki/API:Usercontribs';
 	}
 
 	public function getVersion() {

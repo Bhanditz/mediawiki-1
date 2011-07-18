@@ -70,6 +70,7 @@ class ApiParamInfo extends ApiBase {
 				$obj = new $qmodArr[$qm]( $this, $qm );
 				$a = $this->getClassInfo( $obj );
 				$a['name'] = $qm;
+				$a['querytype'] = $queryObj->getModuleType( $qm );
 				$r['querymodules'][] = $a;
 			}
 			$result->setIndexedTagName( $r['querymodules'], 'module' );
@@ -85,14 +86,15 @@ class ApiParamInfo extends ApiBase {
 	}
 
 	/**
-	 * @param  $obj ApiBase
+	 * @param $obj ApiBase
 	 * @return ApiResult
 	 */
 	function getClassInfo( $obj ) {
 		$result = $this->getResult();
 		$retval['classname'] = get_class( $obj );
 		$retval['description'] = implode( "\n", (array)$obj->getDescription() );
-		$retval['examples'] = implode( "\n", (array)$obj->getExamples() );
+		$examples = (array)$obj->getExamples();
+		$retval['examples'] = implode( "\n", $examples );
 		$retval['version'] = implode( "\n", (array)$obj->getVersion() );
 		$retval['prefix'] = $obj->getModulePrefix();
 
@@ -114,6 +116,12 @@ class ApiParamInfo extends ApiBase {
 			return $retval;
 		}
 
+		$retval['helpurls'] = (array)$obj->getHelpUrls();
+		$result->setIndexedTagName( $retval['helpurls'], 'helpurl' );
+
+		$retval['allexamples'] = $examples;
+		$result->setIndexedTagName( $retval['allexamples'], 'example' );
+
 		$retval['parameters'] = array();
 		$paramDesc = $obj->getFinalParamDescription();
 		foreach ( $allowedParams as $n => $p ) {
@@ -133,7 +141,7 @@ class ApiParamInfo extends ApiBase {
 			if ( !isset( $p[ApiBase::PARAM_TYPE] ) ) {
 				$dflt = isset( $p[ApiBase::PARAM_DFLT] ) ? $p[ApiBase::PARAM_DFLT] : null;
 				if ( is_bool( $dflt ) ) {
-					$p[ApiBase::PARAM_TYPE] = 'bool';
+					$p[ApiBase::PARAM_TYPE] = 'boolean';
 				} elseif ( is_string( $dflt ) || is_null( $dflt ) ) {
 					$p[ApiBase::PARAM_TYPE] = 'string';
 				} elseif ( is_int( $dflt ) ) {
@@ -150,7 +158,7 @@ class ApiParamInfo extends ApiBase {
 
 			if ( isset( $p[ApiBase::PARAM_DFLT] ) ) {
 				$type = $p[ApiBase::PARAM_TYPE];
-				if( $type === 'bool' ) {
+				if( $type === 'boolean' ) {
 					$a['default'] = ( $p[ApiBase::PARAM_DFLT] ? 'true' : 'false' );
 				} elseif( $type === 'string' ) {
 					$a['default'] = strval( $p[ApiBase::PARAM_DFLT] );
@@ -195,7 +203,6 @@ class ApiParamInfo extends ApiBase {
 
 		// Errors
 		$retval['errors'] = $this->parseErrors( $obj->getPossibleErrors() );
-
 		$result->setIndexedTagName( $retval['errors'], 'error' );
 
 		return $retval;
@@ -235,6 +242,10 @@ class ApiParamInfo extends ApiBase {
 		return array(
 			'api.php?action=paraminfo&modules=parse&querymodules=allpages|siteinfo'
 		);
+	}
+
+	public function getHelpUrls() {
+		return 'http://www.mediawiki.org/wiki/API:Parameter_information';
 	}
 
 	public function getVersion() {

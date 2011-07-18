@@ -56,10 +56,18 @@ class ApiFeedWatchlist extends ApiBase {
 	 * Wrap the result as an RSS/Atom feed.
 	 */
 	public function execute() {
-		global $wgFeedClasses, $wgFeedLimit, $wgSitename, $wgLanguageCode;
+		global $wgFeed, $wgFeedClasses, $wgFeedLimit, $wgSitename, $wgLanguageCode;
 
 		try {
 			$params = $this->extractRequestParams();
+
+			if( !$wgFeed ) {
+				$this->dieUsage( 'Syndication feeds are not available', 'feed-unavailable' );
+			}
+
+			if( !isset( $wgFeedClasses[ $params['feedformat'] ] ) ) {
+				$this->dieUsage( 'Invalid subscription feed type', 'feed-invalid' );
+			}
 
 			// limit to the number of hours going from now back
 			$endTime = wfTimestamp( TS_MW, time() - intval( $params['hours'] * 60 * 60 ) );
@@ -109,10 +117,12 @@ class ApiFeedWatchlist extends ApiBase {
 				$feedItems[] = $this->createFeedItem( $info );
 			}
 
-			$feedTitle = $wgSitename . ' - ' . wfMsgForContent( 'watchlist' ) . ' [' . $wgLanguageCode . ']';
+			$msg = wfMsgForContent( 'watchlist' );
+
+			$feedTitle = $wgSitename . ' - ' . $msg . ' [' . $wgLanguageCode . ']';
 			$feedUrl = SpecialPage::getTitleFor( 'Watchlist' )->getFullURL();
 
-			$feed = new $wgFeedClasses[$params['feedformat']] ( $feedTitle, htmlspecialchars( wfMsgForContent( 'watchlist' ) ), $feedUrl );
+			$feed = new $wgFeedClasses[$params['feedformat']] ( $feedTitle, htmlspecialchars( $msg ), $feedUrl );
 
 			ApiFormatFeedWrapper::setResult( $this->getResult(), $feed, $feedItems );
 
@@ -197,11 +207,22 @@ class ApiFeedWatchlist extends ApiBase {
 		return 'Returns a watchlist feed';
 	}
 
+	public function getPossibleErrors() {
+		return array_merge( parent::getPossibleErrors(), array(
+			array( 'code' => 'feed-unavailable', 'info' => 'Syndication feeds are not available' ),
+			array( 'code' => 'feed-invalid', 'info' => 'Invalid subscription feed type' ),
+		) );
+	}
+
 	protected function getExamples() {
 		return array(
 			'api.php?action=feedwatchlist',
 			'api.php?action=feedwatchlist&allrev=&linktodiffs=&hours=6'
 		);
+	}
+
+	public function getHelpUrls() {
+		return 'http://www.mediawiki.org/wiki/API:Watchlist_feed';
 	}
 
 	public function getVersion() {

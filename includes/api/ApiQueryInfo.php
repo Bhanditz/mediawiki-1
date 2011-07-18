@@ -98,6 +98,7 @@ class ApiQueryInfo extends ApiQueryBase {
 			'unblock' => array( 'ApiQueryInfo', 'getUnblockToken' ),
 			'email' => array( 'ApiQueryInfo', 'getEmailToken' ),
 			'import' => array( 'ApiQueryInfo', 'getImportToken' ),
+			'watch' => array( 'ApiQueryInfo', 'getWatchToken'),
 		);
 		wfRunHooks( 'APIQueryInfoTokens', array( &$this->tokenFunctions ) );
 		return $this->tokenFunctions;
@@ -215,6 +216,21 @@ class ApiQueryInfo extends ApiQueryBase {
 
 		$cachedImportToken = $wgUser->editToken();
 		return $cachedImportToken;
+	}
+
+	public static function getWatchToken( $pageid, $title ) {
+		global $wgUser;
+		if ( !$wgUser->isLoggedIn() ) {
+			return false;
+		}
+
+		static $cachedWatchToken = null;
+		if ( !is_null( $cachedWatchToken ) ) {
+			return $cachedWatchToken;
+		}
+
+		$cachedWatchToken = $wgUser->editToken( 'watch' );
+		return $cachedWatchToken;
 	}
 
 	public function execute() {
@@ -364,8 +380,8 @@ class ApiQueryInfo extends ApiQueryBase {
 		}
 
 		if ( $this->fld_url ) {
-			$pageInfo['fullurl'] = $title->getFullURL();
-			$pageInfo['editurl'] = $title->getFullURL( 'action=edit' );
+			$pageInfo['fullurl'] = wfExpandUrl( $title->getFullURL() );
+			$pageInfo['editurl'] = wfExpandUrl( $title->getFullURL( 'action=edit' ) );
 		}
 		if ( $this->fld_readable && $title->userCanRead() ) {
 			$pageInfo['readable'] = '';
@@ -710,6 +726,10 @@ class ApiQueryInfo extends ApiQueryBase {
 			'api.php?action=query&prop=info&titles=Main%20Page',
 			'api.php?action=query&prop=info&inprop=protection&titles=Main%20Page'
 		);
+	}
+
+	public function getHelpUrls() {
+		return 'http://www.mediawiki.org/wiki/API:Properties#info_.2F_in';
 	}
 
 	public function getVersion() {

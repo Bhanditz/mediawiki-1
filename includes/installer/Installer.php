@@ -99,6 +99,7 @@ abstract class Installer {
 		'envCheckCache',
 		'envCheckDiff3',
 		'envCheckGraphics',
+		'envCheckServer',
 		'envCheckPath',
 		'envCheckExtension',
 		'envCheckShellLocale',
@@ -131,6 +132,7 @@ abstract class Installer {
 		'wgDiff3',
 		'wgImageMagickConvertCommand',
 		'IP',
+		'wgServer',
 		'wgScriptPath',
 		'wgScriptExtension',
 		'wgMetaNamespace',
@@ -161,7 +163,6 @@ abstract class Installer {
 		'_UpgradeDone' => false,
 		'_InstallDone' => false,
 		'_Caches' => array(),
-		'_InstallUser' => 'root',
 		'_InstallPassword' => '',
 		'_SameAccount' => true,
 		'_CreateDBAccount' => false,
@@ -238,6 +239,10 @@ abstract class Installer {
 	 * @var array
 	 */
 	public $licenses = array(
+		'cc-by' => array(
+			'url' => 'http://creativecommons.org/licenses/by/3.0/',
+			'icon' => '{$wgStylePath}/common/images/cc-by.png',
+		),
 		'cc-by-sa' => array(
 			'url' => 'http://creativecommons.org/licenses/by-sa/3.0/',
 			'icon' => '{$wgStylePath}/common/images/cc-by-sa.png',
@@ -251,14 +256,10 @@ abstract class Installer {
 			'icon' => '{$wgStylePath}/common/images/cc-0.png',
 		),
 		'pd' => array(
-			'url' => 'http://creativecommons.org/licenses/publicdomain/',
+			'url' => '',
 			'icon' => '{$wgStylePath}/common/images/public-domain.png',
 		),
-		'gfdl-old' => array(
-			'url' => 'http://www.gnu.org/licenses/old-licenses/fdl-1.2.html',
-			'icon' => '{$wgStylePath}/common/images/gnu-fdl.png',
-		),
-		'gfdl-current' => array(
+		'gfdl' => array(
 			'url' => 'http://www.gnu.org/copyleft/fdl.html',
 			'icon' => '{$wgStylePath}/common/images/gnu-fdl.png',
 		),
@@ -634,7 +635,7 @@ abstract class Installer {
 
 		if ( !$compiledDBs ) {
 			$this->showError( 'config-no-db', $wgLang->commaList( $allNames ) );
-			// FIXME: this only works for the web installer!
+			// @todo FIXME: This only works for the web installer!
 			return false;
 		}
 
@@ -839,6 +840,15 @@ abstract class Installer {
 	}
 
 	/**
+	 * Environment check for the server hostname.
+	 */
+	protected function envCheckServer() {
+		$server = WebRequest::detectServer();
+		$this->showMessage( 'config-using-server', $server );
+		$this->setVar( 'wgServer', $server );
+	}
+
+	/**
 	 * Environment check for setting $IP and $wgScriptPath.
 	 */
 	protected function envCheckPath() {
@@ -870,7 +880,7 @@ abstract class Installer {
 	 * Environment check for setting the preferred PHP file extension.
 	 */
 	protected function envCheckExtension() {
-		// FIXME: detect this properly
+		// @todo FIXME: Detect this properly
 		if ( defined( 'MW_INSTALL_PHP5_EXT' ) ) {
 			$ext = 'php5';
 		} else {
@@ -956,10 +966,10 @@ abstract class Installer {
 	 * TODO: document
 	 */
 	protected function envCheckUploadsDirectory() {
-		global $IP, $wgServer;
+		global $IP;
 
 		$dir = $IP . '/images/';
-		$url = $wgServer . $this->getVar( 'wgScriptPath' ) . '/images/';
+		$url = $this->getVar( 'wgServer' ) . $this->getVar( 'wgScriptPath' ) . '/images/';
 		$safe = !$this->dirIsExecutable( $dir, $url );
 
 		if ( $safe ) {
@@ -968,7 +978,7 @@ abstract class Installer {
 			$this->showMessage( 'config-uploads-not-safe', $dir );
 		}
 	}
-	
+
 	/**
 	 * Checks if suhosin.get.max_value_length is set, and if so, sets
 	 * $wgResourceLoaderMaxQueryLength to that value in the generated
@@ -993,12 +1003,12 @@ abstract class Installer {
 		$c = hexdec($c);
 		if ($c <= 0x7F) {
 			return chr($c);
-		} else if ($c <= 0x7FF) {
+		} elseif ($c <= 0x7FF) {
 			return chr(0xC0 | $c >> 6) . chr(0x80 | $c & 0x3F);
-		} else if ($c <= 0xFFFF) {
+		} elseif ($c <= 0xFFFF) {
 			return chr(0xE0 | $c >> 12) . chr(0x80 | $c >> 6 & 0x3F)
 				. chr(0x80 | $c & 0x3F);
-		} else if ($c <= 0x10FFFF) {
+		} elseif ($c <= 0x10FFFF) {
 			return chr(0xF0 | $c >> 18) . chr(0x80 | $c >> 12 & 0x3F)
 				. chr(0x80 | $c >> 6 & 0x3F)
 				. chr(0x80 | $c & 0x3F);
@@ -1173,6 +1183,8 @@ abstract class Installer {
 
 	/**
 	 * ParserOptions are constructed before we determined the language, so fix it
+	 *
+	 * @param $lang Language
 	 */
 	public function setParserLanguage( $lang ) {
 		$this->parserOptions->setTargetLanguage( $lang );
@@ -1198,11 +1210,14 @@ abstract class Installer {
 		}
 
 		$exts = array();
-		$dir = $this->getVar( 'IP' ) . '/extensions';
-		$dh = opendir( $dir );
+		$extDir = $this->getVar( 'IP' ) . '/extensions';
+		$dh = opendir( $extDir );
 
 		while ( ( $file = readdir( $dh ) ) !== false ) {
-			if( file_exists( "$dir/$file/$file.php" ) ) {
+			if( !is_dir( "$extDir/$file" ) ) {
+				continue;
+			}
+			if( file_exists( "$extDir/$file/$file.php" ) ) {
 				$exts[] = $file;
 			}
 		}
@@ -1230,7 +1245,7 @@ abstract class Installer {
 		 */
 		global $wgAutoloadClasses;
 		$wgAutoloadClasses = array();
-		
+
 		require( "$IP/includes/DefaultSettings.php" );
 
 		foreach( $exts as $e ) {
@@ -1517,5 +1532,15 @@ abstract class Installer {
 	 */
 	public function addInstallStep( $callback, $findStep = 'BEGINNING' ) {
 		$this->extraInstallSteps[$findStep][] = $callback;
+	}
+
+	/**
+	 * Disable the time limit for execution.
+	 * Some long-running pages (Install, Upgrade) will want to do this
+	 */
+	protected function disableTimeLimit() {
+		wfSuppressWarnings();
+		set_time_limit( 0 );
+		wfRestoreWarnings();
 	}
 }

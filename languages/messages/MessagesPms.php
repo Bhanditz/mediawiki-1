@@ -172,14 +172,6 @@ dj'artìcoj ancó pa scrit",
 'noindex-category'               => 'Pàgine pa indicisà',
 'broken-file-category'           => 'Pàgine con colegament pa giust a archivi',
 
-'mainpagetext'      => "'''MediaWiki a l'é staita anstalà a la përfession.'''",
-'mainpagedocfooter' => "Che a varda la [http://meta.wikimedia.org/wiki/Help:Contents User's Guide] për avèj dj'anformassion ant sël coma dovré ël programa dla wiki.
-
-== Për anandiesse a travajé ==
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Lista dij paràmeter ëd configurassion]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki Chestion frequente]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Lista ëd discussion an sla distribussion ëd MediaWiki]",
-
 'about'         => 'A propòsit ëd',
 'article'       => 'Pàgina ëd contnù',
 'newwindow'     => '(as deurb ant na fnestra neuva)',
@@ -208,7 +200,7 @@ dj'artìcoj ancó pa scrit",
 'vector-action-move'             => 'Tramuda',
 'vector-action-protect'          => 'Protegg',
 'vector-action-undelete'         => 'Arcùpera',
-'vector-action-unprotect'        => 'Sprotegg',
+'vector-action-unprotect'        => 'Cangia protession',
 'vector-simplesearch-preference' => "Abilité ij sugeriment d'arserca ameliorà (mach për la pel Vector)",
 'vector-view-create'             => 'Crea',
 'vector-view-edit'               => 'Modìfica',
@@ -230,7 +222,6 @@ dj'artìcoj ancó pa scrit",
 'history'           => 'Version pì veje',
 'history_short'     => 'Stòria',
 'updatedmarker'     => "Agiornà da 'nt l'ùltima vira che i son passà",
-'info_short'        => 'Anformassion',
 'printableversion'  => 'Version bon-a për stampé',
 'permalink'         => 'Anliura fissa',
 'print'             => 'Stampa',
@@ -246,8 +237,8 @@ dj'artìcoj ancó pa scrit",
 'protect'           => 'Protegg',
 'protect_change'    => 'cambia',
 'protectthispage'   => 'Protegg sta pàgina-sì',
-'unprotect'         => 'Gava la protession',
-'unprotectthispage' => 'Gava via la protession',
+'unprotect'         => 'Cangia protession',
+'unprotectthispage' => 'Cangia protession dë sta pàgina-sì',
 'newpage'           => 'Pàgina neuva',
 'talkpage'          => 'Discussion',
 'talkpagelinktext'  => 'discussion',
@@ -427,7 +418,6 @@ Arcesta: $2',
 'sqlhidden'            => "(l'anterogassion SQL a l'é stërmà)",
 'cascadeprotected'     => 'Ant sta pàgina-sì as peulo pa fé ëd modìfiche, përché a-i intra ant {{PLURAL:$1|la pàgina|le pàgine}} butà sot a protession con la fonsion "a tombé" viscà ansima a: $2',
 'namespaceprotected'   => "A l'ha nen ël përmess dë feje dle modìfiche a le pàgine dlë spassi nominal '''$1'''.",
-'customcssjsprotected' => "Ch'a varda ch'a l'ha pa ël përmess ëd modifiché sta pàgina-sì, për via ch'a l'ha andrinta ij gust ëd n'àotr utent.",
 'ns-specialprotected'  => 'As peulo nen modifichesse le pàgine dlë spassi nominal {{ns:special}}.',
 'titleprotected'       => "La creassion ëd pàgine con ës tìtol-sì a l'é stàita proibìa da [[User:$1|$1]].
 Coma rason a l'ha butà: ''$2''.",
@@ -465,7 +455,7 @@ Che as dësmentia pa ëd cambié ij [[Special:Preferences|"sò gust" an {{SITENA
 'createaccount'              => 'Crea un cont neuv',
 'gotaccount'                 => "Ha-lo già un sò cont? '''$1'''.",
 'gotaccountlink'             => 'Rintré ant ël sistema',
-'userlogin-resetlink'        => 'Dësmentià tò detaj për intré?',
+'userlogin-resetlink'        => "A l'ha dësmentià ij sò detaj për intré ant ël sistema?",
 'createaccountmail'          => 'për pòsta eletrònica',
 'createaccountreason'        => 'Rason:',
 'badretype'                  => "Le doe ciav che a l'ha scrivù a resto diferente antra lor, e a venta che a sio mideme.",
@@ -485,7 +475,7 @@ Ch'a contròla d'avèj ij bëscotin abilità, ch'a caria torna la pàgina e ch'a
 'nosuchuser'                 => 'A-i é pa gnun utent con ël nòm "$1".
 Ij nòm ëd j\'utent a son sensìbij a le majùscole.
 Controla ël nòm che it l\'has batù, o [[Special:UserLogin/signup|fà un neuv cont]].',
-'nosuchusershort'            => 'A-i é pa gnun utent che as ciama "<nowiki>$1</nowiki>". Për piasì, che a contròla se a l\'ha scrit tut giust.',
+'nosuchusershort'            => 'A-i é pa gnun utent che as ciama "$1". Për piasì, che a contròla se a l\'ha scrit tut giust.',
 'nouserspecified'            => 'A venta che a specìfica në stranòm utent',
 'login-userblocked'          => "St'utent-sì a l'é blocà. A peul pa intré ant ël sistema.",
 'wrongpassword'              => "La ciav batùa a l'é pa giusta.<br /><br />Che a preuva torna, për piasì.",
@@ -557,29 +547,29 @@ Miraco it l'has già cambià la ciav o it l'has ciamà na neuva ciav a temp.",
 
 # Special:PasswordReset
 'passwordreset'                => 'Cambi ëd ciav',
-'passwordreset-text'           => 'Completa sto formolari për arsèive un corel con ij detaj ëd tò cont.',
+'passwordreset-text'           => "Ch'a completa 's formolari për arsèive un mëssagi ëd pòsta eletrònica con ij detaj ëd sò cont.",
 'passwordreset-legend'         => 'Cambié la ciav',
 'passwordreset-disabled'       => 'Ij cangiament ëd ciav a son stàit disabilità su sta wiki.',
-'passwordreset-pretext'        => '{{PLURAL:$1||Anseriss un dij tòch ëd dat sota}}',
+'passwordreset-pretext'        => "{{PLURAL:$1||Ch'a anserissa un dij tòch ëd dat sì-sota}}",
 'passwordreset-username'       => 'Stranòm:',
 'passwordreset-email'          => 'Adrëssa ëd pòsta eletrònica:',
-'passwordreset-emailtitle'     => 'Detaj ëd cont ansima {{SITENAME}}',
-'passwordreset-emailtext-ip'   => "Quaidun (miraco ti, da 'adrëssa IP $1) a l'ha ciamà d'arcordé ij detaj ëd tò cont për {{SITENAME}} ($4). {{PLURAL:$3|Ël cont utent sota a l'é|Ij cont utent sota a son}} 
-associà con st'adrëssa ëd corel:
+'passwordreset-emailtitle'     => 'Detaj dël cont ansima {{SITENAME}}',
+'passwordreset-emailtext-ip'   => "Quaidun (a l'é bel fé ch'a sia chiel, da l'adrëssa IP $1) a l'ha ciamà d'arcordé ij detaj ëd sò cont për {{SITENAME}} ($4). {{PLURAL:$3|Ël cont utent sì-sota a l'é|Ij cont utent sì-sota a son}} 
+associà a st'adrëssa ëd pòsta eletrònica:
 
 $2
 
-{{PLURAL:$3|Sta ciav|Ste ciav}} a temp a scadran an {{PLURAL:$5|un di|$5 di}}.
-It dovrìe intré e serne na ciav neuva adess. Se quaidun àutr a l'ha fàit sta arcesta, o s'it ses arcordate toa ciav original, e it veule pa pi cangela, it peule ignoré sto mëssagi e continué a dovré toa veja ciav.",
-'passwordreset-emailtext-user' => "L'utent $1 ansima a {{SITENAME}} a l'ha ciamà d'arcordé ij detaj ëd tò cont për {{SITENAME}} ($4). {{PLURAL:$3|Ël cont utent sota a l'é|Ij cont utent sota a son}} associà con st'adrëssa ëd corel:
+{{PLURAL:$3|Costa ciav|Coste ciav}} a temp a scadran da sì {{PLURAL:$5|un di|$5 di}}.
+A dovrìa intré ant ël sistema e serne na ciav neuva adess. Se quaidun d'àutr a l'ha fàit costa arcesta, o s'a l'é arcordasse soa ciav original, e a veul pa pi cangela, a peule ignoré ës mëssagi e continué a dovré soa veja ciav.",
+'passwordreset-emailtext-user' => "L'utent $1 ansima a {{SITENAME}} a l'ha ciamà d'arcordé ij detaj ëd sò cont për {{SITENAME}} ($4). {{PLURAL:$3|Ël cont utent sì-sota a l'é|Ij cont utent sì-sota a son}} associà a st'adrëssa ëd pòsta eletrònica:
 
 $2
 
-{{PLURAL:$3|Sta ciav|Ste ciav}} a temp a scadran an {{PLURAL:$5|un di|$5 di}}.
-It dovrìe intré e serne na ciav neuva adess. Se quaidun àutr a l'ha fàit sta arcesta, o s'it ses arcordate toa ciav original, e it veule pa pi cangela, it peule ignoré sto mëssagi e continué a dovré toa veja ciav.",
-'passwordreset-emailelement'   => 'Nòm utent: $1
+{{PLURAL:$3|Costa ciav|Coste ciav}} a temp a scadran da sì {{PLURAL:$5|un di|$5 di}}.
+A dovrìa intré ant ël sistema e serne na ciav neuva adess. Se quaidun d'àutr a l'ha fàit costa arcesta, o s'a l'é arcordasse soa ciav original, e a veul pa pi cangela, a peul ignoré sto mëssagi e continué a dovré soa veja ciav.",
+'passwordreset-emailelement'   => 'Stranòm: $1
 Ciav a temp: $2',
-'passwordreset-emailsent'      => "Un corel për arcordé a l'é stàit spedì.",
+'passwordreset-emailsent'      => "Un mëssagi ëd pòsta eletrònica për giuté a arcordé a l'é stàit spedì.",
 
 # Edit page toolbar
 'bold_sample'     => 'Test an grassèt',
@@ -675,15 +665,16 @@ o purament [{{fullurl:{{FULLPAGENAME}}|action=edit}} modìfiché la pàgina ades
 'noarticletext-nopermission'       => 'Al moment a-i é pa gnun test an sta pàgina-sì.
 It peule [[Special:Search/{{PAGENAME}}|sërché sto tìtol ëd pàgina-sì]] an d\'àutre pàgine,
 o <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} sërché j\'argistrassion colegà]</span>.',
-'userpage-userdoesnotexist'        => 'Lë stranòm "$1" a l\'é pa registrà. Për piasì ch\'a varda se da bon a veul creé/modifiché sta pàgina.',
+'userpage-userdoesnotexist'        => 'Lë stranòm "<nowiki>$1</nowiki>" a l\'é pa registrà. Për piasì ch\'a varda se da bon a veul creé/modifiché sta pàgina.',
 'userpage-userdoesnotexist-view'   => 'Ël cont utent "$1" a l\'é pa registrà.',
 'blocked-notice-logextract'        => "S'utent a l'é al moment blocà.
 'Me arferiment, sì-sota a-i é la dariera anotassion da l'argistr dij blocagi.",
-'clearyourcache'                   => "'''Nòta:''' na vira che a l'ha salvà, a peul esse che a-j fasa da manca da passé via la memorisassion (cache) dël sò programa ëd navigassion (browser) për podèj ës-ciairé le modìfiche.
-*'''Mozilla / Firefox / Safari:''' Che a ten-a sgnacà ''Shift'' antramentr che a sgnaca col rat ansima a ''Reload'', ò pura che a sgnaca tut ansema ''Ctrl-Shift-R'' (''Cmd-Shift-R'' ansima a j'Apple Mac);
-*'''IE:''' che a ten-a sgnacà ''Ctrl'' antramentr che a sgnaca col rat ansima a ''Refresh'', ò pura che a sgnaca tut ansema ''Ctrl-F5'';
-*'''Konqueror:''': a basta mach sgnaché ël boton ''Reload'', ò pura sgnaché ''F5'';
-*'''Opera''' j'utent a peulo avèj da manca dë vujdé 'd continuo soa memorisassion (cache) andrinta a ''Tools&rarr;Preferences''.",
+'clearyourcache'                   => "'''Nòta:''' na vira che a l'ha salvà, a peul esse che a-j fasa da manca ëd passé via la memorisassion (cache) dël sò programa ëd navigassion (browser) për podèj ës-ciairé le modìfiche.
+* '''Firefox / Safari:''' che a ten-a sgnacà ''Shift'' antramentr che a sgnaca col rat ansima a ''Reload'', ò pura che a sgnaca tut ansema ''Ctrl-F5'' o ''Cmd-R'' (''Command-R'' ansima ai Mac);
+* '''Google Chrome:''' che a sgnaca ''Ctrl-Shift-R'' (''Command-Shift-R'' ansima ai Mac);
+* '''Internet Explorer:''' che a ten-a sgnacà ''Ctrl'' antramentr che a sgnaca col rat ansima a ''Refresh'', ò pura che a sgnaca tut ansema ''Ctrl-F5'';
+* '''Konqueror:''': a basta mach sgnaché ël boton ''Reload'', ò pura sgnaché ''F5'';
+*'''Opera''' j'utent a peulo avèj da manca dë vujdé 'd continuo soa memorisassion (cache) andrinta a ''Tools → Preferences''.",
 'usercssyoucanpreview'             => "'''Drita:''' che a deuvra ël boton \"{{int:showpreview}}\" për controlé l'efet ëd sò còdes CSS dnans ëd salvelo.",
 'userjsyoucanpreview'              => "'''Drita:''' che a deuvra ël boton «{{int:showpreview}}» për controlé l'efet ëd sò còdes JS dnans ëd salvelo.",
 'usercsspreview'                   => "'''Che a varda che lòn che a s-ciàira a l'é nomach na preuva ëd sò CSS.'''
@@ -1068,7 +1059,9 @@ Ch'a preuva a gionté dnans a soa arserca ël prefiss ''all:'' për sërché an 
 'prefs-skin'                    => 'Facia',
 'skin-preview'                  => 'Preuva',
 'datedefault'                   => "Franch l'istess",
+'prefs-beta'                    => 'Caraterìstiche dla Beta',
 'prefs-datetime'                => 'Data e ora',
+'prefs-labs'                    => 'Caraterìstiche dël laboratòri',
 'prefs-personal'                => "Profil dl'utent",
 'prefs-rc'                      => 'Ùltime modìfiche',
 'prefs-watchlist'               => 'Ròba che as ten sot euj',
@@ -1102,7 +1095,7 @@ Ambelessì a-i é un valor generà a asar che a peul dovré: $1",
 'savedprefs'                    => 'Ij sò gust a son ëstàit salvà.',
 'timezonelegend'                => 'Fus orari:',
 'localtime'                     => 'Ora local:',
-'timezoneuseserverdefault'      => 'Dovré lë stàndard dël servent',
+'timezoneuseserverdefault'      => 'Dovré ël default ëd la wiki ($1)',
 'timezoneuseoffset'             => 'Àutr (spessifiché la diferensa)',
 'timezoneoffset'                => 'Diferensa oraria¹:',
 'servertime'                    => 'Ora dël servent:',
@@ -1481,10 +1474,6 @@ As peulo pa cariesse dj'archivi Java, përché a peulo causé l'agirament ëd le
 'upload-options'              => 'Opsion për carié',
 'watchthisupload'             => "Ten-e d'euj s'archivi.",
 'filewasdeleted'              => "N'archivi con ës nòm-sì a l'é già stàit carià e peui scancelà. Për piasì, che a verìfica $1 anans che carielo n'àutra vira.",
-'upload-wasdeleted'           => "'''Dossman: a l'é antramentr ch'a carìa torna n'archivi ch'a l'era dëscancelasse.'''
-
-Për piasì, ch'a contròla s'a val la pen-a dë felo.
-Për soa comodità, ambelessì a-i son ij dat dla scancelament:",
 'filename-bad-prefix'         => "Ël nòm dl'archivi ch'a l'é dapress a carié as anandia për '''\"\$1\"''', ch'a l'é un nòm sensa sust, për sòlit butà-lì n'aotomàtich da le màchine fotogràfiche digitaj, basta ch'a-i në sia un. Për piasì, ch'a-j daga a sò archivi un nòm ch'a disa lòn ch'a l'é.",
 'filename-prefix-blacklist'   => " #<!-- ch'a lassa sta riga-sì tanme ch'a l'é --> <pre>
 # La sintassi a l'é:
@@ -1556,7 +1545,7 @@ As peul mach avèj acess a j\'archivi.',
 Sta wiki-sì a l'é configurà com na wiki pùblica.
 Për na sicurëssa otimal, img_auth.php a l'é disabilità.",
 'img-auth-noread'           => 'L\'utent a l\'ha pa ij privilegi për lese "$1".',
-'img-auth-bad-query-string' => "L'anliura a l'é na stringa ëd query pa bon-a.",
+'img-auth-bad-query-string' => "L'anliura a l'ha na stringa d'arcesta pa bon-a.",
 
 # HTTP errors
 'http-invalid-url'      => "Adrëssa dl'aragnà pa bon-a: $1.",
@@ -1620,7 +1609,6 @@ La lista sì-sota a smon mach {{PLURAL:$1|la prima pàgina ch'a l'ha|le prime $1
 A l'é disponìbil na [[Special:WhatLinksHere/$2|lista completa]].",
 'nolinkstoimage'                    => "Pa gnun-a pàgina che a l'abia n'anliura a sta figura-sì.",
 'morelinkstoimage'                  => "Vëdde [[Special:WhatLinksHere/$1|d'àutri colegament]] a s'archivi.",
-'redirectstofile'                   => "Sì-sota a-i {{PLURAL:$1|é n'archivi|son $1 archivi}} ch'a armando a cost-sì:",
 'duplicatesoffile'                  => "{{PLURAL:$1|L'archivi sì-dapress a l'é un|Ij $1 archivi sì-dapress a son dij}} duplicà ëd s'archivi ([[Special:FileDuplicateSearch/$2|pì ëd detaj]]):",
 'sharedupload'                      => "St'archivi-sì a ven da $1 e a peul esse dovrà da d'àutri proget.",
 'sharedupload-desc-there'           => "Cost archivi a riva da $1 e a peul esse dovrà da d'àutri proget.
@@ -1869,39 +1857,39 @@ Ch'a bèica ëdcò [[Special:WantedCategories|le categorìe domandà]].",
 'activeusers-intro'      => "Costa a l'é na lista d'utent ch'a l'han avù n'atività qualsëssìa ant j'ùltim $1 {{PLURAL:$1|di|di}}.",
 'activeusers-count'      => "$1 {{PLURAL:$1|modìfica neuva|modìfiche neuve}} ant {{PLURAL:$3|l'ùltim di|j'ùltim $3 di}}",
 'activeusers-from'       => "Smon-me j'utent a parte da:",
-'activeusers-hidebots'   => 'Stërma trigomiro',
-'activeusers-hidesysops' => "Stërma j'aministrator",
+'activeusers-hidebots'   => 'Stërmé ij trigomiro',
+'activeusers-hidesysops' => "Stërmé j'aministrator",
 'activeusers-noresult'   => 'Pa gnun utent trovà.',
 
 # Special:Log/newusers
 'newuserlogpage'              => "Registr dla creassion dj'utent",
 'newuserlogpagetext'          => "Sossì a l'é un registr andova ch'as marco le creassion dj'utent.",
-'newuserlog-byemail'          => 'ciav spedìa via e-mail',
+'newuserlog-byemail'          => 'ciav spedìa për pòsta eletrònica',
 'newuserlog-create-entry'     => 'Neuv utent',
 'newuserlog-create2-entry'    => 'Creà ël neuv cont $1',
 'newuserlog-autocreate-entry' => 'Cont creà automaticament',
 
 # Special:ListGroupRights
 'listgrouprights'                      => "Drit dël grup d'utent",
-'listgrouprights-summary'              => "Ambelessì a-i é na lista dij grup utent definì an dzora a sta wiki-sì, con ij sò drit d'acess assocssià.
-A peulo ess-ie [[{{MediaWiki:Listgrouprights-helppage}}|anformassion adissionaj]] an dzora a dij drit individuaj.",
-'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Drit asignà</span>
+'listgrouprights-summary'              => "Ambelessì a-i é na lista dle partìe d'utent definìe ansima a costa wiki, con ij sò drit d'acess associà.
+A peulo ess-ie d'[[{{MediaWiki:Listgrouprights-helppage}}|anformassion adissionaj]] ansima a dij drit individuaj.",
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Drit assignà</span>
 * <span class="listgrouprights-revoked">Drit revocà</span>',
-'listgrouprights-group'                => 'Grup',
+'listgrouprights-group'                => 'Partìa',
 'listgrouprights-rights'               => 'Drit',
-'listgrouprights-helppage'             => 'Help:Drit dël grup',
+'listgrouprights-helppage'             => 'Help:Drit ëd le partìe',
 'listgrouprights-members'              => '(Lista dij mèmber)',
-'listgrouprights-addgroup'             => 'Gionta {{PLURAL:$2|dla partìa|djë partìe}}: $1',
-'listgrouprights-removegroup'          => 'Gava {{PLURAL:$2|dla partìa|djë partìe}}: $1',
-'listgrouprights-addgroup-all'         => 'Gionta tute le partìe',
-'listgrouprights-removegroup-all'      => 'Gava tute le partìe',
-'listgrouprights-addgroup-self'        => 'Gionta {{PLURAL:$2|la partìa|le partìe}} al tò cont: $1',
-'listgrouprights-removegroup-self'     => 'Gava {{PLURAL:$2|la partìa|le partìe}} da tò cont: $1',
-'listgrouprights-addgroup-self-all'    => 'Gionta tute le partìe a tò cont',
-'listgrouprights-removegroup-self-all' => 'Gava tute le partìe da tò cont',
+'listgrouprights-addgroup'             => 'Gionté a {{PLURAL:$2|la partìa|le partìe}}: $1',
+'listgrouprights-removegroup'          => 'Gavé {{PLURAL:$2|la partìa|le partìe}}: $1',
+'listgrouprights-addgroup-all'         => 'Gionté tute le partìe',
+'listgrouprights-removegroup-all'      => 'Gavé tute le partìe',
+'listgrouprights-addgroup-self'        => 'Gionté {{PLURAL:$2|la partìa|le partìe}} al sò cont: $1',
+'listgrouprights-removegroup-self'     => 'Gavé {{PLURAL:$2|la partìa|le partìe}} da sò cont: $1',
+'listgrouprights-addgroup-self-all'    => 'Gionté tute le partìe a sò cont',
+'listgrouprights-removegroup-self-all' => 'Gavé tute le partìe da sò cont',
 
 # E-mail user
-'mailnologin'          => 'A-i é pa gnun-a adrëssa për mandé ël messagi',
+'mailnologin'          => "A-i é pa l'adrëssa për mandé ël mëssagi",
 'mailnologintext'      => "A dev [[Special:UserLogin|rintré ant ël sistema]]
 e avej registrà n'adrëssa ëd pòsta eletrònica vàlida ant ij [[Special:Preferences|sò gust]] për podej mandé dij messagi ëd pòsta eletrònica a j'àutri Utent.",
 'emailuser'            => "Mand-je un messagi eletrònich a st'Utent-sì",
@@ -1916,9 +1904,9 @@ L'adrëssa e-mail ch'it l'has butà an [[Special:Preferences|Ij sò gust]] a sar
 'noemailtext'          => "Cost Utent-sì a l'ha pa spessificà n'adrëssa e-mail vàlida.",
 'nowikiemailtitle'     => 'Gnun-e e-mail',
 'nowikiemailtext'      => "Stutent-sì a l'ha sërnù ëd pa arseive e-mail da dj'àutri utent.",
-'emailnotarget'        => 'Nòm utent pa esistent o pa bon për ël ricevent.',
-'emailtarget'          => 'Anseriss ël nòm utent dël ricevent',
-'emailusername'        => 'Nòm utent:',
+'emailnotarget'        => 'Stranòm dël destinatari pa esistent o pa bon.',
+'emailtarget'          => "Ch'a anserissa lë stranòm dël destinatari",
+'emailusername'        => 'Stranòm:',
 'emailusernamesubmit'  => 'Spediss',
 'email-legend'         => "Manda n'e-mail a n'àutr utent ëd {{SITENAME}}",
 'emailfrom'            => 'Da:',
@@ -1945,10 +1933,8 @@ L'adrëssa e-mail ch'it l'has butà an [[Special:Preferences|Ij sò gust]] a sar
 'watchnologin'         => "A l'é ancó nen rintrà ant ël sistema",
 'watchnologintext'     => "A l'ha da manca prima ëd tut dë [[Special:UserLogin|rintré ant ël sistema]]
 për podej modifiché soa lista dla ròba dë tnì sot euj.",
-'addedwatch'           => "Sòn a l'é stait giontà a le pàgine che it ten-e sot euj",
 'addedwatchtext'       => 'La pàgina  "[[:$1]]" a l\'é staita giontà a soa [[Special:Watchlist|lista dla ròba da tnì sot-euj]].
 Le modìfiche che a-i vniran ant costa pàgina-sì e ant soa pàgina ëd discussion a saran listà ambelessì, e la pàgina a së s-ciairërà ën <b>grassèt</b> ant la pàgina ëd j\'[[Special:RecentChanges|ùltime modìfiche]] përchè che a resta belfé a ten-la d\'euj.',
-'removedwatch'         => "Gavà via da 'nt la lista dla ròba da tnì sot euj",
 'removedwatchtext'     => 'La pàgina "[[:$1]]" a l\'è staita gavà via da [[Special:Watchlist|soa lista dla ròba da tnì sot euj]].',
 'watch'                => 'ten sot euj',
 'watchthispage'        => "Ten sot euj st'artìcol-sì",
@@ -2001,7 +1987,7 @@ Che as visa che a peul cangeje la configurassion dle notìfiche a le pàgine che
 
 --
 Për cangé la configurassion ëd lòn che as ten sot euj che a vada ansima a
-{{fullurl:{{#special:Watchlist}}/edit}}
+{{fullurl:{{#special:EditWatchlist}}}}
 
 Për scancelé la pàgina da lòn ch\'a ten sot euj, ch\'a vìsita
 $UNWATCHURL
@@ -2023,7 +2009,7 @@ Për fé dle comunicassion ëd servissi e avèj pì d\'agiut:
 Për piasì, che an conferma che sòn a l'é da bon sò but, che a as rend cont ëd le conseguense ëd lòn che a fa, e che sòn a resta an pien an régola con lòn che a l'é stabilì ant la [[{{MediaWiki:Policy-url}}]].",
 'actioncomplete'         => 'Travaj fait e finì',
 'actionfailed'           => 'Assion falìa',
-'deletedtext'            => 'La pàgina "<nowiki>$1</nowiki>" a l\'é staita scancelà.
+'deletedtext'            => 'La pàgina "$1" a l\'é staita scancelà.
 Che a varda $2 për na lista dle pàgine scancelà ant j\'ùltim temp.',
 'deletedarticle'         => 'Scancelà "$1"',
 'suppressedarticle'      => 'a l\'ha scancelà "[[$1]]"',
@@ -2067,11 +2053,11 @@ L'ùltima modìfica a la pàgina a l'é staita faita da [[User:$3|$3]] ([[User t
 
 # Protect
 'protectlogpage'              => 'Registr dle protession',
-'protectlogtext'              => "Ambelessì sota a-i é na lista d'event ëd protession e dësprotession ëd pàgine.
-Ch'a varda la [[Special:ProtectedPages|Lista dle pàgine protegiùe]] për ës-ciairé le protession corente.",
+'protectlogtext'              => "Ambelessì sota a-i é na lista ëd cambiament a le protession ëd la pàgina.
+Ch'a varda la [[Special:ProtectedPages|Lista dle pàgine protegiùe]] për la lista ëd le protession operassionaj corente ëd la pàgina.",
 'protectedarticle'            => '"[[$1]]" a l\'é protet',
 'modifiedarticleprotection'   => 'A l\'é cambia-ie ël livel ëd protession për "[[$1]]"',
-'unprotectedarticle'          => 'Dësprotegiù "[[$1]]"',
+'unprotectedarticle'          => 'gavà protession da "[[$1]]"',
 'movedarticleprotection'      => 'Cambià le ampostassion ëd protession da "[[$2]]" a "[[$1]]"',
 'protect-title'               => 'I soma antramentr che i protegioma "$1"',
 'prot_1movedto2'              => '[[$1]] Tramudà a [[$2]]',
@@ -2081,7 +2067,7 @@ Ch'a varda la [[Special:ProtectedPages|Lista dle pàgine protegiùe]] për ës-c
 'protect_expiry_invalid'      => 'Scadensa pa bon-a.',
 'protect_expiry_old'          => 'Scadensa già passà.',
 'protect-unchain-permissions' => 'Sblòca àutre opsion ëd protession',
-'protect-text'                => "Ambelessì a peul vardé e cangé ël livel ëd protession dla pàgina '''<nowiki>$1</nowiki>'''.",
+'protect-text'                => "Ambelessì a peul vardé e cangé ël livel ëd protession dla pàgina '''$1'''.",
 'protect-locked-blocked'      => "Un a peul pa modifiché ij livel ëd protession antramentr ch'a l'é blocà chiel. Ambelessì a-i son le regolassion corente për la pàgina '''$1''':",
 'protect-locked-dblock'       => "Ij livej ëd protession as peulo nen cambiesse antramentr che la base dat a l'é blocà.
 Ambelessì a-i son le regolassion corente për la pàgina '''$1''':",
@@ -2220,7 +2206,7 @@ L'ùltima intrada dël registr dij blocagi a l'é butà sì-sota për arferiment
 'nolinkshere-ns'           => "An stë spassi nominal-sì a-i è pa gnun-a pagina con dj'anliure ch'a men-o a '''[[:$1]]'''.",
 'isredirect'               => 'ridiression',
 'istemplate'               => 'inclusion',
-'isimage'                  => 'anliura a figura',
+'isimage'                  => 'anliura a archivi',
 'whatlinkshere-prev'       => "{{PLURAL:$1|d'un andré|andré ëd $1}}",
 'whatlinkshere-next'       => "{{PLURAL:$1|d'un anans|anans ëd $1}}",
 'whatlinkshere-links'      => '← anliure',
@@ -2267,13 +2253,13 @@ Che a scriva codì che st'adrëssa IP-sì a dev second chiel (chila) esse blocà
 'ipbwatchuser'                    => "Ten d'euj le pàgine utent e ëd discussion dë st'utent-sì",
 'ipb-disableusertalk'             => "Proibiss a st'utent ëd modifiché soa pàgina ëd discussion quand a l'é blocà",
 'ipb-change-block'                => "Torna bloché l'utent con ste ampostassion-sì",
-'ipb-confirm'                     => 'Conferma blòch',
+'ipb-confirm'                     => 'Confermé ël blocagi',
 'badipaddress'                    => "L'adrëssa IP che a l'ha dane a l'é nen giusta.",
 'blockipsuccesssub'               => 'Blocagi fait',
 'blockipsuccesstext'              => "[[Special:Contributions/$1|$1]] a l'é stàit blocà.<br />
 Varda [[Special:IPBlockList|lista dj'IP blocà]] Për rivëdde ij blòch.",
-'ipb-blockingself'                => 'I të stas për bloché ti midem!  Ses-to sigur ëd vorèj fé lòn-lì?',
-'ipb-confirmhideuser'             => 'I të stas për bloché n\'utent con "stërma utent" abilità. Sòn-sì a gaverà ël nòm ëd l\'utent da dute le liste e le righe ëd registr. Ses-to sigur ëd vorèj fé lòn-lì?',
+'ipb-blockingself'                => "A l'é an camin ch'as blòca chiel-midem! É-lo sigur ëd vorèj fé lòn?",
+'ipb-confirmhideuser'             => "A l'é an camin ch'a blòca n'utent con «stërmé l'utent» abilità. Sòn a gaverà lë stranòm ëd l'utent da tute le liste e le vos ëd registr. É-lo sigur ëd vorèj fé lòn?",
 'ipb-edit-dropdown'               => 'Motiv dël blòch',
 'ipb-unblock-addr'                => 'Dësbloché $1',
 'ipb-unblock'                     => "Dësbloché n'utent ò n'adrëssa IP",
@@ -2589,7 +2575,7 @@ Për piasì preuva torna.',
 'tooltip-ca-viewsource'           => 'Sta pàgina-sì a l',
 'tooltip-ca-history'              => 'Veje version dla pàgina.',
 'tooltip-ca-protect'              => 'Për protege sta pàgina-sì.',
-'tooltip-ca-unprotect'            => 'Sprotegg sta pàgina-sì',
+'tooltip-ca-unprotect'            => 'Cangia protession dë sta pàgina-sì',
 'tooltip-ca-delete'               => 'Scancelé sta pàgina-sì',
 'tooltip-ca-undelete'             => 'Pijé andré le modìfiche faite a sta pàgina-sì, anans che a fussa scancelà.',
 'tooltip-ca-move'                 => 'Tramudé sta pàgina, visadì cangeje tìtol.',
@@ -2649,9 +2635,7 @@ At lassa gionté na spiegassion ëd la modìfica.',
 'monobook.js' => "/* Ës messagi-sì as dovrìa pa pì dovrelo; a sò pòst ch'a dòvra [[MediaWiki:common.js]] */",
 
 # Metadata
-'nodublincore'      => "Ij metadat dla sòrt '''Dublin Core RDF''' a son disabilità ansima a sta màchina-sì.",
-'nocreativecommons' => "Ij metadat dla sòrt '''Creative Commons RDF''' a son disabilità ansima a sta màchina-sì.",
-'notacceptable'     => 'Ël server dla wiki a-i la fa pa a provëdde dij dat ant na forma che sò programa local a peula lese.',
+'notacceptable' => 'Ël server dla wiki a-i la fa pa a provëdde dij dat ant na forma che sò programa local a peula lese.',
 
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Utent|Utent}} anònim ëd {{SITENAME}}',
@@ -2673,14 +2657,6 @@ Sòn a l'é motobin belfé che a sia rivà përchè a-i era n'anliura a un sit e
 'spambot_username'    => 'MediaWiki - trigomiro che a-j dà deuit a la rumenta',
 'spam_reverting'      => "Buta andaré a l'ùltima version che a l'avèissa pa andrinta dj'anliure a $1",
 'spam_blanking'       => "Pàgina dësveujdà, che tute le version a l'avìo andrinta dj'anliure a $1",
-
-# Info page
-'infosubtitle'   => 'Anformassion për la pàgina',
-'numedits'       => 'Nùmer ëd modìfiche (artìcol): $1',
-'numtalkedits'   => 'Nùmer ëd modìfiche (pàgina ëd discussion): $1',
-'numwatchers'    => "Nùmer d'utent che as ten-o sossì sot euj: $1",
-'numauthors'     => "Nùmer d'autor diferent (artìcol): $1",
-'numtalkauthors' => "Nùmer d'autor distint (pàgina ëd discussion): $1",
 
 # Patrolling
 'markaspatrolleddiff'                 => 'Marca coma verificà',
@@ -2724,6 +2700,7 @@ An fasend-lo travajé ansima a sò ordinator chiel a podrìa porteje ëd dann a 
 'widthheightpage'        => '$1×$2, $3 {{PLURAL:$3|pàgina|pàgine}}',
 'file-info'              => "amzura dl'archivi: $1, sòrt MIME: $2",
 'file-info-size'         => '$1 × $2 pixel, amzure: $3, sòrt MIME: $4',
+'file-info-size-pages'   => "$1 × $2 pixel, dimension ëd l'archivi: $3, sòrt MIME: $4, $5 {{PLURAL:$5|pagina|pagine}}",
 'file-nohires'           => '<small>Gnun-a risolussion pì bela disponibila.</small>',
 'svg-long-desc'          => "archivi an forma SVG, amzure nominaj $1 × $2 pixel, amzura dl'archivi: $3",
 'show-big-image'         => 'Version a amzura pijn-a',
@@ -2759,8 +2736,8 @@ J'anliure ch'a-i ven-o dapress, ant sla midema riga, as conto për ecession (vis
 'metadata-help'     => "Costi-sì a son dij dat adissionaj, che a l'é belfé che a sio stait giontà da la màchina fotogràfica digital ò pura da lë scanner che a l'é stiat dovrà për creé la figura digital. Se la figura a fussa mai staita modificà da 'nt soa forma original, a podrìa ëdcò riveje che chèich detaj a fussa ancò butà coma ant l'original, donca sensa pa ten-e cont ëd le modìfiche.",
 'metadata-expand'   => 'Most-me tùit ij dat',
 'metadata-collapse' => 'Stërma ij dat adissionaj',
-'metadata-fields'   => "Ij camp dij metadat ëd la figura listà ant ës messagi-sì a sarà smonù ant sla visualisassion ëd la pàgina dla figura quand la tabela dij metadat a l'é scondùa. 
-J'àutr a saran scondù për default.
+'metadata-fields'   => "Ij camp dij metadat ëd la figura listà ant ës messagi-sì a saran ësmonù ant la visualisassion ëd la pàgina dla figura quand la tàula dij metadat a l'é stërmà.
+J'àutri a saran stërmà coma stàndard.
 * make
 * model
 * datetimeoriginal
@@ -2890,39 +2867,39 @@ J'àutr a saran scondù për default.
 'exif-gpsdifferential'             => 'Coression diferensial dël GPS',
 'exif-jpegfilecomment'             => "Coment ëd l'archivi JPEG",
 'exif-keywords'                    => 'Paròle ciav',
-'exif-worldregioncreated'          => "Region dël mond anté la fòto a l'é stàita pijà",
-'exif-countrycreated'              => "Stat anté la fòto a l'é stàita pijà",
-'exif-countrycodecreated'          => "Còdes për lë stat anté la fòto a l'é stàita pijà",
-'exif-provinceorstatecreated'      => "Provinsa o stat anté la fòto a l'é stàita pijà",
-'exif-citycreated'                 => "Sità anté la fòto a l'é stàita pijà",
-'exif-sublocationcreated'          => "Borgh ëd la sità anté la fòto a l'é stàita pijà",
-'exif-worldregiondest'             => 'Region dël mond mostà',
-'exif-countrydest'                 => 'Stat mostà',
-'exif-countrycodedest'             => 'Còdes për lë stat mostà',
-'exif-provinceorstatedest'         => 'Provinsa o stat mostà',
-'exif-citydest'                    => 'Sità mostà',
-'exif-sublocationdest'             => 'Borgh ëd la sità mostà',
+'exif-worldregioncreated'          => "Region dël mond anté che la fòto a l'é stàita pijà",
+'exif-countrycreated'              => "Pais anté che la fòto a l'é stàita fàita",
+'exif-countrycodecreated'          => "Còdes dëlpais anté che la fòto a l'é stàita pijà",
+'exif-provinceorstatecreated'      => "Provinsa o stat anté che la fòto a l'é stàita pijà",
+'exif-citycreated'                 => "Sità anté che la fòto a l'é stàita pijà",
+'exif-sublocationcreated'          => "Borgh ëd la sità anté che la fòto a l'é stàita pijà",
+'exif-worldregiondest'             => 'Region dël mond mostrà',
+'exif-countrydest'                 => 'Pais mostrà',
+'exif-countrycodedest'             => 'Còdes dël pais mostrà',
+'exif-provinceorstatedest'         => 'Provinsa o stat mostrà',
+'exif-citydest'                    => 'Sità mostrà',
+'exif-sublocationdest'             => 'Borgh ëd la sità mostrà',
 'exif-objectname'                  => 'Tìtol curt',
 'exif-specialinstructions'         => 'Istrussion speciaj',
 'exif-headline'                    => 'Antestassion',
-'exif-credit'                      => 'Credit/Fornidor',
+'exif-credit'                      => 'Arconossiment/Fornitor',
 'exif-source'                      => 'Sorgiss',
 'exif-editstatus'                  => 'Stat ëd modìfica dla figura',
 'exif-urgency'                     => 'Pressa',
 'exif-fixtureidentifier'           => 'Nòm utiss',
 'exif-locationdest'                => 'Locassion fotografà',
 'exif-locationdestcode'            => 'Còdes ëd la locassion fotografà',
-'exif-objectcycle'                 => 'Ora dël di quand ël mojen a serv',
+'exif-objectcycle'                 => "Ora dël di ëd destinassion d'ës mojen",
 'exif-contact'                     => 'Anformassion ëd contat',
 'exif-writer'                      => 'Scritor',
 'exif-languagecode'                => 'Lenga',
-'exif-iimversion'                  => 'Vërsion IIM',
+'exif-iimversion'                  => 'version IIM',
 'exif-iimcategory'                 => 'Categorìa',
 'exif-iimsupplementalcategory'     => 'Categorìa suplementar',
-'exif-datetimeexpires'             => "Dòvra pa d'apress",
+'exif-datetimeexpires'             => 'Dovré nen apress',
 'exif-datetimereleased'            => 'Butà fòra ël',
 'exif-originaltransmissionref'     => 'Còdes ëd locassion ëd la trasmission original',
-'exif-identifier'                  => 'Identificador',
+'exif-identifier'                  => 'Identificator',
 'exif-lens'                        => 'Lent dovrà',
 'exif-serialnumber'                => 'Nùmer serial ëd la màchina fotogràfica',
 'exif-cameraownername'             => 'Padron ëd la màchina fotogràfica',
@@ -2936,13 +2913,13 @@ J'àutr a saran scondù për default.
 'exif-usageterms'                  => "Termo d'usagi",
 'exif-webstatement'                => "Diciarassion an linia dël drit d'autor",
 'exif-originaldocumentid'          => 'ID unìvoch dël document original',
-'exif-licenseurl'                  => "Anliura për licensa dël drit d'autor",
-'exif-morepermissionsurl'          => 'Anformassion ëd licensa alternativa',
-'exif-attributionurl'              => 'Quand as dòvra torna sto travaj, për piasì colega a',
-'exif-preferredattributionname'    => 'Quand as dòvra torna sto travaj, për piasì dà ij crédit',
+'exif-licenseurl'                  => "Anliura ëd la licensa dij drit d'autor",
+'exif-morepermissionsurl'          => 'Anformassion an sle license alternativa',
+'exif-attributionurl'              => "Quand as deuvra torna cost travaj, për piasì ch'a-j buta l'anliura a",
+'exif-preferredattributionname'    => "Quand as deuvra torna cost travaj, për piasì dé l'arconossiment a",
 'exif-pngfilecomment'              => "Coment ëd l'archivi PNG",
 'exif-disclaimer'                  => 'Avis',
-'exif-contentwarning'              => 'Avis dël contnù',
+'exif-contentwarning'              => 'Avis an sël contnù',
 'exif-giffilecomment'              => "Coment ëd l'archivi GIF",
 'exif-intellectualgenre'           => "Sòrt d'element",
 'exif-subjectnewscode'             => 'Còdes dël soget',
@@ -2955,6 +2932,9 @@ J'àutr a saran scondù për default.
 
 # EXIF attributes
 'exif-compression-1' => 'Pa compress',
+'exif-compression-2' => "CCITT Group 3 codìfica ëd lunghëssa d'esecussion dl'1-Dimensional Modified Huffman",
+'exif-compression-3' => 'CCITT Group 3 codìfica fax',
+'exif-compression-4' => 'CCITT Group 4 codìfica fax',
 
 'exif-copyrighted-true'  => "Con drit d'autor",
 'exif-copyrighted-false' => 'Domini pùblich',
@@ -3096,8 +3076,8 @@ J'àutr a saran scondù për default.
 'exif-gpslongitude-w' => 'Longitùdin ossidental',
 
 # Pseudotags used for GPSAltitudeRef
-'exif-gpsaltitude-above-sealevel' => '$1 {{PLURAL:$1|meter|meter}} an sël livel dël mar',
-'exif-gpsaltitude-below-sealevel' => '$1 {{PLURAL:$1|meter|meter}} sota ël livel dël mar',
+'exif-gpsaltitude-above-sealevel' => '$1 {{PLURAL:$1|méter|méter}} an sël livel dël mar',
+'exif-gpsaltitude-below-sealevel' => '$1 {{PLURAL:$1|méter|méter}} sota ël livel dël mar',
 
 'exif-gpsstatus-a' => 'Amzura antramentr che as fa',
 'exif-gpsstatus-v' => "Interoperabilità dl'amzura",
@@ -3111,12 +3091,12 @@ J'àutr a saran scondù për default.
 'exif-gpsspeed-n' => 'Grop (marin)',
 
 # Pseudotags used for GPSDestDistanceRef
-'exif-gpsdestdistance-k' => 'Kiòmetr',
+'exif-gpsdestdistance-k' => 'Chilòmeter',
 'exif-gpsdestdistance-m' => 'Mija',
-'exif-gpsdestdistance-n' => 'Mija nàutich',
+'exif-gpsdestdistance-n' => 'Mija marin-e',
 
 'exif-gpsdop-excellent' => 'Ecelent ($1)',
-'exif-gpsdop-good'      => 'Bonj ($1)',
+'exif-gpsdop-good'      => 'Bon ($1)',
 'exif-gpsdop-moderate'  => 'Moderà ($1)',
 'exif-gpsdop-fair'      => 'Discret ($1)',
 'exif-gpsdop-poor'      => 'Scadent ($1)',
@@ -3130,7 +3110,7 @@ J'àutr a saran scondù për default.
 'exif-gpsdirection-m' => 'Diression magnética',
 
 'exif-ycbcrpositioning-1' => 'Sentrà',
-'exif-ycbcrpositioning-2' => 'Co-situà',
+'exif-ycbcrpositioning-2' => 'Postà ansema',
 
 'exif-dc-contributor' => 'Contributor',
 'exif-dc-coverage'    => 'Camp spassial o temporal dël mojen',
@@ -3138,7 +3118,7 @@ J'àutr a saran scondù për default.
 'exif-dc-publisher'   => 'Editor',
 'exif-dc-relation'    => 'Mojen relativ',
 'exif-dc-rights'      => 'Drit',
-'exif-dc-source'      => 'Mojen sorziss',
+'exif-dc-source'      => 'Mojen sorgiss',
 'exif-dc-type'        => 'Sòrt ëd mojen',
 
 'exif-rating-rejected' => 'Arfudà',
@@ -3147,7 +3127,7 @@ J'àutr a saran scondù për default.
 
 'exif-iimcategory-ace' => 'Art, cultura e spetàcol',
 'exif-iimcategory-clj' => 'Sassin e lej',
-'exif-iimcategory-dis' => 'Disàster e insident',
+'exif-iimcategory-dis' => 'Disastr e assident',
 'exif-iimcategory-fin' => 'Economìa e afé',
 'exif-iimcategory-edu' => 'Educassion',
 'exif-iimcategory-evn' => 'Ambient',
@@ -3156,16 +3136,16 @@ J'àutr a saran scondù për default.
 'exif-iimcategory-lab' => 'Travaj',
 'exif-iimcategory-lif' => 'Stil ëd vita e temp lìber',
 'exif-iimcategory-pol' => 'Polìtica',
-'exif-iimcategory-rel' => 'Religion e fej',
+'exif-iimcategory-rel' => 'Religion e chërdense',
 'exif-iimcategory-sci' => 'Siensa e tecnologìa',
-'exif-iimcategory-soi' => 'Custion sociaj',
+'exif-iimcategory-soi' => 'Chestion sociaj',
 'exif-iimcategory-spo' => 'Spòrt',
-'exif-iimcategory-war' => 'Guèra, conflit e disordin',
+'exif-iimcategory-war' => 'Guèra, conflit e batibeuj',
 'exif-iimcategory-wea' => 'Temp',
 
 'exif-urgency-normal' => 'Normal ($1)',
 'exif-urgency-low'    => 'Bass ($1)',
-'exif-urgency-high'   => 'Aut ($1)',
+'exif-urgency-high'   => 'Àuta ($1)',
 'exif-urgency-other'  => "Priorità definìa da l'utent ($1)",
 
 # External editor support
@@ -3265,7 +3245,7 @@ $1',
 'confirmrecreate'          => "L'utent [[User:$1|$1]] ([[User talk:$1|talk]]) a l'ha scancelà st'articol-sì quand che chiel (chila) a l'avia già anandiasse a modifichelo, dand coma motiv ëd la scancelament:
 ''$2''
 Për piasì, che an conferma che da bon a veul torna creélo.",
-'confirmrecreate-noreason' => "L'utent [[User:$1|$1]] ([[User talk:$1|talk]]) a l'ha scanselà sta pàgina d'apress ch'it l'has ancaminà a modifiché.  Për piasì confirma ch'it veule pròpi torna creé sta pàgina.",
+'confirmrecreate-noreason' => "L'utent [[User:$1|$1]] ([[User talk:$1|ciaciarade]]) a l'ha scancelà sta pàgina apress che chiel a l'ha ancaminà a modifiché.  Për piasì, ch'a confirma ch'a veul pròpi torna creé sta pàgina.",
 'recreate'                 => "Créa n'àutra vira",
 
 # action=purge
@@ -3486,5 +3466,20 @@ Ch'a buta mach ël nòm dl'archivi sensa pa ël prefiss \"{{ns:file}}:\".",
 # SQLite database support
 'sqlite-has-fts' => '$1 con arserca an test pien mantnùa',
 'sqlite-no-fts'  => '$1 sensa arserca an test pien mantnùa',
+
+# Add categories per AJAX
+'ajax-add-category'            => 'Gionta categorìa',
+'ajax-add-category-submit'     => 'Gionta',
+'ajax-confirm-title'           => 'Conferma assion',
+'ajax-confirm-prompt'          => 'It peule dé sì sota un resumé dla modìfica.
+Sgnaca "Salva" për salvé la modìfica.',
+'ajax-confirm-save'            => 'Salva',
+'ajax-add-category-summary'    => 'Gionta la categorìa "$1"',
+'ajax-remove-category-summary' => 'Gava la categorìa "$1"',
+'ajax-confirm-actionsummary'   => 'Assion da fé:',
+'ajax-error-title'             => 'Eror',
+'ajax-error-dismiss'           => 'Va bin',
+'ajax-remove-category-error'   => "A l'era pa possìbil gavé sta categorìa-sì.
+Sòn-sì a càpita normalment quand la categorìa a l'é stàita giontà a la pàgina ant në stamp.",
 
 );

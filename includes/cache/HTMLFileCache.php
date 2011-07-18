@@ -27,7 +27,7 @@ class HTMLFileCache {
 	var $mTitle;
 	var $mFileCache, $mType;
 
-	public function __construct( &$title, $type = 'view' ) {
+	public function __construct( $title, $type = 'view' ) {
 		$this->mTitle = $title;
 		$this->mType = ($type == 'raw' || $type == 'view' ) ? $type : false;
 		$this->fileCacheName(); // init name
@@ -78,7 +78,7 @@ class HTMLFileCache {
 	public function fileCacheTime() {
 		return wfTimestamp( TS_MW, filemtime( $this->fileCacheName() ) );
 	}
-	
+
 	/**
 	 * Check if pages can be cached for this request/user
 	 * @return bool
@@ -93,16 +93,14 @@ class HTMLFileCache {
 		foreach( $queryVals as $query => $val ) {
 			if( $query == 'title' || $query == 'curid' ) {
 				continue;
-			}
 			// Normal page view in query form can have action=view.
 			// Raw hits for pages also stored, like .css pages for example.
-			else if( $query == 'action' && ($val == 'view' || $val == 'raw') ) {
+			} elseif( $query == 'action' && $val == 'view' ) {
 				continue;
-			} else if( $query == 'usemsgcache' && $val == 'yes' ) {
+			} elseif( $query == 'usemsgcache' && $val == 'yes' ) {
 				continue;
-			}
 			// Below are header setting params
-			else if( $query == 'maxage' || $query == 'smaxage' || $query == 'ctype' || $query == 'gen' ) {
+			} elseif( $query == 'maxage' || $query == 'smaxage' || $query == 'ctype' || $query == 'gen' ) {
 				continue;
 			} else {
 				return false;
@@ -116,10 +114,12 @@ class HTMLFileCache {
 		return !$wgShowIPinHeader && !$wgUser->getId() && !$wgUser->getNewtalk() && $ulang == $clang;
 	}
 
-	/* 
-	* Check if up to date cache file exists
-	* @param $timestamp string
-	*/
+	/**
+	 * Check if up to date cache file exists
+	 * @param $timestamp string
+	 *
+	 * @return bool
+	 */
 	public function isFileCacheGood( $timestamp = '' ) {
 		global $wgCacheEpoch;
 
@@ -155,14 +155,14 @@ class HTMLFileCache {
 
 	/* Working directory to/from output */
 	public function loadFromFileCache() {
-		global $wgOut, $wgMimeType, $wgOutputEncoding, $wgLanguageCode;
+		global $wgOut, $wgMimeType, $wgLanguageCode;
 		wfDebug( __METHOD__ . "()\n");
 		$filename = $this->fileCacheName();
 		// Raw pages should handle cache control on their own,
 		// even when using file cache. This reduces hits from clients.
 		if( $this->mType !== 'raw' ) {
 			$wgOut->sendCacheControl();
-			header( "Content-Type: $wgMimeType; charset={$wgOutputEncoding}" );
+			header( "Content-Type: $wgMimeType; charset=UTF-8" );
 			header( "Content-Language: $wgLanguageCode" );
 		}
 

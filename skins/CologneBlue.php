@@ -19,11 +19,13 @@ class SkinCologneBlue extends SkinLegacy {
 	var $skinname = 'cologneblue', $stylename = 'cologneblue',
 		$template = 'CologneBlueTemplate';
 
+	/**
+	 * @param $out OutputPage
+	 */
 	function setupSkinUserCss( OutputPage $out ){
 		parent::setupSkinUserCss( $out );
 		$out->addModuleStyles( 'skins.cologneblue' );
 
-		global $wgContLang;
 		$qb = $this->qbSetting();
 		$rules = array();
 
@@ -45,9 +47,6 @@ class SkinCologneBlue extends SkinLegacy {
 			$rules[] = "body>#quickbar { position: fixed; right: 4px; top: 4px; overflow: auto ;bottom:4px;}"; # Hides from IE
 		}
 		$style = implode( "\n", $rules );
- 		if ( $wgContLang->getDir() === 'rtl' ) {
- 			$style = CSSJanus::transform( $style, true, false );
-		}
 		$out->addInlineStyle( $style );
 	}
 
@@ -55,6 +54,9 @@ class SkinCologneBlue extends SkinLegacy {
 
 class CologneBlueTemplate extends LegacyTemplate {
 
+	/**
+	 * @return string
+	 */
 	function doBeforeContent() {
 		$mainPageObj = Title::newMainPage();
 
@@ -75,7 +77,7 @@ class CologneBlueTemplate extends LegacyTemplate {
 
 		$s .= '<font size="-1"><span id="langlinks">';
 		$s .= str_replace( '<br />', '', $this->otherLanguages() );
-		$cat = $this->getSkin()->getCategoryLinks();
+		$cat = '<div id="catlinks" class="catlinks">' . $this->getSkin()->getCategoryLinks() . '</div>';
 		if( $cat ) {
 			$s .= "<br />$cat\n";
 		}
@@ -95,6 +97,9 @@ class CologneBlueTemplate extends LegacyTemplate {
 		return $s;
 	}
 
+	/**
+	 * @return string
+	 */
 	function doAfterContent(){
 		global $wgLang;
 
@@ -136,6 +141,9 @@ class CologneBlueTemplate extends LegacyTemplate {
 		return $s;
 	}
 
+	/**
+	 * @return string
+	 */
 	function sysLinks() {
 		global $wgUser, $wgLang;
 		$li = SpecialPage::getTitleFor( 'Userlogin' );
@@ -194,6 +202,8 @@ class CologneBlueTemplate extends LegacyTemplate {
 	/**
 	 * Compute the sidebar
 	 * @access private
+	 *
+	 * @return string
 	 */
 	function quickBar(){
 		global $wgOut, $wgUser;
@@ -216,12 +226,12 @@ class CologneBlueTemplate extends LegacyTemplate {
 
 		$barnumber = 1;
 		foreach ( $bar as $heading => $browseLinks ) {
-			$heading_text = wfMsg ( $heading );
 			if ( $barnumber > 1 ) {
-				if ( wfEmptyMsg( $heading, $heading_text ) ) {
-					$h = $heading;
+				$headingMsg = wfMessage( $heading );
+				if ( $headingMsg->exists() ) {
+					$h = $headingMsg->text();
 				} else {
-					$h = $heading_text;
+					$h = $heading;
 				}
 				$s .= "\n<h6>" . htmlspecialchars( $h ) . "</h6>";
 			}
@@ -231,7 +241,7 @@ class CologneBlueTemplate extends LegacyTemplate {
 						htmlspecialchars( $link['text'] ) . '</a>' . $sep;
 				}
 			}
-			$barnumber = $barnumber + 1;
+			$barnumber++;
 		}
 
 		if ( $wgOut->isArticle() ) {
@@ -347,11 +357,19 @@ class CologneBlueTemplate extends LegacyTemplate {
 		return $s;
 	}
 
+	/**
+	 * @param $key string
+	 * @return string
+	 */
 	function menuHead( $key ) {
 		$s = "\n<h6>" . wfMsg( $key ) . "</h6>";
 		return $s;
 	}
 
+	/**
+	 * @param $label string
+	 * @return string
+	 */
 	function searchForm( $label = '' ) {
 		global $wgRequest, $wgUseTwoButtonsSearchForm;
 

@@ -64,7 +64,7 @@ class Sanitizer {
 		'amp'      => 38,
 		'and'      => 8743,
 		'ang'      => 8736,
-		'apos'     => 39,
+		'apos'     => 39, // New in XHTML & HTML 5; avoid in output for compatibility with IE.
 		'Aring'    => 197,
 		'aring'    => 229,
 		'asymp'    => 8776,
@@ -792,6 +792,10 @@ class Sanitizer {
 		return $value;
 	}
 
+	/**
+	 * @param $matches array
+	 * @return String
+	 */
 	static function cssDecodeCallback( $matches ) {
 		if ( $matches[1] !== '' ) {
 			// Line continuation
@@ -1093,6 +1097,10 @@ class Sanitizer {
 				Sanitizer::normalizeCharReferences( $text ) ) );
 	}
 
+	/**
+	 * @param $text string
+	 * @return mixed
+	 */
 	private static function normalizeWhitespace( $text ) {
 		return preg_replace(
 			'/\r\n|[\x20\x0d\x0a\x09]/',
@@ -1176,6 +1184,10 @@ class Sanitizer {
 		}
 	}
 
+	/**
+	 * @param $codepoint
+	 * @return null|string
+	 */
 	static function decCharReference( $codepoint ) {
 		$point = intval( $codepoint );
 		if( Sanitizer::validateCodepoint( $point ) ) {
@@ -1185,6 +1197,10 @@ class Sanitizer {
 		}
 	}
 
+	/**
+	 * @param $codepoint
+	 * @return null|string
+	 */
 	static function hexCharReference( $codepoint ) {
 		$point = hexdec( $codepoint );
 		if( Sanitizer::validateCodepoint( $point ) ) {
@@ -1282,7 +1298,7 @@ class Sanitizer {
 	 * return the UTF-8 encoding of that character. Otherwise, returns
 	 * pseudo-entity source (eg &foo;)
 	 *
-	 * @param $name Strings
+	 * @param $name String
 	 * @return String
 	 */
 	static function decodeEntity( $name ) {
@@ -1523,6 +1539,10 @@ class Sanitizer {
 		return $out;
 	}
 
+	/**
+	 * @param $url string
+	 * @return mixed|string
+	 */
 	static function cleanUrl( $url ) {
 		# Normalize any HTML entities in input. They will be
 		# re-escaped by makeExternalLink().
@@ -1558,7 +1578,7 @@ class Sanitizer {
 
 			$host = preg_replace( $strip, '', $host );
 
-			// @todo Fixme: validate hostnames here
+			// @todo FIXME: Validate hostnames here
 
 			return $protocol . $host . $rest;
 		} else {
@@ -1566,6 +1586,10 @@ class Sanitizer {
 		}
 	}
 
+	/**
+	 * @param $matches array
+	 * @return string
+	 */
 	static function cleanUrlCallback( $matches ) {
 		return urlencode( $matches[0] );
 	}

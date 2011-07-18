@@ -26,6 +26,16 @@ abstract class Collation {
 			case 'uca-default':
 				return new IcuCollation( 'root' );
 			default:
+				# Provide a mechanism for extensions to hook in.
+
+				$collationObject = null;
+				wfRunHooks( 'Collation::factory', array( $collationName, &$collationObject ) );
+
+				if ( $collationObject instanceof Collation ) {
+					return $collationObject;
+				}
+
+				// If all else fails...
 				throw new MWException( __METHOD__.": unknown collation type \"$collationName\"" );
 		}
 	}

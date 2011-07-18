@@ -342,15 +342,7 @@ $messages = array(
 'category-file-count-limited'    => 'Eftirfarandi {{PLURAL:$1|skrá er|$1 skrár eru}} í þessum flokki.',
 'listingcontinuesabbrev'         => 'frh.',
 
-'linkprefix'        => '/^(.*?)([áÁðÐéÉíÍóÓúÚýÝþÞæÆöÖA-Za-z-–]+)$/sDu',
-'mainpagetext'      => "'''Uppsetning á MediaWiki heppnaðist.'''",
-'mainpagedocfooter' => 'Ráðfærðu þig við [http://meta.wikimedia.org/wiki/Help:Contents Notandahandbókina] fyrir frekari upplýsingar um notkun wiki-hugbúnaðarins.
-
-== Fyrir byrjendur ==
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Listi yfir uppsetningarstillingar]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki Algengar spurningar MediaWiki]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Póstlisti MediaWiki-útgáfa]',
+'linkprefix' => '/^(.*?)([áÁðÐéÉíÍóÓúÚýÝþÞæÆöÖA-Za-z-–]+)$/sDu',
 
 'about'         => 'Um',
 'article'       => 'Efnissíða',
@@ -401,7 +393,6 @@ $messages = array(
 'history'           => 'Breytingaskrá',
 'history_short'     => 'Breytingaskrá',
 'updatedmarker'     => 'uppfært frá síðustu heimsókn minni',
-'info_short'        => 'Upplýsingar',
 'printableversion'  => 'Prentvæn útgáfa',
 'permalink'         => 'Varanlegur tengill',
 'print'             => 'Prenta',
@@ -584,7 +575,6 @@ Fyrir þýðingar, gjörðu svo vel að nota [http://translatewiki.net/wiki/Main
 'cascadeprotected'     => 'Þessi síða hefur verið vernduð fyrir breytingum, vegna þess að hún er innifalin í eftirfarandi {{PLURAL:$1|síðu, sem er vernduð|síðum, sem eru verndaðar}} með „keðjuverndun“:
 $2',
 'namespaceprotected'   => "Þú hefur ekki leyfi til að breyta síðum í '''$1''' nafnrýminu.",
-'customcssjsprotected' => 'Þú hefur ekki leyfi til að breyta þessari síðu, því hún hefur notandastillingar annars notanda.',
 'ns-specialprotected'  => 'Kerfissíðum er ekki hægt að breyta.',
 'titleprotected'       => "Þessi titill hefur verið verndaður fyrir sköpun af [[User:$1|$1]].
 Ástæðan sem gefin var ''$2''.",
@@ -636,7 +626,7 @@ Gjörðu svo vel og opnaðu fyrir þær, skráðu þig svo inn með notandanafni
 'nosuchuser'                 => 'Það er enginn notandi með þetta nafn: "$1".
 Gerður er greinarmunur á há- og lágstöfum.
 Athugaðu hvort um innsláttavillu er að ræða eða [[Special:UserLogin/signup|búðu til nýtt notendanafn]].',
-'nosuchusershort'            => 'Það er enginn notandi með nafnið „<nowiki>$1</nowiki>“. Athugaðu hvort nafnið sé ritað rétt.',
+'nosuchusershort'            => 'Það er enginn notandi með nafnið „$1“. Athugaðu hvort nafnið sé ritað rétt.',
 'nouserspecified'            => 'Þú verður að taka fram notandanafn.',
 'login-userblocked'          => 'Þessi notandi hefur verið settur í bann.  Innskráning ekki leyfð.',
 'wrongpassword'              => 'Uppgefið lykilorð er rangt. Vinsamlegast reyndu aftur.',
@@ -793,10 +783,10 @@ Ef þú ert óþekktur notandi og finnst að óviðkomandi athugasemdum hafa ver
 'noarticletext'                    => 'Enginn texti er á þessari síðu enn sem komið er.
 Þú getur [[Special:Search/{{PAGENAME}}|leitað í öðrum síðum]],
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} leitað í tengdum skrám], eða [{{fullurl:{{FULLPAGENAME}}|action=edit}} breytt henni sjálfur]</span>.',
-'userpage-userdoesnotexist'        => 'Notandaaðgangurinn „$1“ er ekki skráður.
+'userpage-userdoesnotexist'        => 'Notandaaðgangurinn „<nowiki>$1</nowiki>“ er ekki skráður.
 Gjörðu svo vel og athugaðu hvort að þú viljir skapa/breyta þessari síðu.',
 'clearyourcache'                   => "'''Athugaðu - Eftir vistun, má vera að þú þurfir að komast hjá skyndiminni vafrans þíns til að sjá breytingarnar.'''
-'''Mozilla / Firefox / Safari:''' haltu ''Shift'' og smelltu á ''Reload'', eða ýttu á annaðhvort ''Ctrl-F5'' eða ''Ctrl-R'' (''Command-R'' á Macintosh);
+'''Mozilla / Firefox / Safari:''' haltu ''Shift'' og smelltu á ''Reload'', eða ýttu á annaðhvort ''Ctrl-F5'' eða ''Ctrl-R'' (''Command-R'' á Mac);
 '''Konqueror: '''smelltu á ''Reload'' eða ýttu á ''F5'';
 '''Opera:''' hreinsaðu skyndiminnið í ''Tools → Prefernces'';
 '''Internet Explorer:''' haltu ''Ctrl'' og smelltu á ''Refresh'', eða ýttu á ''Ctrl-F5''.",
@@ -1612,10 +1602,8 @@ Sjá einnig [[Special:WantedCategories|eftirsótta flokka]].',
 'watchlistanontext'    => 'Vinsamlegast $1 til að skoða eða breyta vaktlistanum þínum.',
 'watchnologin'         => 'Óinnskráð(ur)',
 'watchnologintext'     => 'Þú verður að vera [[Special:UserLogin|innskáð(ur)]] til að geta breytt vaktlistanum.',
-'addedwatch'           => 'Bætt á vaktlistann',
 'addedwatchtext'       => "Síðunni „[[:$1]]“ hefur verið bætt á [[Special:Watchlist|Vaktlistann]] þinn.
 Frekari breytingar á henni eða spallsíðu hennar munu verða sýndar þar, og síðan mun vera '''feitletruð''' í [[Special:RecentChanges|Nýlegum breytingum]] svo auðveldara sé að finna hana.",
-'removedwatch'         => 'Fjarlægt af vaktlistanum',
 'removedwatchtext'     => 'Síðan „[[:$1]]“ hefur verið fjarlægð af [[Special:Watchlist|vaktlistanum þínum]].',
 'watch'                => 'Vakta',
 'watchthispage'        => 'Vakta þessa síðu',
@@ -1660,7 +1648,7 @@ Frekari breytingar á henni eða spallsíðu hennar munu verða sýndar þar, og
 Vinsamlegast staðfestu það að þú ætlir að gera svo, það að þú skiljir afleiðingarnar, og að þú sért að gera þetta í samræmi við [[{{MediaWiki:Policy-url}}]].',
 'actioncomplete'         => 'Aðgerð lokið',
 'actionfailed'           => 'Aðgerð mistókst',
-'deletedtext'            => '„<nowiki>$1</nowiki>“ hefur verið eytt.
+'deletedtext'            => '„$1“ hefur verið eytt.
 Sjá lista yfir nýlegar eyðingar í $2.',
 'deletedarticle'         => 'eyddi „[[$1]]“',
 'dellogpage'             => 'Eyðingaskrá',
@@ -1705,7 +1693,7 @@ Sjáðu [[Special:ProtectedPages|listann yfir verndaðar síður]] fyrir núvera
 'protectexpiry'               => 'Rennur út:',
 'protect_expiry_invalid'      => 'Ógildur tími.',
 'protect_expiry_old'          => 'Tíminn er þegar runninn út.',
-'protect-text'                => "Hér getur þú skoðað og breytt verndunarstigi síðunnar '''<nowiki>$1</nowiki>'''.",
+'protect-text'                => "Hér getur þú skoðað og breytt verndunarstigi síðunnar '''$1'''.",
 'protect-locked-access'       => "Þú hefur ekki heimild til þess að vernda eða afvernda síður.
 Núverandi staða síðunnar er '''$1''':",
 'protect-cascadeon'           => 'Þessi síða er vernduð vegna þess að hún er innifalin í eftirfarandi {{PLURAL:$1|síðu, sem er keðjuvernduð|síðum, sem eru keðjuverndaðar}}.
@@ -2111,14 +2099,6 @@ Allir innflutningar eru skráð í [[Special:Log/import|innflutningsskránna]].'
 'others'           => 'aðrir',
 'siteusers'        => '{{SITENAME}} {{PLURAL:$2|notandi|notendur}} $1',
 
-# Info page
-'infosubtitle'   => 'Upplýsingar um síðu',
-'numedits'       => 'Fjöldi breytinga (síða): $1',
-'numtalkedits'   => 'Fjöldi breytinga (spjall síða): $1',
-'numwatchers'    => 'Fjöldi vaktara: $1',
-'numauthors'     => 'Fjöldi frábrugðinna höfunda (grein): $1',
-'numtalkauthors' => 'Fjöldi frábrugðinna höfunda (spjall síða): $1',
-
 # Skin names
 'skinname-standard'    => 'Sígilt',
 'skinname-nostalgia'   => 'Gamaldags',
@@ -2420,5 +2400,10 @@ Vinsamlegast staðfestu að þú viljir endurvekja hana.",
 
 # Database error messages
 'dberr-usegoogle' => 'Þú getur notað Google til að leita á meðan.',
+
+# Add categories per AJAX
+'ajax-confirm-save'  => 'Vista',
+'ajax-error-title'   => 'Villa',
+'ajax-error-dismiss' => 'Í lagi',
 
 );

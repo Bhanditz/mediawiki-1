@@ -224,7 +224,7 @@ class SpecialUpload extends SpecialPage {
 	 */
 	protected function showUploadForm( $form ) {
 		# Add links if file was previously deleted
-		if ( !$this->mDesiredDestName ) {
+		if ( $this->mDesiredDestName ) {
 			$this->showViewDeletedLinks();
 		}
 
@@ -314,23 +314,21 @@ class SpecialUpload extends SpecialPage {
 		$title = Title::makeTitleSafe( NS_FILE, $this->mDesiredDestName );
 		// Show a subtitle link to deleted revisions (to sysops et al only)
 		if( $title instanceof Title ) {
-			$count = $title->isDeleted();
-			if ( $count > 0 && $wgUser->isAllowed( 'deletedhistory' ) ) {
-				$link = wfMsgExt(
-					$wgUser->isAllowed( 'delete' ) ? 'thisisdeleted' : 'viewdeleted',
-					array( 'parse', 'replaceafter' ),
-					$wgUser->getSkin()->linkKnown(
-						SpecialPage::getTitleFor( 'Undelete', $title->getPrefixedText() ),
-						wfMsgExt( 'restorelink', array( 'parsemag', 'escape' ), $count )
-					)
-				);
-				$wgOut->addHTML( "<div id=\"contentSub2\">{$link}</div>" );
+			if ( $wgUser->isAllowed( 'deletedhistory' ) ) {
+				$canViewSuppress = $wgUser->isAllowed( 'suppressrevision' );
+				$count = $title->isDeleted( $canViewSuppress );
+				if ( $count > 0 ) {
+					$link = wfMsgExt(
+						$wgUser->isAllowed( 'delete' ) ? 'thisisdeleted' : 'viewdeleted',
+						array( 'parse', 'replaceafter' ),
+						$this->getSkin()->linkKnown(
+							SpecialPage::getTitleFor( 'Undelete', $title->getPrefixedText() ),
+							wfMsgExt( 'restorelink', array( 'parsemag', 'escape' ), $count )
+						)
+					);
+					$wgOut->addHTML( "<div id=\"contentSub2\">{$link}</div>" );
+				}
 			}
-		}
-
-		// Show the relevant lines from deletion log (for still deleted files only)
-		if( $title instanceof Title && $title->isDeletedQuick() && !$title->exists() ) {
-			$this->showDeletionLog( $wgOut, $title->getPrefixedText() );
 		}
 	}
 
@@ -567,7 +565,7 @@ class SpecialUpload extends SpecialPage {
 	 * @param $details Array: result of UploadBase::verifyUpload
 	 */
 	protected function processVerificationError( $details ) {
-		global $wgFileExtensions;
+		global $wgFileExtensions, $wgLang;
 
 		switch( $details['status'] ) {
 
@@ -583,6 +581,10 @@ class SpecialUpload extends SpecialPage {
 				$this->showRecoverableUploadError( wfMsgExt( 'filetype-missing',
 					'parseinline' ) );
 				break;
+			case UploadBase::WINDOWS_NONASCII_FILENAME:
+				$this->showRecoverableUploadError( wfMsgExt( 'windows-nonascii-filename',
+					'parseinline' ) );
+				break;
 
 			/** Statuses that require reuploading **/
 			case UploadBase::EMPTY_FILE:
@@ -593,22 +595,21 @@ class SpecialUpload extends SpecialPage {
 				break;
 			case UploadBase::FILETYPE_BADTYPE:
 				$msg = wfMessage( 'filetype-banned-type' );
-				$sep = wfMsg( 'comma-separator' );
 				if ( isset( $details['blacklistedExt'] ) ) {
-					$msg->params( implode( $sep, $details['blacklistedExt'] ) );
+					$msg->params( $wgLang->commaList( $details['blacklistedExt'] ) );
 				} else {
 					$msg->params( $details['finalExt'] );
 				}
-				$msg->params( implode( $sep, $wgFileExtensions ),
+				$msg->params( $wgLang->commaList( $wgFileExtensions ),
 					count( $wgFileExtensions ) );
 
 				// Add PLURAL support for the first parameter. This results
 				// in a bit unlogical parameter sequence, but does not break
 				// old translations
 				if ( isset( $details['blacklistedExt'] ) ) {
-					$msg->numParams( count( $details['blacklistedExt'] ) );
+					$msg->params( count( $details['blacklistedExt'] ) );
 				} else {
-					$msg->numParams( 1 );
+					$msg->params( 1 );
 				}
 
 				$this->showUploadError( $msg->parse() );
@@ -859,9 +860,13 @@ class UploadForm extends HTMLForm {
 			);
 		}
 
-		$this->mMaxUploadSize['file'] = min(
-			wfShorthandToInteger( ini_get( 'upload_max_filesize' ) ),
-			UploadBase::getMaxUploadSize( 'file' ) );
+		$this->mMaxUploadSize['file'] = UploadBase::getMaxUploadSize( 'file' );
+		# Limit to upload_max_filesize unless we are running under HipHop and
+		# that setting doesn't exist
+		if ( !wfIsHipHop() ) {
+			$this->mMaxUploadSize['file'] = min( $this->mMaxUploadSize['file'],
+				wfShorthandToInteger( ini_get( 'upload_max_filesize' ) ) );
+		}
 
 		$descriptor['UploadFile'] = array(
 			'class' => 'UploadSourceField',
@@ -976,7 +981,7 @@ class UploadForm extends HTMLForm {
 				'label-message' => 'destfilename',
 				'size' => 60,
 				'default' => $this->mDestFile,
-				# FIXME: hack to work around poor handling of the 'default' option in HTMLForm
+				# @todo FIXME: Hack to work around poor handling of the 'default' option in HTMLForm
 				'nodata' => strval( $this->mDestFile ) !== '',
 			),
 			'UploadDescription' => array(
@@ -1121,7 +1126,7 @@ class UploadForm extends HTMLForm {
 
 
 		$wgOut->addModules( array(
-			'mediawiki.legacy.edit', // For <charinsert> support
+			'mediawiki.action.edit', // For <charinsert> support
 			'mediawiki.legacy.upload', // Old form stuff...
 			'mediawiki.special.upload', // Newer extras for thumbnail preview.
 		) );

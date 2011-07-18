@@ -715,6 +715,33 @@ second]
 !!end
 
 !! test
+External links: protocol-relative URL in brackets
+!! input
+[//example.com/ Test]
+!! result
+<p><a rel="nofollow" class="external text" href="//example.com/">Test</a>
+</p>
+!! end
+
+!! test
+External links: protocol-relative URL in brackets without text
+!! input
+[//example.com]
+!! result
+<p><a rel="nofollow" class="external autonumber" href="//example.com">[1]</a>
+</p>
+!! end
+
+!! test
+External links: protocol-relative URL in free text is left alone
+!! input
+//example.com/Foo
+!! result
+<p>//example.com/Foo
+</p>
+!!end
+
+!! test
 External image
 !! input
 External image: http://meta.wikimedia.org/upload/f/f1/Ncwikicol.png
@@ -972,33 +999,6 @@ External links: wiki links within external link (Bug 3695)
 [http://example.com [[wikilink]] embedded in ext link]
 !! result
 <p><a rel="nofollow" class="external text" href="http://example.com"></a><a href="/index.php?title=Wikilink&amp;action=edit&amp;redlink=1" class="new" title="Wikilink (page does not exist)">wikilink</a><a rel="nofollow" class="external text" href="http://example.com"> embedded in ext link</a>
-</p>
-!! end
-
-!! test
-External links: links containing empty bracket pair []
-!! input
-[http://example.com?parameter[]=foo link]
-!! result
-<p><a rel="nofollow" class="external text" href="http://example.com?parameter%5B%5D=foo">link</a>
-</p>
-!! end
-
-!! test
-External links: links ending in empty bracket pair []
-!! input
-[http://example.com?parameter[]=foo&option[]]
-!! result
-<p><a rel="nofollow" class="external autonumber" href="http://example.com?parameter%5B%5D=foo&amp;option%5B%5D">[1]</a>
-</p>
-!! end
-
-!! test
-External links: bare links ending in empty bracket pair []
-!! input
-http://example.com?parameter[]=foo&option[]
-!! result
-<p><a rel="nofollow" class="external free" href="http://example.com?parameter%5B%5D=foo&amp;option%5B%5D">http://example.com?parameter%5B%5D=foo&amp;option%5B%5D</a>
 </p>
 !! end
 
@@ -1460,6 +1460,62 @@ Table with thead & tfoot
 <th>Total: 6
 </th>
 </tr></tfoot>
+</table>
+
+!! end
+
+!! test
+Table have th inside tfoot
+!! input
+{| 
+| cell1 || cell2
+|-
+! Footer1 !! Footer2
+|}
+!! result
+<table>
+<tbody>
+<tr>
+<td>cell1
+</td>
+<td>cell2
+</td>
+</tr></tbody>
+<tfoot>
+<tr>
+<th>Footer1
+</th>
+<th>Footer2
+</th>
+</tr></tfoot>
+</table>
+
+!! end
+
+!! test
+Table have th inside thead
+!! input
+{| 
+! Header1 !! Header2
+|-
+| cell1 || cell2
+|}
+!! result
+<table>
+<thead>
+<tr>
+<th>Header1
+</th>
+<th>Header2
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>cell1
+</td>
+<td>cell2
+</td>
+</tr></tbody>
 </table>
 
 !! end
@@ -3871,6 +3927,80 @@ pst title=[[Ns:Somearticle (IGNORED), Context]]
 [[Ns:Article, Context|Article]]
 !! end
 
+!! test
+pre-save transform: trim trailing empty lines
+!! options
+pst
+!! input
+Empty lines are trimmed
+
+
+
+
+!! result
+Empty lines are trimmed
+!! end
+
+!! test
+pre-save transform: Signature expansion
+!! options
+pst
+!! input
+* ~~~
+* <noinclude>~~~</noinclude>
+* <includeonly>~~~</includeonly>
+* <onlyinclude>~~~</onlyinclude>
+!! result
+* [[Special:Contributions/127.0.0.1|127.0.0.1]]
+* <noinclude>[[Special:Contributions/127.0.0.1|127.0.0.1]]</noinclude>
+* <includeonly>[[Special:Contributions/127.0.0.1|127.0.0.1]]</includeonly>
+* <onlyinclude>[[Special:Contributions/127.0.0.1|127.0.0.1]]</onlyinclude>
+!! end
+
+
+!! test
+pre-save transform: Signature expansion in nowiki tags (bug 93)
+!! options
+pst disabled
+!! input
+Shall not expand:
+
+<nowiki>~~~~</nowiki>
+
+<includeonly><nowiki>~~~~</nowiki></includeonly>
+
+<noinclude><nowiki>~~~~</nowiki></noinclude>
+
+<onlyinclude><nowiki>~~~~</nowiki></onlyinclude>
+
+{{subst:Foo}} shall be converted to FOO
+
+As well as inside noinclude/onlyinclude
+<noinclude>{{subst:Foo}}</noinclude>
+<onlyinclude>{{subst:Foo}}</onlyinclude>
+
+But not inside includeonly
+<includeonly>{{subst:Foo}}</includeonly>
+!! result
+Shall not expand:
+
+<nowiki>~~~~</nowiki>
+
+<includeonly><nowiki>~~~~</nowiki></includeonly>
+
+<noinclude><nowiki>~~~~</nowiki></noinclude>
+
+<onlyinclude><nowiki>~~~~</nowiki></onlyinclude>
+
+FOO shall be converted to FOO
+
+As well as inside noinclude/onlyinclude
+<noinclude>FOO</noinclude>
+<onlyinclude>FOO</onlyinclude>
+
+But not inside includeonly
+<includeonly>{{subst:Foo}}</includeonly>
+!! end
 
 ###
 ### Message transform tests
@@ -7307,7 +7437,7 @@ image4    |300px| centre
 !! test
 Gallery (with options)
 !! input
-<gallery widths='60px' heights='40px' perrow='2' caption='Foo [[Main Page]]' >
+<gallery widths='70px' heights='40px' perrow='2' caption='Foo [[Main Page]]' >
 File:Nonexistant.jpg|caption
 File:Nonexistant.jpg
 image:foobar.jpg|some '''caption''' [[Main Page]]
@@ -7315,34 +7445,34 @@ image:foobar.jpg
 image:foobar.jpg|Blabla|alt=This is a foo-bar.|blabla.
 </gallery>
 !! result
-<ul class="gallery" style="max-width: 206px;_width: 206px;">
+<ul class="gallery" style="max-width: 226px;_width: 226px;">
 	<li class='gallerycaption'>Foo <a href="/wiki/Main_Page" title="Main Page">Main Page</a></li>
-		<li class="gallerybox" style="width: 95px"><div style="width: 95px">
+		<li class="gallerybox" style="width: 105px"><div style="width: 105px">
 			<div style="height: 70px;">Nonexistant.jpg</div>
 			<div class="gallerytext">
 <p>caption
 </p>
 			</div>
 		</div></li>
-		<li class="gallerybox" style="width: 95px"><div style="width: 95px">
+		<li class="gallerybox" style="width: 105px"><div style="width: 105px">
 			<div style="height: 70px;">Nonexistant.jpg</div>
 			<div class="gallerytext">
 			</div>
 		</div></li>
-		<li class="gallerybox" style="width: 95px"><div style="width: 95px">
-			<div class="thumb" style="width: 90px;"><div style="margin:26px auto;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="" src="http://example.com/images/3/3a/Foobar.jpg" width="60" height="7" /></a></div></div>
+		<li class="gallerybox" style="width: 105px"><div style="width: 105px">
+			<div class="thumb" style="width: 100px;"><div style="margin:31px auto;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="" src="http://example.com/images/3/3a/Foobar.jpg" width="70" height="8" /></a></div></div>
 			<div class="gallerytext">
 <p>some <b>caption</b> <a href="/wiki/Main_Page" title="Main Page">Main Page</a>
 </p>
 			</div>
 		</div></li>
-		<li class="gallerybox" style="width: 95px"><div style="width: 95px">
-			<div class="thumb" style="width: 90px;"><div style="margin:26px auto;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="Foobar.jpg" src="http://example.com/images/3/3a/Foobar.jpg" width="60" height="7" /></a></div></div>
+		<li class="gallerybox" style="width: 105px"><div style="width: 105px">
+			<div class="thumb" style="width: 100px;"><div style="margin:31px auto;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="Foobar.jpg" src="http://example.com/images/3/3a/Foobar.jpg" width="70" height="8" /></a></div></div>
 			<div class="gallerytext">
 			</div>
 		</div></li>
-		<li class="gallerybox" style="width: 95px"><div style="width: 95px">
-			<div class="thumb" style="width: 90px;"><div style="margin:26px auto;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="This is a foo-bar." src="http://example.com/images/3/3a/Foobar.jpg" width="60" height="7" /></a></div></div>
+		<li class="gallerybox" style="width: 105px"><div style="width: 105px">
+			<div class="thumb" style="width: 100px;"><div style="margin:31px auto;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="This is a foo-bar." src="http://example.com/images/3/3a/Foobar.jpg" width="70" height="8" /></a></div></div>
 			<div class="gallerytext">
 <p>Blabla|blabla.
 </p>
@@ -7362,14 +7492,14 @@ File:foobar.jpg|{{Test|unamedParam|alt=param}}|alt=galleryalt
 !! result
 <ul class="gallery">
 		<li class="gallerybox" style="width: 155px"><div style="width: 155px">
-			<div class="thumb" style="width: 150px;"><div style="margin:66px auto;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="galleryalt" src="http://example.com/images/3/3a/Foobar.jpg" width="120" height="14" /></a></div></div>
+			<div class="thumb" style="width: 150px;"><div style="margin:68px auto;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="galleryalt" src="http://example.com/images/3/3a/Foobar.jpg" width="120" height="14" /></a></div></div>
 			<div class="gallerytext">
 <p><a href="/wiki/File:Foobar.jpg" class="image" title="desc"><img alt="inneralt" src="http://example.com/images/3/3a/Foobar.jpg" width="20" height="2" /></a>
 </p>
 			</div>
 		</div></li>
 		<li class="gallerybox" style="width: 155px"><div style="width: 155px">
-			<div class="thumb" style="width: 150px;"><div style="margin:66px auto;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="galleryalt" src="http://example.com/images/3/3a/Foobar.jpg" width="120" height="14" /></a></div></div>
+			<div class="thumb" style="width: 150px;"><div style="margin:68px auto;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="galleryalt" src="http://example.com/images/3/3a/Foobar.jpg" width="120" height="14" /></a></div></div>
 			<div class="gallerytext">
 <p>This is a test template
 </p>
@@ -7406,7 +7536,7 @@ caption
 			</div>
 		</div></li>
 		<li class="gallerybox" style="width: 155px"><div style="width: 155px">
-			<div class="thumb" style="width: 150px;"><div style="margin:66px auto;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="" src="http://example.com/images/3/3a/Foobar.jpg" width="120" height="14" /></a></div></div>
+			<div class="thumb" style="width: 150px;"><div style="margin:68px auto;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="" src="http://example.com/images/3/3a/Foobar.jpg" width="120" height="14" /></a></div></div>
 			<div class="gallerytext">
 <p><a href="/wiki/File:Foobar.jpg" title="File:Foobar.jpg">Foobar.jpg</a><br />
 some <b>caption</b> <a href="/wiki/Main_Page" title="Main Page">Main Page</a>
@@ -7414,7 +7544,7 @@ some <b>caption</b> <a href="/wiki/Main_Page" title="Main Page">Main Page</a>
 			</div>
 		</div></li>
 		<li class="gallerybox" style="width: 155px"><div style="width: 155px">
-			<div class="thumb" style="width: 150px;"><div style="margin:66px auto;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="Foobar.jpg" src="http://example.com/images/3/3a/Foobar.jpg" width="120" height="14" /></a></div></div>
+			<div class="thumb" style="width: 150px;"><div style="margin:68px auto;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="Foobar.jpg" src="http://example.com/images/3/3a/Foobar.jpg" width="120" height="14" /></a></div></div>
 			<div class="gallerytext">
 <p><a href="/wiki/File:Foobar.jpg" title="File:Foobar.jpg">Foobar.jpg</a><br />
 </p>
@@ -7446,12 +7576,12 @@ foobar.jpg
 			</div>
 		</div></li>
 		<li class="gallerybox" style="width: 155px"><div style="width: 155px">
-			<div class="thumb" style="width: 150px;"><div style="margin:66px auto;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="Foobar.jpg" src="http://example.com/images/3/3a/Foobar.jpg" width="120" height="14" /></a></div></div>
+			<div class="thumb" style="width: 150px;"><div style="margin:68px auto;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="Foobar.jpg" src="http://example.com/images/3/3a/Foobar.jpg" width="120" height="14" /></a></div></div>
 			<div class="gallerytext">
 			</div>
 		</div></li>
 		<li class="gallerybox" style="width: 155px"><div style="width: 155px">
-			<div class="thumb" style="width: 150px;"><div style="margin:66px auto;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="Foobar.jpg" src="http://example.com/images/3/3a/Foobar.jpg" width="120" height="14" /></a></div></div>
+			<div class="thumb" style="width: 150px;"><div style="margin:68px auto;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="Foobar.jpg" src="http://example.com/images/3/3a/Foobar.jpg" width="120" height="14" /></a></div></div>
 			<div class="gallerytext">
 			</div>
 		</div></li>
@@ -9105,6 +9235,16 @@ Special characters in embedded file links (bug 27679)
 !! result
 <p><a href="/index.php?title=Special:Upload&amp;wpDestFile=Contains_%26_ampersand.jpg" class="new" title="File:Contains &amp; ampersand.jpg">File:Contains &amp; ampersand.jpg</a>
 <a href="/index.php?title=Special:Upload&amp;wpDestFile=Does_not_exist.jpg" class="new" title="File:Does not exist.jpg">Title with &amp; ampersand</a>
+</p>
+!! end
+
+
+!! test
+Confirm that 'apos' named character reference doesn't make it to output (not legal in HTML 4)
+!! input
+Text&apos;s been normalized?
+!! result
+<p>Text&#39;s been normalized?
 </p>
 !! end
 

@@ -70,16 +70,18 @@ class SpecialProtectedtitles extends SpecialPage {
 
 	/**
 	 * Callback function to output a restriction
+	 *
+	 * @return string
 	 */
 	function formatRow( $row ) {
-		global $wgUser, $wgLang;
+		global $wgLang;
 
 		wfProfileIn( __METHOD__ );
 
-		static $skin=null;
+		static $skin =  null;
 
 		if( is_null( $skin ) )
-			$skin = $wgUser->getSkin();
+			$skin = $this->getSkin();
 
 		$title = Title::makeTitleSafe( $row->pt_namespace, $row->pt_title );
 		$link = $skin->link( $title );
@@ -89,8 +91,6 @@ class SpecialProtectedtitles extends SpecialPage {
 		$protType = wfMsgHtml( 'restriction-level-' . $row->pt_create_perm );
 
 		$description_items[] = $protType;
-
-		$stxt = '';
 
 		if ( $row->pt_expiry != 'infinity' && strlen($row->pt_expiry) ) {
 			$expiry = $wgLang->formatExpiry( $row->pt_expiry );
@@ -102,7 +102,7 @@ class SpecialProtectedtitles extends SpecialPage {
 
 		wfProfileOut( __METHOD__ );
 
-		return '<li>' . wfSpecialList( $link . $stxt, implode( $description_items, ', ' ) ) . "</li>\n";
+		return '<li>' . wfSpecialList( $link, implode( $description_items, ', ' ) ) . "</li>\n";
 	}
 
 	/**
@@ -203,6 +203,10 @@ class ProtectedTitlesPager extends AlphabeticPager {
 		$lb->execute();
 		wfProfileOut( __METHOD__ );
 		return '';
+	}
+
+	function getTitle() {
+		return SpecialPage::getTitleFor( 'Protectedtitles' );
 	}
 
 	function formatRow( $row ) {

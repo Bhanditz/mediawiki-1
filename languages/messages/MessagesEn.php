@@ -23,8 +23,6 @@ $fallback = false;
 
 /**
  * Is the language written right-to-left?
- * Note that right-to-left languages generally also specify
- *    $defaultUserOptionOverrides = array( 'quickbar' => 2 );
  */
 $rtl = false;
 
@@ -43,11 +41,6 @@ $digitTransformTable = null;
  * Transform table for decimal point '.' and thousands separator ','
  */
 $separatorTransformTable = null;
-
-/**
- * Overrides for the default user options. This is mainly used by RTL languages.
- */
-$defaultUserOptionOverrides = array();
 
 /**
  * Extra user preferences which will be shown in Special:Preferences as
@@ -517,7 +510,6 @@ $preloadedMessages = array(
 	'accesskey-t-specialpages',
 	'accesskey-t-whatlinkshere',
 	'anonnotice',
-	'catseparator',
 	'colon-separator',
 	'currentevents',
 	'currentevents-url',
@@ -751,14 +743,7 @@ XHTML id names.
 'noindex-category'               => 'Noindexed pages',
 'broken-file-category'           => 'Pages with broken file links',
 
-'linkprefix'        => '/^(.*?)([a-zA-Z\\x80-\\xff]+)$/sD', # only translate this message to other languages if you have to change it
-'mainpagetext'      => "'''MediaWiki has been successfully installed.'''",
-'mainpagedocfooter' => "Consult the [http://meta.wikimedia.org/wiki/Help:Contents User's Guide] for information on using the wiki software.
-
-== Getting started ==
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
+'linkprefix' => '/^(.*?)([a-zA-Z\\x80-\\xff]+)$/sD', # only translate this message to other languages if you have to change it
 
 'about'         => 'About',
 'article'       => 'Content page',
@@ -790,7 +775,7 @@ XHTML id names.
 'vector-action-move'             => 'Move',
 'vector-action-protect'          => 'Protect',
 'vector-action-undelete'         => 'Undelete',
-'vector-action-unprotect'        => 'Unprotect',
+'vector-action-unprotect'        => 'Change protection',
 'vector-simplesearch-preference' => 'Enable enhanced search suggestions (Vector skin only)',
 'vector-view-create'             => 'Create',
 'vector-view-edit'               => 'Edit',
@@ -812,7 +797,6 @@ XHTML id names.
 'history'           => 'Page history',
 'history_short'     => 'History',
 'updatedmarker'     => 'updated since my last visit',
-'info_short'        => 'Information',
 'printableversion'  => 'Printable version',
 'permalink'         => 'Permanent link',
 'print'             => 'Print',
@@ -828,8 +812,8 @@ XHTML id names.
 'protect'           => 'Protect',
 'protect_change'    => 'change',
 'protectthispage'   => 'Protect this page',
-'unprotect'         => 'Unprotect',
-'unprotectthispage' => 'Unprotect this page',
+'unprotect'         => 'Change protection',
+'unprotectthispage' => 'Change protection of this page',
 'newpage'           => 'New page',
 'talkpage'          => 'Discuss this page',
 'talkpagelinktext'  => 'Talk',
@@ -1028,7 +1012,8 @@ For translations, please consider using [http://translatewiki.net/wiki/Main_Page
 'cascadeprotected'     => 'This page has been protected from editing, because it is included in the following {{PLURAL:$1|page, which is|pages, which are}} protected with the "cascading" option turned on:
 $2',
 'namespaceprotected'   => "You do not have permission to edit pages in the '''$1''' namespace.",
-'customcssjsprotected' => "You do not have permission to edit this page, because it contains another user's personal settings.",
+'customcssprotected'   => "You do not have permission to edit this CSS page, because it contains another user's personal settings.",
+'customjsprotected'    => "You do not have permission to edit this JavaScript page, because it contains another user's personal settings.",
 'ns-specialprotected'  => 'Special pages cannot be edited.',
 'titleprotected'       => 'This title has been protected from creation by [[User:$1|$1]].
 The reason given is "\'\'$2\'\'".',
@@ -1090,7 +1075,7 @@ Ensure you have cookies enabled, reload this page and try again.',
 'nosuchuser'                 => 'There is no user by the name "$1".
 Usernames are case sensitive.
 Check your spelling, or [[Special:UserLogin/signup|create a new account]].',
-'nosuchusershort'            => 'There is no user by the name "<nowiki>$1</nowiki>".
+'nosuchusershort'            => 'There is no user by the name "$1".
 Check your spelling.',
 'nouserspecified'            => 'You have to specify a username.',
 'login-userblocked'          => 'This user is blocked. Login not allowed.',
@@ -1324,11 +1309,12 @@ Please check if you want to create/edit this page.',
 'userpage-userdoesnotexist-view'   => 'User account "$1" is not registered.',
 'blocked-notice-logextract'        => 'This user is currently blocked.
 The latest block log entry is provided below for reference:',
-'clearyourcache'                   => "'''Note: After saving, you may have to bypass your browser's cache to see the changes.'''
-'''Mozilla / Firefox / Safari:''' hold ''Shift'' while clicking ''Reload'', or press either ''Ctrl-F5'' or ''Ctrl-R'' (''Command-R'' on a Macintosh);
-'''Konqueror: '''click ''Reload'' or press ''F5'';
-'''Opera:''' clear the cache in ''Tools → Preferences'';
-'''Internet Explorer:''' hold ''Ctrl'' while clicking ''Refresh,'' or press ''Ctrl-F5''.",
+'clearyourcache'                   => "'''Note:''' After saving, you may have to bypass your browser's cache to see the changes.
+* '''Firefox / Safari:''' hold ''Shift'' while clicking ''Reload'', or press either ''Ctrl-F5'' or ''Ctrl-R'' (''Command-R'' on a Mac)
+* '''Google Chrome:''' press ''Ctrl-Shift-R'' (''Command-Shift-R'' on a Mac)
+* '''Internet Explorer:''' hold ''Ctrl'' while clicking ''Refresh'', or press ''Ctrl-F5''
+* '''Konqueror:''' click ''Reload'' or press ''F5''
+* '''Opera:''' clear the cache in ''Tools → Preferences''",
 'usercssyoucanpreview'             => "'''Tip:''' Use the \"{{int:showpreview}}\" button to test your new CSS before saving.",
 'userjsyoucanpreview'              => "'''Tip:''' Use the \"{{int:showpreview}}\" button to test your new JavaScript before saving.",
 'usercsspreview'                   => "'''Remember that you are only previewing your user CSS.'''
@@ -1739,12 +1725,13 @@ Note that their indexes of {{SITENAME}} content may be out of date.',
 'opensearch-desc' => '{{SITENAME}} ({{CONTENTLANGUAGE}})', # do not translate or duplicate this message to other languages
 
 # Quickbar
-'qbsettings'               => 'Quickbar',
-'qbsettings-none'          => 'None',
-'qbsettings-fixedleft'     => 'Fixed left',
-'qbsettings-fixedright'    => 'Fixed right',
-'qbsettings-floatingleft'  => 'Floating left',
-'qbsettings-floatingright' => 'Floating right',
+'qbsettings'                => 'Quickbar',
+'qbsettings-none'           => 'None',
+'qbsettings-fixedleft'      => 'Fixed left',
+'qbsettings-fixedright'     => 'Fixed right',
+'qbsettings-floatingleft'   => 'Floating left',
+'qbsettings-floatingright'  => 'Floating right',
+'qbsettings-directionality' => 'Fixed, depending on the directionality of your script and your language',
 
 # Preferences page
 'preferences'                   => 'Preferences',
@@ -1757,7 +1744,9 @@ Note that their indexes of {{SITENAME}} content may be out of date.',
 'prefs-skin'                    => 'Skin',
 'skin-preview'                  => 'Preview',
 'datedefault'                   => 'No preference',
+'prefs-beta'                    => 'Beta features',
 'prefs-datetime'                => 'Date and time',
+'prefs-labs'                    => 'Labs features',
 'prefs-personal'                => 'User profile',
 'prefs-rc'                      => 'Recent changes',
 'prefs-watchlist'               => 'Watchlist',
@@ -1791,7 +1780,7 @@ Here's a randomly-generated value you can use: $1",
 'savedprefs'                    => 'Your preferences have been saved.',
 'timezonelegend'                => 'Time zone:',
 'localtime'                     => 'Local time:',
-'timezoneuseserverdefault'      => 'Use server default',
+'timezoneuseserverdefault'      => 'Use wiki default ($1)',
 'timezoneuseoffset'             => 'Other (specify offset)',
 'timezoneoffset'                => 'Offset¹:',
 'servertime'                    => 'Server time:',
@@ -1978,10 +1967,11 @@ Your e-mail address is not revealed when other users contact you.',
 'right-sendemail'             => 'Send e-mail to other users',
 
 # User rights log
-'rightslog'      => 'User rights log',
-'rightslogtext'  => 'This is a log of changes to user rights.',
-'rightslogentry' => 'changed group membership for $1 from $2 to $3',
-'rightsnone'     => '(none)',
+'rightslog'                  => 'User rights log',
+'rightslogtext'              => 'This is a log of changes to user rights.',
+'rightslogentry'             => 'changed group membership for $1 from $2 to $3',
+'rightslogentry-autopromote' => 'was automatically promoted from $2 to $3',
+'rightsnone'                 => '(none)',
 
 # Associated actions - in the sentence "You do not have permission to X"
 'action-read'                 => 'read this page',
@@ -2137,6 +2127,7 @@ this file is $2.',
 'emptyfile'                   => 'The file you uploaded seems to be empty.
 This might be due to a typo in the file name.
 Please check whether you really want to upload this file.',
+'windows-nonascii-filename'   => 'This wiki does not support filenames with special characters.',
 'fileexists'                  => "A file with this name exists already, please check '''<tt>[[:$1]]</tt>''' if you are not sure if you want to change it.
 [[$1|thumb]]",
 'filepageexists'              => "The description page for this file has already been created at '''<tt>[[:$1]]</tt>''', but no file with this name currently exists.
@@ -2189,10 +2180,6 @@ Uploading Java files is not allowed, because they can cause security restriction
 'watchthisupload'             => 'Watch this file',
 'filewasdeleted'              => 'A file of this name has been previously uploaded and subsequently deleted.
 You should check the $1 before proceeding to upload it again.',
-'upload-wasdeleted'           => "'''Warning: You are uploading a file that was previously deleted.'''
-
-You should consider whether it is appropriate to continue uploading this file.
-The deletion log for this file is provided here for convenience:",
 'filename-bad-prefix'         => "The name of the file you are uploading begins with '''\"\$1\"''', which is a non-descriptive name typically assigned automatically by digital cameras.
 Please choose a more descriptive name for your file.",
 'filename-prefix-blacklist'   => ' #<!-- leave this line exactly as it is --> <pre>
@@ -2333,7 +2320,7 @@ The following list shows the {{PLURAL:$1|first page link|first $1 page links}} t
 A [[Special:WhatLinksHere/$2|full list]] is available.',
 'nolinkstoimage'                    => 'There are no pages that link to this file.',
 'morelinkstoimage'                  => 'View [[Special:WhatLinksHere/$1|more links]] to this file.',
-'redirectstofile'                   => 'The following {{PLURAL:$1|file redirects|$1 files redirect}} to this file:',
+'linkstoimage-redirect'             => '$1 (file redirect) $2',
 'duplicatesoffile'                  => 'The following {{PLURAL:$1|file is a duplicate|$1 files are duplicates}} of this file ([[Special:FileDuplicateSearch/$2|more details]]):',
 'sharedupload'                      => 'This file is from $1 and may be used by other projects.',
 'sharedupload-desc-there'           => 'This file is from $1 and may be used by other projects.
@@ -2712,10 +2699,10 @@ The e-mail address you entered in [[Special:Preferences|your user preferences]] 
 'watchlistanontext'    => 'Please $1 to view or edit items on your watchlist.',
 'watchnologin'         => 'Not logged in',
 'watchnologintext'     => 'You must be [[Special:UserLogin|logged in]] to modify your watchlist.',
-'addedwatch'           => 'Added to watchlist',
+'addwatch'             => 'Add to watchlist',
 'addedwatchtext'       => "The page \"[[:\$1]]\" has been added to your [[Special:Watchlist|watchlist]].
 Future changes to this page and its associated talk page will be listed there, and the page will appear '''bolded''' in the [[Special:RecentChanges|list of recent changes]] to make it easier to pick out.",
-'removedwatch'         => 'Removed from watchlist',
+'removewatch'          => 'Remove from watchlist',
 'removedwatchtext'     => 'The page "[[:$1]]" has been removed from [[Special:Watchlist|your watchlist]].',
 'watch'                => 'Watch',
 'watchthispage'        => 'Watch this page',
@@ -2736,8 +2723,9 @@ Future changes to this page and its associated talk page will be listed there, a
 'watchlist-options'    => 'Watchlist options',
 
 # Displayed when you click the "watch" button and it is in the process of watching
-'watching'   => 'Watching...',
-'unwatching' => 'Unwatching...',
+'watching'       => 'Watching...',
+'unwatching'     => 'Unwatching...',
+'watcherrortext' => 'An error occurred while changing your watchlist settings for "$1".',
 
 'enotif_mailer'                => '{{SITENAME}} notification mailer',
 'enotif_reset'                 => 'Mark all pages visited',
@@ -2765,14 +2753,14 @@ wiki: $PAGEEDITOR_WIKI
 There will be no other notifications in case of further changes unless you visit this page.
 You could also reset the notification flags for all your watched pages on your watchlist.
 
-             Your friendly {{SITENAME}} notification system
+			 Your friendly {{SITENAME}} notification system
 
 --
 To change your email notification settings, visit
 {{fullurl:{{#special:Preferences}}}}
 
 To change your watchlist settings, visit
-{{fullurl:{{#special:Watchlist}}/edit}}
+{{fullurl:{{#special:EditWatchlist}}}}
 
 To delete the page from your watchlist, visit
 $UNWATCHURL
@@ -2795,7 +2783,7 @@ Feedback and further assistance:
 Please confirm that you intend to do this, that you understand the consequences, and that you are doing this in accordance with [[{{MediaWiki:Policy-url}}|the policy]].',
 'actioncomplete'         => 'Action complete',
 'actionfailed'           => 'Action failed',
-'deletedtext'            => '"<nowiki>$1</nowiki>" has been deleted.
+'deletedtext'            => '"$1" has been deleted.
 See $2 for a record of recent deletions.',
 'deletedarticle'         => 'deleted "[[$1]]"',
 'suppressedarticle'      => 'suppressed "[[$1]]"',
@@ -2842,11 +2830,11 @@ Go back to the previous page, reload that page and then try again.',
 
 # Protect
 'protectlogpage'              => 'Protection log',
-'protectlogtext'              => 'Below is a list of page protections and page unprotections.
+'protectlogtext'              => 'Below is a list of changes to page protections.
 See the [[Special:ProtectedPages|protected pages list]] for the list of currently operational page protections.',
 'protectedarticle'            => 'protected "[[$1]]"',
 'modifiedarticleprotection'   => 'changed protection level for "[[$1]]"',
-'unprotectedarticle'          => 'unprotected "[[$1]]"',
+'unprotectedarticle'          => 'removed protection from "[[$1]]"',
 'movedarticleprotection'      => 'moved protection settings from "[[$2]]" to "[[$1]]"',
 'protect-title'               => 'Change protection level for "$1"',
 'prot_1movedto2'              => '[[$1]] moved to [[$2]]',
@@ -2857,7 +2845,7 @@ See the [[Special:ProtectedPages|protected pages list]] for the list of currentl
 'protect_expiry_invalid'      => 'Expiry time is invalid.',
 'protect_expiry_old'          => 'Expiry time is in the past.',
 'protect-unchain-permissions' => 'Unlock further protect options',
-'protect-text'                => "You may view and change the protection level here for the page '''<nowiki>$1</nowiki>'''.",
+'protect-text'                => "You may view and change the protection level here for the page '''$1'''.",
 'protect-locked-blocked'      => "You cannot change protection levels while blocked.
 Here are the current settings for the page '''$1''':",
 'protect-locked-dblock'       => "Protection levels cannot be changed due to an active database lock.
@@ -2913,8 +2901,7 @@ You can change this page's protection level, but it will not affect the cascadin
 The archive may be periodically cleaned out.',
 'undelete-fieldset-title'      => 'Restore revisions',
 'undeleteextrahelp'            => "To restore the page's entire history, leave all checkboxes deselected and click '''''{{int:undeletebtn}}'''''.
-To perform a selective restoration, check the boxes corresponding to the revisions to be restored, and click '''''{{int:undeletebtn}}'''''.
-Clicking '''''{{int:undeletereset}}''''' will clear the comment field and all checkboxes.",
+To perform a selective restoration, check the boxes corresponding to the revisions to be restored, and click '''''{{int:undeletebtn}}'''''.",
 'undeleterevisions'            => '$1 {{PLURAL:$1|revision|revisions}} archived',
 'undeletehistory'              => 'If you restore the page, all revisions will be restored to the history.
 If a new page with the same name has been created since the deletion, the restored revisions will appear in the prior history.',
@@ -2960,10 +2947,12 @@ $1',
 'undelete-show-file-submit'    => 'Yes',
 
 # Namespace form on various pages
-'namespace'             => 'Namespace:',
-'invert'                => 'Invert selection',
-'namespace_association' => 'Associated namespace',
-'blanknamespace'        => '(Main)',
+'namespace'                     => 'Namespace:',
+'invert'                        => 'Invert selection',
+'tooltip-invert'                => 'Check this box to hide changes to pages within the selected namespace (and the associated namespace if checked)',
+'namespace_association'         => 'Associated namespace',
+'tooltip-namespace_association' => 'Check this box to also include the talk or subject namespace associated with the selected namespace',
+'blanknamespace'                => '(Main)',
 
 # Contributions
 'contributions'       => 'User contributions',
@@ -2995,6 +2984,7 @@ The latest block log entry is provided below for reference:',
 'sp-contributions-explain'             => '', # only translate this message to other languages if you have to change it
 'sp-contributions-footer'              => '-', # do not translate or duplicate this message to other languages
 'sp-contributions-footer-anon'         => '-', # do not translate or duplicate this message to other languages
+'sp-contributions-showsizediff'        => 'Display difference in page size',
 
 # What links here
 'whatlinkshere'            => 'What links here',
@@ -3007,7 +2997,7 @@ The latest block log entry is provided below for reference:',
 'nolinkshere-ns'           => "No pages link to '''[[:$1]]''' in the chosen namespace.",
 'isredirect'               => 'redirect page',
 'istemplate'               => 'transclusion',
-'isimage'                  => 'image link',
+'isimage'                  => 'file link',
 'whatlinkshere-prev'       => '{{PLURAL:$1|previous|previous $1}}',
 'whatlinkshere-next'       => '{{PLURAL:$1|next|next $1}}',
 'whatlinkshere-links'      => '← links',
@@ -3168,6 +3158,7 @@ Remember to [[Special:UnlockDB|remove the lock]] after your maintenance is compl
 'lockfilenotwritable' => 'The database lock file is not writable.
 To lock or unlock the database, this needs to be writable by the web server.',
 'databasenotlocked'   => 'The database is not locked.',
+'lockedbyandtime'     => '(by {{GENDER:$1|$1}} on $2 at $3)',
 
 # Move page
 'move-page'                    => 'Move $1',
@@ -3452,7 +3443,7 @@ Please try again.',
 You can view its source',
 'tooltip-ca-history'              => 'Past revisions of this page',
 'tooltip-ca-protect'              => 'Protect this page',
-'tooltip-ca-unprotect'            => 'Unprotect this page',
+'tooltip-ca-unprotect'            => 'Change protection of this page',
 'tooltip-ca-delete'               => 'Delete this page',
 'tooltip-ca-undelete'             => 'Restore the edits done to this page before it was deleted',
 'tooltip-ca-move'                 => 'Move this page',
@@ -3538,9 +3529,7 @@ You can view its source',
 'group-bureaucrat.js'    => '/* Any JavaScript here will be loaded for bureaucrats only */', # only translate this message to other languages if you have to change it
 
 # Metadata
-'nodublincore'      => 'Dublin Core RDF metadata disabled for this server.',
-'nocreativecommons' => 'Creative Commons RDF metadata disabled for this server.',
-'notacceptable'     => 'The wiki server cannot provide data in a format your client can read.',
+'notacceptable' => 'The wiki server cannot provide data in a format your client can read.',
 
 # Attribution
 'anonymous'        => 'Anonymous {{PLURAL:$1|user|users}} of {{SITENAME}}',
@@ -3564,12 +3553,17 @@ This is probably caused by a link to a blacklisted external site.',
 'spam_blanking'       => 'All revisions contained links to $1, blanking',
 
 # Info page
-'infosubtitle'   => 'Information for page',
-'numedits'       => 'Number of edits (page): $1',
-'numtalkedits'   => 'Number of edits (discussion page): $1',
-'numwatchers'    => 'Number of watchers: $1',
-'numauthors'     => 'Number of distinct authors (page): $1',
-'numtalkauthors' => 'Number of distinct authors (discussion page): $1',
+'pageinfo-title'            => 'Information for "$1"',
+'pageinfo-header-edits'     => 'Edits',
+'pageinfo-header-watchlist' => 'Watchlist',
+'pageinfo-header-views'     => 'Views',
+'pageinfo-subjectpage'      => 'Page',
+'pageinfo-talkpage'         => 'Talk page',
+'pageinfo-watchers'         => 'Number of watchers',
+'pageinfo-edits'            => 'Number of edits',
+'pageinfo-authors'          => 'Number of distinct authors',
+'pageinfo-views'            => 'Number of views',
+'pageinfo-viewsperedit'     => 'Views per edit',
 
 # Skin names
 'skinname-standard'    => 'Classic', # only translate this message to other languages if you have to change it
@@ -3626,6 +3620,7 @@ By executing it, your system may be compromised.",
 'widthheightpage'        => '$1×$2, $3 {{PLURAL:$3|page|pages}}',
 'file-info'              => 'file size: $1, MIME type: $2',
 'file-info-size'         => '$1 × $2 pixels, file size: $3, MIME type: $4',
+'file-info-size-pages'   => '$1 × $2 pixels, file size: $3, MIME type: $4, $5 {{PLURAL:$5|page|pages}}',
 'file-nohires'           => '<small>No higher resolution available.</small>',
 'svg-long-desc'          => 'SVG file, nominally $1 × $2 pixels, file size: $3',
 'show-big-image'         => 'Full resolution',
@@ -3655,6 +3650,7 @@ By executing it, your system may be compromised.",
 'seconds-abbrev' => 's', # only translate this message to other languages if you have to change it
 'minutes-abbrev' => 'm', # only translate this message to other languages if you have to change it
 'hours-abbrev'   => 'h', # only translate this message to other languages if you have to change it
+'days-abbrev'    => 'd', # only translate this message to other languages if you have to change it
 
 # Bad image list
 'bad_image_list' => 'The format is as follows:
@@ -3935,8 +3931,17 @@ $8', # only translate this message to other languages if you have to change it
 'exif-subjectnewscode-value'  => '$2 ($1)', # only translate this message to other languages if you have to change it
 
 # EXIF attributes
-'exif-compression-1' => 'Uncompressed',
-'exif-compression-6' => 'JPEG', # only translate this message to other languages if you have to change it
+'exif-compression-1'     => 'Uncompressed',
+'exif-compression-2'     => 'CCITT Group 3 1-Dimensional Modified Huffman run length encoding',
+'exif-compression-3'     => 'CCITT Group 3 fax encoding',
+'exif-compression-4'     => 'CCITT Group 4 fax encoding',
+'exif-compression-5'     => 'LZW', # only translate this message to other languages if you have to change it
+'exif-compression-6'     => 'JPEG (old)', # only translate this message to other languages if you have to change it
+'exif-compression-7'     => 'JPEG', # only translate this message to other languages if you have to change it
+'exif-compression-8'     => 'Deflate (Adobe)', # only translate this message to other languages if you have to change it
+'exif-compression-32773' => 'PackBits (Macintosh RLE)', # only translate this message to other languages if you have to change it
+'exif-compression-32946' => 'Deflate (PKZIP)', # only translate this message to other languages if you have to change it
+'exif-compression-34712' => 'JPEG2000', # only translate this message to other languages if you have to change it
 
 'exif-copyrighted-true'  => 'Copyrighted',
 'exif-copyrighted-false' => 'Public domain',
@@ -4271,8 +4276,13 @@ Please confirm that you really want to recreate this page.",
 'confirm-purge-top'    => 'Clear the cache of this page?',
 'confirm-purge-bottom' => 'Purging a page clears the cache and forces the most current revision to appear.',
 
+# action=watch/unwatch
+'confirm-watch-button'   => 'OK',
+'confirm-watch-top'      => 'Add this page to your watchlist?',
+'confirm-unwatch-button' => 'OK',
+'confirm-unwatch-top'    => 'Remove this page from your watchlist?',
+
 # Separators for various lists, etc.
-'catseparator'        => '|', # only translate this message to other languages if you have to change it
 'semicolon-separator' => ';&#32;', # only translate this message to other languages if you have to change it
 'comma-separator'     => ',&#32;', # only translate this message to other languages if you have to change it
 'colon-separator'     => ':&#32;', # only translate this message to other languages if you have to change it
@@ -4451,6 +4461,7 @@ You can also [[Special:EditWatchlist|use the standard editor]].',
 'version-variables'             => 'Variables',
 'version-antispam'              => 'Spam prevention',
 'version-skins'                 => 'Skins',
+'version-api'                   => 'API', # only translate this message to other languages if you have to change it
 'version-other'                 => 'Other',
 'version-mediahandlers'         => 'Media handlers',
 'version-hooks'                 => 'Hooks',
@@ -4574,5 +4585,32 @@ This site is experiencing technical difficulties.',
 # SQLite database support
 'sqlite-has-fts' => '$1 with full-text search support',
 'sqlite-no-fts'  => '$1 without full-text search support',
+
+# Add categories per AJAX
+'ajax-add-category'             => 'Add category',
+'ajax-remove-category'          => 'Remove category',
+'ajax-edit-category'            => 'Edit category',
+'ajax-add-category-submit'      => 'Add',
+'ajax-confirm-ok'               => 'OK',
+'ajax-confirm-title'            => 'Confirm action',
+'ajax-confirm-prompt'           => 'You can provide an edit summary below.
+Click "Save" to save your edit.',
+'ajax-confirm-save'             => 'Save',
+'ajax-confirm-save-all'         => 'Save all changes',
+'ajax-cancel'                   => 'Cancel edits',
+'ajax-add-category-summary'     => 'Add category "$1"',
+'ajax-edit-category-summary'    => 'Change category "$1" to "$2"',
+'ajax-remove-category-summary'  => 'Remove category "$1"',
+'ajax-add-category-question'    => 'Why do you want to add category "$1"?',
+'ajax-edit-category-question'   => 'Why do you want to change category "$1" to "$2"?',
+'ajax-remove-category-question' => 'Why do you want to remove category "$1"?',
+'ajax-confirm-actionsummary'    => 'Action to take:',
+'ajax-error-title'              => 'Error',
+'ajax-error-dismiss'            => 'OK',
+'ajax-remove-category-error'    => 'It was not possible to remove this category.
+This usually occurs when the category has been added to the page in a template.',
+'ajax-edit-category-error'      => 'It was not possible to edit this category.
+This usually occurs when the category has been added to the page in a template.',
+'ajax-category-already-present' => 'This page already belongs to the category $1',
 
 );

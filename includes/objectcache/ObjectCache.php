@@ -10,6 +10,10 @@ class ObjectCache {
 
 	/**
 	 * Get a cached instance of the specified type of cache object.
+	 *
+	 * @param $id
+	 *
+	 * @return object
 	 */
 	static function getInstance( $id ) {
 		if ( isset( self::$instances[$id] ) ) {
@@ -30,6 +34,10 @@ class ObjectCache {
 
 	/**
 	 * Create a new cache object of the specified type.
+	 *
+	 * @param $id
+	 *
+	 * @return ObjectCache
 	 */
 	static function newFromId( $id ) {
 		global $wgObjectCaches;
@@ -44,6 +52,10 @@ class ObjectCache {
 
 	/**
 	 * Create a new cache object from parameters
+	 *
+	 * @param $params array
+	 *
+	 * @return ObjectCache
 	 */
 	static function newFromParams( $params ) {
 		if ( isset( $params['factory'] ) ) {
@@ -52,7 +64,7 @@ class ObjectCache {
 			$class = $params['class'];
 			return new $class( $params );
 		} else {
-			throw new MWException( "The definition of cache type \"$id\" lacks both " . 
+			throw new MWException( "The definition of cache type \"" . print_r( $params, true ) . "\" lacks both " .
 				"factory and class parameters." );
 		}
 	}
@@ -73,6 +85,8 @@ class ObjectCache {
 
 	/**
 	 * Factory function referenced from DefaultSettings.php for CACHE_ACCEL.
+	 *
+	 * @return ObjectCache
 	 */
 	static function newAccelerator( $params ) {
 		if ( function_exists( 'eaccelerator_get' ) ) {
@@ -94,6 +108,10 @@ class ObjectCache {
 	 * Factory function that creates a memcached client object.
 	 * The idea of this is that it might eventually detect and automatically 
 	 * support the PECL extension, assuming someone can get it to compile.
+	 *
+	 * @param $params array
+	 * 
+	 * @return MemcachedPhpBagOStuff
 	 */
 	static function newMemcached( $params ) {
 		return new MemcachedPhpBagOStuff( $params );

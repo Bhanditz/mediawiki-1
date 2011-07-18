@@ -106,7 +106,7 @@ class ApiQueryLangLinks extends ApiQueryBase {
 			if ( $params['url'] ) {
 				$title = Title::newFromText( "{$row->ll_lang}:{$row->ll_title}" );
 				if ( $title ) {
-					$entry['url'] = $title->getFullURL();
+					$entry['url'] = wfExpandUrl( $title->getFullURL() );
 				}
 			}
 			ApiResult::setContent( $entry, $row->ll_title );
@@ -164,6 +164,10 @@ class ApiQueryLangLinks extends ApiQueryBase {
 			'Get interlanguage links from the [[Main Page]]:',
 			'  api.php?action=query&prop=langlinks&titles=Main%20Page&redirects=',
 		);
+	}
+
+	public function getHelpUrls() {
+		return 'http://www.mediawiki.org/wiki/API:Properties#langlinks_.2F_ll';
 	}
 
 	public function getVersion() {

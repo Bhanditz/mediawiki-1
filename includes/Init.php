@@ -25,6 +25,8 @@ class MWInit {
 	/**
 	 * Returns true if we are running under HipHop, whether in compiled or 
 	 * interpreted mode.
+	 *
+	 * @return bool
 	 */
 	static function isHipHop() {
 		return function_exists( 'hphp_thread_set_warmup_enabled' );
@@ -33,7 +35,11 @@ class MWInit {
 	/**
 	 * Get a fully-qualified path for a source file relative to $IP. Including
 	 * such a path under HipHop will force the file to be interpreted. This is
-	 * useful for configuration files. 
+	 * useful for configuration files.
+	 *
+	 * @param $file string
+	 *
+	 * @return string
 	 */
 	static function interpretedPath( $file ) {
 		global $IP;
@@ -46,15 +52,79 @@ class MWInit {
 	 * it will converted to a fully qualified path. It is necessary to use a 
 	 * path which is relative to $IP in order to make HipHop use its compiled 
 	 * code.
+	 *
+	 * @param $file string
+	 *
+	 * @return string
 	 */
 	static function compiledPath( $file ) {
 		global $IP;
 
 		if ( defined( 'MW_COMPILED' ) ) {
-			return $file;
+			return "phase3/$file";
 		} else {
 			return "$IP/$file";
 		}
+	}
+
+	/**
+	 * The equivalent of MWInit::interpretedPath() but for files relative to the
+	 * extensions directory.
+	 *
+	 * @param $file string
+	 * @return string
+	 */
+	static function extInterpretedPath( $file ) {
+		return self::getExtensionsDirectory() . '/' . $file;
+	}
+
+	/**
+	 * The equivalent of MWInit::compiledPath() but for files relative to the
+	 * extensions directory. Any files referenced in this way must be registered
+	 * for compilation by including them in $wgCompiledFiles.
+	 * @param $file string
+	 * @return string
+	 */
+	static function extCompiledPath( $file ) {
+		if ( defined( 'MW_COMPILED' ) ) {
+			return "extensions/$file";
+		} else {
+			return self::getExtensionsDirectory() . '/' . $file;
+		}
+	}
+
+	/**
+	 * Register an extension setup file and return its path for compiled 
+	 * inclusion. Use this function in LocalSettings.php to add extensions
+	 * to the build. For example:
+	 *
+	 *    require( MWInit::extSetupPath( 'ParserFunctions/ParserFunctions.php' ) );
+	 *
+	 * @param $extRel string The path relative to the extensions directory, as defined by
+	 *   $wgExtensionsDirectory.
+	 *
+	 * @return string
+	 */
+	static function extSetupPath( $extRel ) {
+		$baseRel = "extensions/$extRel";
+		if ( defined( 'MW_COMPILED' ) ) {
+			return $baseRel;
+		} else {
+			global $wgCompiledFiles;
+			$wgCompiledFiles[] = $baseRel;
+			return self::getExtensionsDirectory() . '/' . $extRel;
+		}
+	}
+
+	/**
+	 * @return bool|string
+	 */
+	static function getExtensionsDirectory() {
+		global $wgExtensionsDirectory, $IP;
+		if ( $wgExtensionsDirectory === false ) {
+			$wgExtensionsDirectory = "$IP/../extensions";
+		}
+		return $wgExtensionsDirectory;
 	}
 
 	/**
@@ -68,6 +138,10 @@ class MWInit {
 	 * "volatile", which means (as of March 2011) that the class is broken and 
 	 * can't be used at all. So don't do that. See 
 	 * https://github.com/facebook/hiphop-php/issues/314
+	 *
+	 * @param $class string
+	 *
+	 * @return bool
 	 */
 	static function classExists( $class ) {
 		try {
@@ -81,6 +155,10 @@ class MWInit {
 	/**
 	 * Determine whether a function exists, using a method which works under 
 	 * HipHop.
+	 *
+	 * @param $function string
+	 * 
+	 * @return bool
 	 */
 	static function functionExists( $function ) {
 		try {
@@ -89,5 +167,18 @@ class MWInit {
 			$r = false;
 		}
 		return $r !== false;
+	}
+
+	/**
+	 * Call a static method of a class with variable arguments without causing
+	 * it to become volatile.
+	 * @param $className string
+	 * @param $methodName string
+	 * @param $args array
+	 *
+	 */
+	static function callStaticMethod( $className, $methodName, $args ) {
+		$r = new ReflectionMethod( $className, $methodName );
+		return $r->invokeArgs( null, $args );
 	}
 }

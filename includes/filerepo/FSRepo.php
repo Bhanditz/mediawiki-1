@@ -65,6 +65,10 @@ class FSRepo extends FileRepo {
 
 	/**
 	 * Get the local directory corresponding to one of the three basic zones
+	 *
+	 * @param $zone string
+	 *
+	 * @return string
 	 */
 	function getZonePath( $zone ) {
 		switch ( $zone ) {
@@ -83,6 +87,10 @@ class FSRepo extends FileRepo {
 
 	/**
 	 * @see FileRepo::getZoneUrl()
+	 *
+	 * @param $zone string
+	 *
+	 * @return url
 	 */
 	function getZoneUrl( $zone ) {
 		switch ( $zone ) {
@@ -103,6 +111,10 @@ class FSRepo extends FileRepo {
 	 * Get a URL referring to this repository, with the private mwrepo protocol.
 	 * The suffix, if supplied, is considered to be unencoded, and will be
 	 * URL-encoded before being returned.
+	 *
+	 * @param $suffix string
+	 *
+	 * @return string
 	 */
 	function getVirtualUrl( $suffix = false ) {
 		$path = 'mwrepo://' . $this->name;
@@ -114,10 +126,14 @@ class FSRepo extends FileRepo {
 
 	/**
 	 * Get the local path corresponding to a virtual URL
+	 *
+	 * @param $url string
+	 *
+	 * @return string
 	 */
 	function resolveVirtualUrl( $url ) {
 		if ( substr( $url, 0, 9 ) != 'mwrepo://' ) {
-			throw new MWException( __METHOD__.': unknown protoocl' );
+			throw new MWException( __METHOD__.': unknown protocol' );
 		}
 
 		$bits = explode( '/', substr( $url, 9 ), 3 );
@@ -295,38 +311,41 @@ class FSRepo extends FileRepo {
 		$status = $this->newGood();
 
 		// Resolve the virtual URL
-		if ( self::isVirtualUrl( $srcPath ) ) {
-			$srcPath = $this->resolveVirtualUrl( $srcPath );
+		if ( self::isVirtualUrl( $toAppendPath ) ) {
+			$toAppendPath = $this->resolveVirtualUrl( $toAppendPath );
 		}
 		// Make sure the files are there
-		if ( !is_file( $srcPath ) )
-			$status->fatal( 'filenotfound', $srcPath );
-
 		if ( !is_file( $toAppendPath ) )
 			$status->fatal( 'filenotfound', $toAppendPath );
+
+		if ( !is_file( $srcPath ) )
+			$status->fatal( 'filenotfound', $srcPath );
 
 		if ( !$status->isOk() ) return $status;
 
 		// Do the append
-		$chunk = file_get_contents( $toAppendPath );
+		$chunk = file_get_contents( $srcPath );
 		if( $chunk === false ) {
-			$status->fatal( 'fileappenderrorread', $toAppendPath );
+			$status->fatal( 'fileappenderrorread', $srcPath );
 		}
 
 		if( $status->isOk() ) {
-			if ( file_put_contents( $srcPath, $chunk, FILE_APPEND ) ) {
-				$status->value = $srcPath;
+			if ( file_put_contents( $toAppendPath, $chunk, FILE_APPEND ) ) {
+				$status->value = $toAppendPath;
 			} else {
-				$status->fatal( 'fileappenderror', $toAppendPath,  $srcPath);
+				$status->fatal( 'fileappenderror', $srcPath,  $toAppendPath);
 			}
 		}
 
 		if ( $flags & self::DELETE_SOURCE ) {
-			unlink( $toAppendPath );
+			unlink( $srcPath );
 		}
 
 		return $status;
 	}
+
+	/* We can actually append to the files, so no-op needed here. */
+	function appendFinish( $toAppendPath ) {}
 
 	/**
 	 * Checks existence of specified array of files.
@@ -573,14 +592,18 @@ class FSRepo extends FileRepo {
 			$good = true;
 			if ( file_exists( $archivePath ) ) {
 				# A file with this content hash is already archived
-				if ( !@unlink( $srcPath ) ) {
+				wfSuppressWarnings();
+				$good = unlink( $srcPath );
+				wfRestoreWarnings();
+				if ( !$good ) {
 					$status->error( 'filedeleteerror', $srcPath );
-					$good = false;
 				}
 			} else{
-				if ( !@rename( $srcPath, $archivePath ) ) {
+				wfSuppressWarnings();
+				$good = rename( $srcPath, $archivePath );
+				wfRestoreWarnings();
+				if ( !$good ) {
 					$status->error( 'filerenameerror', $srcPath, $archivePath );
-					$good = false;
 				} else {
 					$this->chmod( $archivePath );
 				}

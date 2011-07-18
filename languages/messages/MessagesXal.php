@@ -181,14 +181,6 @@ $messages = array(
 'index-category'                 => 'Индекссн халхс',
 'noindex-category'               => 'Индекссн биш халхс',
 
-'mainpagetext'      => "Йовудта Mediawiki гүүлһүдә тәвллһн.'''",
-'mainpagedocfooter' => 'Тер бики закллһна теткүл ю кеһәд олзлх туск [http://meta.wikimedia.org/wiki/Help:Contents көтлвр] дастн.
-
-== Туста заавр ==
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Көгүдә бүрткл]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki туск ЮмБи]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki шинҗллһнә бүрткл]',
-
 'about'         => 'Тодлҗ бичлһн',
 'article'       => 'Зүүл',
 'newwindow'     => '(шин терзд)',
@@ -238,7 +230,6 @@ $messages = array(
 'history'           => 'тууҗ',
 'history_short'     => 'Тууҗ',
 'updatedmarker'     => 'мини шидрә орлһна хөөн шинрүлсн',
-'info_short'        => 'Өггцн',
 'printableversion'  => 'Барин бәәдл',
 'permalink'         => 'Даңгин заалһ',
 'print'             => 'Барлх',
@@ -440,7 +431,7 @@ $1',
 Демнчна нерт баһ болн ик үзгүд әдл биш болна.
 «<nowiki>$1</nowiki>» гидг нерәдлһтә демнч бәәшго.
 Бичлһиг шүүтн аль [[Special:UserLogin/signup|бигчдлһиг бүтәтн]].',
-'nosuchusershort'         => '«<nowiki>$1</nowiki>» гидг нерәдлһтә демнч бәәшго.
+'nosuchusershort'         => '«$1» гидг нерәдлһтә демнч бәәшго.
 Бичлһиг шүүтн.',
 'nouserspecified'         => 'Та демнчна нернь бичх йостав.',
 'login-userblocked'       => 'Тер демнч бүслсн, харһад орҗ болшго бәәнә.',
@@ -881,10 +872,8 @@ $1',
 # Watchlist
 'watchlist'         => 'Шинҗллһнә сеткүл',
 'mywatchlist'       => 'Шинҗллһнә сеткүл',
-'addedwatch'        => 'Шинҗллһнә сеткүлд немв.',
 'addedwatchtext'    => "«[[:$1]]» гидг нерәдлһтә халх тана [[Special:Watchlist|шинҗллһнә сеткүлд]] немв.
 Тегәд тер халхна болн терүнә ухалврин сольлһн энд шиҗлсн болх. Эн халх '''тарһн'' үзгәр [[Special:RecentChanges|шидрә сольлһна]] халхд бичсн (амр умшхар) болх.",
-'removedwatch'      => 'Шинҗллһнә сеткүләс һарһв.',
 'removedwatchtext'  => '«[[:$1]]» халх тана [[Special:Watchlist|шинҗллһнә сеткүләс]] һарһв.',
 'watch'             => 'Шинҗлх',
 'watchthispage'     => 'Эн халхиг шинҗлх',
@@ -917,7 +906,7 @@ e-mail\'ар $PAGEEDITOR_EMAIL
 
 --
 Тана шинҗллһнә сеткүлин көгүдиг сольҗ седхлә, эниг дахтн:
-{{fullurl:{{#special:Watchlist}}/edit}}
+{{fullurl:{{#special:EditWatchlist}}}}
 
 Хәрү холва болн тус:
 {{fullurl:{{MediaWiki:Helppage}}}}',
@@ -934,7 +923,7 @@ e-mail\'ар $PAGEEDITOR_EMAIL
 'confirmdeletetext'     => 'Та цуг халхиг аль зургиг һарһҗ орхар бәәнәт.
 Буйн болтха, та үнәр тана үүлдин ашуд болн [[{{MediaWiki:Policy-url}}]] әңгин зокал медәд, эн батлҗ кетн.',
 'actioncomplete'        => 'Үүлд кев',
-'deletedtext'           => '«<nowiki>$1</nowiki>» һарһҗ болв.
+'deletedtext'           => '«$1» һарһҗ болв.
 $2 шидрә һарһлһна төлә хәләтн.',
 'deletedarticle'        => '«[[$1]]» халхиг һарһв',
 'dellogpage'            => 'Һарһллһна сеткүл',
@@ -954,7 +943,7 @@ $2 шидрә һарһлһна төлә хәләтн.',
 'protectexpiry'               => 'Өңгрнә:',
 'protect_expiry_invalid'      => 'Буру өңгрллһнә цаг',
 'protect_expiry_old'          => 'Өңгрллһнә цаг бәәв.',
-'protect-text'                => "Энд та '''<nowiki>$1</nowiki>''' халхин харсллһна кемҗән хәләҗ,  хүврлҗ чаднат.",
+'protect-text'                => "Энд та '''$1''' халхин харсллһна кемҗән хәләҗ,  хүврлҗ чаднат.",
 'protect-locked-access'       => "Эн халхна харсллһна кемҗән сольҗ, тана бичгдлһна зөв тату.
 Ода болсн '''$1''' халхна көгүд:",
 'protect-cascadeon'           => 'Эн халх харссн. Юнгад гихлә, тер халх {{PLURAL:$1|эн халхд|тенд халхсд}} каскад харсллһта. Тадн эн халхна харсллһна кемҗән сольх чаднат, болв тер үүл каскад харлсһиг цокҗ чадшго.',

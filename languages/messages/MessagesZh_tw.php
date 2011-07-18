@@ -168,14 +168,6 @@ $messages = array(
 # Categories related messages
 'subcategories' => '子分類',
 
-'mainpagedocfooter' => '請參閱 [http://meta.wikimedia.org/wiki/Help:Contents 使用者手冊] 以獲得使用此 wiki 軟體的訊息！
-
-== 入門 ==
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings MediaWiki 配置設定清單]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki 常見問題解答]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki 發佈郵件清單]',
-
 # Cologne Blue skin
 'qbfind' => '尋找',
 
@@ -235,16 +227,15 @@ $messages = array(
 這也可能是{{SITENAME}}所使用的軟件出現了錯誤。',
 
 # General errors
-'readonlytext'         => '資料庫目前禁止輸入新內容及更改，
+'readonlytext'        => '資料庫目前禁止輸入新內容及更改，
 這很可能是由於資料庫正在維修，之後即可復原。
 管理員有如下解釋:
 <p>$1</p>',
-'cannotdelete'         => '無法刪除選定的頁面或圖片（它可能已經被其他人刪除了）。',
-'actionthrottledtext'  => '系統因為反垃圾編輯的考量，禁止如此頻繁地修改資料，請數分鐘後再嘗試。',
-'viewsourcetext'       => '你可以檢視並複製本頁面的原始碼。',
-'editinginterface'     => "'''警告：''' 您正在編輯的頁面是正用在軟體上的介面文字。改變此頁將影響其他用戶的介面外觀。如要翻譯，請考慮使用 [http://translatewiki.net/wiki/Main_Page?setlang=zh-hant translatewiki.net]，一個用來為MediaWiki軟體本地化的計畫。",
-'customcssjsprotected' => '您並無許可權去編輯這個頁面，因為它包含了另一位使用者的個人設定。',
-'ns-specialprotected'  => '在{{ns:special}}名字空間中的頁面是不可以編輯的。',
+'cannotdelete'        => '無法刪除選定的頁面或圖片（它可能已經被其他人刪除了）。',
+'actionthrottledtext' => '系統因為反垃圾編輯的考量，禁止如此頻繁地修改資料，請數分鐘後再嘗試。',
+'viewsourcetext'      => '你可以檢視並複製本頁面的原始碼。',
+'editinginterface'    => "'''警告：''' 您正在編輯的頁面是正用在軟體上的介面文字。改變此頁將影響其他用戶的介面外觀。如要翻譯，請考慮使用 [http://translatewiki.net/wiki/Main_Page?setlang=zh-hant translatewiki.net]，一個用來為MediaWiki軟體本地化的計畫。",
+'ns-specialprotected' => '在{{ns:special}}名字空間中的頁面是不可以編輯的。',
 
 # Login and logout pages
 'logouttext'                 => '您現在已經登出。
@@ -273,7 +264,7 @@ $messages = array(
 'loginsuccess'               => '你現在以 "$1"的身份登入{{SITENAME}}。',
 'nosuchuser'                 => '找不到使用者 "$1"。
 檢查您的拼寫，或者用下面的表格[[Special:UserLogin/signup|建立一個新帳號]]。',
-'nosuchusershort'            => '沒有一個名為「<nowiki>$1</nowiki>」的使用者。請檢查您輸入的文字是否有錯誤。',
+'nosuchusershort'            => '沒有一個名為「$1」的使用者。請檢查您輸入的文字是否有錯誤。',
 'nouserspecified'            => '你需要指定一個使用者帳號。',
 'passwordtooshort'           => '您的密碼不正確或太短，不能少於$1個字元，而且必須跟使用者名不同。',
 'passwordremindertitle'      => '{{SITENAME}}密碼提醒',
@@ -331,7 +322,7 @@ $messages = array(
 'noarticletext'              => '此頁目前沒有內容，您可以在其它頁[[Special:Search/{{PAGENAME}}|搜索此頁標題]]，
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} 搜索有關日誌]，
 或[{{fullurl:{{FULLPAGENAME}}|action=edit}} 編輯此頁]</span>。',
-'userpage-userdoesnotexist'  => '使用者帳號「$1」未曾建立。請在建立／編輯這個頁面前先檢查一下。',
+'userpage-userdoesnotexist'  => '使用者帳號「<nowiki>$1</nowiki>」未曾建立。請在建立／編輯這個頁面前先檢查一下。',
 'clearyourcache'             => "'''注意:''' 在儲存以後, 您必須清除瀏覽器的快取才能看到所作出的改變。 '''Mozilla / Firefox / Safari:''' 按著 ''Shift'' 再點擊''重新整理''(或按下''Ctrl-Shift-R''，在蘋果Mac上按下''Cmd-Shift-R'')；'''IE:''' 按著 ''Ctrl'' 再點擊 ''重新整理''，或按下 ''Ctrl-F5''；'''Konqueror:''' 只需點擊 ''重新整理''；'''Opera:''' 使用者需要在 ''工具-設定'' 中完整地清除它們的快取。",
 'usercsspreview'             => "'''注意您只是在預覽您的個人 CSS, 還沒有儲存﹗'''",
 'userjspreview'              => "'''注意您只是在測試／預覽您的個人 JavaScript，還沒有儲存﹗'''",
@@ -641,7 +632,7 @@ $NEWPAGE
 
 --
 要改變您的監視列表設定，請參閱
-{{fullurl:{{#special:Watchlist}}/edit}}
+{{fullurl:{{#special:EditWatchlist}}}}
 
 回饋和進一步的說明:
 {{fullurl:{{MediaWiki:Helppage}}}}',
@@ -649,7 +640,7 @@ $NEWPAGE
 # Delete
 'confirmdeletetext' => '您即將從資料庫中永遠刪除一個頁面或圖片以及其歷史。
 請確定您要進行此項操作，並且了解其後果，同時您的行為符合[[{{MediaWiki:Policy-url}}]]。',
-'deletedtext'       => '「<nowiki>$1</nowiki>」已經被刪除。
+'deletedtext'       => '「$1」已經被刪除。
 最近刪除的紀錄請參見$2。',
 'deletedarticle'    => '已刪除「[[$1]]」',
 'dellogpagetext'    => '以下是最近刪除的紀錄列表。

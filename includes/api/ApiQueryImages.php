@@ -50,7 +50,6 @@ class ApiQueryImages extends ApiQueryGeneratorBase {
 
 	/**
 	 * @param $resultPageSet ApiPageSet
-	 * @return
 	 */
 	private function run( $resultPageSet = null ) {
 		if ( $this->getPageSet()->getGoodTitleCount() == 0 ) {
@@ -184,6 +183,10 @@ class ApiQueryImages extends ApiQueryGeneratorBase {
 			'Get information about all images used in the [[Main Page]]:',
 			'  api.php?action=query&generator=images&titles=Main%20Page&prop=info'
 		);
+	}
+
+	public function getHelpUrls() {
+		return 'http://www.mediawiki.org/wiki/API:Properties#images_.2F_im';
 	}
 
 	public function getVersion() {

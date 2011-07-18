@@ -341,10 +341,6 @@ $messages = array(
 'index-category'                 => 'indexeerte Sieden',
 'noindex-category'               => 'nich indexeerte Sieden',
 
-'mainpagetext'      => "'''De MediaWiki-Software is mit Spood installeert worrn.'''",
-'mainpagedocfooter' => 'Kiek de [http://meta.wikimedia.org/wiki/MediaWiki_localisation Dokumentatschoon för dat Anpassen vun de Brukerböversiet]
-un dat [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Brukerhandbook] för Hülp to de Bruuk un Konfiguratschoon.',
-
 'about'         => 'Över',
 'article'       => 'Artikel',
 'newwindow'     => '(apent sik in en nieg Finster)',
@@ -395,7 +391,6 @@ un dat [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Brukerhandbook] 
 'history'           => 'Historie',
 'history_short'     => 'Historie',
 'updatedmarker'     => 'bearbeidt, in de Tiet sietdem ik toletzt dor weer',
-'info_short'        => 'Informatschoon',
 'printableversion'  => 'Druckversion',
 'permalink'         => 'Duurlenk',
 'print'             => 'Drucken',
@@ -580,7 +575,6 @@ Wenn du Text översetten wist, de betherto noch gornich översett is, denn maak 
 'cascadeprotected'     => 'Disse Siet is sperrt un kann nich ännert warrn. Dat kummt dorvun dat se in disse {{PLURAL:$1|Siet|Sieden}} inbunnen is, de över Kaskadensperr schuult {{PLURAL:$1|is|sünd}}:
 $2',
 'namespaceprotected'   => "Du hest keen Rechten, Sieden in’n Naamruum '''$1''' to ännern.",
-'customcssjsprotected' => 'Du hest keen Rechten, disse Siet to ännern. Dor sünd persönliche Instellungen vun en annern Bruker in.',
 'ns-specialprotected'  => 'Spezialsieden köönt nich ännert warrn.',
 'titleprotected'       => "Disse Siet is gegen dat nee Opstellen vun [[User:$1|$1]] schuult worrn.
 As Grund is angeven: ''$2''.",
@@ -633,7 +627,7 @@ Sorg dor för, dat Cookies anstellt sünd. Denn laad de Sied noch wedder nee un 
 'nosuchuser'                 => 'Den Brukernaam „$1“ gifft dat nich.
 Brukernaams maakt en Ünnerscheed twischen groot un lütt schrevene Bookstaven.
 Kiek de Schrievwies na oder [[Special:UserLogin/signup|mell di as ne’en Bruker an]].',
-'nosuchusershort'            => 'De Brukernaam „<nowiki>$1</nowiki>“ existeert nich. Prööv de Schrievwies.',
+'nosuchusershort'            => 'De Brukernaam „$1“ existeert nich. Prööv de Schrievwies.',
 'nouserspecified'            => 'Du musst en Brukernaam angeven',
 'login-userblocked'          => 'Disse Bruker is sperrt. Anmellen geiht nich.',
 'wrongpassword'              => 'Dat Passwoort, wat du ingeven hest, is verkehrt. Kannst dat aver noch wedder versöken.',
@@ -788,7 +782,7 @@ oder [{{fullurl:{{FULLPAGENAME}}|action=edit}} disse Sied ännern]</span>.',
 'noarticletext-nopermission'       => 'Disse Sied hett opstunns keen Text.
 Du kannst in annere Sieden [[Special:Search/{{PAGENAME}}|na dissen Titel söken]]
 oder <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} in de Logböker söken]</span>.',
-'userpage-userdoesnotexist'        => 'Dat Brukerkonto „$1“ gifft dat noch nich. Överlegg, wat du disse Siet würklich nee opstellen/ännern wullt.',
+'userpage-userdoesnotexist'        => 'Dat Brukerkonto „<nowiki>$1</nowiki>“ gifft dat noch nich. Överlegg, wat du disse Siet würklich nee opstellen/ännern wullt.',
 'userpage-userdoesnotexist-view'   => 'Dat Brukerkonto „$1“ gifft dat nich.',
 'blocked-notice-logextract'        => 'Disse Bruker is opstunns sperrt.
 De jüngste Indrag in dat Sperr-Logbook wart ünnen wiest:',
@@ -1491,10 +1485,6 @@ Wenn du ehr liekers hoochladen wullt, gah trüch un laad de Datei ünner en anne
 'upload-maxfilesize'          => 'Maximale Dateigrött: $1',
 'watchthisupload'             => 'Op disse Datei oppassen',
 'filewasdeleted'              => 'En Datei mit dissen Naam hett dat al mal geven un is denn wegsmeten worrn. Kiek doch toeerst in dat $1 na, ehrdat du de Datei afspiekerst.',
-'upload-wasdeleted'           => "'''Wohrschau: Du läädst en Datei hooch, de al ehrder mal wegsmeten worrn is.'''
-
-Bedenk di eerst, wat dat ok passt, dat du de Datei noch wedder hoochladen deist.
-Hier dat Logbook, wo insteiht, worüm de Sied wegsmeten worrn is:",
 'filename-bad-prefix'         => "De Naam vun de Datei fangt mit '''„$1“''' an. Dat is normalerwies en Naam, den de Datei automaatsch vun de Digitalkamera kriggt. De Naam beschrievt de Datei nich un seggt dor ok nix över ut. Söök di doch en Naam för de Datei ut, de ok wat över den Inholt seggt.",
 'upload-success-subj'         => 'Datei hoochladen hett Spood',
 
@@ -1556,7 +1546,6 @@ Disse List wiest blot {{PLURAL:$1|den eersten Lenk|de eersten $1 Lenken}} op dis
 En [[Special:WhatLinksHere/$2|kumplette List]] gifft dat ok.',
 'nolinkstoimage'            => 'Kene Siet bruukt dat Bild.',
 'morelinkstoimage'          => '[[Special:WhatLinksHere/$1|Mehr Verwiesen]] för disse Datei.',
-'redirectstofile'           => 'Disse {{PLURAL:$1|Datei is|Datein sünd}} en Redirect op disse Datei:',
 'duplicatesoffile'          => 'Disse {{PLURAL:$1|Datei is|Datein sünd}} jüst de {{PLURAL:$1|glieke|glieken}} as disse Datei hier ([[Special:FileDuplicateSearch/$2|mehr Infos]]):',
 'sharedupload'              => 'Disse Datei is as gemeensam bruukte Datei op $1 hoochlaadt un warrt mööglicherwies ok vun annere Wikis bruukt.',
 'sharedupload-desc-there'   => 'Disse Datei is as gemeensam bruukte Datei op $1 hoochlaadt un warrt mööglicherwies ok vun annere Wikis bruukt.
@@ -1864,10 +1853,8 @@ Mehr Informatschonen över enkelte Rechten staht ünner [[{{MediaWiki:Listgroupr
 'watchlistanontext'    => '$1, dat du dien Oppasslist ankieken oder ännern kannst.',
 'watchnologin'         => 'Du büst nich anmellt',
 'watchnologintext'     => 'Du must [[Special:UserLogin|anmellt]] wesen, wenn du dien Oppasslist ännern willst.',
-'addedwatch'           => 'To de Oppasslist toföögt',
 'addedwatchtext'       => 'De Siet „<nowiki>$1</nowiki>“ is to diene [[Special:Watchlist|Oppasslist]] toföögt worrn.
 Ännern, de in Tokumst an disse Siet un an de tohörige Diskuschoonssiet maakt warrt, sünd dor op oplist un de Siet is op de [[Special:RecentChanges|List vun de letzten Ännern]] fett markt. Wenn du de Siet nich mehr op diene Oppasslist hebben willst, klick op „Nich mehr oppassen“.',
-'removedwatch'         => 'De Siet is nich mehr op de Oppasslist',
 'removedwatchtext'     => 'De Sied „[[:$1]]“ is nich mehr op [[Special:Watchlist|dien Oppasslist]].',
 'watch'                => 'Oppassen',
 'watchthispage'        => 'Op disse Siet oppassen',
@@ -1936,7 +1923,7 @@ De Instellungen vun dien Oppasslist to ännern, gah na: {{fullurl:Special:Watchl
 Segg to, dat du över de Folgen Bescheed weetst un dat du in Övereenstimmen mit uns [[{{MediaWiki:Policy-url}}|Leidlienen]] hannelst.',
 'actioncomplete'         => 'Akschoon trech',
 'actionfailed'           => 'Akschoon fehlslaan',
-'deletedtext'            => 'De Artikel „<nowiki>$1</nowiki>“ is nu wegsmeten. Op $2 gifft dat en Logbook vun de letzten Löschakschonen.',
+'deletedtext'            => 'De Artikel „$1“ is nu wegsmeten. Op $2 gifft dat en Logbook vun de letzten Löschakschonen.',
 'deletedarticle'         => '„[[$1]]“ wegsmeten',
 'suppressedarticle'      => 'hett „[[$1]]“ versteken',
 'dellogpage'             => 'Lösch-Logbook',
@@ -1986,7 +1973,7 @@ Gah een Sied trüch un versöök dat noch wedder.',
 'protectexpiry'               => 'Löppt ut:',
 'protect_expiry_invalid'      => 'Utlooptiet ungüllig',
 'protect_expiry_old'          => 'Utlooptiet al vörbi.',
-'protect-text'                => "Hier kannst du den Schuulstatus för de Siet '''<nowiki>$1</nowiki>''' ankieken un ännern.",
+'protect-text'                => "Hier kannst du den Schuulstatus för de Siet '''$1''' ankieken un ännern.",
 'protect-locked-blocked'      => "Du kannst den Schuulstatus vun de Sied nich ännern, du büst sperrt. Hier sünd de aktuellen Schuulstatus-Instellungen för de Siet '''„$1“:'''",
 'protect-locked-dblock'       => "De Datenbank is sperrt un de Schuulstatus vun de Sied kann nich ännert warrn. Dit sünd de aktuellen Schuul-Instellungen för de Sied '''„$1“:'''",
 'protect-locked-access'       => "Du hest nich de nödigen Rechten, den Schuulstatus vun de Siet to ännern. Dit sünd de aktuellen Instellungen för de Siet '''„$1“:'''",
@@ -2477,9 +2464,7 @@ All Transwiki-Import-Akschonen staht later ok in dat [[Special:Log/import|Import
 'monobook.css' => '/* disse Datei ännern üm de Monobook-Stilvörlaag för de ganze Siet antopassen */',
 
 # Metadata
-'nodublincore'      => 'Dublin-Core-RDF-Metadaten sünd för dissen Server nich aktiveert.',
-'nocreativecommons' => 'Creative-Commons-RDF-Metadaten sünd för dissen Server nich aktiveert.',
-'notacceptable'     => 'Dat Wiki-Server kann kene Daten in enen Format levern, dat dien Klient lesen kann.',
+'notacceptable' => 'Dat Wiki-Server kann kene Daten in enen Format levern, dat dien Klient lesen kann.',
 
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Anonym Bruker|Anonyme Brukers}} vun {{SITENAME}}',
@@ -2498,14 +2483,6 @@ All Transwiki-Import-Akschonen staht later ok in dat [[Special:Log/import|Import
 'spambot_username'    => 'MediaWiki Spam-Oprümen',
 'spam_reverting'      => 'Trüchdreiht na de letzte Version ahn Lenken na $1.',
 'spam_blanking'       => 'All Versionen harrn Lenken na $1, rein maakt.',
-
-# Info page
-'infosubtitle'   => 'Informatschonen för de Siet',
-'numedits'       => 'Antall vun Ännern (Siet): $1',
-'numtalkedits'   => 'Antall vun Ännern (Diskuschoonssiet): $1',
-'numwatchers'    => 'Antall vun Oppassers: $1',
-'numauthors'     => 'Antall vun verschedene Autoren (Siet): $1',
-'numtalkauthors' => 'Antall vun verschedene Autoren (Diskuschoonssiet): $1',
 
 # Skin names
 'skinname-standard'    => 'Klassik',

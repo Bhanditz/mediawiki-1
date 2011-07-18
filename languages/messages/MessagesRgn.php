@@ -142,8 +142,6 @@ $messages = array(
 'index-category'                 => 'Pàgina indicizëda',
 'noindex-category'               => ' Pàgina non indicizëda',
 
-'mainpagetext' => "'''L'instalaziòn d'MediaWiki l'è andêda ben'''",
-
 'about'         => "A prupòsit d'",
 'article'       => 'Artècual',
 'newwindow'     => "(la s'avèra int'una fnèstra nova)",
@@ -490,10 +488,8 @@ $1 {{PLURAL:$1|elemént|elemént}}',
 # Watchlist
 'watchlist'         => "Pàgin ch'a ten d'öcc",
 'mywatchlist'       => "Pàgin ch'a ten d'öcc",
-'addedwatch'        => "Mett insem a la lèsta d'pàgin sot öcc",
 'addedwatchtext'    => "La pàgina \"[[:\$1]]\" adès l'è int la lèsta dal [[Special:Watchlist|pàgin da tnì d'öcc]]. D'ôra inenz t'pù avdé tòt al mudèfic a sta pàgina e a la pàgina d'cunversaziòn int la [[Special:RecentChanges|lèsta d'j cambiamént rezent]], in '''gros''', acsè j 's'pò guardè mej.
 Se in un sgond temp t'vu cavé la pàgina dala lèsta da tnì d'öcc, s-cjaza un'ètra volta sora e' butòn \"ten d'öcc\".",
-'removedwatch'      => 'Cavé dala lèsta dal pàgin da tnì sot öcc',
 'removedwatchtext'  => 'La pàgina "[[:$1]]" l\'è stëda scanzlèda dala lèsta dal [[Special:Watchlist|pàgin da tnì sot öcc]].',
 'watch'             => "Tèn d'öcc",
 'watchthispage'     => "Ten d'öcc sta pagina",
@@ -511,7 +507,7 @@ Se in un sgond temp t'vu cavé la pàgina dala lèsta da tnì d'öcc, s-cjaza un
 'confirmdeletetext'     => "Oci! T'ste par scanzlè una pàgina cun tòta la storia d'j su cambiamént.
 Par piasé, cunferma ch't'ê propri l'intenziòn d'fël, ch'at capèss al su conseguenzi e quel ch't fë adès l'è in regola cun al [[{{MediaWiki:Policy-url}}]].",
 'actioncomplete'        => 'Lavor fät e finì',
-'deletedtext'           => 'La pàgina "<nowiki>$1</nowiki>" l\'è stëda scanzlèda.
+'deletedtext'           => 'La pàgina "$1" l\'è stëda scanzlèda.
 Guèrda $2 par avdé la lèsta daglj ultum scanzeladür.',
 'deletedarticle'        => 'l\'à scanzlé "[[$1]]"',
 'dellogpage'            => 'Regèstar dal scanzladùr',
@@ -530,7 +526,7 @@ Guèrda $2 par avdé la lèsta daglj ultum scanzeladür.',
 'protectexpiry'               => 'Scadenza:',
 'protect_expiry_invalid'      => "La scadenza la n'è piò bona.",
 'protect_expiry_old'          => "T'cì ariv tèrd! La dèda d'scadenza l'è zà pasëda.",
-'protect-text'                => "Cun ste mudèl u s'pò guardè e u s'pò cambié ê livèl d'pruteziòn dla pàgina '''<nowiki>$1</nowiki>'''.",
+'protect-text'                => "Cun ste mudèl u s'pò guardè e u s'pò cambié ê livèl d'pruteziòn dla pàgina '''$1'''.",
 'protect-locked-access'       => "Oci! Ta n'ê miga i parmess par cambié i livel d'pruteziòn dla pàgina.
 S't'vù vdë in dô ch'j è i parmess, guèrda '''$1''':",
 'protect-cascadeon'           => "Sta pàgina pr'adès l'è bluchëda parchè l'è stra l'{{PLURAL:$1|la pàgina aquè sota, ch'l'à|al pàgin aquè sota, ch'j'à}} la pruteziòn ricursiva.

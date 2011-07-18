@@ -331,15 +331,9 @@ $messages = array(
 'listingcontinuesabbrev'         => 'дәвамы',
 'index-category'                 => 'Индексланган битләр',
 'noindex-category'               => 'Индексланмаган битләр',
+'broken-file-category'           => 'Эшләми торган файл сылтамаларлы битләр',
 
-'linkprefix'        => '/^(.*?)([a-zA-Z\\x80-\\xff]+)$/sD',
-'mainpagetext'      => '«MediaWiki» уңышлы куелды.',
-'mainpagedocfooter' => "Бу вики турында мәгълүматны [http://meta.wikimedia.org/wiki/Ярдәм:Эчтәлек биредә] табып була.
-
-== Кайбер файдалы ресурслар ==
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Көйләнмәләр исемлеге (инг.)];
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki турында еш бирелгән сораулар һәм җаваплар (инг.)];
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki'ның яңа версияләре турында хәбәрләр яздырып алу].",
+'linkprefix' => '/^(.*?)([a-zA-Z\\x80-\\xff]+)$/sD',
 
 'about'         => 'Тасвирлама',
 'article'       => 'Мәкалә',
@@ -369,7 +363,7 @@ $messages = array(
 'vector-action-move'             => 'Күчерү',
 'vector-action-protect'          => 'Яклау',
 'vector-action-undelete'         => 'Кайтару',
-'vector-action-unprotect'        => 'Яклауны бетерү',
+'vector-action-unprotect'        => 'Яклауны үзгәртү',
 'vector-simplesearch-preference' => 'Эзләү өчен киңәйтелгән ярдәм хәбәрләрен күрсәтү («Векторлы» бизәлеше өчен генә кулланылыа)',
 'vector-view-create'             => 'Төзү',
 'vector-view-edit'               => 'Үзгәртү',
@@ -391,7 +385,6 @@ $messages = array(
 'history'           => 'Битнең тарихы',
 'history_short'     => 'Тарих',
 'updatedmarker'     => 'соңгы керүемнән соң яңартылган',
-'info_short'        => 'Мәгълүмат',
 'printableversion'  => 'Бастыру версиясе',
 'permalink'         => 'Даими сылтама',
 'print'             => 'Бастыру',
@@ -407,8 +400,8 @@ $messages = array(
 'protect'           => 'Яклау',
 'protect_change'    => 'үзгәртү',
 'protectthispage'   => 'Бу битне яклау',
-'unprotect'         => 'Яклауны бетерү',
-'unprotectthispage' => 'Бу битнең яклауын бетерү',
+'unprotect'         => 'Яклауны үзгәртү',
+'unprotectthispage' => 'Бу битнең яклауын үзгәртү',
 'newpage'           => 'Яңа бит',
 'talkpage'          => 'Бит турында фикер алышу',
 'talkpagelinktext'  => 'Бәхәс',
@@ -505,6 +498,8 @@ $1',
 'feed-atom'               => 'Atom-тасмасы',
 'feed-rss'                => 'RSS-тасмасы',
 'red-link-title'          => '$1 (мондый бит юк)',
+'sort-descending'         => 'Кимү буенча урнаштыру',
+'sort-ascending'          => 'Арту буенча урнаштыру',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Бит',
@@ -591,7 +586,6 @@ $1',
 'cascadeprotected'     => 'Бу бит үзгәртүләрдән сакланган, чөнки ул каскадлы саклау кабул ителгән {{PLURAL:$1|биткә|битләргә}} өстәлгән:
 $2',
 'namespaceprotected'   => "'''$1''' исем киңлегендәге битләрне үзгәртү өчен сезнең рөхсәтегез юк.",
-'customcssjsprotected' => 'Сез бу битне үзгәртә алмыйсыз, чөнки анда башка кулланычының көйләнмәләре бар.',
 'ns-specialprotected'  => 'Махсус битләрне үзгәртеп булмый.',
 'titleprotected'       => "Бу исем белән бит ясау [[User:$1|$1]] тарафыннан тыелган.
 Ул күрсәткән сәбәп: ''$2''.",
@@ -644,7 +638,7 @@ $2',
 'nosuchuser'                 => '$1 исемле кулланучы юк.
 Кулланучы исеменең дөреслеге регистрга бәйле.
 Язылышыгызны тикшерегез яки [[Special:UserLogin/signup|яңа хисап язмасы төзегез]].',
-'nosuchusershort'            => '<nowiki>$1</nowiki> исемле кулланучы юк. Язылышыгызны тикшерегез.',
+'nosuchusershort'            => '$1 исемле кулланучы юк. Язылышыгызны тикшерегез.',
 'nouserspecified'            => 'Сез теркәү исмегезне күрсәтергә тиешсез.',
 'login-userblocked'          => 'Бу кулланучы тыелды. Керү тыелган.',
 'wrongpassword'              => 'Язылган серсүз дөрес түгел. Тагын бер тапкыр сынагыз.',
@@ -800,12 +794,16 @@ $2',
 'noarticletext-nopermission'       => 'Хәзерге вакытта бу биттә текст юк.
 Сез [[Special:Search/{{PAGENAME}}|бу исем кергән башка мәкаләләрне]],
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} көндәлекләрдәге язмаларны] таба аласыз.</span>',
-'userpage-userdoesnotexist'        => '«$1» исемле хисап язмасы юк. Сез чынлап та бу битне ясарга яисә үзгәртергә телисезме?',
+'userpage-userdoesnotexist'        => '«<nowiki>$1</nowiki>» исемле хисап язмасы юк. Сез чынлап та бу битне ясарга яисә үзгәртергә телисезме?',
 'userpage-userdoesnotexist-view'   => '"$1" исемле хисап язмасы юк.',
 'blocked-notice-logextract'        => 'Бу кулланучы хәзергә тыелды.
 Түбәндә тыю көндәлегенең соңгы язу бирелгән:',
-'clearyourcache'                   => "'''Искәрмә:''' Битне саклаганнан соң үзгәртүләр күренсен өчен браузерыгызның кэшын чистартыгыз.
-Моны '''Mozilla / Firefox''': ''Ctrl+Shift+R'', '''Safari''': ''Cmd+Shift+R'', '''IE:''' ''Ctrl+F5'', '''Konqueror''': ''F5'', '''Opera''': ''Tools→Preferences'' аша эшләп була.",
+'clearyourcache'                   => "'''Искәрмә:''' Сез саклаган үзгәртүләр кулланышка керсен өчен браузерыгызның кешын чистартырга туры киләчәк. 
+* '''Firefox/Safari''': Shift төймшсенә баскан килеш җиһазлар тасмасында ''Яңарту (Обновить)'' язуына басыгыз, яисә ''Ctrl-F5'' яки  ''Ctrl-R'' (Mac өчен ''Command-R'') төймәләренә басыгыз
+* '''Google Chrome.'''  ''Ctrl-Shift-R'' (Mac өчен ''Command-Shift-R'' ) төймәләренә басыгыз
+* '''Internet Explorer.''' ''Ctrl''  төймәсенә баскан килеш  ''Яңарту (Обновить)'' язуына, яисә ''Ctrl-F5'' басыгыз
+* '''Konqueror.''' ''Яңарту (Обновить)'' язуына, яисә ''F5'' басыгыз
+* '''Opera.''' Менюдан кеш чистартуны сайлагыз: ''Җиһазлар (Инструменты) → Көйләнмәләр (Настройки)''",
 'usercssyoucanpreview'             => "'''Ярдәм:''' \"{{int:showpreview}} төймәсенә басып, яңа CSS-файлны тикшереп була.",
 'userjsyoucanpreview'              => "'''Ярдәм:''' \"{{int:showpreview}}\" төймәсенә басып, яңа JS-файлны тикшереп була.",
 'usercsspreview'                   => "'''Бу бары тик CSS-файлны алдан карау гына, ул әле сакланмаган!'''",
@@ -1117,7 +1115,9 @@ $3 күрсәткән сәбәп: ''$2''",
 'prefs-skin'                    => 'Күренеш',
 'skin-preview'                  => 'Алдан карау',
 'datedefault'                   => 'Баштагы көйләнмәләр',
+'prefs-beta'                    => 'Бета-мөмкинчелекләр',
 'prefs-datetime'                => 'Дата һәм вакыт',
+'prefs-labs'                    => 'Сынаулы мөмкинчелекләр',
 'prefs-personal'                => 'Шәхси мәгълүматлар',
 'prefs-rc'                      => 'Соңгы үзгәртүләр',
 'prefs-watchlist'               => 'Күзәтү исемлеге',
@@ -1149,7 +1149,7 @@ $3 күрсәткән сәбәп: ''$2''",
 'savedprefs'                    => 'Көйләнмәләрегез сакланды.',
 'timezonelegend'                => 'Сәгать поясы:',
 'localtime'                     => 'Җирле вакыт',
-'timezoneuseserverdefault'      => 'Сервернең көйләнмәләре кулланылсын',
+'timezoneuseserverdefault'      => 'Сервернең көйләнмәләре кулланылсын ($1)',
 'timezoneuseoffset'             => 'Башка (күчерелүне күрсәтегез)',
 'timezoneoffset'                => 'Күчерелү¹:',
 'servertime'                    => 'Серверның вакыты:',
@@ -1395,10 +1395,6 @@ $3 күрсәткән сәбәп: ''$2''",
 'upload-options'             => 'Йөкләү параметрлары',
 'watchthisupload'            => 'Бу файлны күзәтү',
 'filewasdeleted'             => 'Мондый исемле файл бетерелгән булган инде. Зинһар,яңадан йөкләү алдыннан $1 карагыз',
-'upload-wasdeleted'          => "'''Игътибар: Сез бетерелгән файл урынына яңасын йөкләмәкче буласыз.'''
-
-Сезгә чыннан да бу файлны йөкләү кирәкме?
-Түбәндә файлның бетерү көндәлеге китерелә:",
 'filename-bad-prefix'        => "Файлның исеме '''«$1»''' дип башлана. Зинһар, файлны тасвирлаучы исем бирегез.",
 'filename-prefix-blacklist'  => ' #<!-- ничек бар шулай калдырыгыз --> <pre>
 # Синтаксис төбәндәгечә:
@@ -1667,10 +1663,8 @@ PICT # төрле
 'nowatchlist'       => 'Күзәтү исемлегегездә битләр юк.',
 'watchnologin'      => 'Кермәдегез',
 'watchnologintext'  => 'Күзәтү исемлегегезне үзгәртү өчен сез [[Special:UserLogin|керергә]] тиешсез.',
-'addedwatch'        => 'Күзәтү исемлегенә өстәгән',
 'addedwatchtext'    => "\"[[:\$1]]\" бите [[Special:Watchlist|күзәтү исемлегегезгә]] өстәлде.
 Бу биттә һәм аның бәхәслегендә барлык булачак үзгәртүләр шунда күрсәтелер, һәм, [[Special:RecentChanges|соңгы үзгәртүләр]] исемлегендә бу битне җиңелрәк табу өчен, ул '''калын мәтен''' белән күрсәтелер.",
-'removedwatch'      => 'Күзәтү исемлегеннән бетерелгән',
 'removedwatchtext'  => '«[[:$1]]» бите [[Special:Watchlist|сезнең күзәтү исемлегеннән]] бетерелде.',
 'watch'             => 'Күзәтү',
 'watchthispage'     => 'Бу битне күзәтү',
@@ -1705,11 +1699,14 @@ $NEWPAGE
 
 Бу биткә кермәсәгез, аның башка үзгәртүләре турында хат җибәрелмәячәк. Шулай ук сез күзәтү исемлегегездә булган битләр өчен хәбәр бирү флагын алып куя аласыз.
 
-             {{SITENAME}} хәбәр бирү системасы
+             {{grammar:genitive|{{SITENAME}}}} хәбәр бирү системасы
 
 --
+Хәбәр итүләр көйләүләрен үзгәртү:
+{{fullurl:{{#special:Preferences}}}}
+
 Күзәтү исемлеге көйләүләрен үзгәртү:
-{{fullurl:{{#special:Watchlist}}/edit}}
+{{fullurl:{{#special:EditWatchlist}}}}
 
 Битне сезнең күзәтү исемлегездән бетерү:
 $UNWATCHURL
@@ -1731,7 +1728,7 @@ $UNWATCHURL
 Зинһар, моны чыннан да эшләргә теләгәнегезне, моның нәтиҗәләрен аңлаганыгызны һәм [[{{MediaWiki:Policy-url}}]] бүлегендәге кагыйдәләр буенча эшләгәнегезне раслагыз.',
 'actioncomplete'         => 'Гамәл башкарган',
 'actionfailed'           => 'Эш башкарылмаган',
-'deletedtext'            => '«<nowiki>$1</nowiki>» бетерелгән инде.<br />
+'deletedtext'            => '«$1» бетерелгән инде.<br />
 Соңгы бетерелгән битләрне күрер өчен, $2 карагыз.',
 'deletedarticle'         => '«[[$1]]» бетерелде',
 'suppressedarticle'      => '«[[$1]]» күрсәтелмәде',
@@ -1756,7 +1753,7 @@ $UNWATCHURL
 'protectlogpage'              => 'Яклану көндәлеге',
 'protectedarticle'            => '«[[$1]]» якланган',
 'modifiedarticleprotection'   => '"[[$1]]" бите өчен яклау дәрәҗәсе үзгәртелде',
-'unprotectedarticle'          => '«[[$1]]» инде якланмаган',
+'unprotectedarticle'          => '«[[$1]]» битеннән яклау алынды',
 'movedarticleprotection'      => 'яклау көйләнмәләрен «[[$2]]» битеннән «[[$1]]» битенә күчерде',
 'protect-title'               => '«$1» өчен яклау дәрәҗәсен билгеләү',
 'prot_1movedto2'              => '«[[$1]]» бите «[[$2]]» битенә күчерелде',
@@ -1767,7 +1764,7 @@ $UNWATCHURL
 'protect_expiry_invalid'      => 'Яклау бетү вакыты дөрес түгел.',
 'protect_expiry_old'          => 'Яклау бетү көне узган көнгә куелган.',
 'protect-unchain-permissions' => 'Өстәмә яклау чараларын ачу',
-'protect-text'                => "Биредә сез '''<nowiki>$1</nowiki>''' бите өчен яклау дәрәҗәсене карый һәм үзгәрә аласыз.",
+'protect-text'                => "Биредә сез '''$1''' бите өчен яклау дәрәҗәсене карый һәм үзгәрә аласыз.",
 'protect-locked-access'       => "Хисап язмагызга битләрнең яклау дәрәҗәсен үзгәртү өчен хак җитми. '''$1''' битенең хәзерге көйләүләре:",
 'protect-cascadeon'           => 'Бу бит якланган, чөнки ул әлеге каскадлы яклаулы {{PLURAL:$1|биткә|битләргә}} керә. Сез бу битнең яклау дәрәҗәсен үзгәртә аласыз, әмма каскадлы яклау үзгәрмәячәк.',
 'protect-default'             => 'Яклаусыз',
@@ -1858,7 +1855,7 @@ $1',
 'nolinkshere'              => "'''[[:$1]]''' битенә башка битләр сылтамыйлар.",
 'isredirect'               => 'юнәлтү бите',
 'istemplate'               => 'кертүләр',
-'isimage'                  => 'рәсем өчен сылтама',
+'isimage'                  => 'файл сылтамасы',
 'whatlinkshere-prev'       => '{{PLURAL:$1|алдагы|алдагы $1}}',
 'whatlinkshere-next'       => '{{PLURAL:$1|чираттагы|чираттагы $1}}',
 'whatlinkshere-links'      => '← сылтамалар',
@@ -1986,11 +1983,23 @@ $1',
 'thumbnail_error' => 'Кечкенә сүрәт төзүе хатасы: $1',
 
 # Special:Import
-'import-interwiki-submit' => 'Импортлау',
-'import-upload-filename'  => 'Файл исеме:',
-'import-comment'          => 'Искәрмә:',
-'importstart'             => 'Битләрне импортлау...',
-'importnotext'            => 'Буш яки текст юк',
+'import'                     => 'Битләр кертү',
+'importinterwiki'            => 'Викиара кертү',
+'import-interwiki-text'      => 'Викины һәм кертелүче битнең исемен языгыз.
+Үзгәртүләр вакыты һәм аның авторлары сакланачак.
+Бөтен викиара күчерүләр [[Special:Log/import|махсус журналда]] сакланачак.',
+'import-interwiki-source'    => 'Вики-чыганак/бит:',
+'import-interwiki-history'   => 'Бу битнең барлык үзгәртү тарихын күчермәләү',
+'import-interwiki-templates' => 'Барлык үрнәкләрне кертү',
+'import-interwiki-submit'    => 'Импортлау',
+'import-interwiki-namespace' => 'Исемнәр тирәлеге:',
+'import-upload-filename'     => 'Файл исеме:',
+'import-comment'             => 'Искәрмә:',
+'importtext'                 => 'Зинһар өчен, битне күчерү өчен [[Special:Export|махсус корал]] кулланыгыз. Файлны дискка саклагыз, аннан соң монда йөкләгез.',
+'importstart'                => 'Битләрне импортлау...',
+'import-revision-count'      => '$1 {{PLURAL:$1|юрама|юрама|юрама}}',
+'importnopages'              => 'Импортлау өчен битләр юк.',
+'importnotext'               => 'Буш яки текст юк',
 
 # Import log
 'importlogpage'             => 'Кертү көндәлеге',
@@ -2070,9 +2079,6 @@ $1',
 
 # Spam protection
 'spamprotectiontitle' => 'Спам фильтры',
-
-# Info page
-'numtalkedits' => 'Төзәтүләр саны (бәхәс бите): $1',
 
 # Skin names
 'skinname-standard'    => 'Классик',
@@ -2418,5 +2424,14 @@ $1',
 'htmlform-submit'              => 'Җибәрү',
 'htmlform-reset'               => 'Үзгәртүләрне кире кайтару',
 'htmlform-selectorother-other' => 'Башка',
+
+# Add categories per AJAX
+'ajax-add-category'          => 'Бүлек өстәргә',
+'ajax-add-category-submit'   => 'Өстәргә',
+'ajax-confirm-save'          => 'Саклау',
+'ajax-error-title'           => 'Хата',
+'ajax-error-dismiss'         => 'ОК',
+'ajax-remove-category-error' => 'Бу бүлекне алып ташлап булмады.
+Гадәттә шаблон аша өстәлгән бүлекләрдә шушындый хаталар чыга.',
 
 );

@@ -65,7 +65,7 @@ class ApiDelete extends ApiBase {
 			}
 		}
 		if ( !$titleObj->exists() ) {
-			$this->dieUsageMsg( array( 'notanarticle' ) );
+			$this->dieUsageMsg( 'notanarticle' );
 		}
 
 		$reason = ( isset( $params['reason'] ) ? $params['reason'] : null );
@@ -150,7 +150,7 @@ class ApiDelete extends ApiBase {
 		if ( $article->doDeleteArticle( $reason, false, 0, true, $error ) ) {
 			return array();
 		} else {
-			return array( array( 'cannotdelete', $article->mTitle->getPrefixedText() ) );
+			return array( array( 'cannotdelete', $article->getTitle()->getPrefixedText() ) );
 		}
 	}
 
@@ -274,6 +274,10 @@ class ApiDelete extends ApiBase {
 			'api.php?action=delete&title=Main%20Page&token=123ABC',
 			'api.php?action=delete&title=Main%20Page&token=123ABC&reason=Preparing%20for%20move'
 		);
+	}
+
+	public function getHelpUrls() {
+		return 'http://www.mediawiki.org/wiki/API:Delete';
 	}
 
 	public function getVersion() {

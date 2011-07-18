@@ -160,15 +160,6 @@ $messages = array(
 'index-category'                 => '做正索引𠮶页面',
 'noindex-category'               => '冇做索引𠮶页面',
 
-'mainpagetext'      => "'''安装正MediaWiki喽。'''",
-'mainpagedocfooter' => '参看[http://meta.wikimedia.org/wiki/Help:Contents 用户指南]里头会话到啷用wiki软件
-
-== 开始使用 ==
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings MediaWiki 配置设定列表]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki 平常问题解答]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki 发布email清单]',
-
 'about'         => '关于',
 'article'       => '文章',
 'newwindow'     => '（开只新窗口）',
@@ -218,7 +209,6 @@ $messages = array(
 'history'           => '文章历史',
 'history_short'     => '历史',
 'updatedmarker'     => '最末道浏览后𠮶改动',
-'info_short'        => '消息',
 'printableversion'  => '可打印版本',
 'permalink'         => '永久链接',
 'print'             => '打印',
@@ -398,7 +388,6 @@ MySQL回到错误“$3: $4”。',
 'cascadeprotected'     => '个页已拖保护，因为佢拖“联锁保护”𠮶{{PLURAL:$1|一只|几只}}拖保护页包到：
 $2',
 'namespaceprotected'   => "倷冇权编写'''$1'''空间里度𠮶页面。",
-'customcssjsprotected' => '倷冇权编写个页，佢含到别𠮶用户𠮶个人设定。',
 'ns-specialprotected'  => '编写伓正{{ns:special}}空间𠮶页面。',
 
 # Virus scanner
@@ -957,10 +946,6 @@ $2',
 'destfilename'                => '目标档案名:',
 'watchthisupload'             => '眏到个页',
 'filewasdeleted'              => '先前有只同名档案上传后又拖删吥嘞。上传个只档案之前倷非要检查$1。',
-'upload-wasdeleted'           => "'''警告: 倷于今上传𠮶档案系先前删过𠮶。'''
-
-倷要想正系真𠮶上传个只档案。
-为到方便起见，个只档案𠮶删除记录到下底提供嘞:",
 'filename-bad-prefix'         => "倷上传𠮶档案名系以'''\"\$1\"'''做开头𠮶，通常个种冇意义𠮶名字系数码相机度𠮶自动编排。请到倷𠮶档案拣过只更加有意义𠮶名字。",
 'upload-success-subj'         => '上传正嘞',
 
@@ -1240,9 +1225,7 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'watchlistanontext'    => '请$1眵吖或改吖倷𠮶监视列表。',
 'watchnologin'         => '冇登入',
 'watchnologintext'     => '倷要[[Special:UserLogin|登入]]起才改得正倷𠮶监视列表。',
-'addedwatch'           => '加到嘞监视列表',
 'addedwatchtext'       => "页面\"[[:\$1]]\" 加到嘞倷𠮶[[Special:Watchlist|监视列表]]。个页同佢𠮶讨论页𠮶全部改动以后都会列到许首，佢会用'''粗体''' 列到[[Special:RecentChanges|最近更改]]让倷更加容易识别。 倷以后要系拿佢到监视列表删卟佢𠮶话，就到导航条点吖“莫眏到”。",
-'removedwatch'         => '莫眏到',
 'removedwatchtext'     => '页面"$1"到倷𠮶监视列表删卟嘞。',
 'watch'                => '眏到',
 'watchthispage'        => '眏到个页',
@@ -1285,7 +1268,7 @@ $NEWPAGE
 
 本站: $PAGEEDITOR_WIKI 今后伓会通知倷将来𠮶改动，除非接到来到个页。倷也能设过倷全部监视页𠮶通知标记。
 
-{{SITENAME}}通知系统 – 会改卟倷𠮶监视列表设置，请去 {{fullurl:{{#special:Watchlist}}/edit}}
+{{SITENAME}}通知系统 – 会改卟倷𠮶监视列表设置，请去 {{fullurl:{{#special:EditWatchlist}}}}
 
 回馈同到别𠮶说明: {{fullurl:{{MediaWiki:Helppage}}}}',
 
@@ -1739,9 +1722,7 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'monobook.js' => '/* 伓再使用；请用[[MediaWiki:common.js]] */',
 
 # Metadata
-'nodublincore'      => 'Dublin Core RDF metadata到个只服务器用伓正。',
-'nocreativecommons' => 'Creative Commons RDF metadata到个只服务器用伓正。',
-'notacceptable'     => '个只网站服务器提供伓正倷𠮶用户端认得𠮶格式。',
+'notacceptable' => '个只网站服务器提供伓正倷𠮶用户端认得𠮶格式。',
 
 # Attribution
 'anonymous'        => '{{SITENAME}}𠮶匿名用户',
@@ -1762,14 +1743,6 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'spambot_username'    => 'MediaWiki 广告清除',
 'spam_reverting'      => '返回到伓包连到$1最晏𠮶版本',
 'spam_blanking'       => '全部包含连到$1𠮶改动，留空',
-
-# Info page
-'infosubtitle'   => '页面𠮶信息',
-'numedits'       => '编辑数 （文章）: $1',
-'numtalkedits'   => '编辑数 （讨论页）: $1',
-'numwatchers'    => '监视人数: $1',
-'numauthors'     => '作者人数 （文章）: $1',
-'numtalkauthors' => '作者人数 （讨论页）: $1',
 
 # Patrolling
 'markaspatrolleddiff'                 => '标到系检查过𠮶',

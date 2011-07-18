@@ -379,7 +379,9 @@ class DatabaseIbm_db2 extends DatabaseBase {
 	 * Opens a cataloged database connection, sets mConn
 	 */
 	protected function openCataloged( $dbName, $user, $password ) {
-		@$this->mConn = db2_pconnect( $dbName, $user, $password );
+		wfSuppressWarnings();
+		$this->mConn = db2_pconnect( $dbName, $user, $password );
+		wfRestoreWarnings();
 	}
 
 	/**
@@ -388,7 +390,9 @@ class DatabaseIbm_db2 extends DatabaseBase {
 	protected function openUncataloged( $dbName, $user, $password, $server, $port )
 	{
 		$dsn = "DRIVER={IBM DB2 ODBC DRIVER};DATABASE=$dbName;CHARSET=UTF-8;HOSTNAME=$server;PORT=$port;PROTOCOL=TCPIP;UID=$user;PWD=$password;";
-		@$this->mConn = db2_pconnect($dsn, "", "", array());
+		wfSuppressWarnings();
+		$this->mConn = db2_pconnect($dsn, "", "", array());
+		wfRestoreWarnings();
 	}
 
 	/**
@@ -453,10 +457,8 @@ class DatabaseIbm_db2 extends DatabaseBase {
 	 * The DBMS-dependent part of query()
 	 * @param  $sql String: SQL query.
 	 * @return object Result object for fetch functions or false on failure
-	 * @access private
 	 */
-	/*private*/
-	public function doQuery( $sql ) {
+	protected function doQuery( $sql ) {
 		$this->applySchema();
 		
 		// Needed to handle any UTF-8 encoding issues in the raw sql
@@ -503,7 +505,7 @@ class DatabaseIbm_db2 extends DatabaseBase {
 		}
 
 		// If the table exists, there should be one of it
-		@$row = $this->fetchRow( $res );
+		$row = $this->fetchRow( $res );
 		$count = $row[0];
 		if ( $count == '1' || $count == 1 ) {
 			return true;
@@ -525,7 +527,9 @@ class DatabaseIbm_db2 extends DatabaseBase {
 		if ( $res instanceof ResultWrapper ) {
 			$res = $res->result;
 		}
-		@$row = db2_fetch_object( $res );
+		wfSuppressWarnings();
+		$row = db2_fetch_object( $res );
+		wfRestoreWarnings();
 		if( $this->lastErrno() ) {
 			throw new DBUnexpectedError( $this, 'Error in fetchObject(): '
 				. htmlspecialchars( $this->lastError() ) );
@@ -546,7 +550,9 @@ class DatabaseIbm_db2 extends DatabaseBase {
 			$res = $res->result;
 		}
 		if ( db2_num_rows( $res ) > 0) {
-			@$row = db2_fetch_array( $res );
+			wfSuppressWarnings();
+			$row = db2_fetch_array( $res );
+			wfRestoreWarnings();
 			if ( $this->lastErrno() ) {
 				throw new DBUnexpectedError( $this, 'Error in fetchRow(): '
 					. htmlspecialchars( $this->lastError() ) );
@@ -554,45 +560,6 @@ class DatabaseIbm_db2 extends DatabaseBase {
 			return $row;
 		}
 		return false;
-	}
-
-	/**
-	 * Create tables, stored procedures, and so on
-	 */
-	public function setup_database() {
-		try {
-			// TODO: switch to root login if available
-
-			// Switch into the correct namespace
-			$this->applySchema();
-			$this->begin();
-
-			$res = $this->sourceFile( "../maintenance/ibm_db2/tables.sql" );
-			if ( $res !== true ) {
-				print ' <b>FAILED</b>: ' . htmlspecialchars( $res ) . '</li>';
-			} else {
-				print ' done</li>';
-			}
-			$res = $this->sourceFile( "../maintenance/ibm_db2/foreignkeys.sql" );
-			if ( $res !== true ) {
-				print ' <b>FAILED</b>: ' . htmlspecialchars( $res ) . '</li>';
-			} else {
-				print '<li>Foreign keys done</li>';
-			}
-
-			// TODO: populate interwiki links
-
-			if ( $this->lastError() ) {
-				$this->installPrint(
-					'Errors encountered during table creation -- rolled back' );
-				$this->installPrint( 'Please install again' );
-				$this->rollback();
-			} else {
-				$this->commit();
-			}
-		} catch ( MWException $mwe ) {
-			print "<br><pre>$mwe</pre><br>";
-		}
 	}
 
 	/**
@@ -1070,63 +1037,6 @@ class DatabaseIbm_db2 extends DatabaseBase {
 	}
 
 	/**
-	 * Simulates REPLACE with a DELETE followed by INSERT
-	 * @param $table Object
-	 * @param $uniqueIndexes Array consisting of indexes and arrays of indexes
-	 * @param $rows Array: rows to insert
-	 * @param $fname String: name of the function for profiling
-	 * @return nothing
-	 */
-	function replace( $table, $uniqueIndexes, $rows,
-		$fname = 'DatabaseIbm_db2::replace' )
-	{
-		$table = $this->tableName( $table );
-
-		if ( count( $rows )==0 ) {
-			return;
-		}
-
-		# Single row case
-		if ( !is_array( reset( $rows ) ) ) {
-			$rows = array( $rows );
-		}
-
-		foreach( $rows as $row ) {
-			# Delete rows which collide
-			if ( $uniqueIndexes ) {
-				$sql = "DELETE FROM $table WHERE ";
-				$first = true;
-				foreach ( $uniqueIndexes as $index ) {
-					if ( $first ) {
-						$first = false;
-						$sql .= '( ';
-					} else {
-						$sql .= ' ) OR ( ';
-					}
-					if ( is_array( $index ) ) {
-						$first2 = true;
-						foreach ( $index as $col ) {
-							if ( $first2 ) {
-								$first2 = false;
-							} else {
-								$sql .= ' AND ';
-							}
-							$sql .= $col . '=' . $this->addQuotes( $row[$col] );
-						}
-					} else {
-						$sql .= $index . '=' . $this->addQuotes( $row[$index] );
-					}
-				}
-				$sql .= ' )';
-				$this->query( $sql, $fname );
-			}
-
-			# Now insert the row
-			$this->insert($table, $row);
-		}
-	}
-
-	/**
 	 * Returns the number of rows in the result set
 	 * Has to be called right after the corresponding select query
 	 * @param $res Object result set
@@ -1170,7 +1080,10 @@ class DatabaseIbm_db2 extends DatabaseBase {
 		if ( $res instanceof ResultWrapper ) {
 			$res = $res->result;
 		}
-		if ( !@db2_free_result( $res ) ) {
+		wfSuppressWarnings();
+		$ok = db2_free_result( $res );
+		wfRestoreWarnings();
+		if ( !$ok ) {
 			throw new DBUnexpectedError( $this, "Unable to free DB2 result\n" );
 		}
 	}
@@ -1349,14 +1262,6 @@ class DatabaseIbm_db2 extends DatabaseBase {
 	######################################
 	/**
 	 * Not implemented
-	 * @return string ''
-	 */
-	public function getStatus( $which = '%' ) {
-		$this->installPrint( 'Not implemented for DB2: getStatus()' );
-		return '';
-	}
-	/**
-	 * Not implemented
 	 * @return string $sql
 	 */
 	public function limitResultForUpdate( $sql, $num ) {
@@ -1477,39 +1382,6 @@ SQL;
 		$row = $this->fetchObject( $res );
 		$size = $row->size;
 		return $size;
-	}
-
-	/**
-	 * DELETE where the condition is a join
-	 * @param $delTable String: deleting from this table
-	 * @param $joinTable String: using data from this table
-	 * @param $delVar String: variable in deleteable table
-	 * @param $joinVar String: variable in data table
-	 * @param $conds Array: conditionals for join table
-	 * @param $fname String: function name for profiling
-	 */
-	public function deleteJoin( $delTable, $joinTable, $delVar, $joinVar,
-		$conds, $fname = "DatabaseIbm_db2::deleteJoin" )
-	{
-		if ( !$conds ) {
-			throw new DBUnexpectedError( $this,
-				'DatabaseIbm_db2::deleteJoin() called with empty $conds' );
-		}
-
-		$delTable = $this->tableName( $delTable );
-		$joinTable = $this->tableName( $joinTable );
-		$sql = <<<SQL
-DELETE FROM $delTable
-WHERE $delVar IN (
-	SELECT $joinVar FROM $joinTable
-
-SQL;
-		if ( $conds != '*' ) {
-			$sql .= 'WHERE ' . $this->makeList( $conds, LIST_AND );
-		}
-		$sql .= ' )';
-
-		$this->query( $sql, $fname );
 	}
 
 	/**

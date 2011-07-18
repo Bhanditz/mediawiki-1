@@ -262,15 +262,6 @@ $messages = array(
 'noindex-category'               => 'Mga pahinang walang talatuntunan',
 'broken-file-category'           => 'Mga pahina na may sirang mga kawing ng talaksan',
 
-'mainpagetext'      => "'''Matagumpay na ininstala ang MediaWiki.'''",
-'mainpagedocfooter' => "Silipin ang [http://meta.wikimedia.org/wiki/Help:Contents Patnubay sa Tagagamit] (''\"User's Guide\"'') para sa kaalaman sa paggamit ng wiking ''software''.
-
-== Pagsisimula ==
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Tala ng mga nakatakdang kumpigurasyon]
-* [http://www.mediawiki.org/wiki/Manual:FAQ Mga malimit itanong sa MediaWiki]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Tala ng mga pinadadalhan ng liham ng MediaWiki]",
-
 'about'         => 'Patungkol',
 'article'       => 'Pahina ng nilalaman',
 'newwindow'     => '(magbubukas sa bagong bintana)',
@@ -321,7 +312,6 @@ $messages = array(
 'history'           => 'Kasaysayan ng pahina',
 'history_short'     => 'Kasaysayan',
 'updatedmarker'     => 'isinapanahon mula noong huli kong pagdalaw',
-'info_short'        => 'Kabatiran',
 'printableversion'  => 'Bersyong maililimbag',
 'permalink'         => 'Palagiang kawing',
 'print'             => 'Ilimbag',
@@ -525,7 +515,6 @@ Para sa mga salinwika, paki isang-alang-alang o konsiderahin ang paggamit ng [ht
 'cascadeprotected'     => 'Nakasanggalang ang pahinang ito mula sa mga pagbabago, dahil kabilang ito sa sumusunod na {{PLURAL:$1|pahinang|mga pahinang}} nakasanggalang sa pamamagitan ng binuhay na opsyong "nahuhulog" (kumakaskada):
 $2',
 'namespaceprotected'   => "Wala kang pahintulot na magbago ng mga pahinang nasa ngalan-espasyong '''$1'''.",
-'customcssjsprotected' => 'Wala kang pahintulot na baguhin ang pahinang ito, dahil naglalaman ito ng mga kagustuhang pansarili ng ibang tagagamit.',
 'ns-specialprotected'  => 'Hindi pwedeng baguhin ang mga natatanging pahina.',
 'titleprotected'       => "Nakasanggalang ang pamagat na ito mula sa paglikha ni [[User:$1|$1]].
 Ang ibinigay na dahilan ay ''$2''.",
@@ -586,7 +575,7 @@ Tiyaking mayroon kang pinagaganang mga otap, ikargang muli ang pahinang ito at s
 'nosuchuser'                 => 'Walang tagagamit na may pangalang "$1".
 Maselan sa pagtitipa ang mga pangalan ng tagagamit.
 Suriin ang iyong pagbabaybay, o [[Special:UserLogin/signup|lumikha ng bagong kuwenta]].',
-'nosuchusershort'            => 'Walang tagagamit na may pangalang "<nowiki>$1</nowiki>".
+'nosuchusershort'            => 'Walang tagagamit na may pangalang "$1".
 Pakitingnan ang iyong pagbabaybay.',
 'nouserspecified'            => 'Kailangang tukuyin mo ang isang pangalang pantagagamit.',
 'login-userblocked'          => 'Hinarang ang tagagamit na ito.  Hindi pinahihintulutan ang paglalagda.',
@@ -789,13 +778,13 @@ o [{{fullurl:{{FULLPAGENAME}}|action=edit}} baguhin ang pahinang ito]</span>.',
 'noarticletext-nopermission'       => 'Kasalukuyang walang teksto sa pahinang ito.
 Maaari mong [[Special:Search/{{PAGENAME}}|hanapin ang pamagat ng pahinang ito]] sa ibang mga pahina,
 o <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} maghanap sa kaugnay na mga talaan]</span>.',
-'userpage-userdoesnotexist'        => 'Hindi nakatala ang kuwenta ng tagagamit na "$1".
+'userpage-userdoesnotexist'        => 'Hindi nakatala ang kuwenta ng tagagamit na "<nowiki>$1</nowiki>".
 Pakisuri kung ibig mong likhain/baguhin ang pahinang ito.',
 'userpage-userdoesnotexist-view'   => 'Hindi nakatala ang kuwenta ng tagagamit na "$1".',
 'blocked-notice-logextract'        => 'Kasalukuyang hinarang ang tagagamit na ito.
 Ang pinakahuling entrada sa talaan  ng pagharang ay ibinigay sa baba para sa inyong pagsasangguni:',
 'clearyourcache'                   => "'''Tandaan: Pagkatapos magtala, dapat linisin mo ang baunan ng iyong pambasa-basa upang makita ang mga pagbabago.'''
-'''Mozilla / Firefox / Safari:''' panatilihing nakapindot ang ''Shift'' habang kiniklik ang ''Reload'', o pindutin ang ''Ctrl-F5'' o ''Ctrl-R'' (''Command-R'' sa isang Macintosh);
+'''Mozilla / Firefox / Safari:''' panatilihing nakapindot ang ''Shift'' habang kiniklik ang ''Reload'', o pindutin ang ''Ctrl-F5'' o ''Ctrl-R'' (''Command-R'' sa isang Mac);
 '''Konqueror:''' i-klik ang ''Reload'' o pindutin ang ''F5'';
 '''Opera:''' linisin ang baunan sa ''Tools → Preferences'';
 '''Internet Explorer:''' panatilihing nakapindot ang ''Ctrl'' habang kiniklik ang ''Refresh'', o pindutin ang ''Ctrl-F5''.",
@@ -1191,7 +1180,9 @@ Subuking lagyan ng unlapi/paunang ''all:'' upang hanapin ang lahat ng mga nialal
 'prefs-skin'                    => 'Pabalat',
 'skin-preview'                  => 'Unang tingin',
 'datedefault'                   => 'Walang kagustuhan',
+'prefs-beta'                    => 'Mga kaangkapang-katangiang pang-beta',
 'prefs-datetime'                => 'Petsa at oras',
+'prefs-labs'                    => 'Mga kasangkapang-katangiang pang-Labs',
 'prefs-personal'                => 'Sanligang pangkatangian ng tagagamit',
 'prefs-rc'                      => 'Kamakailan lamang na mga pagbabago',
 'prefs-watchlist'               => 'Talaan ng mga binabantayan',
@@ -1596,10 +1587,6 @@ bumalik at ikarga ang talaksan na ito sa bagong pangalan. [[File:$1|thumb|center
 'upload-options'              => 'Ikargang pataas ang mga pagpipilian',
 'watchthisupload'             => 'Bantayan ang talaksang ito',
 'filewasdeleted'              => 'Isang talaksan na may ganitong pangalan ay naikarga dati at nabura. Kailangan mong tingnan ang $1 bago magpatuloy sa pagkarga nito muli.',
-'upload-wasdeleted'           => "'''Babala: Kinakarga mo ang isang talaksan na nabura na.'''
-
-Ikunsidera mo kung nararapat ba na ipagpatuloy ang pagkarga ng talaksang ito.
-Ibinigay ang tala ng pagbura ng talaksang ito para konbinyente:",
 'filename-bad-prefix'         => "Ang talaksan na ikakarga mo ay nagsisimula sa '''\"\$1\"''', na isang hindi naglalarawang pangalan na karaniwang tinatakda ng mga kamerang digital. Paki pili ang isang mas naglalarawang pangalan para sa iyong talaksan.",
 'upload-success-subj'         => 'Matagumpay na pagkakarga',
 'upload-success-msg'          => 'Matagumpay ang ikinarga mo mula sa [$2].  Makukuha ito mula rito: [[:{{ns:file}}:$1]]',
@@ -1723,7 +1710,6 @@ Ipinapakita sa sumusunod na talaan ang {{PLURAL:$1|unang pahina lamang|unang $1 
 Mayroong makukuhang [[Special:WhatLinksHere/$2|buong talaan]].',
 'nolinkstoimage'            => 'Walang pahinang nakakawing sa talaksang ito.',
 'morelinkstoimage'          => 'Tingnan ang [[Special:WhatLinksHere/$1|mas marami pang mga kawing]] para sa pahinang ito.',
-'redirectstofile'           => 'Tumuturo ang sumusunod na {{PLURAL:$1|talaksan|$1 mga talaksan}} patungo sa talaksang ito:',
 'duplicatesoffile'          => 'Ang sumusunod na {{PLURAL:$1|file is a duplicate|$1 mga talaksan ay mga kapareho}} ng talaksang ito ([[Special:FileDuplicateSearch/$2|mas marami pang mga detalye]]):',
 'sharedupload'              => 'Ang talaksang ito ay nagmula sa $1 at maaaring gamitin ng iba pang mga proyekto.',
 'sharedupload-desc-there'   => 'Ang talaksang ito ay nagmula sa $1 at maaaring gamitin sa ibang mga proyekto.
@@ -2046,10 +2032,8 @@ Ang ipinasok mong adres ng e-liham sa [[Special:Preferences|iyong mga kagustuhan
 'watchlistanontext'    => 'Paki $1 upang makita o mabago ang mga aytem sa iyong binabantayan.',
 'watchnologin'         => 'Di ka naka-lagda',
 'watchnologintext'     => 'Dapat kang [[Special:UserLogin|nakalagda]] upang mabago ang talaan mo ng mga binabantayan.',
-'addedwatch'           => 'Dinagdag na sa mga Babantayan',
 'addedwatchtext'       => "Dinagdag na ang pahinang \"[[:\$1]]\" sa iyong [[Special:Watchlist|Babantayan]].
 Makikita doon ang lahat ng mga susunod na pagbabago sa pahinang ito pati na ang usapang pahina, at ang pahina ay makikitang sa '''malalaking titik''' ('''''bold''''') sa [[Special:RecentChanges|tala ng mga huling binago]] para madaling makita.",
-'removedwatch'         => 'Tinigil na ang pagbabantay',
 'removedwatchtext'     => 'Ang pahinang "[[:$1]]" ay tinanggal na mula sa [[Special:Watchlist|iyong talaan ng binabantayan]].',
 'watch'                => 'Bantayan ito',
 'watchthispage'        => 'Bantayan ang pahinang ito',
@@ -2181,7 +2165,7 @@ Tingnan ang [[Special:ProtectedPages|talaan ng nakasanggalang na mga pahina]] pa
 'protect_expiry_invalid'      => 'Hindi tanggap/hindi tama ang oras ng pagtatapos.',
 'protect_expiry_old'          => 'Nasa nakaraan ang oras ng pagtatapos.',
 'protect-unchain-permissions' => 'Huwag ikandado ang iba pang mga pagpipilian ng pagprutekta',
-'protect-text'                => "Maaari mong tingnan at baguhin dito ang antas ng pananananggalang para sa pahinang '''<nowiki>$1</nowiki>'''.",
+'protect-text'                => "Maaari mong tingnan at baguhin dito ang antas ng pananananggalang para sa pahinang '''$1'''.",
 'protect-locked-blocked'      => "Hindi mo maaaring baguhin ang mga antas ng panananggalang habang may pagharang/paghadlang.
 Narito ang mga pangkasalukuyang pagtatakda para sa pahinang '''$1''':",
 'protect-locked-dblock'       => "Hindi mababago ang mga antas ng panananggalang dahil sa isang umiiral na pagkandado ng kalipunan ng dato.
@@ -2760,9 +2744,7 @@ Sagipin mo ito sa iyong kompyuter at papaitaas na ikarga ito rito.',
 'modern.js'      => '/* Anumang JavaScript dito ay ikakarga para sa mga tagagamit na gumagamit ng Makabagong pabalat */',
 
 # Metadata
-'nodublincore'      => 'Hindi pinagana ang metadatang Dublin Core RDF para sa serbidor na ito.',
-'nocreativecommons' => 'Hindi pinagana ang metadatang Creative Commons RDF para sa serbidor na ito.',
-'notacceptable'     => 'Hindi makapagbigay ng dato ang serbidor ng wiki sa anyong mababasa ng iyong kliyente.',
+'notacceptable' => 'Hindi makapagbigay ng dato ang serbidor ng wiki sa anyong mababasa ng iyong kliyente.',
 
 # Attribution
 'anonymous'        => 'Hindi kilalang {{PLURAL:$1|tagagamit|mga tagagamit}} ng {{SITENAME}}',
@@ -2784,14 +2766,6 @@ Maaaring dahil ito sa isang kawing sa isang nakatalang hinarang dahil di-kinaisn
 'spambot_username'    => "Paglilinis ng ''spam'' ng MediaWiki",
 'spam_reverting'      => "Ibinabalik sa huling bersyon na 'di-naglalaman ng mga kawing sa $1",
 'spam_blanking'       => 'Lahat ng mga pagbabago ay naglalaman ng mga kawing sa $1, pagpapatlang',
-
-# Info page
-'infosubtitle'   => 'Kabatiran para sa pahina',
-'numedits'       => 'Bilang ng mga pagbabago (pahina): $1',
-'numtalkedits'   => 'Bilang ng mga pagbabago (pahinang usapan): $1',
-'numwatchers'    => 'Bilang ng mga tagatingin: $1',
-'numauthors'     => 'Bilang ng mga bukdo-tanging mga may-akda (pahina): $1',
-'numtalkauthors' => 'Bilang ng bukod-tanging mga may-akda (pahinang usapan): $1',
 
 # Skin names
 'skinname-standard'    => 'Klasiko',
@@ -2845,6 +2819,7 @@ Maaaring manganib ang iyong sistema kapag ipinagana mo ito.",
 'widthheightpage'        => '$1×$2, $3 {{PLURAL:$3|pahina|mga pahina}}',
 'file-info'              => 'sukat ng talaksan: $1, tipo ng MIME: $2',
 'file-info-size'         => '$1 × $2 piksel, sukat ng talaksan: $3, tipo ng MIME: $4',
+'file-info-size-pages'   => '$1 × $2 mga piksel, sukat ng talaksan: $3, uri ng MIME: $4, $5 {{PLURAL:$5|pahina|mga pahina}}',
 'file-nohires'           => '<small>Walang makuhang mas mataas na resolusyon (kalinawan).</small>',
 'svg-long-desc'          => 'Talaksang SVG, nasa mga bilang na $1 × $2 mga piksel, sukat ng talaksan: $3',
 'show-big-image'         => 'Buong resolusyon (kalinawan)',
@@ -3625,5 +3600,20 @@ Ipasok ang pangalan ng talaksan na hindi kasama ang unlaping "{{ns:image}}:".',
 # SQLite database support
 'sqlite-has-fts' => '$1 na may suportang paghahanap ng buong teksto',
 'sqlite-no-fts'  => '$1 na walang suporta ng paghahanap ng buong teksto',
+
+# Add categories per AJAX
+'ajax-add-category'            => 'Magdagdag ng kategorya',
+'ajax-add-category-submit'     => 'Idagdag',
+'ajax-confirm-title'           => 'Tiyakin ang galaw',
+'ajax-confirm-prompt'          => 'Maaari kang magbigay ng buod ng pagbabago sa ibaba.
+Pindutin ang "Itala"upang maitala ang iyong pagbabago.',
+'ajax-confirm-save'            => 'Sagipin',
+'ajax-add-category-summary'    => 'Idagdag ang kategoryang "$1"',
+'ajax-remove-category-summary' => 'Tanggalin ang kategoryang "$1"',
+'ajax-confirm-actionsummary'   => 'Ang gagawing galaw:',
+'ajax-error-title'             => 'Kamalian',
+'ajax-error-dismiss'           => 'Okey',
+'ajax-remove-category-error'   => 'Hindi naging maaari ang pagtanggal ng ganitong kategorya.
+Karaniwang nagaganap ito kapag nadaragdag ang kategorya sa pahinang nasa loob ng isang suleras.',
 
 );

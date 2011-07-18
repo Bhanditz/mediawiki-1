@@ -227,7 +227,7 @@ class RefreshLinks extends Maintenance {
 		$dbw->commit();
 	}
 
-	/*
+	/**
 	 * Removes non-existing links from pages from pagelinks, imagelinks,
 	 * categorylinks, templatelinks and externallinks tables.
 	 *
@@ -251,6 +251,9 @@ class RefreshLinks extends Maintenance {
 			'categorylinks' => 'cl_from',
 			'templatelinks' => 'tl_from',
 			'externallinks' => 'el_from',
+			'iwlinks' => 'iwl_from',
+			'langlinks' => 'll_from',
+			'redirect' => 'rd_from',
 		);
 
 		foreach ( $linksTables as $table => $field ) {

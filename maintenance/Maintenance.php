@@ -27,12 +27,9 @@ define( 'DO_MAINTENANCE', RUN_MAINTENANCE_IF_MAIN ); // original name, harmless
 $maintClass = false;
 
 // Make sure we're on PHP5 or better
-if ( version_compare( PHP_VERSION, '5.2.3' ) < 0 ) {
-	die ( "Sorry! This version of MediaWiki requires PHP 5.2.3; you are running " .
-		PHP_VERSION . ".\n\n" .
-		"If you are sure you already have PHP 5.2.3 or higher installed, it may be\n" .
-		"installed in a different path from PHP " . PHP_VERSION . ". Check with your system\n" .
-		"administrator.\n" );
+if ( !function_exists( 'version_compare' ) || version_compare( PHP_VERSION, '5.2.3' ) < 0 ) {
+	require_once( dirname( __FILE__ ) . '/../includes/PHPVersionError.php' );
+	wfPHPVersionError( 'cli' );
 }
 
 // Wrapper for posix_isatty()
@@ -107,6 +104,9 @@ abstract class Maintenance {
 	private $mGenericParameters = array();
 	// Generic options which might or not be supported by the script
 	private $mDependantParameters = array();
+
+	// Used by getDD() / setDB()
+	private $mDb = null;
 
 	/**
 	 * List of all the core maintenance scripts. This is added
@@ -311,9 +311,9 @@ abstract class Maintenance {
 	 * Throw an error to the user. Doesn't respect --quiet, so don't use
 	 * this for non-error output
 	 * @param $err String: the error to display
-	 * @param $die Boolean: If true, go ahead and die out.
+	 * @param $die Int: if > 0, go ahead and die out using this int as the code
 	 */
-	protected function error( $err, $die = false ) {
+	protected function error( $err, $die = 0 ) {
 		$this->outputChanneled( false );
 		if ( php_sapi_name() == 'cli' ) {
 			fwrite( STDERR, $err . "\n" );
@@ -322,8 +322,9 @@ abstract class Maintenance {
 			fwrite( $f, $err . "\n" );
 			fclose( $f );
 		}
-		if ( $die ) {
-			die();
+		$die = intval( $die );
+		if ( $die > 0 ) {
+			die( $die );
 		}
 	}
 
@@ -448,6 +449,9 @@ abstract class Maintenance {
 
 		$child = new $maintClass();
 		$child->loadParamsAndArgs( $this->mSelf, $this->mOptions, $this->mArgs );
+		if ( !is_null( $this->mDb ) ) {
+			$child->setDB( $this->mDb );
+		}
 		return $child;
 	}
 
@@ -593,10 +597,14 @@ abstract class Maintenance {
 			} elseif ( substr( $arg, 0, 2 ) == '--' ) {
 				# Long options
 				$option = substr( $arg, 2 );
+				if ( array_key_exists( $option, $options ) ) {
+					$this->error( "\nERROR: $option parameter given twice\n" );
+					$this->maybeHelp( true );
+				}
 				if ( isset( $this->mParams[$option] ) && $this->mParams[$option]['withArg'] ) {
 					$param = next( $argv );
 					if ( $param === false ) {
-						$this->error( "\nERROR: $option needs a value after it\n" );
+						$this->error( "\nERROR: $option parameter needs a value after it\n" );
 						$this->maybeHelp( true );
 					}
 					$options[$option] = $param;
@@ -617,10 +625,14 @@ abstract class Maintenance {
 					if ( !isset( $this->mParams[$option] ) && isset( $this->mShortParamsMap[$option] ) ) {
 						$option = $this->mShortParamsMap[$option];
 					}
+					if ( array_key_exists( $option, $options ) ) {
+						$this->error( "\nERROR: $option parameter given twice\n" );
+						$this->maybeHelp( true );
+					}
 					if ( isset( $this->mParams[$option]['withArg'] ) && $this->mParams[$option]['withArg'] ) {
 						$param = next( $argv );
 						if ( $param === false ) {
-							$this->error( "\nERROR: $option needs a value after it\n" );
+							$this->error( "\nERROR: $option parameter needs a value after it\n" );
 							$this->maybeHelp( true );
 						}
 						$options[$option] = $param;
@@ -923,12 +935,11 @@ abstract class Maintenance {
 	 * @return String
 	 */
 	public function loadSettings() {
-		global $wgWikiFarm, $wgCommandLineMode, $IP;
+		global $wgCommandLineMode, $IP;
 
-		$wgWikiFarm = false;
 		if ( isset( $this->mOptions['conf'] ) ) {
 			$settingsFile = $this->mOptions['conf'];
-		} else if ( defined("MW_CONFIG_FILE") ) {
+		} elseif ( defined("MW_CONFIG_FILE") ) {
 			$settingsFile = MW_CONFIG_FILE;
 		} else {
 			$settingsFile = "$IP/LocalSettings.php";
@@ -958,7 +969,7 @@ abstract class Maintenance {
 	 */
 	public function purgeRedundantText( $delete = true ) {
 		# Data should come off the master, wrapped in a transaction
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = $this->getDB( DB_MASTER );
 		$dbw->begin();
 
 		$tbl_arc = $dbw->tableName( 'archive' );
@@ -1059,6 +1070,30 @@ abstract class Maintenance {
 			}
 		}
 		return self::$mCoreScripts;
+	}
+
+	/**
+	 * Returns a database to be used by current maintenance script. It can be set by setDB().
+	 * If not set, wfGetDB() will be used.
+	 * This function has the same parameters as wfGetDB()
+	 *
+	 * @return DatabaseBase
+	 */
+	protected function &getDB( $db, $groups = array(), $wiki = false ) {
+		if ( is_null( $this->mDb ) ) {
+			return wfGetDB( $db, $groups, $wiki );
+		} else {
+			return $this->mDb;
+		}
+	}
+
+	/**
+	 * Sets database object to be returned by getDB().
+	 *
+	 * @param $db DatabaseBase: Database object to be used
+	 */
+	public function setDB( &$db ) {
+		$this->mDb = $db;
 	}
 
 	/**

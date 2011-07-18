@@ -210,8 +210,6 @@ $messages = array(
 'category-file-count-limited'    => 'Bat iyeltak {{PLURAL:$1|tir|$1 tid}} koe noeltafa loma.',
 'listingcontinuesabbrev'         => 'loon',
 
-'mainpagetext' => "'''MediaWiki inkeyen talpeyot.'''",
-
 'about'         => 'Icdeuca',
 'article'       => 'Teliz',
 'newwindow'     => '(ko ar dilk fenkur)',
@@ -245,7 +243,6 @@ $messages = array(
 'history'           => 'Buizvot',
 'history_short'     => 'Izvot',
 'updatedmarker'     => 'nuskeyen mali jinafa ironokafa worara',
-'info_short'        => 'Givara',
 'printableversion'  => 'Rorubian siatos',
 'permalink'         => 'Elubkafi gluyasiki',
 'print'             => 'Rubiara',
@@ -412,7 +409,6 @@ Erura : $2',
 'sqlhidden'            => '(SQL kucilara palsena)',
 'cascadeprotected'     => 'Batu bu icde betara zo nendar, kire va vlevefu {{PLURAL:$1|bu|bu}} pasur, danu kan tegisa "stoyakorafa" rotisaca zo nendad : $2',
 'namespaceprotected'   => "Va bu koe '''$1''' yoltxo me robetal !",
-'customcssjsprotected' => 'Va batu bu me robetal kire in va ar favesikaf titickaks ruldar.',
 'ns-specialprotected'  => 'Aptafu bu tir merobetanu.',
 'titleprotected'       => "Bat vergumvelt gan [[User:$1|$1]] zo reduranendar.
 Batdume : ''$2''.",
@@ -457,7 +453,7 @@ Va amidaf yolt gokiblal.',
 'nosuchuser'                 => '« $1 » favesik me krulder.
 Sutera va favesikyolt gotir eltaykoranhafa.
 Ageltal va rinaf suteks oke [[Special:UserLogin/signup|pataredura]].',
-'nosuchusershort'            => 'Me tir favesik digis va « <nowiki>$1</nowiki> » yolt. Va sutekaks ageltal.',
+'nosuchusershort'            => 'Me tir favesik digis va « $1 » yolt. Va sutekaks ageltal.',
 'nouserspecified'            => 'Va favesikyolt gobazel !',
 'wrongpassword'              => 'Remravlem tir volenaf. Tollwil !',
 'wrongpasswordempty'         => 'Remravlem bazeyen tir vlardaf.Vay tolon bazel !',
@@ -569,7 +565,7 @@ Rinaf tise IP mane tir $3 ise ID elekara tir #$5. Va bate ik bane mane ko kota e
 Vanmiae yonaru bu [[Special:Search/{{PAGENAME}}|va man buvergumvelt rotaneyal]],
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} va gluyan log robetal],
 oke [{{fullurl:{{FULLPAGENAME}}|action=edit}} va batu bu robetal]</span>.',
-'userpage-userdoesnotexist'        => '"$1" favesikpata me tir vuesteyena. Vay stujel ede va batu bu roredul ike robetal.',
+'userpage-userdoesnotexist'        => '"<nowiki>$1</nowiki>" favesikpata me tir vuesteyena. Vay stujel ede va batu bu roredul ike robetal.',
 'clearyourcache'                   => "'''Note :''' Après avoir sauvegardé, vous devez forcer le rechargement de la page pour voir les changements : '''Mozilla / Konqueror / Firefox''' : ''ctrl-shift-r'', '''IE''' : ''ctrl-f5'', '''Safari''' : ''cmd-shift-r''; '''Konqueror''' : ''f5''.",
 'usercssyoucanpreview'             => "'''Astuce :''' utilisez le bouton '''Prévisualisation''' pour tester votre nouvelle feuille css/js avant de l'enregistrer.",
 'userjsyoucanpreview'              => "'''Astuce :''' utilisez le bouton '''Prévisualisation''' pour tester votre nouvelle feuille css/js avant de l'enregistrer.",
@@ -1082,10 +1078,6 @@ Ede va man iyeltak soe co-djukalvajal, vay dimpil ise va warzaf yolt favel. [[Fi
 'destfilename'                => 'Warzaf iyeltakyolt:',
 'upload-maxfilesize'          => 'Cugafo iyeltakaldo : $1',
 'watchthisupload'             => 'Suzdara va batu bu',
-'upload-wasdeleted'           => "'''Obral: Rin va sulayan iyeltak djukalvajal.'''
-
-Gokrafial ede tolkalvajara va bat iyeltak tir vodanhafa.
-Sulara \"log\" va batu bu krafiason batlize zo nedir :",
 'upload-success-subj'         => 'Ksudanhara',
 
 'upload-proto-error'     => 'Kitsendaj',
@@ -1134,7 +1126,6 @@ Sulara \"log\" va batu bu krafiason batlize zo nedir :",
 'linkstoimage'              => 'Vlevefi {{PLURAL:$1|bugluyasiki|$1 bugluyasiki}} va bat iyeltak :',
 'nolinkstoimage'            => 'Meku bu va bata ewava ruldar.',
 'morelinkstoimage'          => 'Rupera va [[Special:WhatLinksHere/$1|lofi skedasiki]] va bat iyeltak.',
-'redirectstofile'           => 'Vlevef {{PLURAL:$1|graskan iyeltak|$1 graskan iyeltak}} va bat iyeltak :',
 'duplicatesoffile'          => 'Bat {{PLURAL:$1|iyeltak tir|$1 iyeltak tid}} jontolaca ke bat iyeltak ([[Special:FileDuplicateSearch/$2|lo pinta]]) :',
 'sharedupload'              => 'Bat iyeltak tir ke $1 ise gan ar abdumimaks zo rofaver.',
 'uploadnewversion-linktext' => 'Kalvajara va warzaf siatos ke bat iyeltak',
@@ -1376,12 +1367,10 @@ L'adresse électronique que vous avez indiquée dans vos préférences apparaît
 'watchlistanontext'    => 'Ta wira ik betara va ra ke rinafi suzdasiki vay $1.',
 'watchnologin'         => 'Dogluyariskaf',
 'watchnologintext'     => 'Ta betara va suzdasiki gotil [[Special:UserLogin|dogluyarakiraf]].',
-'addedwatch'           => 'Loplekuyun ko suzdasiki',
 'addedwatchtext'       => "« $1 » bu ko rinafi [[Special:Watchlist|Suzdasiki]] fu zo loplekur.
 Va moniyaf betareem va batu bu is dofu prilarabu batlize zo bonjatad, ise ta lokaliafa tcalutera telu '''ton bold''' koe bu dem [[Special:RecentChanges|noeltaf betakseem]] turowinaweter.
 
 Ta sulara va batu bu div rinafi suzdasiki, koe grablexo va « Mea suzdá » vulegal.",
-'removedwatch'         => 'Sulayanu div suzdasiki',
 'removedwatchtext'     => '« [[:$1]] » bu div rinafi suzdasiki al zo sular.',
 'watch'                => 'Suzdá',
 'watchthispage'        => 'Va batu bu suzdá',
@@ -1435,7 +1424,7 @@ You could also reset the notification flags for all your watched pages on your w
 
 --
 To change your watchlist settings, visit
-{{fullurl:{{#special:Watchlist}}/edit}}
+{{fullurl:{{#special:EditWatchlist}}}}
 
 Feedback and further assistance:
 {{fullurl:{{MediaWiki:Helppage}}}}',
@@ -1453,7 +1442,7 @@ Feedback and further assistance:
 'confirmdeletetext'      => 'Rin va bu is varaf izvot fu sulal.
 Vay gruyel da djuskul ise va maletireem vangrupel ise tarkason va [[{{MediaWiki:Policy-url}}|xoverteem]] askil !',
 'actioncomplete'         => 'Skuyuna sulara',
-'deletedtext'            => '« <nowiki>$1</nowiki> » tir sulayan.
+'deletedtext'            => '« $1 » tir sulayan.
 Ta vexala dem noeltaf sulareem va $2 disukel.',
 'deletedarticle'         => 'al sular va « [[$1]] »',
 'suppressedarticle'      => '"[[$1]]" sulayan',
@@ -1499,7 +1488,7 @@ Ironokafa betara gan [[User:$3|$3]] ([[User talk:$3|Prilara]]) zo skuyur.',
 'protectexpiry'               => 'Edjatena :',
 'protect_expiry_invalid'      => 'Edjatena me tir enafa.',
 'protect_expiry_old'          => 'Edjatena tir abdiugalafa.',
-'protect-text'                => "Rin va nendareka ke '''<nowiki>$1</nowiki>''' bu batlize rowil nume robetal.",
+'protect-text'                => "Rin va nendareka ke '''$1''' bu batlize rowil nume robetal.",
 'protect-locked-access'       => "Rinafa pata va betara va nendareka me rictar.
 Noeltaf plekukseem ke '''$1''' bu batlize tid :",
 'protect-cascadeon'           => 'Batu bu zo nendar kire va {{PLURAL:$1|bu disu|bu yo disu}} va tegisa stoyakorafa nendara pasur. Rin va nendareka va batu bu robetal vexe batcoba va stoyakorafa nendara me vanolatar.',
@@ -1869,9 +1858,7 @@ Va [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation] is [http:
 Ise va bazera va lazava ko vildeks nover.',
 
 # Metadata
-'nodublincore'      => 'Les métadonnées « Dublin Core RDF » sont désactivées sur ce serveur.',
-'nocreativecommons' => 'Les données méta « Creative Commons RDF » sont désactivées sur ce serveur.',
-'notacceptable'     => 'Ce serveur wiki ne peut pas fournir les données dans un format que votre client est capable de lire.',
+'notacceptable' => 'Ce serveur wiki ne peut pas fournir les données dans un format que votre client est capable de lire.',
 
 # Attribution
 'anonymous'        => 'Yoltiskaf {{PLURAL:$1|favesik|favesik}} va {{SITENAME}}',
@@ -1890,14 +1877,6 @@ Ise va bazera va lazava ko vildeks nover.',
 MediaWiki spam cleanup',
 'spam_reverting'      => 'Dimplekura va ironokaf siatos meruldas va gluyasiki do $1',
 'spam_blanking'       => 'Kot betaks ruldas va gluyasiki do $1, tuvlardara',
-
-# Info page
-'infosubtitle'   => 'Bugiva',
-'numedits'       => 'Telizota (teliz) : $1',
-'numtalkedits'   => 'Ota dem betaks (prilarabu): $1',
-'numwatchers'    => 'Disukerota : $1',
-'numauthors'     => 'Ota dem amidaf sutesik (teliz): $1',
-'numtalkauthors' => 'Ota va amidaf sutesik (prilarabu) : $1',
 
 # Patrolling
 'markaspatrolleddiff'                 => 'Marquer comme vérifiée',

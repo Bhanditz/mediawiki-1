@@ -93,7 +93,6 @@ $messages = array(
 'searcharticle'    => 'Và',
 'history'          => 'Cronolugia',
 'history_short'    => 'Cronolugia',
-'info_short'       => 'Infurmazione',
 'permalink'        => 'Ligame permanente',
 'print'            => 'Stampà',
 'edit'             => 'Mudificà',
@@ -350,7 +349,6 @@ U to indirizzu IP serà registratu indu a cronolugia di ista pagina.",
 # Watchlist
 'watchlist'   => 'Articuli seguitati',
 'mywatchlist' => 'Articuli seguitati',
-'addedwatch'  => "Aghjuntu à u listinu di l'articuli seguitati",
 'watch'       => 'Seguità',
 
 'enotif_reset'       => 'Marcà tutte e pagine visitate',

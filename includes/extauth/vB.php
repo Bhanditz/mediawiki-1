@@ -34,7 +34,7 @@
  *       'username' => 'forum',
  *       'password' => 'udE,jSqDJ<""p=fI.K9',
  *       'dbname' => 'forum',
- *       'tableprefix' => '',
+ *       'tablePrefix' => '',
  *       'cookieprefix' => 'bb'
  *   );
  *
@@ -109,7 +109,7 @@ class ExternalUser_vB extends ExternalUser {
 			$wgExternalAuthConf['password'],
 			$wgExternalAuthConf['dbname'],
 			0,
-			$wgExternalAuthConf['tableprefix']
+			$wgExternalAuthConf['tablePrefix']
 		);
 	}
 

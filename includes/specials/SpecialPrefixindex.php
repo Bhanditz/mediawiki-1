@@ -47,24 +47,28 @@ class SpecialPrefixindex extends SpecialAllpages {
 		# GET values
 		$from = $wgRequest->getVal( 'from', '' );
 		$prefix = $wgRequest->getVal( 'prefix', '' );
-		$namespace = $wgRequest->getInt( 'namespace' );
-		$namespaces = $wgContLang->getNamespaces();
+		$ns = $wgRequest->getIntOrNull( 'namespace' );
+		$namespace = (int)$ns; // if no namespace given, use 0 (NS_MAIN).
 
-		$wgOut->setPagetitle( ( $namespace > 0 && in_array( $namespace, array_keys( $namespaces ) ) )
-			? wfMsg( 'allinnamespace', str_replace( '_', ' ', $namespaces[$namespace] ) )
-			: wfMsg( 'prefixindex' )
+		$namespaces = $wgContLang->getNamespaces();
+		$wgOut->setPagetitle(
+			( $namespace > 0 && in_array( $namespace, array_keys( $namespaces ) ) )
+				? wfMsg( 'allinnamespace', str_replace( '_', ' ', $namespaces[$namespace] ) )
+				: wfMsg( 'prefixindex' )
 		);
 
 		$showme = '';
-		if( isset( $par ) ){
+		if( isset( $par ) ) {
 			$showme = $par;
-		} elseif( $prefix != '' ){
+		} elseif( $prefix != '' ) {
 			$showme = $prefix;
-		} elseif( $from != '' ){
+		} elseif( $from != '' ) {
 			// For back-compat with Special:Allpages
 			$showme = $from;
 		}
-		if ($showme != '' || $namespace) {
+
+		// Bug 27864: if transcluded, show all pages instead of the form.
+		if ( $this->including() || $showme != '' || $ns !== null ) {
 			$this->showPrefixChunk( $namespace, $showme, $from );
 		} else {
 			$wgOut->addHTML( $this->namespacePrefixForm( $namespace, null ) );
@@ -116,9 +120,9 @@ class SpecialPrefixindex extends SpecialAllpages {
 	 * @param $from String: list all pages from this name (default FALSE)
 	 */
 	function showPrefixChunk( $namespace = NS_MAIN, $prefix, $from = null ) {
-		global $wgOut, $wgUser, $wgContLang, $wgLang;
+		global $wgOut, $wgContLang, $wgLang;
 
-		$sk = $wgUser->getSkin();
+		$sk = $this->getSkin();
 
 		if (!isset($from)) $from = $prefix;
 
@@ -136,7 +140,7 @@ class SpecialPrefixindex extends SpecialAllpages {
 			list( $namespace, $prefixKey, $prefix ) = $prefixList;
 			list( /* $fromNS */, $fromKey, ) = $fromList;
 
-			### FIXME: should complain if $fromNs != $namespace
+			### @todo FIXME: Should complain if $fromNs != $namespace
 
 			$dbr = wfGetDB( DB_SLAVE );
 
@@ -155,7 +159,7 @@ class SpecialPrefixindex extends SpecialAllpages {
 				)
 			);
 
-			### FIXME: side link to previous
+			### @todo FIXME: Side link to previous
 
 			$n = 0;
 			if( $res->numRows() > 0 ) {
@@ -201,8 +205,7 @@ class SpecialPrefixindex extends SpecialAllpages {
 					<td>' .
 						$nsForm .
 					'</td>
-					<td id="mw-prefixindex-nav-form">' .
-						$sk->linkKnown( $self, wfMsgHtml( 'allpages' ) );
+					<td id="mw-prefixindex-nav-form">';
 
 			if( isset( $res ) && $res && ( $n == $this->maxPerPage ) && ( $s = $res->fetchObject() ) ) {
 				$query = array(

@@ -20,8 +20,8 @@
  * @file
  */
 class Block {
-	/* public*/ var $mReason, $mTimestamp, $mAuto, $mExpiry, $mHideName, $mAngryAutoblock;
-	
+	/* public*/ var $mReason, $mTimestamp, $mAuto, $mExpiry, $mHideName;
+
 	protected
 		$mId,
 		$mFromMaster,
@@ -54,7 +54,7 @@ class Block {
 
 	/**
 	 * Constructor
-	 * FIXME: Don't know what the best format to have for this constructor is, but fourteen
+	 * @todo FIXME: Don't know what the best format to have for this constructor is, but fourteen
 	 * optional parameters certainly isn't it.
 	 */
 	function __construct( $address = '', $user = 0, $by = 0, $reason = '',
@@ -84,7 +84,6 @@ class Block {
 		$this->prevents( 'editownusertalk', !$allowUsertalk );
 
 		$this->mFromMaster = false;
-		$this->mAngryAutoblock = false;
 	}
 
 	/**
@@ -94,7 +93,6 @@ class Block {
 	 *
 	 * @param $address String: IP address of user/anon
 	 * @param $user Integer: user id of user
-	 * @param $killExpired Boolean: delete expired blocks on load
 	 * @return Block Object
 	 * @deprecated since 1.18
 	 */
@@ -106,7 +104,7 @@ class Block {
 	 * Load a blocked user from their block id.
 	 *
 	 * @param $id Integer: Block id to search for
-	 * @return Block object
+	 * @return Block object or null
 	 */
 	public static function newFromID( $id ) {
 		$dbr = wfGetDB( DB_SLAVE );
@@ -116,13 +114,20 @@ class Block {
 			array( 'ipb_id' => $id ),
 			__METHOD__
 		);
-		return Block::newFromRow( $res );
+		if ( $res ) {
+			return Block::newFromRow( $res );
+		} else {
+			return null;
+		}
 	}
 
 	/**
 	 * Check if two blocks are effectively equal.  Doesn't check irrelevant things like
 	 * the blocking user or the block timestamp, only things which affect the blocked user	 *
-	 * @return Boolean
+	 *
+	 * @param $block Block
+	 *
+	 * @return bool
 	 */
 	public function equals( Block $block ) {
 		return (
@@ -154,7 +159,6 @@ class Block {
 	 *
 	 * @param $address string The IP address of the user, or blank to skip IP blocks
 	 * @param $user int The user ID, or zero for anonymous users
-	 * @param $killExpired bool Whether to delete expired rows while loading
 	 * @return Boolean: the user is blocked from editing
 	 * @deprecated since 1.18
 	 */
@@ -198,7 +202,8 @@ class Block {
 			$conds = array( 'ipb_address' => array() );
 		}
 
-		# Be aware that the != '' check is explicit, since empty values will be passed by some callers.
+		# Be aware that the != '' check is explicit, since empty values will be
+		# passed by some callers (bug 29116)
 		if( $vagueTarget != ''){
 			list( $target, $type ) = self::parseTarget( $vagueTarget );
 			switch( $type ) {
@@ -260,7 +265,7 @@ class Block {
 				# This has the nice property that a /32 block is ranked equally with a
 				# single-IP block, which is exactly what it is...
 				$score = self::TYPE_RANGE  - 1 + ( $size / 128 );
-				
+
 			} else {
 				$score = $block->getType();
 			}
@@ -388,6 +393,7 @@ class Block {
 	 * Insert a block into the block table. Will fail if there is a conflicting
 	 * block (same name and options) already in the database.
 	 *
+	 * @param $dbw DatabaseBase if you have one available
 	 * @return mixed: false on failure, assoc array on success:
 	 *	('id' => block ID, 'autoIds' => array of autoblock IDs)
 	 */
@@ -409,10 +415,11 @@ class Block {
 			array( 'IGNORE' )
 		);
 		$affected = $dbw->affectedRows();
+		$this->mId = $dbw->insertId();
 
 		if ( $affected ) {
 			$auto_ipd_ids = $this->doRetroactiveAutoblock();
-			return array( 'id' => $ipb_id, 'autoIds' => $auto_ipd_ids );
+			return array( 'id' => $this->mId, 'autoIds' => $auto_ipd_ids );
 		}
 
 		return false;
@@ -421,6 +428,9 @@ class Block {
 	/**
 	 * Update a block in the DB with new parameters.
 	 * The ID field needs to be loaded first.
+	 *
+	 * @return Int number of affected rows, which should probably be 1 or something's
+	 *     gone slightly awry
 	 */
 	public function update() {
 		wfDebug( "Block::update; timestamp {$this->mTimestamp}\n" );
@@ -477,43 +487,51 @@ class Block {
 	 */
 	protected function doRetroactiveAutoblock() {
 		$blockIds = array();
-
-		$dbr = wfGetDB( DB_SLAVE );
-		# If autoblock is enabled, autoblock the LAST IP used
-		# - stolen shamelessly from CheckUser_body.php
-
+		# If autoblock is enabled, autoblock the LAST IP(s) used
 		if ( $this->isAutoblocking() && $this->getType() == self::TYPE_USER ) {
 			wfDebug( "Doing retroactive autoblocks for " . $this->getTarget() . "\n" );
 
-			$options = array( 'ORDER BY' => 'rc_timestamp DESC' );
-			$conds = array( 'rc_user_text' => (string)$this->getTarget() );
+			$continue = wfRunHooks(
+				'PerformRetroactiveAutoblock', array( $this, &$blockIds ) );
 
-			if ( $this->mAngryAutoblock ) {
-				// Block any IP used in the last 7 days. Up to five IPs.
-				$conds[] = 'rc_timestamp < ' .
-					$dbr->addQuotes( $dbr->timestamp( time() - ( 7 * 86400 ) ) );
-				$options['LIMIT'] = 5;
-			} else {
-				// Just the last IP used.
-				$options['LIMIT'] = 1;
-			}
-
-			$res = $dbr->select( 'recentchanges', array( 'rc_ip' ), $conds,
-				__METHOD__ ,  $options );
-
-			if ( !$dbr->numRows( $res ) ) {
-				# No results, don't autoblock anything
-				wfDebug( "No IP found to retroactively autoblock\n" );
-			} else {
-				foreach ( $res as $row ) {
-					if ( $row->rc_ip ) {
-						$id = $this->doAutoblock( $row->rc_ip );
-						if ( $id ) $blockIds[] = $id;
-					}
-				}
+			if ( $continue ) {
+				self::defaultRetroactiveAutoblock( $this, $blockIds );
 			}
 		}
 		return $blockIds;
+	}
+
+	/**
+	 * Retroactively autoblocks the last IP used by the user (if it is a user)
+	 * blocked by this Block. This will use the recentchanges table.
+	 *
+	 * @param Block $block
+	 * @param Array &$blockIds
+	 * @return Array: block IDs of retroactive autoblocks made
+	 */
+	protected static function defaultRetroactiveAutoblock( Block $block, array &$blockIds ) {
+		$dbr = wfGetDB( DB_SLAVE );
+
+		$options = array( 'ORDER BY' => 'rc_timestamp DESC' );
+		$conds = array( 'rc_user_text' => (string)$block->getTarget() );
+
+		// Just the last IP used.
+		$options['LIMIT'] = 1;
+
+		$res = $dbr->select( 'recentchanges', array( 'rc_ip' ), $conds,
+			__METHOD__ ,  $options );
+
+		if ( !$dbr->numRows( $res ) ) {
+			# No results, don't autoblock anything
+			wfDebug( "No IP found to retroactively autoblock\n" );
+		} else {
+			foreach ( $res as $row ) {
+				if ( $row->rc_ip ) {
+					$id = $block->doAutoblock( $row->rc_ip );
+					if ( $id ) $blockIds[] = $id;
+				}
+			}
+		}
 	}
 
 	/**
@@ -572,58 +590,59 @@ class Block {
 			return false;
 		}
 
-		# Check for presence on the autoblock whitelist
+		# Check for presence on the autoblock whitelist.
 		if ( self::isWhitelistedFromAutoblocks( $autoblockIP ) ) {
 			return false;
 		}
 
-		# # Allow hooks to cancel the autoblock.
+		# Allow hooks to cancel the autoblock.
 		if ( !wfRunHooks( 'AbortAutoblock', array( $autoblockIP, &$this ) ) ) {
 			wfDebug( "Autoblock aborted by hook.\n" );
 			return false;
 		}
 
-		# It's okay to autoblock. Go ahead and create/insert the block.
+		# It's okay to autoblock. Go ahead and insert/update the block...
 
+		# Do not add a *new* block if the IP is already blocked.
 		$ipblock = Block::newFromTarget( $autoblockIP );
 		if ( $ipblock ) {
-			# If the user is already blocked. Then check if the autoblock would
-			# exceed the user block. If it would exceed, then do nothing, else
-			# prolong block time
-			if ( $this->mExpiry > Block::getAutoblockExpiry( $ipblock->mTimestamp )
+			# Check if the block is an autoblock and would exceed the user block
+			# if renewed. If so, do nothing, otherwise prolong the block time...
+			if ( $ipblock->mAuto && // @TODO: why not compare $ipblock->mExpiry?
+				$this->mExpiry > Block::getAutoblockExpiry( $ipblock->mTimestamp )
 			) {
-				# If the block is an autoblock, reset its timestamp to now and its expiry
-				# to an $wgAutoblockExpiry in the future; otherwise do nothing
+				# Reset block timestamp to now and its expiry to
+				# $wgAutoblockExpiry in the future
 				$ipblock->updateTimestamp();
 			}
 			return false;
-
 		}
 
-		# Make a new block object with the desired properties
+		# Make a new block object with the desired properties.
 		$autoblock = new Block;
 		wfDebug( "Autoblocking {$this->getTarget()}@" . $autoblockIP . "\n" );
 		$autoblock->setTarget( $autoblockIP );
 		$autoblock->setBlocker( $this->getBlocker() );
 		$autoblock->mReason = wfMsgForContent( 'autoblocker', $this->getTarget(), $this->mReason );
-		$autoblock->mTimestamp = wfTimestampNow();
+		$timestamp = wfTimestampNow();
+		$autoblock->mTimestamp = $timestamp;
 		$autoblock->mAuto = 1;
 		$autoblock->prevents( 'createaccount', $this->prevents( 'createaccount' ) );
 		# Continue suppressing the name if needed
 		$autoblock->mHideName = $this->mHideName;
 		$autoblock->prevents( 'editownusertalk', $this->prevents( 'editownusertalk' ) );
 
-		$dbr = wfGetDB( DB_READ );
+		$dbr = wfGetDB( DB_SLAVE );
 		if ( $this->mExpiry == $dbr->getInfinity() ) {
 			# Original block was indefinite, start an autoblock now
-			$autoblock->mExpiry = Block::getAutoblockExpiry( wfTimestampNow() );
+			$autoblock->mExpiry = Block::getAutoblockExpiry( $timestamp );
 		} else {
 			# If the user is already blocked with an expiry date, we don't
 			# want to pile on top of that.
-			$autoblock->mExpiry = min( $this->mExpiry, Block::getAutoblockExpiry( wfTimestampNow() ) );
+			$autoblock->mExpiry = min( $this->mExpiry, Block::getAutoblockExpiry( $timestamp ) );
 		}
 
-		# Insert it
+		# Insert the block...
 		$status = $autoblock->insert();
 		return $status
 			? $status['id']
@@ -655,12 +674,13 @@ class Block {
 	 * @return Boolean
 	 */
 	public function isExpired() {
-		wfDebug( "Block::isExpired() checking current " . wfTimestampNow() . " vs $this->mExpiry\n" );
+		$timestamp = wfTimestampNow();
+		wfDebug( "Block::isExpired() checking current " . $timestamp . " vs $this->mExpiry\n" );
 
 		if ( !$this->mExpiry ) {
 			return false;
 		} else {
-			return wfTimestampNow() > $this->mExpiry;
+			return $timestamp > $this->mExpiry;
 		}
 	}
 
@@ -761,6 +781,8 @@ class Block {
 	/**
 	 * Get/set the SELECT ... FOR UPDATE flag
 	 * @deprecated since 1.18
+	 *
+	 * @param $x Bool
 	 */
 	public function forUpdate( $x = null ) {
 		# noop
@@ -768,6 +790,9 @@ class Block {
 
 	/**
 	 * Get/set a flag determining whether the master is used for reads
+	 *
+	 * @param $x Bool
+	 * @return Bool
 	 */
 	public function fromMaster( $x = null ) {
 		return wfSetVar( $this->mFromMaster, $x );
@@ -855,7 +880,7 @@ class Block {
 	 * Decode expiry which has come from the DB
 	 *
 	 * @param $expiry String: Database expiry format
-	 * @param $timestampType Requested timestamp format
+	 * @param $timestampType Int Requested timestamp format
 	 * @return String
 	 * @deprecated since 1.18; use $wgLang->decodeExpiry() instead
 	 */
@@ -867,6 +892,7 @@ class Block {
 	/**
 	 * Get a timestamp of the expiry for autoblocks
 	 *
+	 * @param $timestamp String|Int
 	 * @return String
 	 */
 	public static function getAutoblockExpiry( $timestamp ) {
@@ -970,13 +996,15 @@ class Block {
 	 *     not be the same as the target you gave if you used $vagueTarget!
 	 */
 	public static function newFromTarget( $specificTarget, $vagueTarget = null, $fromMaster = false ) {
+
 		list( $target, $type ) = self::parseTarget( $specificTarget );
 		if( $type == Block::TYPE_ID || $type == Block::TYPE_AUTO ){
 			return Block::newFromID( $target );
 
 		} elseif( $target === null && $vagueTarget == '' ){
 			# We're not going to find anything useful here
-			# Be aware that the == '' check is explicit, since empty values will be passed by some callers.
+			# Be aware that the == '' check is explicit, since empty values will be
+			# passed by some callers (bug 29116)
 			return null;
 
 		} elseif( in_array( $type, array( Block::TYPE_USER, Block::TYPE_IP, Block::TYPE_RANGE, null ) ) ) {
@@ -1001,6 +1029,8 @@ class Block {
 	 * From an existing Block, get the target and the type of target.  Note that it is
 	 * always safe to treat the target as a string; for User objects this will return
 	 * User::__toString() which in turn gives User::getName().
+	 *
+	 * @param $target String|Int|User
 	 * @return array( User|String, Block::TYPE_ constant )
 	 */
 	public static function parseTarget( $target ) {
@@ -1009,12 +1039,20 @@ class Block {
 		# We may have been through this before
 		if( $target instanceof User ){
 			if( IP::isValid( $target->getName() ) ){
-				return self::TYPE_IP;
+				return array( $target, self::TYPE_IP );
 			} else {
-				return self::TYPE_USER;
+				return array( $target, self::TYPE_USER );
 			}
 		} elseif( $target === null ){
 			return array( null, null );
+		}
+
+		# Consider the possibility that this is not a username at all
+		# but actually an old subpage (bug #29797)
+		if( strpos( $target, '/' ) !== false ){
+			# An old subpage, drill down to the user behind it
+			$parts = explode( '/', $target );
+			$target = $parts[0];
 		}
 
 		$userObj = User::newFromName( $target );
@@ -1061,7 +1099,7 @@ class Block {
 	 * this returns the unredacted name; frontend functions need to call $block->getRedactedName()
 	 * in this situation.
 	 * @return array( User|String, Block::TYPE_ constant )
-	 * FIXME: this should be an integral part of the Block member variables
+	 * @todo FIXME: This should be an integral part of the Block member variables
 	 */
 	public function getTargetAndType() {
 		return array( $this->getTarget(), $this->getType() );

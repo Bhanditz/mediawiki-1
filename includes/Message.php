@@ -48,9 +48,8 @@
  * $escaped = wfMessage( 'key' )->rawParams( 'apple' )->escaped();
  * </pre>
  *
- * TODO:
+ * @todo
  * - test, can we have tests?
- * - sort out the details marked with fixme
  *
  * @since 1.17
  * @author Niklas Laxström
@@ -225,10 +224,17 @@ class Message {
 	}
 
 	/**
-	 * Request the message in the wiki's content language.
+	 * Request the message in the wiki's content language,
+	 * unless it is disabled for this message.
+	 * @see $wgForceUIMsgAsContentMsg
 	 * @return Message: $this
 	 */
 	public function inContentLanguage() {
+		global $wgForceUIMsgAsContentMsg;
+		if ( in_array( $this->key, (array)$wgForceUIMsgAsContentMsg ) ) {
+			return $this;
+		}
+
 		global $wgContLang;
 		$this->interface = false;
 		$this->language = $wgContLang;
@@ -355,7 +361,7 @@ class Message {
 	/**
 	 * Check whether a message does not exist, or is an empty string
 	 * @return Bool: true if is is and false if not
-	 * @todo Merge with isDisabled()?
+	 * @todo FIXME: Merge with isDisabled()?
 	 */
 	public function isBlank() {
 		$message = $this->fetchMessage();

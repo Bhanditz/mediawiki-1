@@ -73,10 +73,10 @@ class ApiProtect extends ApiBase {
 			$protections[$p[0]] = ( $p[1] == 'all' ? '' : $p[1] );
 
 			if ( $titleObj->exists() && $p[0] == 'create' ) {
-				$this->dieUsageMsg( array( 'create-titleexists' ) );
+				$this->dieUsageMsg( 'create-titleexists' );
 			}
 			if ( !$titleObj->exists() && $p[0] != 'create' ) {
-				$this->dieUsageMsg( array( 'missingtitle-createonly' ) );
+				$this->dieUsageMsg( 'missingtitle-createonly' );
 			}
 
 			if ( !in_array( $p[0], $restrictionTypes ) && $p[0] != 'create' ) {
@@ -130,8 +130,9 @@ class ApiProtect extends ApiBase {
 			$res['cascade'] = '';
 		}
 		$res['protections'] = $resultProtections;
-		$this->getResult()->setIndexedTagName( $res['protections'], 'protection' );
-		$this->getResult()->addValue( null, $this->getModuleName(), $res );
+		$result = $this->getResult();
+		$result->setIndexedTagName( $res['protections'], 'protection' );
+		$result->addValue( null, $this->getModuleName(), $res );
 	}
 
 	public function mustBePosted() {
@@ -221,6 +222,10 @@ class ApiProtect extends ApiBase {
 			'api.php?action=protect&title=Main%20Page&token=123ABC&protections=edit=sysop|move=sysop&cascade=&expiry=20070901163000|never',
 			'api.php?action=protect&title=Main%20Page&token=123ABC&protections=edit=all|move=all&reason=Lifting%20restrictions'
 		);
+	}
+
+	public function getHelpUrls() {
+		return 'http://www.mediawiki.org/wiki/API:Protect';
 	}
 
 	public function getVersion() {

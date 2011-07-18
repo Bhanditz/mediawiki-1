@@ -38,14 +38,14 @@ class SpecialUnblock extends SpecialPage {
 		global $wgUser, $wgOut, $wgRequest;
 
 		# Check permissions
-		if( !$wgUser->isAllowed( 'block' ) ) {
-			$wgOut->permissionRequired( 'block' );
+		if( !$this->userCanExecute( $wgUser ) ) {
+			$this->displayRestrictionError();
 			return;
 		}
+
 		# Check for database lock
 		if( wfReadOnly() ) {
-			$wgOut->readOnlyPage();
-			return;
+			throw new ReadOnlyError;
 		}
 
 		list( $this->target, $this->type ) = SpecialBlock::getTargetAndType( $par, $wgRequest );
@@ -115,14 +115,12 @@ class SpecialUnblock extends SpecialPage {
 				unset( $fields['Name'] );
 
 			} else {
-				global $wgUser;
-
 				$fields['Target']['default'] = $target;
 				$fields['Target']['type'] = 'hidden';
 				switch( $type ){
 					case Block::TYPE_USER:
 					case Block::TYPE_IP:
-						$skin = $wgUser->getSkin();
+						$skin = $this->getSkin();
 						$fields['Name']['default'] = $skin->link(
 							$target->getUserPage(),
 							$target->getName()

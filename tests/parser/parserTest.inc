@@ -166,8 +166,9 @@ class ParserTest {
 
 		// $wgContLang = new StubContLang;
 		$wgUser = new User;
-		$wgLang = new StubUserLang;
-		$wgOut = new StubObject( 'wgOut', 'OutputPage' );
+		$context = new RequestContext;
+		$wgLang = $context->getLang();
+		$wgOut = $context->getOutput();
 		$wgParser = new StubObject( 'wgParser', $wgParserConf['class'], array( $wgParserConf ) );
 		$wgRequest = new WebRequest;
 
@@ -184,8 +185,6 @@ class ParserTest {
 					$options['setversion'] : SpecialVersion::getVersion();
 		} elseif ( isset( $options['compare'] ) ) {
 			$this->recorder = new DbTestPreviewer( $this );
-		} elseif ( isset( $options['upload'] ) ) {
-			$this->recorder = new RemoteTestRecorder( $this );
 		} else {
 			$this->recorder = new TestRecorder( $this );
 		}
@@ -444,7 +443,7 @@ class ParserTest {
 		if ( isset( $opts['pst'] ) ) {
 			$out = $parser->preSaveTransform( $input, $title, $user, $options );
 		} elseif ( isset( $opts['msg'] ) ) {
-			$out = $parser->transformMsg( $input, $options );
+			$out = $parser->transformMsg( $input, $options, $title );
 		} elseif ( isset( $opts['section'] ) ) {
 			$section = $opts['section'];
 			$out = $parser->getSection( $input, $section );
@@ -678,13 +677,14 @@ class ParserTest {
 			$GLOBALS[$var] = $val;
 		}
 
-		$langObj = Language::factory( $lang );
-		$GLOBALS['wgContLang'] = $langObj;
+		$GLOBALS['wgContLang'] = Language::factory( $lang );
+		$GLOBALS['wgMemc'] = new EmptyBagOStuff;
+
 		$context = new RequestContext();
 		$GLOBALS['wgLang'] = $context->getLang();
+		$GLOBALS['wgOut'] = $context->getOutput();
 
-		$GLOBALS['wgMemc'] = new EmptyBagOStuff;
-		$GLOBALS['wgOut'] = new $context->output;
+		$GLOBALS['wgUser'] = new User();
 
 		global $wgHooks;
 
@@ -693,9 +693,6 @@ class ParserTest {
 		$wgHooks['ParserGetVariableValueTs'][] = 'ParserTest::getFakeTimestamp';
 
 		MagicWord::clearCache();
-
-		global $wgUser;
-		$wgUser = new User();
 	}
 
 	/**
@@ -1139,14 +1136,13 @@ class ParserTest {
 		$title = Title::newFromText( $name );
 
 		if ( is_null( $title ) ) {
-			wfDie( "invalid title ('$name' => '$title') at line $line\n" );
+			throw new MWException( "invalid title ('$name' => '$title') at line $line\n" );
 		}
 
 		$aid = $title->getArticleID( Title::GAID_FOR_UPDATE );
 
 		if ( $aid != 0 ) {
-			debug_print_backtrace();
-			wfDie( "duplicate article '$name' at line $line\n" );
+			throw new MWException( "duplicate article '$name' at line $line\n" );
 		}
 
 		$art = new Article( $title );
@@ -1207,7 +1203,6 @@ class ParserTest {
 	 *
 	 * @param $text String: the text to tidy
 	 * @return String
-	 * @static
 	 */
 	private function tidy( $text ) {
 		global $wgUseTidy;

@@ -262,7 +262,7 @@ class IPTest extends MediaWikiTestCase {
 	 * @covers IP::toUnsigned
 	 */
 	public function testip2longWrapper() {
-		// fixme : add more tests ?
+		// @todo FIXME: Add more tests ?
 		$this->assertEquals( pow(2,32) - 1, IP::toUnsigned( '255.255.255.255' ));
 		$i = 'IN.VA.LI.D';
 		$this->assertFalse( IP::toUnSigned( $i ) );
@@ -349,7 +349,7 @@ class IPTest extends MediaWikiTestCase {
 		$this->assertEquals( array( 0, 0 ), IP::parseCIDR('0.0.0.0/0') );
 		$this->assertEquals( array( 0, 0 ), IP::parseCIDR('255.255.255.255/0') );
 
-		// FIXME : add more tests.
+		// @todo FIXME: Add more tests.
 
 		# This part test network shifting
 		$this->assertNet( '192.0.0.0'  , '192.0.0.2/24'   );
@@ -426,4 +426,56 @@ class IPTest extends MediaWikiTestCase {
 			array( false, '2001:0DB8:F::', '2001:DB8::/96' ),
 		);
 	}
+
+	/**
+	 * Test for IP::splitHostAndPort().
+	 * @dataProvider provideSplitHostAndPort
+	 */
+	function testSplitHostAndPort( $expected, $input, $description ) {
+		$this->assertEquals( $expected, IP::splitHostAndPort( $input ), $description );
+	}
+
+	/**
+	 * Provider for IP::splitHostAndPort()
+	 */
+	function provideSplitHostAndPort() {
+		return array(
+			array( false, '[', 'Unclosed square bracket' ),
+			array( false, '[::', 'Unclosed square bracket 2' ),
+			array( array( '::', false ), '::', 'Bare IPv6 0' ),
+			array( array( '::1', false ), '::1', 'Bare IPv6 1' ),
+			array( array( '::', false ), '[::]', 'Bracketed IPv6 0' ),
+			array( array( '::1', false ), '[::1]', 'Bracketed IPv6 1' ),
+			array( array( '::1', 80 ), '[::1]:80', 'Bracketed IPv6 with port' ),
+			array( false, '::x', 'Double colon but no IPv6' ),
+			array( array( 'x', 80 ), 'x:80', 'Hostname and port' ),
+			array( false, 'x:x', 'Hostname and invalid port' ),
+			array( array( 'x', false ), 'x', 'Plain hostname' )
+		);
+	}
+
+	/**
+	 * Test for IP::combineHostAndPort()
+	 * @dataProvider provideCombineHostAndPort
+	 */
+	function testCombineHostAndPort( $expected, $input, $description ) {
+		list( $host, $port, $defaultPort ) = $input;
+		$this->assertEquals( 
+			$expected, 
+			IP::combineHostAndPort( $host, $port, $defaultPort ), 
+			$description );
+	}
+
+	/**
+	 * Provider for IP::combineHostAndPort()
+	 */
+	function provideCombineHostAndPort() {
+		return array(
+			array( '[::1]', array( '::1', 2, 2 ), 'IPv6 default port' ),
+			array( '[::1]:2', array( '::1', 2, 3 ), 'IPv6 non-default port' ),
+			array( 'x', array( 'x', 2, 2 ), 'Normal default port' ),
+			array( 'x:2', array( 'x', 2, 3 ), 'Normal non-default port' ),
+		);
+	}
+
 }

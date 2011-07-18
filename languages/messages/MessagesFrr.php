@@ -147,16 +147,6 @@ $messages = array(
 'index-category'                 => 'Indisiirde side',
 'noindex-category'               => 'Ai indisiirde side',
 
-'mainpagetext'      => "'''MediaWiki wörd ma erfolch instaliird.'''",
-'mainpagedocfooter' => 'Heelp tu jü benjüting än konfigurasjoon foon e Wiki-software fanst dü önj dåt [http://meta.wikimedia.org/wiki/Help:Contents Benutzerhandbuch].
-
-
-== Startheelpe ==
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Liste der Konfigurationsvariablen]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki-FAQ]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Mailingliste neuer MediaWiki-Versionen]',
-
 'about'         => 'Ouer',
 'article'       => 'Sid',
 'newwindow'     => '(wårt önj en nai waning änäämmååged)',
@@ -207,7 +197,6 @@ $messages = array(
 'history'           => 'Färsjoone',
 'history_short'     => 'Färsjoone/autoore',
 'updatedmarker'     => 'änred sunt man leest besäk',
-'info_short'        => 'Informasjoon',
 'printableversion'  => 'Prantfärsjoon',
 'permalink'         => 'Permanänten link',
 'print'             => 'Prante',
@@ -402,7 +391,6 @@ For ouerseetinge tånk deeram, jü önj di  [http://translatewiki.net/wiki/Main_
 önjbünen, {{PLURAL:$1|jü|da}} madels e kaskaadespäropsjoon önj febading hüüljen {{PLURAL:$1|as|san}}:
 $2',
 'namespaceprotected'   => "Dü hääst niinj beruchtiging, jü sid önj di '''$1'''-noomerüm tu beårben.",
-'customcssjsprotected' => 'Dü bast ai beruchtiged, jüdeer sid tu beårben, deer jü tu da persöönlike önjstalinge foon en ouderen brüker hiirt.',
 'ns-specialprotected'  => 'Spetsjåålside koone ai beårbed wårde.',
 'titleprotected'       => 'En sid ma dideer noome koon ai önjläid wårde.
 Jü späre wörd döör [[User:$1|$1]] ma grün "$2" önjruchted.',
@@ -456,7 +444,7 @@ Wees sü gödj än aktiwiir da än fersäk dåt wider.',
 'loginsuccess'               => "'''Dü bast nü ås „$1“ bai {{SITENAME}} önjmälded.'''",
 'nosuchuser'                 => 'Di brükernoome „$1“ bestoont ai.
 Präiw jü schriwwise (grut-/latjschriwing beåchte) unti [[Special:UserLogin/signup|mäld de ås naie brüker önj]].',
-'nosuchusershort'            => 'Deer as nåån brüker ma noome  "<nowiki>$1</nowiki>".
+'nosuchusershort'            => 'Deer as nåån brüker ma noome  "$1".
 Präiw din ruchtschriwing.',
 'nouserspecified'            => 'Dü schäät en brükernoome spesifisiire.',
 'login-userblocked'          => 'Dideer brüker as spärd. Niinj ferloof tu önjmälding.',
@@ -582,7 +570,7 @@ Dü koost dideere tiitel aw da ouder side [[Special:Search/{{PAGENAME}}|säke]],
 'noarticletext-nopermission'       => 'Jüdeer sid önjhålt uugenblaklik nuch nån täkst.
 Dü koost dideere tiitel aw da oudre side [[Special:Search/{{PAGENAME}}|säke]],
 unti<span class="plainlinks">önj da deertuhiirende [{{fullurl:{{#special:Log}}|page={{FULLPAGENAMEE}}}} logböke säke] </span>.',
-'userpage-userdoesnotexist'        => 'Dåt benjüterkonto "$1" as ai deer.
+'userpage-userdoesnotexist'        => 'Dåt benjüterkonto "<nowiki>$1</nowiki>" as ai deer.
 Wees sü gödj än präif, weer dü jüdeer sid wörklik mååge/beårbe wååt.',
 'userpage-userdoesnotexist-view'   => 'Benjüterkonto "$1" bestoont ai.',
 'blocked-notice-logextract'        => 'Dideer benjüter as tutids spärd.
@@ -1067,14 +1055,12 @@ Stal sääker, dåt jü färsjoonshistoori foon en sid histoorisch koräkt as.',
 # Watchlist
 'watchlist'         => 'Eefterkiikliste',
 'mywatchlist'       => 'Eefterkiikliste',
-'addedwatch'        => 'Tu eefterkiiksid tubaifäiged',
 'addedwatchtext'    => 'Jü sid „[[:$1]]“ wörd tu din [[Special:Watchlist|eefterkiiklist]] tubaifäiged.
 
 Lääsere änringe bai jüdeer sid än jü deertuhiirende diskusjoonssid wårde deer listed än
 önj e ouersicht foon da [[Special:RecentChanges|leeste änringe]] önj fåtschraft deerstald.
 
 Wan dü jü sid wider foon din eefterkiikliste wächhååle mååst, klik aw jüdeer sid aw „{{int:Unwatch}}“.',
-'removedwatch'      => 'Foon jü eefterlöksid wächhååld',
 'removedwatchtext'  => 'Jü sid „[[:$1]]“ wörd foon din [[Special:Watchlist|eefterkiiklist]] wächhååld.',
 'watch'             => 'Kiike eefter',
 'watchthispage'     => 'Side eefterkiike',
@@ -1091,7 +1077,7 @@ Wan dü jü sid wider foon din eefterkiikliste wächhååle mååst, klik aw jü
 'deletepage'            => 'Sid tunintemååge',
 'confirmdeletetext'     => 'Dü bast deerbai, en sid ma åle tuhiirende ålere färsjoone tuninte tu måågen. Bestääsie hål deertu, dåt dü de foon da konsekwänse bewust bast, än dåt dü önj oueriinjstiming ma da [[{{MediaWiki:Policy-url}}|ruchtliinjen]] hoonelst.',
 'actioncomplete'        => 'Aksjoon beånd',
-'deletedtext'           => '„<nowiki>$1</nowiki>“ wörd tunintemååged. In e $2 fanst dü en list foon da tuleest tunintemåågede side.',
+'deletedtext'           => '„$1“ wörd tunintemååged. In e $2 fanst dü en list foon da tuleest tunintemåågede side.',
 'deletedarticle'        => 'heet "[[$1]]" tunintemååged',
 'dellogpage'            => 'Tunintemååg-Logbök',
 'deletecomment'         => 'Grün:',

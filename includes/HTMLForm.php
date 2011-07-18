@@ -317,10 +317,11 @@ class HTMLForm {
 	/**
 	 * Add header text, inside the form.
 	 * @param $msg String complete text of message to display
+	 * @param $section The section to add the header to
 	 */
-	function addHeaderText( $msg, $section = null ) { 
+	function addHeaderText( $msg, $section = null ) {
 		if ( is_null( $section ) ) {
-			$this->mHeader .= $msg; 
+			$this->mHeader .= $msg;
 		} else {
 			if ( !isset( $this->mSectionHeaders[$section] ) ) {
 				$this->mSectionHeaders[$section] = '';
@@ -332,15 +333,16 @@ class HTMLForm {
 	/**
 	 * Add footer text, inside the form.
 	 * @param $msg String complete text of message to display
+	 * @param $section string The section to add the footer text to
 	 */
-	function addFooterText( $msg, $section = null ) { 
+	function addFooterText( $msg, $section = null ) {
 		if ( is_null( $section ) ) {
-			$this->mFooter .= $msg; 
+			$this->mFooter .= $msg;
 		} else {
 			if ( !isset( $this->mSectionFooters[$section] ) ) {
 				$this->mSectionFooters[$section] = '';
 			}
-			$this->mSectionFooters[$section] .= $msg;			
+			$this->mSectionFooters[$section] .= $msg;
 		}
 	}
 
@@ -458,7 +460,7 @@ class HTMLForm {
 		}
 
 		if ( isset( $this->mSubmitTooltip ) ) {
-			$attribs += Linker::tooltipAndAccessKeyAttribs( $this->mSubmitTooltip );
+			$attribs += Linker::tooltipAndAccesskeyAttribs( $this->mSubmitTooltip );
 		}
 
 		$attribs['class'] = 'mw-htmlform-submit';
@@ -582,7 +584,8 @@ class HTMLForm {
 
 	/**
 	 * Set the id for the submit button.
-	 * @param $t String.  FIXME: Integrity is *not* validated
+	 * @param $t String.
+	 * @todo FIXME: Integrity of $t is *not* validated
 	 */
 	function setSubmitID( $t ) {
 		$this->mSubmitID = $t;
@@ -623,7 +626,7 @@ class HTMLForm {
 	 */
 	function getTitle() {
 		return $this->mTitle === false
-			? $this->getContext()->title
+			? $this->getContext()->getTitle()
 			: $this->mTitle;
 	}
 
@@ -640,21 +643,21 @@ class HTMLForm {
 	 * @return OutputPage
 	 */
 	public function getOutput(){
-		return $this->getContext()->output;
+		return $this->getContext()->getOutput();
 	}
 
 	/**
 	 * @return WebRequest
 	 */
 	public function getRequest(){
-		return $this->getContext()->request;
+		return $this->getContext()->getRequest();
 	}
 
 	/**
 	 * @return User
 	 */
 	public function getUser(){
-		return $this->getContext()->user;
+		return $this->getContext()->getUser();
 	}
 
 	/**
@@ -673,7 +676,7 @@ class HTMLForm {
 	 * TODO: Document
 	 * @param $fields
 	 */
-	function displaySection( $fields, $sectionName = '' ) {
+	function displaySection( $fields, $sectionName = '', $displayTitle = false ) {
 		$tableHtml = '';
 		$subsectionHtml = '';
 		$hasLeftColumn = false;
@@ -692,11 +695,15 @@ class HTMLForm {
 				$legend = $this->getLegend( $key );
 				if ( isset( $this->mSectionHeaders[$key] ) ) {
 					$section = $this->mSectionHeaders[$key] . $section;
-				} 
+				}
 				if ( isset( $this->mSectionFooters[$key] ) ) {
 					$section .= $this->mSectionFooters[$key];
 				}
-				$subsectionHtml .= Xml::fieldset( $legend, $section ) . "\n";					
+				$attributes = array();
+				if ( $displayTitle ) { 
+					$attributes["id"] = 'prefsection-' . Sanitizer::escapeId( $key, 'noninitial' );
+				}
+				$subsectionHtml .= Xml::fieldset( $legend, $section, $attributes ) . "\n";
 			}
 		}
 
@@ -860,7 +867,7 @@ abstract class HTMLFormField {
 
 	/**
 	 * Initialise the object
-	 * @param $params Associative Array. See HTMLForm doc for syntax.
+	 * @param $params array Associative Array. See HTMLForm doc for syntax.
 	 */
 	function __construct( $params ) {
 		$this->mParams = $params;
@@ -972,23 +979,20 @@ abstract class HTMLFormField {
 		$helptext = null;
 
 		if ( isset( $this->mParams['help-message'] ) ) {
-			$msg = $this->mParams['help-message'];
-			$helptext = wfMsgExt( $msg, 'parseinline' );
-			if ( wfEmptyMsg( $msg ) ) {
-				# Never mind
-				$helptext = null;
+			$msg = wfMessage( $this->mParams['help-message'] );
+			if ( $msg->exists() ) {
+				$helptext = $msg->parse();
 			}
 		} elseif ( isset( $this->mParams['help-messages'] ) ) {
 			# help-message can be passed a message key (string) or an array containing
 			# a message key and additional parameters. This makes it impossible to pass
 			# an array of message key
-			foreach( $this->mParams['help-messages'] as $msg ) {
-				$candidate = wfMsgExt( $msg, 'parseinline' );
-				if( wfEmptyMsg( $msg ) ) {
-					$candidate = null;
+			foreach( $this->mParams['help-messages'] as $name ) {
+				$msg = wfMessage( $name );
+				if( $msg->exists() ) {
+					$helptext .= $msg->parse(); // append message
 				}
-				$helptext .= $candidate; // append message
-			}	
+			}
 		} elseif ( isset( $this->mParams['help'] ) ) {
 			$helptext = $this->mParams['help'];
 		}
@@ -1037,7 +1041,7 @@ abstract class HTMLFormField {
 		if ( empty( $this->mParams['tooltip'] ) ) {
 			return array();
 		}
-		return Linker::tooltipAndAccessKeyAttribs( $this->mParams['tooltip'] );
+		return Linker::tooltipAndAccesskeyAttribs( $this->mParams['tooltip'] );
 	}
 
 	/**
@@ -1371,7 +1375,8 @@ class HTMLSelectOrOtherField extends HTMLTextField {
 
 	function __construct( $params ) {
 		if ( !in_array( 'other', $params['options'], true ) ) {
-			$params['options'][wfMsg( 'htmlform-selectorother-other' )] = 'other';
+			$msg = isset( $params['other'] ) ? $params['other'] : wfMsg( 'htmlform-selectorother-other' );
+			$params['options'][$msg] = 'other';
 		}
 
 		parent::__construct( $params );
@@ -1535,7 +1540,8 @@ class HTMLMultiSelectField extends HTMLFormField {
 			# field, is it because the user has not yet submitted the form, or that they
 			# have submitted it with all the options unchecked? We will have to assume the
 			# latter, which basically means that you can't specify 'positive' defaults
-			# for GET forms.  FIXME...
+			# for GET forms.
+			# @todo FIXME...
 			return $request->getArray( $this->mName, array() );
 		}
 	}
@@ -1562,23 +1568,26 @@ class HTMLMultiSelectField extends HTMLFormField {
  * Plus a text field underneath for an additional reason.  The 'value' of the field is
  * ""<select>: <extra reason>"", or "<extra reason>" if nothing has been selected in the
  * select dropdown.
- * FIXME: If made 'required', only the text field should be compulsory.
+ * @todo FIXME: If made 'required', only the text field should be compulsory.
  */
 class HTMLSelectAndOtherField extends HTMLSelectField {
 
 	function __construct( $params ) {
 		if ( array_key_exists( 'other', $params ) ) {
 		} elseif( array_key_exists( 'other-message', $params ) ){
-			$params['other'] = wfMsg( $params['other-message'] );
+			$params['other'] = wfMessage( $params['other-message'] )->escaped();
 		} else {
-			$params['other'] = wfMsg( 'htmlform-selectorother-other' );
+			$params['other'] = null;
 		}
 
 		if ( array_key_exists( 'options', $params ) ) {
 			# Options array already specified
 		} elseif( array_key_exists( 'options-message', $params ) ){
 			# Generate options array from a system message
-			$params['options'] = self::parseMessage( wfMsg( $params['options-message'], $params['other'] ) );
+			$params['options'] = self::parseMessage(
+				wfMessage( $params['options-message'] )->inContentLanguage()->escaped(),
+				$params['other']
+			);
 		} else {
 			# Sulk
 			throw new MWException( 'HTMLSelectAndOtherField called without any options' );
@@ -1597,7 +1606,7 @@ class HTMLSelectAndOtherField extends HTMLSelectField {
 	 */
 	public static function parseMessage( $string, $otherName=null ) {
 		if( $otherName === null ){
-			$otherName = wfMsg( 'htmlform-selectorother-other' );
+			$otherName = wfMessage( 'htmlform-selectorother-other' )->escaped();
 		}
 
 		$optgroup = false;
@@ -1887,8 +1896,8 @@ class HTMLEditTools extends HTMLFormField {
 			}
 		}
 		$msg->inContentLanguage();
-		
-		
+
+
 		return '<tr><td></td><td class="mw-input">'
 			. '<div class="mw-editTools">'
 			. $msg->parseAsBlock()

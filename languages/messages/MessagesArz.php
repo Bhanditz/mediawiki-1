@@ -431,15 +431,6 @@ $messages = array(
 'index-category'                 => 'صفحات متفهرسه',
 'noindex-category'               => 'صفحات مش متفهرسه',
 
-'mainpagetext'      => "''' ميدياويكى اتنزلت بنجاح.'''",
-'mainpagedocfooter' => 'اسال [http://meta.wikimedia.org/wiki/Help:Contents دليل اليوزر] للمعلومات حوالين استخدام برنامج الويكى.
-
-== البداية ==
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings لستة اعدادات الضبط]
-* [http://www.mediawiki.org/wiki/Manual:FAQ أسئلة بتكرر حوالين الميدياويكى]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce لستة الايميلات بتاعة اعلانات الميدياويكى]',
-
 'about'         => 'عن',
 'article'       => 'صفحة محتوى',
 'newwindow'     => '(بتفتح ويندو جديده)',
@@ -489,7 +480,6 @@ $messages = array(
 'history'           => 'تاريخ الصفحه',
 'history_short'     => 'تاريخ',
 'updatedmarker'     => 'اتحدثت بعد زيارتى الأخيرة',
-'info_short'        => 'معلومات',
 'printableversion'  => 'نسخه للطبع',
 'permalink'         => 'لينك دايم',
 'print'             => 'اطبع',
@@ -681,7 +671,6 @@ $1',
 'cascadeprotected'     => 'الصفحة دى محمية من التعديل، بسبب انها مدمجة فى {{PLURAL:$1|الصفحة|الصفحات}} دي، اللى مستعمل فيها خاصية "حماية الصفحات المدمجة" :
 $2',
 'namespaceprotected'   => "ما عندكش صلاحية تعديل الصفحات  اللى فى نطاق '''$1'''.",
-'customcssjsprotected' => 'ماعندكش صلاحية تعديل  الصفحة دي، علشان فيها الإعدادات الشخصية بتاعة يوزر تاني.',
 'ns-specialprotected'  => 'الصفحات المخصوصة مش ممكن تعديلها.',
 'titleprotected'       => "العنوان دا محمى من الإنشاء بـ[[User:$1|$1]]. السبب هو ''$2''.",
 
@@ -737,7 +726,7 @@ $2',
 'nosuchuser'                 => 'مافيش يوزر اسمه "$1".
 اسامى اليوزر بتبقى حساسه لحالة الحرف.
 اتأكد من التهجيه, او [[Special:UserLogin/signup|افتح حساب جديد]].',
-'nosuchusershort'            => 'مافيش يوزر باسم <nowiki>$1</nowiki>".
+'nosuchusershort'            => 'مافيش يوزر باسم $1".
 اتاكد من تهجية الاسم.',
 'nouserspecified'            => 'لازم تحدد اسم يوزر.',
 'login-userblocked'          => 'اليوزر دا ممنوع من الدخول.',
@@ -903,7 +892,7 @@ $2',
 'noarticletext-nopermission'       => 'مفيش اى نص دلوقتى فى الصفحه دى.
 ممكن [[Special:Search/{{PAGENAME}}|تدور على عنوان الصفحه دى]] فى الصفحات التانيه,
 او <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} تدور فى السجلات بتاعتها]</span>.',
-'userpage-userdoesnotexist'        => 'حساب اليوزر "$1" مش متسجل. لو سمحت تشوف لو عايز تبتدي/تعدل الصفحة دي.',
+'userpage-userdoesnotexist'        => 'حساب اليوزر "<nowiki>$1</nowiki>" مش متسجل. لو سمحت تشوف لو عايز تبتدي/تعدل الصفحة دي.',
 'userpage-userdoesnotexist-view'   => 'حساب اليوزر "$1" مش متسجل',
 'blocked-notice-logextract'        => 'اليوزر ده معمول له بلوك دلوقتى.
 اخر بلوك فى السجل موجود تحت للمراجعه:',
@@ -1287,7 +1276,9 @@ $1",
 'prefs-skin'                    => 'الوش',
 'skin-preview'                  => 'بروفه',
 'datedefault'                   => 'مافبش تفضيل',
+'prefs-beta'                    => 'خصايص Beta',
 'prefs-datetime'                => 'وقت وتاريخ',
+'prefs-labs'                    => 'خصايص Labs',
 'prefs-personal'                => 'الپروفيل بتاع اليوزر',
 'prefs-rc'                      => 'اخر التغييرات',
 'prefs-watchlist'               => 'ليستة المراقبه',
@@ -1675,10 +1666,6 @@ $1",
 'watchthisupload'             => 'حط الملف دا تحت المراقبه',
 'filewasdeleted'              => 'فيه فايل بنفس الاسم دا اتأپلود قبل كدا و بعدين اتمسح.
 لازم تشيّك على $1 قبل ما تأپلود الفايل كمان مره.',
-'upload-wasdeleted'           => "'''تحذير: انت بتحمل ملف اتمسح قبل كدا.'''
-
-لازم تتاكد من انك عايز تستمر فى تحميل الملف دا.
-سجل المسح بتاع الملف دا معروض هنا علشان تبص عليه:",
 'filename-bad-prefix'         => "اسم الملف اللى بتحمله بيبتدى بـ'''\"\$1\"'''، واللى هو اسم مش وصفى بيتحط غالبا من الكاميرات الديجيتال اوتوماتيكي.
 لو سمحت تختار اسم يكون بيوصف الملف بتاعك احسن من كدا.",
 'filename-prefix-blacklist'   => ' #<!-- سيب السطر ده زى ما هوه --> <pre>
@@ -1793,7 +1780,6 @@ PICT # misc.
 [[Special:WhatLinksHere/$2|قائمة كاملة]] متوفرة.',
 'nolinkstoimage'                    => 'مافيش صفحات بتوصل للفايل ده.',
 'morelinkstoimage'                  => 'عرض [[Special:WhatLinksHere/$1|لينكات اكتر]] للملف دا.',
-'redirectstofile'                   => '{{PLURAL:$1| الملف|ال$1 ملف}} اللى جاى  بيحول للملف دا:',
 'duplicatesoffile'                  => '{{PLURAL:$1| الملف|ال$1 ملف اللى بعده}} متكررين من الملف ده:
 ([[Special:FileDuplicateSearch/$2| تفاصيل اكتر]]):',
 'sharedupload'                      => 'الملف دا من  $1 و ممكن تستعمله مشاريع تانيه.',
@@ -2105,10 +2091,8 @@ PICT # misc.
 'watchlistanontext'    => 'لو سمحت $1 لعرض أو تعديل الصفحات فى لستة مراقبتك.',
 'watchnologin'         => 'مش متسجل',
 'watchnologintext'     => 'لازم تكون [[Special:UserLogin|مسجل الدخول]] علشان تعدل لستة المراقبة بتاعتك.',
-'addedwatch'           => 'تمت الاضافه للستة الصفحات اللى بتراقبها',
 'addedwatchtext'       => 'تمت إضافة الصفحه  "$1"  [[Special:Watchlist|للستة الصفحات اللى بتراقبها]].
 التعديلات اللى بعد كده ها تتحط على الصفحه دى، وصفحة المناقش الخاصه بها ها تتحط هناك. واسم الصفحة هايظهر  بخط <b>عريض</b> فى صفحة [[Special:RecentChanges|أحدث التعديلات]] لتسهيل تحديدها واكتشافها.',
-'removedwatch'         => 'اتشالت  من لستة الصفحات اللى بتراقبها',
 'removedwatchtext'     => 'الصفحه دى اتشالت "[[:$1]]" من [[Special:Watchlist|لستة الصفحات اللى بتراقبها]].',
 'watch'                => 'راقب',
 'watchthispage'        => 'راقب الصفحه دى',
@@ -2163,7 +2147,7 @@ $NEWPAGE
 
 --
 علشان تغيّر ليستة المراقبه بتاعتك, زور
-{{fullurl:{{#special:Watchlist}}/edit}}
+{{fullurl:{{#special:EditWatchlist}}}}
 
 علشان تمسح الصفحه من على ليستة مراقبتك, زور
 $UNWATCHURL
@@ -2185,7 +2169,7 @@ $UNWATCHURL
 من فضلك  اتأكد انك عايز المسح وبأنك فاهم نتايج  العمليه  دى. عمليات الحذف لازم تتم بناء على [[{{MediaWiki:Policy-url}}|القواعد المتفق عليها]].',
 'actioncomplete'         => 'العمليه خلصت',
 'actionfailed'           => 'الفعل فشل',
-'deletedtext'            => '"<nowiki>$1</nowiki>" اتمسحت.
+'deletedtext'            => '"$1" اتمسحت.
 بص على $2 علشان تشوف سجل آخر عمليات المسح.',
 'deletedarticle'         => 'اتمسحت "[[$1]]"',
 'suppressedarticle'      => 'خببى "[[$1]]"',
@@ -2244,7 +2228,7 @@ $UNWATCHURL
 'protect_expiry_invalid'      => 'وقت الانتهاء مش صحيح.',
 'protect_expiry_old'          => 'وقت انتهاء المنع قديم.',
 'protect-unchain-permissions' => 'شيل حماية أوبشنات الحمايه التانيه',
-'protect-text'                => "ممكن هنا تعرض و تغير مستوى الحمايه للصفحه '''<nowiki>$1</nowiki>'''.",
+'protect-text'                => "ممكن هنا تعرض و تغير مستوى الحمايه للصفحه '''$1'''.",
 'protect-locked-blocked'      => "انت مش ممكن تغير مستويات الحماية وأنت ممنوع.
 الإعدادات بتاعة الصفحة '''$1''' دلوقتى هي:",
 'protect-locked-dblock'       => "ما ينفعش تغير مستويات الحماية بسبب قفل قاعدة البيانات دلوقتي.
@@ -2798,9 +2782,7 @@ $1',
 'vector.js'      => '/* اى جافاسكريبت هنا حتتحمل لكل يوزر بيستخدم واجهة فكتور */',
 
 # Metadata
-'nodublincore'      => 'Dublin Core RDF metadata متعطلة للسيرفر دا.',
-'nocreativecommons' => 'Creative Commons RDF metadata متعطلة  للسيرفر دا.',
-'notacceptable'     => 'السيرفر بتاع الويكى مش ممكن يديلك بيانات بصيغة ممكن عميلك يقراها.',
+'notacceptable' => 'السيرفر بتاع الويكى مش ممكن يديلك بيانات بصيغة ممكن عميلك يقراها.',
 
 # Attribution
 'anonymous'        => '{{PLURAL:$1|يوزر مجهول|يوزرز مجهولين}} ل {{SITENAME}}',
@@ -2822,14 +2804,6 @@ $1',
 'spambot_username'    => 'تنظيف سبام ميدياويكى',
 'spam_reverting'      => 'ترجيع آخر نسخة مافيهاش لينكات لـ $1',
 'spam_blanking'       => 'كل النسخ فيها لينكات ل $1، فضيها',
-
-# Info page
-'infosubtitle'   => 'معلومات للصفحه',
-'numedits'       => 'عدد التعديلات (صفحة): $1',
-'numtalkedits'   => 'عدد التعديلات (صفحة نقاش): $1',
-'numwatchers'    => 'عدد المراقبين: $1',
-'numauthors'     => 'عدد المؤلفين المميزين (صفحة): $1',
-'numtalkauthors' => 'عدد المؤلفين المميزين (صحفة نقاش): $1',
 
 # Skin names
 'skinname-standard'    => 'كلاسيك',

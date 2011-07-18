@@ -21,14 +21,15 @@ class CacheTime {
 
 	function containsOldMagic()          { return $this->mContainsOldMagic; }
 	function setContainsOldMagic( $com ) { return wfSetVar( $this->mContainsOldMagic, $com ); }
-	
-	/** 
-	 * setCacheTime() sets the timestamp expressing when the page has been rendered. 
-	 * This doesn not control expiry, see updateCacheExpiry() for that!
-	 */
-	function setCacheTime( $t )          { return wfSetVar( $this->mCacheTime, $t ); } 
 
-		
+	/**
+	 * setCacheTime() sets the timestamp expressing when the page has been rendered.
+	 * This doesn not control expiry, see updateCacheExpiry() for that!
+	 * @param $t string
+	 * @return string
+	 */
+	function setCacheTime( $t )          { return wfSetVar( $this->mCacheTime, $t ); }
+
 	/** 
 	 * Sets the number of seconds after which this object should expire.
 	 * This value is used with the ParserCache.
@@ -36,16 +37,20 @@ class CacheTime {
 	 * the new call has no effect. The value returned by getCacheExpiry is smaller
 	 * or equal to the smallest number that was provided as an argument to 
 	 * updateCacheExpiry().
+	 *
+	 * @param $seconds number
 	 */
 	function updateCacheExpiry( $seconds ) { 
 		$seconds = (int)$seconds;
 
-		if ( $this->mCacheExpiry === null || $this->mCacheExpiry > $seconds ) 
-			$this->mCacheExpiry = $seconds; 
+		if ( $this->mCacheExpiry === null || $this->mCacheExpiry > $seconds ) {
+			$this->mCacheExpiry = $seconds;
+		}
 
 		// hack: set old-style marker for uncacheable entries.
-		if ( $this->mCacheExpiry !== null && $this->mCacheExpiry <= 0 ) 
+		if ( $this->mCacheExpiry !== null && $this->mCacheExpiry <= 0 ) {
 			$this->mCacheTime = -1;
+		}
 	}
 	
 	/**
@@ -59,28 +64,36 @@ class CacheTime {
 	function getCacheExpiry() { 
 		global $wgParserCacheExpireTime;
 
-		if ( $this->mCacheTime < 0 ) return 0; // old-style marker for "not cachable"
+		if ( $this->mCacheTime < 0 ) {
+			return 0;
+		} // old-style marker for "not cachable"
 
 		$expire = $this->mCacheExpiry; 
 
-		if ( $expire === null ) 
+		if ( $expire === null ) {
 			$expire = $wgParserCacheExpireTime;
-		else
+		} else {
 			$expire = min( $expire, $wgParserCacheExpireTime );
+		}
 
 		if( $this->containsOldMagic() ) { //compatibility hack
 			$expire = min( $expire, 3600 ); # 1 hour
 		} 
 
-		if ( $expire <= 0 ) return 0; // not cachable
-		else return $expire;
+		if ( $expire <= 0 ) {
+			return 0; // not cachable
+		} else {
+			return $expire;
+		}
 	}
 
-
+	/**
+	 * @return bool
+	 */
 	function isCacheable() { 
 		return $this->getCacheExpiry() > 0;
 	}
-	
+
 	/**
 	 * Return true if this cached output object predates the global or
 	 * per-article cache invalidation timestamps, or if it comes from

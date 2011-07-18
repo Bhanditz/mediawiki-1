@@ -284,15 +284,6 @@ $messages = array(
 'index-category'                 => 'Geïndexeerde paazjes',
 'noindex-category'               => 'Óngeïndexeerde paazjes',
 
-'mainpagetext'      => "'''MediaWiki software succesvol geïnsjtalleerd.'''",
-'mainpagedocfooter' => "Raodpleeg de [http://meta.wikimedia.org/wiki/NL_Help:Inhoudsopgave handjleiding] veur informatie euver 't gebroek van de wikisoftware.
-
-== Mieë hölp ==
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Lies mit instellinge]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki VGV (FAQ)]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki mailinglies veur nuuj versies]",
-
 'about'         => 'Informatie',
 'article'       => 'Pagina',
 'newwindow'     => '(in nuuj venster)',
@@ -343,7 +334,6 @@ $messages = array(
 'history'           => 'Historie',
 'history_short'     => 'Historie',
 'updatedmarker'     => 'bewirk sins mien lètste bezeuk',
-'info_short'        => 'Informatie',
 'printableversion'  => 'Printervruntelike versie',
 'permalink'         => 'Permanente link',
 'print'             => 'Aafdrukke',
@@ -540,7 +530,6 @@ Query: $2',
 'cascadeprotected'     => "Deze pagina kin neet bewirk waere, omdet zie is opgenome in de volgende {{PLURAL:$1|pagina|pagina's}} die beveilig {{PLURAL:$1|is|zeen}} mèt de kaskaad-optie:
 $2",
 'namespaceprotected'   => "Doe höbs gein rechte om pagina's in de naamruumde '''$1''' te bewirke.",
-'customcssjsprotected' => "De kèns dees pagina neet bewirke ómdet die persuunlike insjtèllinge van 'ne angere gebroeker bevat.",
 'ns-specialprotected'  => 'Pagina\'s in de naamruumde "{{ns:special}}" kinne neet bewirk waere.',
 'titleprotected'       => "'t aanmake van deze pagina is beveilig door [[User:$1|$1]].
 De gegaeve ree is ''$2''.",
@@ -594,7 +583,7 @@ Zörg deveur dats te cookies höbs ingesjakeld, herlaaj dees pagina en perbeer '
 'nosuchuser'                 => 'D\'r besjteit geine gebroeker mit de naam "$1".
 Die seen huidlettegevullig
 Controleer dien spelling, of gebroek ongersjtaond formuleer om \'n [[Special:UserLogin/signup|nuuj]] gebroekersprofiel aan te make.',
-'nosuchusershort'            => 'De gebroeker "<nowiki>$1</nowiki>" besjteit neet. Konterleer de sjriefwieze.',
+'nosuchusershort'            => 'De gebroeker "$1" besjteit neet. Konterleer de sjriefwieze.',
 'nouserspecified'            => "Doe deens 'ne gebroekersnaam op te gaeve.",
 'login-userblocked'          => 'Deze gebroeker steit geblokkeerd. Aanmèlje is neet toegestange.',
 'wrongpassword'              => "'t Ingegaeve wachwaord is neet zjus. Perbeer 't obbenuujts.",
@@ -753,7 +742,7 @@ De kèns [[Special:Search/{{PAGENAME}}|nao deze term zeuke]] in anger pagina\'s,
 'noarticletext-nopermission'       => 'Dees pagina bevat gein teks.
 De kans [[Special:Search/{{PAGENAME}}|nao dees term zeuke]] in anger pagina\'s of
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} de logbeuk doorzeuke]</span>.',
-'userpage-userdoesnotexist'        => 'Doe bewirks \'n gebroekerspagina van \'ne gebroeker dae neet besjteit (gebroeker "$1"). Controlere ofs doe dees pagina waal wils aanmake/bewirke.',
+'userpage-userdoesnotexist'        => 'Doe bewirks \'n gebroekerspagina van \'ne gebroeker dae neet besjteit (gebroeker "<nowiki>$1</nowiki>"). Controlere ofs doe dees pagina waal wils aanmake/bewirke.',
 'userpage-userdoesnotexist-view'   => 'Gebroeker "$1" is neet geregistreerd.',
 'blocked-notice-logextract'        => "Deze gebroeker is noe geblok.
 De leste bloklogregel wuuertj hiejónger t'r raodpleging gegaeve:",
@@ -1141,7 +1130,9 @@ Mèrk op dat hun indexe van {{SITENAME}} content e bietje gedatierd kint zien.',
 'prefs-skin'                    => '{{SITENAME}}-uterlik',
 'skin-preview'                  => 'Veurbesjouwing',
 'datedefault'                   => 'Gein veurkäör',
+'prefs-beta'                    => 'Bètadeil',
 'prefs-datetime'                => 'Datum en tied',
+'prefs-labs'                    => 'Alfadeil',
 'prefs-personal'                => 'Gebroekersinfo',
 'prefs-rc'                      => 'Recènte verangeringe en weergaaf van sjtumpkes',
 'prefs-watchlist'               => 'Volglies',
@@ -1175,7 +1166,7 @@ Hie volg n willekäörig gegenereerde waerde die se kins gebroeke: $1',
 'savedprefs'                    => 'Dien veurkäöre zint opgesjlage.',
 'timezonelegend'                => 'Tiedzone:',
 'localtime'                     => 'Plaatselike tied',
-'timezoneuseserverdefault'      => 'Gebroek servertied',
+'timezoneuseserverdefault'      => 'Gebroek servertied ($1)',
 'timezoneuseoffset'             => 'Angers (gaef tiedversjil)',
 'timezoneoffset'                => 'Tiedsversjil¹:',
 'servertime'                    => 'Server tied:',
@@ -1544,10 +1535,6 @@ Raodpleeg t verwiederingslogbook veurdet se wiejer geis.',
 'upload-options'              => 'Uploadinstellinge',
 'watchthisupload'             => 'Volg dit bestandj',
 'filewasdeleted'              => "d'r Is eerder 'n bestandj mit deze naam verwiederd. Raodpleeg 't $1 veurdetse 't opnuuj toevoegs.",
-'upload-wasdeleted'           => "'''Waarsjuwing: Doe bös 'n bestand det eerder verwiederd woor aan 't uploade.'''
-
-Lèver zeker te zeen detse gesjik bös om door te gaon met 't uploade van dit bestand.
-'t verwiederingslogbook van dit bestand kinse hiej zeen:",
 'filename-bad-prefix'         => "De naam van 't bestand detse aan 't uploade bös begint met '''\"\$1\"''', wat 'ne neet-besjrievende naam is dae meestal automatisch door 'ne digitale camera wörd gegaeve. Kees estebleef 'ne dudelike naam veur dien bestand.",
 'upload-success-subj'         => 'De upload is geluk',
 'upload-success-msg'          => 'Dienen upload van [$2] is geslaag en is besjikbaar: [[:{{ns:file}}:$1]]',
@@ -1649,7 +1636,6 @@ De volgende lies göf allein de eerste {{PLURAL:$1|verwiezing|$1 verwiezinge}} n
 d'r Is ouch ne [[Special:WhatLinksHere/$2|volledige lies]].",
 'nolinkstoimage'            => 'Gein inkel pagina gebroek dit plaetje.',
 'morelinkstoimage'          => '[[Special:WhatLinksHere/$1|Mier verwijzinge]] naor dit bestaand bekèèke.',
-'redirectstofile'           => 'De volgende bestaande {{PLURAL:$1|verwèès|verwèèze}} door naor dit bestaand:',
 'duplicatesoffile'          => "{{PLURAL:$1|'t Nègsvóggendj bestandj is|De $1 nègsvóggendje bestenj zeen}} identiek aan dit bestandj ([[Special:FileDuplicateSearch/$2|deper]]):",
 'sharedupload'              => 'Dit besjtandj kump van $1 en kin ouch door anger projekte gebroek waere.',
 'sharedupload-desc-there'   => 'Dit besjtandj kump van $1 en kin ouch in anger projekte gebroek waere.
@@ -1966,10 +1952,8 @@ Dae kin dös drek reazjere.",
 'watchlistanontext'    => '$1 is verplich om dien volglies in te zeen of te wiezige.',
 'watchnologin'         => 'De bis neet aangemèld',
 'watchnologintext'     => "De mós [[Special:UserLogin|aangemèld]] zeen veur 't verangere van dien volglies.",
-'addedwatch'           => 'Aan volglies toegeveug',
 'addedwatchtext'       => "De pagina \"[[:\$1]]\" is aan dien [[Special:Watchlist|volglies]] toegeveug.
 Toekomstige verangeringe aan dees pagina en de biebehurende euverlèkpagina weure dao vermeld en de pagina weurt '''vèt''' weergegaeve in de [[Special:RecentChanges|lies van recènte verangeringe]].",
-'removedwatch'         => 'Van volglies aafhoale',
 'removedwatchtext'     => 'De pagina "[[:$1]]" is van dien [[Special:Watchlist|volglies]] eweggesjaf.',
 'watch'                => 'Volg',
 'watchthispage'        => 'Volg dees pagina',
@@ -2021,7 +2005,7 @@ Dao zalle bie volgende verangeringe gein nuuj berichte kómme tenzies te dees pa
 
 --
 Óm de insjtèllinge van dien volglies te verangere, zuug
-{{fullurl:{{#special:Watchlist}}/edit}}
+{{fullurl:{{#special:EditWatchlist}}}}
 
 Óm de paasj van dien wachlies aaf te haole, bezeuk
 $UNWATCHURL
@@ -2043,7 +2027,7 @@ Commentaar en wiejer assistentie:
 Kónfermeer hiejónger dat dit inderdaod dien bedoeling is, dats doe de gevolge begrips en dats doe dit deis in euvereinstömming mit 't [[{{MediaWiki:Policy-url}}|beleid]].",
 'actioncomplete'         => 'Actie voltoeid',
 'actionfailed'           => 'Hanjeling mislök',
-'deletedtext'            => '"<nowiki>$1</nowiki>" is eweggesjaf. Bekiek $2 veur \'n euverzich van recènt eweggesjafde pagina\'s.',
+'deletedtext'            => '"$1" is eweggesjaf. Bekiek $2 veur \'n euverzich van recènt eweggesjafde pagina\'s.',
 'deletedarticle'         => '"[[$1]]" is eweggesjaf',
 'suppressedarticle'      => 'haet "[[$1]]" verborge',
 'dellogpage'             => 'Wislogbook',
@@ -2097,7 +2081,7 @@ Zuug de [[Special:ProtectedPages|lies mit beveiligde pazjena's]] veur alle hujig
 'protect_expiry_invalid'      => 'De aangegaeve verlouptied is óngeljig.',
 'protect_expiry_old'          => "De verloupdatum is in 't verleije.",
 'protect-unchain-permissions' => 'Maak euverige beveiligingsinstèllinge besjikber',
-'protect-text'                => "Hie kins te 't beveiligingsniveau veur de pagina '''<nowiki>$1</nowiki>''' bekieke en verangere.",
+'protect-text'                => "Hie kins te 't beveiligingsniveau veur de pagina '''$1''' bekieke en verangere.",
 'protect-locked-blocked'      => "De kèns 't beveiligingsniveau neet verangere terwiels te geblokkeerd bis.
 Hie zeen de hujige insjtèllinge veur de pazjena '''[[$1]]''':",
 'protect-locked-dblock'       => "'t Beveiligingsniveau kin neet waere gewiezig ómdet de database geslaote is.
@@ -2609,9 +2593,7 @@ Doe kans in de bewirkingssamevatting \'n reej opgaeve.',
 'tooltip-summary'                 => "Veur 'n kórte samevatting in",
 
 # Metadata
-'nodublincore'      => 'Dublin Core RDF metadata is oetgesjakeld op deze server.',
-'nocreativecommons' => 'Creative Commons RDF metadata is oetgesjakeld op deze server.',
-'notacceptable'     => "De wikiserver kin de gegaeves neet levere in  'ne vorm dae diene client kin laeze.",
+'notacceptable' => "De wikiserver kin de gegaeves neet levere in  'ne vorm dae diene client kin laeze.",
 
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Anonieme gebroeker|Anoniem gebroekers}} ven {{SITENAME}}',
@@ -2633,14 +2615,6 @@ Meistal wörd dit door 'ne zwarte externe link veroorzaak.",
 'spambot_username'    => 'MediaWiki spam opruming',
 'spam_reverting'      => 'Bezig mit trökdrèjje nao de letste versie die gein verwiezing haet nao $1',
 'spam_blanking'       => "Alle wieziginge mit 'ne link nao $1 waere verwiederd",
-
-# Info page
-'infosubtitle'   => 'Informatie veur pagina',
-'numedits'       => 'Aantal bewerkinge (pagina): $1',
-'numtalkedits'   => 'Aantal bewerkinge (euverlikpagina): $1',
-'numwatchers'    => 'Aantal volgende: $1',
-'numauthors'     => 'Aantal sjrievers (pagina): $1',
-'numtalkauthors' => 'Aantal versjilende auteurs (euverlikpagina): $1',
 
 # Skin names
 'skinname-standard'    => 'Standaard',

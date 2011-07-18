@@ -59,8 +59,6 @@ class SvgHandler extends ImageHandler {
 			return false;
 		}
 		# Don't make an image bigger than wgMaxSVGSize
-		$params['physicalWidth'] = $params['width'];
-		$params['physicalHeight'] = $params['height'];
 		if ( $params['physicalWidth'] > $wgSVGMaxSize ) {
 			$srcWidth = $image->getWidth( $params['page'] );
 			$srcHeight = $image->getHeight( $params['page'] );
@@ -105,7 +103,7 @@ class SvgHandler extends ImageHandler {
 		}
 	}
 
-	/*
+	/**
 	* Transform an SVG file to PNG
 	* This function can be called outside of thumbnail contexts
 	* @param string $srcPath
@@ -216,7 +214,9 @@ class SvgHandler extends ImageHandler {
 	}
 
 	function unpackMetadata( $metadata ) {
-		$unser = @unserialize( $metadata );
+		wfSuppressWarnings();
+		$unser = unserialize( $metadata );
+		wfRestoreWarnings();
 		if ( isset( $unser['version'] ) && $unser['version'] == self::SVG_METADATA_VERSION ) {
 			return $unser;
 		} else {

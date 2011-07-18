@@ -140,14 +140,6 @@ Lef aaf dif afta pofaamin ruolbak',
 'index-category'                 => 'Index piej',
 'noindex-category'               => 'No index piej',
 
-'mainpagetext'      => "'''MediaWiki don instaal soksesful.'''",
-'mainpagedocfooter' => "Kansolt di [http://meta.wikimedia.org/wiki/Help:Contents User's Guide] fi infamieshan ou fi yuuz di wiki saafwier.
-
-== Taatop ==
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
-
 'about'         => 'Bout',
 'article'       => 'Kantent piej',
 'newwindow'     => '(opn ina nyuu winda)',
@@ -198,7 +190,6 @@ Lef aaf dif afta pofaamin ruolbak',
 'history'           => 'Piej ischri',
 'history_short'     => 'Ischri',
 'updatedmarker'     => 'opdiet sens mi laas vizit',
-'info_short'        => 'Infamieshan',
 'printableversion'  => 'Printobl voerjan',
 'permalink'         => 'Poermanint lingk',
 'print'             => 'Print',
@@ -398,7 +389,6 @@ Fi chranslieshan, begyu kansida fi yuuz [http://translatewiki.net/wiki/Main_Page
 'cascadeprotected'     => 'Dis piej protek frahn edit, bikaa i\'inkluud ina di falarin {{PLURAL:$1|piej, ush|piejdem, ush}} protek wid di "kiaskiedn" apshan ton aan:
 $2',
 'namespaceprotected'   => "Yu no gat no pomishan fi edit piej ina di '''$1''' niemspies.",
-'customcssjsprotected' => 'Yu no gat no pomishan fi edit dis piej, bikaa ikantien aneda yuuza poersnal setndem.',
 'ns-specialprotected'  => 'Peshal piejdem kyaahn edit.',
 'titleprotected'       => 'Dis taikl protek frahn krieshan bai [[User:$1|$1]].
 Di riizn dehn gi a "\'\'$2\'\'".',
@@ -455,7 +445,7 @@ Begyu eniebl dem ahn chrai agen.',
 'nosuchuser'                 => 'No yuuza no de bai di niem "$1".
 Yuuza niem kies sensitiv.
 Chek yu spelin, ar [[Special:UserLogin/signup|kriet a nyuu akount]].',
-'nosuchusershort'            => 'No yuuza no de bai di niem "<nowiki>$1</nowiki>".
+'nosuchusershort'            => 'No yuuza no de bai di niem "$1".
 Chek yu spelin.',
 'nouserspecified'            => 'Yu afi spesifai a yuuzaniem.',
 'login-userblocked'          => 'Dis yuuza blak. No lagiin no lou.',
@@ -623,7 +613,7 @@ Ef yu a ananimos yuuza ahn fiil se irelivant kament dairek tu yu, begyu [[Specia
 Yu kiahn [[Special:Search/{{PAGENAME}}|saach fi dis piej taikl]] ina ada piej,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} saach di rilietid lagdem],
 ar [{{fullurl:{{FULLPAGENAME}}|action=edit}} edit dis piej]</span>.',
-'userpage-userdoesnotexist'        => 'Yuuza akount "$1" no rejista.
+'userpage-userdoesnotexist'        => 'Yuuza akount "<nowiki>$1</nowiki>" no rejista.
 Begyu chek ef yu waahn fi kriet/edit dis piej.',
 'userpage-userdoesnotexist-view'   => 'Yuuza akount "$1" no rejista.',
 'blocked-notice-logextract'        => 'Dis yuuza korantli blak.
@@ -846,10 +836,8 @@ Piej pahn [[Special:Watchlist|yu wachlis]] dem '''buol'''.",
 # Watchlist
 'watchlist'         => 'Mi wachlis',
 'mywatchlist'       => 'Mi wachlis',
-'addedwatch'        => 'Don ad tu wachlist',
 'addedwatchtext'    => "Di piej \"[[:\$1]]\" don ad tu yu [[Special:Watchlist|wachlis]].
 Fyuucha chienj tu dis piej ahn iasuosietid taak piej wi lis de, ahn di piej wi apier '''buoldid''' ina di [[Special:RecentChanges|lis a riisent chienjdem]] fi meki iizia fi pik out.",
-'removedwatch'      => 'Rimuuv gaan frahn wachlis',
 'removedwatchtext'  => 'Di piej "[[:$1]]" rimuuv gaan frahn [[Special:Watchlist|yu wachlis]].',
 'watch'             => 'Wach',
 'watchthispage'     => 'Wach dis piej',
@@ -867,7 +855,7 @@ Fyuucha chienj tu dis piej ahn iasuosietid taak piej wi lis de, ahn di piej wi a
 'confirmdeletetext'     => "Yu bout fi diliit a piej alangx wid aal a i'ischri.
 Begyu kanfoerm se yu inten fi du dis, se yu andastan di kansikwens, ahn se yu a du dis askaadans wid [[{{MediaWiki:Policy-url}}|di palisi]].",
 'actioncomplete'        => 'Akshan kompliit',
-'deletedtext'           => '"<nowiki>$1</nowiki>" don diliit.
+'deletedtext'           => '"$1" don diliit.
 Si $2 fi a rekaad a riisant diliishan.',
 'deletedarticle'        => 'diliitid "[[$1]]"',
 'dellogpage'            => 'Diliishan lag',
@@ -886,7 +874,7 @@ Si $2 fi a rekaad a riisant diliishan.',
 'protectexpiry'               => 'Expaya:',
 'protect_expiry_invalid'      => 'Expairi taim invalid.',
 'protect_expiry_old'          => 'Expairi taim ina di paas.',
-'protect-text'                => "Yu kiahn vyuu ahn chienj di protekshan lebl yaso fi di piej '''<nowiki>$1</nowiki>'''.",
+'protect-text'                => "Yu kiahn vyuu ahn chienj di protekshan lebl yaso fi di piej '''$1'''.",
 'protect-locked-access'       => "Yu akount no ab no poermishan fi chienj piej protekshan lebl.
 Demaya a di korant setndem fi di piej '''$1''':",
 'protect-cascadeon'           => "Dis piej korantli protek kaa i'inkluud ina di falarin {{PLURAL:$1|piej, ush ab|piejdem, ush ab}} kiaskiedn protekshan ton aan.

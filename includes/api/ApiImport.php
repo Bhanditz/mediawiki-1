@@ -48,7 +48,7 @@ class ApiImport extends ApiBase {
 		$isUpload = false;
 		if ( isset( $params['interwikisource'] ) ) {
 			if ( !$wgUser->isAllowed( 'import' ) ) {
-				$this->dieUsageMsg( array( 'cantimport' ) );
+				$this->dieUsageMsg( 'cantimport' );
 			}
 			if ( !isset( $params['interwikipage'] ) ) {
 				$this->dieUsageMsg( array( 'missingparam', 'interwikipage' ) );
@@ -62,7 +62,7 @@ class ApiImport extends ApiBase {
 		} else {
 			$isUpload = true;
 			if ( !$wgUser->isAllowed( 'importupload' ) ) {
-				$this->dieUsageMsg( array( 'cantimport-upload' ) );
+				$this->dieUsageMsg( 'cantimport-upload' );
 			}
 			$source = ImportStreamSource::newFromUpload( 'xml' );
 		}
@@ -88,8 +88,9 @@ class ApiImport extends ApiBase {
 		}
 
 		$resultData = $reporter->getData();
-		$this->getResult()->setIndexedTagName( $resultData, 'page' );
-		$this->getResult()->addValue( null, $this->getModuleName(), $resultData );
+		$result = $this->getResult();
+		$result->setIndexedTagName( $resultData, 'page' );
+		$result->addValue( null, $this->getModuleName(), $resultData );
 	}
 
 	public function mustBePosted() {
@@ -164,6 +165,10 @@ class ApiImport extends ApiBase {
 		);
 	}
 
+	public function getHelpUrls() {
+		return 'http://www.mediawiki.org/wiki/API:Import';
+	}
+
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
 	}
@@ -176,6 +181,14 @@ class ApiImport extends ApiBase {
 class ApiImportReporter extends ImportReporter {
 	private $mResultArr = array();
 
+	/**
+	 * @param $title Title
+	 * @param $origTitle Title
+	 * @param $revisionCount int
+	 * @param $successCount int
+	 * @param $pageInfo
+	 * @return void
+	 */
 	function reportPage( $title, $origTitle, $revisionCount, $successCount, $pageInfo ) {
 		// Add a result entry
 		$r = array();

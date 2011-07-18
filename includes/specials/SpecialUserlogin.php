@@ -206,7 +206,7 @@ class LoginForm extends SpecialPage {
 		}
 
 		# Send out an email authentication message if needed
-		if( $wgEmailAuthentication && User::isValidEmailAddr( $u->getEmail() ) ) {
+		if( $wgEmailAuthentication && Sanitizer::validateEmail( $u->getEmail() ) ) {
 			$status = $u->sendConfirmationMail();
 			if( $status->isGood() ) {
 				$wgOut->addWikiMsg( 'confirmemail_oncreate' );
@@ -224,6 +224,10 @@ class LoginForm extends SpecialPage {
 		if( $wgUser->isAnon() ) {
 			$wgUser = $u;
 			$wgUser->setCookies();
+			// This should set it for OutputPage and the Skin
+			// which is needed or the personal links will be
+			// wrong.
+			RequestContext::getMain()->setUser( $u );
 			wfRunHooks( 'AddNewAccount', array( $wgUser, false ) );
 			$wgUser->addNewUserLogEntry();
 			if( $this->hasSessionCookie() ) {
@@ -355,7 +359,7 @@ class LoginForm extends SpecialPage {
 			return false;
 		}
 
-		if( !empty( $this->mEmail ) && !User::isValidEmailAddr( $this->mEmail ) ) {
+		if( !empty( $this->mEmail ) && !Sanitizer::validateEmail( $this->mEmail ) ) {
 			$this->mainLoginForm( wfMsg( 'invalidemailaddress' ) );
 			return false;
 		}
@@ -658,7 +662,7 @@ class LoginForm extends SpecialPage {
 					$wgUser->setOption( 'rememberpassword', $this->mRemember ? 1 : 0 );
 					$wgUser->saveSettings();
 				} else {
-					$wgUser->invalidateCache( true );
+					$wgUser->invalidateCache();
 				}
 				$wgUser->setCookies();
 				self::clearLoginToken();
@@ -696,9 +700,11 @@ class LoginForm extends SpecialPage {
 				break;
 			case self::NOT_EXISTS:
 				if( $wgUser->isAllowed( 'createaccount' ) ) {
-					$this->mainLoginForm( wfMsgExt( 'nosuchuser', 'parseinline', $this->mUsername ) );
+					$this->mainLoginForm( wfMsgExt( 'nosuchuser', 'parseinline',
+					   wfEscapeWikiText( $this->mUsername ) ) );
 				} else {
-					$this->mainLoginForm( wfMsg( 'nosuchusershort', htmlspecialchars( $this->mUsername ) ) );
+					$this->mainLoginForm( wfMsg( 'nosuchusershort',
+						wfEscapeWikiText( $this->mUsername ) ) );
 				}
 				break;
 			case self::WRONG_PASS:
@@ -711,7 +717,7 @@ class LoginForm extends SpecialPage {
 				$this->resetLoginForm( wfMsg( 'resetpass_announce' ) );
 				break;
 			case self::CREATE_BLOCKED:
-				$this->userBlockedMessage();
+				$this->userBlockedMessage( $wgUser->mBlock );
 				break;
 			case self::THROTTLED:
 				$this->mainLoginForm( wfMsg( 'login-throttled' ) );
@@ -812,12 +818,12 @@ class LoginForm extends SpecialPage {
 		# Run any hooks; display injected HTML
 		$injected_html = '';
 		$welcome_creation_msg = 'welcomecreation';
-		
+
 		wfRunHooks( 'UserLoginComplete', array( &$wgUser, &$injected_html ) );
-		
+
 		//let any extensions change what message is shown
 		wfRunHooks( 'BeforeWelcomeCreation', array( &$welcome_creation_msg, &$injected_html ) );
-		
+
 		$this->displaySuccessfulLogin( $welcome_creation_msg, $injected_html );
 	}
 
@@ -829,9 +835,9 @@ class LoginForm extends SpecialPage {
 
 		$wgOut->setPageTitle( wfMsg( 'loginsuccesstitle' ) );
 		if( $msgname ){
-			$wgOut->addWikiMsg( $msgname, $wgUser->getName() );
+			$wgOut->addWikiMsg( $msgname, wfEscapeWikiText( $wgUser->getName() ) );
 		}
-		
+
 		$wgOut->addHTML( $injected_html );
 
 		if ( !empty( $this->mReturnTo ) ) {
@@ -872,7 +878,7 @@ class LoginForm extends SpecialPage {
 			$block_reason,
 			$block->getBlocker()->getName()
 		);
-		
+
 		$wgOut->returnToMain( false );
 	}
 
@@ -1173,7 +1179,6 @@ class LoginForm extends SpecialPage {
 	 * @param $lang Language code
 	 */
 	function makeLanguageSelectorLink( $text, $lang ) {
-		global $wgUser;
 		$self = SpecialPage::getTitleFor( 'Userlogin' );
 		$attr = array( 'uselang' => $lang );
 		if( $this->mType == 'signup' ) {
@@ -1182,8 +1187,7 @@ class LoginForm extends SpecialPage {
 		if( $this->mReturnTo ) {
 			$attr['returnto'] = $this->mReturnTo;
 		}
-		$skin = $wgUser->getSkin();
-		return $skin->linkKnown(
+		return Linker::linkKnown(
 			$self,
 			htmlspecialchars( $text ),
 			array(),

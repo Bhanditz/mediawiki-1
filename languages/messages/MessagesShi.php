@@ -140,14 +140,6 @@ $messages = array(
 'index-category'                 => 'Tisniwin su umatar',
 'noindex-category'               => 'Tisniwin bla amatar',
 
-'mainpagetext'      => "'''MediaWiki tǧizn (tsrbk) bla tamukrist.'''",
-'mainpagedocfooter' => 'Ẓr taǧttnn  [http://meta.wikimedia.org/wiki/Aide:Contenu Guide de l’utilisateur] bac ad tawit inɣmisn yaḍn f manik sa tswwurt asɣẓan ad.
-
-== Izwir d MediaWiki ==
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Umuɣ n iɣwwarn n usgadda ]
-* [http://www.mediawiki.org/wiki/Manual:FAQ/fr Isqqsitn f MidyWiki]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Umuɣ n imsgdaln f imbḍitn n MidyaWiki]',
-
 'about'         => 'F',
 'article'       => 'Mayllan ɣ tasna',
 'newwindow'     => 'Murzemt ɣ tasatmt tamaynut',
@@ -198,7 +190,6 @@ $messages = array(
 'history'           => 'Amzruy n tasna',
 'history_short'     => 'Amzruy',
 'updatedmarker'     => 'Tuybddal z tizrink li iğuran',
-'info_short'        => 'Inɣmisn',
 'printableversion'  => 'Tasna nu sugz',
 'permalink'         => 'Azday Bdda illan',
 'print'             => 'Siggz',
@@ -398,6 +389,7 @@ lcont nek  tuyskar .
 'createaccount'           => 'Murzm amidan nek (lkunt)..',
 'gotaccount'              => 'Is nit dark amidan(lkunt)? $1.',
 'gotaccountlink'          => 'Kcm',
+'userlogin-resetlink'     => 'Ttut ismnk d tasarut n ukccum nk',
 'createaccountmail'       => 'S tirawt taliktunant',
 'createaccountreason'     => 'Maɣ:',
 'badretype'               => 'Tasarut lin tgit ur dis tucka.',
@@ -409,7 +401,7 @@ lcont nek  tuyskar .
 'nosuchuser'              => 'Asqdac « $1 » ur illi.
 Ussaɣ n isqdacn ḥiln hlli.
 Ẓṛ daɣ ist turit mzyan mayad, niɣd [[Special:UserLogin/signup|tmmurẓmt amiḍan amaynu]].',
-'nosuchusershort'         => 'Ur illa umsaws lli ilan assaɣ « <nowiki>$1</nowiki> ». Ẓṛ ist turit mzyan mayad.',
+'nosuchusershort'         => 'Ur illa umsaws lli ilan assaɣ « $1 ». Ẓṛ ist turit mzyan mayad.',
 'nouserspecified'         => 'Illa fllak ad tarat assaɣ nk.',
 'login-userblocked'       => 'Asqdac ad ur as yufi ad ikcm. Tazdayt ɣ ifalan uras ttuyskar',
 'mailmypassword'          => 'sifd yi awal ihdan yadni',
@@ -523,7 +515,9 @@ ikhssak ola kiyi ador tnqilt ɣtamani yadni.
 'edit-already-exists'              => 'Tasnayad tlla yadlli. ur as tufit ast daɣ tskrt.',
 
 # Parser/template warnings
-'parser-template-loop-warning' => 'Tamuḍimt ikrknnin ttyufa ɣid : [[$1]]',
+'post-expand-template-inclusion-warning'  => 'Han:  tasna yad illa gis tuggut n tmuḍimin. Kra gitsnt ur ran illint.',
+'post-expand-template-inclusion-category' => 'Tisniwin lli bahra ittafn tuggut n tmuḍimin',
+'parser-template-loop-warning'            => 'Tamuḍimt ikrknnin ttyufa ɣid : [[$1]]',
 
 # History pages
 'viewpagelogs'           => 'Ẓr timhlin lli ittuskarn ɣ tasna yad',
@@ -623,10 +617,15 @@ ikhssak ola kiyi ador tnqilt ɣtamani yadni.
 'prevn'                            => 'Tamzwarut {{PLURAL:$1|$1}}',
 'nextn'                            => 'Tallid yuckan {{PLURAL:$1|$1}}',
 'prevn-title'                      => '$1 {{PLURAL:$1|Askfa amzaru|Iskfatn imzwura}}',
+'nextn-title'                      => '$1 {{PLURAL:$1|askfa d itfrn|iskfatn d itfrn}}',
+'shown-title'                      => 'Fsr $1 tayafut{{PLURAL:$1||s}} s tasna',
 'viewprevnext'                     => 'Mel ($1 {{int:pipe-separator}} $2) ($3)',
 'searchmenu-legend'                => 'Istayn ucnubc',
+'searchmenu-new'                   => "'''Skr Tasna « [[:$1|$1]] » ɣ wiki !'''",
+'searchmenu-new-nocreate'          => '« $1 » tla yan w-assaɣ ur ifulkin ɣan afrad ur ttuyskar',
 'searchhelp-url'                   => 'Help:Mayllan',
 'searchprofile-articles'           => 'Mayllan ɣ tasna',
+'searchprofile-project'            => 'Tisniwin n w-aws n usnfar',
 'searchprofile-images'             => 'Multimedia',
 'searchprofile-everything'         => 'kullu',
 'searchprofile-advanced'           => 'motaqqadim',
@@ -729,6 +728,7 @@ Izdar ad urtili ɣ isbidn n mayllan ɣ {{SITENAME}} .',
 'prefs-files'               => 'Asdaw',
 'prefs-custom-css'          => 'khss CSS',
 'prefs-custom-js'           => 'khss JavaScipt',
+'youremail'                 => 'Tabrat mail',
 'username'                  => 'smiyt o-msxdam:',
 'uid'                       => 'raqm omskhdam:',
 'prefs-registration'        => 'waqt n tsjil:',
@@ -764,6 +764,9 @@ Izdar ad urtili ɣ isbidn n mayllan ɣ {{SITENAME}} .',
 'recentchanges'                     => 'Imbddeln imggura',
 'recentchanges-legend'              => 'Tixtiɣitin (options) n imbddl imaynutn',
 'recentchanges-feed-description'    => 'Tfr imbddln imggura n wiki yad ɣ usuddm',
+'recentchanges-label-newpage'       => 'Ambddl ad ar iskar yakka yat tasna tamaynut.',
+'recentchanges-label-minor'         => 'Imbddl ifssusn',
+'recentchanges-label-bot'           => 'Ambddl ad iskr robot',
 'rcnote'                            => 'Γid {{PLURAL:$1|ambddl amggaru lli ittuysgarn| $1 Imbddln imggura lli ittuyskarn}} ɣ {{PLURAL:$2|was amggaru| <b>$2</b> Ussan imggura}} ar $5 n $4.',
 'rclistfrom'                        => 'Mel imbdeltn imaynutn z $1',
 'rcshowhideminor'                   => '$1 iẓṛign fssusnin',
@@ -811,7 +814,11 @@ Mel imbddeln z tisniwin li ittuyzdayni bla tasna li trit.',
 'uploadlogpage'            => 'Anɣmis n isrbuṭn',
 'uploadedimage'            => 'Issrba "[[$1]]"',
 
+'license'        => 'Tlla s izrfan',
+'license-header' => 'Tẓrg ddu n izrfan',
+
 # File description page
+'file-anchor-link'          => 'Asdaw',
 'filehist'                  => 'Amzry n usdaw',
 'filehist-help'             => 'Adr i asakud/tizi bac attżrt manik as izwar usddaw ɣ tizi yad',
 'filehist-current'          => 'Ɣilad',
@@ -825,6 +832,9 @@ Mel imbddeln z tisniwin li ittuyzdayni bla tasna li trit.',
 'linkstoimage'              => 'Tasna yad {{PLURAL:$1|izdayn n tasna|$1 azday n tasniwin}} s usdaw:',
 'sharedupload'              => 'Asdawad z $1 tẓḍart at tsxdmt gr iswirn yaḍnin',
 'uploadnewversion-linktext' => 'Srbud tunɣilt tamaynut n usdaw ad',
+
+# Random page
+'randompage' => 'Tasna s zhr (ⵜⴰⵙⵏⴰ ⵙ ⵣⵀⵔ)',
 
 # Statistics
 'statistics' => 'Tisnaddanin',
@@ -899,9 +909,7 @@ Mel imbddeln z tisniwin li ittuyzdayni bla tasna li trit.',
 # Watchlist
 'watchlist'         => 'Umuɣ n imtfrn',
 'mywatchlist'       => 'Umuɣ inu lli tsaggaɣ',
-'addedwatch'        => 'Zayd tin i umuɣ n umtfr',
 'addedwatchtext'    => 'tasna « [[:$1]] » tllan ɣ [[Special:Watchlist|umuɣ n umtfr]]. Imbdln lli dyuckan d tasna lli dis iṭṭuzn rad asn nskr agmmaḍ nsn. Tasna radd ttbayan s "uḍnay" ɣ [[Special:RecentChanges|Umuɣ n imbddeln imaynutn]]',
-'removedwatch'      => 'Kkist s umuɣ n umtfr',
 'removedwatchtext'  => 'Tasna "[[:$1]]" ḥra ttuykkas z [[Special:Watchlist|your watchlist]].',
 'watch'             => 'zaydtin i tochwafin-niw',
 'watchthispage'     => 'Ṭfr tasna yad',
@@ -919,7 +927,7 @@ Mel imbddeln z tisniwin li ittuyzdayni bla tasna li trit.',
 'confirmdeletetext'     => 'Ḥan tbidt f attkkist tasna yad kullu d kullu amzruy nes.
 illa fllak ad ni tẓrt is trit ast tkkist d is tssnt marad igguṛu iɣt tkkist d is iffaɣ mayad i [[{{MediaWiki:Policy-url}}|tasrtit]].',
 'actioncomplete'        => 'tigawt tummidt',
-'deletedtext'           => '"<nowiki>$1</nowiki>"  ttuykkas.
+'deletedtext'           => '"$1"  ttuykkas.
 Ẓṛ $2 inɣmas imggura n ma ittuykkasn',
 'deletedarticle'        => 'Kkiss "[[$1]]"',
 'dellogpage'            => 'Qqiyd akkas ad',
@@ -938,7 +946,7 @@ illa fllak ad ni tẓrt is trit ast tkkist d is tssnt marad igguṛu iɣt tkkist
 'protectexpiry'               => 'Tizi nu uzri n umzruy:',
 'protect_expiry_invalid'      => 'Tizi n uzri n umzruy urtti tga.',
 'protect_expiry_old'          => 'Tizi n uzri n umzruy n zrit.',
-'protect-text'                => "Tzḍaṛt ad tẓṛt niɣ tbudlt taskflt n ugdal (protection) n tasna '''<nowiki>$1</nowiki>'''.",
+'protect-text'                => "Tzḍaṛt ad tẓṛt niɣ tbudlt taskflt n ugdal (protection) n tasna '''$1'''.",
 'protect-locked-access'       => "Ur tẓdart wala ittuyskarak ad tbadlt tiskfal n ugdal n tisniwin.
 Ha riglaj n ɣila lli f tlla tasna '''$1''' :",
 'protect-cascadeon'           => 'Tasna yad tgddl (protégé) t llan ɣ {{PLURAL:$1|Tasna llid yuckan, talli igddln| Tillid yuckan, lli igddln}} s tamatart ad « Agdl s imuzzar ». Tzḍart ad tsbadlt iswirn n ugdlns bla irza mayad aǧdl s imuzzar',
@@ -955,6 +963,7 @@ Ha riglaj n ɣila lli f tlla tasna '''$1''' :",
 
 # Undelete
 'undeletelink'     => 'mel/rard',
+'undeleteviewlink' => 'Ẓṛ',
 'undeletedarticle' => 'Isurrid  "[[$1]]"',
 
 # Namespace form on various pages
@@ -1013,7 +1022,7 @@ Ha riglaj n ɣila lli f tlla tasna '''$1''' :",
 'ipbotheroption'           => 'wayya',
 'ipbhidename'              => 'ḥbu assaɣ n umsqdac ɣ imbdln d umuɣn',
 'ipbwatchuser'             => 'Tfr tisniwin d imsgdaln n umqdac',
-'ipblocklist'              => 'Tansa IP d imsqdacn ttuẓnin',
+'ipblocklist'              => 'Imsqdacn ttuẓnin',
 'blocklink'                => 'Adur tajt',
 'unblocklink'              => 'kkis agdal',
 'change-blocklink'         => 'Sbadl agdal',
@@ -1126,6 +1135,7 @@ Maya Iẓḍar ad iglb zzu uzddar ar aflla tasna yad lli bdda n nttagga. Illa fl
 'tooltip-upload'                  => 'Izwir siɣ tullt.',
 'tooltip-rollback'                => '"Rard" s yan klik ażrig (iżrign) s ɣiklli sttin kkan tiklit li igguran',
 'tooltip-undo'                    => '"Sglb" ḥiyd ambdl ad t mmurẓmt tasatmt n umbdl ɣ umuḍ tiẓri tamzwarut.',
+'tooltip-summary'                 => 'Skcm yat tayafut imẓẓin',
 
 # Browsing diffs
 'previousdiff' => 'Imbddln imzwura',
@@ -1295,7 +1305,7 @@ Wiyyaḍ raggis ḥbun s ɣiklli sttin kkan gantn
 'blankpage' => 'tawriqt orgiss walo',
 
 # Special:Tags
-'tag-filter'           => '[[Special:Imarkiwn|amarkiy]] astay:',
+'tag-filter'           => 'Astay n [[Special:Tags|balises]] :',
 'tag-filter-submit'    => 'Istayn',
 'tags-title'           => 'imarkiwn',
 'tags-hitcount-header' => 'tghyiran markanin',

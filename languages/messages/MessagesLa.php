@@ -12,6 +12,7 @@
  * @author Esteban97
  * @author LeighvsOptimvsMaximvs
  * @author McDutchie
+ * @author MissPetticoats
  * @author Omnipaedista
  * @author OrbiliusMagister
  * @author Ornil
@@ -185,8 +186,8 @@ $messages = array(
 'tog-shownumberswatching'     => 'Numerum usorum custodientium monstrare',
 'tog-oldsig'                  => 'Praevisum subscriptionis ad tempus adhibitae:',
 'tog-fancysig'                => 'Subscriptio vicitext (sine nexu automatico)',
-'tog-externaleditor'          => 'Utere editore externo semper',
-'tog-externaldiff'            => 'Utere dissimilitudine externa semper',
+'tog-externaleditor'          => 'Utere editore externo semper (pro peritus solo, requirat speciales optiones in calculone. [http://www.mediawiki.org/wiki/Manual:External_editors More information.])',
+'tog-externaldiff'            => 'Utere editore dissimilitudine externa semper (pro peritus solo, requirat speciales optiones in calculone. [http://www.mediawiki.org/wiki/Manial:External_editors More information.])',
 'tog-showjumplinks'           => 'Sinere nexus ostendi forma "salire ad" monstrata',
 'tog-uselivepreview'          => 'Praevisum viventem adhibere (JavaScript)',
 'tog-forceeditsummary'        => 'Si recensionem non summatim descripsero, me roga si continuare velim',
@@ -300,7 +301,7 @@ $messages = array(
 'vector-action-move'       => 'Movere',
 'vector-action-protect'    => 'Protegere',
 'vector-action-undelete'   => 'Restituere',
-'vector-action-unprotect'  => 'Deprotegere',
+'vector-action-unprotect'  => 'Protectionem mutare',
 'vector-view-create'       => 'Creare',
 'vector-view-edit'         => 'Recensere',
 'vector-view-history'      => 'Historiam inspicere',
@@ -320,7 +321,6 @@ $messages = array(
 'searcharticle'     => 'Ire',
 'history'           => 'Historia paginae',
 'history_short'     => 'Historia',
-'info_short'        => 'Informatio',
 'printableversion'  => 'Forma impressibilis',
 'permalink'         => 'Nexus perpetuus',
 'print'             => 'Imprimere',
@@ -334,8 +334,8 @@ $messages = array(
 'protect'           => 'Protegere',
 'protect_change'    => 'mutare',
 'protectthispage'   => 'Protegere hanc paginam',
-'unprotect'         => 'Deprotegere',
-'unprotectthispage' => 'Deprotegere hanc paginam',
+'unprotect'         => 'Protectionem mutare',
+'unprotectthispage' => 'Protectionem huius paginae mutare',
 'newpage'           => 'Nova pagina',
 'talkpage'          => 'Disputare hanc paginam',
 'talkpagelinktext'  => 'Disputatio',
@@ -520,7 +520,7 @@ Nomen usoris alium selige.',
 'loginsuccess'               => "'''Apud {{grammar:accusative|{{SITENAME}}}} agnosceris nomine \"\$1\".'''",
 'nosuchuser'                 => 'Usor "$1" non est.
 Confirma orthographiam (cave litteras maiusculas minusculasque), aut [[Special:UserLogin/signup|novam rationem crea]].',
-'nosuchusershort'            => 'Usor "<nowiki>$1</nowiki>" non est.
+'nosuchusershort'            => 'Usor "$1" non est.
 Confirma orthographiam.',
 'nouserspecified'            => 'Nomen usoris indicare debes.',
 'wrongpassword'              => 'Tessera quam scripsisti non constat. Conare denuo.',
@@ -561,6 +561,11 @@ Hunc nuntium ignorare potes, si nolis hac ratione uti.',
 'resetpass-submit-loggedin' => 'Tesseram mutare',
 'resetpass-temp-password'   => 'Tessera temporaria:',
 
+# Special:PasswordReset
+'passwordreset-username'     => 'Nomen usoris:',
+'passwordreset-email'        => 'Inscriptio electronica:',
+'passwordreset-emailelement' => ' Nomen usoris: $1',
+
 # Edit page toolbar
 'bold_sample'     => 'Litterae pingues',
 'bold_tip'        => 'Litterae pingues',
@@ -577,7 +582,7 @@ Hunc nuntium ignorare potes, si nolis hac ratione uti.',
 'image_sample'    => 'Exemplum.jpg',
 'image_tip'       => 'Fasciculus in pagina impositus',
 'media_sample'    => 'Exemplum.ogg',
-'media_tip'       => 'Nexus ad fasciculum mediorum',
+'media_tip'       => 'Nexus ad fasciculum',
 'sig_tip'         => 'Subscriptio tua cum indicatione temporis',
 'hr_tip'          => 'Linea horizontalis (noli saepe uti)',
 
@@ -648,7 +653,7 @@ Si hic es propter errorem, solum '''Retrorsum''' in navigatro tuo preme.",
 Potes [[Special:Search/{{PAGENAME}}|hanc rem in aliis paginis quaerere]],
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} acta huius paginae videre]
 aut [{{fullurl:{{FULLPAGENAME}}|action=edit}} hanc paginam creare]</span>.',
-'userpage-userdoesnotexist'        => 'Usor "$1" non est. Visne re vera hanc paginam creare vel recensere?',
+'userpage-userdoesnotexist'        => 'Usor "<nowiki>$1</nowiki>" non est. Visne re vera hanc paginam creare vel recensere?',
 'updated'                          => '(Novata)',
 'note'                             => "'''Nota:'''",
 'previewnote'                      => "'''Memento hanc paginam solum praevisum esse, neque iam servatam!'''",
@@ -757,6 +762,9 @@ Titulus: '''({{int:cur}})''' = dissimilis ab emendatione novissima,
 'revdelete-hide-text'        => 'Celare textum emendationis',
 'revdelete-hide-image'       => 'Celare contentum fasciculi',
 'revdelete-hide-comment'     => 'Celare summarium emendationis',
+'revdelete-radio-same'       => 'non mutare',
+'revdelete-radio-set'        => 'Ita vero',
+'revdelete-radio-unset'      => 'Minime',
 'revdelete-log'              => 'Causa:',
 'revdelete-logentry'         => 'mutavit visibilitatem emendationis paginae [[$1]]',
 'revdel-restore'             => 'visibilitatem mutare',
@@ -1147,10 +1155,6 @@ Vide etiam [[Special:NewFiles|pinacothecam fasciculorum recentissimorum imposito
 'destfilename'        => 'Nomen fasciculi petitum:',
 'upload-maxfilesize'  => 'Maxima fasciculi magnitudo: $1',
 'watchthisupload'     => 'Custodire hunc fasciculum',
-'upload-wasdeleted'   => "'''Cave: fasciculum qui antea iam deletus est impones.'''
-
-Tibi oportet meditari utrum hunc fasciculum iterum imponere tamen convenit.
-Commodule notatio fasciculorum deletorum hic datur:",
 'upload-success-subj' => 'Impositum est perfectum',
 
 'upload-proto-error'  => 'Protocollum incorrectum',
@@ -1194,7 +1198,6 @@ Commodule notatio fasciculorum deletorum hic datur:",
 'linkstoimage'                      => '{{PLURAL:$1|Haec pagina ad hunc fasciculum nectit:|Paginae sequentes ad hunc fasciculum nectunt:}}',
 'nolinkstoimage'                    => 'Nullae paginae ad hunc fasciculum nectunt.',
 'morelinkstoimage'                  => 'Videre [[Special:WhatLinksHere/$1|plures nexus]] ad hunc fasciculum.',
-'redirectstofile'                   => '{{PLURAL:$1|Fasciculus sequens ad hunc fasciculum redirigit:|Hae $1 fasciculi sequentes ad hunc fasciculum redirigunt:}}',
 'sharedupload'                      => 'Hic fasciculus apud {{grammar:accusative|$1}} iacet; in aliis inceptis adhiberi potest.',
 'sharedupload-desc-there'           => 'Hic fasciculus apud {{grammar:accusative|$1}} iacet; in aliis inceptis adhiberi potest.
 Vide [$2 paginam descriptionis fasciculi].',
@@ -1458,15 +1461,14 @@ Inscriptio electronica quam in [[Special:Preferences|praeferentiis tuis]] dedis 
 # Watchlist
 'watchlist'          => 'Paginae custoditae',
 'mywatchlist'        => 'Paginae custoditae',
+'watchlistfor2'      => 'Pro $1 $2',
 'nowatchlist'        => 'Nullas paginas custodis.',
 'watchlistanontext'  => 'Necesse est $1 ad indicem paginarum custoditarum inspiciendum vel recensendum.',
 'watchnologin'       => 'Conventum non est apertum',
 'watchnologintext'   => '[[Special:UserLogin|Conventum aperire]] debes ut indicem paginarum custoditarum mutes.',
-'addedwatch'         => 'Pagina custodita',
 'addedwatchtext'     => "Pagina \"[[:\$1]]\" in [[Special:Watchlist|paginas tuas custoditas]] addita est. Mutationes posthac huic paginae et paginae disputationis ibi notabuntur, et pagina '''litteris pinguibus''' apparebit in [[Special:RecentChanges|nuper mutatorum]] indice, ut sit facilius electu.
 
 Si paginam ex indice paginarum custoditarum removere vis, imprime \"decustodire\" ab summa pagina.",
-'removedwatch'       => 'Non iam custodita',
 'removedwatchtext'   => 'Pagina "[[:$1]]" ex [[Special:Watchlist|indice paginarum custoditarum]] remota est.',
 'watch'              => 'Custodire',
 'watchthispage'      => 'Custodire hanc paginam',
@@ -1516,7 +1518,7 @@ You could also reset the notification flags for all your watched pages on your w
 
 --
 To change your watchlist settings, visit
-{{fullurl:{{#special:Watchlist}}/edit}}
+{{fullurl:{{#special:EditWatchlist}}}}
 
 Feedback and further assistance:
 {{fullurl:{{MediaWiki:Helppage}}}}',
@@ -1535,7 +1537,7 @@ Feedback and further assistance:
 Adfirma quaesumus te paginam re vera delere velle, te consequentias intellere, et actionem tuam [[{{MediaWiki:Policy-url}}|consilio]] congruere.',
 'actioncomplete'         => 'Actum perfectum',
 'actionfailed'           => 'Actum non feliciter evenit',
-'deletedtext'            => '"<nowiki>$1</nowiki>" deletum est. Vide $2 pro indice deletionum recentum.',
+'deletedtext'            => '"$1" deletum est. Vide $2 pro indice deletionum recentum.',
 'deletedarticle'         => 'delevit "[[$1]]"',
 'suppressedarticle'      => 'supprimit "[[$1]]"',
 'dellogpage'             => 'Index deletionum',
@@ -1578,7 +1580,7 @@ ad emendationem proximam ab $2.',
 'protectexpiry'               => 'Exitus:',
 'protect_expiry_invalid'      => 'Tempus post quod res exitur est invalidum.',
 'protect_expiry_old'          => 'Tempus est praeteritus.',
-'protect-text'                => "Hic tibi licet protectiones legere et mutare paginae '''<nowiki>$1</nowiki>'''.",
+'protect-text'                => "Hic tibi licet protectiones legere et mutare paginae '''$1'''.",
 'protect-locked-access'       => "Tibi non licet protectionem paginarum mutare.
 Ecce protectiones paginae '''$1''':",
 'protect-cascadeon'           => 'Hanc paginam, in {{PLURAL:$1|pagina seriatim protecta|paginis seriatim protectis}} inclusam, potes deprotegere; manebit autem protectio serialis.',
@@ -1969,12 +1971,6 @@ Paginae nomen petitum "[[:$1]]" iam existit. Vin tu eam delere ut pagina illic m
 'others'           => 'alii',
 'siteusers'        => '{{PLURAL:$2|usor|usores}} {{grammar:genitive|{{SITENAME}}}} $1',
 'creditspage'      => 'Auctores paginae',
-
-# Info page
-'numedits'       => 'Numerus recensionum (pagina): $1',
-'numtalkedits'   => 'Numerus recensionum (pagina disputationis): $1',
-'numauthors'     => 'Numerus auctorum discretorum (pagina): $1',
-'numtalkauthors' => 'Numerus auctorum discretorum (pagina disputationis): $1',
 
 # Skin names
 'skinname-standard'    => 'Norma',

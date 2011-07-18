@@ -24,6 +24,10 @@ class Ibm_db2Installer extends DatabaseInstaller {
 		'wgDBmwschema',
 	);
 
+	protected $internalDefaults = array(
+		'_InstallUser' => 'db2admin'
+	);
+
 	/**
 	 * Get the DB2 database extension name
 	 * @return string
@@ -62,8 +66,8 @@ class Ibm_db2Installer extends DatabaseInstaller {
 	 */
 	public function submitConnectForm() {
 		// Get variables from the request
-		$newValues = $this->setVarsFromRequest( 
-			array( 'wgDBserver', 'wgDBport', 'wgDBname', 
+		$newValues = $this->setVarsFromRequest(
+			array( 'wgDBserver', 'wgDBport', 'wgDBname',
 				'wgDBmwschema', 'wgDBuser', 'wgDBpassword' ) );
 
 		// Validate them
@@ -144,7 +148,7 @@ class Ibm_db2Installer extends DatabaseInstaller {
 		$dbName = $this->getVar( 'wgDBname' );
 		if( !$conn->selectDB( $dbName ) ) {
 			$conn->query( "CREATE DATABASE "
-				. $conn->addIdentifierQuotes( $dbName ) 
+				. $conn->addIdentifierQuotes( $dbName )
 				. " AUTOMATIC STORAGE YES"
 				. " USING CODESET UTF-8 TERRITORY US COLLATE USING SYSTEM"
 				. " PAGESIZE 32768", __METHOD__ );
@@ -181,7 +185,7 @@ class Ibm_db2Installer extends DatabaseInstaller {
 		$this->db->setFlag( DBO_DDLMODE ); // For Oracle's handling of schema files
 		$this->db->begin( __METHOD__ );
 
-		$error = $this->db->sourceFile( $this->db->getSchema() );
+		$error = $this->db->sourceFile( $this->db->getSchemaPath() );
 		if( $error !== true ) {
 			$this->db->reportQueryError( $error, 0, '', __METHOD__ );
 			$this->db->rollback( __METHOD__ );

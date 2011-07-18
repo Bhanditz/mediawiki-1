@@ -23,12 +23,21 @@ $fallback = 'ka';
 
 $messages = array(
 # User preference toggles
-'tog-underline'       => 'რცხიეფს თუდო ქუდუჸნე ღოზი:',
-'tog-highlightbroken' => 'ქააძირი ვაარარსებულ ბუნილეფ <a href="" class="new">მუჭოთ თენა</a> (ალტერნატივა: მუჭოთ თენა<a href="" class="internal">?</a>).',
-'tog-justify'         => 'გაასწორი პარაგრაფეფ',
-'tog-hideminor'       => 'დოფული ჭიჭე რედაქტირაფეფი ეკონია თირაფეფს',
-'tog-showtoolbar'     => 'რედაქტირაფაშ ინსტრუმენტეფიშ ძირაფა (ჯავასკრიპტ)',
-'tog-showhiddencats'  => 'ქაძირი ფულირი კატეგორიეფი',
+'tog-underline'               => 'რცხუეფიშ ათოღაზუა:',
+'tog-highlightbroken'         => 'ქაძირი მესოფილ რცხუეფი <a href="" class="new">მუჭოთ თენა</a> (ალტერნატივა: მუჭოთ თენა<a href="" class="internal">?</a>).',
+'tog-justify'                 => 'გამანგი აბზაცეფი',
+'tog-hideminor'               => 'დოფული ციქა რედაქტირაფა ეკონია თირაფეფს',
+'tog-hidepatrolled'           => 'დოფულით პატრულირებულ რედაქტირაფეფი ასერდეიან თირაფეფს',
+'tog-newpageshidepatrolled'   => 'დოფულით პატრულირებულ ხასჷლეფი ახალ ხასჷლეფიშ ერკებულშე',
+'tog-extendwatchlist'         => 'გოფაჩი ოთოჸუჯე ერკებული არძო თირაფეფიშ ოძირაფალო, ამარდეიან თირაფეფიშ მეკოროცხილო',
+'tog-usenewrc'                => 'გეგმირინე ეკონია თირაფეფიშ უჯგუში ერკებული (ითხინს JavaScript-ის)',
+'tog-numberheadings'          => 'ავტომატურო დონომერე დუდჯოხოეფი',
+'tog-showtoolbar'             => 'რედაქტირაფაშ ხეჭკუდეფიშ ძირაფა (ითხინს JavaScript-ის)',
+'tog-editondblclick'          => 'ხასჷლეფიშ რედაქტირაფა ჟირმანგი გეწკანტაფათ (ითხინს JavaScript-ის)',
+'tog-editsection'             => 'ჩართი სექციაშ რედაქტირაფა [რედაქტირაფაშ] რცხუეფით',
+'tog-editsectiononrightclick' => 'ჩართი სექციაშ რედაქტირაფა სექციაშ ჯოხოშა მარძგვან გეწკანტაფათ (ითხინს JavaScript-ის)"',
+'tog-showtoc'                 => 'ქაძირი გჷშაგორალი (სუმშე უმოს დუდჯოხოამ ხასჷლეფშო)',
+'tog-showhiddencats'          => 'ქაძირი ფულირი კატეგორიეფი',
 
 'underline-always' => 'ირო',
 'underline-never'  => 'შურო',
@@ -94,8 +103,8 @@ $messages = array(
 'category_header'          => 'სტატიეფ "$1"  კატეგორიას',
 'subcategories'            => 'გიმენკატეგორიეფ',
 'category-media-header'    => 'მედია კატეგორიას "$1"',
-'category-empty'           => "''თენა კატეგორიას ვარენა ხასილეფ დო მედია''",
-'hidden-categories'        => '{{ბრელოფეფ:$1|ტყობინაფილ კატეგორია|ტყობინაფილ კატეგორიეფ}}',
+'category-empty'           => "''თე კატეგორიას ასე ვაკათ ხასჷლეფი ვარდა მედია''",
+'hidden-categories'        => '{{PLURAL:$1|ტყობინაფილი კატეგორია|ტყობინაფილი კატეგორიეფი}}',
 'hidden-category-category' => 'ფულირი კატეგორიეფი',
 'category-subcat-count'    => '{{PLURAL:$2|თე კატეგორია იკათუანს ხვალე ათე გიმენკატეგორიას.|თე კატეგორიას მოჩამილი რე $1 გიმენკატეგორია $2-შე.}}',
 'category-article-count'   => '{{PLURAL:$2|ათე კატეგორია იკათუანს ხვალე გეჸვენჯ ხასილას.|გეჸვენჯ {{PLURAL:$1|ხასილა რე|$1 ხასილეფ რე}} თე კატეგორიას, გვალო $2–შე.}}',
@@ -119,7 +128,7 @@ $messages = array(
 'qbpageoptions'  => 'თენა ხასილა',
 'qbpageinfo'     => 'კონტექსტ',
 'qbmyoptions'    => 'ჩქიმ ხასილეფ',
-'qbspecialpages' => 'სპეციალურ ხასილეფ',
+'qbspecialpages' => 'გჷშაკერძაფილი ხასჷლეფი',
 'faq'            => 'ბხშირი კითხვეფი',
 
 # Vector skin
@@ -146,7 +155,6 @@ $messages = array(
 'searcharticle'    => 'გინულა',
 'history'          => 'ხასილაშ ისტორია',
 'history_short'    => 'ისტორია',
-'info_short'       => 'ინფორმაცია',
 'printableversion' => 'ობეშტალ ვერსია',
 'permalink'        => 'პერმანენტულ რცხი',
 'print'            => 'დობეჭდი',
@@ -160,13 +168,13 @@ $messages = array(
 'newpage'          => 'ახალ ხასილა',
 'talkpage'         => 'მოჩამილ ხასილაშ სხუნუა',
 'talkpagelinktext' => 'სხუნუა',
-'specialpage'      => 'სპეციალურ ხასილა',
+'specialpage'      => 'გჷშაკერძაფილი ხასჷლა',
 'personaltools'    => 'პერსონალურ ხეჭკუდეფ',
 'talk'             => 'სხუნუა',
-'views'            => 'ძირაფეფ',
-'toolbox'          => 'ინსტრუმენტეფ',
+'views'            => 'ძირაფეფი',
+'toolbox'          => 'ინსტრუმენტეფი',
 'otherlanguages'   => 'შხვა ნინეფს',
-'redirectedfrom'   => '(გიონოწურაფილ რე $1-იშე)',
+'redirectedfrom'   => '(გინოწურაფილი რე $1-შე)',
 'redirectpagesub'  => 'ხასილაშა გინოწურაფა',
 'lastmodifiedat'   => 'თე ხასილაქ ეკონიას გეახალუ $2-ს, $1-ის.',
 'jumpto'           => 'გეგნორთი:',
@@ -178,15 +186,15 @@ $messages = array(
 'aboutpage'            => 'Project:შენი',
 'copyright'            => 'დინორე მიწორინაფილი რე $1–იშ ჯოხოთ.',
 'copyrightpage'        => '{{ns:project}}:ავტორიშ ნებეფ',
-'currentevents'        => 'მიმალ მოლინეფ',
+'currentevents'        => 'მიმალ მოლინეფი',
 'currentevents-url'    => 'Project:მიმალ მოლინეფ',
 'disclaimers'          => 'გამამინჯალაშ ვარება',
 'disclaimerpage'       => 'Project:გამამინჯალაშ ვარება',
 'edithelp'             => 'მოხვარა რედაქტირაფას',
 'edithelppage'         => 'Help:ტექსტიშ რედაქტირაფა',
 'helppage'             => 'Help:დინორე',
-'mainpage'             => 'დუდ ხასჷლა',
-'mainpage-description' => 'დუდ ხასილა',
+'mainpage'             => 'დუდხასჷლა',
+'mainpage-description' => 'დუდხასჷლა',
 'portal'               => 'საზოგადოებაშ ხასილეფ',
 'portal-url'           => 'Project:საზოგადოებაშ ხასილეფ',
 'privacy'              => 'ანონიმურობაშ პოლიტიკა',
@@ -221,7 +229,7 @@ $messages = array(
 'nstab-special'  => 'სპეციალური ხასილა',
 'nstab-project'  => 'პროექტიშ ხასილა',
 'nstab-image'    => 'ფაილი',
-'nstab-template' => 'თარგი',
+'nstab-template' => 'თანგი',
 'nstab-category' => 'კატეგორია',
 
 # Main script and global functions
@@ -326,8 +334,8 @@ $messages = array(
 ვა გოკონა თქვან ნახანდაქ დუდშულო   რედაქტირებულქ დო გიონოჯღონელქ იყ’უას–და, ვა მიშეყ’ონათ თინა თაქ.<br />
 თქვა ხოლო პიჯალას დუთმოდვანთ, ნამდა თე ტექსტი თქვან ნაჭარა რე, ვარა გინოღალირ რე ოირკოჩე დომენშე დო ვარა თიშ მანგურ დუდიშულ წყუშე. 
 '''ვა მიშეღათ ოავტორე ნებეფით თხილერ ნახანდი ავტორიშ ქოყ’იაშ უმშო!'''\"",
-'templatesused'                    => 'თე ხასილას გიმორინაფილ {{PLURAL:$1|თარგ|თარგეფ}}:',
-'templatesusedpreview'             => '{{PLURAL:$1|თარგი|თარგეფ}} ნამუთ თე გჷწოთოლორაფას რე გიმორინაფილი',
+'templatesused'                    => 'თე ხასჷლას გიმორინაფილი {{PLURAL:$1|თანგი|თანგეფი}}:',
+'templatesusedpreview'             => '{{PLURAL:$1|თანგი|თანგეფი}} ნამუთ თე გჷწოთოლორაფას რე გიმორინაფილი',
 'template-protected'               => '(თხილერი)',
 'template-semiprotected'           => '(გვერდო თხილერ)',
 'hiddencategories'                 => 'თე ხასილა ოკათუ {{PLURAL:$1|1 ტყობინაფილ კატეგორიას|$1 ტყობინაფილ კატეგორიეფს}}:',
@@ -454,8 +462,10 @@ $messages = array(
 'prefs-help-email-others' => 'თქვა შეილებუნა ალობა მეჩათ შხვეფს დჷგეკონტაქტან ელ-ფოშტათ თქვან ანგარიშის ვარა ოჩიებელ ხასჷლაშ ლინკიშ გეჸუნათ. თქვანი ელ-ფოშტაშ მიოწურაფუ ვანკორჩქინდჷ მუჟამს შხვა მახვარებუეფი დჷგეკავშირებუნანი.',
 
 # Groups
+'group-user'  => 'მახვარებუეფ',
 'group-sysop' => 'ადმინისტრატორეფი',
 
+'grouppage-user'  => '{{ns:project}}:მახვარებუეფ',
 'grouppage-sysop' => '{{ns:project}}:ადმინისტრატორეფ',
 
 # User rights log
@@ -578,7 +588,7 @@ $messages = array(
 'booksources-go'            => 'გინულა',
 
 # Special:Log
-'specialloguserlabel'  => 'მახვარებელ:',
+'specialloguserlabel'  => 'მახვარებუ:',
 'speciallogtitlelabel' => 'სათაურ:',
 'log'                  => 'ჟურნალეფ',
 'all-logs-page'        => 'ირ ჟურნალ',
@@ -594,7 +604,7 @@ $messages = array(
 'allpagessubmit' => 'გინულა',
 
 # Special:Categories
-'categories' => 'კატეგორიეფ',
+'categories' => 'კატეგორიეფი',
 
 # Special:LinkSearch
 'linksearch'      => 'გალენ რცხიეფ',
@@ -605,7 +615,7 @@ $messages = array(
 'newuserlog-create-entry' => 'ახალ მახვარებუ',
 
 # Special:ListGroupRights
-'listgrouprights-members' => '(მაკათურეფიშ ერკებულ)',
+'listgrouprights-members' => '(მაკათურეფიშ ერკებული)',
 
 # E-mail user
 'emailuser' => 'მიდუჯღონით ელ.ფოშტა ათე მახვარებუს',
@@ -614,10 +624,8 @@ $messages = array(
 'watchlist'         => 'ჩქიმ ოკონტროლებულეფიშ ერკებულ',
 'mywatchlist'       => 'ჩქიმ კონტროლიშ ერკებულ',
 'watchlistfor2'     => '$1 $2-ს',
-'addedwatch'        => 'გეძინელ რე კონტროლიშ ერკებულშა',
 'addedwatchtext'    => "\"[[:\$1]]\" ხასილაქ გეძინელქ იყ’უ თქვან [[Special:Watchlist|watchlist]]–შა.
 თე ხასილაშა დო თეწკუმა ასოცირებულ სხუნუაშ ხასილაშა მუმაულარ თირაფეფ მოჩამილ იყ’ი თექ დო თქვა გეგეადვილან თიშ გიშაგორუაქინ, ხასილა გუმორჩქინდუ '''რუმეთ'''  [[Special:RecentChanges|list of recent changes]]–ს.\"",
-'removedwatch'      => 'მონწყუმილ რე კონტროლიშ ერკებულშე',
 'removedwatchtext'  => 'ათე ხასილაქ "[[:$1]]" ლასირქ იყ’უ  [[Special:Watchlist|თქვნ კონტროლიშ ერკებულშე]].',
 'watch'             => 'გაკონტროლი',
 'watchthispage'     => 'თე ხასილაშ კონტროლ',
@@ -636,7 +644,7 @@ $messages = array(
 დადასტურით, ნამდა თქვა ნანდულო გოკონა თეშ ღოლამა დო ნამუდა თქვა გარჩქილენა თე ქიმინჯალაშ მოღალუეფ დო მუჭოთ თქვა თეს ორთუთ [[{{MediaWiki:Policy-url}}|წესეფიშ]] მეხუჯაფილო.',
 'actioncomplete'        => 'მოქმედალა რსულებულ რე',
 'actionfailed'          => 'მოქმედალაქ დემარცხჷ',
-'deletedtext'           => '"<nowiki>$1</nowiki>\\" ლასირქ იყ’უ.
+'deletedtext'           => '"$1\\" ლასირქ იყ’უ.
 ასერდე ლასირ ხასილეფიშ ერკებულ ქოძირით $2–ს.',
 'deletedarticle'        => '"[[$1]]" ლასირ რე',
 'dellogpage'            => 'ლასირეფიშ ერკებულ',
@@ -656,7 +664,7 @@ $messages = array(
 'protectexpiry'               => 'ვადა გიშალე',
 'protect_expiry_invalid'      => 'ვადაშ გიშულაშ თარიღ რე ჩილათირ',
 'protect_expiry_old'          => 'ვადაშ გიშულაშ თარიღ რე ულირ ბორჯის',
-'protect-text'                => "'''<nowiki>$1</nowiki>''' ხასილაშო თხილუაშ დონეშ ძირაფა დო თირაფა შეგილებუნა თაქ.",
+'protect-text'                => "'''$1''' ხასილაშო თხილუაშ დონეშ ძირაფა დო თირაფა შეგილებუნა თაქ.",
 'protect-locked-access'       => "თქვა ვა გიღუნა ხასილაშ თხილუაშ დონეშ თირუაშ ალობა. 
 ათაქ რე '''$1''' ხასილაშ ასეიან გენწყილობეფ.",
 'protect-cascadeon'           => 'ათე ხასილა ასე თხილერ რე, თიშენ ნამდა თენა მიშულირ რე {{PLURAL:$1|ხასილაშა, ნამდგასით|ხასილეფშა, ნამდგეფსით}} ჩართულ აფუ კასკადურ თხილუა.
@@ -708,12 +716,12 @@ $messages = array(
 # What links here
 'whatlinkshere'            => 'სოვრეშე რე თე ხასილა წურაფილ',
 'whatlinkshere-title'      => 'ხასილეფ, ნამუთ გინორცხილ რე $1-შა',
-'whatlinkshere-page'       => 'ხასილა:',
+'whatlinkshere-page'       => 'ხასჷლა:',
 'linkshere'                => "გეყ’ვენჯ ხასილეფ გინარცხუაფუ '''[[:$1]]'''-ეფს",
 'nolinkshere'              => "ნამთინ ხასილა ვა რე გინორცხილ '''[[:$1]]'''-შა.",
 'isredirect'               => 'გინოწურაფაშ ხასილა',
 'istemplate'               => 'ტრანსკლუზია',
-'isimage'                  => 'ნახანტიშ რცხი',
+'isimage'                  => 'ფაილიშ რცხი',
 'whatlinkshere-prev'       => '{{PLURAL:$1|წოხოლენ|წოხოლენ $1}}',
 'whatlinkshere-next'       => '{{PLURAL:$1|უკულიან|უკულიან $1}}',
 'whatlinkshere-links'      => '← რცხიეფ',
@@ -813,7 +821,7 @@ $messages = array(
 'tooltip-search'                  => 'გორუა {{SITENAME}}',
 'tooltip-search-go'               => 'გეგნორთი წორას ათე ჯოხოშ ხასილაშა შურო ქო რენ-და',
 'tooltip-search-fulltext'         => 'დოგორი ხასილეფი, ნამუთ თე ტექსტის იკათუანან',
-'tooltip-p-logo'                  => 'დუდ ხასჷლაშ ძირაფა',
+'tooltip-p-logo'                  => 'დუდხასჷლაშ ძირაფა',
 'tooltip-n-mainpage'              => 'დუდ ხასილაშ ძირაფა',
 'tooltip-n-mainpage-description'  => 'დუდ ხასილაშა გინოზოჯუა',
 'tooltip-n-portal'                => 'პროექტიშენი, მუშ ქიმინუა შეილებუნა, სოდე შილებე გორათინ',
@@ -836,7 +844,7 @@ $messages = array(
 'tooltip-ca-nstab-special'        => 'თქვა ასე რეთ სპეციალურ ხასილას, თქვა ვა შეილებუნა ათე ხასილაშ რედაქტირაფა',
 'tooltip-ca-nstab-project'        => 'პროექტიშ ხასილაშ ძირაფა',
 'tooltip-ca-nstab-image'          => 'ფაილიშ ხასილაშ ძირაფა',
-'tooltip-ca-nstab-template'       => 'თარგიშ ძირაფა',
+'tooltip-ca-nstab-template'       => 'თანგიშ ძირაფა',
 'tooltip-ca-nstab-help'           => 'ქოძირეთ დახვარებაშ გვერდ',
 'tooltip-ca-nstab-category'       => 'ხასილაშ კატეგორიაშ ძირაფა',
 'tooltip-minoredit'               => 'ქიმიოღანკი, მუჭოთ ჭიჭე რედაქტირაფა [alt-i]',
@@ -935,5 +943,8 @@ $messages = array(
 
 # Special:Tags
 'tag-filter' => '[[Special:Tags|ხინტკეფიშ]] ტკიბირი:',
+
+# Add categories per AJAX
+'ajax-error-dismiss' => 'OK',
 
 );

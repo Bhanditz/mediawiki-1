@@ -153,14 +153,6 @@ $messages = array(
 'noindex-category'               => 'Pàggene none indicizzate',
 'broken-file-category'           => 'Pàggene cu collegaminde a le file scuasciate',
 
-'mainpagetext'      => "'''MediaUicchi ha state 'nstallete.'''",
-'mainpagedocfooter' => "Vè vide [http://meta.wikimedia.org/wiki/Help:Contents User's Guide] pe l'mbormaziune sus a cumme s'ause 'u softuer wiki.
-
-== Pe accumenzà ==
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Liste pe le configuraziune]
-* [http://www.mediawiki.org/wiki/Manual:FAQ FAQ de MediaWiki]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Liste d'a poste de MediaWiki]",
-
 'about'         => 'Sus a',
 'article'       => 'Pàgene de le condenute',
 'newwindow'     => "(iapre jndr'à 'na fenestra nova)",
@@ -189,7 +181,7 @@ $messages = array(
 'vector-action-move'             => 'Spuèste',
 'vector-action-protect'          => 'Protegge',
 'vector-action-undelete'         => 'Repristine',
-'vector-action-unprotect'        => 'Sprotegge',
+'vector-action-unprotect'        => "Cange 'a protezione",
 'vector-simplesearch-preference' => "Abbilete le suggereminde d'a ricerche avanzate (Sulamende pe le scheme a vettore)",
 'vector-view-create'             => 'Ccreje',
 'vector-view-edit'               => 'Cange',
@@ -211,7 +203,6 @@ $messages = array(
 'history'           => "Storie d'a pàgene",
 'history_short'     => 'Cunde',
 'updatedmarker'     => "aggiornete da l'urtema visite meje",
-'info_short'        => "'Mbormazione",
 'printableversion'  => 'Versione ca se stambe',
 'permalink'         => 'Collegamende ca remane pe sembre',
 'print'             => 'Stambe',
@@ -227,8 +218,8 @@ $messages = array(
 'protect'           => 'Prutette',
 'protect_change'    => 'cange',
 'protectthispage'   => 'Prutigge sta pàgene',
-'unprotect'         => 'Sprutette',
-'unprotectthispage' => 'Sprutigge sta pàgene',
+'unprotect'         => "Cange 'a protezione",
+'unprotectthispage' => "Cange 'a protezione de sta pàgene",
 'newpage'           => 'Pàgene nova',
 'talkpage'          => "'Ngazzete pe sta pàgene",
 'talkpagelinktext'  => 'Parle',
@@ -418,7 +409,8 @@ Pe traduziune, pe piacere vide ce ause [http://translatewiki.net/wiki/Main_Page?
 'cascadeprotected'     => 'Sta pàgene ha state prutette da le cangiaminde, purcè jè ingluse jndr\'à {{PLURAL:$1|seguende pàgene, ca jè|le seguende pàggene, ca sonde}} prutette cu l\'opzione "a caschete":
 $2',
 'namespaceprotected'   => "Non ge tine 'u permesse pe cangià pàggene d'u neimspeise '''$1'''.",
-'customcssjsprotected' => "Non ge tine 'u permesse pe cangià sta pàgene, purcè tène otre configurazione personele.",
+'customcssprotected'   => "Non ge tine 'u permesse pe cangià sta pàgene de CSS, purcè tène otre configurazione personale.",
+'customjsprotected'    => "Non ge tine 'u permesse pe cangià sta pàgene de Javascript, purcè tène otre configurazione personale.",
 'ns-specialprotected'  => 'Le pàgene speciale no ponne essere cangete.',
 'titleprotected'       => "Stu titele ha state prutette da 'a ccreazione da [[User:$1|$1]].
 'U mutive jè ''$2''.",
@@ -481,7 +473,7 @@ Pe piacere vide ce tine le cookie abbilitate, recareche sta pàgene e pruève ar
 'nosuchuser'                 => "Non g'esiste n'utende cu 'u nome \"\$1\".
 Fà attenzione ca le nome de l'utinde so senzibbele a le lettere granne e piccenne.
 Vide bbuene a cumme l'è scritte, o [[Special:UserLogin/signup|ccreje n'utende nuève]].",
-'nosuchusershort'            => 'Non ge ste nisciune utende cu \'u nome "<nowiki>$1</nowiki>".
+'nosuchusershort'            => 'Non ge ste nisciune utende cu \'u nome "$1".
 Condrolle accume l\'è scritte.',
 'nouserspecified'            => "A scrivere pe forze 'u nome de l'utende.",
 'login-userblocked'          => 'Stu utende jè bloccate. Non ge puè trasè.',
@@ -681,13 +673,13 @@ Tu puè [[Special:Search/{{PAGENAME}}|cercà pe quiste titele]] jndr\'à otre p�
 'noarticletext-nopermission'       => "Pe mò non ge stè teste jndr'à sta pàgene.
 Tu puè [[Special:Search/{{PAGENAME}}|cercà pe stu titele]]  jndr'à otre pàggene,
 o <span class=\"plainlinks\">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} cirche jndr'à l'archivije cullegate]</span>.",
-'userpage-userdoesnotexist'        => '\'U cunde utende "$1" non g\'è reggistrete.
+'userpage-userdoesnotexist'        => '\'U cunde utende "<nowiki>$1</nowiki>" non g\'è reggistrete.
 Pe piacere, condrolle ce tu vuè cu ccreje/cange sta pàgene.',
 'userpage-userdoesnotexist-view'   => '\'U cunde utende "$1" non g\'è reggistrate.',
 'blocked-notice-logextract'        => "Stu utende jè correndemende bloccate.<br />
 L'urteme archivije de le bloccaminde se iacche aqquà sotte pe referimende:",
 'clearyourcache'                   => "'''Vide Bbuene - Apprisse 'a reggistrazione, tu puè zumbà 'a cache d'u browser tue pe vedè le cangiaminde.'''
-*'''Mozilla / Firefox / Safari:''' cazze 'u ''Shift'' e condemboranemende cazze 'u buttone ''Aggiorna'', o cazze 'nzieme ''Ctrl-F5'' o ''Ctrl-R'' (''Command-R'' sus a 'nu Macintosh);
+*'''Mozilla / Firefox / Safari:''' cazze 'u ''Shift'' e condemboranemende cazze 'u buttone ''Aggiorna'', o cazze 'nzieme ''Ctrl-F5'' o ''Ctrl-R'' (''Command-R'' sus a 'nu Mac);
 *'''Konqueror: '''cazze ''Aggiorna'' o cazze ''F5'';
 *'''Opera:''' pulizze 'a cache da ''Tools → Preferences'' (in inglese) (Struminde - Preferenze in tagliàne);
 *'''Internet Explorer:''' cazze ''Ctrl'' e condemboraneamende cazze ''Aggiorna,'' o cazze ''Ctrl-F5''.",
@@ -1088,7 +1080,9 @@ Però fa attenzione purcè l'indice lore sus a {{SITENAME}} ponne condenè pàgg
 'prefs-skin'                    => 'Skin',
 'skin-preview'                  => 'Andeprime',
 'datedefault'                   => 'Nisciuna preferenze',
+'prefs-beta'                    => 'Funziune de Beta',
 'prefs-datetime'                => 'Date e ore',
+'prefs-labs'                    => 'Funziune de Labs',
 'prefs-personal'                => "Profile de l'utende",
 'prefs-rc'                      => 'Cangiaminde recende',
 'prefs-watchlist'               => 'Pàggene condrollete',
@@ -1122,7 +1116,7 @@ Aqquà ste 'nu valore generate a uecchije ca tu puè ausà: $1",
 'savedprefs'                    => 'Le preferenze tue onne state aggiornete.',
 'timezonelegend'                => "Orarie d'a zone:",
 'localtime'                     => 'Orarie lochele:',
-'timezoneuseserverdefault'      => "Ause 'u valore de default d'u server",
+'timezoneuseserverdefault'      => "Ause 'u valore de default de uicchi ($1)",
 'timezoneuseoffset'             => "Otre (specifiche 'a distanze)",
 'timezoneoffset'                => 'Distanze¹:',
 'servertime'                    => "Orarie d'u server:",
@@ -1303,10 +1297,11 @@ Ce tu 'u mitte, a fatje ca è fatte t'avène ricanusciute.",
 'right-sendemail'             => "Manne 'a mail a otre utinde",
 
 # User rights log
-'rightslog'      => "Archivie de le diritte de l'utende",
-'rightslogtext'  => "Quiste jè 'n'archivije pe le cangiaminde de le deritte de l'utinde.",
-'rightslogentry' => "membre d'u gruppe cangete pe $1 da $2 a $3",
-'rightsnone'     => '(ninde)',
+'rightslog'                  => "Archivie de le diritte de l'utende",
+'rightslogtext'              => "Quiste jè 'n'archivije pe le cangiaminde de le deritte de l'utinde.",
+'rightslogentry'             => "membre d'u gruppe cangete pe $1 da $2 a $3",
+'rightslogentry-autopromote' => 'ha state promosse automaticamende da $2 a $3',
+'rightsnone'                 => '(ninde)',
 
 # Associated actions - in the sentence "You do not have permission to X"
 'action-read'                 => 'ligge sta pàgene',
@@ -1456,6 +1451,7 @@ Stu file jè $2.",
 'emptyfile'                   => "'U file ca tu è carecate pare ca è vacande.
 Pò essere ca è scritte male 'u nome d'u file e n'à carecate 'n'otre.
 Pe piacere condrolle ce tu avveramende vuè cu careche stu file.",
+'windows-nonascii-filename'   => 'Sta Uicchi non ge supporte le nome de le file cu le carattere speciale.',
 'fileexists'                  => "'Nu file cu stu nome esiste già, pe piacere verifiche '''<tt>[[:$1]]</tt>''' ce tu non ge sì secure no 'u sce cangianne.
 [[$1|thumb]]",
 'filepageexists'              => "'A pàgene de descrizione pe stu file ha state già ccreiate 'u '''<tt>[[:$1]]</tt>''', ma nisciune file cu stu nome osce a die esiste.
@@ -1504,10 +1500,6 @@ Pe piacere verifiche le 'mbostaziune d'u ''file_uploads''.",
 'watchthisupload'             => 'Condrolle stu file',
 'filewasdeleted'              => "'Nu file ca se chiamave cumme a quidde tue ha state apprime carecate e pò ha state scangellete.
 Tu avissa condrollà 'u $1 apprime ca condinue cu 'u carecamende.",
-'upload-wasdeleted'           => "'''FA ATTENZIO': Tu ste careche 'nu file ca apprime ha state scangellete.'''
-
-Tu avissa considerà ce è  proprie utile carecà stu file.
-L'archivije de le scangellaminde pe stu file 'u iacchije aqquà pe convenienze:",
 'filename-bad-prefix'         => "'U nome d'u file ca tu ste careche accumenze pe '''\"\$1\"''', ca normalmende jè 'u nome ca assegne a machena fotografeche e non 'nu nome descrittive d'u file ca vuè ccu careche.
 Pe piacere scacchie 'n'otre nome ca jè cchiù descrittive.",
 'upload-success-subj'         => 'Carecamende sciute apposte',
@@ -1633,7 +1625,7 @@ Ce cazze sus a 'a testate d'a colonne cange l'arrengamende.",
 'Na [[Special:WhatLinksHere/$2|liste comblete]] è disponibbele.",
 'nolinkstoimage'            => 'Non ge stonne pàggene ca appodene a stu fail.',
 'morelinkstoimage'          => 'Vide [[Special:WhatLinksHere/$1|cchiù collegaminde]] a stu file.',
-'redirectstofile'           => "{{PLURAL:$1|'U seguende file se ridirezione|Le seguende $1 file se ridirezionane}} a stu file:",
+'linkstoimage-redirect'     => "$1 (redirezionamende d'u file) $2",
 'duplicatesoffile'          => "{{PLURAL:$1|'U seguende file ète 'nu|Le seguende $1 file sonde}} duplicate de stu file ([[Special:FileDuplicateSearch/$2|cchiù 'mbormaziune]]):",
 'sharedupload'              => 'Stu file avène da $1 e pò essere ausate da otre pruggette.',
 'sharedupload-desc-there'   => "Stu file è da $1 e pò essere ausate pe otre pruggette.<br />
@@ -1962,10 +1954,8 @@ L'indirizze e-mail ca tu è 'nzerite jndr'à le [[Special:Preferences|preferenze
 'watchlistanontext'    => 'Pe piacere $1 pe vedè o cangià le vosce sus a liste de le pàggene condrollete.',
 'watchnologin'         => 'Non ge sinde colleghete',
 'watchnologintext'     => 'Tu a essere [[Special:UserLogin|colleghete]] pe cangià le pàggene condrollete tue.',
-'addedwatch'           => "Mise jndr'à le pàggene condrollete",
 'addedwatchtext'       => "'A pàgene \"[[:\$1]]\" ha state aggiunde jndr'à le [[Special:Watchlist|pàggene condrollete]].
 Le cangiaminde future a sta pàgene e 'a pàgene de le 'ngazzaminde associete le puè acchià aqquà, e 'a pàgene avène signete cu 'u '''grascette''' jndr'à [[Special:RecentChanges|liste de le cangiaminde recende]] pe facilità l'identificazione.",
-'removedwatch'         => 'Live da le pàggene condrollate',
 'removedwatchtext'     => '\'A pàgene "[[:$1]]" ha state scangillete da [[Special:Watchlist|le pàggene condrollete tue]].',
 'watch'                => 'Condrolle',
 'watchthispage'        => 'Condrolle sta pàgene',
@@ -1986,8 +1976,9 @@ Le cangiaminde future a sta pàgene e 'a pàgene de le 'ngazzaminde associete le
 'watchlist-options'    => "Opzione d'a liste de le pàggene condrollete",
 
 # Displayed when you click the "watch" button and it is in the process of watching
-'watching'   => 'Fà vedè...',
-'unwatching' => 'No fà vedè...',
+'watching'       => 'Fà vedè...',
+'unwatching'     => 'No fà vedè...',
+'watcherrortext' => "'N'errore s'a verificate quanne ste cangiave le 'mbostaziune de le pàggene condrollate pe \"\$1\".",
 
 'enotif_mailer'                => '{{SITENAME}} Notificatore de email',
 'enotif_reset'                 => 'Signe tutte le pàggene cumme visitete',
@@ -2022,7 +2013,7 @@ Pe cangià le \'mbostaziune de notifeche de l\'email toje, vè vide
 {{fullurl:{{#special:Preferences}}}}
 
 Pe cangià le \'mbostaziune de l\'elenghe de le pàggene condrollate tune, vè vide
-{{fullurl:{{#special:Watchlist}}/edit}}
+{{fullurl:{{#special:EditWatchlist}}}}
 
 Pe scangellà \'a pàgene da \'a liste de le pàggene condrollate, vè vide
 $UNWATCHURL
@@ -2045,7 +2036,7 @@ Segnalaziune e otre assistenze:
 Conferme quidde ca ste face, ce si sicure ca è capite quidde ca ste cumbine e ce è corrette rispette a [[{{MediaWiki:Policy-url}}|le regole de scangellazione]], ce no statte quiete.",
 'actioncomplete'         => 'Aziona Combletete',
 'actionfailed'           => 'Aziona fallite',
-'deletedtext'            => '"<nowiki>$1</nowiki>" onne state scangillete.
+'deletedtext'            => '"$1" onne state scangillete.
 Vide $2 pe \'na reggistrazione de le scangellaziune recende.',
 'deletedarticle'         => 'scangillete "[[$1]]"',
 'suppressedarticle'      => 'soppresse "[[$1]]"',
@@ -2092,11 +2083,11 @@ Pe piacere cazze \"rete\" e recareche 'a pàgene da addò tu è venute e pruève
 
 # Protect
 'protectlogpage'              => 'Archibie de le prutezziune',
-'protectlogtext'              => "Sotte ste 'na liste de pàggene bloccate e sbloccate.
+'protectlogtext'              => "Sotte ste 'na liste de le cangiaminde de le proteziune de le pàggene.
 Vide 'a [[Special:ProtectedPages|liste de le pàggene prutette]] pa liste de le operaziune currende sus a le prutezzione de le pàggene.",
 'protectedarticle'            => 'prutette "[[$1]]"',
 'modifiedarticleprotection'   => '\'u levèlle de protezione ha state cangete pe "[[$1]]"',
-'unprotectedarticle'          => 'sprutette "[[$1]]"',
+'unprotectedarticle'          => 'sprutette da "[[$1]]"',
 'movedarticleprotection'      => '\'mbostaziune de protezzione spustate da "[[$2]]" a "[[$1]]"',
 'protect-title'               => 'Cange levèlle de protezione pe "$1"',
 'prot_1movedto2'              => "[[$1]] spustete jndr'à [[$2]]",
@@ -2107,7 +2098,7 @@ Vide 'a [[Special:ProtectedPages|liste de le pàggene prutette]] pa liste de le 
 'protect_expiry_invalid'      => 'Orarie de scadenze jè invalide.',
 'protect_expiry_old'          => "L'ore de scadenza jè jndr'à 'u passate.",
 'protect-unchain-permissions' => 'Sbluecche otre opzione de protezzione',
-'protect-text'                => "Tu puè vedè e cangià 'u levèlle de protezzione p'a pàgene '''<nowiki>$1</nowiki>'''.",
+'protect-text'                => "Tu puè vedè e cangià 'u levèlle de protezzione p'a pàgene '''$1'''.",
 'protect-locked-blocked'      => "Tu non ge puè cangià le levèlle de protezzione quanne si bloccate.
 Aqquà stonne le 'mbostaziune corrende pa pàgene '''$1''':",
 'protect-locked-dblock'       => "Le levèlle de protezzione non ge ponne essere cangete purcè stè 'nu blocche d'u database.
@@ -2162,9 +2153,8 @@ Tu puè cangià 'u levèlle de protezione de sta pàgene ma stu cangiamende non 
 'undeletepagetext'             => "{{PLURAL:$1|'A seguende pàgene ha state scangellate ma ète|Le seguende $1 pàggene one state scangellate ma sonde}} angore in archivije e se pò reprocessà.<br />
 L'archivije avène periodicamende sdevachete.",
 'undelete-fieldset-title'      => 'Repristine le revisiune',
-'undeleteextrahelp'            => "Pe repristina totte 'a storie d'a pàgene, lasse tutte le caselle cu le spunde vacande e cazze '''''Repristine'''''.
-Pe fà 'nu repristine selettive, mitte 'a spunde jndr'à le caselle corrispondende a le revisiune ca vuè ccu repristine e pò cazze '''''Repristine'''''.
-Cazzanne '''''Azzera''''' avène pulezzate 'u cambe d'u commende e tutte le caselle cu 'a spunde.",
+'undeleteextrahelp'            => "Pe repristina totte 'a storie d'a pàgene, lasse tutte le caselle cu le spunde vacande e cazze '''''{{int:undeletebtn}}'''''.
+Pe fà 'nu repristine selettive, mitte 'a spunde jndr'à le caselle corrispondende a le revisiune ca vuè ccu repristine e pò cazze '''''{{int:undeletebtn}}'''''.",
 'undeleterevisions'            => '$1 {{PLURAL:$1|revisione|revisiune}} archiviete',
 'undeletehistory'              => "Ce tu repristine 'a pàgene, tutte le revisiune avènene repristinate jndr'à storie.
 Ce 'na pàgena nove cu 'u stesse nome ha state ccrejate da 'a scangellazione, le revisiune repristinate iessène jndr'à storia prengepàle.",
@@ -2211,10 +2201,12 @@ $1",
 'undelete-show-file-submit'    => 'Sine',
 
 # Namespace form on various pages
-'namespace'             => 'Namespace:',
-'invert'                => "Selezione 'a smerse",
-'namespace_association' => 'Namespace associate',
-'blanknamespace'        => '(Prengepàle)',
+'namespace'                     => 'Namespace:',
+'invert'                        => "Selezione 'a smerse",
+'tooltip-invert'                => "Signe sta sckatele pe sconnere le cangiaminde a le pàggene cu 'u namespace scacchiate (e le namespace associate ce sonde signate)",
+'namespace_association'         => 'Namespace associate',
+'tooltip-namespace_association' => "Signe sta sckatele pure pe 'ngludere le namespace de le 'ngazzaminde o le suggette associate cu 'u namespace scacchiate",
+'blanknamespace'                => '(Prengepàle)',
 
 # Contributions
 'contributions'       => "Condrebbute de l'utende",
@@ -2242,6 +2234,7 @@ L'urteme archivije de le bloccaminde se iacche aqquà sotte pe referimende:",
 'sp-contributions-username'            => "Indirizze IP o nome de l'utende:",
 'sp-contributions-toponly'             => "Sulamende facenne vedè le cangiaminde de l'urteme revisiune",
 'sp-contributions-submit'              => 'Cirche',
+'sp-contributions-showsizediff'        => "Fa fedè le differenze sus 'a dimenzione d'a pàgene",
 
 # What links here
 'whatlinkshere'            => 'Appondene aqquà',
@@ -2253,7 +2246,7 @@ L'urteme archivije de le bloccaminde se iacche aqquà sotte pe referimende:",
 'nolinkshere-ns'           => "Nisciuna pàgene apponde a '''[[:$1]]''' jndr'à 'u namespace scacchiete.",
 'isredirect'               => 'pàgene de ridirezionamende',
 'istemplate'               => 'inclusione',
-'isimage'                  => "collegamende a l'immaggine",
+'isimage'                  => "collegamende a 'u file",
 'whatlinkshere-prev'       => '{{PLURAL:$1|apprime|apprime $1}}',
 'whatlinkshere-next'       => '{{PLURAL:$1|apprisse|apprisse $1}}',
 'whatlinkshere-links'      => '← collegaminde',
@@ -2413,6 +2406,7 @@ Arrecuerdete de [[Special:UnlockDB|luvà 'u blocche]] apprrisse ca 'a manutenzio
 'lockfilenotwritable' => "'U blocche sus a le file d'u database non g'è scrivibbile.
 Pe bloccà o sbloccà 'u database quiste abbesogne de essere scritte da 'nu web server.",
 'databasenotlocked'   => "'U database non g'è blocchete.",
+'lockedbyandtime'     => "(de $1 'u $2 a le $3)",
 
 # Move page
 'move-page'                    => 'Spuèste $1',
@@ -2630,7 +2624,7 @@ Pe piacere ause 'u buttone de l'andeprime apprime de salvà.",
 Puè vedè sulamende 'u sorgende.",
 'tooltip-ca-history'              => 'Versiune passete de sta pàgene',
 'tooltip-ca-protect'              => 'Prutegge sta pàgene',
-'tooltip-ca-unprotect'            => 'Sprotegge sta pàgene',
+'tooltip-ca-unprotect'            => "Cange 'a protezione de sta pàgene",
 'tooltip-ca-delete'               => 'Scangille sta pàgene',
 'tooltip-ca-undelete'             => 'Repristine le cangiaminde fatte a sta pàgene apprime ca evenève scangellate',
 'tooltip-ca-move'                 => 'Spuèste sta pàgene',
@@ -2682,9 +2676,7 @@ Permette de aggiungere 'nu mutive jndr'à 'u riepileghe",
 'tooltip-summary'                 => "Mitte 'nu riepileghe piccinne",
 
 # Metadata
-'nodublincore'      => "'U metadata ''Dublin Core RDF'' ète disabbilitate pe stu server.",
-'nocreativecommons' => "'U metadata ''Creative Commons RDF'' ète disabilitate pe stu server.",
-'notacceptable'     => "'U server Uicchi non ge pò vedè le date jndr'à 'u formate ca 'u cliende tue pò leggere.",
+'notacceptable' => "'U server Uicchi non ge pò vedè le date jndr'à 'u formate ca 'u cliende tue pò leggere.",
 
 # Attribution
 'anonymous'        => '{{PLURAL:$1|utende|utinde}} anonime de {{SITENAME}}',
@@ -2708,12 +2700,17 @@ Stu fatte ha state causate da 'nu collegamende a 'nu site esterne ca appartene a
 'spam_blanking'       => 'Tutte le revisiune condènene collegaminde a $1, vacande',
 
 # Info page
-'infosubtitle'   => "'Mbormazione pe pàgene",
-'numedits'       => 'Numere de cangiaminde (pàgene): $1',
-'numtalkedits'   => "Numere de cangiaminde (pàgene de le 'ngazzaminde): $1",
-'numwatchers'    => 'Numere de visitature: $1',
-'numauthors'     => 'Numere de autore distinde (vôsce): $1',
-'numtalkauthors' => "Numere de autore distinde (pàgene de le 'ngazzaminde): $1",
+'pageinfo-title'            => '\'Mbormaziune pe "$1"',
+'pageinfo-header-edits'     => 'Cangiaminde',
+'pageinfo-header-watchlist' => 'Pàggene condrollate',
+'pageinfo-header-views'     => 'Visite',
+'pageinfo-subjectpage'      => 'Pàgene',
+'pageinfo-talkpage'         => "Pàgene de le 'ngazzaminde",
+'pageinfo-watchers'         => 'Numere de visitature',
+'pageinfo-edits'            => 'Numere de cangiaminde',
+'pageinfo-authors'          => 'Numere de autore diverse',
+'pageinfo-views'            => 'Numere de visite',
+'pageinfo-viewsperedit'     => 'Visite pe cangiaminde',
 
 # Patrolling
 'markaspatrolleddiff'                 => 'Signe cumme condrollate',
@@ -2757,6 +2754,7 @@ Ce l'esegue sus a 'u sisteme tue pò essere ca se combromette.",
 'widthheightpage'        => '$1×$2, $3 {{PLURAL:$3|pàgene|pàggene}}',
 'file-info'              => "dimenzione d'u fail: $1, tipe de MIME: $2",
 'file-info-size'         => "$1 × $2 pixel, dimenzione d'u fail: $3, tipe de MIME: $4",
+'file-info-size-pages'   => "$1 × $2 pixel, dimenzione d'u file: $3, tipe de MIME: $4, $5 {{PLURAL:$5|pàgene|pàggene}}",
 'file-nohires'           => "<small>Manghe 'a risoluzione ierta.</small>",
 'svg-long-desc'          => "Fail SVG, nominalmende sonde $1 × $2 pixel, dimenzione d'u fail: $3",
 'show-big-image'         => 'Risoluzione chiena chiena',
@@ -2990,6 +2988,9 @@ Otre avènene scunnute pe defolt.
 
 # EXIF attributes
 'exif-compression-1' => 'No combresse',
+'exif-compression-2' => "Gruppe CCITT 3 Decodifeche de Esecuzione d'a lunghezze 1-Dimenzionale Cangiate de Huffman",
+'exif-compression-3' => "Gruppe CCITT 3 de decodifeche d'u fax",
+'exif-compression-4' => "Gruppe CCITT 4 de decodifeche d'u fax",
 
 'exif-copyrighted-true'  => 'Sotte copyright',
 'exif-copyrighted-false' => 'Pubbleche dominie',
@@ -3489,5 +3490,20 @@ Mitte 'u nome d'u file senza 'u prefisse \"{{ns:file}}\".",
 # SQLite database support
 'sqlite-has-fts' => "$1 cu 'u supporte d'a ricerche full-text",
 'sqlite-no-fts'  => "$1 senze 'u supporte d'a ricerche full-text",
+
+# Add categories per AJAX
+'ajax-add-category'            => "Aggiunge 'a categorije",
+'ajax-add-category-submit'     => 'Aggiunge',
+'ajax-confirm-title'           => "Conferme l'azione",
+'ajax-confirm-prompt'          => 'Tu puè fà \'nu riepileghe de le cangiaminde aqquà sotte.
+Cazze "Reggistre" pe reggistrà \'u cangiamende tue.',
+'ajax-confirm-save'            => 'Reggistre',
+'ajax-add-category-summary'    => 'Aggiunge \'a categorije "$1"',
+'ajax-remove-category-summary' => 'Live \'a categorije "$1"',
+'ajax-confirm-actionsummary'   => 'Azione da fà:',
+'ajax-error-title'             => 'Errore',
+'ajax-error-dismiss'           => 'OK',
+'ajax-remove-category-error'   => "Non g'è possibbele luà sta categorije.
+Stu fatte normalmende succede quanne 'a categorije ha state aggiunde a 'a pàgene jndr'à 'nu template.",
 
 );

@@ -40,9 +40,14 @@ class SearchMySQL extends SearchEngine {
 		parent::__construct( $db );
 	}
 
-	/** 
-	 * Parse the user's query and transform it into an SQL fragment which will 
+	/**
+	 * Parse the user's query and transform it into an SQL fragment which will
 	 * become part of a WHERE clause
+	 *
+	 * @param $filteredText string
+	 * @param $fullText string
+	 *
+	 * @return string
 	 */
 	function parseQuery( $filteredText, $fulltext ) {
 		global $wgContLang;
@@ -50,7 +55,7 @@ class SearchMySQL extends SearchEngine {
 		$searchon = '';
 		$this->searchTerms = array();
 
-		# FIXME: This doesn't handle parenthetical expressions.
+		# @todo FIXME: This doesn't handle parenthetical expressions.
 		$m = array();
 		if( preg_match_all( '/([-+<>~]?)(([' . $lc . ']+)(\*?)|"[^"]*")/',
 			  $filteredText, $m, PREG_SET_ORDER ) ) {
@@ -414,7 +419,7 @@ class SearchMySQL extends SearchEngine {
 	/**
 	 * Check MySQL server's ft_min_word_len setting so we know
 	 * if we need to pad short words...
-	 * 
+	 *
 	 * @return int
 	 */
 	protected function minSearchLength() {

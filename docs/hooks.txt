@@ -236,7 +236,7 @@ to add events to the MediaWiki code.
 
 'AbortAutoAccount': Return false to cancel automated local account creation, where normally authentication against an external auth plugin would be creating a local account.
 $user: the User object about to be created (read-only, incomplete)
-$message: out parameter: error message to be displayed to user
+&$abortMsg: out parameter: name of error message to be displayed to user
 
 'AbortAutoblock': Return false to cancel an autoblock.
 $autoblockip: The IP going to be autoblocked.
@@ -262,7 +262,18 @@ $reason: the reason for the move (added in 1.13)
 
 'AbortNewAccount': Return false to cancel explicit account creation.
 $user: the User object about to be created (read-only, incomplete)
-$message: out parameter: error message to display on abort
+&$msg: out parameter: name of error message to display on abort
+
+'ActionBeforeFormDisplay': before executing the HTMLForm object
+$name: name of the action
+&$form: HTMLForm object
+$article: Article object
+
+'ActionModifyFormFields': before creating an HTMLForm object for a page action;
+	allows to change the fields on the form that will be generated
+$name: name of the action
+&$fields: HTMLForm descriptor array
+$article: Article object
 
 'AddNewAccount': after a user account is created
 $user: the User object that was created. (Parameter added in 1.7)
@@ -274,16 +285,6 @@ $origTitle: Title provided by the XML file
 $revCount: Number of revisions in the XML file
 $sRevCount: Number of sucessfully imported revisions
 $pageInfo: associative array of page information
-
-'AfterUserMessage': After a user message has been left, this hook is
-called to take care of any cleanup.
-$user: The user who we left the message for.
-$article: The article the message was left on.
-$subject: The subject of the message
-$text: The text of the message.
-$signature: The signature we used.
-$summary: The edit summary.
-$editor: The editor that performed the edit.
 
 'AjaxAddScript': Called in output page just before the initialisation
 of the javascript ajax engine. The hook is only called when ajax
@@ -594,6 +595,10 @@ $image: File
 &$scalerParams: Array with scaler parameters 
 &$mto: null, set to a MediaTransformOutput
 
+'PerformRetroactiveAutoblock': called before a retroactive autoblock is applied to a user
+$block: Block object (which is set to be autoblocking)
+&$blockIds: Array of block IDs of the autoblock
+
 'BlockIp': before an IP address or user is blocked
 $block: the Block object about to be saved
 $user: the user _doing_ the block (not the one being blocked)
@@ -619,6 +624,11 @@ $catpage: CategoryPage instance
 &$rc:          RecentChange instance.
 $unpatrolled:  Whether or not we are showing unpatrolled changes.
 $watched:      Whether or not the change is watched by the user.
+
+'Collation::factory': Called if $wgCategoryCollation is an unknown collation
+$collationName: Name of the collation in question
+&$collationObject: Null. Replace with a subclass of the Collation class that implements
+the collation given in $collationName.
 
 'ConfirmEmailComplete': Called after a user's email has been confirmed successfully
 $user: user (object) whose email is being confirmed
@@ -647,6 +657,10 @@ etc.
 
 'DatabaseOraclePostInit': Called after initialising an Oracle database
 &$db: the DatabaseOracle object
+
+'Debug': called when outputting a debug log line via wfDebug() or wfDebugLog()
+$text: plaintext string to be output
+$group: null or a string naming a logging group (as defined in $wgDebugLogGroups)
 
 'NewDifferenceEngine': Called when a new DifferenceEngine object is made
 $title: the diff page title (nullable)
@@ -700,7 +714,7 @@ pages
 $editPage: EditPage	object
 
 'EditPage::attemptSave': called before an article is
-saved, that is before insertNewArticle() is called
+saved, that is before Article::doEdit() is called
 $editpage_Obj: the current EditPage object
 
 'EditPage::importFormData': allow extensions to read additional data
@@ -716,6 +730,7 @@ return value is ignored (should always return true)
 
 'EditPage::showEditForm:initial': before showing the edit form
 $editor: EditPage instance (object)
+$formCallback: Array for callback of modifying the edit form
 
 Return false to halt editing; you'll need to handle error messages, etc.
 yourself. Alternatively, modifying $error and returning true will cause the
@@ -809,6 +824,9 @@ $user: The user who is trying to email another user.
 $editToken: The user's edit token.
 &$hookErr: Out-param for the error. Passed as the parameters to OutputPage::showErrorPage.
 
+'ExtensionTypes': called when generating the extensions credits, use this to change the tables headers
+&$extTypes: associative array of extensions types
+
 'FetchChangesList': When fetching the ChangesList derivative for
 a particular user
 $user: User the list is being fetched for
@@ -835,12 +853,6 @@ $fileVersions: array of undeleted versions. Empty if all versions were restored
 $user: user who performed the undeletion
 $reason: reason
 
-'FormatUserMessage': Hook to format a message if you want to override
-the internal formatter.
-$subject: Title of the message.
-&$text: Text of the message.
-$signature: Signature that they would like to leave.
-
 'GetAutoPromoteGroups': When determining which autopromote groups a user
 is entitled to be in.
 &$user: user to promote.
@@ -853,6 +865,10 @@ $user: user (object) being checked
 $out: OutputPage object
 &$cookies: array of cookies name, add a value to it if you want to add a cookie
 	that have to vary cache options
+
+'GetDefaultSortkey': Override the default sortkey for a page.
+$title: Title object that we need to get a sortkey for
+&$sortkey: Sortkey to use.
 
 'GetFullURL': modify fully-qualified URLs used in redirects/export/offsite data
 $title: Title object of page
@@ -1040,7 +1056,7 @@ sing and return $ret.  See documentation for Linker::link() for details on the
 expected meanings of parameters.
 $skin: the Skin object
 $target: the Title that the link is pointing to
-&$text: the contents that the <a> tag should have (raw HTML); null means "de-
+&$html: the contents that the <a> tag should have (raw HTML); null means "de-
 	fault"
 &$customAttribs: the HTML attributes that the <a> tag should have, in associa-
 	tive array form, with keys and values unescaped.  Should be merged with de-
@@ -1052,13 +1068,13 @@ $target: the Title that the link is pointing to
 
 'LinkEnd': Used when generating internal and interwiki links in Linker::link(),
 just before the function returns a value.  If you return true, an <a> element
-with HTML attributes $attribs and contents $text will be returned.  If you re-
+with HTML attributes $attribs and contents $html will be returned.  If you re-
 turn false, $ret will be returned.
 $skin: the Skin object
 $target: the Title object that the link is pointing to
 $options: the options.  Will always include either 'known' or 'broken', and may
 	include 'noclasses'.
-&$text: the final (raw HTML) contents of the <a> tag, after processing.
+&$html: the final (raw HTML) contents of the <a> tag, after processing.
 &$attribs: the final HTML attributes of the <a> tag, after processing, in asso-
 	ciative array form.
 &$ret: the value to return if your hook returns false.
@@ -1128,21 +1144,8 @@ $paramArray: Array of parameters that corresponds to logging.log_params field.
 &$revert: string that is displayed in the UI, similar to $comment.
 $time: timestamp of the log entry (added in 1.12)
 
-'LogPageValidTypes': action being logged.
-DEPRECATED: Use $wgLogTypes
-&$type: array of strings
-
-'LogPageLogName': name of the logging page(s).
-DEPRECATED: Use $wgLogNames
-&$typeText: array of strings
-
-'LogPageLogHeader': strings used by wfMsg as a header.
-DEPRECATED: Use $wgLogHeaders
-&$headerText: array of strings
-
-'LogPageActionText': strings used by wfMsg as a header.
-DEPRECATED: Use $wgLogActions
-&$actionText: array of strings
+'MaintenanceRefreshLinksInit': before executing the refreshLinks.php maintenance script
+$refreshLinks: RefreshLinks object
 
 'MagicWordMagicWords': When defining new magic word.
 DEPRECATED: use $magicWords in a file listed in 
@@ -1170,11 +1173,6 @@ $rcid: ID of the revision marked as patrolled
 $user: user (object) who marked the edit patrolled
 $wcOnlySysopsCanPatrol: config setting indicating whether the user
 	must be a sysop to patrol the edit
-
-'MathAfterTexvc': after texvc is executed when rendering mathematics
-$mathRenderer: instance of MathRenderer
-$errmsg: error message, in HTML (string). Nonempty indicates failure
-	of rendering the formula
 
 'MediaWikiPerformAction': Override MediaWiki::performAction().
 Use this to do something completely different, after the basic
@@ -1468,16 +1466,6 @@ $query : Original query.
 
 'SetupAfterCache': Called in Setup.php, after cache objects are set
 
-'SetupUserMessageArticle': Called in User::leaveUserMessage() before
-anything has been posted to the article.
-$user: The user who we left the message for.
-&$article: The article that will be posted to.
-$subject: The subject of the message
-$text: The text of the message.
-$signature: The signature we used.
-$summary: The edit summary.
-$editor: The editor that performed the edit.
-
 'ShowMissingArticle': Called when generating the output for a non-existent page
 $article: The article object corresponding to the page
 
@@ -1626,10 +1614,24 @@ $newTitle: new title (object)
 &$special: NewPagesPager object (subclass of ReverseChronologicalPager)
 $opts: FormOptions object containing special page options
 &$conds: array of WHERE conditionals for query
+&tables: array of tables to be queried
+&$fields: array of columns to select
+&$join_conds: join conditions for the tables
+
+'SpecialNewPagesFilters': called after building form options at NewPages
+$special: the special page object
+&$filters: associative array of filter definitions. The keys are the HTML name/URL parameters.
+Each key maps to an associative array with a 'msg' (message key) and a 'default' value.
 
 'SpecialPage_initList': called when setting up SpecialPage::$mList, use this
 hook to remove a core special page
 $list: list (array) of core special pages
+
+'SpecialPasswordResetOnSubmit': when executing a form submission on Special:PasswordReset
+$users: array of User objects
+$data: array of data submitted by the user
+&$error: string, error code (message name) used to describe to error (out paramater).
+	The hook needs to return false when setting this, otherwise it will have no effect.
 
 'SpecialRandomGetRandomTitle': called during the execution of Special:Random,
 use this to change some selection criteria or substitute a different title
@@ -1639,6 +1641,11 @@ use this to change some selection criteria or substitute a different title
 &$extra: An array of extra SQL statements 
 &$title: If the hook returns false, a Title object to use instead of the
 result from the normal query
+
+'SpecialRecentChangesFilters': called after building form options at RecentChanges
+$special: the special page object
+&$filters: associative array of filter definitions. The keys are the HTML name/URL parameters.
+Each key maps to an associative array with a 'msg' (message key) and a 'default' value.
 
 'SpecialRecentChangesPanel': called when building form options in
 SpecialRecentChanges
@@ -1652,7 +1659,7 @@ SpecialRecentChanges and SpecialRecentChangesLinked
 &$join_conds: join conditions for the tables
 $opts: FormOptions for this request
 &$query_options: array of options for the database request
-&$select: String '*' or array of columns to select
+&$select: Array of columns to select
 
 'SpecialSearchGo': called when user clicked the "Go"
 &$title: title object generated from the text entered by the user
@@ -1699,6 +1706,11 @@ $form: The SpecialUpload object
 use this to change the tables headers
 $extTypes: associative array of extensions types
 
+'SpecialWatchlistFilters': called after building form options at Watchlist
+$special: the special page object
+&$filters: associative array of filter definitions. The keys are the HTML name/URL parameters.
+Each key maps to an associative array with a 'msg' (message key) and a 'default' value.
+
 'SpecialWatchlistQuery': called when building sql query for SpecialWatchlist
 &$conds: array of WHERE conditionals for query
 &$tables: array of tables to be queried
@@ -1721,6 +1733,23 @@ $nt: new title
 $user: user who did the move
 $pageid: database ID of the page that's been moved
 $redirid: database ID of the created redirect
+
+'UndeleteForm::showHistory': called in UndeleteForm::showHistory, after a
+PageArchive object has been created but before any further processing is done.
+&$archive: PageArchive object
+$title: Title object of the page that we're viewing
+
+'UndeleteForm::showRevision': called in UndeleteForm::showRevision, after a
+PageArchive object has been created but before any further processing is done.
+&$archive: PageArchive object
+$title: Title object of the page that we're viewing
+
+'UndeleteForm::undelete': called un UndeleteForm::undelete, after checking that
+the site is not in read-only mode, that the Title object is not null and after
+a PageArchive object has been constructed but before performing any further
+processing.
+&$archive: PageArchive object
+$title: Title object of the page that we're about to undelete
 
 'UndeleteShowRevision': called when showing a revision in Special:Undelete
 $title: title object related to the revision
@@ -1923,10 +1952,6 @@ $inject_html: Any HTML to inject after the "logged in" message.
 
 'UserLoginForm': change to manipulate the login form
 $template: SimpleTemplate instance for the form
-
-'UserLoginMailPassword': Block users from emailing passwords
-$name: the username to email the password of.
-&$error: out-param - the error message to return.
 
 'UserLogout': before a user logs out
 $user: the user object that is about to be logged out

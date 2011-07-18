@@ -23,26 +23,26 @@ class SkinMonoBook extends SkinTemplate {
 	var $skinname = 'monobook', $stylename = 'monobook',
 		$template = 'MonoBookTemplate', $useHeadElement = true;
 
+	/**
+	 * @param $out OutputPage
+	 */
 	function setupSkinUserCss( OutputPage $out ) {
 		global $wgHandheldStyle;
 		parent::setupSkinUserCss( $out );
 
 		$out->addModuleStyles( 'skins.monobook' );
-		
+
 		// Ugh. Can't do this properly because $wgHandheldStyle may be a URL
 		if( $wgHandheldStyle ) {
 			// Currently in testing... try 'chick/main.css'
 			$out->addStyle( $wgHandheldStyle, 'handheld' );
 		}
-		
+
 		// TODO: Migrate all of these
 		//$out->addStyle( 'monobook/IE50Fixes.css', 'screen', 'lt IE 5.5000' );
 		//$out->addStyle( 'monobook/IE55Fixes.css', 'screen', 'IE 5.5000' );
 		//$out->addStyle( 'monobook/IE60Fixes.css', 'screen', 'IE 6' );
 		//$out->addStyle( 'monobook/IE70Fixes.css', 'screen', 'IE 7' );
-
-		// TODO: migrate
-		//$out->addStyle( 'monobook/rtl.css', 'screen', '', 'rtl' );
 
 	}
 }
@@ -67,14 +67,14 @@ class MonoBookTemplate extends BaseTemplate {
 	 * @access private
 	 */
 	function execute() {
-		$this->skin = $skin = $this->data['skin'];
+		$this->skin = $this->data['skin'];
 
 		// Suppress warnings to prevent notices about missing indexes in $this->data
 		wfSuppressWarnings();
 
 		$this->html( 'headelement' );
 ?><div id="globalWrapper">
-<div id="column-content"><div id="content"<?php $this->html("specialpageattributes") ?>>
+<div id="column-content"><div id="content">
 	<a id="top"></a>
 	<?php if($this->data['sitenotice']) { ?><div id="siteNotice"><?php $this->html('sitenotice') ?></div><?php } ?>
 
@@ -100,7 +100,7 @@ class MonoBookTemplate extends BaseTemplate {
 	</div>
 </div></div>
 <div id="column-one"<?php $this->html('userlangattributes')  ?>>
-<?php $this->cactions( $skin ); ?>
+<?php $this->cactions(); ?>
 	<div class="portlet" id="p-personal">
 		<h5><?php $this->msg('personaltools') ?></h5>
 		<div class="pBody">
@@ -123,26 +123,22 @@ class MonoBookTemplate extends BaseTemplate {
 	</div>
 	<script type="<?php $this->text('jsmimetype') ?>"> if (window.isMSIE55) fixalpha(); </script>
 <?php
-		$sidebar = $this->data['sidebar'];
-		if ( !isset( $sidebar['SEARCH'] ) ) $sidebar['SEARCH'] = true;
-		if ( !isset( $sidebar['TOOLBOX'] ) ) $sidebar['TOOLBOX'] = true;
-		if ( !isset( $sidebar['LANGUAGES'] ) ) $sidebar['LANGUAGES'] = true;
-		foreach ($sidebar as $boxName => $cont) {
-			if ( $boxName == 'SEARCH' ) {
-				$this->searchBox();
-			} elseif ( $boxName == 'TOOLBOX' ) {
-				$this->toolbox();
-			} elseif ( $boxName == 'LANGUAGES' ) {
-				$this->languageBox();
-			} else {
-				$this->customBox( $boxName, $cont );
-			}
-		}
+	$this->renderPortals( $this->data['sidebar'] );
 ?>
 </div><!-- end of the left (by default at least) column -->
 <div class="visualClear"></div>
+<?php
+	$validFooterIcons = $this->getFooterIcons( "icononly" );
+	$validFooterLinks = $this->getFooterLinks( "flat" ); // Additional footer links
+
+	if ( count( $validFooterIcons ) + count( $validFooterLinks ) > 0 ) { ?>
 <div id="footer"<?php $this->html('userlangattributes') ?>>
-<?php foreach ( $this->getFooterIcons("icononly") as $blockName => $footerIcons ) { ?>
+<?php
+		$footerEnd = '</div>';
+	} else {
+		$footerEnd = '';
+	}
+	foreach ( $validFooterIcons as $blockName => $footerIcons ) { ?>
 	<div id="f-<?php echo htmlspecialchars($blockName); ?>ico">
 <?php foreach ( $footerIcons as $icon ) { ?>
 		<?php echo $this->skin->makeFooterIcon( $icon ); ?>
@@ -152,21 +148,19 @@ class MonoBookTemplate extends BaseTemplate {
 	</div>
 <?php }
 
-		// Generate additional footer links
-		$validFooterLinks = $this->getFooterLinks("flat");
 		if ( count( $validFooterLinks ) > 0 ) {
 ?>	<ul id="f-list">
 <?php
 			foreach( $validFooterLinks as $aLink ) { ?>
 		<li id="<?php echo $aLink ?>"><?php $this->html($aLink) ?></li>
-
 <?php
 			}
 ?>
 	</ul>
 <?php	}
+echo $footerEnd;
 ?>
-</div>
+
 </div>
 <?php
 		$this->printTrail();
@@ -176,6 +170,28 @@ class MonoBookTemplate extends BaseTemplate {
 	} // end of execute() method
 
 	/*************************************************************************************************/
+
+	protected function renderPortals( $sidebar ) {
+		if ( !isset( $sidebar['SEARCH'] ) ) $sidebar['SEARCH'] = true;
+		if ( !isset( $sidebar['TOOLBOX'] ) ) $sidebar['TOOLBOX'] = true;
+		if ( !isset( $sidebar['LANGUAGES'] ) ) $sidebar['LANGUAGES'] = true;
+
+		foreach( $sidebar as $boxName => $content ) {
+			if ( $content === false )
+				continue;
+
+			if ( $boxName == 'SEARCH' ) {
+				$this->searchBox();
+			} elseif ( $boxName == 'TOOLBOX' ) {
+				$this->toolbox();
+			} elseif ( $boxName == 'LANGUAGES' ) {
+				$this->languageBox();
+			} else {
+				$this->customBox( $boxName, $content );
+			}
+		}
+	}
+
 	function searchBox() {
 		global $wgUseTwoButtonsSearchForm;
 ?>
@@ -203,8 +219,10 @@ class MonoBookTemplate extends BaseTemplate {
 	/**
 	 * Prints the cactions bar.
 	 * Shared between MonoBook and Modern
+	 *
+	 * @param $skin Skin
 	 */
-	function cactions( Skin $skin ) {
+	function cactions() {
 ?>
 	<div id="p-cactions" class="portlet">
 		<h5><?php $this->msg('views') ?></h5>
@@ -212,7 +230,7 @@ class MonoBookTemplate extends BaseTemplate {
 			<ul><?php
 				foreach($this->data['content_actions'] as $key => $tab) {
 					$linkAttribs = array( 'href' => $tab['href'] );
-					
+
 				 	if( isset( $tab["tooltiponly"] ) && $tab["tooltiponly"] ) {
 						$title = Linker::titleAttrib( "ca-$key" );
 						if ( $title !== false ) {
@@ -222,7 +240,7 @@ class MonoBookTemplate extends BaseTemplate {
 						$linkAttribs += Linker::tooltipAndAccesskeyAttribs( "ca-$key" );
 				 	}
 				 	$linkHtml = Html::element( 'a', $linkAttribs, $tab['text'] );
-				 	
+
 				 	/* Surround with a <li> */
 				 	$liAttribs = array( 'id' => Sanitizer::escapeId( "ca-$key" ) );
 					if( $tab['class'] ) {
@@ -288,7 +306,7 @@ class MonoBookTemplate extends BaseTemplate {
 		echo '	' . Html::openElement( 'div', $portletAttribs );
 ?>
 
-		<h5><?php $out = wfMsg( $bar ); if (wfEmptyMsg($bar)) echo htmlspecialchars($bar); else echo htmlspecialchars($out); ?></h5>
+		<h5><?php $msg = wfMessage( $bar ); echo htmlspecialchars( $msg->exists() ? $msg->text() : $bar ); ?></h5>
 		<div class='pBody'>
 <?php   if ( is_array( $cont ) ) { ?>
 			<ul>

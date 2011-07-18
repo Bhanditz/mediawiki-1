@@ -78,8 +78,9 @@ class NewParserTest extends MediaWikiTestCase {
 
 		// $tmpGlobals['wgContLang'] = new StubContLang;
 		$tmpGlobals['wgUser'] = new User;
-		$tmpGlobals['wgLang'] = new StubUserLang;
-		$tmpGlobals['wgOut'] = new StubObject( 'wgOut', 'OutputPage' );
+		$context = new RequestContext();
+		$tmpGlobals['wgLang'] = $context->getLang();
+		$tmpGlobals['wgOut'] = $context->getOutput();
 		$tmpGlobals['wgParser'] = new StubObject( 'wgParser', $GLOBALS['wgParserConf']['class'], array( $GLOBALS['wgParserConf'] ) );
 		$tmpGlobals['wgRequest'] = new WebRequest;
 
@@ -153,11 +154,22 @@ class NewParserTest extends MediaWikiTestCase {
 				   'iw_api'    => '',
 				   'iw_wikiid' => '',
 				   'iw_local'  => 1 ),
-			) );
+			/**
+			 * @todo Fixme! Why are we inserting duplicate data here? Shouldn't
+			 * need this IGNORE or shouldn't need the insert at all.
+			 */
+			), __METHOD__, array( 'IGNORE' ) );
 
 
 		# Update certain things in site_stats
-		$this->db->insert( 'site_stats', array( 'ss_row_id' => 1, 'ss_images' => 2, 'ss_good_articles' => 1 ) );
+		$this->db->insert( 'site_stats', 
+			array( 'ss_row_id' => 1, 'ss_images' => 2, 'ss_good_articles' => 1 ),
+			__METHOD__,
+			/**
+			 * @todo Fixme! Same as above!
+			 */
+			array( 'IGNORE' )
+		);
 
 		# Reinitialise the LocalisationCache to match the database state
 		Language::getLocalisationCache()->unloadAll();
@@ -300,10 +312,10 @@ class NewParserTest extends MediaWikiTestCase {
 		$langObj = Language::factory( $lang );
 		$GLOBALS['wgContLang'] = $langObj;
 		$context = new RequestContext();
-		$GLOBALS['wgLang'] = $context->lang;
+		$GLOBALS['wgLang'] = $context->getLang();
 
 		$GLOBALS['wgMemc'] = new EmptyBagOStuff;
-		$GLOBALS['wgOut'] = new $context->output;
+		$GLOBALS['wgOut'] = $context->getOutput();
 
 		global $wgHooks;
 
@@ -323,20 +335,7 @@ class NewParserTest extends MediaWikiTestCase {
 		global $wgUser;
 		$wgUser = new User();
 	}
-	
-	/**
-	 * Restore default values and perform any necessary clean-up
-	 * after each test runs.
-	 */
-	protected function teardownGlobals() {
-		RepoGroup::destroySingleton();
-		LinkCache::singleton()->clear();
 
-		foreach ( $this->savedGlobals as $var => $val ) {
-			$GLOBALS[$var] = $val;
-		}
-	}
-	
 	/**
 	 * Create a dummy uploads directory which will contain a couple
 	 * of files in order to pass existence tests.
@@ -368,6 +367,90 @@ class NewParserTest extends MediaWikiTestCase {
 		copy( "$IP/skins/monobook/headbg.jpg", "$dir/0/09/Bad.jpg" );
 
 		return $dir;
+	}
+	
+	/**
+	 * Restore default values and perform any necessary clean-up
+	 * after each test runs.
+	 */
+	protected function teardownGlobals() {
+		RepoGroup::destroySingleton();
+		LinkCache::singleton()->clear();
+
+		foreach ( $this->savedGlobals as $var => $val ) {
+			$GLOBALS[$var] = $val;
+		}
+		
+		$this->teardownUploadDir( $this->uploadDir );
+	}
+
+	/**
+	 * Remove the dummy uploads directory
+	 */
+	private function teardownUploadDir( $dir ) {
+		if ( $this->keepUploads ) {
+			return;
+		}
+
+		// delete the files first, then the dirs.
+		self::deleteFiles(
+			array (
+				"$dir/3/3a/Foobar.jpg",
+				"$dir/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg",
+				"$dir/thumb/3/3a/Foobar.jpg/200px-Foobar.jpg",
+				"$dir/thumb/3/3a/Foobar.jpg/640px-Foobar.jpg",
+				"$dir/thumb/3/3a/Foobar.jpg/120px-Foobar.jpg",
+
+				"$dir/0/09/Bad.jpg",
+
+				"$dir/math/f/a/5/fa50b8b616463173474302ca3e63586b.png",
+			)
+		);
+
+		self::deleteDirs(
+			array (
+				"$dir/3/3a",
+				"$dir/3",
+				"$dir/thumb/6/65",
+				"$dir/thumb/6",
+				"$dir/thumb/3/3a/Foobar.jpg",
+				"$dir/thumb/3/3a",
+				"$dir/thumb/3",
+
+				"$dir/0/09/",
+				"$dir/0/",
+				"$dir/thumb",
+				"$dir/math/f/a/5",
+				"$dir/math/f/a",
+				"$dir/math/f",
+				"$dir/math",
+				"$dir",
+			)
+		);
+	}
+
+	/**
+	 * Delete the specified files, if they exist.
+	 * @param $files Array: full paths to files to delete.
+	 */
+	private static function deleteFiles( $files ) {
+		foreach ( $files as $file ) {
+			if ( file_exists( $file ) ) {
+				unlink( $file );
+			}
+		}
+	}
+
+	/**
+	 * Delete the specified directories, if they exist. Must be empty.
+	 * @param $dirs Array: full paths to directories to delete.
+	 */
+	private static function deleteDirs( $dirs ) {
+		foreach ( $dirs as $dir ) {
+			if ( is_dir( $dir ) ) {
+				rmdir( $dir );
+			}
+		}
 	}
 	
 	public function parserTestProvider() {
@@ -413,7 +496,7 @@ class NewParserTest extends MediaWikiTestCase {
 		if ( isset( $opts['pst'] ) ) {
 			$out = $parser->preSaveTransform( $input, $title, $user, $options );
 		} elseif ( isset( $opts['msg'] ) ) {
-			$out = $parser->transformMsg( $input, $options );
+			$out = $parser->transformMsg( $input, $options, $title );
 		} elseif ( isset( $opts['section'] ) ) {
 			$section = $opts['section'];
 			$out = $parser->getSection( $input, $section );
@@ -468,7 +551,7 @@ class NewParserTest extends MediaWikiTestCase {
 	 */
 	function testFuzzTests() {
 		
-		$this->markTestIncomplete( 'Breaks tesla due to memory restrictions' );
+		$this->markTestIncomplete( "Somebody is serializing PDO objects, that's a no-no" );
 		
 		global $wgParserTestFiles;
 		
@@ -481,8 +564,6 @@ class NewParserTest extends MediaWikiTestCase {
 		$dict = $this->getFuzzInput( $files );
 		$dictSize = strlen( $dict );
 		$logMaxLength = log( $this->maxFuzzTestLength );
-		
-		ini_set( 'memory_limit', $this->memoryLimit * 1048576 );
 
 		$user = new User;
 		$opts = ParserOptions::newFromUser( $user );
@@ -656,7 +737,6 @@ class NewParserTest extends MediaWikiTestCase {
 	 *
 	 * @param $text String: the text to tidy
 	 * @return String
-	 * @static
 	 */
 	protected function tidy( $text ) {
 		global $wgUseTidy;

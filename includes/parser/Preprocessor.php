@@ -9,7 +9,11 @@
  * @ingroup Parser
  */
 interface Preprocessor {
-	/** Create a new preprocessor object based on an initialised Parser object */
+	/**
+	 * Create a new preprocessor object based on an initialised Parser object
+	 *
+	 * @param $parser Parser
+	 */
 	function __construct( $parser );
 
 	/**
@@ -22,16 +26,25 @@ interface Preprocessor {
 	/**
 	 * Create a new custom frame for programmatic use of parameter replacement as used in some extensions
 	 *
+	 * @param $args array
+	 * 
 	 * @return PPFrame
 	 */
 	function newCustomFrame( $args );
 
-	/** Create a new custom node for programmatic use of parameter replacement as used in some extensions */
+	/**
+	 * Create a new custom node for programmatic use of parameter replacement as used in some extensions
+	 *
+	 * @param $values
+	 */
 	function newPartNodeArray( $values );
 
 	/**
 	 * Preprocess text to a PPNode
 	 *
+	 * @param $text
+	 * @param $flags
+	 * 
 	 * @return PPNode
 	 */
 	function preprocessToObj( $text, $flags = 0 );
@@ -51,6 +64,11 @@ interface PPFrame {
 
 	/**
 	 * Create a child frame
+	 *
+	 * @param $args array
+	 * @param $title Title
+	 *
+	 * @return PPFrame
 	 */
 	function newChild( $args = false, $title = false );
 
@@ -82,6 +100,8 @@ interface PPFrame {
 
 	/**
 	 * Returns true if there are no arguments in this frame
+	 *
+	 * @return bool
 	 */
 	function isEmpty();
 
@@ -107,6 +127,10 @@ interface PPFrame {
 
 	/**
 	 * Returns true if the infinite loop check is OK, false if a loop is detected
+	 *
+	 * @param $title
+	 *
+	 * @return bool
 	 */
 	function loopCheck( $title );
 

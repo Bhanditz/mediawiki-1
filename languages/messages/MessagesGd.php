@@ -141,14 +141,6 @@ $messages = array(
 'index-category'                => "Duilleagan air a' chlàr-innse",
 'noindex-category'              => "Duilleagan nach eil air a' chlàr-innse",
 
-'mainpagetext'      => "'''Chaidh MediaWiki a stàladh gu soirbheachail.'''",
-'mainpagedocfooter' => "Cuir sùil air [http://meta.wikimedia.org/wiki/Help:Contents treòir nan cleachdaichean] airson fiosrachadh mu chleachdadh a' bhathar-bhog wiki.
-
-== Toiseach tòiseachaidh ==
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Liosta suidheachadh nan roghainnean]
-* [http://www.mediawiki.org/wiki/Manual:FAQ CÀBHA MediaWiki]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Liosta puist nan sgaoilidhean MediaWiki]",
-
 'about'         => 'Mu',
 'article'       => 'Duilleag susbainte',
 'newwindow'     => "(a' fosgladh ann an uinneag ùr)",
@@ -198,7 +190,6 @@ $messages = array(
 'history'           => 'Eachdraidh na duilleige',
 'history_short'     => 'Eachdraidh',
 'updatedmarker'     => 'air ùrachadh on turas mu dheireadh a thadhail mi air',
-'info_short'        => 'Fiosrachadh',
 'printableversion'  => 'Tionndadh a ghabhas a chlò-bhualadh',
 'permalink'         => 'Ceangal buan',
 'print'             => 'Clò-bhuail',
@@ -387,7 +378,6 @@ Ma dh'atharraicheas tu an duilleag seo, bidh buaidh ann air coltas na h-eadar-ag
 Ma tha thu airson Gàidhlig a chur air, saoil an cleachd thu [http://translatewiki.net/wiki/Main_Page?setlang=en translatewiki.net], am pròiseact ionadailidh aig MediaWiki?",
 'sqlhidden'            => "(Iarrtas SQL 'ga fhalach)",
 'namespaceprotected'   => "Chan eil cead agad duilleagan san namespace '''$1''' a dheasachadh.",
-'customcssjsprotected' => "Chan eil cead agad an duilleag seo a dheasachadh a chionn 's gu bheil na roghainnean pearsanta aig cleachdaiche eile innte.",
 'ns-specialprotected'  => 'Chan ghabh duilleagan sònraichte a dheasachadh.',
 'titleprotected'       => 'Chaidh an duilleag seo a dhìon o chruthachadh le [[User:$1|$1]].
 Seo am mìneachadh: "\'\'$2\'\'".',
@@ -575,6 +565,8 @@ Feuch ri ''all:'' a chuir air beulaibh an iarrtais agad gus rannsachadh a dhèan
 'changepassword' => 'Atharraich facal-faire',
 'prefs-skin'     => 'Bian',
 'skin-preview'   => 'Ro-shealladh',
+'prefs-beta'     => 'Feartan Beta',
+'prefs-labs'     => 'Feartan nan deuchainn-lannan',
 'prefs-personal' => "Pròifil a' chleachdaiche",
 'saveprefs'      => 'Sàbhail',
 'resetprefs'     => 'Falamhaich atharrachaidhean nach deach a shàbhaladh fhathast',
@@ -750,10 +742,8 @@ Thoir sùil air na [[Special:WantedCategories|roinntean-seòrsa a thathar 'gan i
 'watchlist'          => 'Mo chlàr-faire',
 'mywatchlist'        => 'Mo chlàr-faire',
 'nowatchlist'        => "Chan eil rud sam bith air a' chlàr-fhaire agad.",
-'addedwatch'         => 'Air a chur ri do chlàr-faire',
 'addedwatchtext'     => "Chaidh an duilleag \"[[:\$1]]\" a chur ri [[Special:Watchlist|do chlàr-faire]].
 Nochdaidh mùthaidhean a nithear air an duilleag seo 's air an duilleag deasbaireachd a tha co-cheangailte ris an-seo san àm ri teachd agus nochdaidh an duilleag ann an litrichean '''troma''' ann an [[Special:RecentChanges|liosta nam mùthaidhean ùra]] gum bi e furasta ri fhaicinn.",
-'removedwatch'       => 'Air a thoir air falbh o do chlàr-faire',
 'removedwatchtext'   => 'Chaidh an duilleag "[[:$1]]" a thoirt air falbh o [[Special:Watchlist|do chlàr-faire]].',
 'watch'              => 'Cum sùil air',
 'watchthispage'      => 'Cum sùil air an duilleag seo',
@@ -781,7 +771,7 @@ Nochdaidh mùthaidhean a nithear air an duilleag seo 's air an duilleag deasbair
 'confirmdeletetext'      => "Tha thu an impis duilleag a sguabadh às agus a h-eachdraidh uile gu lèir.
 Dearbhaich gu bheil thu airson seo a dhèanamh 's gun tuig thu a' bhuaidh a bhios ann agus gu bheil thu a' dèanamh seo a-rèir [[{{MediaWiki:Policy-url}}|a' phoileasaidh]].",
 'actioncomplete'         => 'Gnìomh deiseil',
-'deletedtext'            => 'Chaidh "<nowiki>$1</nowiki>" a sguabadh às.
+'deletedtext'            => 'Chaidh "$1" a sguabadh às.
 Seall air $2 airson clàr de dhuilleagan a chaidh a sguabadh às o chionn ghoirid.',
 'deletedarticle'         => '"[[$1]]" air a sguabadh às',
 'dellogpage'             => 'Loga an sguabaidh às',
@@ -814,7 +804,7 @@ Cuir sùil air [[Special:ProtectedPages|liosta nan duilleagan fo dhìon]] airson
 'protectexpiry'               => 'Falbhaidh an ùine air:',
 'protect_expiry_invalid'      => 'Tha an t-àm-crìochnachaidh mì-dhligheach.',
 'protect_expiry_old'          => 'Tha an t-àm crìochnachaidh seachad mu thràth.',
-'protect-text'                => "Chì thu an ìre dìon dhen duilleag '''<nowiki>$1</nowiki>''' an-seo agus is urrainn dhut atharrachadh an-seo.",
+'protect-text'                => "Chì thu an ìre dìon dhen duilleag '''$1''' an-seo agus is urrainn dhut atharrachadh an-seo.",
 'protect-locked-access'       => "Chan eil cead aig a' chunntas agad an ìre dìon de dhuilleag atharrachadh.
 Seo roghainnean làithreach na duilleige '''$1''':",
 'protect-cascadeon'           => "Tha an duilleag seo fo dhìon an-dràsta a chionn 's gu bheil e air a ghabhail a-steach {{PLURAL:$1|san duilleag|sna duilleagan|san duilleag|sna duilleagan|san duilleag|sna duilleagan}} a leanas aig a bheil dìon easach air.
@@ -1018,10 +1008,6 @@ Tadhail air [http://www.mediawiki.org/wiki/Localisation Ionadaileadh MediaWiki] 
 'othercontribs' => 'Stèidhichte air obair le $1.',
 'others'        => 'eile',
 'siteusers'     => '{{PLURAL:$2|chleachdaiche|chleachdaiche|chleachdaiche|chleachdaiche|cleachdaichean|cleachdaiche}} {{SITENAME}} $1',
-
-# Info page
-'infosubtitle' => 'Fiosrachadh mun duilleag',
-'numwatchers'  => "Àireamh de dhaoine a tha a' cumail sùil air: $1",
 
 # Browsing diffs
 'previousdiff' => '← Mùthadh nas sine',

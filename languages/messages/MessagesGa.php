@@ -219,10 +219,7 @@ $messages = array(
 'listingcontinuesabbrev'         => 'ar lean.',
 'index-category'                 => 'Leathanaigh innéacsaithe',
 
-'linkprefix'        => '/^(.*?)([a-zA-Z\\x80-\\xff]+)$/sD',
-'mainpagetext'      => "'''D'éirigh le suiteáil MediaWiki.'''",
-'mainpagedocfooter' => 'Féach ar [http://meta.wikimedia.org/wiki/MediaWiki_localisation doiciméid um conas an chomhéadán a athrú]
-agus an [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Lámhleabhar úsáideora] chun cabhair úsáide agus fíoraíochta a fháil.',
+'linkprefix' => '/^(.*?)([a-zA-Z\\x80-\\xff]+)$/sD',
 
 'about'         => 'Maidir leis',
 'article'       => 'Leathanach ábhair',
@@ -273,7 +270,6 @@ agus an [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Lámhleabhar ú
 'history'           => 'Stair an lch seo',
 'history_short'     => 'Stair',
 'updatedmarker'     => 'leasaithe (ó shin mo chuairt dheireanach)',
-'info_short'        => 'Eolas',
 'printableversion'  => 'Eagrán inphriontáilte',
 'permalink'         => 'Nasc buan',
 'print'             => 'Priontáil',
@@ -470,7 +466,6 @@ Bain trial arís as i gcionn cúpla bomaite más é do thoil é.',
 Más maith leat MediaWiki a aistriú, cuimhnigh ar [http://translatewiki.net/wiki/Main_Page?setlang=ga translatewiki.net] (tionscadal logánaithe MediaWiki) a úsáid.",
 'sqlhidden'            => '(Iarratas SQL folaithe)',
 'namespaceprotected'   => "Ní chead agat leathanaigh a chur in eagar san ainmspás '''$1'''.",
-'customcssjsprotected' => 'Níl cead agat an leathanach seo a athrú, mar is sainroghanna úsáideora eile atá ann.',
 'ns-specialprotected'  => 'Ní féidir leathanaigh speisialta a chur in eagar.',
 'titleprotected'       => "Tá an teideal seo cosanta ar chruthú le [[User:$1|$1]].
 An fáth ná ''$2''.",
@@ -528,7 +523,7 @@ Cumasaigh iad agus bain triail eile as, le do thoil.',
 'nosuchuser'                 => 'Níl aon úsáideoir ann leis an ainm "$1".
 Tá ainmneacha úsáideoir cásíogair.
 Cinntigh do litriú, nó [[Special:UserLogin/signup|bain úsáid as an foirm thíos]] chun cuntas úsáideora nua a chruthú.',
-'nosuchusershort'            => 'Níl aon úsáideoir ann leis an ainm "<nowiki>$1</nowiki>". Cinntigh do litriú.',
+'nosuchusershort'            => 'Níl aon úsáideoir ann leis an ainm "$1". Cinntigh do litriú.',
 'nouserspecified'            => 'Caithfidh ainm úsáideoir a shonrú.',
 'login-userblocked'          => 'Tá an t-úsáideoir seo faoi bhac. Níl cead aige/aici logáil isteach.',
 'wrongpassword'              => "D'iontráil tú focal faire mícheart.<br />
@@ -1284,11 +1279,9 @@ Beidh do seoladh ríomhphoist a d\'iontráil tú i [[Special:Preferences|do chui
 'watchlistanontext'    => "$1, le d'thoil, chun míreanna ar do liosta faire a fheiceáil ná a athrú.",
 'watchnologin'         => 'Níl tú logáilte isteach',
 'watchnologintext'     => 'Tá ort a bheith [[Special:UserLogin|logáilte isteach]] chun do liosta faire a athrú.',
-'addedwatch'           => 'Curtha ar an liosta faire',
 'addedwatchtext'       => "Cuireadh an leathanach \"<nowiki>\$1</nowiki>\" le do [[Special:Watchlist|liosta faire]].
 Amach anseo liostálfar athruithe don leathanach seo agus dá leathanach plé ansin,
 agus beidh '''cló trom''' ar a theideal san [[Special:RecentChanges|liosta de na hathruithe is déanaí]] sa chaoi go bhfeicfeá iad go héasca.",
-'removedwatch'         => 'Bainte den liosta faire',
 'removedwatchtext'     => 'Baineadh an leathanach "[[:$1]]" as [[Special:Watchlist|do liosta faire]].',
 'watch'                => 'Déan faire',
 'watchthispage'        => 'Déan faire ar an leathanach seo',
@@ -1363,7 +1356,7 @@ Aiseolas agus a thuilleadh cabhrach:
 'confirmdeletetext'     => 'Tá tú ar tí leathanach, agus a chuid staire, a scriosadh.
 Deimhnigh, le do thoil, gur mhian leat é seo a dhéanamh, go dtuigeann tú torthaí an ghnímh seo agus go bhfuil tú dá dhéanamh de réir [[{{MediaWiki:Policy-url}}|an pholasaí]].',
 'actioncomplete'        => 'Gníomh críochnaithe',
-'deletedtext'           => 'scriosadh "<nowiki>$1</nowiki>".
+'deletedtext'           => 'scriosadh "$1".
 Féach ar $2 chun cuntas na scriosiadh deireanacha a fháil.',
 'deletedarticle'        => 'scriosadh "[[$1]]"',
 'dellogpage'            => 'Loga scriosta',
@@ -1404,7 +1397,7 @@ Féach ar [[Special:ProtectedPages|Leathanach glasáilte]] chun a thuilleadh eol
 'protectexpiry'               => 'As feidhm:',
 'protect_expiry_invalid'      => 'Am éaga neamhbhailí.',
 'protect_expiry_old'          => 'Am éaga san am atá thart.',
-'protect-text'                => "Is féidir leat an leibhéal glasála a athrú anseo don leathanach '''<nowiki>$1</nowiki>'''.",
+'protect-text'                => "Is féidir leat an leibhéal glasála a athrú anseo don leathanach '''$1'''.",
 'protect-locked-access'       => "Ní chead ag do chuntas chun athraigh leibhéal cosaint an leathanach.
 Seo iad na socruithe reatha faoin leathanach '''$1''':",
 'protect-cascadeon'           => 'Tá an leathanach seo ghlasáil le athrú mar tá se iniata ar {{PLURAL:$1|an leathanach seo|na leathanaigh seo}} a leanas, agus iad ghlasáil le glasáil cascáideach.
@@ -1757,9 +1750,7 @@ ní féidir uaslódála staire díreacha a dhéanamh faoi láthair.",
 'monobook.css' => '/* athraigh an comhad seo chun an craiceann MonoBook a athrú don suíomh ar fad */',
 
 # Metadata
-'nodublincore'      => 'Míchumasaítear meitea-shonraí Dublin Core RDF ar an freastalaí seo.',
-'nocreativecommons' => 'Míchumasaítear meitea-shonraí Creative Commons RDF ar an freastalaí seo.',
-'notacceptable'     => 'Ní féidir leis an freastalaí vicí na sonraí a chur ar fáil i bhformáid atá inléite ag do chliant.',
+'notacceptable' => 'Ní féidir leis an freastalaí vicí na sonraí a chur ar fáil i bhformáid atá inléite ag do chliant.',
 
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Úsáideoir|Úsáideoirí}} gan ainm ar {{SITENAME}}',
@@ -1777,14 +1768,6 @@ ní féidir uaslódála staire díreacha a dhéanamh faoi láthair.",
 iarradh sábháil. Is dócha gur nasc chuig suíomh seachtrach ba chúis leis.',
 'spamprotectionmatch' => 'Truicear ár scagaire dramhála ag an téacs seo a leanas: $1',
 'spambot_username'    => 'MediaWiki turscar glanadh',
-
-# Info page
-'infosubtitle'   => 'Eolas don leathanach',
-'numedits'       => 'Méid athruithe (alt): $1',
-'numtalkedits'   => 'Méid athruithe (leathanach phlé): $1',
-'numwatchers'    => 'Méid féachnóirí: $1',
-'numauthors'     => 'Méid údair ar leith (alt): $1',
-'numtalkauthors' => 'Méid údair ar leith (leathanach phlé): $1',
 
 # Skin names
 'skinname-standard'    => 'Clasaiceach',

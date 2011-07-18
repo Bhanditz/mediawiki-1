@@ -7,6 +7,7 @@
  * @ingroup Language
  * @file
  *
+ * @author Huji
  * @author Mostafadaneshvar
  * @author ZxxZxxZ
  */
@@ -257,14 +258,6 @@ $messages = array(
 'category-file-count-limited'    => 'جهلیگین {{PLURAL:$1|فایل|$1 فایلان}} ته هنوکین دسته اینت',
 'listingcontinuesabbrev'         => 'ادامه.',
 
-'mainpagetext'      => "'''مدیا وی کی گون موفقیت نصب بوت.'''",
-'mainpagedocfooter' => "مشورت کنیت گون  [http://meta.wikimedia.org/wiki/Help:Contents User's Guide] په گشیترین اطلاعات په استفاده چه برنامه ویکی.
-
-== شروع بیت ==
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
-
 'about'         => 'باره',
 'article'       => 'محتوا صفحه',
 'newwindow'     => '(ته نوکین پنچره ی پچ کن)',
@@ -314,7 +307,6 @@ $messages = array(
 'history'           => 'تاریح صفحه',
 'history_short'     => 'تاریح',
 'updatedmarker'     => 'په روچ بیتگین چه منی اهری  اهری  چارگ',
-'info_short'        => 'اطلاعات',
 'printableversion'  => 'نسخه چهاپی',
 'permalink'         => 'دایمی لینک',
 'print'             => 'چهاپ',
@@ -506,7 +498,6 @@ Query: $2',
 'cascadeprotected'     => 'ای صفحه محافظت بیت چه اصلاح چرا که آیی شامل جهلیگین {{PLURAL:$1|صفحه, که|صفحات, که}} محافظتی گون the "cascading" option turned on:
 $2',
 'namespaceprotected'   => "شما اجازت په اصلاح صفحات ته  '''$1'' نام فضا نیست",
-'customcssjsprotected' => 'شما را اجازت په اصلاح ای صفحه نیستپه چی که آی شامل شامل  تنظیمات شخصی دگه کاربر اینت',
 'ns-specialprotected'  => 'حاصین صفحات اصلاح نه بنت',
 'titleprotected'       => "ای عنوان محافظت بوتت چه سربیگ به وسیله  [[User:$1|$1]].
 ای دلیل دییگ بیتت ''$2''.",
@@ -560,7 +551,7 @@ $2',
 'nosuchuser'                 => 'هچ کاربری گون نام "$1" نیستن.
 کاربری نام حرفش په هور و مزنی حساس انت.
 وتی املايا چک کنیت یا [[Special:UserLogin/signup|نوکین حسابی شرکنیت]].',
-'nosuchusershort'            => 'هچ کاربری گون نام  "<nowiki>$1</nowiki>"نیستن.
+'nosuchusershort'            => 'هچ کاربری گون نام  "$1"نیستن.
 وتی املايا کنترل کنیت',
 'nouserspecified'            => 'شما باید یک نام کاربری مشخص کنیت.',
 'wrongpassword'              => 'اشتباهین کلمه رمز وارد بوت. دگه سعی کن.',
@@ -711,7 +702,7 @@ $2',
 'noarticletext'                    => 'هنو هچ متنی ته ای صفحه نیست.
 شما تونیت [[Special:Search/{{PAGENAME}}|گردیت په عنوان صفحه]]  ته دگه صفحات یا<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} گردگ په مربوطین آمار],
 یا [{{fullurl:{{FULLPAGENAME}}|action=edit}} اصلاح ای صفحه]</span>.',
-'userpage-userdoesnotexist'        => 'حساب کاربر "$1" ثبت نهنت. لطفا کنترل کنیت اگه شما لوٹیت ای صفحه یا شر/اصلاح کنیت.',
+'userpage-userdoesnotexist'        => 'حساب کاربر "<nowiki>$1</nowiki>" ثبت نهنت. لطفا کنترل کنیت اگه شما لوٹیت ای صفحه یا شر/اصلاح کنیت.',
 'clearyourcache'                   => "'''توجه:''' بعد چه ذخیره کتن، شما شاید مجبور بیت چه وتی ذخیره ی بروزر رد بیت تا تغییرات بگندیت. '''Mozilla / Firefox / Safari:'' ''Shift'' جهل داریت همی وهدی که کلیک کنیت ''Reload'' یا بداریت ''Ctrl-Shift-R'' (''Cmd-Shift-R'' on Apple Mac);'''IE:''' ''Ctrl''  بداری وهدی که کلیک ''Refresh' یا 'Ctrl-F5''; '''Konqueror:''':  راحت کلیک کن دکمه ''Reload'' یا بدار ''F5''; '''Opera''' کاربر بایدن ته ''Tools→Preferences'' ذخیره پاک کنت.",
 'usercssyoucanpreview'             => "'''نکته:''' چه دکمه 'Show preview' په آزمایش کتن  CSS پیش چه ذخیره کتن استفاده کن",
 'userjsyoucanpreview'              => "'''نکته:''' چه دکمه 'Show preview' په آزمایش کتن  JS پیش چه ذخیره کتن استفاده کن",
@@ -1410,10 +1401,6 @@ $1",
 'watchthisupload'             => 'ای فایل بچار',
 'filewasdeleted'              => 'یک فایلی گو ای نام پیشتر آپلود بوتت و رندا حذف بوت.
 شما بایدن کنترل کنیت  $1 پیش چه شی که دگه آپلود کنیت.',
-'upload-wasdeleted'           => "'''هوژاری: شما یک فایلی آپلود کنگیت که پیشتر حذف بوتت.'''
-
-شما بایدن توجه کنیت که آیا ادامه دهگ آپلود کتن فایل مناسبنت.
-آمار حذف فایل په ای فایل ادان په شمی حاطرء هست:",
 'filename-bad-prefix'         => "نام  فایلی که آپلود بیت شروع بیت گون '''\"\$1\"''', که یک نام بی توضیحی هنچکا اتوماتیکی گون دوربین دیجیتال دهگ بوتت.
 لطفا یک تشریحی ترین نامی په وتی فایل بزرویت.",
 'filename-prefix-blacklist'   => '#<!-- leave this line exactly as it is --> <pre>
@@ -1485,8 +1472,8 @@ PICT # misc.
 'filehist-current'          => 'هنو',
 'filehist-datetime'         => 'تاریح/زمان',
 'filehist-thumb'            => 'بند انگشت',
-'filehist-thumbtext'        => 'بند انگشتی عکس چه $1',
-'filehist-nothumb'          => 'بی بند انگشتی',
+'filehist-thumbtext'        => 'بندانگشتی از نسخهٔ مورخ $1',
+'filehist-nothumb'          => 'فاقد بندانگشتی',
 'filehist-user'             => 'کاربر',
 'filehist-dimensions'       => 'جنبه یان',
 'filehist-filesize'         => 'اندازه فایل',
@@ -1499,7 +1486,6 @@ PICT # misc.
 یک [[Special:WhatLinksHere/$2|لیست کامل]] موجودنت.',
 'nolinkstoimage'            => 'هچ صفحه ای نیست که به ای فایل لینک بوت.',
 'morelinkstoimage'          => 'View [[Special:WhatLinksHere/$1|گیشتر لینکان]]به ای فایل',
-'redirectstofile'           => 'جهلیگین {{PLURAL:$1|فایل غیر مستقیم بنت|$1 فایلان غیر مستقیم بنت.}} به ای فایل',
 'duplicatesoffile'          => 'جهلیگین {{PLURAL:$1|فایل یک کپی انت|$2 فایلان کپی انت}} چه هی فایل ([[Special:FileDuplicateSearch/$2|گیشترین اطلاعات]]):',
 'sharedupload'              => 'ای فایل چه $1 انت و شاید گون دگه پروژه یان استفاده بیت.',
 'sharedupload-desc-there'   => 'ای پرونده در $1 انت و ممکن انت ته دگه پروژه‌ها هم استفاده ببیت.
@@ -1801,10 +1787,8 @@ PICT # misc.
 'watchlistanontext'    => 'لطفا  $1 په دیستن یا اصلاح ایتیمان ته وتی لیست چارگء',
 'watchnologin'         => 'وارد نه بی تگیت',
 'watchnologintext'     => 'شما بایدن  [[Special:UserLogin|وارد بیت]] په تغییر داتن وتی لیست چارگء',
-'addedwatch'           => 'په لیست چارگ هور بوت',
 'addedwatchtext'       => 'صفحه  "[[:$1]]"  په شمی [[Special:Watchlist|watchlist]] هور بیت.
 دیمگی تغییرات په ای صفحه و آیاء صفحه گپ ادان لیست بنت، و صفحه پررنگ جاه کیت ته [[Special:RecentChanges|لیست نوکیت تغییرات]] په راحتر کتن شی که آی زورگ بیت.',
-'removedwatch'         => 'چه لیست چارگ زورگ بیت',
 'removedwatchtext'     => 'صفحه"[[:$1]]"  چه [[Special:Watchlist|شمی لیست چارگ]]. دربیت.',
 'watch'                => 'به چار',
 'watchthispage'        => 'ای صفحه ی بچار',
@@ -1857,7 +1841,7 @@ $NEWPAGE
 
 --
 په عوض کتن تنظیمات وتی لیست چارگ،به چار
-{{fullurl:{{#special:Watchlist}}/edit}}
+{{fullurl:{{#special:EditWatchlist}}}}
 
 نظرات و گیشترین کمک:
 {{fullurl:{{MediaWiki:Helppage}}}}',
@@ -1876,7 +1860,7 @@ $NEWPAGE
 لطفا تایید کنیت که شما چوش کنیت که شما زانیت آی ء عاقبتانآ و شی که شما ای کارآ گون [[{{MediaWiki:Policy-url}}|سیاست]] انجام دهیت',
 'actioncomplete'         => 'کار انجام بیت',
 'actionfailed'           => 'عمل پروش وارت',
-'deletedtext'            => '"<nowiki>$1</nowiki>" حذف بیت.
+'deletedtext'            => '"$1" حذف بیت.
 بگندیت $2 په ثبتی که نوکین حذفیات',
 'deletedarticle'         => 'حذف بوت "[[$1]]"',
 'suppressedarticle'      => 'متوقف بوت "[[$1]]"',
@@ -1934,7 +1918,7 @@ $NEWPAGE
 'protectexpiry'               => 'منقضی بیت:',
 'protect_expiry_invalid'      => 'تاریح انقضای معتبر نهنت.',
 'protect_expiry_old'          => 'تاریخ انقصا ته گذشته انت.',
-'protect-text'                => "شما شاید ادان سطح حفاظت بگندیت و تغییر دیهت په صفحه '''<nowiki>$1</nowiki>'''.",
+'protect-text'                => "شما شاید ادان سطح حفاظت بگندیت و تغییر دیهت په صفحه '''$1'''.",
 'protect-locked-blocked'      => "شما نه تونیت سطوح حفاظت وهدی مه محدود انت عوض کنیت.
 ادان تنظیمات هنوی په صفحه است'''$1''':",
 'protect-locked-dblock'       => "سطوح حفاظتی په خاطر یم فعالین کبل دیتابیس عوض نه  بنت.
@@ -2442,9 +2426,7 @@ $1',
 'monobook.js' => '/* جاوا اسکریپت ادان فقط په کابرانی که چه پوست منوبوک استفاده کننت بار بیت. */',
 
 # Metadata
-'nodublincore'      => 'هسته دوبلین RDF متادیتا ته ای سرور غیر فعالنت.',
-'nocreativecommons' => 'کریتیو کامان متادیتا RDF ته ای سرور غیر فعال انت.',
-'notacceptable'     => 'سروری ویکی نه تونیت دیتای ته فرمتی که شمی کلاینت بتوننت آی بوانند فراهم کنت.',
+'notacceptable' => 'سروری ویکی نه تونیت دیتای ته فرمتی که شمی کلاینت بتوننت آی بوانند فراهم کنت.',
 
 # Attribution
 'anonymous'        => 'ناشناسین {{PLURAL:$1|کاربر|کاربران}} چه {{SITENAME}}',
@@ -2464,14 +2446,6 @@ $1',
 'spambot_username'    => 'اسپم پاک کنوک مدیا وی کی',
 'spam_reverting'      => 'عوض کتن په آهری نسحه که شامل لینکان می بیت په $1',
 'spam_blanking'       => 'کل بازبینی آن شامل لینکان په $1, بوتت  هالیکی',
-
-# Info page
-'infosubtitle'   => 'اطلاعات په صفحه',
-'numedits'       => 'تعداد اصلاحات (صفحه): $1',
-'numtalkedits'   => 'تعداد اصلاحات (صفحه بحث): $1',
-'numwatchers'    => 'تعداد چاروکان: $1',
-'numauthors'     => 'تعداد دوراین نویسوکان (صفحه): $1',
-'numtalkauthors' => 'تعداد مجزاین نویسوکان(صفحه بحث): $1',
 
 # Skin names
 'skinname-standard'    => 'کلاسیک',

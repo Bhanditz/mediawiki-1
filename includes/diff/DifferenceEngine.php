@@ -57,9 +57,9 @@ class DifferenceEngine {
 	/**
 	 * Constructor
 	 * @param $titleObj Title object that the diff is associated with
-	 * @param $old Integer: old ID we want to show and diff with.
-	 * @param $new String: either 'prev' or 'next'.
-	 * @param $rcid Integer: ??? FIXME (default 0)
+	 * @param $old Integer old ID we want to show and diff with.
+	 * @param $new String either 'prev' or 'next'.
+	 * @param $rcid Integer ??? FIXME (default 0)
 	 * @param $refreshCache boolean If set, refreshes the diff cache
 	 * @param $unhide boolean If set, allow viewing deleted revs
 	 */
@@ -99,24 +99,80 @@ class DifferenceEngine {
 		$this->unhide = $unhide;
 	}
 
+	/**
+	 * @param $value bool
+	 */
 	function setReducedLineNumbers( $value = true ) {
 		$this->mReducedLineNumbers = $value;
 	}
 
+	/**
+	 * @return Title
+	 */
 	function getTitle() {
 		return $this->mTitle;
 	}
 
+	/**
+	 * @return bool
+	 */
 	function wasCacheHit() {
 		return $this->mCacheHit;
 	}
 
+	/**
+	 * @return int
+	 */
 	function getOldid() {
 		return $this->mOldid;
 	}
 
+	/**
+	 * @return Bool|int
+	 */
 	function getNewid() {
 		return $this->mNewid;
+	}
+
+	/**
+	 * Look up a special:Undelete link to the given deleted revision id,
+	 * as a workaround for being unable to load deleted diffs in currently.
+	 *
+	 * @param int $id revision ID
+	 * @return mixed URL or false
+	 */
+	function deletedLink( $id ) {
+		global $wgUser;
+		if ( $wgUser->isAllowed( 'deletedhistory' ) ) {
+			$dbr = wfGetDB( DB_SLAVE );
+			$row = $dbr->selectRow('archive', '*',
+				array( 'ar_rev_id' => $id ),
+				__METHOD__ );
+			if ( $row ) {
+				$rev = Revision::newFromArchiveRow( $row );
+				$title = Title::makeTitleSafe( $row->ar_namespace, $row->ar_title );
+				return SpecialPage::getTitleFor( 'Undelete' )->getFullURL( array(
+					'target' => $title->getPrefixedText(),
+					'timestamp' => $rev->getTimestamp()
+				));
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Build a wikitext link toward a deleted revision, if viewable.
+	 *
+	 * @param int $id revision ID
+	 * @return string wikitext fragment
+	 */
+	function deletedIdMarker( $id ) {
+		$link = $this->deletedLink( $id );
+		if ( $link ) {
+			return "[$link $id]";
+		} else {
+			return $id;
+		}
 	}
 
 	function showDiffPage( $diffOnly = false ) {
@@ -130,9 +186,9 @@ class DifferenceEngine {
 		# we'll use the application/x-external-editor interface to call
 		# an external diff tool like kompare, kdiff3, etc.
 		if ( $wgUseExternalEditor && $wgUser->getOption( 'externaldiff' ) ) {
-			global $wgInputEncoding, $wgServer, $wgScript, $wgLang;
+			global $wgServer, $wgScript, $wgLang;
 			$wgOut->disable();
-			header ( "Content-type: application/x-external-editor; charset=" . $wgInputEncoding );
+			header ( "Content-type: application/x-external-editor; charset=UTF-8" );
 			$url1 = $this->mTitle->getFullURL( array(
 				'action' => 'raw',
 				'oldid' => $this->mOldid
@@ -165,10 +221,13 @@ CONTROL;
 
 		$wgOut->setArticleFlag( false );
 		if ( !$this->loadRevisionData() ) {
+			// Sounds like a deleted revision... Let's see what we can do.
 			$t = $this->mTitle->getPrefixedText();
-			$d = wfMsgExt( 'missingarticle-diff', array( 'escape' ), $this->mOldid, $this->mNewid );
+			$d = wfMsgExt( 'missingarticle-diff', array( 'escape' ),
+				$this->deletedIdMarker( $this->mOldid ),
+				$this->deletedIdMarker( $this->mNewid ) );
 			$wgOut->setPagetitle( wfMsg( 'errorpagetitle' ) );
-			$wgOut->addWikiMsg( 'missing-article', "<nowiki>$t</nowiki>", $d );
+			$wgOut->addWikiMsg( 'missing-article', "<nowiki>$t</nowiki>", "<span class='plainlinks'>$d</span>" );
 			wfProfileOut( __METHOD__ );
 			return;
 		}
@@ -445,7 +504,8 @@ CONTROL;
 		global $wgOut, $wgUser;
 		wfProfileIn( __METHOD__ );
 		# Add "current version as of X" title
-		$wgOut->addHTML( "<hr /><h2>{$this->mPagetitle}</h2>\n" );
+		$wgOut->addHTML( "<hr class='diff-hr' />
+		<h2 class='diff-currentversion-title'>{$this->mPagetitle}</h2>\n" );
 		# Page content may be handled by a hooked call instead...
 		if ( wfRunHooks( 'ArticleContentOnDiff', array( $this, $wgOut ) ) ) {
 			# Use the current version parser cache if applicable
@@ -520,9 +580,11 @@ CONTROL;
 		#
 		if ( ! $this->loadNewText() ) {
 			$t = $this->mTitle->getPrefixedText();
-			$d = wfMsgExt( 'missingarticle-diff', array( 'escape' ), $this->mOldid, $this->mNewid );
+			$d = wfMsgExt( 'missingarticle-diff', array( 'escape' ),
+					$this->deletedIdMarker( $this->mOldid ),
+					$this->deletedIdMarker( $this->mNewid ) );
 			$wgOut->setPagetitle( wfMsg( 'errorpagetitle' ) );
-			$wgOut->addWikiMsg( 'missing-article', "<nowiki>$t</nowiki>", $d );
+			$wgOut->addWikiMsg( 'missing-article', "<nowiki>$t</nowiki>", "<span class='plainlinks'>$d</span>" );
 			wfProfileOut( __METHOD__ );
 			return;
 		}
@@ -577,6 +639,8 @@ CONTROL;
 	/**
 	 * Get the diff text, send it to $wgOut
 	 * Returns false if the diff could not be generated, otherwise returns true
+	 *
+	 * @return bool
 	 */
 	function showDiff( $otitle, $ntitle, $notice = '' ) {
 		global $wgOut;
@@ -596,8 +660,7 @@ CONTROL;
 	 */
 	function showDiffStyle() {
 		global $wgOut;
-		$wgOut->addModuleStyles( 'mediawiki.legacy.diff' );
-		$wgOut->addModuleScripts( 'mediawiki.legacy.diff' );
+		$wgOut->addModuleStyles( 'mediawiki.action.history.diff' );
 	}
 
 	/**
@@ -700,7 +763,7 @@ CONTROL;
 			wfDl( 'php_wikidiff' );
 			wfProfileOut( __METHOD__ . '-php_wikidiff.so' );
 		}
-		else if ( $wgExternalDiffEngine == 'wikidiff2' && !function_exists( 'wikidiff2_do_diff' ) ) {
+		elseif ( $wgExternalDiffEngine == 'wikidiff2' && !function_exists( 'wikidiff2_do_diff' ) ) {
 			wfProfileIn( __METHOD__ . '-php_wikidiff2.so' );
 			wfDl( 'wikidiff2' );
 			wfProfileOut( __METHOD__ . '-php_wikidiff2.so' );
@@ -715,6 +778,8 @@ CONTROL;
 	 */
 	function generateDiffBody( $otext, $ntext ) {
 		global $wgExternalDiffEngine, $wgContLang;
+
+        wfProfileIn( __METHOD__ );
 
 		$otext = str_replace( "\r\n", "\n", $otext );
 		$ntext = str_replace( "\r\n", "\n", $ntext );
@@ -867,9 +932,15 @@ CONTROL;
 
 	/**
 	 * Add the header to a diff body
+	 *
+	 * @return string
 	 */
-	static function addHeader( $diff, $otitle, $ntitle, $multi = '', $notice = '' ) {
-		$header = "<table class='diff'>";
+	function addHeader( $diff, $otitle, $ntitle, $multi = '', $notice = '' ) {
+		// shared.css sets diff in interface language/dir,
+		// but the actual content should be in the page language/dir
+		$pageLang = $this->mTitle->getPageLanguage();
+		$tableClass = 'diff diff-contentalign-' . htmlspecialchars( $pageLang->alignStart() );
+		$header = "<table class='$tableClass'>";
 		if ( $diff ) { // Safari/Chrome show broken output if cols not used
 			$header .= "
 			<col class='diff-marker' />
@@ -917,6 +988,8 @@ CONTROL;
 	 * If oldid is false, leave the corresponding revision object set
 	 * to false. This is impossible via ordinary user input, and is provided for
 	 * API convenience.
+	 *
+	 * @return bool
 	 */
 	function loadRevisionData() {
 		global $wgLang, $wgUser;
@@ -931,8 +1004,9 @@ CONTROL;
 		$this->mNewRev = $this->mNewid
 			? Revision::newFromId( $this->mNewid )
 			: Revision::newFromTitle( $this->mTitle );
-		if ( !$this->mNewRev instanceof Revision )
+		if ( !$this->mNewRev instanceof Revision ) {
 			return false;
+		}
 
 		// Update the new revision ID in case it was 0 (makes life easier doing UI stuff)
 		$this->mNewid = $this->mNewRev->getId();
@@ -981,7 +1055,7 @@ CONTROL;
 		}
 		if ( !$this->mNewRev->userCan( Revision::DELETED_TEXT ) ) {
 			$this->mNewtitle = "<span class='history-deleted'>{$this->mPagetitle}</span>";
-		} else if ( $this->mNewRev->isDeleted( Revision::DELETED_TEXT ) ) {
+		} elseif ( $this->mNewRev->isDeleted( Revision::DELETED_TEXT ) ) {
 			$this->mNewtitle = "<span class='history-deleted'>{$this->mNewtitle}</span>";
 		}
 
@@ -1036,7 +1110,7 @@ CONTROL;
 
 			if ( !$this->mOldRev->userCan( Revision::DELETED_TEXT ) ) {
 				$this->mOldtitle = '<span class="history-deleted">' . $this->mOldPagetitle . '</span>';
-			} else if ( $this->mOldRev->isDeleted( Revision::DELETED_TEXT ) ) {
+			} elseif ( $this->mOldRev->isDeleted( Revision::DELETED_TEXT ) ) {
 				$this->mOldtitle = '<span class="history-deleted">' . $this->mOldtitle . '</span>';
 			}
 		}
@@ -1046,6 +1120,8 @@ CONTROL;
 
 	/**
 	 * Load the text of the revisions, as well as revision data.
+	 *
+	 * @return bool
 	 */
 	function loadText() {
 		if ( $this->mTextLoaded == 2 ) {
@@ -1075,6 +1151,8 @@ CONTROL;
 
 	/**
 	 * Load the text of the new revision, not the old one
+	 *
+	 * @return bool
 	 */
 	function loadNewText() {
 		if ( $this->mTextLoaded >= 1 ) {

@@ -452,10 +452,8 @@ Saide uff [[Special:Watchlist|Dainer Beowachdungslischt]] sin '''fett'''.",
 # Watchlist
 'watchlist'         => 'Beowachdungslischd',
 'mywatchlist'       => 'Mai Beowachdungslischd',
-'addedwatch'        => 'Zu de Beowachdungslischt zufieche',
 'addedwatchtext'    => "Die Said \"[[:\$1]]\" isch zu Dainer [[Special:Watchlist|Beowachdungslischt]] zugefiecht worre.
 Zukimftiche Ännerunge an derre Said un de Dischbediersaid, wu dezu ghert, werre doo aagezaicht, un d Said werd '''fett''' aagezaicht in de [[Special:RecentChanges|Letschte Ännerunge]] fer dass es ääfacher isch zum finne.",
-'removedwatch'      => 'Aus de Beowachdungslischt rausgenumme',
 'removedwatchtext'  => 'D Said "[[:$1]]" isch aus [[Special:Watchlist|Dainer Beowachdungslischt]] rausgenumme worre.',
 'watch'             => 'Beowachde',
 'watchthispage'     => 'Die Said beowachde',
@@ -477,7 +475,7 @@ Zukimftiche Ännerunge an derre Said un de Dischbediersaid, wu dezu ghert, werre
 'confirmdeletetext'     => 'Du bisch debai e Said z lesche mid alle Versione.
 Bitte du bstätiche, dass Du des wllscht du, dass Du verstehsch, was des hääßt, un dass Du des machscht in Iwweraistimmung mit de [[{{MediaWiki:Policy-url}}|Richtline]].',
 'actioncomplete'        => 'Aktion fertich',
-'deletedtext'           => '"<nowiki>$1</nowiki>" isch gelescht worre.
+'deletedtext'           => '"$1" isch gelescht worre.
 Guck $2 fer e Lischt vun de letschte Leschunge.',
 'deletedarticle'        => 'hot "[[$1]]" glescht',
 'dellogpage'            => 'Leschlogbuch',
@@ -496,7 +494,7 @@ Guck $2 fer e Lischt vun de letschte Leschunge.',
 'protectexpiry'               => 'Bis:',
 'protect_expiry_invalid'      => 'Zaidraum isch nid gildich.',
 'protect_expiry_old'          => 'Zaidraum licht in de Vergangehääd.',
-'protect-text'                => "Du kannscht de Schutzstatus vun de Said '''<nowiki>$1</nowiki>''' aagucke un ännere.",
+'protect-text'                => "Du kannscht de Schutzstatus vun de Said '''$1''' aagucke un ännere.",
 'protect-locked-access'       => "Dai Benutzerkonto hot ken Recht zum de Schutzstatus vun ener Said ze ännere.
 Do hot s di aktuelle Aistellunge vun de Said '''$1''':",
 'protect-cascadeon'           => 'Die Said isch gschitzt, wail se {{PLURAL:$1|zu derre Said ghert|zu denne Saide ghert}}, wu e Kaskadesperrung gelt.

@@ -61,7 +61,7 @@ class ApiMove extends ApiBase {
 		}
 
 		if ( !$fromTitle->exists() ) {
-			$this->dieUsageMsg( array( 'notanarticle' ) );
+			$this->dieUsageMsg( 'notanarticle' );
 		}
 		$fromTalk = $fromTitle->getTalkPage();
 
@@ -76,9 +76,9 @@ class ApiMove extends ApiBase {
 			&& wfFindFile( $toTitle ) )
 		{
 			if ( !$params['ignorewarnings'] && $wgUser->isAllowed( 'reupload-shared' ) ) {
-				$this->dieUsageMsg( array( 'sharedfile-exists' ) );
+				$this->dieUsageMsg( 'sharedfile-exists' );
 			} elseif ( !$wgUser->isAllowed( 'reupload-shared' ) ) {
-				$this->dieUsageMsg( array( 'cantoverwrite-sharedfile' ) );
+				$this->dieUsageMsg( 'cantoverwrite-sharedfile' );
 			}
 		}
 
@@ -107,15 +107,18 @@ class ApiMove extends ApiBase {
 			}
 		}
 
+		$result = $this->getResult();
+
 		// Move subpages
 		if ( $params['movesubpages'] ) {
 			$r['subpages'] = $this->moveSubpages( $fromTitle, $toTitle,
 					$params['reason'], $params['noredirect'] );
-			$this->getResult()->setIndexedTagName( $r['subpages'], 'subpage' );
+			$result->setIndexedTagName( $r['subpages'], 'subpage' );
+
 			if ( $params['movetalk'] ) {
 				$r['subpages-talk'] = $this->moveSubpages( $fromTalk, $toTalk,
 					$params['reason'], $params['noredirect'] );
-				$this->getResult()->setIndexedTagName( $r['subpages-talk'], 'subpage' );
+				$result->setIndexedTagName( $r['subpages-talk'], 'subpage' );
 			}
 		}
 
@@ -132,7 +135,7 @@ class ApiMove extends ApiBase {
 		$this->setWatch( $watch, $fromTitle, 'watchmoves' );
 		$this->setWatch( $watch, $toTitle, 'watchmoves' );
 
-		$this->getResult()->addValue( null, $this->getModuleName(), $r );
+		$result->addValue( null, $this->getModuleName(), $r );
 	}
 
 	/**
@@ -255,6 +258,10 @@ class ApiMove extends ApiBase {
 		return array(
 			'api.php?action=move&from=Exampel&to=Example&token=123ABC&reason=Misspelled%20title&movetalk=&noredirect='
 		);
+	}
+
+	public function getHelpUrls() {
+		return 'http://www.mediawiki.org/wiki/API:Move';
 	}
 
 	public function getVersion() {

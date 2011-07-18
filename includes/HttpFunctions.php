@@ -53,6 +53,8 @@ class Http {
 	/**
 	 * Simple wrapper for Http::request( 'GET' )
 	 * @see Http::request()
+	 *
+	 * @return string
 	 */
 	public static function get( $url, $timeout = 'default', $options = array() ) {
 		$options['timeout'] = $timeout;
@@ -62,6 +64,8 @@ class Http {
 	/**
 	 * Simple wrapper for Http::request( 'POST' )
 	 * @see Http::request()
+	 *
+	 * @return string
 	 */
 	public static function post( $url, $options = array() ) {
 		return Http::request( 'POST', $url, $options );
@@ -121,12 +125,14 @@ class Http {
 	 * protocols, because we only want protocols that both cURL
 	 * and php support.
 	 *
+	 * @fixme this is wildly inaccurate and fails to actually check most stuff
+	 *
 	 * @param $uri Mixed: URI to check for validity
 	 * @returns Boolean
 	 */
 	public static function isValidURI( $uri ) {
 		return preg_match(
-			'/^(f|ht)tps?:\/\/[^\/\s]\S*$/D',
+			'/^https?:\/\/[^\/\s]\S*$/D',
 			$uri
 		);
 	}
@@ -709,7 +715,8 @@ class PhpHttpRequest extends MWHttpRequest {
 			$this->postData = wfArrayToCGI( $this->postData );
 		}
 
-		if ( $this->parsedUrl['scheme'] != 'http' ) {
+		if ( $this->parsedUrl['scheme'] != 'http' &&
+			 $this->parsedUrl['scheme'] != 'https' ) {
 			$this->status->fatal( 'http-invalid-scheme', $this->parsedUrl['scheme'] );
 		}
 

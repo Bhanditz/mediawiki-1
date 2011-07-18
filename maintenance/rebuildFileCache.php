@@ -33,7 +33,7 @@ class RebuildFileCache extends Maintenance {
 
 	public function execute() {
 		global $wgUseFileCache, $wgDisableCounters, $wgContentNamespaces, $wgRequestTime;
-		global $wgTitle, $wgArticle, $wgOut;
+		global $wgTitle, $wgOut;
 		if ( !$wgUseFileCache ) {
 			$this->error( "Nothing to do -- \$wgUseFileCache is disabled.", true );
 		}
@@ -79,10 +79,10 @@ class RebuildFileCache extends Maintenance {
 					$this->output( "Page {$row->page_id} has bad title\n" );
 					continue; // broken title?
 				}
-				$wgOut = $context->output; // set display title
-				$wgArticle = new Article( $wgTitle );
+				$wgOut = $context->getOutput(); // set display title
+				$article = new Article( $wgTitle );
 				// If the article is cacheable, then load it
-				if ( $wgArticle->isFileCacheable() ) {
+				if ( $article->isFileCacheable() ) {
 					$cache = new HTMLFileCache( $wgTitle );
 					if ( $cache->isFileCacheGood() ) {
 						if ( $overwrite ) {
@@ -93,9 +93,11 @@ class RebuildFileCache extends Maintenance {
 						}
 					}
 					ob_start( array( &$cache, 'saveToFileCache' ) ); // save on ob_end_clean()
-					$wgUseFileCache = false; // hack, we don't want $wgArticle fiddling with filecache
-					$wgArticle->view();
-					@$wgOut->output(); // header notices
+					$wgUseFileCache = false; // hack, we don't want $article fiddling with filecache
+					$article->view();
+					wfSuppressWarnings(); // header notices
+					$wgOut->output();
+					wfRestoreWarnings();
 					$wgUseFileCache = true;
 					ob_end_clean(); // clear buffer
 					if ( $rebuilt )
@@ -116,8 +118,6 @@ class RebuildFileCache extends Maintenance {
 		// Remove these to be safe
 		if ( isset( $wgTitle ) )
 			unset( $wgTitle );
-		if ( isset( $wgArticle ) )
-			unset( $wgArticle );
 	}
 }
 

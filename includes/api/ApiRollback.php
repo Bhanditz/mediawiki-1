@@ -178,7 +178,7 @@ class ApiRollback extends ApiBase {
 			$this->dieUsageMsg( array( 'invalidtitle', $params['title'] ) );
 		}
 		if ( !$this->mTitleObj->exists() ) {
-			$this->dieUsageMsg( array( 'notanarticle' ) );
+			$this->dieUsageMsg( 'notanarticle' );
 		}
 
 		return $this->mTitleObj;
@@ -189,6 +189,10 @@ class ApiRollback extends ApiBase {
 			'api.php?action=rollback&title=Main%20Page&user=Catrope&token=123ABC',
 			'api.php?action=rollback&title=Main%20Page&user=217.121.114.116&token=123ABC&summary=Reverting%20vandalism&markbot=1'
 		);
+	}
+
+	public function getHelpUrls() {
+		return 'http://www.mediawiki.org/wiki/API:Rollback';
 	}
 
 	public function getVersion() {

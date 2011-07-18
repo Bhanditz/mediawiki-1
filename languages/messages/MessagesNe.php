@@ -126,10 +126,10 @@ $messages = array(
 'thu'           => 'बिही',
 'fri'           => 'शुक्र',
 'sat'           => 'शनि',
-'january'       => 'जेनवरी',
+'january'       => 'जनवरी',
 'february'      => 'फेब्रुअरी',
 'march'         => 'मार्च',
-'april'         => 'एप्रील',
+'april'         => 'अप्रिल',
 'may_long'      => 'मे',
 'june'          => 'जुन',
 'july'          => 'जुलाई',
@@ -182,14 +182,6 @@ $messages = array(
 'noindex-category'               => 'क्रमांकन नगरिएका पृष्ठहरु',
 'broken-file-category'           => 'टुटेको फाइल लिंकसितको पृष्ठ',
 
-'mainpagetext'      => "'''मीडिया सफलतापूर्वक कम्प्यूटरमा स्थापित भयो ।'''",
-'mainpagedocfooter' => ' विकी अनुप्रयोग कसरी प्रयोग गर्ने भन्ने जानकारीको लागि  [http://meta.wikimedia.org/wiki/Help:Contents प्रयोगकर्ता सहायता] हेर्नुहोस्
-
-== सुरू गर्नको लागि  ==
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings विन्यास सेटिङ्ग सूची]
-* [http://www.mediawiki.org/wiki/Manual:FAQ मेडियाविकि सामान्य प्रश्नका उत्तरहरु]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce मेडियाविकि सुचना मेलिङ्ग सूची]',
-
 'about'         => 'बारेमा',
 'article'       => 'सामाग्री पृष्ठ',
 'newwindow'     => '(नयाँ विन्डोमा खुल्छ)',
@@ -240,7 +232,6 @@ $messages = array(
 'history'           => 'पृष्ठको इतिहास',
 'history_short'     => 'पृष्ठको इतिहास',
 'updatedmarker'     => 'मेरो अन्तिम भ्रमण पछि अध्यावधिक गरिएको',
-'info_short'        => 'जानकारी',
 'printableversion'  => 'छाप्नयोग्य संस्करण',
 'permalink'         => 'स्थायी लिंक',
 'print'             => 'छाप्नुहोस्',
@@ -355,6 +346,8 @@ $1',
 'feed-atom'               => 'अणु',
 'feed-rss'                => 'RSS',
 'red-link-title'          => '$1 (पृष्ठ उपलब्ध छैन)',
+'sort-descending'         => 'अवरोहण क्रममा मिलाउने',
+'sort-ascending'          => 'आरोहण क्रममा मिलाउने',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'लेख',
@@ -443,7 +436,6 @@ $1',
 'cascadeprotected'     => 'यो पृष्ठ सम्पादन गर्नबाट सुरक्षित गरिएकोछ किनभनें   {{PLURAL:$1|पृष्ठ |पृष्ठहरु}}मा  सुरक्षित गर्नुका साथै प्रपात ("cascading") विकल्प खुल्ला राखिएकोछ:
 $2',
 'namespaceprotected'   => " '''$1'''  नेमस्पेसमा रहेका पृष्ठहरु सम्पादन गर्ने अनुमति यहाँलाई छैन ।",
-'customcssjsprotected' => 'यो पृष्ठ सम्पादन गर्ने अनुमति यहाँलाई छैन ,किन भनें यसमा अर्को प्रयोगकर्ताको व्यक्तिगत जानकारीहरु छन् ।',
 'ns-specialprotected'  => 'विशेष पृष्ठ सम्पादन गर्न सकिदैन ।',
 'titleprotected'       => ' [[User:$1|$1]]द्वारा यो शीर्षक निर्माणहुनबाट जोगाइएको छ।
 कारण   "\'\'$2\'\'" हो ।',
@@ -500,7 +492,7 @@ $2',
 'nosuchuser'                 => '"$1" को नामबाट कुनै पनि प्रयोगकर्ता भेटिएनन् ।
 प्रयोगकर्ता नाम वर्णसंवेदनशील हुन्छन् ।
 हिज्जे जाँच्नुहोस् , या [[Special:UserLogin/signup|नयाँ खाता बनाउनुहोस्]].',
-'nosuchusershort'            => ' "<nowiki>$1</nowiki>" नामको कुनै पनि प्रयोगकर्ता भेटिएन।
+'nosuchusershort'            => ' "$1" नामको कुनै पनि प्रयोगकर्ता भेटिएन।
  तपाईँको हिज्जे जाँच्नुहोस् ।',
 'nouserspecified'            => 'तपाँईले प्रयोगकर्ताको नाम जनाउनुपर्छ।',
 'login-userblocked'          => 'यस प्रयोगकर्तालाई रोक लगाइएको छ। प्रवेश गर्ने अनुमति छैन।',
@@ -572,6 +564,7 @@ $2',
 'passwordreset-text'           => 'तपाईंको खाता-विवरणको  इमेल अनुस्मारक प्राप्त गर्न यो फारम पूरा गर्नुहोस्।',
 'passwordreset-legend'         => 'प्रवेशशव्द पुनः तय गर्ने',
 'passwordreset-disabled'       => 'प्रवेश शव्द पुनः निर्धारण गर्ने व्यवस्था यस विकिमा निस्क्रिय पारिएको छ।',
+'passwordreset-pretext'        => '{{PLURAL:$1||तल दिएका आँकड़ाका टुकुरा मध्ये एउटा प्रविष्ट गर्नुहोस्}}',
 'passwordreset-username'       => 'प्रयोगकर्ता-नाम:',
 'passwordreset-email'          => 'इमेल ठेगाना:',
 'passwordreset-emailtitle'     => '{{SITENAME}}मा खाता विवरण',
@@ -691,13 +684,13 @@ $2
 'noarticletext-nopermission'       => 'यस लेखमा अहिले केहि पनि पाठ छैन ।
 तपाईंले अन्य पृष्ठमा [[Special:Search/{{PAGENAME}}|यस पृष्ठको शीर्षकको लागि खोज]] गर्न सक्नुहुन्छ,
 अथवा <span class="plainlinks">[{{fullurl:{{#Special:Log}}|पृष्ठ={{FULLPAGENAMEE}}}} सम्बन्धित लगहरु खोज्न सक्नुहुनेछ ]</span>.',
-'userpage-userdoesnotexist'        => 'प्रयोगकर्ताको खाता  "$1" दर्ता गरिएको छैन ।
+'userpage-userdoesnotexist'        => 'प्रयोगकर्ताको खाता  "<nowiki>$1</nowiki>" दर्ता गरिएको छैन ।
 तपाईँले पृष्ठ निर्माण/सम्पादन गर्न चाहनु भएको भए जाँच गर्नुहोस् ।',
 'userpage-userdoesnotexist-view'   => 'प्रयोगकर्ता खाता "$1" दर्ता गरिएको छैन।',
 'blocked-notice-logextract'        => 'यो प्रयोगकर्ता हाल प्रतिबन्धित छ।
 भर्खरैको प्रतिबन्ध लग प्रविष्टि सन्दर्भको निम्ति तल दिइन्छ:',
 'clearyourcache'                   => "'''सूचना: सेभ गरेपछि, परिवर्तन हेर्न लाइ तपाइले आफ्नो ब्राउजर मा क्याश बाईपास गर्न पर्ने हुन सक्छ।'''
-'''मोजिला / फायरफक्स / सफारी:''' ''Shift'' लाइ चाँपिराखेर ''Reload'' क्लिक गर्नु पर्छ, वा ''Ctrl-F5'' वा ''Ctrl-R'' दबाउनुहोस(Macintosh मा ''Command-R'');
+'''मोजिला / फायरफक्स / सफारी:''' ''Shift'' लाइ चाँपिराखेर ''Reload'' क्लिक गर्नु पर्छ, वा ''Ctrl-F5'' वा ''Ctrl-R'' दबाउनुहोस(Mac मा ''Command-R'');
 '''कन्करर:''' मा ''Reload'' क्लिक गर्नुहोस या ''F5'' दबाउनुहोस;
 '''ओपेरा:''' ''Tools → Preferences'' मा गएर क्याश हटाउनुहोस;
 ''''इंटरनेट एक्सप्लोरर'''': ''Ctrl'' लाइ चाँपिराखेर ''Refresh'' क्लिक गर्नुहोस वा ''Ctrl-F5'' चाँप्नुहोस",
@@ -1095,7 +1088,7 @@ $1",
 'savedprefs'                    => 'तपाईंका अभिरुचिहरू सङ्ग्रहित भयो।',
 'timezonelegend'                => 'समय क्षेत्र :',
 'localtime'                     => 'स्थानिय समय:',
-'timezoneuseserverdefault'      => 'सर्भर पूर्वनिर्धारित प्रयोग गर्नुहोस',
+'timezoneuseserverdefault'      => 'विकि मूल  ($1) रुपमा प्रयोग गर्ने',
 'timezoneuseoffset'             => 'अरु नै(अफसेट खुलाउनुहोस्)',
 'timezoneoffset'                => 'अफसेट¹:',
 'servertime'                    => 'सर्भर समय:',
@@ -1441,10 +1434,6 @@ HTML ट्यागहरु जाँच्नुहोस् ।',
 'upload-maxfilesize'     => 'अधिकतम फाइल आकार : $1',
 'upload-options'         => 'उर्ध्वभरण विकल्पहरु',
 'watchthisupload'        => 'यो पृष्ठ निगरानी गर्नुहोस्',
-'upload-wasdeleted'      => "'''चेतावनी: तपाईं अघिबाट मेटिएको फाइल उर्ध्वभरण गर्नुहुँदैछ'''
-
-तपाईंको विचारमा के यो उचित छ कि यसको उर्ध्वभरण जारी राखियोस्, 
-यस फाइलको मेटिएको लग सुविधाको निम्ति यहाँ दिइएकोछ :",
 'upload-success-subj'    => 'उर्ध्वभरण सफल',
 'upload-success-msg'     => '[$2]बाट त्पाईंको उर्ध्वभरण सफल भयो। त्यो यहाँ पाउन सकिनेछ: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'    => 'उर्ध्वभरण समस्या',
@@ -1513,7 +1502,6 @@ $1',
 'linkstoimage'                      => 'यस फाइलमा निम्न{{PLURAL:$1|पृष्ठ जोडिन्छ|$1 पृष्ठहरु जोडिन्छन}}:',
 'nolinkstoimage'                    => 'यो फाईलसंग लिंकभएको कुनै पृष्ठ छैन.',
 'morelinkstoimage'                  => 'हेर्नुहोस् [[Special:WhatLinksHere/$1|थप लिंकहरु]] यो फाइलको।',
-'redirectstofile'                   => 'यहाँ निम्न {{PLURAL:$1|फाइल|$1 फाइलहरु}} रिडाइरेक्ट हुन्छ:',
 'sharedupload'                      => 'यो फाइल $1 को हो र अन्य परियोजनामा प्रयोग गरिएको हुनसक्छ।',
 'filepage-nofile'                   => 'यस नामको फाइल छैन।',
 'filepage-nofile-link'              => 'यस नामको फाइल छैन तर तपाईं [$1 यो उर्ध्वभरण गर्न सक्नुहुन्छ].',
@@ -1562,7 +1550,8 @@ $1',
 'unusedtemplateswlh' => 'अन्य कड़ीहरु',
 
 # Random page
-'randompage' => 'कुनै एक लेख',
+'randompage'         => 'कुनै एक लेख',
+'randompage-nopages' => '{{PLURAL:$2| $1 नाम भएको कुनै पृष्ट छैन|$1 नाम भएका कुनै पृष्टहरु छैनन्}}',
 
 # Random redirect
 'randomredirect'         => 'कुनै एउटा अनुप्रेषितमा जाने',
@@ -1799,10 +1788,8 @@ $1',
 'nowatchlist'          => 'तपाईको अवलोकन सूचीमा कुनै पनि सामाग्री छैन।',
 'watchnologin'         => 'प्रवेश (लग ईन) नगरिएको',
 'watchnologintext'     => 'आफ्नो अवलोकनलाइ परिवर्तन गर्नको लागि त तपाइ यसमा [[Special:UserLogin|प्रवेश(लगइन)]] गर्नुपर्छ।',
-'addedwatch'           => 'अवलोकनसूची मा थपियो',
 'addedwatchtext'       => '"[[:$1]]" पृष्ठ [[Special:Watchlist|अवलोकनसूची]]मा थपियो
 यो पृष्ठ र यससित सम्बद्ध वार्तालाप पृष्ठमा भविष्यमा हुने परिवर्तन  सूचिबद्ध गरिनेछ र यो पृष्ठ [[Special:RecentChanges|नयाँ परिवर्तनहरु]]मा छान्न सजिलोकोलागि गाढा अक्षरमा देखा पर्नेछ।',
-'removedwatch'         => 'निगरानी सूचीबाट हटाइयो',
 'removedwatchtext'     => 'पृष्ठ "[[:$1]]" [[Special:Watchlist|तपाईको निगरानी सूची]]बाट हटाइएको छ।',
 'watch'                => 'अवलोकन',
 'watchthispage'        => 'यो पृष्ठ अवलोकन गर्नुहोस्',
@@ -1834,7 +1821,8 @@ $1',
 'enotif_body'                  => 'प्रिय $WATCHINGUSERNAME,
 
 
-$PAGEEDITDATE को दिन {{SITENAME}}को पृष्ठ $PAGETITLE  $PAGEEDITORद्वारा $CHANGEDORCREATED, हालको संशोधनको निम्ति  हेर्नुहोस्  $PAGETITLE_URL ।
+{{SITENAME}}को पृष्ठ $PAGETITLE  $PAGEEDITDATE को दिन $PAGEEDITORद्वारा $CHANGEDORCREATED, 
+हालको संशोधनको निम्ति  हेर्नुहोस्  $PAGETITLE_URL ।
 
 $NEWPAGE
 
@@ -1844,16 +1832,18 @@ $NEWPAGE
 मेल: $PAGEEDITOR_EMAIL
 विकि: $PAGEEDITOR_WIKI
 
-तपाईं यस पृष्ठमा नगएसम्म कुनै परिवर्तन भएका खण्डमा अगाड़ि कुनै सूचना दिनेछैन।
-तपाईंका सम्पूर्ण निगरानी पृष्ठहरुकोलागि तपाईंले सूचना पताकालाई निगरानी सूचीमा पुनर्बहाली गर्न सक्नुहुन्छ। 
+तपाईं यस पृष्ठमा नगएसम्म अब उसो कुनै परिवर्तन भएका खण्डमा कुनै सूचना दिनेछैन।
+तपाईंका सम्पूर्ण निगरानी पृष्ठहरुको लागि तपाईंले सूचना पताकालाई निगरानी सूचीमा पुनर्बहाली गर्न सक्नुहुन्छ। 
 
              तपाईंको मित्र {{SITENAME}} सूचना प्रणाली
-
 --
-निगरानी सूची व्यवस्थित गर्न, जानुहोस्
-{{fullurl:{{#special:Watchlist}}/edit}}
+इमेल सूचना व्यवस्था परिवर्तन गर्न, जानुहोस्
+{{fullurl:{{#special:Preferences}}}}
 
-निगरानी सूची मेट्न गर्न, जानुहोस्
+निगरानी सूची व्यवस्थित गर्न, जानुहोस्
+{{fullurl:{{#special:EditWatchlist}}}}
+
+निगरानी सूची मेट्न, जानुहोस्
 $UNWATCHURL
 
 प्रतिक्रिया र अन्य सहयोगको निम्ति:
@@ -1872,7 +1862,7 @@ $UNWATCHURL
 'confirmdeletetext'      => 'तपाई यो पृष्ठ र यसको इतिहास मेट्न गइरहनु भएकोछ। कृपया पुष्टि गर्नुहोस् कि [[{{MediaWiki:Policy-url}}|नियम]] मुताबिक तपाईं मेट्न गइरहनु भएकोछ।',
 'actioncomplete'         => 'काम सकियो',
 'actionfailed'           => 'कार्य असफल',
-'deletedtext'            => '"<nowiki>$1</nowiki>" मेटिएको छ।
+'deletedtext'            => '"$1" मेटिएको छ।
 हालै हटाइएको सूची $2 मा हेर्नुहोस् ।',
 'deletedarticle'         => '"[[$1]]" मेटियो',
 'dellogpage'             => 'मेटाएको लग',
@@ -1913,7 +1903,7 @@ $UNWATCHURL
 'protect_expiry_invalid'      => 'सकिने समयावधि अमान्य ।',
 'protect_expiry_old'          => 'समाप्ती समय बितिसक्यो ।',
 'protect-unchain-permissions' => 'आगामी सुरक्षा विकल्पहरु खोल्ने',
-'protect-text'                => "तपाईँ  यहाँ '''<nowiki>$1</nowiki>''' पृष्ठको सुरक्षा स्तर हेर्न र परिवर्तन गर्न सक्नुहुन्छ ।",
+'protect-text'                => "तपाईँ  यहाँ '''$1''' पृष्ठको सुरक्षा स्तर हेर्न र परिवर्तन गर्न सक्नुहुन्छ ।",
 'protect-locked-access'       => "तपाईँको खातालाई पृष्ठको सुरक्षा स्तरहरू परिवर्तन गर्ने अनुमति छैन ।
 '''$1''पृष्ठको हालको स्थिति  निम्न छ :",
 'protect-cascadeon'           => 'हालमा यो पृष्ठ सुरक्षित गरिएकोछ किन कि यसमा निम्न {{PLURAL:$1|पृष्ठ, जसको|पृष्ठहरु, जसको}} सुरक्षामा व्यापकता  कायम गरिएकोछ। 
@@ -2392,14 +2382,6 @@ $1को बन्देजको कारण : "$2" हो',
 'spamprotectionmatch' => 'निम्न पाठले हाम्रो स्प्प्याम फिल्टर : $1 घच्घच्यायो',
 'spambot_username'    => 'MediaWiki स्पाम सर-सफाइ',
 
-# Info page
-'infosubtitle'   => 'पृष्ठको लागि जानकारी',
-'numedits'       => 'सम्पादन संख्या (लेख): $1',
-'numtalkedits'   => 'सम्पादन संख्या (छलफल पृष्ठ): $1',
-'numwatchers'    => 'अवलोकन संख्या: $1',
-'numauthors'     => 'प्रष्ट लेखकहरुको संख्या (लेख): $1',
-'numtalkauthors' => 'लेखकहरूको संख्या (छलफल पृष्ठ): $1',
-
 # Patrolling
 'markaspatrolleddiff' => 'गस्ती गरिएको(patrolled) को रुपमा चिनो लगाउने',
 'markaspatrolledtext' => 'यस पृष्ठलाई गस्ती गरिएको(patrolled) को रुपमा चिनो लगाउने',
@@ -2498,8 +2480,8 @@ Others will be hidden by default.
 'exif-colorspace'                  => 'वर्ण स्थान',
 'exif-componentsconfiguration'     => 'प्रत्येक घटकको अर्थ',
 'exif-compressedbitsperpixel'      => 'चित्र सम्पीडन मोड',
-'exif-pixelydimension'             => 'चित्रको मान्य चौड़ाई',
-'exif-pixelxdimension'             => 'चित्रको मान्य उचाई',
+'exif-pixelydimension'             => 'चित्रको  चौड़ाई',
+'exif-pixelxdimension'             => 'चित्रको उचाई',
 'exif-usercomment'                 => 'प्रयोगकर्ताका टिप्पणखरु:',
 'exif-relatedsoundfile'            => 'सम्बन्धित अडियो फाइल',
 'exif-datetimeoriginal'            => 'डेटा सञ्चालनको मिति र समय',
@@ -2510,15 +2492,18 @@ Others will be hidden by default.
 'exif-exposureprogram'             => 'एक्स्पोजर कार्यक्रम',
 'exif-spectralsensitivity'         => 'वर्णक्रमीय संवेदनशीलता',
 'exif-isospeedratings'             => 'आईएसओ गति रेटिंग',
-'exif-shutterspeedvalue'           => 'शटरको गति',
-'exif-aperturevalue'               => 'छिंड़',
-'exif-brightnessvalue'             => 'चमक',
+'exif-shutterspeedvalue'           => 'APEX  शटरको गति',
+'exif-aperturevalue'               => 'APEX छिंड़',
+'exif-brightnessvalue'             => 'APEX चमक',
 'exif-exposurebiasvalue'           => 'एक्सपोजर पूर्वाग्रह',
 'exif-maxaperturevalue'            => 'अधिकतम एपर्चर भूमि',
+'exif-subjectdistance'             => 'विषय दूरी',
 'exif-meteringmode'                => 'Metering मोड',
 'exif-lightsource'                 => 'प्रकाश स्रोत',
+'exif-flash'                       => 'झिल्को(फ्लास)',
 'exif-focallength'                 => 'लेंस फोकल लम्बाई',
 'exif-subjectarea'                 => 'विषय क्षेत्र',
+'exif-flashenergy'                 => 'फ्ल्यास ऊर्जा',
 'exif-focalplanexresolution'       => 'फोकल विमान एक्स संकल्प',
 'exif-focalplaneyresolution'       => 'फोकल प्लेन वाई रिजोलुसन',
 'exif-subjectlocation'             => 'विषयको अवस्थिति',
@@ -2545,6 +2530,7 @@ Others will be hidden by default.
 'exif-gpslongitude'                => 'देशान्तर',
 'exif-gpsaltituderef'              => 'ऊंचाई संदर्भ',
 'exif-gpsaltitude'                 => 'उँचाई',
+'exif-gpstimestamp'                => 'GPS समय (स्वचालित घड़ी)',
 'exif-gpssatellites'               => 'नाप्नकोलागि प्रयोग गरिएका उपग्रहहरु',
 'exif-gpsstatus'                   => 'रिसिभर अवस्था',
 'exif-gpsmeasuremode'              => 'माप मोड',

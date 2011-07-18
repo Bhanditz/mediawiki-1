@@ -39,7 +39,7 @@ class SpecialEmailUser extends UnlistedSpecialPage {
 			'From' => array(
 				'type' => 'info',
 				'raw' => 1,
-				'default' => $wgUser->getSkin()->link(
+				'default' => $this->getSkin()->link(
 					$wgUser->getUserPage(),
 					htmlspecialchars( $wgUser->getName() )
 				),
@@ -49,7 +49,7 @@ class SpecialEmailUser extends UnlistedSpecialPage {
 			'To' => array(
 				'type' => 'info',
 				'raw' => 1,
-				'default' => $wgUser->getSkin()->link(
+				'default' => $this->getSkin()->link(
 					$this->mTargetObj->getUserPage(),
 					htmlspecialchars( $this->mTargetObj->getName() )
 				),
@@ -226,10 +226,13 @@ class SpecialEmailUser extends UnlistedSpecialPage {
 	 * @param $name String: user name submitted.
 	 * @return String: form asking for user name.
 	 */
-	static function userForm( $name ) {
-		$string = Xml::openElement( 'form', array( 'method' => 'get', 'action' => '', 'id' => 'askusername' ) ) .
+
+	function userForm( $name ) {
+		global $wgScript ;
+		$string = Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript, 'id' => 'askusername' ) ) .
+				Html::hidden( 'title', $this->getTitle()->getPrefixedText() ) .
 				Xml::openElement( 'fieldset' ) .
-		 		Html::rawElement( 'legend', null, wfMessage( 'emailtarget' )->parse() ) .
+				Html::rawElement( 'legend', null, wfMessage( 'emailtarget' )->parse() ) .
 				Xml::inputLabel( wfMessage( 'emailusername' )->text(), 'target', 'emailusertarget', 30, $name ) . ' ' .
 				Xml::submitButton( wfMessage( 'emailusernamesubmit' )->text() ) .
 				Xml::closeElement( 'fieldset' ) .

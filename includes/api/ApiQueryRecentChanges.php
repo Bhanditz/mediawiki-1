@@ -158,7 +158,7 @@ class ApiQueryRecentChanges extends ApiQueryGeneratorBase {
 					|| ( isset( $show['redirect'] ) && isset( $show['!redirect'] ) )
 					|| ( isset( $show['patrolled'] ) && isset( $show['!patrolled'] ) )
 			) {
-				$this->dieUsageMsg( array( 'show' ) );
+				$this->dieUsageMsg( 'show' );
 			}
 
 			// Check permissions
@@ -224,22 +224,14 @@ class ApiQueryRecentChanges extends ApiQueryGeneratorBase {
 			}
 
 			/* Add fields to our query if they are specified as a needed parameter. */
-			$this->addFieldsIf( 'rc_id', $this->fld_ids );
-			$this->addFieldsIf( 'rc_this_oldid', $this->fld_ids );
-			$this->addFieldsIf( 'rc_last_oldid', $this->fld_ids );
+			$this->addFieldsIf( array( 'rc_id', 'rc_this_oldid', 'rc_last_oldid' ), $this->fld_ids );
 			$this->addFieldsIf( 'rc_comment', $this->fld_comment || $this->fld_parsedcomment );
 			$this->addFieldsIf( 'rc_user', $this->fld_user );
 			$this->addFieldsIf( 'rc_user_text', $this->fld_user || $this->fld_userid );
-			$this->addFieldsIf( 'rc_minor', $this->fld_flags );
-			$this->addFieldsIf( 'rc_bot', $this->fld_flags );
-			$this->addFieldsIf( 'rc_new', $this->fld_flags );
-			$this->addFieldsIf( 'rc_old_len', $this->fld_sizes );
-			$this->addFieldsIf( 'rc_new_len', $this->fld_sizes );
+			$this->addFieldsIf( array( 'rc_minor', 'rc_new', 'rc_bot' ) , $this->fld_flags );
+			$this->addFieldsIf( array( 'rc_old_len', 'rc_new_len' ), $this->fld_sizes );
 			$this->addFieldsIf( 'rc_patrolled', $this->fld_patrolled );
-			$this->addFieldsIf( 'rc_logid', $this->fld_loginfo );
-			$this->addFieldsIf( 'rc_log_type', $this->fld_loginfo );
-			$this->addFieldsIf( 'rc_log_action', $this->fld_loginfo );
-			$this->addFieldsIf( 'rc_params', $this->fld_loginfo );
+			$this->addFieldsIf( array( 'rc_logid', 'rc_log_type', 'rc_log_action', 'rc_params' ), $this->fld_loginfo );
 			$showRedirects = $this->fld_redirect || isset( $show['redirect'] ) || isset( $show['!redirect'] );
 		}
 
@@ -252,6 +244,7 @@ class ApiQueryRecentChanges extends ApiQueryGeneratorBase {
 		if ( $params['toponly'] || $showRedirects ) {
 			$this->addTables( 'page' );
 			$this->addJoinConds( array( 'page' => array( 'LEFT JOIN', array( 'rc_namespace=page_namespace', 'rc_title=page_title' ) ) ) );
+			$this->addFields( 'page_is_redirect' );
 
 			if ( $params['toponly'] ) {
 				$this->addWhere( 'rc_this_oldid = page_latest' );
@@ -276,6 +269,8 @@ class ApiQueryRecentChanges extends ApiQueryGeneratorBase {
 
 		$titles = array();
 
+		$result = $this->getResult();
+
 		/* Iterate through the rows, adding data extracted from them to our query result. */
 		foreach ( $res as $row ) {
 			if ( ++ $count > $params['limit'] ) {
@@ -292,7 +287,7 @@ class ApiQueryRecentChanges extends ApiQueryGeneratorBase {
 				if ( !$vals ) {
 					continue;
 				}
-				$fit = $this->getResult()->addValue( array( 'query', $this->getModuleName() ), null, $vals );
+				$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $vals );
 				if ( !$fit ) {
 					$this->setContinueEnumParameter( 'start', wfTimestamp( TS_ISO_8601, $row->rc_timestamp ) );
 					break;
@@ -304,7 +299,7 @@ class ApiQueryRecentChanges extends ApiQueryGeneratorBase {
 
 		if ( is_null( $resultPageSet ) ) {
 			/* Format the result */
-			$this->getResult()->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'rc' );
+			$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'rc' );
 		} else {
 			$resultPageSet->populateFromTitles( $titles );
 		}
@@ -436,8 +431,11 @@ class ApiQueryRecentChanges extends ApiQueryGeneratorBase {
 			$vals['logaction'] = $row->rc_log_action;
 			ApiQueryLogEvents::addLogParams(
 				$this->getResult(),
-				$vals, $row->rc_params,
-				$row->rc_log_type, $row->rc_timestamp
+				$vals,
+				$row->rc_params,
+				$row->rc_log_action,
+				$row->rc_log_type,
+				$row->rc_timestamp
 			);
 		}
 
@@ -639,6 +637,10 @@ class ApiQueryRecentChanges extends ApiQueryGeneratorBase {
 		return array(
 			'api.php?action=query&list=recentchanges'
 		);
+	}
+
+	public function getHelpUrls() {
+		return 'http://www.mediawiki.org/wiki/API:Recentchanges';
 	}
 
 	public function getVersion() {

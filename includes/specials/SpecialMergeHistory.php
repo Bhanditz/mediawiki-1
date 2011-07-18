@@ -29,12 +29,20 @@
  */
 class SpecialMergeHistory extends SpecialPage {
 	var $mAction, $mTarget, $mDest, $mTimestamp, $mTargetID, $mDestID, $mComment;
+
+	/**
+	 * @var Title
+	 */
 	var $mTargetObj, $mDestObj;
 
 	public function __construct() {
 		parent::__construct( 'MergeHistory', 'mergehistory' );
 	}
 
+	/**
+	 * @param $request WebRequest
+	 * @return void
+	 */
 	private function loadRequestParams( $request ) {
 		global $wgUser;
 
@@ -165,7 +173,7 @@ class SpecialMergeHistory extends SpecialPage {
 	private function showHistory() {
 		global $wgUser, $wgOut;
 
-		$this->sk = $wgUser->getSkin();
+		$this->sk = $this->getSkin();
 
 		$wgOut->setPageTitle( wfMsg( 'mergehistory' ) );
 
@@ -471,6 +479,10 @@ class MergeHistoryPager extends ReverseChronologicalPager {
 		$this->maxTimestamp = $maxtimestamp;
 
 		parent::__construct();
+	}
+
+	function getTitle() {
+		return SpecialPage::getTitleFor( 'Contributions' );
 	}
 
 	function getStartBody() {

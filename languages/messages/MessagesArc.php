@@ -94,11 +94,6 @@ $magicWords = array(
 
 $rtl = true;
 
-$defaultUserOptionOverrides = array(
-	# Swap sidebar to right side by default
-	'quickbar' => 2,
-);
-
 $messages = array(
 # User preference toggles
 'tog-underline'          => 'ܪܫܘܡ ܣܪܛܐ ܬܚܝܬ ܐܣܘܪܐ:',
@@ -212,7 +207,7 @@ $messages = array(
 'vector-action-move'       => 'ܫܢܝ',
 'vector-action-protect'    => 'ܢܛܘܪ',
 'vector-action-undelete'   => 'ܠܐ ܫܘܦ',
-'vector-action-unprotect'  => 'ܠܐ ܢܛܘܪ',
+'vector-action-unprotect'  => 'ܫܚܠܦ ܢܛܝܪܘܬܐ',
 'vector-view-create'       => 'ܒܪܝ',
 'vector-view-edit'         => 'ܫܚܠܦ',
 'vector-view-history'      => 'ܚܙܝ ܬܫܥܝܬܐ',
@@ -231,7 +226,6 @@ $messages = array(
 'searcharticle'     => 'ܙܠ',
 'history'           => 'ܬܫܥܝܬܐ ܕܦܐܬܐ',
 'history_short'     => 'ܬܫܥܝܬܐ',
-'info_short'        => 'ܝܕ̈ܥܬܐ',
 'printableversion'  => 'ܨܚܚܐ ܡܬܛܒܥܢܐ',
 'permalink'         => 'ܐܣܘܪܐ ܦܝܘܫܐ',
 'print'             => 'ܛܒܘܥ',
@@ -245,8 +239,8 @@ $messages = array(
 'protect'           => 'ܢܛܘܪ',
 'protect_change'    => 'ܫܚܠܦ',
 'protectthispage'   => 'ܢܛܘܪ ܗܕܐ ܦܐܬܐ',
-'unprotect'         => 'ܠܐ ܢܛܘܪ',
-'unprotectthispage' => 'ܠܐ ܢܛܘܪ ܗܕܐ ܦܐܬܐ',
+'unprotect'         => 'ܫܚܠܦ ܢܛܝܪܘܬܐ',
+'unprotectthispage' => 'ܫܚܠܦ ܢܛܝܪܘܬܐ ܕܗܕܐ ܦܐܬܐ',
 'newpage'           => 'ܦܐܬܐ ܚܕܬܐ',
 'talkpage'          => 'ܕܪܘܫ ܗܕܐ ܦܐܬܐ',
 'talkpagelinktext'  => 'ܡܡܠܠܐ',
@@ -853,7 +847,6 @@ $1',
 'imagelinks'                => 'ܐܣܘܪ̈ܐ ܕܠܦܦܐ',
 'linkstoimage'              => '{{PLURAL:$1|ܦܐܬܐ ܗܕܐ ܐܣܪ|$1 ܦܐܬܬ̈ܐ ܗܠܝܢ ܐܣܪܝܢ}} ܥܡ ܗܢܐ ܠܦܦܐ:',
 'nolinkstoimage'            => 'ܠܝܬ ܦܐܬܐ ܕܐܣܪ ܠܗܢܐ ܠܦܦܐ.',
-'redirectstofile'           => '{{PLURAL:$1|ܠܦܦܐ|$1 ܠܦܦ̈ܐ}} ܕܐܬܐ ܐܣܪ ܠܗܢܐ ܠܦܦܐ:',
 'uploadnewversion-linktext' => 'ܐܣܩ ܨܚܚܐ ܚܕܬܐ ܡܢ ܗܢܐ ܠܦܦܐ',
 'shared-repo-from'          => 'ܡܢ $1',
 
@@ -898,8 +891,8 @@ $1',
 'statistics-pages'        => 'ܦܐܬܬ̈ܐ',
 'statistics-users-active' => 'ܡܦܠܚܢ̈ܐ ܟܫܝܪ̈ܐ',
 
-'disambiguations'     => 'ܦܐܬܬ̈ܐ ܕܠܐ ܕܠܘܚܝܐ',
-'disambiguationspage' => 'Template:ܠܐ ܕܠܘܚܝܐ',
+'disambiguations'     => 'ܦܐܬܬ̈ܐ ܕܬܘܚܡܐ ܐܚܪܢܐ',
+'disambiguationspage' => 'Template:ܬܘܚܡܐ ܐܚܪܢܐ',
 
 'doubleredirects'            => 'ܨܘܝܒ̈ܐ ܥܦܝܦ̈ܐ',
 'double-redirect-fixed-move' => '[[$1]] ܐܫܬܢܝܬ.
@@ -1060,8 +1053,6 @@ $1',
 'watchlistfor2'     => 'ܠ $1 $2',
 'nowatchlist'       => 'ܠܝܬ ܠܟ ܡܕܡ ܒܪ̈ܗܝܬܐ ܕܝܠܟ',
 'watchnologin'      => 'ܠܝܬܝܟ ܥܠܝܠܐ',
-'addedwatch'        => 'ܐܘܣܦ ܠܪ̈ܗܝܬܐ',
-'removedwatch'      => 'ܠܚܝܬ ܡܢ ܪ̈ܗܝܬܟ',
 'removedwatchtext'  => 'ܦܐܬܐ "[[:$1]]" ܐܫܬܩܠܬ ܡܢ [[Special:Watchlist|ܪ̈ܗܝܬܟ]].',
 'watch'             => 'ܪܗܝ',
 'watchthispage'     => 'ܪܗܝ ܗܕܐ ܦܐܬܐ',
@@ -1110,7 +1101,7 @@ $1',
 # Protect
 'protectlogpage'              => 'ܣܓܠܐ ܕܢܛܪܐ',
 'protectedarticle'            => 'ܢܛܝܪܐ "[[$1]]"',
-'unprotectedarticle'          => 'ܠܐ ܢܛܝܪܐ "[[$1]]"',
+'unprotectedarticle'          => 'ܫܩܘܠ ܢܛܝܪܘܬܐ ܡܢ "[[$1]]"',
 'movedarticleprotection'      => 'ܫܢܐ ܛܘܝܒ̈ܐ ܕܢܛܪܐ ܡܢ "[[$2]]" ܠ "[[$1]]"',
 'prot_1movedto2'              => '[[$1]] ܐܬܫܢܝܬ ܠ [[$2]]',
 'protect-legend'              => 'ܚܬܬ ܢܘܛܪܐ',
@@ -1199,7 +1190,7 @@ $1',
 'nolinkshere-ns'           => "ܠܝܬ ܦܐܬܬ̈ܐ ܐܣܪܝܢ ܥܡ '''[[:$1]]''' ܒܚܩܠܐ ܓܒܝܐ.",
 'isredirect'               => 'ܦܐܬܐ ܕܨܘܝܒܐ',
 'istemplate'               => 'ܚܒܝܫܬܐ',
-'isimage'                  => 'ܐܣܘܪܐ ܕܨܘܪܬܐ',
+'isimage'                  => 'ܐܣܘܪܐ ܕܠܦܦܐ',
 'whatlinkshere-prev'       => '{{PLURAL:$1|ܩܕܝܡܐ|$1 ܩܕ̈ܝܡܐ}}',
 'whatlinkshere-next'       => '{{PLURAL:$1|ܚܕܬܐ|$1 ܚܕ̈ܬܐ}}',
 'whatlinkshere-links'      => '← ܐܣܘܪ̈ܐ',
@@ -1320,14 +1311,6 @@ Do you want to change the settings?',
 'siteusers'   => '{{SITENAME}} {{PLURAL:$2|ܡܦܠܚܢܐ|ܡܦܠܚܢ̈ܐ}} $1',
 'anonusers'   => '{{SITENAME}} {{PLURAL:$2|ܡܦܠܚܢܐ ܠܐ ܝܕܝܥܐ|ܡܦܠܚܢ̈ܐ ܠܐ ܝܕ̈ܝܥܐ}} $1',
 'creditspage' => 'ܙܕ̈ܩܐ ܕܦܐܬܐ',
-
-# Info page
-'infosubtitle'   => 'ܝܕ̈ܥܬܐ ܕܦܐܬܐ',
-'numedits'       => 'ܡܢܝܢܐ ܕܫܘܚܠܦ̈ܐ (ܦܐܬܐ): $1',
-'numtalkedits'   => 'ܡܢܝܢܐ ܕܫܘܚܠܦ̈ܐ (ܦܐܬܐ  ܕܕܘܪܫܐ): $1',
-'numwatchers'    => 'ܡܢܝܢܐ ܕܪ̈ܗܝܐ: $1',
-'numauthors'     => 'ܡܢܝܢܐ ܕܡܫܚܠܦܢ̈ܐ (ܦܐܬܐ): $1',
-'numtalkauthors' => 'ܡܢܝܢܐ ܕܡܫܚܠܦܢ̈ܐ (ܦܐܬܐ ܕܕܘܪܫܐ): $1',
 
 # Patrol log
 'patrol-log-auto' => '(ܝܬܐܝܬ)',
@@ -1525,5 +1508,13 @@ $1',
 'htmlform-submit'              => 'ܫܕܪ',
 'htmlform-reset'               => 'ܠܐ ܬܥܒܕ ܫܘܚܠܦ̈ܐ',
 'htmlform-selectorother-other' => 'ܐܚܪܢܐ',
+
+# Add categories per AJAX
+'ajax-add-category'            => 'ܐܘܣܦ ܣܕܪܐ',
+'ajax-add-category-submit'     => 'ܐܘܣܦ',
+'ajax-confirm-save'            => 'ܢܛܘܪ',
+'ajax-remove-category-summary' => 'ܠܚܝ ܣܕܪܐ "$1"',
+'ajax-error-title'             => 'ܦܘܕܐ',
+'ajax-error-dismiss'           => 'ܛܒ',
 
 );

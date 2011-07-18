@@ -203,15 +203,6 @@ $messages = array(
 'category-article-count' => '{{PLURAL:$2|Bu kategoriyaa girer sadä aşaadaki sayfa.|Hepsi $2 den, aşaadaki {{PLURAL:$1|sayfa|$1 sayfa}} bu kategoriyadan.}}',
 'listingcontinuesabbrev' => '(devam)',
 
-'mainpagetext'      => "'''MediaWiki başarılan kuruldu.'''",
-'mainpagedocfooter' => "Vikilän iş uurunda bilgi almaa için [http://meta.wikimedia.org/wiki/Help:Contents User's Guide] sayfasına bakınız
-
-== Eni başlayanlar için ==
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
-
 'about'         => 'Uurunda',
 'article'       => 'Yazı',
 'newwindow'     => '(eni bir pencerädä açılêr)',
@@ -249,7 +240,6 @@ $messages = array(
 'history'           => 'Sayfanın istoriyası',
 'history_short'     => 'İstoriya',
 'updatedmarker'     => 'bitki gelişimdän sora enilenmiş',
-'info_short'        => 'Bilgi',
 'printableversion'  => 'Tiparlanacêk versiya',
 'permalink'         => 'Bitki haline baalantı',
 'print'             => 'Tiparla',
@@ -418,7 +408,7 @@ Kullanıcı adınız '''var nicä içersin'''gagauzça nışan, boşluk . Savaş
 'loginsuccesstitle'          => 'Sessiya başarılan açıldı',
 'loginsuccess'               => '{{SITENAME}} saytında "$1" kullanıcı adılan sessiya açtınız.',
 'nosuchuser'                 => 'Burada "$1" adlı kullanıcı yok. Yokla bir taa nesoy yazdın, yaki eni esap yarat.',
-'nosuchusershort'            => 'Burada "<nowiki>$1</nowiki>" adlı kullanıcı yok. Yoklayın ani ad nesoy yazıldı.',
+'nosuchusershort'            => 'Burada "$1" adlı kullanıcı yok. Yoklayın ani ad nesoy yazıldı.',
 'nouserspecified'            => 'Läazım bir kullanıcı adı göstermää.',
 'wrongpassword'              => 'Parolu yannış girdiniz. Yalvarerêz tekrar denämää.',
 'wrongpasswordempty'         => 'Boş parol girdiniz. Yalvarerez tekrar denämää.',
@@ -825,7 +815,6 @@ Sizin bakmaa [[Special:Watchlist|listasındaki]] sayfalar verildi '''kalın''' b
 # Watchlist
 'watchlist'         => 'Bakmaa listam',
 'mywatchlist'       => 'Bakmaa listam',
-'addedwatch'        => 'Bakmaa listasına registrat edildi.',
 'addedwatchtext'    => '"<nowiki>$1</nowiki>" adlı sayfa [[Special:Watchlist|bakmaa listanıza]] registrat olundu.
 
 Gelecektä, bu sayfaya hem ilgili konuşmaa sayfasına yapılacêk diişmäkler burada yazılacêk.
@@ -833,7 +822,6 @@ Gelecektä, bu sayfaya hem ilgili konuşmaa sayfasına yapılacêk diişmäkler 
 [[Special:RecentChanges|Bitki diişmäkler listası]] başlıı altında yazılacêk kalın bukvalarnan neçin ki kolayca seçilsin.
 
 Ne zaman neetlendiniz sayfayı bakmaa listasınnan çıkarmaa tuşlayın "sayfaya bakmaa durgun" baalantısına.',
-'removedwatch'      => 'Bakmaa listanızdan silindi',
 'removedwatchtext'  => '"[[:$1]]" yapraı siir [[Special:Watchlist|listanızdan]] silindi.',
 'watch'             => 'Bak',
 'watchthispage'     => 'Bak bu sayfaya',
@@ -852,7 +840,7 @@ Ne zaman neetlendiniz sayfayı bakmaa listasınnan çıkarmaa tuşlayın "sayfay
 'confirmdeletetext'     => 'Bu sayfayı yaki faylı silersiniz hepsi istoriyasılan bilä.
 Lütfen doorulayın ani siz neetlenersiniz bunu yapmaa, annêêrsiniz onun rezultatlarını hem inanêrsiniz ani bu [[{{MediaWiki:Policy-url}}|Silmää kanonnarına]] uyêr.',
 'actioncomplete'        => 'İşlik tamannandı.',
-'deletedtext'           => '"<nowiki>$1</nowiki>" silindi.
+'deletedtext'           => '"$1" silindi.
 Yakın zamanda silinenleri görmää deyni: $2.',
 'deletedarticle'        => '"[[$1]]" silindi',
 'dellogpage'            => 'Silmää jurnalı',
@@ -873,7 +861,7 @@ Yakın zamanda silinenleri görmää deyni: $2.',
 'protectexpiry'               => 'Bitmää datası:',
 'protect_expiry_invalid'      => 'Yannış bitmää datası.',
 'protect_expiry_old'          => 'Bitmää datası geçti.',
-'protect-text'                => "Var nicä görmää hem diiştirmää buradan '''<nowiki>$1</nowiki>''' sayfasın korunmaa düzeyini.",
+'protect-text'                => "Var nicä görmää hem diiştirmää buradan '''$1''' sayfasın korunmaa düzeyini.",
 'protect-locked-access'       => "Sizin esapın yok izni yazının korunmak düzeyini diiştirmää.
 Burada bitki seçimner '''$1''' yazı diiştirmää deyni:",
 'protect-cascadeon'           => 'Bu sayfa şindi korunêr onuştan ani girer {{PLURAL:$1|aşaadaki sayfaa, angısına|||aşaadaki sayfalara, angılarına}} konuldu kaskad korunmak. Sizä yakışêr diiştirin bu sayfanın korunmak düzeyin, ama bu etkilemez kaskad korunmaa.',

@@ -122,7 +122,6 @@ $messages = array(
 'history'          => "Siedeje'schijchte",
 'history_short'    => 'Jeschicht',
 'updatedmarker'    => 'fresch jemoakt',
-'info_short'       => 'Informatioon',
 'printableversion' => 'Drekdoastalinj',
 'permalink'        => 'Bestendja Link',
 'print'            => 'Drek',
@@ -422,7 +421,6 @@ Bitte nemm eenen aundren.',
 
 # Watchlist
 'mywatchlist'   => 'Miene Oppaussied',
-'addedwatch'    => "No Oppausssied bieje'done",
 'watch'         => 'Oppausse',
 'watchthispage' => 'Op dise Sied oppausse',
 'unwatch'       => 'Nijch mea oppausse',
@@ -577,9 +575,7 @@ Dee Grunt es: "$2"',
 'modern.js'      => '/* Daut neachste JavaScript woat fe Brucka mett Modern-Skin jelode. */',
 
 # Metadata
-'nodublincore'      => 'Dublin-Core-RDF-Metadote send fe disem Server nich aktiv.',
-'nocreativecommons' => 'Creative-Commons-RDF-Metadote send fe disem Server nich aktiv.',
-'notacceptable'     => 'Dee Wiki-Server kaun dee Dote nich soo reedmoake, daut dien Jereetschauft dee lese kaun.',
+'notacceptable' => 'Dee Wiki-Server kaun dee Dote nich soo reedmoake, daut dien Jereetschauft dee lese kaun.',
 
 # Attribution
 'anonymous'        => 'Onbekaunda Brucka {{PLURAL:$1|user|users}} von {{SITENAME}}',
@@ -599,14 +595,6 @@ Daut woat aun eenem Link lidje, woona no eene externe Sied wiest.',
 'spambot_username'    => 'MediaWiki Spam-Uborka (Opprieme)',
 'spam_reverting'      => 'Latste Versioon ohne Links no $1 wada trajcht jemoakt.',
 'spam_blanking'       => 'Aule Versioone haude Links no $1, reed jemoakt',
-
-# Info page
-'infosubtitle'   => 'Siedeinformatioon',
-'numedits'       => 'Zohl von Endanisse (Sied): $1',
-'numtalkedits'   => 'Zohl von Endanisse (Diskussioonssied): $1',
-'numwatchers'    => 'Zohl von Beoobachta: $1',
-'numauthors'     => 'Zohl von Autore (Sied): $1',
-'numtalkauthors' => 'Zohl von Autore (Diskussioonssied): $1',
 
 # Patrolling
 'markaspatrolleddiff'   => 'Aus kontrolliet markere',

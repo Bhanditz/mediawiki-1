@@ -25,25 +25,32 @@
  */
 abstract class Action {
 
-	// Page on which we're performing the action
-	// @var Article
+	/**
+	 * Page on which we're performing the action
+	 * @var Article
+	 */
 	protected $page;
 
-	// RequestContext if specified; otherwise we'll use the Context from the Page
-	// @var RequestContext
+	/**
+	 * RequestContext if specified; otherwise we'll use the Context from the Page
+	 * @var RequestContext
+	 */
 	protected $context;
 
-	// The fields used to create the HTMLForm
-	// @var Array
+	/**
+	 * The fields used to create the HTMLForm
+	 * @var Array
+	 */
 	protected $fields;
 
 	/**
 	 * Get the Action subclass which should be used to handle this action, false if
 	 * the action is disabled, or null if it's not recognised
 	 * @param $action String
+	 * @param $overrides Array
 	 * @return bool|null|string
 	 */
-	private final static function getClass( $action ) {
+	private final static function getClass( $action, array $overrides ) {
 		global $wgActions;
 		$action = strtolower( $action );
 
@@ -53,13 +60,11 @@ abstract class Action {
 
 		if ( $wgActions[$action] === false ) {
 			return false;
-		}
-
-		elseif ( $wgActions[$action] === true ) {
+		} elseif ( $wgActions[$action] === true && isset( $overrides[$action] ) ) {
+			return $overrides[$action];
+		} elseif ( $wgActions[$action] === true ) {
 			return ucfirst( $action ) . 'Action';
-		}
-
-		else {
+		} else {
 			return $wgActions[$action];
 		}
 	}
@@ -71,8 +76,8 @@ abstract class Action {
 	 * @return Action|false|null false if the action is disabled, null
 	 *     if it is not recognised
 	 */
-	public final static function factory( $action, Article $page ) {
-		$class = self::getClass( $action );
+	public final static function factory( $action, Page $page ) {
+		$class = self::getClass( $action, $page->getActionOverrides() );
 		if ( $class ) {
 			$obj = new $class( $page );
 			return $obj;
@@ -107,7 +112,7 @@ abstract class Action {
 	 * @return WebRequest
 	 */
 	protected final function getRequest() {
-		return $this->getContext()->request;
+		return $this->getContext()->getRequest();
 	}
 
 	/**
@@ -116,7 +121,7 @@ abstract class Action {
 	 * @return OutputPage
 	 */
 	protected final function getOutput() {
-		return $this->getContext()->output;
+		return $this->getContext()->getOutput();
 	}
 
 	/**
@@ -125,7 +130,7 @@ abstract class Action {
 	 * @return User
 	 */
 	protected final function getUser() {
-		return $this->getContext()->user;
+		return $this->getContext()->getUser();
 	}
 
 	/**
@@ -134,7 +139,7 @@ abstract class Action {
 	 * @return Skin
 	 */
 	protected final function getSkin() {
-		return $this->getContext()->skin;
+		return $this->getContext()->getSkin();
 	}
 
 	/**
@@ -143,7 +148,7 @@ abstract class Action {
 	 * @return Skin
 	 */
 	protected final function getLang() {
-		return $this->getContext()->lang;
+		return $this->getContext()->getLang();
 	}
 
 	/**
@@ -157,9 +162,9 @@ abstract class Action {
 	/**
 	 * Protected constructor: use Action::factory( $action, $page ) to actually build
 	 * these things in the real world
-	 * @param Article $page
+	 * @param Page $page
 	 */
-	protected function __construct( Article $page ) {
+	protected function __construct( Page $page ) {
 		$this->page = $page;
 	}
 
@@ -221,13 +226,22 @@ abstract class Action {
 	protected function setHeaders() {
 		$out = $this->getOutput();
 		$out->setRobotPolicy( "noindex,nofollow" );
-		$out->setPageTitle( $this->getTitle()->getPrefixedText() );
+		$out->setPageTitle( $this->getPageTitle() );
 		$this->getOutput()->setSubtitle( $this->getDescription() );
 		$out->setArticleRelated( true );
 	}
 
 	/**
 	 * Returns the name that goes in the \<h1\> page title
+	 *
+	 * @return String
+	 */
+	protected function getPageTitle() {
+		return $this->getTitle()->getPrefixedText();
+	}
+
+	/**
+	 * Returns the description that goes below the \<h1\> tag
 	 *
 	 * @return String
 	 */

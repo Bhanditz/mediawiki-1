@@ -19,12 +19,6 @@
 
 $fallback8bitEncoding = 'windows-1256';
 $rtl = true;
-$defaultUserOptionOverrides = array(
-	# Swap sidebar to right side by default
-	'quickbar' => 2,
-	# Underlines seriously harm legibility. Force off:
-	'underline' => 0,
-);
 
 $namespaceNames = array(
 	NS_MEDIA            => 'زریعہ',
@@ -167,8 +161,6 @@ $messages = array(
 'category-subcat-count-limited' => 'اِس زمرہ میں درج ذیل {{PLURAL:$1|ذیلی زمرہ ہے|$1 ذیلی زمرہ جات ہیں}}.',
 'listingcontinuesabbrev'        => '۔جاری',
 
-'mainpagetext' => "'''میڈیاوکی کو کامیابی سے چالو کردیا گیا ہے۔.'''",
-
 'about'         => 'تعارف',
 'article'       => 'صفحۂ مشمول',
 'newwindow'     => '(نـئی ونـڈو میـں)',
@@ -215,7 +207,6 @@ $messages = array(
 'searcharticle'     => 'چلو',
 'history'           => 'تاریخچہ ء صفحہ',
 'history_short'     => 'تاریخچہ',
-'info_short'        => 'معلومات',
 'printableversion'  => 'قابل طبع نسخہ',
 'permalink'         => 'مستقل کڑی',
 'print'             => 'طباعت',
@@ -407,7 +398,6 @@ Warning: Page may not contain recent updates.',
 براہِ کرم، ترجمہ کیلئے [http://translatewiki.net/wiki/Main_Page?setlang=en '''ٹرانسلیٹ ویکی.نیٹ'''] (میڈیاویکی مقامیانی منصوبہ) استعمال کیجئے.",
 'sqlhidden'            => '(SQL استفسارہ پوشیدہ)',
 'namespaceprotected'   => "آپ کو '''$1''' فضائے نام میں صفحات تدوین کرنے کی اِجازت نہیں ہے.",
-'customcssjsprotected' => 'آب کو اِس صفحہ کی تدوین کی اِجازت نہیں ہے، کیونکہ اِس میں دوسرے صارف کی ذاتی ترتیبات موجود ہیں.',
 'ns-specialprotected'  => 'خاص صفحات کی تدوین نہیں کی جاسکتی.',
 'titleprotected'       => 'اس عنوان کو [[User:$1|$1]] نے تخلیق سے محفوظ کیا ہے.
 وجہ یہ بتائی گئی ہے: "\'\'$2\'\'"',
@@ -462,7 +452,7 @@ Warning: Page may not contain recent updates.',
 'nosuchuser'                 => '"$1" کے نام سے کوئی صارف موجود نہیں ہے.
 برائے مہربانی! ہجوں کے درست اندراج کی تصدیق کرلیجئے.
 اگر آپ چاہیں تو [[Special:UserLogin/signup|نیا کھاتہ بھی بناسکتے ہیں]].',
-'nosuchusershort'            => '"<nowiki>$1</nowiki>" کے نام سے کوئی صارف موجود نہیں.
+'nosuchusershort'            => '"$1" کے نام سے کوئی صارف موجود نہیں.
 اپنا ہجہ جانچئے.',
 'nouserspecified'            => 'آپ کو ایک اسمِ صارف مخصوص کرنا ہے.',
 'login-userblocked'          => 'اِس صارف پر پابندی ہے. داخلِ نوشتہ ہونے کی اجازت نہیں.',
@@ -1110,9 +1100,7 @@ Also see [[Special:WantedCategories|wanted categories]].',
 # Watchlist
 'watchlist'         => 'میری زیرنظرفہرست',
 'mywatchlist'       => 'میری زیرنظرفہرست',
-'addedwatch'        => 'زیر نظر فہرست میں اندراج کردیاگیا',
 'addedwatchtext'    => "یہ صفحہ \"<nowiki>\$1</nowiki>\" آپکی [[Special:Watchlist|زیرنظر]] فہرست میں شامل کردیا گیا ہے۔ اب مستقل میں اس صفحے اور اس سے ملحقہ تبادلہ خیال کا صفحے میں کی جانے والی تبدیلوں کا اندراج کیا جاتا رہے گا، اور ان صفحات کی شناخت کو سہل بنانے کے لیۓ [[Special:حالیہ تبدیلیاں|حالیہ تبدیلیوں کی فہرست]] میں انکو '''مُتَجَل''' (bold) تحریر کیا جاۓ گا۔ <p> اگر آپ کسی وقت اس صفحہ کو زیرنظرفہرست سے خارج کرنا چاہیں تو اوپر دیۓ گۓ \"زیرنظرمنسوخ\" پر ٹک کیجیۓ۔",
-'removedwatch'      => 'زیرنظرفہرست سے خارج کر دیا گیا',
 'removedwatchtext'  => 'صفحہ "[[:$1]]" آپ کی زیر نظر فہرست سے خارج کر دیا گیا۔',
 'watch'             => 'زیرنظر',
 'watchthispage'     => 'یہ صفحہ زیر نظر کیجیۓ',
@@ -1135,7 +1123,7 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'historywarning'        => 'انتباہ: جو صفحہ آپ حذف کرنے جارہے ہیں اس سے ایک تاریخچہ منسلک ہے۔',
 'confirmdeletetext'     => 'آپ نے اس صفحے کو اس سے ملحقہ تاریخچہ سمیت حذف کرنے کا ارادہ کیا ہے۔ براۓ مہربانی تصدیق کرلیجیۓ کہ آپ اس عمل کے نتائج سے بخوبی آگاہ ہیں، اور یہ بھی یقین کرلیجیۓ کہ آپ ایسا [[{{MediaWiki:Policy-url}}|ویکیپیڈیا کی حکمت عملی]] کے دائرے میں رہ کر کر رہے ہیں۔',
 'actioncomplete'        => 'اقدام تکمیل کو پہنچا',
-'deletedtext'           => '"<nowiki>$1</nowiki>" کو حذف کر دیا گیا ہے ۔
+'deletedtext'           => '"$1" کو حذف کر دیا گیا ہے ۔
 حالیہ حذف شدگی کے تاریخ نامہ کیلیۓ  $2  دیکھیۓ',
 'deletedarticle'        => 'حذف شدہ "[[$1]]"',
 'dellogpage'            => 'نوشتۂ حذف شدگی',

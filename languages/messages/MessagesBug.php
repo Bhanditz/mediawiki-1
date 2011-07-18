@@ -95,7 +95,6 @@ $messages = array(
 'searcharticle'    => 'Lao',
 'history'          => 'Versi riolo leppaë',
 'history_short'    => 'versi riolo',
-'info_short'       => 'Informasi',
 'permalink'        => 'Pranala permanen',
 'edit'             => 'Padécéŋ',
 'create'           => 'Ebbu',
@@ -364,7 +363,6 @@ $messages = array(
 'categories' => 'Maneŋ kategori',
 
 # Watchlist
-'addedwatch'     => 'Tamba ri jagaan',
 'addedwatchtext' => "Halamang \"[[:\$1]]\" ni ritamba ri ida [[Special:Watchlist|watchlist]].
 Halamang bicara éréngé gabungan halamang bicara pada wettu depan didaftarkan koe,
 éréngé halamang akan wessi '''umpek''' ri [[Special:RecentChanges|daftar pinra tanappa]] barak lebih lemmak ita.

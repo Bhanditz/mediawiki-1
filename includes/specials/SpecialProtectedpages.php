@@ -76,7 +76,7 @@ class SpecialProtectedpages extends SpecialPage {
 	 * @return string Formatted <li> element
 	 */
 	public function formatRow( $row ) {
-		global $wgUser, $wgLang, $wgContLang;
+		global $wgUser, $wgLang;
 
 		wfProfileIn( __METHOD__ );
 
@@ -84,7 +84,7 @@ class SpecialProtectedpages extends SpecialPage {
 
 		if( is_null( $skin ) ){
 			$skin = $wgUser->getSkin();
-			$infinity = wfGetDB( DB_READ )->getInfinity();
+			$infinity = wfGetDB( DB_SLAVE )->getInfinity();
 		}
 
 		$title = Title::makeTitleSafe( $row->page_namespace, $row->page_title );
@@ -116,7 +116,7 @@ class SpecialProtectedpages extends SpecialPage {
 		}
 
 		if(!is_null($size = $row->page_len)) {
-			$stxt = $wgContLang->getDirMark() . ' ' . $skin->formatRevisionSize( $size );
+			$stxt = $wgLang->getDirMark() . ' ' . $skin->formatRevisionSize( $size );
 		}
 
 		# Show a link to the change protection form for allowed users otherwise a link to the protection log
@@ -145,7 +145,7 @@ class SpecialProtectedpages extends SpecialPage {
 		return Html::rawElement(
 			'li',
 			array(),
-			wfSpecialList( $link . $stxt, $wgLang->commaList( $description_items ) ) . $changeProtection ) . "\n";
+			wfSpecialList( $link . $stxt, $wgLang->commaList( $description_items ), false ) . $changeProtection ) . "\n";
 	}
 
 	/**
@@ -319,6 +319,10 @@ class ProtectedPagesPager extends AlphabeticPager {
 		return '';
 	}
 
+	function getTitle() {
+		return SpecialPage::getTitleFor( 'Protectedpages' );
+	}
+
 	function formatRow( $row ) {
 		return $this->mForm->formatRow( $row );
 	}
@@ -332,7 +336,7 @@ class ProtectedPagesPager extends AlphabeticPager {
 
 		if( $this->sizetype=='min' ) {
 			$conds[] = 'page_len>=' . $this->size;
-		} else if( $this->sizetype=='max' ) {
+		} elseif( $this->sizetype=='max' ) {
 			$conds[] = 'page_len<=' . $this->size;
 		}
 

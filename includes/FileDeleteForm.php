@@ -123,10 +123,10 @@ class FileDeleteForm {
 				// delete the associated article first
 				if( $article->doDeleteArticle( $reason, $suppress, $id, false ) ) {
 					global $wgRequest;
-					if( $wgRequest->getCheck( 'wpWatch' ) && $wgUser->isLoggedIn() ) {
-						Action::factory( 'watch', $article )->execute();
-					} elseif( $title->userIsWatching() ) {
-						Action::factory( 'unwatch', $article )->execute();
+					if ( $wgRequest->getCheck( 'wpWatch' ) && $wgUser->isLoggedIn() ) {
+						WatchAction::doWatch( $title, $wgUser );
+					} elseif ( $title->userIsWatching() ) {
+						WatchAction::doUnwatch( $title, $wgUser );
 					}
 					$status = $file->delete( $reason, $suppress );
 					if( $status->ok ) {
@@ -253,7 +253,7 @@ class FileDeleteForm {
 			return wfMsgExt(
 				"{$message}-old", # To ensure grep will find them: 'filedelete-intro-old', 'filedelete-nofile-old', 'filedelete-success-old'
 				'parse',
-				$this->title->getText(),
+				wfEscapeWikiText( $this->title->getText() ),
 				$wgLang->date( $this->getTimestamp(), true ),
 				$wgLang->time( $this->getTimestamp(), true ),
 				wfExpandUrl( $this->file->getArchiveUrl( $this->oldimage ) ) );
@@ -261,7 +261,7 @@ class FileDeleteForm {
 			return wfMsgExt(
 				$message,
 				'parse',
-				$this->title->getText()
+				wfEscapeWikiText( $this->title->getText() )
 			);
 		}
 	}

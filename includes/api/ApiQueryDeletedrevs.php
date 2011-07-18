@@ -99,27 +99,14 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 		$this->addWhere( 'ar_deleted = 0' );
 		$this->addFields( array( 'ar_title', 'ar_namespace', 'ar_timestamp' ) );
 
-		if ( $fld_parentid ) {
-			$this->addFields( 'ar_parent_id' );
-		}
-		if ( $fld_revid ) {
-			$this->addFields( 'ar_rev_id' );
-		}
-		if ( $fld_user ) {
-			$this->addFields( 'ar_user_text' );
-		}
-		if ( $fld_userid ) {
-			$this->addFields( 'ar_user' );
-		}
-		if ( $fld_comment || $fld_parsedcomment ) {
-			$this->addFields( 'ar_comment' );
-		}
-		if ( $fld_minor ) {
-			$this->addFields( 'ar_minor_edit' );
-		}
-		if ( $fld_len ) {
-			$this->addFields( 'ar_len' );
-		}
+		$this->addFieldsIf( 'ar_parent_id', $fld_parentid );
+		$this->addFieldsIf( 'ar_rev_id', $fld_revid );
+		$this->addFieldsIf( 'ar_user_text', $fld_user );
+		$this->addFieldsIf( 'ar_user', $fld_userid );
+		$this->addFieldsIf( 'ar_comment', $fld_comment || $fld_parsedcomment );
+		$this->addFieldsIf( 'ar_minor_edit', $fld_minor );
+		$this->addFieldsIf( 'ar_len', $fld_len );
+
 		if ( $fld_content ) {
 			$this->addTables( 'text' );
 			$this->addFields( array( 'ar_text', 'ar_text_id', 'old_text', 'old_flags' ) );
@@ -409,6 +396,10 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 			'List the first 50 deleted pages in the Talk namespace (mode 3):',
 			'  api.php?action=query&list=deletedrevs&drdir=newer&drlimit=50&drnamespace=1&drunique=',
 		);
+	}
+
+	public function getHelpUrls() {
+		return 'http://www.mediawiki.org/wiki/API:Deletedrevs';
 	}
 
 	public function getVersion() {

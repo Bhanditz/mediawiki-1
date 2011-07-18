@@ -218,7 +218,6 @@ $messages = array(
 'history'           => 'Poslapė istuorėjė',
 'history_short'     => 'Istuorėjė',
 'updatedmarker'     => 'atnaujėnta nu paskotėnė mona apsėlonkīma',
-'info_short'        => 'Infuormacėjė',
 'printableversion'  => 'Versėjė spausdintė',
 'permalink'         => 'Nulatėnė nūruoda',
 'print'             => 'Spausdėntė',
@@ -536,7 +535,7 @@ Jēgo Tamsta esat anonimėnis nauduotuos ėr veizėt, kū kuomentarā nier skėr
 Tamsta galėt [[Special:Search/{{PAGENAME}}|ėiškuotė šėta poslapė pavadėnėma]] kėtūs poslapiūs,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} ėiškuotė sosėjosiu regėstru],
 aba [{{fullurl:{{FULLPAGENAME}}|action=edit}} keistė ta poslapi]</span>.',
-'userpage-userdoesnotexist'        => 'Nauduotuojė paskīra „$1“ nier ožregėstrouta. Prašuom patikrėntė, a Tamsta nuorėt kortė/keistė ta poslapi.',
+'userpage-userdoesnotexist'        => 'Nauduotuojė paskīra „<nowiki>$1</nowiki>“ nier ožregėstrouta. Prašuom patikrėntė, a Tamsta nuorėt kortė/keistė ta poslapi.',
 'clearyourcache'                   => "'''Diemesė:''' ėšsauguojus Tamstā gal prireiktė ėšvalītė Tamstas naršīklės rėnktovė, kū paveizėtomėt pakeitėmus. '''Mozilla / Safari / Konqueror:''' laikīdami ''Shift'' pasėrinkėt ''Atsiōstė ėš nauja'', a paspauskėt ''Ctrl-Shift-R'' (sėstemuo Apple Mac ''Cmd-Shift-R''); '''IE:''' laikīdamė ''Ctrl'' paspauskėt ''Atnaujėntė'', o paspauskėt ''Ctrl-F5''; '''Konqueror:''' paprastiausē paspauskėt ''Perkrautė'' mīgtoka, o paspauskėt ''F5''; '''Opera''' nauduotuojam gal prireiktė pėlnā ėšvalītė anū rėnktovė ''Rakondā→Nustatīmā''.",
 'usercssyoucanpreview'             => "'''Patarėms:''' Nauduokit „Ruodītė parvaiza“ mīgtoka, kū ėšmiegintomiet sava naujaji CSS priš ėšsaugont.",
 'userjsyoucanpreview'              => "'''Patarėms:''' Nauduokit „Ruodītė parvaiza“ mīgtoka, kū ėšmiegintomiet sava naujaji JS priš ėšsaugont.",
@@ -936,10 +935,6 @@ Prašuom ėšsėrėnktė kėta varda.",
 'destfilename'               => 'Nuorims faila pavadinims',
 'upload-maxfilesize'         => 'Dėdliausias faila dėdoms: $1',
 'watchthisupload'            => 'Keravuotė šėta poslapė',
-'upload-wasdeleted'          => "'''Parspiejėms: Tamsta ikeliat faila, katros unkstiau bova ėštrėnts.'''
-
-Tamsta torietomiet nusprēstė, a īr naudėnga tuoliau ikeldinietė ta faila.
-Tuo faila pašalinėma istuorėjė īr pateikta dielē patuogoma:",
 'upload-success-subj'        => 'Ikelt siekmėngā',
 
 'upload-proto-error'      => 'Nateisėngs protuokols',
@@ -1214,12 +1209,10 @@ kū siōstomiet el. gruomatas kėtėm nauduotuojam.',
 'watchlistanontext'    => 'Prašuom $1, ka parveizietomėt a pakeistomiet elementus sava keravuojamu sārašė.',
 'watchnologin'         => 'Neprisėjongės',
 'watchnologintext'     => 'Tamstā rēk būtė [[Special:UserLogin|prisėjongosiam]], ka pakeistomiet sava keravuojamu sāraša.',
-'addedwatch'           => 'Pridieta pri keravuojamu',
 'addedwatchtext'       => "Poslapis \"[[\$1]]\" idiets i [[Special:Watchlist|keravuojamu sāraša]].
 Būsantīs poslapė ėr atėtinkama aptarėma poslapė pakeitėmā bus paruoduomė keravuojamu poslapiu sārašė,
 tēpuogi bus '''parīškintė''' [[Special:RecentChanges|vielībūju pakeitėmu sārašė]], kū ėšsėskėrtom ėš kėtū straipsniu.
 Jēgo bikumet ožsėnuorietomiet liautėis keravuotė straipsnė, spauskat \"nebkeravuotė\" vėršotėniam meniū.",
-'removedwatch'         => 'Pašalėntė ėš keravuojamu',
 'removedwatchtext'     => 'Poslapis „[[:$1]]“ pašalėnts ėš [[Special:Watchlist|Tamstas keravuojamu sāraša]].',
 'watch'                => 'Keravuotė',
 'watchthispage'        => 'Keravuotė šėta poslapė',
@@ -1666,11 +1659,6 @@ Paskėrties straipsnis „[[:$1]]“ jau īr. A nuorėt ana ėštrintė, kū gal
 'spambot_username'    => "''MediaWiki'' reklamu šalėnėms",
 'spam_reverting'      => 'Atkoriama i onkstesne versėje, katra nator nūruodu i $1',
 'spam_blanking'       => 'Vėsos versėjės toriejė nūruodu i $1. Ėšvaluoma',
-
-# Info page
-'numedits'     => 'Pakeitimu skaitlius (straipsnis): $1',
-'numtalkedits' => 'Pakeitėmu skaitlius (aptarėma poslapis): $1',
-'numwatchers'  => 'Keravuojantiu skaitlius: $1',
 
 # Patrolling
 'markaspatrolleddiff'   => 'Žīmietė, kū patikrėnta',

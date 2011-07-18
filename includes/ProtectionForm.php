@@ -57,11 +57,11 @@ class ProtectionForm {
 	/** Map of action to the expiry time of the existing protection */
 	var $mExistingExpiry = array();
 
-	function __construct( Article $article ) {
+	function __construct( Page $article ) {
 		global $wgUser;
 		// Set instance variables.
 		$this->mArticle = $article;
-		$this->mTitle = $article->mTitle;
+		$this->mTitle = $article->getTitle();
 		$this->mApplicableTypes = $this->mTitle->getRestrictionTypes();
 		
 		// Check if the form should be disabled.
@@ -89,7 +89,7 @@ class ProtectionForm {
 		$this->mCascade = $wgRequest->getBool( 'mwProtect-cascade', $this->mCascade );
 
 		foreach( $this->mApplicableTypes as $action ) {
-			// Fixme: this form currently requires individual selections,
+			// @todo FIXME: This form currently requires individual selections,
 			// but the db allows multiples separated by commas.
 			
 			// Pull the actual restriction from the DB
@@ -147,7 +147,9 @@ class ProtectionForm {
 	/**
 	 * Get the expiry time for a given action, by combining the relevant inputs.
 	 *
-	 * @return 14-char timestamp or "infinity", or false if the input was invalid
+	 * @param $action string
+	 * 
+	 * @return string 14-char timestamp or "infinity", or false if the input was invalid
 	 */
 	function getExpiry( $action ) {
 		if ( $this->mExpirySelection[$action] == 'existing' ) {
@@ -166,7 +168,7 @@ class ProtectionForm {
 				return false;
 			}
 
-			// Fixme: non-qualified absolute times are not in users specified timezone
+			// @todo FIXME: Non-qualified absolute times are not in users specified timezone
 			// and there isn't notice about it in the ui
 			$time = wfTimestamp( TS_MW, $unix );
 		}
@@ -235,7 +237,8 @@ class ProtectionForm {
 				$wgOut->showPermissionsErrorPage( $this->mPermErrors );
 			}
 		} else {
-			$wgOut->addWikiMsg( 'protect-text', $this->mTitle->getPrefixedText() );
+			$wgOut->addWikiMsg( 'protect-text',
+				wfEscapeWikiText( $this->mTitle->getPrefixedText() ) );
 		}
 
 		$wgOut->addHTML( $this->buildForm() );
@@ -316,10 +319,10 @@ class ProtectionForm {
 			return false;
 		}
 
-		if( $wgRequest->getCheck( 'mwProtectWatch' ) && $wgUser->isLoggedIn() ) {
-			Action::factory( 'watch', $this->mArticle )->execute();
-		} elseif( $this->mTitle->userIsWatching() ) {
-			Action::factory( 'unwatch', $this->mArticle )->execute();
+		if ( $wgRequest->getCheck( 'mwProtectWatch' ) && $wgUser->isLoggedIn() ) {
+			WatchAction::doWatch( $this->mTitle, $wgUser );
+		} elseif ( $this->mTitle->userIsWatching() ) {
+			WatchAction::doUnwatch( $this->mTitle, $wgUser );
 		}
 		return $ok;
 	}

@@ -125,6 +125,7 @@ abstract class DatabaseInstaller {
 		if ( $this->db ) {
 			return Status::newGood( $this->db );
 		}
+
 		$status = $this->openConnection();
 		if ( $status->isOK() ) {
 			$this->db = $status->value;
@@ -156,7 +157,7 @@ abstract class DatabaseInstaller {
 		$this->db->setFlag( DBO_DDLMODE ); // For Oracle's handling of schema files
 		$this->db->begin( __METHOD__ );
 
-		$error = $this->db->sourceFile( $this->db->getSchema() );
+		$error = $this->db->sourceFile( $this->db->getSchemaPath() );
 		if( $error !== true ) {
 			$this->db->reportQueryError( $error, 0, '', __METHOD__ );
 			$this->db->rollback( __METHOD__ );
@@ -180,31 +181,9 @@ abstract class DatabaseInstaller {
 		if ( !$status->isOK() ) {
 			return $status;
 		}
-		$updater = DatabaseUpdater::newForDB( $this->db );
-		$extensionUpdates = $updater->getNewExtensions();
-
-		// No extensions need tables (or haven't updated to new installer support)
-		if( !count( $extensionUpdates ) ) {
-			return $status;
-		}
-
-		$ourExtensions = array_map( 'strtolower', $this->getVar( '_Extensions' ) );
-
-		foreach( $ourExtensions as $ext ) {
-			if( isset( $extensionUpdates[$ext] ) ) {
-				$this->db->begin( __METHOD__ );
-				$error = $this->db->sourceFile( $extensionUpdates[$ext] );
-				if( $error !== true ) {
-					$this->db->rollback( __METHOD__ );
-					$status->warning( 'config-install-tables-failed', $error );
-				} else {
-					$this->db->commit( __METHOD__ );
-				}
-			}
-		}
 
 		// Now run updates to create tables for old extensions
-		$updater->doUpdates( array( 'extensions' ) );
+		DatabaseUpdater::newForDB( $this->db )->doUpdates( array( 'extensions' ) );
 
 		return $status;
 	}

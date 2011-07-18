@@ -191,15 +191,18 @@ class Html {
 				'button',
 				'search',
 			);
+
 			if ( isset( $attribs['type'] )
 			&& !in_array( $attribs['type'], $validTypes ) ) {
 				unset( $attribs['type'] );
 			}
+
 			if ( isset( $attribs['type'] ) && $attribs['type'] == 'search'
 			&& !$wgHtml5 ) {
 				unset( $attribs['type'] );
 			}
 		}
+
 		if ( !$wgHtml5 && $element == 'textarea' && isset( $attribs['maxlength'] ) ) {
 			unset( $attribs['maxlength'] );
 		}
@@ -437,7 +440,8 @@ class Html {
 				# Apparently we need to entity-encode \n, \r, \t, although the
 				# spec doesn't mention that.  Since we're doing strtr() anyway,
 				# and we don't need <> escaped here, we may as well not call
-				# htmlspecialchars().  FIXME: verify that we actually need to
+				# htmlspecialchars().
+				# @todo FIXME: Verify that we actually need to
 				# escape \n\r\t here, and explain why, exactly.
 				#
 				# We could call Sanitizer::encodeAttribute() for this, but we
@@ -452,8 +456,8 @@ class Html {
 				);
 				if ( $wgWellFormedXml ) {
 					# This is allowed per spec: <http://www.w3.org/TR/xml/#NT-AttValue>
-					# But reportedly it breaks some XML tools?  FIXME: is this
-					# really true?
+					# But reportedly it breaks some XML tools?
+					# @todo FIXME: Is this really true?
 					$map['<'] = '&lt;';
 				}
 				$ret .= " $key=$quote" . strtr( $value, $map ) . $quote;
@@ -474,12 +478,15 @@ class Html {
 		global $wgHtml5, $wgJsMimeType, $wgWellFormedXml;
 
 		$attrs = array();
+
 		if ( !$wgHtml5 ) {
 			$attrs['type'] = $wgJsMimeType;
 		}
+
 		if ( $wgWellFormedXml && preg_match( '/[<&]/', $contents ) ) {
 			$contents = "/*<![CDATA[*/$contents/*]]>*/";
 		}
+
 		return self::rawElement( 'script', $attrs, $contents );
 	}
 
@@ -494,9 +501,11 @@ class Html {
 		global $wgHtml5, $wgJsMimeType;
 
 		$attrs = array( 'src' => $url );
+
 		if ( !$wgHtml5 ) {
 			$attrs['type'] = $wgJsMimeType;
 		}
+
 		return self::element( 'script', $attrs );
 	}
 
@@ -515,6 +524,7 @@ class Html {
 		if ( $wgWellFormedXml && preg_match( '/[<&]/', $contents ) ) {
 			$contents = "/*<![CDATA[*/$contents/*]]>*/";
 		}
+
 		return self::rawElement( 'style', array(
 			'type' => 'text/css',
 			'media' => $media,
@@ -586,15 +596,19 @@ class Html {
 	 */
 	public static function textarea( $name, $value = '', $attribs = array() ) {
 		global $wgHtml5;
+
 		$attribs['name'] = $name;
+
 		if ( !$wgHtml5 ) {
 			if ( !isset( $attribs['cols'] ) ) {
 				$attribs['cols'] = "";
 			}
+
 			if ( !isset( $attribs['rows'] ) ) {
 				$attribs['rows'] = "";
 			}
 		}
+
 		return self::element( 'textarea', $attribs, $value );
 	}
 
@@ -609,30 +623,38 @@ class Html {
 	public static function htmlHeader( $attribs = array() ) {
 		$ret = '';
 
-		global $wgMimeType, $wgOutputEncoding;
+		global $wgMimeType;
+
 		if ( self::isXmlMimeType( $wgMimeType ) ) {
-			$ret .= "<?xml version=\"1.0\" encoding=\"$wgOutputEncoding\" ?" . ">\n";
+			$ret .= "<?xml version=\"1.0\" encoding=\"UTF-8\" ?" . ">\n";
 		}
 
 		global $wgHtml5, $wgHtml5Version, $wgDocType, $wgDTD;
 		global $wgXhtmlNamespaces, $wgXhtmlDefaultNamespace;
+
 		if ( $wgHtml5 ) {
 			$ret .= "<!DOCTYPE html>\n";
+
 			if ( $wgHtml5Version ) {
 				$attribs['version'] = $wgHtml5Version;
 			}
 		} else {
 			$ret .= "<!DOCTYPE html PUBLIC \"$wgDocType\" \"$wgDTD\">\n";
 			$attribs['xmlns'] = $wgXhtmlDefaultNamespace;
+
 			foreach ( $wgXhtmlNamespaces as $tag => $ns ) {
 				$attribs["xmlns:$tag"] = $ns;
 			}
 		}
+
 		$html = Html::openElement( 'html', $attribs );
+
 		if ( $html ) {
 			$html .= "\n";
 		}
+
 		$ret .= $html;
+
 		return $ret;
 	}
 
@@ -651,5 +673,46 @@ class Html {
 			default:
 				return false;
 		}
+	}
+
+	/**
+	 * Get HTML for an info box with an icon.
+	 *
+	 * @param $text String: wikitext, get this with wfMsgNoTrans()
+	 * @param $icon String: icon name, file in skins/common/images
+	 * @param $alt String: alternate text for the icon
+	 * @param $class String: additional class name to add to the wrapper div
+	 * @param $useStylePath
+	 *
+	 * @return string
+	 */
+	static function infoBox( $text, $icon, $alt, $class = false, $useStylePath = true ) {
+		global $wgStylePath;
+
+		if ( $useStylePath ) {
+			$icon = $wgStylePath.'/common/images/'.$icon;
+		}
+
+		$s  = Html::openElement( 'div', array( 'class' => "mw-infobox $class") );
+
+		$s .= Html::openElement( 'div', array( 'class' => 'mw-infobox-left' ) ).
+				Html::element( 'img',
+					array(
+						'src' => $icon,
+						'alt' => $alt,
+					)
+				).
+				Html::closeElement( 'div' );
+
+		$s .= Html::openElement( 'div', array( 'class' => 'mw-infobox-right' ) ).
+				$text.
+				Html::closeElement( 'div' );
+		$s .= Html::element( 'div', array( 'style' => 'clear: left;' ), ' ' );
+
+		$s .= Html::closeElement( 'div' );
+
+		$s .= Html::element( 'div', array( 'style' => 'clear: left;' ), ' ' );
+
+		return $s;
 	}
 }

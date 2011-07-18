@@ -371,8 +371,6 @@ Ná radbadal ák deskáne atíko matano.",
 # Watchlist
 'watchlist'         => 'Kaná xiálí rid',
 'mywatchlist'       => 'Kaná xiálí rid',
-'addedwatch'        => 'Xiálírid aŧí avár kanningá',
-'removedwatch'      => 'Xiálírid án kaşşingá',
 'removedwatchtext'  => 'Panna "[[:$1]]" e [[Special:Watchlist|ná xiálírid]] án kaşşingáne.',
 'watch'             => 'Xiálí mar',
 'watchthispage'     => 'Dá panna ná xiálí mar',
@@ -390,7 +388,7 @@ Ná radbadal ák deskáne atíko matano.",
 'confirmdeletetext'     => 'Ní panna as e oná lekav ton avár mesing aŧí us.
 Dá pakk kar ki ní dun kanning xuáisa, dáná pad án poh us, o ní dád [[{{MediaWiki:Policy-url}}|ráhband]] ná vaŕ aŧ kanning us.',
 'actioncomplete'        => 'Amal sarjam',
-'deletedtext'           => '"<nowiki>$1</nowiki>" mesingáne.
+'deletedtext'           => '"$1" mesingáne.
 Zút áteaŧ mesing átá lekav kin $2 e ur.',
 'deletedarticle'        => '"[[$1]]" mesingá',
 'dellogpage'            => 'Mesing ná hisáb',

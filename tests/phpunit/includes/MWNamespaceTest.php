@@ -39,7 +39,7 @@ class MWNamespaceTest extends MediaWikiTestCase {
 	 */
 	public function testIsMovable() {
 		$this->assertFalse( MWNamespace::isMovable( NS_CATEGORY ) );
-		# FIXME : write more tests!!
+		# @todo FIXME: Write more tests!!
 	}
 
 	/**
@@ -96,8 +96,8 @@ class MWNamespaceTest extends MediaWikiTestCase {
 	 * @expectedException MWException
 	 */
 	public function testGetTalkExceptions() {
-		$this->assertNull( MWNamespace::getAssociated( NS_MEDIA ) );
-		$this->assertNull( MWNamespace::getAssociated( NS_SPECIAL ) );
+		$this->assertNull( MWNamespace::getTalk( NS_MEDIA ) );
+		$this->assertNull( MWNamespace::getTalk( NS_SPECIAL ) );
 	}
 
 	/**
@@ -233,7 +233,7 @@ class MWNamespaceTest extends MediaWikiTestCase {
 		// Tests that user defined namespace #252 is not content:
 		$this->assertFalse( MWNamespace::isContent( 252 ) );
 
-		# FIXME: is global saving really required for PHPUnit?
+		# @todo FIXME: Is global saving really required for PHPUnit?
 		// Bless namespace # 252 as a content namespace
 		global $wgContentNamespaces;
 		$savedGlobal = $wgContentNamespaces;
@@ -271,7 +271,14 @@ class MWNamespaceTest extends MediaWikiTestCase {
 		$this->assertFalse( MWNamespace::hasSubpages( NS_SPECIAL ) );
 
 		// namespaces without subpages
-		$this->assertFalse( MWNamespace::hasSubpages( NS_MAIN ) );
+		global $wgNamespacesWithSubpages;
+		if(    array_key_exists( NS_MAIN, $wgNamespacesWithSubpages )
+			&& $wgNamespacesWithSubpages[NS_MAIN] === true
+		) {
+			$this->markTestSkipped( "Main namespace has subpages enabled" );
+		} else {
+			$this->assertFalse( MWNamespace::hasSubpages( NS_MAIN ) );
+		}
 
 		// Some namespaces with subpages
 		$this->assertTrue( MWNamespace::hasSubpages( NS_TALK      ) );

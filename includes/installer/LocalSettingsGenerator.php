@@ -39,7 +39,7 @@ class LocalSettingsGenerator {
 
 		$confItems = array_merge(
 			array(
-				'wgScriptPath', 'wgScriptExtension',
+				'wgServer', 'wgScriptPath', 'wgScriptExtension',
 				'wgPasswordSender', 'wgImageMagickConvertCommand', 'wgShellLocale',
 				'wgLanguageCode', 'wgEnableEmail', 'wgEnableUserEmail', 'wgDiff3',
 				'wgEnotifUserTalk', 'wgEnotifWatchlist', 'wgEmailAuthentication',
@@ -249,6 +249,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 \$wgScriptPath       = \"{$this->values['wgScriptPath']}\";
 \$wgScriptExtension  = \"{$this->values['wgScriptExtension']}\";
 
+## The protocol and server name to use in fully-qualified URLs
+\$wgServer           = \"{$this->values['wgServer']}\";
+
 ## The relative URL path to the skins directory
 \$wgStylePath        = \"\$wgScriptPath/skins\";
 
@@ -306,7 +309,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 ## be publically accessible from the web.
 #\$wgCacheDirectory = \"\$IP/cache\";
 
-# Site language code, should be one of ./languages/Language(.*).php
+# Site language code, should be one of the list in ./languages/Names.php
 \$wgLanguageCode = \"{$this->values['wgLanguageCode']}\";
 
 \$wgSecretKey = \"{$this->values['wgSecretKey']}\";
@@ -322,7 +325,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 ## For attaching licensing metadata to pages, and displaying an
 ## appropriate copyright notice / icon. GNU Free Documentation
 ## License and Creative Commons licenses are supported so far.
-{$rightsUrl}\$wgEnableCreativeCommonsRdf = true;
 \$wgRightsPage = \"\"; # Set to the title of a wiki page that describes your license/copyright
 \$wgRightsUrl  = \"{$this->values['wgRightsUrl']}\";
 \$wgRightsText = \"{$this->values['wgRightsText']}\";

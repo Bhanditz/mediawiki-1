@@ -139,15 +139,6 @@ $messages = array(
 'index-category'                 => 'Sahifahoi namojaşuda',
 'noindex-category'               => 'Sahifahoi namoijanaşuda',
 
-'mainpagetext'      => "'''Narmafzori MediaViki bo muvaffaqijat nasb şud.'''",
-'mainpagedocfooter' => 'Az [http://meta.wikimedia.org/wiki/Help:Contents Rohnamoi Korbaron] baroi istifodai narmafzori viki kūmak bigired.
-
-== Oƣoz ba kor ==
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Fehristi tanzimoti pajgirbandī]
-* [http://www.mediawiki.org/wiki/Manual:FAQ Pursişhoi MediaViki]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Fehristi rojnomahoi nusxahoi MediaViki]',
-
 'about'         => 'Dar borai',
 'article'       => 'Sahifai mūhtavo',
 'newwindow'     => '(dar ravzanai çadid boz meşavad)',
@@ -197,7 +188,6 @@ $messages = array(
 'history'           => "Ta'rix",
 'history_short'     => "Ta'rix",
 'updatedmarker'     => 'barūzşuda az rūzi oxirin taşrifam',
-'info_short'        => 'Ittiloot',
 'printableversion'  => 'Nusxai copī',
 'permalink'         => 'Pajvandi doimī',
 'print'             => 'Cop',
@@ -367,7 +357,6 @@ Pursuçū: $2',
 'sqlhidden'            => '(Dasturi SQL pinhonist)',
 'cascadeprotected'     => 'In sahifa az viroiş muhofizat şudaast, baroi in ki  dar {{PLURAL:$1|sahifai|sahifahoi}} muhofizatşudai zerin, ki guzainai "obşorī" dar {{PLURAL:$1|on|onho}} intixob şudaast, faro giriftaast: $2',
 'namespaceprotected'   => "Şumo içozati viroişi sahifahoi fazoinomi '''$1'''-ro nadored.",
-'customcssjsprotected' => 'Şumo içozati viroişi in sahifaro nadored, baroi on ki on tanzimhoi şasiji jak korbari digarero dar bar megirad.',
 'ns-specialprotected'  => 'Sahifahoi viƶa ƣajri qobili viroiş hastand.',
 'titleprotected'       => "Eçodi sahifae bo in unvon az tarafi [[User:$1|$1]] çilavgirī şudaast.
 Daleli zikrşuda az in qaror ast ''$2''.",
@@ -417,7 +406,7 @@ Nomi digareroro intixob kuned.',
 'loginsuccess'            => "'''Şumo aknun ba Vikipedia hamcun \"\$1\". vurud karded'''",
 'nosuchuser'              => 'Korbare bo nomi "$1" vuçud nadorad.
 Amali nomro barrasi kuned, jo [[Special:UserLogin/signup|hisobi çadidero eçod kuned]].',
-'nosuchusershort'         => 'Jagon korbare bo nomi "<nowiki>$1</nowiki>" vuçud nadorad. Tarzi navişti nomro sançed.',
+'nosuchusershort'         => 'Jagon korbare bo nomi "$1" vuçud nadorad. Tarzi navişti nomro sançed.',
 'nouserspecified'         => 'Şumo bojad jak nomi korbarī muşaxxas kuned.',
 'wrongpassword'           => 'Kalimai uburi nodurust doxil karda şud. Bori digar sançed.',
 'wrongpasswordempty'      => 'Kalimai uburi doxil şuda xolī ast. Bori digar sançed.',
@@ -530,7 +519,7 @@ Agar az sababi xatogī va jo iştiboh omaded, tugmai '''Ba oqib'''-ro dar brauze
 Şumo metavoned dar digar sahifaho [[Special:Search/{{PAGENAME}}|unvoni in sahifaro çustuçū kuned]],
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} guzorişhoi aloqamandro çustuçū namoed],
 jo [{{fullurl:{{FULLPAGENAME}}|action=edit}} in sahifaro viroiş kuned]</span>.',
-'userpage-userdoesnotexist'        => 'Hisobi korbar "$1" sabt naşudaast. Itminon hosil kuned ki mexohed in sahifaro ecod jo viroiş kuned.',
+'userpage-userdoesnotexist'        => 'Hisobi korbar "<nowiki>$1</nowiki>" sabt naşudaast. Itminon hosil kuned ki mexohed in sahifaro ecod jo viroiş kuned.',
 'usercssyoucanpreview'             => "'''Ezoh:''' Peş parvandai CSS jo JS xudro zaxira kuned, bo istifoda az tugmai \"Peşnamoiş\" metavoned onro ozmoiş kuned.",
 'userjsyoucanpreview'              => "'''Ezoh:''' Peş parvandai CSS jo JS xudro zaxira kuned, bo istifoda az tugmai \"Peşnamoiş\" metavoned onro ozmoiş kuned.",
 'userjspreview'                    => "'''Faromūş nakuned, ki şumo faqat ÇavaSkripti korbariatonro imtihon,peşnamoiş karda istodaed va on hanūz zaxira naşudaast!'''",
@@ -1008,10 +997,6 @@ Agar parvandai barrasişuda aksi xurd karda şudai on parvandai aslī ast, nijoz
 'destfilename'               => 'Nomi parvandai maqsad:',
 'upload-maxfilesize'         => 'Buzurgtarin andozai parvanda: $1',
 'filewasdeleted'             => 'Parvandae bo hamin nom peştar borguzorī va pas az on pok şudaast. Peş az borguzorī ba $1 nigared.',
-'upload-wasdeleted'          => "'''Huşdor: Şumo dar holi borguzoriji parvandae hasted, ki peş az in hazf şudaast.'''
-
-Şumo bojad biandeşed, ki ojo davom dodani borguzoriji in parvanda munosib ast jo na.
-Guzorişi hazfi marbut ba in parvanda dar zer ovarda şudaast:",
 'filename-bad-prefix'        => "Nomi parvandae, ki şumo borguzori kardanied bo '''\"\$1\"''' oƣoz meşavad, ki jak peşvandi maxsusi akshoi sabtşuda tavassuti aksbardorakhoi raqamī ast. Lutfan nomi behtari tavsifotī baroi parvanda intixob kuned.",
 'upload-success-subj'        => 'Firistodan bomuvaffaqijat',
 
@@ -1292,13 +1277,11 @@ Jak klik kardani rūi unvoni sutunho boisi taƣjiri tartibi namoişi parvandaho 
 'watchlistanontext'    => 'Lutfan baroi muşohida va viroişi fehristi pajgirihoi xud az $1 istifoda kuned.',
 'watchnologin'         => 'Vurud naşuda',
 'watchnologintext'     => 'Baroi taƣjiri fehristi pajgirihoi xud bojad [[Special:UserLogin|ba sistem vorid şaved]].',
-'addedwatch'           => 'Ba fehristi pajgiriho ilova karda şud',
 'addedwatchtext'       => "In sahifa \"[[:\$1]]\" va [[Special:Watchlist|fehristi nazaroti]] Şumo ilova şud.
 Digargunihoi ojandai in sahifa va sahifi bahsi aloqamand dar rūixati onço xohad şud,
 va sahifa '''ƣafs''' dar [[Special:RecentChanges|rūixati taƣjiroti oxirin]] baroi bo osoni darjoft kardan xohad ba nazar rasid.
 
 Agar şumo dertar az fehristi nazarotaton in sahifaro hazv kardan xohed, dar menju \"Nazar nakardan\"-ro paxş kuned.",
-'removedwatch'         => 'Az fehristi pajgiriho bardoşta şud',
 'removedwatchtext'     => 'Sahifai "[[:$1]]" az [[Special:Watchlist|fehristi pajgirihoi şumo]] bardoşta şud.',
 'watch'                => 'Nazar kardan',
 'watchthispage'        => 'Pajgiriji in sahifa',
@@ -1344,7 +1327,7 @@ Agar şumo dertar az fehristi nazarotaton in sahifaro hazv kardan xohed, dar men
 'delete-legend'          => 'Hazf',
 'confirmdeletetext'      => "Şumo dar holi hazf kardani jak sahifa jo akse az pojgoh doda hamroh bo tamomi ta'rixi on hasted. Lutfan in amalro tasdiq kuned va itminon hosil kuned, ki oqibati in korro medoned va in amalro mutobiqi [[{{MediaWiki:Policy-url}}|sijosati hazf]] ançom medihed.",
 'actioncomplete'         => 'Amal içro şud',
-'deletedtext'            => '"<nowiki>$1</nowiki>" hazf şudaast.
+'deletedtext'            => '"$1" hazf şudaast.
 Nigared ba $2 baroi guzorişi hazfi oxirin.',
 'deletedarticle'         => 'hazfşuda "[[$1]]"',
 'suppressedarticle'      => '"[[$1]]"-ro mavquf kard',
@@ -1387,7 +1370,7 @@ Nigared ba $2 baroi guzorişi hazfi oxirin.',
 'protectexpiry'               => 'Zamoni saromadan:',
 'protect_expiry_invalid'      => "Zamoni saromadan nomū'tabar ast.",
 'protect_expiry_old'          => 'Zamoni saromadan dar guzaşta ast.',
-'protect-text'                => "Şumo inço sathi muhofizati sahifai '''<nowiki>$1</nowiki>''' metavoned nigared jo taƣjir dihed",
+'protect-text'                => "Şumo inço sathi muhofizati sahifai '''$1''' metavoned nigared jo taƣjir dihed",
 'protect-locked-blocked'      => "Şumo muddate, ki dastarsiaton qat' ast nametavoned sathi hifzi sahifahoro tagjir dihed. Tanzimoti fe'liji sahifai '''$1''' ba in qaror ast:",
 'protect-locked-dblock'       => "Az sababi qufl şudani pojgohi doda, imkoni taƣjiri sathi hifzi sahifa vuçud nadorad.
 Tanzimoti fe'liji sahifai '''$1''' ba in qaror ast:",
@@ -1811,9 +1794,7 @@ Pas onro ba kompjuteraton zaxira karda inço borguzorī kuned.",
 In imkoni ilova kardani jak sababero dar xulosa medihad.',
 
 # Metadata
-'nodublincore'      => "Metadoda Dublin Core RDF baroi in korguzor ƣajri fa'ol şudaast.",
-'nocreativecommons' => "Metadodai Creative Commons RDF baroi in korguzor ƣajri fa'ol şudaast.",
-'notacceptable'     => 'Korguzori in viki az irsoli doda ba şakle ki barnomai şumo bitavonad namoiş dihad, peşkaş karda nametavonad.',
+'notacceptable' => 'Korguzori in viki az irsoli doda ba şakle ki barnomai şumo bitavonad namoiş dihad, peşkaş karda nametavonad.',
 
 # Attribution
 'anonymous'        => '{{PLURAL:$1|korbari|korbaroni}} gumnomī {{SITENAME}}',
@@ -1833,14 +1814,6 @@ Ehtimolan in az sababi dar bar giriftani pajvandi beruna ba somonai xoriçiji ba
 'spambot_username'    => 'Spamtozakuni MediaViki',
 'spam_reverting'      => 'Vogardoni ba oxirin nusxae, ki pajvande ba $1 nadorad',
 'spam_blanking'       => 'Hamai nusxahoi pajvandho $1 doştan, dar holi xolī kardan',
-
-# Info page
-'infosubtitle'   => 'Ittiloot dar mavridi sahifa',
-'numedits'       => "Te'dodi viroişho (sahifa): $1",
-'numtalkedits'   => "Te'dodi viroişho (sahifai bahs): $1",
-'numwatchers'    => 'Şumorai pajgirikunandagon: $1',
-'numauthors'     => "Te'dodi muallifoni muxtalif (maqola): $1",
-'numtalkauthors' => "Te'dodi muallifoni muxtalif (sahifai bahs): $1",
 
 # Patrolling
 'markaspatrolleddiff'                 => 'Ba unvoni barrasişuda alomat bizan',

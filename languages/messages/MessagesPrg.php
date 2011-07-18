@@ -136,14 +136,6 @@ Pāusai en kategōrijai "$1"',
 'index-category'                 => 'Indeksīntai pāusai',
 'noindex-category'               => 'Niindeksīntai pāusai',
 
-'mainpagetext'      => "'''MediaWiki's instalaciōni izpalla.'''",
-'mainpagedocfooter' => 'Wīdais [http://meta.wikimedia.org/wiki/Help:Contents przewodnik użytkownika] kāi gaūlai informaciōnei ezze wiki prōgramijas tērpausnan.
-
-== En pagaūseņu ==
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]',
-
 'about'         => 'Ezze',
 'article'       => 'Pāusas ēnturs',
 'newwindow'     => '(etwerre si en nāunai langstan)',
@@ -191,7 +183,6 @@ Pāusai en kategōrijai "$1"',
 'history'           => 'Pāusas istōrija',
 'history_short'     => 'Istōrija',
 'updatedmarker'     => 'Kitawīdintan ezze panzdaumasmu kāimalukisenin',
-'info_short'        => 'Infōrmaciōni',
 'printableversion'  => 'Drukkaumina wersiōni',
 'permalink'         => 'Ainatīngis autengīnsenis',
 'print'             => 'Drukkaus',
@@ -374,7 +365,6 @@ Per tulkausnans, madli endirēis tērpautun [http://translatewiki.net/wiki/Main_
 'cascadeprotected'     => 'Šin pāusan ast pakūnstan ezze redigīsnan, beggi ast ebīmtan en {{PLURAL:$1|ripīntsmu pāusan, kawīdan|ripīntimans pāusans, kawīdai}} turri mazīngiskwan "pakūnsnas weldīsnan" enklaūtan:
 $2',
 'namespaceprotected'   => "Tū ni assei preiwērptan, kāi redigīlai pāusans en '''$1''' tītelin plattibei.",
-'customcssjsprotected' => 'Tū ni mazzi redigītun šin pāusan, beggi tennan turri ēn sen persōniskans ensadīnsenins kitse tērpautajan.',
 'ns-specialprotected'  => 'Speciālai pāusai ni mazzi būtwei redigītan.',
 'titleprotected'       => 'Šis tītels pastāi drēuditan pra [[User:$1|$1]].
 Drēudisnas pagrintinsna: "$2".',
@@ -430,7 +420,7 @@ Madli enklaūjais tennans be bāndais etkūmps.',
 'nosuchuser'                 => 'Ni ast tērpautajs sen pabilīsnan "$1".
 Zentlin debban en tērpautajas pabilīsnai ast zentlawingi.
 Izbandais peisāsnan anga [[Special:UserLogin/signup|teīkeis nāunan rekkenan]].',
-'nosuchusershort'            => 'Ni ast tērpautajs sen pabilīsnan "<nowiki>$1</nowiki>".
+'nosuchusershort'            => 'Ni ast tērpautajs sen pabilīsnan "$1".
 Izbandais peisāsnan.',
 'nouserspecified'            => 'Tu turri enpeisātun tērpautajas pabilīsnan.',
 'wrongpassword'              => 'Nitikrōmiskas kliptaswīrds. Bāndais dabber rēizan.',
@@ -580,11 +570,11 @@ Ik tu assei anōnims tērpautajs be tu mīri, kāi kumentārai stwi ni ast wart�
 Tu mazzi [[Special:Search/{{PAGENAME}}|laukītun šisse pāusas tītelin]] en kitēimans pāusans,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} pralaukītun registerin],
 anga [{{fullurl:{{FULLPAGENAME}}|action=edit}} redigītun šin pāusan]</span>.',
-'userpage-userdoesnotexist'        => 'Tērpautajs "$1" ni ast registrītan.
+'userpage-userdoesnotexist'        => 'Tērpautajs "<nowiki>$1</nowiki>" ni ast registrītan.
 Izbāndais, anga tū perarwi kwaitīwuns teīktun/redigītun šin pāusan.',
 'userpage-userdoesnotexist-view'   => 'Tērpautajas rekkens "$1" ni ast registrītan.',
 'clearyourcache'                   => "'''Nōda: Kitawīdisnas pa enpeisāsnan stēisan nāunan ensadīnsenin mazzi ni būtwei widāminan. Prawerru skīstintun lasāltas rānkas minīsnan.'''
-*'''Mozilla, Firefox anga Safari - ''' zabāis \"Shift\" gnestan ne gnetteis \"Etnāunais\" anga gnetteis \"Ctrl-F5\" anga \"Ctrl-R\" (\"Command-R\" en Macintoshu);
+*'''Mozilla, Firefox anga Safari - ''' zabāis \"Shift\" gnestan ne gnetteis \"Etnāunais\" anga gnetteis \"Ctrl-F5\" anga \"Ctrl-R\" (\"Command-R\" en Macu);
 *'''Konqueror:''' gnetteis '''Etwārtai kraūneis\" anga \"F5\";
 '''Opera:''' skīstinais rānkas minīsnan en \"Ēnrankis-Pirminiskwas\";
 '''Internet Explorer:''' zabāis \"Ctrl\" gnettintei \"Etnāuninais\" anga gnetteis \"Ctrl-F5\".",
@@ -1250,10 +1240,6 @@ Izbāndais ensadīnsenin „file_uploads”.',
 'watchthisupload'             => 'Nadirēis šin zūrbrukin',
 'filewasdeleted'              => 'Zūrbrukis sen šan pabilīsnan ekzistīwuns, adder pastāi āupausintan.
 Pirzdau tū wīrst din etkūmps enkraūwuns(si), izbāndais $1.',
-'upload-wasdeleted'           => "'''Ēmpirssergīsenis:''' Tu enkraūne zūrbrukin, kawīds bēi jāu āupausintan.'''
-
-Tebbei prawerru prestun, anga ast tikrōmiskan ēmpirsin sadīntun enkraūtun šin zūrbrukin.
-Šisse zūrbrukes āupausisnas registerin ast waidīntan zemmais.",
 'filename-bad-prefix'         => "Enkraūtas zūrbrukes pabilisnā pagaūne si sen '''\"\$1\"'''. Sta ast nidekskriptīwa pabilisnā kawīda ast preipeisātan autōmatiskai pra digitālins kāmerans.
 Madli etrīnkais swajasmu zūrbrukin spārtais deskriptīwan pabilīsnan.",
 'upload-success-subj'         => 'Zūrbrukes enkraūsenis izpalla',
@@ -1327,7 +1313,6 @@ Zemmaisi listi waidinna tēr {{PLURAL:$1|pirman autengīnsenin|pirmans $1 auteng
 Preiēiminan ast dīgi [[Special:WhatLinksHere/$2|pilna listi]].',
 'nolinkstoimage'            => 'Nist pāusai autengīntai prei šin zūrbrukin.',
 'morelinkstoimage'          => 'Waidinnais [[Special:WhatLinksHere/$1|tūls autengīnsenins]] prēi šin zūrbrukin.',
-'redirectstofile'           => '{{PLURAL:$1|Šis zūrbrukis|Šai zūrbrukei}} prawedda prei šin zūrbrukin:',
 'duplicatesoffile'          => '{{PLURAL:$1|Šis zūrbrukis ast kōpija|Šai zūrbrukei ast kōpijas}} stesse zūrbrukin ([[Special:FileDuplicateSearch/$2|tūls informaciōnis]]):',
 'sharedupload'              => 'Šis zūrbrukis ast en $1 be mazzi būtwei tērpautan en kitēimans prōjaktans.',
 'filepage-nofile'           => 'Zūrbrukis sen stawīdan pabilīsnan ni ekzistijja.',
@@ -1623,10 +1608,8 @@ E-mail adressi kawīdan tū enpeisāi en [[Special:Preferences|twajjans pirminis
 'watchlistanontext'    => 'Madli $1, kāi widālai elāmentans stesse listin stēisan nadirītan.',
 'watchnologin'         => 'Ni assei engūbun',
 'watchnologintext'     => 'Tū turri būtwei[[Special:UserLogin|engūbun]], kāi kitawīdintun listin stēisan nadirītan.',
-'addedwatch'           => 'Preidātan prei listin stēisan nadirītan',
 'addedwatchtext'       => "Pāusan \"[[:\$1]]\" pastāi preidātan prei twajjan [[Special:Watchlist|nadirītan listin]].
 Eraīna šisse pāusas ēnturas kitawīdinsna anga diskusiōnis pāusas sēitan sen tennan kitawīdinsna wīrst būwusi enpeisātan en šissei listin. Pāusas tītels wīrst būwuns '''pastarīntan''' en [[Special:RecentChanges|listei stēisan panzdauman kitawīdinsnan]], kāi lānginlai ti endirītun kitawīdinsnan.",
-'removedwatch'         => 'Āupausintan iz listin stēisan nadirītan',
 'removedwatchtext'     => 'Pāusan "[[:$1]]" pastāi āupausintan iz [[Special:Watchlist|twajjan listin stēisan āupausintan]].',
 'watch'                => 'Nadirēis',
 'watchthispage'        => 'Nadirēis šin pāusan',
@@ -1675,7 +1658,7 @@ Eraīna šisse pāusas ēnturas kitawīdinsna anga diskusiōnis pāusas sēitan 
 Izbāndais, anga perarwi kwaitēi tu stan segītun, kāi tū izpresta rīplins, adder ka tū segēi ast preitarīngi sen [[{{MediaWiki:Policy-url}}pōlitikin]].',
 'actioncomplete'         => 'Dīlasenis izpilnintan',
 'actionfailed'           => 'Dīlasenis ni izpalla',
-'deletedtext'            => 'Āupausinā di "<nowiki>$1</nowiki>"
+'deletedtext'            => 'Āupausinā di "$1"
 Wīdais en $2 listin stēisan panzdauman āupausinsenin.',
 'deletedarticle'         => 'ast āupausinuns(si) "[[$1]]"',
 'suppressedarticle'      => 'ast enkliptinuns(si) "[[$1]]"',
@@ -1720,7 +1703,7 @@ Kāi widālai listin stēisan tēntiskai pakūnstan pāusan, jaīs en [[Special:
 'protectexpiry'               => 'Wangīnsnas kerdā:',
 'protect_expiry_invalid'      => 'Wangīnsnas kerdā ast nitikrōmiskan.',
 'protect_expiry_old'          => 'Wangīnsnas kerdā ast en pragūbiniskwai.',
-'protect-text'                => "Stwi tu mazzi izbandātwei be kitawīdintun pāusas '''<nowiki>$1</nowiki>''' pakūnsnas līgmenin.",
+'protect-text'                => "Stwi tu mazzi izbandātwei be kitawīdintun pāusas '''$1''' pakūnsnas līgmenin.",
 'protect-locked-blocked'      => "Tu ni mazzi kitawīdintun pakūnsnas līgmenin, beggi assei blōkitan.
 Tēntiskas ensadīnsenei per pāusan '''$1''':",
 'protect-locked-dblock'       => "Ni mazīngi kitawīdintun pakūnsnas līgmenin, dīlantis dātanbazis blōkisnas paggan.
@@ -2203,9 +2186,7 @@ Pirzdau enpeisāsnan, tērpaus pirmādiras knuppan.',
 Sta preiwērpja enpeisātun brewīnslin en kitawīdisnan ebpeisāseņu.',
 
 # Metadata
-'nodublincore'      => 'Metadātan preitarīngi prei Dublin  Core RDF pastāi izklaūtan per šin sērwerin.',
-'nocreativecommons' => 'Metadātan preitarīngi prei Creative Commons RDF pastāi izklaūtan per šin sērwerin.',
-'notacceptable'     => 'Wiki sērwerin ni mazzi preistatīntun dātan en fōrmatu palaīpsitasmu pra twajjan lasātlin.',
+'notacceptable' => 'Wiki sērwerin ni mazzi preistatīntun dātan en fōrmatu palaīpsitasmu pra twajjan lasātlin.',
 
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Anōnims tērpautajs|Anōnimai tērpautajai}} stesse {{SITENAME}}',
@@ -2227,14 +2208,6 @@ Sta ast drūwiminai dīlintan pra autengīnsenin prēi izwinandan pāusan iz kī
 'spambot_username'    => 'MediaWiki - spamas skīstinsna',
 'spam_reverting'      => 'Etwārtai wartīnsna stesses panzdauman wersiōnin, ni turrintes ēn sin autengīnsenins prei $1',
 'spam_blanking'       => 'Wissas wesiōnis turēi en sin autengīnsenins prei $1. Pāusas skistīnsna.',
-
-# Info page
-'infosubtitle'   => 'Infōrmaciōni ezze pāusan',
-'numedits'       => 'Redigīsenin gīrbis (pāusan): $1',
-'numtalkedits'   => 'Redigīsenin gīrbis (diskusiōnis pāusan): $1',
-'numwatchers'    => 'Nadirīntin gīrbis: $1',
-'numauthors'     => 'Autōran gīrbis (pāusan): $1',
-'numtalkauthors' => 'Autōran gīrbis (diskusiōnis pāusan): $1',
 
 # Patrolling
 'markaspatrolleddiff'                 => 'Pazentlis kāigi "izbandātan"',
@@ -2780,5 +2753,15 @@ Enpeisāis zūrbrukes pabilīsnan šlāit "{{ns:file}}:" prefiksan.',
 'htmlform-int-toolow'          => 'Enwesta wērtibi ast mazzan nikāi minimum per $1',
 'htmlform-int-toohigh'         => 'Enwesta wērtibi ast aūktaisin nikāi maksimum per $1',
 'htmlform-selectorother-other' => 'Kitā',
+
+# Add categories per AJAX
+'ajax-add-category'            => 'Preidāis kategōrijan',
+'ajax-add-category-submit'     => 'Preidāis',
+'ajax-confirm-title'           => 'Padruktinais dīlasenin',
+'ajax-confirm-save'            => 'Enpeisāis',
+'ajax-add-category-summary'    => 'Preidāis kategōrijan "$1"',
+'ajax-remove-category-summary' => 'Āupausinais kategōrijan "$1"',
+'ajax-error-title'             => 'Blānda',
+'ajax-error-dismiss'           => 'Labbai',
 
 );

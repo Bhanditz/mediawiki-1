@@ -204,14 +204,7 @@ $messages = array(
 'noindex-category'               => 'İndeksləşdirilməyən səhifələr',
 'broken-file-category'           => 'İşləməyən fayl keçidləri olan səhifələr',
 
-'linkprefix'        => '/^(.*?)([a-zA-Z\\x80-\\xff]+)$/sD',
-'mainpagetext'      => "'''MediaWiki müvəffəqiyyətlə quraşdırıldı.'''",
-'mainpagedocfooter' => 'Bu vikinin istifadəsi ilə bağlı məlumat almaq üçün [http://meta.wikimedia.org/wiki/Help:Contents İstifadəçi məlumat səhifəsinə] baxın.
-
-== Faydalı keçidlər ==
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Tənzimləmələrin siyahısı]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki haqqında tez-tez soruşulan suallar]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki e-poçt siyahısı]',
+'linkprefix' => '/^(.*?)([a-zA-Z\\x80-\\xff]+)$/sD',
 
 'about'         => 'İzah',
 'article'       => 'Mündəricat',
@@ -263,7 +256,6 @@ $messages = array(
 'history'           => 'Səhifənin tarixçəsi',
 'history_short'     => 'Tarixçə',
 'updatedmarker'     => 'son dəfə mən nəzərdən keçirəndən sonra yenilənib',
-'info_short'        => 'Məlumat',
 'printableversion'  => 'Çap variantı',
 'permalink'         => 'Daimi bağlantı',
 'print'             => 'Çap',
@@ -469,7 +461,6 @@ Tərcümə üçün daha yaxşı olar ki, MediaWiki-nin lokallaşması üçün ol
 'cascadeprotected'     => 'Səhifə mühafizə olunub, çünki o kaskad mühafizə olunan {{PLURAL:$1|növbəti səhifəyə|növbəti səhifələrə}} qoşulub:
 $2',
 'namespaceprotected'   => 'Sizin adlarında $1 olan məqalələrdə redaktə etməyə icazəniz yoxdur.',
-'customcssjsprotected' => 'Sizin bu səhifədə redaktə etməyə icazəniz yoxdur. Çünki bu səhifədə başqa istifadəçinin şəxsi məlumatları var.',
 'ns-specialprotected'  => 'Xüsusi səhifələr redaktə oluna bilməz.',
 'titleprotected'       => 'Bu adda səhifənin yaradılması istifadəçi [[User:$1|$1]] tərəfindən qadağan edilmişdir.
 Göstərilən səbəb: "\'\'$2\'\'".',
@@ -528,7 +519,7 @@ Kukların qoşulmasına əmin olduqdan sonra səhifəni yeniləyib bir daha sın
 'nosuchuser'                 => '"$1" adında istifadəçi mövcud deyil.
 İstifadəçi adları hərflərin böyük və ya kiçik olmasına həssasdırlar.
 Düzgün yazdığına əmin ol, yaxud [[Special:UserLogin/signup|yeni hesab aç]].',
-'nosuchusershort'            => '"<nowiki>$1</nowiki>" adında istifadəçi mövcud deyil.
+'nosuchusershort'            => '"$1" adında istifadəçi mövcud deyil.
 Düzgün yazdığına əmin ol.',
 'nouserspecified'            => 'İstifadəçi adı daxil etməlisiniz.',
 'login-userblocked'          => 'Bu istifadəçi bloklanıb. Sistemə giriş üçün icazə verilmir.',
@@ -540,7 +531,7 @@ Düzgün yazdığına əmin ol.',
 'mailmypassword'             => 'E-mail ilə yeni parol göndər',
 'passwordremindertitle'      => '{{SITENAME}} parol xatırladıcı',
 'noemail'                    => '"$1" adlı istifadəçi e-poçt ünvanını qeyd etməmişdir.',
-'noemailcreate'              => 'Düzgün e-mail ünvanı qeyd etməlisiniz',
+'noemailcreate'              => 'Düzgün e-poçt ünvanı qeyd etməlisiniz',
 'passwordsent'               => 'Yeni parol "$1" üçün qeydiyyata alınan e-poçt ünvanına göndərilmişdir.
 Xahiş edirik, e-məktubu aldıqdan sonra yenidən daxil olasınız.',
 'blocked-mailpassword'       => 'İP ünvanınız bloklu olduğuna görə, yeni parol göndərmə mümkün deyil.',
@@ -663,7 +654,7 @@ və ya səhifəni [{{fullurl:{{FULLPAGENAME}}|action=edit}} redaktə]</span> ed�
 'noarticletext-nopermission'       => 'Hal-hazırda bu səhifə boşdur. Başqa səhifələrdə eyni adda səhifəni [[Special:Search/{{PAGENAME}}| axtara]], əlaqəli qeydlərə
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} baxa],
 və ya səhifəni [{{fullurl:{{FULLPAGENAME}}|action=edit}} redaktə]</span> edə bilərsiniz.',
-'userpage-userdoesnotexist'        => '"$1" istifadəçi adı qeydiyyata alınmayıb.
+'userpage-userdoesnotexist'        => '"<nowiki>$1</nowiki>" istifadəçi adı qeydiyyata alınmayıb.
 Əgər siz bu səhifəni yaratmaq/redaktə etmək istəyirsinizsə, xahiş edirik bunu yoxlayın.',
 'userpage-userdoesnotexist-view'   => '"$1" istifadəçi hesabı qeydiyyatda deyil',
 'blocked-notice-logextract'        => 'Bu istifadəçi hal-hazırda bloklanmışdır.
@@ -757,7 +748,7 @@ $3 tərəfindən verilən səbəb ''$2''",
 'viewpagelogs'           => 'Bu səhifə ilə bağlı qeydlərə bax',
 'nohistory'              => 'Bu səhifənin dəyişikliklər tarixçəsi mövcud deyil.',
 'currentrev'             => 'Hal-hazırkı versiya',
-'currentrev-asof'        => 'Səhifəsnin $1 tarixinə olan son halı',
+'currentrev-asof'        => 'Səhifəsinin $1 tarixinə olan son halı',
 'revisionasof'           => '$1 versiyası',
 'revision-info'          => '$2 tərəfindən yaradılmış $1 tarixli dəyişiklik',
 'previousrevision'       => '←Əvvəlki versiya',
@@ -920,7 +911,7 @@ $1",
 'searchprofile-project'            => 'Kömək və Layihə səhifələri',
 'searchprofile-images'             => 'Multimedia',
 'searchprofile-everything'         => 'Hər şey',
-'searchprofile-advanced'           => 'Qabaqcıl',
+'searchprofile-advanced'           => 'Ətraflı',
 'searchprofile-articles-tooltip'   => 'Axtarış $1',
 'searchprofile-project-tooltip'    => 'Axtarış $1',
 'searchprofile-images-tooltip'     => 'Fayllar üçün axtarış',
@@ -975,6 +966,7 @@ $1",
 'prefs-skin'                    => 'Cild',
 'skin-preview'                  => 'Sınaq göstərişi',
 'datedefault'                   => 'Seçim yoxdur',
+'prefs-beta'                    => 'Beta xüsusiyyətlər',
 'prefs-datetime'                => 'Tarix və vaxt',
 'prefs-personal'                => 'İstifadəçi profili',
 'prefs-rc'                      => 'Son dəyişikliklər',
@@ -1111,7 +1103,7 @@ Zaman ofseti',
 'group-bot'           => 'Botlar',
 'group-sysop'         => 'İdarəçilər',
 'group-bureaucrat'    => 'Bürokratlar',
-'group-suppress'      => 'Təftişçilər',
+'group-suppress'      => 'Müfəttişlər',
 'group-all'           => '(bütün)',
 
 'group-user-member'          => 'İstifadəçi',
@@ -1329,10 +1321,6 @@ Lütfən '''<tt>[[:$1]]</tt>''' keçidini yoxlayın və bu faylı yükləmək is
 'upload-description'         => 'Faylın izahı',
 'upload-options'             => 'Yükləmə parametrləri',
 'watchthisupload'            => 'Bu faylı izlə',
-'upload-wasdeleted'          => "'''Diqqət! Siz əvvəl bu ad altında mövcud olmuş və silinmiş faylı yenidən yükləməkdəsiniz'''
-
-Əvvəlcədən bu faylı yenidən yükləməyin nə dərəcədə lazımlı olduğunu müəyyənləşdirməyiniz məsləhətdir.
-Bu səhifənin silmə qeydləri aşağıda göstərilmişdir:",
 'filename-prefix-blacklist'  => ' #<!-- Bu sətrə toxunmayın --> <pre>
 # Sintaksis aşağıdakı kimi görünür:
 #   * "#" simvolundan sətrin sonuna kimi yazılar şərhdir
@@ -1395,7 +1383,7 @@ $1',
 'listfiles_name'        => 'Ad',
 'listfiles_user'        => 'İstifadəçi',
 'listfiles_size'        => 'Həcm',
-'listfiles_description' => 'Açıqlama',
+'listfiles_description' => 'İzah',
 'listfiles_count'       => 'Versiya',
 
 # File description page
@@ -1414,9 +1402,10 @@ $1',
 'filehist-dimensions'               => 'Ölçülər',
 'filehist-filesize'                 => 'Faylın həcmi',
 'filehist-comment'                  => 'Şərh',
-'filehist-missing'                  => 'Şəkil gözlənilir',
+'filehist-missing'                  => 'Fayl çatışmır',
 'imagelinks'                        => 'Fayl keçidləri',
 'linkstoimage'                      => '{{PLURAL:$1|səhifə|$1 səhifə}} bu fayla istinad edir:',
+'linkstoimage-redirect'             => '$1 (fayl istiqamətləndirilir) $2',
 'sharedupload'                      => 'Bu fayl $1-dandır və ola bilsin ki, başqa layihələrdə də istifadə edilir.',
 'uploadnewversion-linktext'         => 'Bu faylın yeni versiyasını yüklə',
 'shared-repo-from'                  => '$1-dan',
@@ -1694,11 +1683,9 @@ Fərdi hüquqlar haqqında əlavə məlumatı [[{{MediaWiki:Listgrouprights-help
 'nowatchlist'          => 'İzləmə siyahınız böşdur.',
 'watchnologin'         => 'Daxil olmamısınız',
 'watchnologintext'     => 'İzləmə siyahınızda dəyişiklik aparmaq üçün [[Special:UserLogin|daxil olmalısınız]].',
-'addedwatch'           => 'İzləmə siyahısına əlavə edildi.',
 'addedwatchtext'       => '"$1" səhifəsi [[Special:Watchlist|izlədiyiniz səhifələrə]] əlavə edildi. Bu səhifədə və əlaqəli müzakirə səhifəsində olacaq dəyişikliklər orada göstəriləcək və səhifə asanlıqla seçiləbilmək üçün [[Special:RecentChanges|son dəyişikliklər]]-də qalın şriftlərlə görsənəcəkdir.
 
 Səhifəni izləmə sıyahınızdan çıxarmaq üçün yan lovhədəki "izləmə" düyməsinə vurun.',
-'removedwatch'         => 'İzləmə siyahısından çıxardılıb',
 'removedwatchtext'     => '"[[:$1]]" səhifəsi [[Special:Watchlist|izləmə siyahınızdan]] çıxarıldı.',
 'watch'                => 'İzlə',
 'watchthispage'        => 'Bu səhifəni izlə',
@@ -1768,7 +1755,7 @@ Yardım və təklifləriniz üçün:
 'confirmdeletetext'      => 'Bu səhifə və ya fayl bütün tarixçəsi ilə birlikdə birdəfəlik silinəcək. Bunu [[{{MediaWiki:Policy-url}}|qaydalara]] uyğun etdiyinizi və əməliyyatın nəticələrini başa düşdüyünüzü təsdiq edin.',
 'actioncomplete'         => 'Fəaliyyət tamamlandı',
 'actionfailed'           => 'Əməliyyat yerinə yetirilmədi',
-'deletedtext'            => '"<nowiki>$1</nowiki>" silindi.
+'deletedtext'            => '"$1" silindi.
 Sonuncu silinmələrə bax: $2.',
 'deletedarticle'         => '"[[$1]]" silindi',
 'suppressedarticle'      => '"[[$1]]" gizlədildi',
@@ -1812,7 +1799,7 @@ Sonuncu silinmələrə bax: $2.',
 'protect_expiry_invalid'      => 'Mühafizənin bitmə vaxtı səhvdir.',
 'protect_expiry_old'          => 'Bitmə vaxtı keçmişdir.',
 'protect-unchain-permissions' => 'Mühafizənin əlavə parametrlərini açmaq',
-'protect-text'                => "Siz '''<nowiki>$1</nowiki>''' səhifəsinin mühafizə səviyyəsini görə və dəyişə bilərsiniz.",
+'protect-text'                => "Siz '''$1''' səhifəsinin mühafizə səviyyəsini görə və dəyişə bilərsiniz.",
 'protect-locked-blocked'      => "Səhifənin bloklu olduğu müddətdə siz mühafizə səviyyəsini dəyişə bilməzsiniz.
 '''$1''' səhifəsində hal-hazırda edə biləcəyiniz əməliyyatlar bunlardır:",
 'protect-locked-dblock'       => "Verilənlər bazası kilidli olduğu üçün mühafizə səviyyəsi dəyişilə bilməz.
@@ -2115,7 +2102,7 @@ Zəhmət olmasa başqa ad seçin.',
 'immobile-target-namespace-iw' => 'İntervikilər səhifə adının dəyişməsi üçün əsas ola bilməz.',
 'immobile-source-page'         => 'Bu səhifənin adı dəyişdirilə bilməz.',
 'immobile-target-page'         => 'Bu hədəf başlığına daşınmır.',
-'imageinvalidfilename'         => 'Hədəf fayl adı keçərsizdir.',
+'imageinvalidfilename'         => 'Seçilmiş fayl adı keçərsizdir.',
 'protectedpagemovewarning'     => "'''Xəbərdarlıq:''' Bu səhifə mühafizə edildiyi üçün onun adını yalnız idarəçilər dəyişə bilərlər.",
 
 # Export
@@ -2277,9 +2264,7 @@ Zəhmət olmasa başqa ad seçin.',
 'group-bureaucrat.js'    => '/* Burada istənilən JavaScript yalnız bürokratlar üçün yüklənəcək */',
 
 # Metadata
-'nodublincore'      => 'Bu server üçün Dublin Core RDF metaməlumatları qadağandır.',
-'nocreativecommons' => 'Bu server üçün Creative Commons RDF metaməlumatları qadağandır.',
-'notacceptable'     => 'Viki-server məlumatları brauzerinizin oxuya biləcəyi formatda təqdim edə bilmir.',
+'notacceptable' => 'Viki-server məlumatları brauzerinizin oxuya biləcəyi formatda təqdim edə bilmir.',
 
 # Attribution
 'anonymous'     => '{{SITENAME}} saytının anonim {{PLURAL:$1|istifadəçisi|istifadəçiləri}}',
@@ -2294,12 +2279,6 @@ Zəhmət olmasa başqa ad seçin.',
 # Spam protection
 'spamprotectiontitle' => 'Spam qoruma süzgəci',
 'spambot_username'    => 'MediaViki spam təmizləməsi',
-
-# Info page
-'infosubtitle' => 'Səhifə üçün məlumat',
-'numedits'     => 'Redaktələrin sayı (səhifə): $1',
-'numtalkedits' => 'Redaktələrin sayı (müzakirə səhifəsi): $1',
-'numwatchers'  => 'Baxış sayı: $1',
 
 # Skin names
 'skinname-standard'    => 'Classic',
@@ -2902,5 +2881,11 @@ Variants for Chinese language
 # SQLite database support
 'sqlite-has-fts' => '$1 tam mətn axtarma ilə',
 'sqlite-no-fts'  => '$1 tam mətn axtarma olmadan',
+
+# Add categories per AJAX
+'ajax-add-category-submit' => 'Əlavə et',
+'ajax-confirm-save'        => 'Qeyd et',
+'ajax-error-title'         => 'Xəta',
+'ajax-error-dismiss'       => 'OK',
 
 );

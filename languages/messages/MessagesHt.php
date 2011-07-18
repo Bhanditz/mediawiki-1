@@ -269,15 +269,6 @@ $messages = array(
 'index-category'                 => 'Paj endèkse yo',
 'noindex-category'               => 'Paj ki pa endèkse yo',
 
-'mainpagetext'      => "'''MedyaWiki byen enstale l.'''",
-'mainpagedocfooter' => 'Konsilte [http://meta.wikimedia.org/wiki/Help:Konteni Gid Itilizatè] pou enfòmasyon sou kijan pou w itilize logisyèl wiki a.
-
-== Kijan pou kòmanse ==
-
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Lis paramèt yo pou konfigirasyon]
-* [http://www.mediawiki.org/wiki/Manyèl:FAQ MediaWiki FAQ]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Lis diskisyon ki parèt sou MediaWiki]',
-
 'about'         => 'Apwopo',
 'article'       => 'Atik',
 'newwindow'     => '(Ouvè nan yon lòt fenèt)',
@@ -328,7 +319,6 @@ $messages = array(
 'history'           => 'Istorik paj la',
 'history_short'     => 'Istorik',
 'updatedmarker'     => 'Aktyalize depi dènyè visit mwen',
-'info_short'        => 'Enfòmasyon',
 'printableversion'  => 'Vèsyon ou kapab enprime',
 'permalink'         => 'Lyen pou tout tan',
 'print'             => 'Enprime',
@@ -524,7 +514,6 @@ Demann : $2',
 'cascadeprotected'     => 'Paj sa pwoteje kounye a paske l nan {{PLURAL:$1|paj ki douvan l|paj yo ki douvan l}}, paske {{PLURAL:$1|l te pwoteje|yo te pwoteje}} ak opsyon « pwoteksyon pou tout paj ki nan premye paj an - kaskad » aktive :
 $2',
 'namespaceprotected'   => "Ou pa gen dwa modifye paj nan espas non « '''$1''' ».",
-'customcssjsprotected' => 'Ou pa kapab modifye paj sa paske li manke w kèk otorizasyon; li genyen preferans yon lòt itilizatè.',
 'ns-specialprotected'  => 'Paj yo ki nan espas non « {{ns:special}} » pa kapab modifye.',
 'titleprotected'       => "Tit, sijè sa pwoteje pandan kreyasyon l pa [[User:$1|$1]].
 Rezon li bay yo se « ''$2'' ».",
@@ -578,7 +567,7 @@ Asire w koukiz (cookies) yo aktive nan navigatè w, chaje paj la ankò epi eseye
 'nosuchuser'                 => 'Itilizatè "$1" pa ekziste.
 Majiskil ak miniskil chanje non itilizatè.
 Byen gade ke ou te byen ekri non ou, oubyen [[Special:UserLogin/signup|kreye yon nouvo kont]].',
-'nosuchusershort'            => 'Pa genyen itilizatè ak non « <nowiki>$1</nowiki> » sa a. Byen gade lòtograf ou an.',
+'nosuchusershort'            => 'Pa genyen itilizatè ak non « $1 » sa a. Byen gade lòtograf ou an.',
 'nouserspecified'            => 'Ou dwe mete non itilizatè ou an.',
 'login-userblocked'          => 'Itilizatè sa bloke.  Li pa gendwa konekte.',
 'wrongpassword'              => 'Mopas an pa korèk. Eseye ankò.',
@@ -725,7 +714,7 @@ Si se paske ou fè yon erè ke ou rive nan paj sa a, klike anlè bouton '''fè b
 Ou mèt [[Special:Search/{{PAGENAME}}|fè yon rechèch, fouye ak non paj sa a]] nan lòt paj yo, oubyen <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} chache jounal modifikasyon yo ki an relasyon ak paj sa] oubyen tou [{{fullurl:{{FULLPAGENAME}}|action=edit}} modifye paj sa]</span>.',
 'noarticletext-nopermission'       => 'Poko genyen tèks nan paj sa a.
 Ou mèt [[Special:Search/{{PAGENAME}}|fè yon rechèch, fouye ak non paj sa a]] nan lòt paj yo, oubyen <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} chache jounal modifikasyon yo ki an relasyon ak paj sa].',
-'userpage-userdoesnotexist'        => 'Kont itilizatè « $1 » sa pa anrejistre. Verifye toutbon ke ou vle kreye paj sa.',
+'userpage-userdoesnotexist'        => 'Kont itilizatè « <nowiki>$1</nowiki> » sa pa anrejistre. Verifye toutbon ke ou vle kreye paj sa.',
 'userpage-userdoesnotexist-view'   => 'Itilizatè "$1" pa ekziste.',
 'blocked-notice-logextract'        => 'Itilizatè sa a bloke kounye a.
 Dènye jounal pou blokaj yo parèt anba kòm referans:',
@@ -1141,10 +1130,8 @@ Gade tou [[Special:WantedCategories|kategori moun mande]].',
 # Watchlist
 'watchlist'         => 'Lis swivi mwen',
 'mywatchlist'       => 'Lis swivi mwen',
-'addedwatch'        => 'Ajoute nan lis swivi',
 'addedwatchtext'    => 'Paj « [[:$1]] » te byen ajoute nan [[Special:Watchlist|lis swivi ou an]].
 Depi kounye a, tout modifikasyon nan paj sa a ak nan paj diskisyon li pral parèt <b>fonse</b> nan [[Special:RecentChanges|lis chanjman ki fèk fèt]] pou ou ka wè yo pi byen.',
-'removedwatch'      => 'Retire nan lis swivi',
 'removedwatchtext'  => 'Paj "[[:$1]]" byen retire nan [[Special:Watchlist|lis swivi ou an]].',
 'watch'             => 'Swiv',
 'watchthispage'     => 'Swiv paj sa a',
@@ -1162,7 +1149,7 @@ Depi kounye a, tout modifikasyon nan paj sa a ak nan paj diskisyon li pral parè
 'historywarning'        => "'''Atansyon:''' paj w ap efase a genyen yon istorik ki genyen $1 {{PLURAL:$1|revizyon|revizyon yo}} ladan l:",
 'confirmdeletetext'     => 'W ap efase yon paj oubyen yon imaj epi tout vèsyon li yo toutbon nan bazdone a. Tanpri, konfime aksyon enpòtan sa a, ke ou konprann sa w ap fè, epi ke ou fè l nan dwa ak [[{{MediaWiki:Policy-url}}|lwa medyawiki a]].',
 'actioncomplete'        => 'Aksyon an fèt',
-'deletedtext'           => '« <nowiki>$1</nowiki> » efase.
+'deletedtext'           => '« $1 » efase.
 Gade $2 pou wè yon lis efasman resan.',
 'deletedarticle'        => 'efase « [[$1]] »',
 'dellogpage'            => 'Jounal efasman yo',
@@ -1183,7 +1170,7 @@ Gade $2 pou wè yon lis efasman resan.',
 'protectexpiry'               => 'Ekspirasyon:',
 'protect_expiry_invalid'      => 'Dat ou mete a pou li ekspire pa bon',
 'protect_expiry_old'          => 'Dat ekspirasyon an deja pase.',
-'protect-text'                => "Ou mèt konsilte epi modifye nivo pwoteksyon paj '''<nowiki>$1</nowiki>''' isit.",
+'protect-text'                => "Ou mèt konsilte epi modifye nivo pwoteksyon paj '''$1''' isit.",
 'protect-locked-access'       => "Ou pa genyen dwa ki ap pèmèt ou modifye pwoteksyon paj sa a.
 Men reglaj pou paj '''$1''' an kounye a:",
 'protect-cascadeon'           => 'Paj sa a pwoteje kounye a paske li nan {{PLURAL:$1|paj|paj yo}}, ki gen opsyon pwoteksyon "enbrike" aktif. Ou mèt chanje nivo pwoteksyon paj sa a men li pap modifye pwoteksyon enbrike an.',

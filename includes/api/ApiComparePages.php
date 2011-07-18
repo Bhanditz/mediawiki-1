@@ -53,23 +53,29 @@ class ApiComparePages extends ApiBase {
 		$vals['torevid'] = $rev2;
 
 		$difftext = $de->getDiffBody();
-		ApiResult::setContent( $vals, $difftext );
+
+		if ( $difftext === false ) {
+			$this->dieUsage( 'The diff cannot be retrieved. ' .
+				'Maybe one or both revisions do not exist or you do not have permission to view them.', 'baddiff' );
+		} else {
+			ApiResult::setContent( $vals, $difftext );
+		}
 
 		$this->getResult()->addValue( null, $this->getModuleName(), $vals );
 	}
 
 	/**
 	 * @param $revision int
-	 * @param $title string
+	 * @param $titleText string
 	 * @return int
 	 */
-	private function revisionOrTitle( $revision, $title ) {
+	private function revisionOrTitle( $revision, $titleText ) {
 		if( $revision ){
 			return $revision;
-		} elseif( $title ) {
-			$title = Title::newFromText( $title );
+		} elseif( $titleText ) {
+			$title = Title::newFromText( $titleText );
 			if( !$title ){
-				$this->dieUsageMsg( array( 'invalidtitle', $title ) );
+				$this->dieUsageMsg( array( 'invalidtitle', $titleText ) );
 			}
 			return $title->getLatestRevID();
 		}
@@ -108,12 +114,13 @@ class ApiComparePages extends ApiBase {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'code' => 'inputneeded', 'info' => 'A title or a revision is needed' ),
 			array( 'invalidtitle', 'title' ),
+			array( 'code' => 'baddiff', 'info' => 'The diff cannot be retrieved. Maybe one or both revisions do not exist or you do not have permission to view them.' ),
 		) );
 	}
 
 	protected function getExamples() {
 		return array(
-			'api.php?action=compare&rev1=1&rev2=2',
+			'api.php?action=compare&fromrev=1&torev=2',
 		);
 	}
 

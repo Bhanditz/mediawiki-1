@@ -4,6 +4,31 @@
  * another, but don't ignore the poor pre-Monobook users either.
  */
 
+/* GENERAL CLASSES FOR DIRECTIONALITY SUPPORT */
+/* These classes should be used for text depending on the content direction.
+Content stuff like editsection, ul/ol and TOC depend on this. */
+ /* @noflip */.mw-content-ltr { direction: ltr; }
+/* @noflip */.mw-content-rtl { direction: rtl; }
+/* Most input fields should be in site direction */
+/* @noflip */.sitedir-ltr textarea, .sitedir-ltr input { direction: ltr; }
+/* @noflip */.sitedir-rtl textarea, .sitedir-rtl input { direction: rtl; }
+/* Input types that should follow user direction, like buttons */
+input[type="submit"], input[type="button"], input[type="reset"], input[type="file"] { direction: ltr; }
+/* Override default values */
+/* @noflip */textarea[dir="ltr"], input[dir="ltr"] { direction: ltr; }
+/* @noflip */textarea[dir="rtl"], input[dir="rtl"] { direction: rtl; }
+
+.mw-float-start { float: left; }
+.mw-float-end { float: right; }
+.mw-align-start { text-align: left; }
+.mw-align-end { text-align: right; }
+
+/* The scripts of these languages are very hard to read with underlines */
+[lang="ar"] a, [lang="ckb"] a, [lang="fa"] a, [lang="kk-arab"] a,
+[lang="mzn"] a, [lang="ps"] a, [lang="ur"] a {
+	text-decoration: none;
+}
+
 /* Default style for semantic tags */
 abbr, acronym, .explain {
 	border-bottom: 1px dotted black;
@@ -20,6 +45,7 @@ abbr, acronym, .explain {
 .allpagesredirect, .redirect-in-category, .watchlistredir {
 	font-style: italic;
 }
+
 
 /* Comment and username portions of RC entries */
 span.comment {
@@ -61,7 +87,9 @@ div#mw-js-message {
 	float: right;
 	margin-left: 5px;
 }
-
+/* Correct directionality when page dir is different from site/user dir */
+/* @noflip */.mw-content-ltr .editsection, .mw-content-rtl .mw-content-ltr .editsection { float: right; }
+/* @noflip */.mw-content-rtl .editsection, .mw-content-ltr .mw-content-rtl .editsection { float: left; }
 /**
  * File histories
  */
@@ -92,9 +120,6 @@ li span.deleted, span.history-deleted {
 	text-decoration: line-through;
 	color: #888;
 	font-style: italic;
-}
-li span.deleted a, span.history-deleted a {
-	color: #888;
 }
 
 /**
@@ -154,6 +179,30 @@ input#wpSummary {
 .magnify { float: right; }
 
 /**
+ * Categories
+ */
+#catlinks ul, #catlinks li {
+	display:inline;
+	margin: 0px;
+	list-style:none;
+	list-style-type:none;
+	list-style-image:none;
+}
+
+#catlinks li {
+	display:inline-block;
+	line-height: 1.35em;
+	padding: 0 .7em;
+	border-left: 1px solid #AAA;
+	margin: 0.3em 0;
+}
+
+#catlinks li:first-child {
+	padding-left: .4em;
+	border-left: none;
+}
+
+/**
  * Hidden categories
  */
 .mw-hidden-cats-hidden { display: none; }
@@ -164,67 +213,31 @@ p.mw-ipb-conveniencelinks, p.mw-protect-editreasons,
 p.mw-filedelete-editreasons, p.mw-delete-editreasons,
 p.mw-revdel-editreasons {
 	font-size: 90%;
-	float: right;
+	text-align: right;
 }
 
 /*
  * OpenSearch ajax suggestions
  */
-.os-suggest {
-	overflow: auto;
-	overflow-x: hidden;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	width: 0px;
-	background-color: white;
-	background-color: Window;
-	border-style: solid;
-	border-color: #AAAAAA;
-	border-width: 1px;
-	z-index:99;
-	font-size:95%;
-}
-
-table.os-suggest-results {
+.open-search-suggestions .ui-autocomplete {
 	font-size: 95%;
-	cursor: pointer;
-	border: 0;
-	border-collapse: collapse;
-	width: 100%;
+	border: 1px solid #AAA!important;
+	overflow: auto;
+	height: 100px;
+	background: #FFF;
+	background: Window;
 }
-
-.os-suggest-result, .os-suggest-result-hl {
-	white-space: nowrap;
-	background-color: white;
-	background-color: Window;
-	color: black;
-	color: WindowText;
-	padding: 2px;
-}
-.os-suggest-result-hl,
-.os-suggest-result-hl-webkit {
-	background-color: #4C59A6;
+.open-search-suggestions .ui-autocomplete #ui-active-menuitem {
+	background: #4C59A6;
+	background: Highlight;
 	color: white;
-}
-.os-suggest-result-hl {
-	/* System colors are misimplemented in Safari 3.0 and earlier,
-	   making highlighted text illegible... */
-	background-color: Highlight;
 	color: HighlightText;
+	border-color: #4C59A6;
+	border-color: Highlight;
 }
-
-.os-suggest-toggle {
-	position: relative;
-	left: 1ex;
-	font-size: 65%;
-}
-.os-suggest-toggle-def {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	font-size: 65%;
-	visibility: hidden;
+.open-search-suggestions .ui-autocomplete .ui-menu-item a{
+	line-height: 1.1!important;
+	font-size: 95%;
 }
 
 /* Page history styling */
@@ -298,6 +311,11 @@ a.feedlink {
 	background: none !important;
 	padding: 0 !important;
 }
+/* External URLs should always be treated as LTR (bug 4330) */
+/* @noflip */ .rtl a.external.free, .rtl a.external.autonumber {
+	direction: ltr;
+	unicode-bidi: embed;
+}
 
 /* wikitable class for skinning normal tables
  * keep on sync with commonPrint.css
@@ -331,11 +349,15 @@ table.collapsed tr.collapsable {
 	color: green;
 	font-size: larger;
 }
+.warning {
+	color: #FFA500; /* orange */
+	font-size: larger;
+}
 .error {
 	color: red;
 	font-size: larger;
 }
-.errorbox, .successbox {
+.errorbox, .warningbox, .successbox {
 	font-size: larger;
 	border: 2px solid;
 	padding: .5em 1em;
@@ -347,16 +369,38 @@ table.collapsed tr.collapsable {
 	border-color: red;
 	background-color: #fff2f2;
 }
+.warningbox {
+	border-color: #FF8C00; /* darkorange */
+	background-color: #FFFFC0;
+}
 .successbox {
 	border-color: green;
 	background-color: #dfd;
 }
-.errorbox h2, .successbox h2 {
+.errorbox h2, .warningbox h2, .successbox h2 {
 	font-size: 1em;
 	font-weight: bold;
 	display: inline;
 	margin: 0 .5em 0 0;
 	border: none;
+}
+
+/* general info/warning box for SP */
+.mw-infobox {
+	border: 2px solid #ff7f00;
+	margin: 0.5em;
+	clear: left;
+	overflow: hidden;
+}
+
+.mw-infobox-left {
+	margin: 7px;
+	float: left;
+	width: 35px;
+}
+
+.mw-infobox-right {
+	margin: 0.5em 0.5em 0.5em 49px;
 }
 
 /* Note on preview page */
@@ -391,7 +435,6 @@ table.collapsed tr.collapsable {
 .TablePager {
 	min-width: 80%;
 	border-collapse: collapse;
-	margin: 0 auto;
 }
 .TablePager_nav {
 	margin: 0 auto;
@@ -531,37 +574,16 @@ li.gallerybox div.thumb {
 	margin: 2px;
 }
 
+li.gallerybox div.thumb img {
+	display: block;
+	margin: 0 auto;
+}
+
 div.gallerytext {
 	overflow: hidden;
 	font-size: 94%;
 	padding: 2px 4px;
 	word-wrap: break-word;
-}
-
-#mw-addcategory-prompt {
-	display: inline;
-	margin-left: 1em;
-}
-
-#mw-addcategory-prompt input {
-	margin-left: 0.5em;
-	margin-right: 0.5em;
-}
-
-.mw-remove-category {
-	padding: 8px;
-	/* @embed */
-	background-image: url(images/remove.png);
-	background-position: center center;
-	background-repeat: no-repeat;
-}
-
-.mw-ajax-addcategory {
-	padding-left: 20px;
-	/* @embed */
-	background-image: url(images/add.png);
-	background-position: left center;
-	background-repeat: no-repeat;
 }
 
 .mw-ajax-loader {
@@ -583,6 +605,15 @@ div.gallerytext {
 	background-repeat: no-repeat;
 }
 
+/* Correct directionality when page dir is different from site/user dir */
+/* @noflip */.mw-content-ltr ul, .mw-content-ltr ol,
+.mw-content-rtl .mw-content-ltr ul, .mw-content-rtl .mw-content-ltr ol {
+	margin: .3em 0 0 1.5em;
+}
+/* @noflip */.mw-content-rtl ul, .mw-content-rtl ol,
+.mw-content-ltr .mw-content-rtl ul, .mw-content-ltr .mw-content-rtl ol {
+	margin: .3em 1.5em 0 0;
+}
 /* Localised ordered list numbering for some languages */
 ol:lang(bcc) li,
 ol:lang(bqi) li,
@@ -609,21 +640,40 @@ ol:lang(or) li {
 	list-style-type: oriya;
 }
 
+/* Correct directionality when page dir is different from site/user dir */
+/* @noflip */.mw-content-ltr .toc ul, .mw-content-ltr #toc ul,
+.mw-content-rtl .mw-content-ltr .toc ul, .mw-content-rtl .mw-content-ltr #toc ul {
+	text-align: left;
+	margin-left: 0;
+}
+/* @noflip */.mw-content-rtl .toc ul, .mw-content-rtl #toc ul,
+.mw-content-ltr .mw-content-rtl .toc ul, .mw-content-ltr .mw-content-rtl #toc ul {
+	text-align: right;
+	margin-right: 0;
+}
+/* @noflip */.mw-content-ltr .toc ul ul, .mw-content-ltr #toc ul ul,
+.mw-content-rtl .mw-content-ltr .toc ul ul, .mw-content-rtl .mw-content-ltr #toc ul ul {
+	margin: 0 0 0 2em;
+}
+/* @noflip */.mw-content-rtl .toc ul ul, .mw-content-rtl #toc ul ul,
+.mw-content-ltr .mw-content-rtl .toc ul ul, .mw-content-ltr .mw-content-rtl #toc ul ul {
+	margin: 0 2em 0 0;
+}
+
 /* tooltip styles */
 .mw-help-field-hint {
 	display: none;
-	padding: 0px;
-	padding-left: 15px;
 	margin-left: 2px;
 	margin-bottom: -8px;
+	padding: 0px 0px 0px 15px;
 	/* @embed */
 	background-image: url('images/help-question.gif');
 	background-position: left center;
 	background-repeat: no-repeat;
-	color: #0645ad;
-	text-decoration: underline;
 	cursor: pointer;
 	font-size: .8em;
+	text-decoration: underline;
+	color: #0645ad;
 }
 .mw-help-field-hint:hover {
 	/* @embed */
@@ -678,9 +728,52 @@ th.headerSortDown {
 	background-image: url(images/sort_down.gif); 
 }
 
-/* Special:Version */
-#sv-software td {
-	/* version numbers are always ltr (and otherwise an RLE can be inserted) */
+/* LTR content in RTL layout */
+.ltr {
 	/* @noflip */
 	direction: ltr;
+	unicode-bidi: embed;
 }
+
+#mw-clearyourcache, #mw-sitecsspreview, #mw-sitejspreview, #mw-usercsspreview, #mw-userjspreview {
+	direction: ltr;
+	unicode-bidi: embed;
+}
+
+/* Correct user & content directionality when viewing a diff */
+.diff-currentversion-title, .diff {
+	direction: ltr;
+	unicode-bidi: embed;
+}
+/* @noflip */ .diff-contentalign-right td {
+	direction: rtl;
+	unicode-bidi: embed;
+}
+/* @noflip */ .diff-contentalign-left td {
+	direction: ltr;
+	unicode-bidi: embed;
+}
+.diff-otitle, .diff-ntitle, .diff-lineno {
+	direction: ltr !important;
+	unicode-bidi: embed;
+}
+
+#mw-revision-info, #mw-revision-nav {
+	direction: ltr;
+}
+
+/* Images */
+/* @noflip */div.tright, div.floatright, table.floatright {
+	clear: right;
+	float: right;
+}
+/* @noflip */div.tleft, div.floatleft, table.floatleft {
+	float: left;
+	clear: left;
+}
+div.floatright, table.floatright, div.floatleft, table.floatleft {
+	position: relative;
+}
+
+/* bug 12205 */
+#mw-credits a { unicode-bidi: embed; }

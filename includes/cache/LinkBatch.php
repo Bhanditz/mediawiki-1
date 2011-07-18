@@ -27,14 +27,15 @@ class LinkBatch {
 	 * Use ->setCaller( __METHOD__ ) to indicate which code is using this
 	 * class. Only used in debugging output.
 	 * @since 1.17
+	 *
+	 * @param $caller
 	 */
 	public function setCaller( $caller ) {
 		$this->caller = $caller;
 	}
 
 	/**
-	 * @param  $title Title
-	 * @return void
+	 * @param $title Title
 	 */
 	public function addObj( $title ) {
 		if ( is_object( $title ) ) {
@@ -58,6 +59,8 @@ class LinkBatch {
 	/**
 	 * Set the link list to a given 2-d array
 	 * First key is the namespace, second is the DB key, value arbitrary
+	 *
+	 * @param $array array
 	 */
 	public function setArray( $array ) {
 		$this->data = $array;
@@ -65,6 +68,8 @@ class LinkBatch {
 
 	/**
 	 * Returns true if no pages have been added, false otherwise.
+	 *
+	 * @return bool
 	 */
 	public function isEmpty() {
 		return ($this->getSize() == 0);
@@ -72,6 +77,8 @@ class LinkBatch {
 
 	/**
 	 * Returns the size of the batch.
+	 *
+	 * @return int
 	 */
 	public function getSize() {
 		return count( $this->data );
@@ -81,10 +88,10 @@ class LinkBatch {
 	 * Do the query and add the results to the LinkCache object
 	 * Return an array mapping PDBK to ID
 	 */
-	 public function execute() {
-	 	$linkCache = LinkCache::singleton();
-	 	return $this->executeInto( $linkCache );
-	 }
+	public function execute() {
+		$linkCache = LinkCache::singleton();
+		return $this->executeInto( $linkCache );
+	}
 
 	/**
 	 * Do the query and add the results to a given LinkCache object
@@ -104,6 +111,9 @@ class LinkBatch {
 	 * As normal, titles will go into the static Title cache field.
 	 * This function *also* stores extra fields of the title used for link
 	 * parsing to avoid extra DB queries.
+	 *
+	 * @param $cache
+	 * @param $res
 	 */
 	public function addResultToCache( $cache, $res ) {
 		if ( !$res ) {

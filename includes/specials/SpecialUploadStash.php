@@ -97,7 +97,7 @@ class SpecialUploadStash extends UnlistedSpecialPage {
 			$message = $e->getMessage();
 		}
 
-		wfHttpError( $code, OutputPage::getStatusMessage( $code ), $message );
+		wfHttpError( $code, HttpStatus::getMessage( $code ), $message );
 		return false;
 	}
 
@@ -133,13 +133,12 @@ class SpecialUploadStash extends UnlistedSpecialPage {
 		return array( 'file' => $file, 'type' => $type );
 	}
 
-
-
-
 	/**
 	 * Get a thumbnail for file, either generated locally or remotely, and stream it out
-	 * @param String $key: key for the file in the stash
-	 * @param int $width: width of desired thumbnail
+	 *
+	 * @param $file
+	 * @param $params array
+	 *
 	 * @return boolean success
 	 */
 	private function outputThumbFromStash( $file, $params ) {
@@ -155,10 +154,7 @@ class SpecialUploadStash extends UnlistedSpecialPage {
 		} else {
 			$this->outputLocallyScaledThumb( $file, $params, $flags );
 		}
-
-
 	}
-
 
 	/**
 	 * Scale a file (probably with a locally installed imagemagick, or similar) and output it to STDOUT.
@@ -336,7 +332,6 @@ class SpecialUploadStash extends UnlistedSpecialPage {
 
 		$form->prepareForm();
 		$formResult = $form->tryAuthorizedSubmit();
-
 
 		// show the files + form, if there are any, or just say there are none
 		$refreshHtml = Html::element( 'a',

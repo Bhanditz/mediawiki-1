@@ -386,11 +386,9 @@ Tšüľľed, kummad õmad teďďellä [[Special:Watchlist|kattsõspiizgalla]] on
 # Watchlist
 'watchlist'         => 'Minu kattsõspiiska',
 'mywatchlist'       => 'Minu kattsõspiiska',
-'addedwatch'        => 'Lisättü kattsospiizgallõ',
 'addedwatchtext'    => "Tšültši \"[[:\$1]]\" on lisättü Teďďee [[Special:Watchlist|kattsospiizgallõ]].
 Tšültšese ja sene juttutšültšese tehäväd tulõvaizõd muutuhsõd leeväd tšisloitõtud siäll.
 Tšültši leeb tširjutõttu '''pimmiässi''' [[Special:RecentChanges|spiizgall viimeizije muutuhsijõ]].",
-'removedwatch'      => 'Pantu kattsõspiizgalt poiz',
 'removedwatchtext'  => 'Tšültši "[[:$1]]" on pantu [[Special:Watchlist|teďďee kattsõspiizgalt]] poiz.',
 'watch'             => 'Katso',
 'watchthispage'     => 'Katso sitä tšültšiä',
@@ -407,7 +405,7 @@ Tšültši leeb tširjutõttu '''pimmiässi''' [[Special:RecentChanges|spiizgall
 'deletepage'            => 'Pühi tšültši',
 'confirmdeletetext'     => 'Õlõtta pühtšimässä tšüľľee vai failii ja kõigõ sene istorii. Õlka nii üvä, kõvissõga jot tahotta sitä tehä, jot saatta arvoa sledstvijäd jot pühtšimüz on [[{{MediaWiki:Policy-url}}|poolissaa]] mukka.',
 'actioncomplete'        => 'Töö tehtü lõppuu',
-'deletedtext'           => '"<nowiki>$1</nowiki>" on pühittü.
+'deletedtext'           => '"$1" on pühittü.
 Tšüľľellä $2 on spiiska viimeiziss pühtšimühsiiss.',
 'deletedarticle'        => 'roottšiz tšüľľee [[$1]]',
 'dellogpage'            => 'Pühitüd tšüľľed',
@@ -426,7 +424,7 @@ Tšüľľellä $2 on spiiska viimeiziss pühtšimühsiiss.',
 'protectexpiry'               => 'Lõpub:',
 'protect_expiry_invalid'      => 'Lõppuaika eb kõlpa.',
 'protect_expiry_old'          => 'Lõppuaika on meneväz.',
-'protect-text'                => "Võitta kattsoa ja muuttaa tšüľľee '''<nowiki>$1</nowiki>''' lupoit.",
+'protect-text'                => "Võitta kattsoa ja muuttaa tšüľľee '''$1''' lupoit.",
 'protect-locked-access'       => "Että või muuttaa tšüľľee varjauztasoa. All on tšüľľee \"'''\$1'''\" nütšüized varjauztazod:",
 'protect-cascadeon'           => 'Kase tšültši on varjõttu, ku on sisällütettü all {{PLURAL:$1|õlõvaa jadgotussi varjõttuhõõ tšültšese|õlõvii jadgotussi varjõttuisõ tšültšiise}}. Võitta muuttaa sene tšüľľee varjuztasoa, mutta se eb vaikuta jadgotõttuu varjuhsiise.',
 'protect-default'             => 'Salli kõik tšäüttijäd',

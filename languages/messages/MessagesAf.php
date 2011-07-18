@@ -335,14 +335,6 @@ $messages = array(
 'noindex-category'               => 'Ongeïndekseerde bladsye',
 'broken-file-category'           => 'Bladsye met gebreekte lêer skakels',
 
-'mainpagetext'      => "'''MediaWiki is suksesvol geïnstalleer.'''",
-'mainpagedocfooter' => "Konsulteer '''[http://meta.wikimedia.org/wiki/Help:Contents User's Guide]''' vir inligting oor hoe om die wikisagteware te gebruik.
-
-== Hoe om te Begin ==
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
-
 'about'         => 'Aangaande',
 'article'       => 'Inhoudbladsy',
 'newwindow'     => '(verskyn in nuwe venster)',
@@ -371,7 +363,7 @@ $messages = array(
 'vector-action-move'             => 'Skuif',
 'vector-action-protect'          => 'Beskerm',
 'vector-action-undelete'         => 'Ontskrap',
-'vector-action-unprotect'        => 'Verwyder beskerming',
+'vector-action-unprotect'        => 'Wysig beskerming',
 'vector-simplesearch-preference' => 'Aktiveer verbeterde soek-voorstelle (slegs vir die Vektor omslag)',
 'vector-view-create'             => 'Skep',
 'vector-view-edit'               => 'Wysig',
@@ -393,7 +385,6 @@ $messages = array(
 'history'           => 'Ouer weergawes',
 'history_short'     => 'Geskiedenis',
 'updatedmarker'     => 'opgedateer sedert my laaste besoek',
-'info_short'        => 'Inligting',
 'printableversion'  => 'Drukbare weergawe',
 'permalink'         => 'Permanente skakel',
 'print'             => 'Druk',
@@ -409,8 +400,8 @@ $messages = array(
 'protect'           => 'Beskerm',
 'protect_change'    => 'wysig',
 'protectthispage'   => 'Beskerm hierdie bladsy',
-'unprotect'         => 'Verwyder beskerming',
-'unprotectthispage' => 'Verwyder beskerming vir die bladsy',
+'unprotect'         => 'Wysig beskerming',
+'unprotectthispage' => 'Verander beskerming vir die bladsy',
 'newpage'           => 'Nuwe bladsy',
 'talkpage'          => 'Bespreek hierdie bladsy',
 'talkpagelinktext'  => 'Besprekings',
@@ -595,7 +586,6 @@ Probeer asseblief weer oor 'n paar minute.",
 'sqlhidden'            => '(SQL navraag versteek)',
 'cascadeprotected'     => 'Hierdie bladsy is beskerm teen redigering omdat dit ingesluit is in die volgende {{PLURAL:$1|bladsy|bladsye}} wat beskerm is met die "kaskade" opsie aangeskakel: $2',
 'namespaceprotected'   => "U het nie toestemming om bladsye in die '''$1'''-naamruimte te wysig nie.",
-'customcssjsprotected' => "U het nie toestemming om hierdie bladsy te redigeer nie, want dit bevat 'n ander gebruiker se persoonlike verstellings.",
 'ns-specialprotected'  => 'Spesiale bladsye kan nie geredigeer word nie.',
 'titleprotected'       => "Hierdie titel is beskerm teen skepping deur [[User:$1|$1]].
 Die rede gegee is ''$2''.",
@@ -654,7 +644,7 @@ Maak seker dat u koekies aangeskakel het, herlaai die bladsy en probeer dan weer
 'nosuchuser'                 => 'Die gebruiker "$1" bestaan nie.
 Gebruikersname is gevoelig vir hoofletters.
 Maak seker dit is reg gespel of [[Special:UserLogin/signup|skep \'n nuwe rekening]].',
-'nosuchusershort'            => 'Daar is geen gebruikersnaam "<nowiki>$1</nowiki>" nie. Maak seker dit is reg gespel.',
+'nosuchusershort'            => 'Daar is geen gebruikersnaam "$1" nie. Maak seker dit is reg gespel.',
 'nouserspecified'            => "U moet 'n gebruikersnaam spesifiseer.",
 'login-userblocked'          => 'Hierdie gebruiker is geblokkeer.
 Intekening word verbied.',
@@ -828,7 +818,7 @@ U kan [[Special:Search/{{PAGENAME}}|vir die bladsytitel in ander bladsye soek]],
 of [{{fullurl:{{FULLPAGENAME}}|action=edit}} hierdie bladsy wysig]</span>.',
 'noarticletext-nopermission'       => 'Daar is tans geen teks in hierdie bladsy nie. U kan vir die bladsytitel [[Special:Search/{{PAGENAME}}|in ander bladsye soek]] of
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} die verwante logboeke deursoek]</span>.',
-'userpage-userdoesnotexist'        => 'U is besig om \'n gebruikersblad wat nie bestaan nie te wysig (gebruiker "$1"). Maak asseblief seker of u die bladsy wil skep/ wysig.',
+'userpage-userdoesnotexist'        => 'U is besig om \'n gebruikersblad wat nie bestaan nie te wysig (gebruiker "<nowiki>$1</nowiki>"). Maak asseblief seker of u die bladsy wil skep/ wysig.',
 'userpage-userdoesnotexist-view'   => 'Die gebruiker "$1" is nie geregistreer nie.',
 'blocked-notice-logextract'        => 'Hierdie gebruiker is tans geblokkeer.
 Die laaste inskrywing in die blokkeerlogboek word hieronder vertoon:',
@@ -1222,7 +1212,9 @@ U kan ook 'n naamruimte as voorvoegsel gebruik.",
 'prefs-skin'                    => 'Omslag',
 'skin-preview'                  => 'Voorskou',
 'datedefault'                   => 'Geen voorkeur',
+'prefs-beta'                    => 'Beta-funksies',
 'prefs-datetime'                => 'Datum en tyd',
+'prefs-labs'                    => 'Labs-funksies',
 'prefs-personal'                => 'Gebruikersdata',
 'prefs-rc'                      => 'Onlangse wysigings',
 'prefs-watchlist'               => 'Dophoulys',
@@ -1256,7 +1248,7 @@ Hier volg 'n lukraak gegenereerde waarde wat u kan gebruik: $1",
 'savedprefs'                    => 'U voorkeure is gestoor.',
 'timezonelegend'                => 'Tydsone:',
 'localtime'                     => 'Plaaslike tyd:',
-'timezoneuseserverdefault'      => 'Bedienerverstek',
+'timezoneuseserverdefault'      => 'Gebruik wiki se verstekwaarde ($1)',
 'timezoneuseoffset'             => 'Ander (spesifiseer tydsverskil)',
 'timezoneoffset'                => 'Tydsverskil¹:',
 'servertime'                    => 'Bedienertyd:',
@@ -1436,10 +1428,11 @@ Die inligting is vir ander gebruikers sigbaar.',
 'right-sendemail'             => 'Stuur e-pos aan ander gebruikers',
 
 # User rights log
-'rightslog'      => 'Gebruikersregtelogboek',
-'rightslogtext'  => 'Hier onder is die logboek van gebruikersregte wat verander is.',
-'rightslogentry' => 'wysig gebruikersregte vir $1 van $2 na $3',
-'rightsnone'     => '(geen)',
+'rightslog'                  => 'Gebruikersregtelogboek',
+'rightslogtext'              => 'Hier onder is die logboek van gebruikersregte wat verander is.',
+'rightslogentry'             => 'wysig gebruikersregte vir $1 van $2 na $3',
+'rightslogentry-autopromote' => 'was outomaties bevorder van $2 na $3',
+'rightsnone'                 => '(geen)',
 
 # Associated actions - in the sentence "You do not have permission to X"
 'action-read'                 => 'lees die bladsy',
@@ -1592,6 +1585,7 @@ Toelaatbare {{PLURAL:$3|lêertipes|lêertipes}} is $2.',
 die lêer is $2.',
 'largefileserver'             => 'Hierdie lêer is groter as wat die bediener se opstelling toelaat.',
 'emptyfile'                   => "Die lêer wat u probeer oplaai het blyk leeg te wees. Dit mag wees omdat u 'n tikfout in die lêernaam gemaak het. Gaan asseblief na en probeer weer.",
+'windows-nonascii-filename'   => 'Hierdie wiki ondersteun nie lêername met spesiale karakters nie.',
 'fileexists'                  => "'n Lêer met die naam bestaan reeds, kyk na '''<tt>[[:$1]]</tt>''' as u nie seker is dat u dit wil wysig nie.
 [[$1|thumb]]",
 'filepageexists'              => "Die beskrywingsbladsy vir hierdie lêer bestaan reeds by '''<tt>[[:$1]]</tt>''', maar daar is nie 'n lêer met hierdie naam nie.
@@ -1642,10 +1636,6 @@ Kyk na die "file_uploads"-instelling.',
 'watchthisupload'             => 'Hou die lêer dop',
 'filewasdeleted'              => "'n Lêer met hierdie naam is al voorheen opgelaai en daarna geskrap.
 Kyk asseblief na die $1 voor u aangaan om dit weer op te laai.",
-'upload-wasdeleted'           => "'''Waarskuwing: U is besig om 'n lêer op te laai wat voorheen verwyder is.'''
-
-Dink twee keer na of dit wel gepas is om die lêer hier op te laai.
-Die verwyderingsinligting van die lêer word vir u gemak hier herhaal:",
 'filename-bad-prefix'         => "Die naam van die lêer wat u besig is om op te laai begin met '''\"\$1\"''', wat 'n nie-beskrywende term is, gewoonlik outomaties toegedien deur digitale kameras.
 Kies asseblief 'n meer beskrywende naam vir die lêer.",
 'upload-success-subj'         => 'Laai suksesvol',
@@ -1767,7 +1757,7 @@ Die volgende lys vertoon slegs die eerste {{PLURAL:$1|skakel|$1 skakels}} wat na
 'n [[Special:WhatLinksHere/$2|Volledige lys]] is ook beskikbaar.",
 'nolinkstoimage'            => 'Daar is geen bladsye wat hierdie prent gebruik nie.',
 'morelinkstoimage'          => 'Wys [[Special:WhatLinksHere/$1|meer skakels]] na die lêer.',
-'redirectstofile'           => "Die volgende {{PLURAL:$1|lêer is 'n aanstuur|$1 lêers is aansture}} na die lêer:",
+'linkstoimage-redirect'     => '$1 (lêeraanstuur) $2',
 'duplicatesoffile'          => "Die volgende {{PLURAL:$1|lêer is 'n duplikaat|$1 lêers is duplikate}} van die lêer ([[Special:FileDuplicateSearch/$2|meer details]]):",
 'sharedupload'              => 'Die lêer kom vanaf $1 en mag moontlik ook op ander projekte gebruik word.',
 'sharedupload-desc-there'   => 'Hierdie lêer kom vanaf $1 en kan ook in ander projekte gebruik word.
@@ -2091,11 +2081,9 @@ Daar kan [[{{MediaWiki:Listgrouprights-helppage}}|extra inligting]] oor individu
 'watchnologin'         => 'Nie ingeteken nie',
 'watchnologintext'     => 'U moet [[Special:UserLogin|ingeteken]]
 wees om u dophoulys te verander.',
-'addedwatch'           => 'Bygevoeg tot dophoulys',
 'addedwatchtext'       => "Die bladsy \"[[:\$1]]\" is by u [[Special:Watchlist|dophoulys]] bygevoeg. Toekomstige wysigings aan hierdie bladsy en sy verwante besprekingsblad sal op [[Special:Watchlist|u dophoulys]] gelys word en sal in '''vetdruk''' in die [[Special:RecentChanges|lys van onlangse wysigings]] vertoon word, sodat u dit makliker kan raaksien.
 
 As u die bladsy later van u dophoulys wil verwyder, kliek \"verwyder van dophoulys\" in die kieslys bo-aan die bladsy.",
-'removedwatch'         => 'Afgehaal van dophoulys',
 'removedwatchtext'     => 'Die bladsy "[[:$1]]" is van [[Special:Watchlist|u dophoulys]] afgehaal.',
 'watch'                => 'Hou dop',
 'watchthispage'        => 'Hou hierdie bladsy dop',
@@ -2148,7 +2136,7 @@ U kan ook die waarskuwingsvlag op u dophoulys verstel.
 
 --
 U kan u dophoulys wysig by:
-{{fullurl:{{#special:Watchlist}}/edit}}
+{{fullurl:{{#special:EditWatchlist}}}}
 
 Om die bladsy vanaf u dophoulys te verwyder, besoek:
 $UNWATCHURL
@@ -2170,7 +2158,7 @@ Terugvoer en verdere bystand:
 Bevestig asseblief dat u dit wil doen, dat u die gevolge verstaan en dat u dit doen in ooreenstemming met die [[{{MediaWiki:Policy-url}}]].",
 'actioncomplete'         => 'Aksie uitgevoer',
 'actionfailed'           => 'Aksie het gefaal',
-'deletedtext'            => '"<nowiki>$1</nowiki>" is geskrap.
+'deletedtext'            => '"$1" is geskrap.
 Kyk na $2 vir \'n rekord van onlangse skrappings.',
 'deletedarticle'         => '"[[$1]]" geskrap',
 'suppressedarticle'      => 'het "[[$1]]" verberg',
@@ -2215,21 +2203,21 @@ Gaan een bladsy terug, herlaai die bladsy en probeer dan weer.",
 
 # Protect
 'protectlogpage'              => 'Beskermlogboek',
-'protectlogtext'              => "Hieronder is 'n lys van bladsye wat onlangs beveilig is, of waarvan die beveiliging opgehef is.
+'protectlogtext'              => "Hieronder is 'n lys van veranderinge wat aan die beveilig van bladsye aangebring is.
 Sien die [[Special:ProtectedPages|lys van beveiligde bladsye]] vir alle bladsye wat tans operasioneel beveilig is.",
 'protectedarticle'            => 'het [[$1]] beskerm',
 'modifiedarticleprotection'   => 'Die beskermingsvlak vir "[[$1]]" is gewysig',
 'unprotectedarticle'          => 'het beskerming van [[$1]] verwyder',
 'movedarticleprotection'      => 'het beskermings-instellings vanaf "[[$2]]" na "[[$1]]" geskuif',
 'protect-title'               => 'Beskerm "$1"',
-'prot_1movedto2'              => '[[$1]] geskuif na [[$2]]',
+'prot_1movedto2'              => 'het [[$1]] geskuif na [[$2]]',
 'protect-legend'              => 'Bevestig beskerming',
 'protectcomment'              => 'Rede:',
 'protectexpiry'               => 'Verval:',
 'protect_expiry_invalid'      => 'Vervaltyd is ongeldig.',
 'protect_expiry_old'          => 'Vervaltyd is in die verlede.',
 'protect-unchain-permissions' => 'Ontsluit verdere beskermingsopsies',
-'protect-text'                => "U kan die veiligheidsvlak vir blad '''<nowiki>$1</nowiki>''' hier bekyk of verander.",
+'protect-text'                => "U kan die veiligheidsvlak vir blad '''$1''' hier bekyk of verander.",
 'protect-locked-blocked'      => "U kan nie beskermingsvlakke verander terwyl u geblok is nie.
 Hier volg die huidige oprigtings vir die bladsy '''$1''':",
 'protect-locked-dblock'       => "Die beskermingsvlak kan nie tans gewysig word nie omdat die databasis gesluit is.
@@ -2360,6 +2348,7 @@ Die laaste inskrywing uit die blokkeerlogboek word hier ter inligting weergegee:
 'sp-contributions-username'            => 'IP-adres of gebruikersnaam:',
 'sp-contributions-toponly'             => 'Wys slegs die nuutste weergawes',
 'sp-contributions-submit'              => 'Vertoon',
+'sp-contributions-showsizediff'        => 'Wys verskil in bladsygrootte',
 
 # What links here
 'whatlinkshere'            => 'Skakels hierheen',
@@ -2526,6 +2515,7 @@ Bevestig asseblief dat dit is wat u wil doen.',
 'lockfilenotwritable' => 'Kan nie na die databasis se sperlêer (lock file) skryf nie.
 Om die databasis te ontsluit moet u skyfregte aan die lêer op die webbediener toeken.',
 'databasenotlocked'   => 'Die databasis is nie gesluit nie.',
+'lockedbyandtime'     => '(deur $1 om $3 op $2)',
 
 # Move page
 'move-page'                    => 'Skuif "$1"',
@@ -2583,8 +2573,8 @@ Kies asseblief 'n ander naam.",
 'movepage-page-moved'          => 'Die bladsy $1 was na $2 geskuif.',
 'movepage-page-unmoved'        => 'Die bladsy $1 kon nie na $2 geskuif word nie.',
 'movepage-max-pages'           => 'Die maksimum van $1 {{PLURAL:$1|bladsy|bladsye}} is geskuif. Die oorblywende bladsye na nie outomaties geskuif word nie.',
-'1movedto2'                    => '[[$1]] geskuif na [[$2]]',
-'1movedto2_redir'              => '[[$1]] geskuif na [[$2]] oor bestaande aanstuur',
+'1movedto2'                    => 'het [[$1]] geskuif na [[$2]]',
+'1movedto2_redir'              => 'het [[$1]] geskuif na [[$2]] oor bestaande aanstuur',
 'move-redirect-suppressed'     => 'aanstuur is onderdruk',
 'movelogpage'                  => 'Skuiflogboek',
 'movelogpagetext'              => "Hier onder is 'n lys van geskuifde bladsye.",
@@ -2735,7 +2725,7 @@ Die lêer is slegs gedeeltelik opgelaai.',
 'tooltip-ca-viewsource'           => 'Hierdie bladsy is beskerm. U kan die bronteks besigtig.',
 'tooltip-ca-history'              => 'Ouer weergawes van hierdie bladsy.',
 'tooltip-ca-protect'              => 'Beskerm hierdie bladsy',
-'tooltip-ca-unprotect'            => 'Verwyder beskerming vir die bladsy',
+'tooltip-ca-unprotect'            => 'Wysig beskerming van die bladsy',
 'tooltip-ca-delete'               => 'Skrap hierdie bladsy',
 'tooltip-ca-undelete'             => 'Herstel die bydraes aan hierdie bladsy voordat dit geskrap is',
 'tooltip-ca-move'                 => 'Skuif hierdie bladsy',
@@ -2790,9 +2780,7 @@ U kan daar \'n wysigingsopsomming byvoeg.',
 'common.css' => '/** Gemeenskaplike CSS vir alle omslae */',
 
 # Metadata
-'nodublincore'      => 'Dublin Core RDF-metadata is afgeskakel op hierdie bediener.',
-'nocreativecommons' => 'Creative Commons RDF-metadata is afgeskakel op hierdie bediener.',
-'notacceptable'     => "Die wikibediener kan nie data in 'n formaat wat jou kliënt kan lees verskaf nie.",
+'notacceptable' => "Die wikibediener kan nie data in 'n formaat wat jou kliënt kan lees verskaf nie.",
 
 # Attribution
 'anonymous'        => 'Anonieme {{PLURAL:$1|gebruiker|gebruikers}} van {{SITENAME}}',
@@ -2816,12 +2804,17 @@ Hierdie situasie was waarskynlik deur 'n skakel na 'n eksterne webtuiste op ons 
 'spam_blanking'       => "Alle weergawes met 'n skakel na $1 word verwyder",
 
 # Info page
-'infosubtitle'   => 'Inligting vir bladsy',
-'numedits'       => 'Aantal wysigings (bladsy): $1',
-'numtalkedits'   => 'Aantal wysigings (besprekingsblad): $1',
-'numwatchers'    => 'Aantal dophouers: $1',
-'numauthors'     => 'Aantal outeurs (bladsy): $1',
-'numtalkauthors' => 'Aantal outeurs (besprekingsblad): $1',
+'pageinfo-title'            => 'Inligting oor "$1"',
+'pageinfo-header-edits'     => 'Wysigings',
+'pageinfo-header-watchlist' => 'Dophoulys',
+'pageinfo-header-views'     => 'Kere gewys',
+'pageinfo-subjectpage'      => 'Bladsy',
+'pageinfo-talkpage'         => 'Besprekingsblad',
+'pageinfo-watchers'         => 'Aantal dophouers',
+'pageinfo-edits'            => 'Aantal wysigings',
+'pageinfo-authors'          => 'Aantal verskillende outeurs',
+'pageinfo-views'            => 'Aantal kere gewys',
+'pageinfo-viewsperedit'     => 'Kere gewys per wysiging',
 
 # Skin names
 'skinname-standard'    => 'Standaard',
@@ -2869,6 +2862,7 @@ $1',
 'widthheightpage'        => '$1×$2, $3 {{PLURAL:$3|bladsy|bladsye}}',
 'file-info'              => 'lêergrootte: $1, MIME-tipe: $2',
 'file-info-size'         => '$1 × $2 pixels, lêergrootte: $3, MIME type: $4',
+'file-info-size-pages'   => '$1 × $2 pikels, lêergrootte: $3, MIME-tipe: $4, $5 {{PLURAL:$5|bladsy|bladsye}}',
 'file-nohires'           => '<small>Geen hoër resolusie is beskikbaar nie.</small>',
 'svg-long-desc'          => 'SVG-lêer, nominaal $1 × $2 pixels, lêergrootte: $3',
 'show-big-image'         => 'Volle resolusie',
@@ -2906,7 +2900,7 @@ Enige opeenvolgende skakels op dieselfde lyn word as uitsonderings beskou, bv. b
 As die lêer verander is, mag sekere inligting nie meer ooreenkom met die van die gewysigde lêer nie.",
 'metadata-expand'   => 'Wys uitgebreide gegewens',
 'metadata-collapse' => 'Steek uitgebreide gegewens weg',
-'metadata-fields'   => 'Die EXIF-metadatavelde wat in die boodskap gelys is sal op die beeld se bladsy ingesluit word as die metadatabel ingevou is.
+'metadata-fields'   => "Die velde in die boodskap word ook gewys op 'n beeldbladsy as die metadatatabel toegevou is.
 Ander velde sal versteek wees.
 * make
 * model
@@ -2920,7 +2914,7 @@ Ander velde sal versteek wees.
 * imagedescription
 * gpslatitude
 * gpslongitude
-* gpsaltitude',
+* gpsaltitude",
 
 # EXIF tags
 'exif-imagewidth'                  => 'Breedte',
@@ -2971,9 +2965,9 @@ Ander velde sal versteek wees.
 'exif-exposureprogram'             => 'Beligtingsprogram',
 'exif-spectralsensitivity'         => 'Spektrale gevoeligheid',
 'exif-isospeedratings'             => 'ISO/ASA-waarde',
-'exif-shutterspeedvalue'           => 'Sluitersnelheid',
-'exif-aperturevalue'               => 'Diafragma',
-'exif-brightnessvalue'             => 'Helderheid',
+'exif-shutterspeedvalue'           => 'Sluitersnelheid in APEX',
+'exif-aperturevalue'               => 'Diafragma in APEX',
+'exif-brightnessvalue'             => 'Helderheid in APEX',
 'exif-exposurebiasvalue'           => 'Beligtingskompensasie',
 'exif-maxaperturevalue'            => 'Maksimale diafragma-opening',
 'exif-subjectdistance'             => 'Afstand na onderwerp',
@@ -3037,18 +3031,26 @@ Ander velde sal versteek wees.
 'exif-gpsdifferential'             => 'Differensiële GPS-korreksie',
 'exif-jpegfilecomment'             => 'Opmerking in JPEG-lêer',
 'exif-keywords'                    => 'Sleutelwoorde',
+'exif-worldregioncreated'          => 'Wêreldstreek waar die foto geneem is',
+'exif-countrycreated'              => 'Land waar die foto geneem is',
+'exif-countrycodecreated'          => 'Kode van land waar die foto geneem is',
+'exif-provinceorstatecreated'      => 'Provinsie of staat waar die foto geneem is',
+'exif-citycreated'                 => 'Stad waar die foto geneem is',
 'exif-worldregiondest'             => 'Wêrelddeel getoon',
 'exif-countrydest'                 => 'Land getoon',
 'exif-countrycodedest'             => 'Kode vir die land getoon',
 'exif-provinceorstatedest'         => 'Provinsie of staat getoon',
 'exif-citydest'                    => 'Stad getoon',
+'exif-sublocationdest'             => 'Deel van stad getoon',
 'exif-objectname'                  => 'Kort titel',
 'exif-specialinstructions'         => 'Spesiale instruksies',
 'exif-headline'                    => 'Opskrif',
 'exif-credit'                      => 'Krediet/Verskaffer',
 'exif-source'                      => 'Bron',
+'exif-editstatus'                  => 'Redaksionele status van beeld',
 'exif-urgency'                     => 'Dringendheid',
 'exif-fixtureidentifier'           => 'Groepsnaam',
+'exif-locationdest'                => 'Plek uitgebeeld',
 'exif-contact'                     => 'Kontak inligting',
 'exif-writer'                      => 'Skrywer',
 'exif-languagecode'                => 'Taal',
@@ -3065,6 +3067,8 @@ Ander velde sal versteek wees.
 'exif-copyrighted'                 => 'Outeursregstus:',
 'exif-copyrightowner'              => 'Kopiereghouer',
 'exif-usageterms'                  => 'Gebruiksvoorwaardes',
+'exif-attributionurl'              => 'Gebruik die volgende skakel as die werk hergebruik word',
+'exif-preferredattributionname'    => 'Krediteer die volgende persone as die werk hergebruik word',
 'exif-pngfilecomment'              => 'Opmerking in PNG-lêer',
 'exif-disclaimer'                  => 'Voorbehoud',
 'exif-contentwarning'              => 'Waarskuwing oor inhoud',
