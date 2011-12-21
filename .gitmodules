@@ -67,3 +67,9 @@
 [submodule "extensions/Validator.git"]
 	path = extensions/Validator.git
 	url = git://code.creativecommons.org/mw-ext/validator.git
+[submodule "extensions/Maps.git"]
+	path = extensions/Maps.git
+	url = git://code.creativecommons.org/mw-ext/maps.git
+[submodule "extensions/SemanticMaps.git"]
+	path = extensions/SemanticMaps.git
+	url = git://code.creativecommons.org/mw-ext/semanticmaps.git
