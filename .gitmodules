@@ -64,9 +64,6 @@
 [submodule "extensions/ExternalData"]
 	path = extensions/ExternalData
 	url = git://code.creativecommons.org/mw-ext/externaldata
-[submodule "extensions/ArrayExtension"]
-	path = extensions/ArrayExtension
-	url = git://code.creativecommons.org/mw-ext/arrayextension.git
 [submodule "extensions/SemanticInternalObjects"]
 	path = extensions/SemanticInternalObjects
 	url = git://code.creativecommons.org/mw-ext/semanticinternalobjects
@@ -85,3 +82,9 @@
 [submodule "extensions/HeaderTabs.git"]
 	path = extensions/HeaderTabs.git
 	url = git://code.creativecommons.org/mw-ext/headertabs.git
+[submodule "extensions/ArrayExtension"]
+	path = extensions/ArrayExtension
+	url = git://code.creativecommons.org/mw-ext/arrayextension.git
+[submodule "extensions/SemanticCompoundQueries"]
+	path = extensions/SemanticCompoundQueries
+	url = git://code.creativecommons.org/mw-ext/semanticcompoundqueries.git
