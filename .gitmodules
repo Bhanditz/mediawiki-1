@@ -52,9 +52,6 @@
 [submodule "skins/cc"]
 	path = skins/cc
 	url = git://code.creativecommons.org/themes/cc_wiki.git
-[submodule "extensions/HeaderTabs"]
-	path = extensions/HeaderTabs
-	url = git://code.creativecommons.org/mw-ext/headertabs.git
 [submodule "extensions/AbuseFilter"]
 	path = extensions/AbuseFilter
 	url = git://code.creativecommons.org/mw-ext/abusefilter.git
@@ -76,3 +73,6 @@
 [submodule "extensions/ArrayExtension"]
 	path = extensions/ArrayExtension
 	url = git://code.creativecommons.org/mw-ext/arrayextension.git
+[submodule "extensions/HeaderTabs.git"]
+	path = extensions/HeaderTabs.git
+	url = git://code.creativecommons.org/mw-ext/headertabs.git
