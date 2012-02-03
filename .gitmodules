@@ -73,3 +73,6 @@
 [submodule "extensions/SemanticMaps.git"]
 	path = extensions/SemanticMaps.git
 	url = git://code.creativecommons.org/mw-ext/semanticmaps.git
+[submodule "extensions/ArrayExtension"]
+	path = extensions/ArrayExtension
+	url = git://code.creativecommons.org/mw-ext/arrayextension.git
