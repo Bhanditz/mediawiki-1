@@ -34,7 +34,8 @@ if ( isset( $_SERVER['MW_COMPILED'] ) ) {
 wfProfileIn( 'img_auth.php' );
 require_once( dirname( __FILE__ ) . '/includes/StreamFile.php' );
 
-$wgActionPaths[] = $_SERVER['SCRIPT_NAME'];
+$wgActionPaths = array( "$wgUploadPath/" );
+$wgArticlePath = false; # Don't let a "/*" article path clober our action path
 // See if this is a public Wiki (no protections)
 if ( $wgImgAuthPublicTest
 	&& in_array( 'read', User::getGroupPermissions( array( '*' ) ), true ) )
@@ -44,6 +45,10 @@ if ( $wgImgAuthPublicTest
 
 $matches = WebRequest::getPathInfo();
 $path = $matches['title'];
+if ( $path && $path[0] !== '/' ) {
+	// Make sure $path has a leading /
+	$path = "/" . $path;
+}
 
 // Check for bug 28235: QUERY_STRING overriding the correct extension
 $dotPos = strrpos( $path, '.' );
