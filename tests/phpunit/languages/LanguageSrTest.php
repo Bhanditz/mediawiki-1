@@ -12,7 +12,7 @@
  * @file
  */
 
-require_once dirname(dirname(__FILE__)). '/bootstrap.php';
+require_once dirname( dirname( __FILE__ ) ) . '/bootstrap.php';
 
 /** Tests for MediaWiki languages/LanguageTr.php */
 class LanguageSrTest extends MediaWikiTestCase {
@@ -20,7 +20,7 @@ class LanguageSrTest extends MediaWikiTestCase {
 	private $lang;
 
 	function setUp() {
-		$this->lang = Language::factory( 'Sr' );
+		$this->lang = Language::factory( 'sr' );
 	}
 	function tearDown() {
 		unset( $this->lang );
@@ -62,7 +62,7 @@ class LanguageSrTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @author Nikola Smolenski 
+	 * @author Nikola Smolenski
 	 */
 	function testConversionToCyrillic() {
 		$this->assertEquals( 'абвг',
@@ -77,7 +77,7 @@ class LanguageSrTest extends MediaWikiTestCase {
 		$this->assertEquals( 'абвгшђжчћ',
 			$this->convertToCyrillic( 'абвгšđžčć' )
 		);
-		//Roman numerals are not converted
+		// Roman numerals are not converted
 		$this->assertEquals( 'а I б II в III г IV шђжчћ',
 			$this->convertToCyrillic( 'a I b II v III g IV šđžčć' )
 		);
@@ -96,7 +96,41 @@ class LanguageSrTest extends MediaWikiTestCase {
 		$this->assertEquals( 'абцдšđžčć',
 			$this->convertToLatin( 'абцдšđžčć' )
 		);
+	}
 
+	/** @dataProvider providePluralFourForms */
+	function testPluralFourForms( $result, $value ) {
+		$forms = array( 'one', 'few', 'many', 'other' );
+		$this->assertEquals( $result, $this->lang->convertPlural( $value, $forms ) );
+	}
+
+	function providePluralFourForms() {
+		return array (
+			array( 'one', 1 ),
+			array( 'many', 11 ),
+			array( 'one', 91 ),
+			array( 'one', 121 ),
+			array( 'few', 2 ),
+			array( 'few', 3 ),
+			array( 'few', 4 ),
+			array( 'few', 334 ),
+			array( 'many', 5 ),
+			array( 'many', 15 ),
+			array( 'many', 120 ),
+		);
+	}
+	/** @dataProvider providePluralTwoForms */
+	function testPluralTwoForms( $result, $value ) {
+		$forms = array( 'one', 'several' );
+		$this->assertEquals( $result, $this->lang->convertPlural( $value, $forms ) );
+	}
+	function providePluralTwoForms() {
+		return array (
+			array( 'one', 1 ),
+			array( 'several', 11 ),
+			array( 'several', 91 ),
+			array( 'several', 121 ),
+		);
 	}
 
 	##### HELPERS #####################################################
